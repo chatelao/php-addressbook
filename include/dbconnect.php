@@ -1,13 +1,20 @@
 <?php
 
-// Enable output compression for bandwith-saving
-if(ini_get('zlib.output_compression') != 1) {
-   ini_set('zlib.output_compression_level', 3);
-   ob_start('ob_gzhandler');
-   
+include("config.php");
+include("translation.inc");
+
+// Activate compression, if disabled in ".htaccess"
+if(   ini_get('zlib.output_compression') != 1
+   && $compression_level > 0) {
+  ini_set('zlib.output_compression_level', $compression_level);
+  ob_start('ob_gzhandler');
 }
 
-include("config.php");
+// Apply the table prefix
+$table         = $table_prefix.$table;
+$month_lookup  = $table_prefix.$month_lookup;
+$table_groups  = $table_prefix.$table_groups;
+$table_grp_adr = $table_prefix.$table_grp_adr;
 
 //
 // --- Set default values to parameters, if need
@@ -32,50 +39,97 @@ if(!$is_fix_group and $group_name)
 //$page_ext     = "$page_ext";
 }
 
+// --- Connect to DB, retry 5 times ---
+for ($i = 0; $i < 5; $i++) {
+	
+    $db = mysql_connect("$dbserver", "$dbuser", "$dbpass");
+    $errno = mysql_errno();
+    if ($errno == 1040 || $errno == 1226 || $errno == 1203) {
+        sleep(1);
+    }  else {
+        break;
+    }
+}
+mysql_select_db("$dbname", $db);
 
-//
-// --- Connect to DB ---
-//
-$db = mysql_connect("$dbserver", "$dbuser", "$dbpass");
-mysql_select_db("$dbname",$db);
-
-// To run the script on systeme with "register_globals" disabled.
-// N.B.: Enabling with ".htaccess" didn't work.
-/*
-import_request_variables("id");
-import_request_variables("searchstring");
-import_request_variables("alphabet");
-*/
-
-// Import all variables in a secured way (HTML)
+// To run the script on systeme with "register_globals" disabled,
+// import all variables in a bit secured way: Remove HTML Tags
 foreach($_REQUEST as $key => $value)
 {
-	  if(is_array($value)) {
+	  // Allow all tags in headers and footers
+	  if($key == "group_header" || $key == "group_footer"){
+	  	${$key} = $value;
+	  	
+	  // Handle arrays
+	  } elseif(is_array($value)) {
 	  	foreach($value as $entry)
-	  	${$key}[] = $entry;
-	  }else {
-    	${$key} = htmlspecialchars($value);
+	  	{
+	  		${$key}[] = strip_tags($entry);
+	  	}
+	  // Handle the rest
+	  } else {
+    	// ${$key} = htmlspecialchars($value); --chatelao-20071121, doesn't work with Chinese Characters
+    	${$key} = strip_tags($value);
     }
     
-    // tbd: prevent SQL-Injection
+    // TBD: prevent SQL-Injection
 }
 
- if($group_name == "") {
+// Create "n-level" non-locking recursion
+$max_level = 3;
+                   
+for($i = 0; $i < $max_level; $i++)
+{
+	if($i > 0) {
+    $sql_from  .= "     , ";
+		$sql_where .= " OR ";
+	}
+ 	$sql_from  .= "$table_groups g$i";
+	$sql_where .= "( ";
+	
+  for($j = 0; $j < $max_level; $j++)
+  {
+  	if($j > 0) {
+  		$sql_where .= "\n  AND ";    	
+  	}
+  	if($j >= $i) {
+			$sql_where .= "g$j.group_name = '$group_name'";
+		} else {
+			$sql_where .= "g$j.group_parent_id = g".($j+1).".group_id";
+		}
+  }
+	$sql_where .= ")\n";
+}
+      // echo nl2br("select * from ".$sql_from." WHERE ".$sql_where."\n");
+
+// Assemble the statements
+if($group_name == "") {
+    $base_select = " * ";
     $base_from  = $table;
     $base_where = "1=1";
  } else {
 
     if($group_name == "[none]")
     {
-      $base_from  = "$table";
-      $base_where = "$table.id not in (select distinct id from $table_grp_adr)";
+      $base_select = " * ";
+      $base_from   = "$table";
+      $base_where  = "$table.id not in (select distinct id from $table_grp_adr)";
     }
-    else
+    elseif(isset($_REQUEST['nosubgroups']) )
     {
+      $base_select = " * ";
       $base_from  = "$table_grp_adr, $table_groups, $table";
       $base_where = "$table.id = $table_grp_adr.id "
                    ."AND $table_grp_adr.group_id  = $table_groups.group_id "
                    ."AND $table_groups.group_name = '$group_name'";
+    }
+    else
+    {
+      $base_select = "DISTINCT $table.*";
+      $base_from   = "$table_grp_adr, $sql_from, $table";
+      $base_where  = "$table.id = $table_grp_adr.id "
+                    ."AND $table_grp_adr.group_id  = g0.group_id "
+                    ."AND ($sql_where)";
     }
  }
  

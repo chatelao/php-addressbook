@@ -50,4 +50,10 @@
   // Setup for "Country guessing" (Beta: Switzerland, US, Belgium)
   $map_guess  = true;
 
+  // Disable HTTP-Compression with 0
+  $compression_level = 2;
+
+  // Setup language (auto, en, de)
+  $lang  = 'auto';
+
 ?>

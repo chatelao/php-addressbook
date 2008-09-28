@@ -1,23 +1,22 @@
 <?php
 include ("include/dbconnect.php");
 include ("include/format.inc.php");
-?><title>Address book <?php echo ($group_name != "" ? "($group_name)":""); ?></title><?php
+  ?><title><? echo ucfmsg("ADDRESS_BOOK").($group_name != "" ? " ($group_name)":""); ?></title><?php
 include ("include/header.inc.php");
 ?>
   <table border="0" cellspacing="2" width="380">
     <tr>
-      <td><h1>Next birthdays</h1></td>
+      <td><h1><? echo ucfirst(msg("NEXT_BIRTHDAYS")) ?></h1></td>
     </tr>
   </table>
 <?php
 
 $sql="
 SELECT * ,
-IF (
-$month_lookup.bmonth_num < MONTH( CURDATE( ) )
-OR $month_lookup.bmonth_num = MONTH( CURDATE( ) )
-AND $table.bday < DAYOFMONTH( CURDATE( ) ) , CONCAT( $table.bmonth, ' ', YEAR( CURDATE( ) ) +1 ) , $table.bmonth
-) display_month,
+IF ($month_lookup.bmonth_num < MONTH( CURDATE( ) )
+    OR $month_lookup.bmonth_num = MONTH( CURDATE( ) )
+       AND $table.bday < DAYOFMONTH( CURDATE( ) ) , CONCAT( ' ', YEAR( CURDATE( ) ) +1 ) , ''
+) display_year,
 IF (
 $month_lookup.bmonth_num < MONTH( CURDATE( ) )
 OR $month_lookup.bmonth_num = MONTH( CURDATE( ) )
@@ -63,13 +62,11 @@ ORDER BY prio ASC";
 
 		$bday   = $myrow["bday"];
 		$bmonth = $myrow["bmonth"];
-		$display_month = $myrow["display_month"];
-
 
 		if($lastmonth != $bmonth)
 		{
 			$lastmonth = $bmonth;
-			echo "<tr><td colspan=3><h2>$display_month</h2></td></tr>";
+			echo "<tr><td colspan=3><h2>".ucfmsg(strtoupper($myrow["bmonth"])).$myrow["display_year"]."</h2></td></tr>";
 			$alternate = "0"; 
 
 		}
@@ -88,9 +85,9 @@ ORDER BY prio ASC";
 		echo "<td>$firstname</td>";
 		echo "<td><a href='mailto:$email'>$email</a></td>";
 		echo "<td align=right>$phone</td>";
-		echo "<td><a href='view${page_ext_qry}id=$id'><img border=0 src=icons/status_online.png   width=16 height=16 title='Details' alt='Details'/></a></td>";
+		echo "<td><a href='view${page_ext_qry}id=$id'><img border=0 src=icons/status_online.png   width=16 height=16 title='".ucfmsg('DETAILS')."' alt='".ucfmsg('DETAILS')."'/></a></td>";
                 if(! $read_only)
-		  echo "<td><a href='edit${page_ext_qry}id=$id'><img border=0 src=icons/pencil.png width=16 height=16 title='Edit' alt='Edit'/></a></td>";
+		  echo "<td><a href='edit${page_ext_qry}id=$id'><img border=0 src=icons/pencil.png width=16 height=16 title='".ucfmsg('EDIT')."' alt='".ucfmsg('EDIT')."'/></a></td>";
 		echo "<td><font size=-2><a href='vcard${page_ext_qry}id=$id'><img border=0 src=icons/vcard.png   width=16 height=16 title='vCard' alt='vCard'/></a></font></td>";
 
                 if( substr($phone, 0, 1) == "0" || substr($phone, 0, 3) == "+41")
@@ -107,11 +104,10 @@ ORDER BY prio ASC";
 		else echo "<td/>";
 		}
 
-
 		$homepage = guessHomepage($email, $email2);
 		if(strlen($homepage) > 0)
 		{
-			echo "<td><font size=-2><a href='http://$homepage'><img border=0 src=icons/house.png   width=16 height=16 title='Guessed Homepage ($homepage)' alt='Guessed Homepage ($homepage)'/></a></font></td>";
+			echo "<td><font size=-2><a href='http://$homepage'><img border=0 src=icons/house.png   width=16 height=16 title='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)' alt='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)'/></a></font></td>";
 		} else
 			echo "<td/>";
 

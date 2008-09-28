@@ -35,9 +35,9 @@ function showOneEntry($r, $only_phone = false)
    
    if(! $only_phone)
 	   $view .= "<br>".str_replace("\n", "<br>", trim($r["address"]))."<br><br>";	   
-   $view .= ($r['home']   != "" ? "H: ".$r['home']."<br>" : "");
-   $view .= ($r['mobile'] != "" ? "M: ".$r['mobile']."<br>" : "");
-   $view .= ($r['work']   != "" ? "W: ".$r['work']."<br>" : "");
+   $view .= ($r['home']   != "" ? ucfmsg('H:')." ".$r['home']."<br>" : "");
+   $view .= ($r['mobile'] != "" ? ucfmsg('M:')." ".$r['mobile']."<br>" : "");
+   $view .= ($r['work']   != "" ? ucfmsg('W:')." ".$r['work']."<br>" : "");
    if(! $only_phone) {
 	   $view .= "<br>";
 	   $view .= ($r['email'] != "" ?  "<a href=mailto:".$r['email'].">".$r['email']."</a><br>" : "");
@@ -45,11 +45,11 @@ function showOneEntry($r, $only_phone = false)
 	   $view .= "<br>";
    }
    $view .= ( $r['bday'] != 0 || $r['bmonth'] != "-" || $r['byear'] != ""
-            ? "Birthday: ".($r['bday'] > 0 ? $r['bday'].". " : "").($r['bmonth'] != '-' ? $r['bmonth'] : "")." ".$r['byear'] : "")."<br>"; 
+            ? ucfmsg('BIRTHDAY').": ".($r['bday'] > 0 ? $r['bday'].". " : "").($r['bmonth'] != '-' ? $r['bmonth'] : "")." ".$r['byear'] : "")."<br>"; 
 
 
    if(! $only_phone) {
-	   $view .= ($r['address2'] != "" || $r['phone2'] != "" ? "<br><br><b>Secondary</b><br>" : "");
+	   $view .= ($r['address2'] != "" || $r['phone2'] != "" ? "<br><br><b>".ucfmsg('SECONDARY')."</b><br>" : "");
 	   $view .= ($r['address2'] != "" ? "<br>".str_replace("\n", "<br>", trim($r['address2']))."<br><br>" : "");
 	 }	   
    $view .= ($r['phone2']   != "" ? "P: ".$r['phone2']."<br>" : "");
@@ -69,7 +69,7 @@ function showOneEntry($r, $only_phone = false)
 	   $first = true;
 	   while($g = mysql_fetch_array($result)) {
 	   	 if($first)
-	   	   echo "<br><i>Member of: ";
+	   	   echo "<br><i>".ucfmsg('MEMBER_OF').": ";
 	   	 else
 	   	   echo ", ";
 	   	 echo "<a href=./?group=".urlencode($g['group_name']).">".$g['group_name']."</a>";
@@ -101,14 +101,14 @@ showOneEntry($r);
 if(! $read_only)
 {
 ?>
-    <input type="Submit" name="modifiy" value="Modify"/>
+    <input type="Submit" name="modifiy" value="<?php echo ucfmsg('MODIFY'); ?>"/>
 <?php
 }
 ?>
 </form>
 <form method="get" action="view<?php echo $page_ext; ?>">
     <input type="hidden" name="id"   value="<?php echo $id; ?>">
-    <input type="Submit" name="print"   value="Print"/>
+    <input type="Submit" name="print"   value="<?php echo ucfmsg('PRINT'); ?>"/>
 </form>
 <!--
 <img src=/famfamfam/icons/pencil.png width=16 height=16/>
