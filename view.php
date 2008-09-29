@@ -110,11 +110,7 @@ if(! $read_only)
     <input type="hidden" name="id"   value="<?php echo $id; ?>">
     <input type="Submit" name="print"   value="<?php echo ucfmsg('PRINT'); ?>"/>
 </form>
-<!--
-<img src=/famfamfam/icons/pencil.png width=16 height=16/>
-<img src=/famfamfam/icons/vcard.png width=16 height=16/>
-<img src=/famfamfam/icons/printer.png width=16 height=16/>
--->
+
 <?php
 }
 }
@@ -124,7 +120,7 @@ if(! $read_only)
    $result = mysql_query($sql, $db);
 
 	 $cnt = 0;
-	 echo "<h1>Address book for <i>$group</i></h1>";
+	 echo "<h1>".ucfmsg('ADDRESS_BOOK').($group ? " ".msg('FOR')." <i>$group</i></h1>" : "");
 	 ?>
    <table cellspacing="0" cellpadding="0" bgcolor="#000000"><tr><td>
    <table boder=0 cellspacing="1" cellpadding="5">

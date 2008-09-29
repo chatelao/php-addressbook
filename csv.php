@@ -30,25 +30,25 @@ function add($value, $first = false)
 	add(ucfmsg("BIRTHDAY"));
 
 	# Home contact
-	add("Address");
+	add(ucfmsg("ADDRESS"));
 	if($plz_pattern != "")
 	{
-		add("PLZ");
-		add("City");
+		add(ucfmsg("ZIP"));
+		add(ucfmsg("CITY"));
 	}
         
-	add("Home");
-	add("Mobil");
-	add("E-Mail home");
+	add(ucfmsg("PHONE_HOME"));
+	add(ucfmsg("PHONE_MOBILE"));
+	add(ucfmsg("E_MAIL_HOME"));
 
 	# Work contact
-	add("Office");
-	add("E-Mail office");
+	add(ucfmsg("PHONE_WORK"));
+	add(ucfmsg("E_MAIL_OFFICE"));
 
 
 	# 2nd contact
-	add("Second Adress");
-	add("Second Phone");
+	add(ucfmsg("2ND_ADDRESS"));
+	add(ucfmsg("2ND_PHONE"));
 	echo "\r\n";
 
 

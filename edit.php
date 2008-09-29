@@ -62,11 +62,11 @@ else if($update)
 
 		// header("Location: view?id=$id");		
 
-		echo "<br>Address book updated.\n";
-		echo "<br><a href='index$page_ext'>home page</a>";
+		echo "<br>".ucfmsg('ADDRESS_BOOK')." ".msg('UPDATED')."\n";
+		echo "<br><a href='index$page_ext'>".ucfmsg('HOME')."</a>";
 	} else {
-		echo "<br>Invalid ID.\n";
-		echo "<br><a href='index$page_ext'>home page</a>";  
+		echo "<br>".ucfmsg('INVALID')." ID.\n";
+		echo "<br><a href='index$page_ext'>".ucfmsg('HOME')."</a>";  
 	}
   } else
     echo "<br><br>Editing is disabled.\n";

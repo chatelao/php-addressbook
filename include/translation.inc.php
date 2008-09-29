@@ -56,6 +56,9 @@ $messages['DECEMBER']['de'] = 'Dezember';
 $messages['ADDRESS_BOOK']['en'] = 'address book';
 $messages['ADDRESS_BOOK']['de'] = 'Addressbuch';
 
+$messages['FOR']['en'] = 'for';
+$messages['FOR']['de'] = 'für';
+
 $messages['SEARCH']['en'] = 'search';
 $messages['SEARCH']['de'] = 'suchen';
 
