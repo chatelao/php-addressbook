@@ -26,6 +26,6 @@
   <tr> 
     <td width="10" bgcolor="#003366">&nbsp; </td>
     <td width="107" valign="top"> 
-      <?php include("include/nav.inc"); ?>
+      <?php include("include/nav.inc.php"); ?>
     </td>
     <td valign="top">
