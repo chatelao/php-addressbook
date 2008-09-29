@@ -1,10 +1,14 @@
 <?php
+
   // Database access definition
   $dbname     = "your_database"; 
   $dbserver   = "localhost"; 
   $dbuser     = "username"; 
   $dbpass     = "password"; 
-
+  
+  // Tables
+  $table_prefix = "";
+  
   // Data storage configuration
   $table        = "addressbook";
   $month_lookup = "month_lookup";
@@ -53,7 +57,7 @@
   // Disable HTTP-Compression with 0
   $compression_level = 2;
 
-  // Setup language (auto, en, de)
+  // Setup language (auto, choose, en, de)
   $lang  = 'auto';
 
 ?>

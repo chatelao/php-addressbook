@@ -1,7 +1,6 @@
 <?php
 
 include("config.php");
-include("translation.inc");
 
 // Activate compression, if disabled in ".htaccess"
 if(   ini_get('zlib.output_compression') != 1
@@ -36,8 +35,10 @@ if(!$is_fix_group and $group_name)
   $page_ext     = "$page_ext?group=$group_name";
 } else {
   $page_ext_qry = "$page_ext?";
-//$page_ext     = "$page_ext";
-}
+  // $page_ext = "$page_ext";
+}  
+
+include("translation.inc.php");
 
 // --- Connect to DB, retry 5 times ---
 for ($i = 0; $i < 5; $i++) {
@@ -137,5 +138,7 @@ $base_from_where  = "$base_from WHERE $base_where";
 $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth = $month_lookup.bmonth WHERE $base_where";
 
 $group_from_where = "$table_groups WHERE group_name = '$group_name'";
+
+$version = '3.2.1';
 
 ?>

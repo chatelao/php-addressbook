@@ -37,4 +37,21 @@
   </tr>
 <?php 
 } ?>
+<?php
+if($choose_lang)
+{ ?>
+<tr><td/></tr>                                                          
+<tr><td/></tr>
+<tr><td/></tr>
+<tr><td>
+<?php
+  foreach($supported_langs as $supp_lang) {
+    if($supp_lang != $lang)
+    {
+      echo "<a href='?lang=$supp_lang'><img border=0 width=16 height=11 title='".ucfmsg($supp_lang)."' alt='".ucfmsg($supp_lang)."' src='icons/$supp_lang.gif'/></a>";
+    }
+  }    
+}
+?>
+</td></tr>  
 </table>

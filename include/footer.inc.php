@@ -11,7 +11,7 @@
           <a href="http://sourceforge.net/donate/index.php?group_id=157964"><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project" /> </a>
         <?php } ?>
        <br>
-    	 <br><a href="notes.htm">&copy; php-addressbook v3.2</a></td>
+    	 <br><a href="notes.htm">&copy; php-addressbook v<?php echo $version; ?></a></td>
   </tr>
 </table>
 <br>

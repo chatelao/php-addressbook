@@ -4,6 +4,17 @@ $default_lang   = 'en';
 $supported_langs[] = 'en';
 $supported_langs[] = 'de';
 
+//
+// New translations are welcome:
+// * chatelao(@)users.sourceforge.net
+//
+
+$messages['en']['en'] = 'English';
+$messages['en']['de'] = 'Englisch';
+
+$messages['de']['en'] = 'German';
+$messages['de']['de'] = 'Deutsch';
+
 $messages['JANUARY']['en'] = 'January';
 $messages['JANUARY']['de'] = 'Januar';
 
@@ -39,20 +50,6 @@ $messages['NOVEMBER']['de'] = 'November';
 
 $messages['DECEMBER']['en'] = 'December';
 $messages['DECEMBER']['de'] = 'Dezember';
-
-
-
-$messages['ADDRESS_BOOK']['en'] = 'address book';
-$messages['ADDRESS_BOOK']['de'] = 'Addressbuch';
-
-$messages['ADDRESS_BOOK']['en'] = 'address book';
-$messages['ADDRESS_BOOK']['de'] = 'Addressbuch';
-
-$messages['ADDRESS_BOOK']['en'] = 'address book';
-$messages['ADDRESS_BOOK']['de'] = 'Addressbuch';
-
-$messages['ADDRESS_BOOK']['en'] = 'address book';
-$messages['ADDRESS_BOOK']['de'] = 'Addressbuch';
 
 
 
@@ -155,14 +152,41 @@ $messages['PHONE_WORK']['de'] = 'Geschäft';
 $messages['EMAIL']['en'] = 'e-mail';
 $messages['EMAIL']['de'] = 'e-Mail';
 
+$messages['ZIP']['en'] = 'ZIP';
+$messages['ZIP']['de'] = 'PLZ';
+
+$messages['CITY']['en'] = 'city';
+$messages['CITY']['de'] = 'Stadt';
+
+$messages['CITY']['en'] = 'city';
+$messages['CITY']['de'] = 'Stadt';
+
+$messages['E_MAIL_HOME']['en'] = 'e-mail home';
+$messages['E_MAIL_HOME']['de'] = 'E-Mail Privat';
+
+$messages['E_MAIL_OFFICE']['en'] = 'e-mail office';
+$messages['E_MAIL_OFFICE']['de'] = 'E-Mail Büro';
+
+$messages['2ND_ADDRESS']['en'] = 'second address';
+$messages['2ND_ADDRESS']['de'] = 'Zweitadresse';
+
+$messages['2ND_PHONE']['en'] = 'second phone';
+$messages['2ND_PHONE']['de'] = 'Zweittelefon';
+
 $messages['BIRTHDAY']['en'] = 'birthday';
 $messages['BIRTHDAY']['de'] = 'Geburtstag';
 
 $messages['UPDATE']['en'] = 'update';
 $messages['UPDATE']['de'] = 'aktualisieren';
 
+$messages['UPDATED']['en'] = 'updated';
+$messages['UPDATED']['de'] = 'aktualisiert';
+
 $messages['DELETE']['en'] = 'delete';
 $messages['DELETE']['de'] = 'löschen';
+
+$messages['INVALID']['en'] = 'invalid';
+$messages['INVALID']['de'] = 'ungültige';
 
 $messages['ENTER']['en'] = 'enter';
 $messages['ENTER']['de'] = 'speichern';
@@ -183,6 +207,31 @@ $messages['W:']['en'] = 'W:';
 $messages['W:']['de'] = 'G:';
 
 //
+// Handle language choice
+//
+$choose_lang = false;
+if($lang == 'choose') {
+  $choose_lang = true;
+  $lang = 'auto';
+}
+
+if($lang == 'choose' && isset($_GET["lang"])) {
+	$lang = $_GET["lang"];
+}
+
+if(isset($_GET["lang"])) {
+	$page_ext     = $page_ext_qry.'lang='.$_GET["lang"];
+	$page_ext_qry = $page_ext_qry.'lang='.$_GET["lang"]."&";
+}
+
+//
+// Set auto-detection as default
+//
+if(!isset($lang)) {
+   $lang == 'auto';
+}
+
+//
 // Auto-Detect best possible language
 //
 if($lang == 'auto') {
@@ -194,13 +243,17 @@ if($lang == 'auto') {
   foreach($accepted_languages as $curr_lang)
   {
     if( array_search($curr_lang, $supported_langs) !== FALSE ) {
-    	$select_lang = $curr_lang;
+    	$lang = $curr_lang;
       break;
     }
-    if(!isset($select_lang))
-      $select_lang = $default_lang;
   }
-  $lang = $select_lang;
+}
+
+//
+// Choose "default" if no supported language chosen
+//
+if( array_search($lang, $supported_langs) === FALSE ) {
+ 	$lang = $default_lang;
 }
 
 

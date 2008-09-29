@@ -25,9 +25,9 @@ function add($value, $first = false)
 	header("Content-disposition: attachement; filename=export-".date("Ymd").($group_name != "" ? "-".$group_name : "").".csv");
 
 	# Name + Geburtstag
-	add("Lastname", true);
-	add("Firstname");
-	add("Birthday");
+	add(ucfmsg("LASTNAME"), true);
+	add(ucfmsg("FIRSTNAME"));
+	add(ucfmsg("BIRTHDAY"));
 
 	# Home contact
 	add("Address");
