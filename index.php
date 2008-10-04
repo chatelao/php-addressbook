@@ -1,7 +1,7 @@
 <?php
   include ("include/dbconnect.php");
   include ("include/format.inc.php");
-  ?><title><? echo ucfmsg("ADDRESS_BOOK").($group_name != "" ? " ($group_name)":""); ?></title><?php
+  ?><title><?php echo ucfmsg("ADDRESS_BOOK").($group_name != "" ? " ($group_name)":""); ?></title><?php
   include ("include/header.inc.php");
 ?>
   <br><br>
@@ -10,8 +10,8 @@
   <form method="POST" action="<?php $PHP_SELF ?>">
     <tr valign=center>
 	  <td valign="top"> 
-        <input type="text" value="<?php echo $searchstring; ?>" name="searchstring" title="<? echo ucfmsg('SEARCH_FOR_ANY_TEXT'); ?>" size="45"/>
-        <input type="submit" value="<? echo ucfirst(msg("SEARCH")) ?>"></td>
+        <input type="text" value="<?php echo $searchstring; ?>" name="searchstring" title="<?php echo ucfmsg('SEARCH_FOR_ANY_TEXT'); ?>" size="45"/>
+        <input type="submit" value="<?php echo ucfirst(msg("SEARCH")) ?>"></td>
     <td>&nbsp;</td></tr>
     
   </form>
@@ -104,8 +104,8 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group)
 		echo "<option>$group_name</option>\n";
 	}
 ?>
-<option value="">[<? echo msg("ALL"); ?>]</option>
-<option value="[none]">[<? echo msg("NONE"); ?>]</option>
+<option value="">[<?php echo msg("ALL"); ?>]</option>
+<option value="[none]">[<?php echo msg("NONE"); ?>]</option>
 <?php
 	$sql="SELECT group_name FROM $table_groups ORDER BY lower(group_name) ASC";
 	$result_groups = mysql_query($sql);

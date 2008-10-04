@@ -1,12 +1,12 @@
 <?php
 include ("include/dbconnect.php");
 include ("include/format.inc.php");
-  ?><title><? echo ucfmsg("ADDRESS_BOOK").($group_name != "" ? " ($group_name)":""); ?></title><?php
+  ?><title><?php echo ucfmsg("ADDRESS_BOOK").($group_name != "" ? " ($group_name)":""); ?></title><?php
 include ("include/header.inc.php");
 ?>
   <table border="0" cellspacing="2" width="380">
     <tr>
-      <td><h1><? echo ucfirst(msg("NEXT_BIRTHDAYS")) ?></h1></td>
+      <td><h1><?php echo ucfirst(msg("NEXT_BIRTHDAYS")) ?></h1></td>
     </tr>
   </table>
 <?php
