@@ -129,7 +129,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group)
 <?php
 	$alternate = "2"; 
 
-	include ("guess.inc");
+	include ("include/guess.inc.php");
 
 	while ($myrow = mysql_fetch_array($result))
 	{

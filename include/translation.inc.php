@@ -80,8 +80,29 @@ $messages['PRINT_PHONES']['de'] = 'Telefonliste';
 $messages['EXPORT_CSV']['en'] = 'export csv';
 $messages['EXPORT_CSV']['de'] = 'CSV exportieren';
 
+$messages['GROUPS']['en'] = 'groups';
+$messages['GROUPS']['de'] = 'Gruppen';
+
 $messages['MANAGE_GROUPS']['en'] = 'manage groups';
 $messages['MANAGE_GROUPS']['de'] = 'Gruppen';
+
+$messages['NEW_GROUP']['en'] = 'new group';
+$messages['NEW_GROUP']['de'] = 'Gruppe hinzufügen';
+
+$messages['DELETE_GROUPS']['en'] = 'delete group(s)';
+$messages['DELETE_GROUPS']['de'] = 'Gruppe(n) löschen';
+
+$messages['EDIT_GROUP']['en'] = 'edit group';
+$messages['EDIT_GROUP']['de'] = 'Gruppe anpassen';
+
+$messages['GROUP_NAME']['en'] = 'group name';
+$messages['GROUP_NAME']['de'] = 'Gruppenname';
+
+$messages['GROUP_HEADER']['en'] = 'Group header (Logo)';
+$messages['GROUP_HEADER']['de'] = 'Kopfzeile (Logo)';
+
+$messages['GROUP_FOOTER']['en'] = 'Group footer (Comment)';
+$messages['GROUP_FOOTER']['de'] = 'Fusszeile (Kommentar)';
 
 $messages['SEARCH_FOR_ANY_TEXT']['en'] = 'search for any text';
 $messages['SEARCH_FOR_ANY_TEXT']['de'] = 'Freitextsuche';

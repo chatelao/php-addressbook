@@ -58,6 +58,6 @@
   $compression_level = 2;
 
   // Setup language (auto, choose, en, de)
-  $lang  = 'auto';
+  $lang  = 'choose';
 
 ?>

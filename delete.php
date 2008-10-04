@@ -10,8 +10,8 @@ $resultsnumber = mysql_numrows($result);
 
 if($resultsnumber > 0)
 {
-	mysql_query("DELETE FROM $table_grp_adr WHERE id=$id",$db);
-	mysql_query("DELETE FROM $table         WHERE id=$id",$db);
+	mysql_query("DELETE FROM $table_grp_adr WHERE id='$id'",$db);
+	mysql_query("DELETE FROM $table         WHERE id='$id'",$db);
 	echo "Record deleted.<br><br>";
 } else
 {

@@ -3,9 +3,9 @@
 include ("include/dbconnect.php");
 include ("include/format.inc.php");
 include ("include/header.inc.php");
-?>
- <h1>Modify group entries</h1> 
-<?php
+
+echo "<h1>".ucfmsg('GROUPS')."</h1>";
+
 if($submit)
 {
 
@@ -158,26 +158,26 @@ $myrow = mysql_fetch_array($result);
     
   <table width="380" border="0" cellspacing="1" cellpadding="1">
     <tr> 
-      <td>Group name: </td>
+      <td><?php echo ucfmsg('GROUP_NAME'); ?></td>
       <td> 
         <input type="Text" name="group_name" size="35" value="<?php echo $myrow["group_name"]?>">
       </td>
     </tr>
     <tr> 
-      <td>Group header (Logo): </td>
+      <td><?php echo ucfmsg('GROUP_HEADER'); ?>: </td>
       <td> 
         <textarea name="group_header" rows="10" cols="80"><?php echo $myrow["group_header"]?></textarea>
       </td>
     </tr>
     <tr> 
-      <td>Group footer (Comment): </td>
+      <td><?php echo ucfmsg('GROUP_FOOTER'); ?>: </td>
       <td> 
         <textarea name="group_footer" rows="10" cols="80"><?php echo $myrow["group_footer"]?></textarea>
       </td>
     </tr>
   </table>
     <br>
-    <input type="Submit" name="update" value="Update information">
+    <input type="Submit" name="update" value="<?php echo ucfmsg('UPDATE'); ?>">
   </form>
     <br>
   <?php
@@ -194,7 +194,7 @@ else
 
 ?>
 <form>
-<input type="Submit" name="new" value="New group"/>
+<input type="Submit" name="new" value="<?php echo ucfmsg('NEW_GROUP'); ?>"/>
 </form>
 <hr>
 <form><?php
@@ -206,8 +206,8 @@ else
 	}	
 ?>
 <br>
-<input type="Submit" name="delete" value="Delete group(s)">
-<input type="Submit" name="edit"   value="Edit group">
+<input type="Submit" name="delete" value="<?php echo ucfmsg('DELETE_GROUPS'); ?>">
+<input type="Submit" name="edit"   value="<?php echo ucfmsg('EDIT_GROUP'); ?>">
 </form><?php
 }
 

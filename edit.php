@@ -5,7 +5,7 @@ include ("include/format.inc.php");
 
 if ($id) {
 
-   $sql = "SELECT * FROM $base_from_where AND $table.id=$id";
+   $sql = "SELECT * FROM $base_from_where AND $table.id='$id'";
    $result = mysql_query($sql, $db);
    $r = mysql_fetch_array($result);
 
@@ -51,13 +51,13 @@ else if($update)
 {
   if(! $read_only)
   {
-	$sql="SELECT * FROM $base_from_where AND $table.id=$id";
+	$sql="SELECT * FROM $base_from_where AND $table.id='$id'";
 	$result = mysql_query($sql);
 	$resultsnumber = mysql_numrows($result);
 
 	if($resultsnumber > 0)
 	{
-		$sql = "UPDATE $table SET firstname='$firstname',lastname='$lastname',address='$address',home='$home',mobile='$mobile',work='$work',email='$email',email2='$email2',bday='$bday',bmonth='$bmonth',byear='$byear',address2 = '$address2', phone2 = '$phone2' WHERE id=$id";
+		$sql = "UPDATE $table SET firstname='$firstname',lastname='$lastname',address='$address',home='$home',mobile='$mobile',work='$work',email='$email',email2='$email2',bday='$bday',bmonth='$bmonth',byear='$byear',address2 = '$address2', phone2 = '$phone2' WHERE id='$id'";
 		$result = mysql_query($sql);
 
 		// header("Location: view?id=$id");		

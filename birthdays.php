@@ -34,7 +34,7 @@ ORDER BY prio ASC";
 
 	$alternate = "2"; 
 
-	include ("guess.inc");
+	include ("include/guess.inc.php");
 
 	$lastmonth = '';
 	while ($myrow = mysql_fetch_array($result))

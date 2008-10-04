@@ -2,6 +2,10 @@
 
 include("config.php");
 
+// Suppress caching
+header("Cache-Control: no-cache, must-revalidate");
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+
 // Activate compression, if disabled in ".htaccess"
 if(   ini_get('zlib.output_compression') != 1
    && $compression_level > 0) {

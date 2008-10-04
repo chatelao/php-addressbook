@@ -5,7 +5,7 @@ include ("include/format.inc.php");
 
 if ($id) {
 
-   $sql = "SELECT * FROM $base_from_where AND $table.id=$id";
+   $sql = "SELECT * FROM $base_from_where AND $table.id='$id'";
    $result = mysql_query($sql, $db);
    $r = mysql_fetch_array($result);
 
