@@ -71,7 +71,7 @@ echo "<a style='font-size:75%' href='$link=a'>A</a> | <a style='font-size:75%' h
 if ($searchstring)
 	{
 
-	$sql="SELECT * FROM $base_from_where
+	$sql="SELECT DISTINCT $table.* FROM $base_from_where
                 AND (lastname  LIKE '%$searchstring%' 
                   OR firstname LIKE '%$searchstring%' 
                   OR address   LIKE '%$searchstring%' 
@@ -80,11 +80,11 @@ if ($searchstring)
 	}
 else if ($alphabet)
 	{
-$sql = "SELECT * FROM $base_from_where AND LEFT(lastname,1) = '$alphabet' ORDER BY lastname, firstname";
+$sql = "SELECT DISTINCT $table.* FROM $base_from_where AND LEFT(lastname,1) = '$alphabet' ORDER BY lastname, firstname";
 	}
 else
 	{
-$sql="SELECT * FROM $base_from_where ORDER BY lastname, firstname ASC";
+$sql="SELECT DISTINCT $table.* FROM $base_from_where ORDER BY lastname, firstname ASC";
 	}
 	$result = mysql_query($sql);
 	$resultsnumber = mysql_numrows($result);

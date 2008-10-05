@@ -12,7 +12,7 @@ include ("include/header.inc.php");
 <?php
 
 $sql="
-SELECT * ,
+SELECT DISTINCT $table.*, $month_lookup.* ,
 IF ($month_lookup.bmonth_num < MONTH( CURDATE( ) )
     OR $month_lookup.bmonth_num = MONTH( CURDATE( ) )
        AND $table.bday < DAYOFMONTH( CURDATE( ) ) , CONCAT( ' ', YEAR( CURDATE( ) ) +1 ) , ''

@@ -43,6 +43,7 @@ if(!$is_fix_group and $group_name)
 }  
 
 include("translation.inc.php");
+include("mailer.inc.php");
 
 // --- Connect to DB, retry 5 times ---
 for ($i = 0; $i < 5; $i++) {

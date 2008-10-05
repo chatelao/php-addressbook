@@ -21,8 +21,11 @@
     <img border=0 title="Addressbook" alt="Addressbook" src="title.gif" width="341" height="74">
 </a>
 </td>
-</td></table>
-  </tr>
+<td width=100% align=right valign=top>
+	<!--
+	<a href="preferences?from=<?php echo urlencode($_SERVER['REQUEST_URI']); ?>"><?php echo ucfmsg('PREFERENCES'); ?></td>
+	-->
+  </tr></table>
   <tr> 
     <td width="10" bgcolor="#003366">&nbsp; </td>
     <td width="107" valign="top"> 
