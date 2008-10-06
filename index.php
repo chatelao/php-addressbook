@@ -23,9 +23,6 @@ function MassSelection()
   {
      document.getElementsByName("selected[]")[i].checked = document.getElementById("MassCB").checked;
   }
-
-  // location.href = "mailto:"+addresses;
-
 }
 
 
