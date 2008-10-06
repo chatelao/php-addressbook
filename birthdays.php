@@ -83,7 +83,7 @@ ORDER BY prio ASC";
 		echo "<td>$bday.</td>";
 		echo "<td>$lastname</td>";
 		echo "<td>$firstname</td>";
-		echo "<td><a href='mailto:$email'>$email</a></td>";
+		echo "<td><a href='".getMailer()."$email'>$email</a></td>";
 		echo "<td align=right>$phone</td>";
 		echo "<td><a href='view${page_ext_qry}id=$id'><img border=0 src=icons/status_online.png   width=16 height=16 title='".ucfmsg('DETAILS')."' alt='".ucfmsg('DETAILS')."'/></a></td>";
                 if(! $read_only)

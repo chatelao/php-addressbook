@@ -39,9 +39,13 @@ function MailSelection()
   {
       if( document.getElementsByName("selected[]")[i].checked == true)
       {
-         if( document.getElementsByName("selected[]")[i].accept != "")
+         if(  document.getElementsByName("selected[]")[i].accept != ""
+           && document.getElementsByName("selected[]")[i].accept != null)
          {
-            addresses = addresses + ";" + document.getElementsByName("selected[]")[i].accept;
+         	  if(dst_count > 0) {
+         	  	addresses = addresses + ";";
+         	  }
+            addresses = addresses + document.getElementsByName("selected[]")[i].accept;
             dst_count++;
          }
       }
@@ -50,7 +54,7 @@ function MailSelection()
   if(dst_count == 0)
     alert("No address selected.");
   else
-    location.href = "mailto:"+addresses;
+    location.href = "<?php echo getMailer(); ?>"+addresses;
 }
 </script>
 
@@ -166,7 +170,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group)
 		echo "<TD><input type=checkbox id=".$id." name='selected[]' value='$id' title='Select ($firstname $lastname)' alt='Select ($firstname $lastname)' accept=".$myrow['email'].";".$myrow['email2']."></td>";
 		echo "<TD>$lastname</td>";
 		echo "<td>$firstname</td>";
-		echo "<td><a href='mailto:$email'>$email</a></td>";
+		echo "<td><a href='".getMailer()."$email'>$email</a></td>";
 		echo "<td align=right>$phone</td>";
 		echo "<td><a href='view${page_ext_qry}id=$id'><img border=0 src=icons/status_online.png   width=16 height=16 title='".ucfmsg('DETAILS')."' alt='".ucfmsg('DETAILS')."'/></a></td>";
                 if(! $read_only)

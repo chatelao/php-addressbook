@@ -22,9 +22,7 @@
 </a>
 </td>
 <td width=100% align=right valign=top>
-	<!--
 	<a href="preferences?from=<?php echo urlencode($_SERVER['REQUEST_URI']); ?>"><?php echo ucfmsg('PREFERENCES'); ?></td>
-	-->
   </tr></table>
   <tr> 
     <td width="10" bgcolor="#003366">&nbsp; </td>
