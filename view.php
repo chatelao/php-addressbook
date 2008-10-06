@@ -40,8 +40,8 @@ function showOneEntry($r, $only_phone = false)
    $view .= ($r['work']   != "" ? ucfmsg('W:')." ".$r['work']."<br>" : "");
    if(! $only_phone) {
 	   $view .= "<br>";
-	   $view .= ($r['email'] != "" ?  "<a href=mailto:".$r['email'].">".$r['email']."</a><br>" : "");
-	   $view .= ($r['email2'] != "" ? "<a href=mailto:".$r['email2'].">".$r['email2']."</a><br>" : "");
+	   $view .= ($r['email'] != "" ?  "<a href=".getMailer().$r['email'].">".$r['email']."</a><br>" : "");
+	   $view .= ($r['email2'] != "" ? "<a href=".getMailer().$r['email2'].">".$r['email2']."</a><br>" : "");
 	   $view .= "<br>";
    }
    $view .= ( $r['bday'] != 0 || $r['bmonth'] != "-" || $r['byear'] != ""
