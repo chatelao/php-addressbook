@@ -18,6 +18,7 @@ CREATE TABLE addressbook (
 
 CREATE TABLE `group_list` (
   `group_id` int(9) unsigned NOT NULL auto_increment,
+  `group_parent_id` int(9) default NULL,
   `group_name` varchar(255) NOT NULL default '',
   `group_header` mediumtext NOT NULL,
   `group_footer` mediumtext NOT NULL,
