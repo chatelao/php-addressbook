@@ -40,7 +40,7 @@ function MailSelection()
            && document.getElementsByName("selected[]")[i].accept != null)
          {
          	  if(dst_count > 0) {
-         	  	addresses = addresses + ";";
+         	  	addresses = addresses + "<?php echo getMailerDelim(); ?>";
          	  }
             addresses = addresses + document.getElementsByName("selected[]")[i].accept;
             dst_count++;
@@ -164,7 +164,9 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group)
 			$alternate = "1"; 
 		} 
 		echo "<TR bgcolor=$color>";
-		echo "<TD><input type=checkbox id=".$id." name='selected[]' value='$id' title='Select ($firstname $lastname)' alt='Select ($firstname $lastname)' accept=".$myrow['email'].";".$myrow['email2']."></td>";
+		$emails = $myrow['email'].(   $myrow['email']  != ""
+		                           && $myrow['email2'] != "" ? getMailerDelim() : "").$myrow['email2'];
+		echo "<TD><input type=checkbox id=".$id." name='selected[]' value='$id' title='Select ($firstname $lastname)' alt='Select ($firstname $lastname)' accept=".$emails."></td>";
 		echo "<TD>$lastname</td>";
 		echo "<td>$firstname</td>";
 		echo "<td><a href='".getMailer()."$email'>$email</a></td>";
