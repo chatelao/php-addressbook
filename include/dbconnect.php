@@ -29,7 +29,9 @@ if(!isset($read_only))
   $read_only = false;
 $read_only = $read_only || isset($_GET["readonly"]);
 
-$group_name   = $_GET["group"];
+if(isset($_GET["group"]) {
+  $group_name   = $_GET["group"];
+}
 $is_fix_group = isset($_GET["fixgroup"]);
 
 // Remember the current group
@@ -84,6 +86,9 @@ foreach($_REQUEST as $key => $value)
 
 // Create "n-level" non-locking recursion
 $max_level = 3;
+
+$sql_from  = "";
+$sql_where = "";
                    
 for($i = 0; $i < $max_level; $i++)
 {
@@ -145,6 +150,6 @@ $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth =
 
 $group_from_where = "$table_groups WHERE group_name = '$group_name'";
 
-$version = '3.2.3';
+$version = '3.2.5';
 
 ?>
