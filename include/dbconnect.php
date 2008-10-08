@@ -44,8 +44,8 @@ if(!$is_fix_group and $group_name)
   // $page_ext = "$page_ext";
 }  
 
-include("translation.inc.php");
 include("prefs.inc.php");
+include("translation.inc.php");
 include("mailer.inc.php");
 
 // --- Connect to DB, retry 5 times ---

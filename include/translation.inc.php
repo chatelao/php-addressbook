@@ -249,18 +249,10 @@ if($lang == 'choose') {
   $lang = 'auto';
 }
 
-if($lang == 'choose' && isset($_GET["lang"])) {
-	$lang = $_GET["lang"];
+if($choose_lang && getPref('lang') != NULL ) {
+	$lang = getPref('lang');
 }
 
-if(isset($_GET["lang"])) {
-	$page_ext     = $page_ext_qry.'lang='.$_GET["lang"];
-	$page_ext_qry = $page_ext_qry.'lang='.$_GET["lang"]."&";
-}
-
-//
-// Set auto-detection as default
-//
 if(!isset($lang)) {
    $lang == 'auto';
 }
