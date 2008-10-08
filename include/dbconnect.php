@@ -29,7 +29,7 @@ if(!isset($read_only))
   $read_only = false;
 $read_only = $read_only || isset($_GET["readonly"]);
 
-if(isset($_GET["group"]) {
+if(isset($_GET["group"])) {
   $group_name   = $_GET["group"];
 }
 $is_fix_group = isset($_GET["fixgroup"]);
