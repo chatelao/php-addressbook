@@ -3,6 +3,7 @@
 include ("include/dbconnect.php");
 include ("include/format.inc.php");
 
+$resultsnumber = 0;
 if ($id) {
 
    $sql = "SELECT * FROM $base_from_where AND $table.id='$id'";

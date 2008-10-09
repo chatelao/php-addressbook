@@ -2,6 +2,9 @@
 
 include("config.php");
 
+// Check for any mistakes (Debugging)
+// error_reporting(E_ALL);
+
 // Suppress caching
 header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
@@ -11,6 +14,20 @@ if(   ini_get('zlib.output_compression') != 1
    && $compression_level > 0) {
   ini_set('zlib.output_compression_level', $compression_level);
   ob_start('ob_gzhandler');
+}
+
+$get_vars = array( 'searchstring', 'alphabet', 'group', 'resultnumber'
+                 , 'submit', 'update', 'delete', 'id' 
+                 , 'new', 'add', 'remove', 'edit' );
+
+foreach($get_vars as $get_var) {
+   if(isset($_GET[$get_var])) {
+     ${$get_var} = $_GET[$get_var];
+   } elseif(isset($_POST[$get_var])) {
+     ${$get_var} = $_POST[$get_var];
+   } else {
+     ${$get_var} = null;
+   }  	
 }
 
 // Apply the table prefix
@@ -24,11 +41,13 @@ $table_grp_adr = $table_prefix.$table_grp_adr;
 //
 if(!isset($page_ext))
   $page_ext = ".php";
+$page_ext_qry = $page_ext."?";
 
 if(!isset($read_only))
   $read_only = false;
 $read_only = $read_only || isset($_GET["readonly"]);
 
+$group_name = null;
 if(isset($_GET["group"])) {
   $group_name   = $_GET["group"];
 }
@@ -39,10 +58,7 @@ if(!$is_fix_group and $group_name)
 {
   $page_ext_qry = "$page_ext?group=$group_name&";
   $page_ext     = "$page_ext?group=$group_name";
-} else {
-  $page_ext_qry = "$page_ext?";
-  // $page_ext = "$page_ext";
-}  
+}
 
 include("prefs.inc.php");
 include("translation.inc.php");

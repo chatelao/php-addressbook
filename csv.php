@@ -76,9 +76,11 @@ function add($value, $first = false)
 
 			preg_match( "/(.*)(\b".$plz_pattern."\b)(.*)/m"
                                   , str_replace("\r\n", ", ", trim($myrow["address"])), $matches);
-
+		if(count($matches) > 1)
 			add(preg_replace("/,$/", "", trim($matches[1])));
+		if(count($matches) > 2)
 			add($matches[2]);
+		if(count($matches) > 3)
 			add(preg_replace("/^,/", "", trim($matches[3])));
 		}
 		else add($myrow["address"]);
