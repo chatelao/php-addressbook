@@ -299,7 +299,7 @@ function ucfmsg($value) {
 	$msg = msg($value);
 
   // Multibyte "ucfirst" function
-	if (version_compare(PHP_VERSION, '4.3.0', '>=')) {
+	if (function_exists('mb_strtoupper')) {
 		$msg = mb_strtoupper($msg[0]).substr($msg, 1);
 		
 	} else { // Backward compatiblity
