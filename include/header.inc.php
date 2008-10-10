@@ -1,5 +1,5 @@
+<link rel="shortcut icon" type="image/x-png" href="icons/font.png">
 </head>
-
 <body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <table border="0" cellspacing="0" cellpadding="0">
   <tr> 
