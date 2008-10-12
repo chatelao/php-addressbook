@@ -19,10 +19,10 @@
   <tr><td/></tr>
   <tr><td/></tr>
   <tr>
-    <td><a href="view<?php echo ${page_ext_qry} ?>all&print"><?php echo msg('PRINT_ALL'); ?></a></td>
+    <td><a href="view<?php echo $page_ext_qry; ?>all&print"><?php echo msg('PRINT_ALL'); ?></a></td>
   </tr>
   <tr>
-    <td><a href="view<?php echo ${page_ext_qry} ?>all&print&phones"><?php echo msg('PRINT_PHONES'); ?></a></td>
+    <td><a href="view<?php echo $page_ext_qry; ?>all&print&phones"><?php echo msg('PRINT_PHONES'); ?></a></td>
   </tr>
   <tr>
     <td><a href="csv<?php echo $page_ext; ?>"><?php echo msg('EXPORT_CSV'); ?></a></td>
