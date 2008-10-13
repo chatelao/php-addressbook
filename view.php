@@ -45,8 +45,9 @@ function showOneEntry($r, $only_phone = false)
 	   $view .= ($r['email2'] != "" ? "<a href=".getMailer().$r['email2'].">".$r['email2']."</a><br>" : "");
 	   $view .= "<br>";
    }
-   $view .= ( $r['bday'] != 0 || $r['bmonth'] != "-" || $r['byear'] != ""
-            ? ucfmsg('BIRTHDAY').": ".($r['bday'] > 0 ? $r['bday'].". " : "").($r['bmonth'] != '-' ? $r['bmonth'] : "")." ".$r['byear'] : "")."<br>"; 
+   $month = ucfmsg(strtoupper($r['bmonth']));
+   $view .= ( $r['bday'] != 0 || $month != "-" || $r['byear'] != ""
+            ? ucfmsg('BIRTHDAY').": ".($r['bday'] > 0 ? $r['bday'].". " : "").($month != '-' ? $month : "")." ".$r['byear'] : "")."<br>"; 
 
 
    if(! $only_phone) {
