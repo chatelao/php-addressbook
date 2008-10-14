@@ -1,10 +1,9 @@
 --
--- DB-Transformation to UTF-8
+-- Creation script with sample data for "php-addressbook"
 --
--- INSERT INTO utf8tabelle (*) SELECT CONVERT(* USING utf8) FROM latin1tabelle;
--- ALTER DATABASE `DATENBANK` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; 
--- ALTER TABLE `TABELLE`  DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; 
--- ALTER TABLE `TABELLE` CHANGE `FELD` `FELD` VARCHAR( 254 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ;    
+-- * You may add table prefixes, if the "$table_prefix"
+--   parameter is set in "config.php".
+--
 
 CREATE TABLE addressbook (
    id int(9) unsigned NOT NULL auto_increment,
@@ -22,7 +21,7 @@ CREATE TABLE addressbook (
    address2 text NOT NULL,
    phone2 text NOT NULL,
    PRIMARY KEY  (id)
-);
+) DEFAULT CHARSET=utf8;
 
 CREATE TABLE `group_list` (
   `group_id` int(9) unsigned NOT NULL auto_increment,
@@ -31,7 +30,7 @@ CREATE TABLE `group_list` (
   `group_header` mediumtext NOT NULL,
   `group_footer` mediumtext NOT NULL,
   PRIMARY KEY  (`group_id`)
-);
+) DEFAULT CHARSET=utf8;
 
 --
 -- Test group "Rob" (For: Rob M., Autor of version 1.2).

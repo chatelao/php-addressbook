@@ -78,10 +78,12 @@ for ($i = 0; $i < 5; $i++) {
 mysql_select_db("$dbname", $db);
 
 //
-// Use the "UTF-8" setting to convert any request:
-// *  http://joomla-howto.net/LAMP/HowTo-UTF-8-MySQL-PHP-Apache-Problem-Solution.html
+// Setup the UTF-8 parameters:
+// * http://www.phpforum.de/forum/showthread.php?t=217877#PHP
 //
+header('Content-type: text/html; charset=utf-8');
 mysql_query('set character set utf8;');
+mysql_query("SET NAMES `utf8`");
 
 // To run the script on systeme with "register_globals" disabled,
 // import all variables in a bit secured way: Remove HTML Tags

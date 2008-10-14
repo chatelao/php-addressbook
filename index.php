@@ -7,7 +7,7 @@
   <br><br>
 <center>
   <table border="0" cellspacing="2">
-  <form method="POST" action="<?php $PHP_SELF ?>">
+  <form accept-charset="utf-8" method="POST" action="<?php $PHP_SELF ?>">
     <tr valign=center>
 	  <td valign="top"> 
         <input type="text" value="<?php echo $searchstring; ?>" name="searchstring" title="<?php echo ucfmsg('SEARCH_FOR_ANY_TEXT'); ?>" size="45"/>
@@ -124,7 +124,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group)
 <?php
 }
 ?>
-<form name=MainForm method="POST" action="group<?php echo $page_ext; ?>">
+<form accept-charset="utf-8" name=MainForm method="POST" action="group<?php echo $page_ext; ?>">
 <input type="hidden" name="group" value="<?php echo $group; ?>">
 <table border=0>
 <?php

@@ -79,7 +79,7 @@ else if($id)
 $result = mysql_query("SELECT * FROM $base_from_where AND $table.id=$id",$db);
 $myrow = mysql_fetch_array($result);
 ?>
-  <form method="post" action="edit<?php echo $page_ext; ?>">
+  <form accept-charset="utf-8" method="post" action="edit<?php echo $page_ext; ?>">
     
   <table width="380" border="0" cellspacing="1" cellpadding="1">
     <tr> 
@@ -230,7 +230,7 @@ else
   if(! $read_only)
   {
 ?>
-  <form method="post" action="edit<?php echo $page_ext; ?>">
+  <form accept-charset="utf-8" method="post" action="edit<?php echo $page_ext; ?>">
     
   <table width="380" border="0" cellspacing="1" cellpadding="1">
     <tr> 

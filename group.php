@@ -26,7 +26,7 @@ else if($new)
   if(! $read_only)
   {
 ?>
-  <form method="post">
+  <form accept-charset="utf-8" method="post">
     
   <table width="380" border="0" cellspacing="1" cellpadding="1">
     <tr> 
@@ -153,7 +153,7 @@ else if($edit || $id)
 $result = mysql_query("SELECT * FROM $table_groups WHERE group_id=$id",$db);
 $myrow = mysql_fetch_array($result);
 ?>
-  <form method="post">
+  <form accept-charset="utf-8" method="post">
         <input type="hidden" name="id" value="<?php echo $myrow["group_id"]?>">
     
   <table width="380" border="0" cellspacing="1" cellpadding="1">
