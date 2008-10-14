@@ -1,9 +1,9 @@
 ﻿<?php
 
 $default_lang   = 'en';
-$supported_langs[] = 'en';
-$supported_langs[] = 'de';
 $supported_langs[] = 'cz';
+$supported_langs[] = 'de';
+$supported_langs[] = 'en';
 $supported_langs[] = 'pl';
 
 //
