@@ -1,3 +1,11 @@
+--
+-- DB-Transformation to UTF-8
+--
+-- INSERT INTO utf8tabelle (*) SELECT CONVERT(* USING utf8) FROM latin1tabelle;
+-- ALTER DATABASE `DATENBANK` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; 
+-- ALTER TABLE `TABELLE`  DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; 
+-- ALTER TABLE `TABELLE` CHANGE `FELD` `FELD` VARCHAR( 254 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ;    
+
 CREATE TABLE addressbook (
    id int(9) unsigned NOT NULL auto_increment,
    firstname varchar(255) NOT NULL,

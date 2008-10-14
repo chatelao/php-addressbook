@@ -4,6 +4,7 @@ include ("include/dbconnect.php");
 function add($value, $first = false)
 {
 	# Remove whitespaces, Replace newlines and escape ["] character
+	$res = utf8_decode($res);
 	$res = trim($value);
 	$res = str_replace("\r\n", ", ", $res);
 	$res = str_replace('"', '""',  $res);
@@ -21,7 +22,7 @@ function add($value, $first = false)
 	$resultsnumber = mysql_numrows($result);	
 
 
-	header('Content-Type: application/vnd.ms-excel; charset=utf-8');
+	header('Content-Type: application/vnd.ms-excel; charset=UTF-8');
 	header("Content-disposition: attachement; filename=export-".date("Ymd").($group_name != "" ? "-".$group_name : "").".csv");
 
 	# Name + Geburtstag

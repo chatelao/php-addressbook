@@ -77,6 +77,12 @@ for ($i = 0; $i < 5; $i++) {
 }
 mysql_select_db("$dbname", $db);
 
+//
+// Use the "UTF-8" setting to convert any request:
+// *  http://joomla-howto.net/LAMP/HowTo-UTF-8-MySQL-PHP-Apache-Problem-Solution.html
+//
+mysql_query('set character set utf8;');
+
 // To run the script on systeme with "register_globals" disabled,
 // import all variables in a bit secured way: Remove HTML Tags
 foreach($_REQUEST as $key => $value)
@@ -166,6 +172,6 @@ $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth =
 
 $group_from_where = "$table_groups WHERE group_name = '$group_name'";
 
-$version = '3.2.12';
+$version = '3.2.13';
 
 ?>
