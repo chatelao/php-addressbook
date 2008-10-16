@@ -81,7 +81,7 @@ mysql_select_db("$dbname", $db);
 // Setup the UTF-8 parameters:
 // * http://www.phpforum.de/forum/showthread.php?t=217877#PHP
 //
-header('Content-type: text/html; charset=utf-8');
+// header('Content-type: text/html; charset=utf-8');
 mysql_query('set character set utf8;');
 mysql_query("SET NAMES `utf8`");
 
@@ -174,6 +174,6 @@ $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth =
 
 $group_from_where = "$table_groups WHERE group_name = '$group_name'";
 
-$version = '3.2.13';
+$version = '3.2.14';
 
 ?>

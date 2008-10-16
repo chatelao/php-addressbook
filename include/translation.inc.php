@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 $default_lang   = 'en';
 $supported_langs[] = 'cz';
@@ -453,6 +453,20 @@ function ucfmsg($value) {
 	}
 	
 	return $msg;
+}
+
+//
+// Try the best to convert UTF-8 to latin1.
+//
+function utf8_to_latin1($text) {
+	
+  if(function_exists('iconv')) {
+       setlocale(LC_CTYPE, 'cs_CZ');
+       return iconv("UTF-8", "ISO-8859-1//TRANSLIT", $text);
+     
+  } else {
+  	  return utf8_decode($text);
+	  }
 }
 
 ?>

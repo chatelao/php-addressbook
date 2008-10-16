@@ -179,7 +179,7 @@ $myrow = mysql_fetch_array($result);
           <option value="31">31</option>
         </select>
         <select name="bmonth">
-          <option value="<?php echo $myrow["bmonth"] ?>" selected><?php echo $myrow["bmonth"]?></option>
+          <option value="<?php echo $myrow["bmonth"] ?>" selected><?php echo ucfmsg(strtoupper($myrow["bmonth"])); ?></option>
           <option value="-">-</option>
           <option value="January"><?php echo ucfmsg("JANUARY") ?></option>
           <option value="February"><?php echo ucfmsg("FEBRUARY") ?></option>
