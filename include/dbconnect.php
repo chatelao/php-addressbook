@@ -1,11 +1,11 @@
 <?php
 
-include("config.php");
+include("config/config.php");
 
 // Check for any mistakes (Debugging)
 // error_reporting(E_ALL);
 
-// Suppress caching
+// Suppress caching, force refresh on every reload.
 header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 
@@ -16,6 +16,7 @@ if(   ini_get('zlib.output_compression') != 1
   ob_start('ob_gzhandler');
 }
 
+// Copy only used variables into global space.
 $get_vars = array( 'searchstring', 'alphabet', 'group', 'resultnumber'
                  , 'submit', 'update', 'delete', 'id' 
                  , 'new', 'add', 'remove', 'edit' );
@@ -30,7 +31,19 @@ foreach($get_vars as $get_var) {
    }  	
 }
 
-// Apply the table prefix
+//
+// Define the tablenames,
+// if not defined in "config.php"
+//
+if(!isset($table))         $table        = "addressbook";
+if(!isset($month_lookup))  $month_lookup = "month_lookup";
+
+// (optional) group function
+if(!isset($table_groups))  $table_groups  = "group_list";
+if(!isset($table_grp_adr)) $table_grp_adr = "address_in_groups";
+
+
+// Apply the table prefix, if available
 $table         = $table_prefix.$table;
 $month_lookup  = $table_prefix.$month_lookup;
 $table_groups  = $table_prefix.$table_groups;
@@ -50,6 +63,9 @@ $read_only = $read_only || isset($_GET["readonly"]);
 $group_name = null;
 if(isset($_GET["group"])) {
   $group_name   = $_GET["group"];
+}
+if(isset($nogroups)) {
+  $is_fix_group = $nogroups;
 }
 $is_fix_group = isset($_GET["fixgroup"]);
 
@@ -174,6 +190,6 @@ $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth =
 
 $group_from_where = "$table_groups WHERE group_name = '$group_name'";
 
-$version = '3.3-beta';
+$version = '3.3.1';
 
 ?>

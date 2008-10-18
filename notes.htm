@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Addressbook v3.2.x</title>
+<title>Addressbook v3.3.x</title>
 <style type="text/css">
 <!--
 p {  font-family: Arial, Helvetica, sans-serif; font-size: 12px}
@@ -11,10 +11,26 @@ a:hover {  color: #0066CC}
 </head>
 
 <body bgcolor="#FFFFFF" text="#000000">
-<p><b><font size="3">PHP-addressbook Version 3.2.x</font></b></p>
+<p><b><font size="3">PHP-addressbook Version 3.3.x</font></b></p>
 <p><a href="#1">requirements</a> | <a href="#2">installation</a> | <a href="#3">licence</a>
   | <a href="#4">disclaimer</a></p>
-<p>For the most recent version of "PHP-addressbook" see: <b><a href="http://sourceforge.net/projects/php-addressbook/">http://sourceforge.net/projects/php-addressbook/</a>.</b>
+<p><b><a name="1"></a>Download:</b></p>
+<p>For the most recent version of "PHP-addressbook" see: <b><a href="https://sourceforge.net/project/showfiles.php?group_id=157964">https://sourceforge.net/project/showfiles.php?group_id=157964</a>.</b>
+<p><b><a name="1"></a>Requirements:</b></p>
+<p>You will need a webserver which has installed PHP 4/5, and mySQL version 3.2
+  upwards.</p>
+<p><b><a name="2"></a>Installation:</b></p>
+<p>1. Unzip the files and place them on your webserver (or locally, as you will
+  have to make some changes and then upload) in a directory called addressbook
+  or whatever.</p>
+<p>2. Open <b>config.php</b> and change the variables to your server specification.</p>
+<p>3. You need to create the table addressbook in your mySQL database. (You can
+  alter the table name, but you need to change the entry in config.php, and the
+  table name in addressbook.sql.) Either via telnet, or using a program such as
+  <a href="http://www.anse.de/mysqlfront/">mySQLfront</a>, or <a href="http://phpmyadmin.sourceforge.net">phpMyAdmin</a>
+  enter the information stored in <b>addressbook.sql</b>. You can create a separate
+  database for the addressbook, it`s up to you.</p>
+<p>That`s it!</p>
 <p><b>User Features</b></p>
 <p>
 - Address and birthday management.<br>
@@ -39,21 +55,6 @@ a:hover {  color: #0066CC}
   USE. If you want to use this program on an intranet, please email <b>rob@widgetmonkey.com</b>
   . I am working on additions, such as multiple log in. I might also expand it
   to become a calendar / organiser. We`ll see.</p>
-<p><b><a name="1"></a>Requirements:</b></p>
-<p>You will need a webserver which has installed PHP 4/5, and mySQL version 3.2
-  upwards.</p>
-<p><b><a name="2"></a>Installation:</b></p>
-<p>1. Unzip the files and place them on your webserver (or locally, as you will
-  have to make some changes and then upload) in a directory called addressbook
-  or whatever.</p>
-<p>2. Open <b>config.php</b> and change the variables to your server specification.</p>
-<p>3. You need to create the table addressbook in your mySQL database. (You can
-  alter the table name, but you need to change the entry in config.php, and the
-  table name in addressbook.sql.) Either via telnet, or using a program such as
-  <a href="http://www.anse.de/mysqlfront/">mySQLfront</a>, or <a href="http://phpmyadmin.sourceforge.net">phpMyAdmin</a>
-  enter the information stored in <b>addressbook.sql</b>. You can create a separate
-  database for the addressbook, it`s up to you.</p>
-<p>That`s it!</p>
 <p>Optional extras:</p>
 <p>You might want to password protect the addressbook - not everyone wants to
   have their details freely available on the web! It is HIGHLY recommended that

@@ -6,25 +6,17 @@
   $dbuser     = "username"; 
   $dbpass     = "password"; 
   
-  // Tables
+  // Define table prefix
   $table_prefix = "";
   
-  // Data storage configuration
-  $table        = "addressbook";
-  $month_lookup = "month_lookup";
+  // Don't display groups
+  $nogroups = false;
 
-  // (optional) group function
-  $table_groups  = "group_list";
-  $table_grp_adr = "address_in_groups";
+  // Disable all "edit/create" actions.
+  $read_only  = false;
 
-  // Show only one group
-  $fixgroup = false;
-
-  // Show link to "group-edit" menu
+  // Enable group administration pages
   $public_group_edit = true;
-
-  // Page access configuration
-  $page_ext   = ".php";
 
   // List of excluded sites in "Homepage guessing"
   $free_mailers = array( "a3.epfl.ch"
@@ -48,16 +40,16 @@
                        , "yahoo."
                       );
 
-  // Disable all "edit/create" actions.
-  $read_only  = false;
-
   // Setup for "Country guessing" (Beta: Switzerland, US, Belgium)
   $map_guess  = true;
 
-  // Disable HTTP-Compression with 0
-  $compression_level = 2;
-
-  // Setup language (auto, choose, en, de)
+  // Setup language usage (auto, choose, en, de)
   $lang  = 'choose';
 
+  // Change or ommit page-extension in URL
+  $page_ext   = ".php";
+
+  // Disable HTTP-Compression with 0
+  $compression_level = 2;
+  
 ?>

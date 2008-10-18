@@ -30,7 +30,7 @@ if( ($resultsnumber == 0 && !isset($all)) || (!$id && !isset($all))) {
 function showOneEntry($r, $only_phone = false) 
 {
 	
-	 global $db, $table, $table_grp_adr, $table_groups, $print;
+	 global $db, $table, $table_grp_adr, $table_groups, $print, $is_fix_group;
 	
    $view  = "<b>".$r['firstname']." ".$r['lastname']."</b>: <br>";
    
@@ -58,8 +58,8 @@ function showOneEntry($r, $only_phone = false)
 
    echo $view."\n";
 
-   if(! isset($print))
-   {
+   if( !isset($print) and !$is_fix_group) {
+   	 
 	   $sql = "SELECT group_name 
 	             FROM $table_grp_adr, $table_groups, $table
 	            WHERE $table.id = $table_grp_adr.id

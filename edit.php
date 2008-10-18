@@ -37,7 +37,7 @@ if(! $read_only)
 $sql = "INSERT INTO $table (firstname, lastname, address, home, mobile, work, email, email2, bday, bmonth, byear, address2, phone2) VALUES ('$firstname','$lastname','$address','$home','$mobile','$work','$email','$email2','$bday','$bmonth','$byear', '$address2', '$phone2')";
 $result = mysql_query($sql);
 
-$sql = "INSERT INTO address_in_groups SELECT LAST_INSERT_ID() id, group_id FROM group_list WHERE group_name = '".$group_name."'";
+$sql = "INSERT INTO $table_grp_adr SELECT LAST_INSERT_ID() id, group_id FROM $table_groups WHERE group_name = '$group_name'";
 $result = mysql_query($sql);
 
 echo "<br><br>Information entered into address book,\n";
