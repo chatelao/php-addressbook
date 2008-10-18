@@ -5,6 +5,8 @@
 //
 $supported_langs[] = 'ko';
 
+$use_flag['ko'] = 'kr';
+
 $messages['LANGUAGE']['ko'] = '언어'; // language
 $messages['auto']['ko'] = 'bowser 설정 ()을 자동으로'; // bowser settings (automatic)
 $messages['en']['ko'] = '영어'; // English
