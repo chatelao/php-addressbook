@@ -1,10 +1,18 @@
 <?php
 
 $default_lang   = 'en';
+
+include("translation.ar.php");
+
+// Register translated languages
 $supported_langs[] = 'cz';
 $supported_langs[] = 'de';
 $supported_langs[] = 'en';
 $supported_langs[] = 'pl';
+
+// Define special flags where
+// - lang != country
+$use_flag['en'] = 'uk';
 
 //
 // New translations are welcome:
@@ -428,6 +436,21 @@ if( array_search($lang, $supported_langs) === FALSE ) {
  	$lang = $default_lang;
 }
 
+
+//
+// Return the country flag for a language
+// - Default: langauge = country
+// - Custom:  $use_flag['lang'] = 'country';
+//
+function get_flag($language) {
+	
+	global $use_flag;
+	
+	if(isset($use_flag[$language]))
+	  return $use_flag[$language];
+	else
+	  return $language;
+}
 
 function msg($value)
 {
