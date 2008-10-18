@@ -8,6 +8,8 @@ include("translation.ar.php");
 $supported_langs[] = 'cz';
 $supported_langs[] = 'de';
 $supported_langs[] = 'en';
+$supported_langs[] = 'in';
+$supported_langs[] = 'he';
 $supported_langs[] = 'pl';
 
 // Define special flags where
