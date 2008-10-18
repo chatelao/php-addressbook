@@ -1,7 +1,7 @@
 <?php;
 $supported_langs[] = 'hi';
 
-$use_flag['ar'] = 'in';
+$use_flag['hi'] = 'in';
 
 $messages['LANGUAGE']['hi'] = 'भाषा'; // language
 $messages['auto']['hi'] = 'डिफ़ॉल्ट ब्राउज़र (स्वचालित रूप से)'; // bowser settings (automatic)

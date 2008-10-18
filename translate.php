@@ -11,12 +11,18 @@ include("include/translations.inc.php");
 if(isset($_POST['translation'])) { ?>
 
 &lt;?php;<br>
+//<br>
+// New translations & fixes are welcome:<br>
+// * chatelao(ät)users.sourceforge.net<br>
+//<br>
+
 $supported_langs[] = '<?php echo $_POST['target_language']?>';<br>
 <br>
-$use_flag['ar'] = '<?php echo $_POST['target_flag']?>';<br>
-<br>
-
-<?php
+<?php 
+	if(isset($_POST['target_flag']) && $_POST['target_flag'] != "") {
+	$use_flag['<?php echo $_POST['target_language']?>'] = '<?php echo $_POST['target_flag']?>';<br>
+	<br><?php
+	} 
   $i = 0;
   $translations = mb_split("\r\n", $_POST['translation']);
 	foreach($messages as $key => $message) {

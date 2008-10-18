@@ -45,10 +45,13 @@ if($choose_lang)
 <tr><td/></tr>
 <tr><td>
 <?php
+  $lang_cnt = 0;
   foreach($supported_langs as $supp_lang) {
     if($supp_lang != $lang)
     {
-      echo "<a href='?lang=$supp_lang'><img border=0 width=16 height=11 title='".ucfmsg($supp_lang)."' alt='".ucfmsg($supp_lang)."' src='icons/".get_flag($supp_lang).".gif'/></a>";
+    	if($lang_cnt++ % 4 == 0)
+    	  echo "<br>";
+      echo "<a href='?lang=$supp_lang'><img width=16 height=11 title='".ucfmsg($supp_lang)."' alt='".ucfmsg($supp_lang)."' src='icons/".get_flag($supp_lang).".gif'/></a>";
     }
   }    
 }
