@@ -17,7 +17,9 @@ include("translation.en.php");
 include("translation.fr.php");
 include("translation.he.php");
 include("translation.hi.php");
+include("translation.ko.php");
 include("translation.pl.php");
+include("translation.pt.php");
 include("translation.ru.php");
 
 //

@@ -20,6 +20,7 @@ $supported_langs[] = '<?php echo $_POST['target_language']?>';<br>
 <br>
 <?php 
 	if(isset($_POST['target_flag']) && $_POST['target_flag'] != "") {
+?>		
 	$use_flag['<?php echo $_POST['target_language']?>'] = '<?php echo $_POST['target_flag']?>';<br>
 	<br><?php
 	} 
