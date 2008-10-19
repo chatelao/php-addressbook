@@ -1,6 +1,7 @@
 <?php
-
 $supported_langs[] = 'ar';
+
+$is_right_to_left['ar'] = true;
 
 $use_flag['ar'] = 'sa';
 

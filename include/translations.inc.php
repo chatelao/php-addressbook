@@ -121,4 +121,4 @@ function utf8_to_latin1($text) {
 	  }
 }
 
-?>
+?>w

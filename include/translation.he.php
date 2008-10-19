@@ -1,6 +1,8 @@
 <?php;
 $supported_langs[] = 'he';
 
+$is_right_to_left['he'] = true;
+
 $use_flag['he'] = 'il';
 
 $messages['LANGUAGE']['he'] = 'שפה'; // language
