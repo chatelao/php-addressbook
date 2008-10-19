@@ -81,6 +81,21 @@ function get_flag($language) {
 	  return $language;
 }
 
+//
+// Return if a language is writte from 
+// right-to-left
+// - Default: false
+//
+function is_right_to_left($language) {
+	
+	global $is_right_to_left;
+	
+	if(isset($is_right_to_left[$language]))
+	  return $is_right_to_left[$language];
+	else
+	  return false;
+}
+
 function msg($value)
 {
 	global $lang, $messages;
@@ -121,4 +136,4 @@ function utf8_to_latin1($text) {
 	  }
 }
 
-?>w
+?>
