@@ -45,6 +45,9 @@
 
   // Setup language usage (auto, choose, en, de)
   $lang  = 'choose';
+  
+  // Change the location of the images (e.g. Google Appspot)
+  $url_images = "";
 
   // Change or ommit page-extension in URL
   $page_ext   = ".php";

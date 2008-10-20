@@ -1,4 +1,4 @@
-<link rel="shortcut icon" type="image/x-png" href="icons/font.png">
+<link rel="shortcut icon" type="image/x-png" href="<?php echo $url_images; ?>icons/font.png">
 </head>
 <body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -18,7 +18,7 @@
 ?>
 <td>
 <a href=".">
-    <img border=0 title="Addressbook" alt="Addressbook" src="title.gif" width="341" height="74">
+    <img border=0 title="Addressbook" alt="Addressbook" src="<?php echo $url_images; ?>title.gif" width="341" height="74">
 </a>
 </td>
 <td width=100% align=right valign=top>
