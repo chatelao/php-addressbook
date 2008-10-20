@@ -85,10 +85,10 @@ ORDER BY prio ASC";
 		echo "<td>$firstname</td>";
 		echo "<td><a href='".getMailer()."$email'>$email</a></td>";
 		echo "<td align=right>$phone</td>";
-		echo "<td><a href='view${page_ext_qry}id=$id'><img border=0 src=<?php echo $url_images; ?>icons/status_online.png   width=16 height=16 title='".ucfmsg('DETAILS')."' alt='".ucfmsg('DETAILS')."'/></a></td>";
+		echo "<td><a href='view${page_ext_qry}id=$id'><img border=0 src=${url_images}icons/status_online.png   width=16 height=16 title='".ucfmsg('DETAILS')."' alt='".ucfmsg('DETAILS')."'/></a></td>";
     if(! $read_only)
-		  echo "<td><a href='edit${page_ext_qry}id=$id'><img border=0 src=<?php echo $url_images; ?>icons/pencil.png width=16 height=16 title='".ucfmsg('EDIT')."' alt='".ucfmsg('EDIT')."'/></a></td>";
-		echo "<td><font size=-2><a href='vcard${page_ext_qry}id=$id'><img border=0 src=<?php echo $url_images; ?>icons/vcard.png   width=16 height=16 title='vCard' alt='vCard'/></a></font></td>";
+		  echo "<td><a href='edit${page_ext_qry}id=$id'><img border=0 src=${url_images}icons/pencil.png width=16 height=16 title='".ucfmsg('EDIT')."' alt='".ucfmsg('EDIT')."'/></a></td>";
+		echo "<td><font size=-2><a href='vcard${page_ext_qry}id=$id'><img border=0 src=${url_images}icons/vcard.png   width=16 height=16 title='vCard' alt='vCard'/></a></font></td>";
 
                 if( substr($phone, 0, 1) == "0" || substr($phone, 0, 3) == "+41")
 		{
@@ -100,14 +100,14 @@ ORDER BY prio ASC";
 		{
 		if($myrow["address"] != "")
 		echo "<td><font size=-2><a href='http://maps.google.com/maps?q=".urlencode(trim(str_replace("\r\n", ", ", $myrow["address"])).", $country")."&t=h'>
-                          <img border=0 src=<?php echo $url_images; ?>icons/car.png width=16 height=16 title='Google Maps' alt='vCard'/></a></font></td>";
+                          <img border=0 src=${url_images}icons/car.png width=16 height=16 title='Google Maps' alt='vCard'/></a></font></td>";
 		else echo "<td/>";
 		}
 
 		$homepage = guessHomepage($email, $email2);
 		if(strlen($homepage) > 0)
 		{
-			echo "<td><font size=-2><a href='http://$homepage'><img border=0 src=<?php echo $url_images; ?>icons/house.png   width=16 height=16 title='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)' alt='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)'/></a></font></td>";
+			echo "<td><font size=-2><a href='http://$homepage'><img border=0 src=${url_images}icons/house.png   width=16 height=16 title='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)' alt='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)'/></a></font></td>";
 		} else
 			echo "<td/>";
 

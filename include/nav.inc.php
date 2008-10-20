@@ -51,7 +51,7 @@ if($choose_lang)
     {
     	if($lang_cnt++ % 4 == 0)
     	  echo "<br>";
-      echo "<a href='?lang=$supp_lang'><img border=0 width=16 height=11 title='".ucfmsg($supp_lang)."' alt='".ucfmsg($supp_lang)."' src='<?php echo $url_images; ?>icons/".get_flag($supp_lang).".gif'/></a>";
+      echo "<a href='?lang=$supp_lang'><img border=0 width=16 height=11 title='".ucfmsg($supp_lang)."' alt='".ucfmsg($supp_lang)."' src='$url_images".get_flag($supp_lang).".gif'/></a>";
     }
   }    
 }
