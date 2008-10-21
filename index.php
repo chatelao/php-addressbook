@@ -171,7 +171,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group)
 		echo "<td>$firstname</td>";
 		echo "<td><a href='".getMailer()."$email'>$email</a></td>";
 		echo "<td align=right>$phone</td>";
-		echo "<td><a href='${url_images}view${page_ext_qry}id=$id'><img border=0 src=${url_images}icons/status_online.png   width=16 height=16 title='".ucfmsg('DETAILS')."' alt='".ucfmsg('DETAILS')."'/></a></td>";
+		echo "<td><a href='view${page_ext_qry}id=$id'><img border=0 src=${url_images}icons/status_online.png   width=16 height=16 title='".ucfmsg('DETAILS')."' alt='".ucfmsg('DETAILS')."'/></a></td>";
                 if(! $read_only)
 		  echo "<td><a href='edit${page_ext_qry}id=$id'><img border=0 src=${url_images}icons/pencil.png width=16 height=16 title='".ucfmsg('EDIT')."' alt='".ucfmsg('EDIT')."'/></a></td>";
 		echo "<td><font size=-2><a href='vcard${page_ext_qry}id=$id'><img border=0 src=${url_images}icons/vcard.png   width=16 height=16 title='vCard' alt='vCard'/></a></font></td>";

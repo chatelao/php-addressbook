@@ -23,6 +23,7 @@ include("translation.ko.php");
 include("translation.pl.php");
 include("translation.pt.php");
 include("translation.ru.php");
+include("translation.th.php");
 include("translation.vi.php");
 
 //
