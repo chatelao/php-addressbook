@@ -112,11 +112,14 @@ function ucfmsg($value) {
 	$msg = msg($value);
 
   // Multibyte "ucfirst" function
-	if (function_exists('mb_strtoupper')) {
-		$msg = mb_strtoupper($msg[0]).substr($msg, 1);
-		
-	} else { // Backward compatiblity
-		$msg = ucfirst($msg);
+  // - Workaround for "th" and "ko" languages
+  if( array_search($lang, split(",", "ko,th")) !== FALSE ) {
+	  if (function_exists('mb_strtoupper')  ) {
+	  	$msg = mb_strtoupper($msg[0]).substr($msg, 1);
+	  	
+	  } else { // Backward compatiblity
+	  	$msg = ucfirst($msg);
+	  }
 	}
 	
 	return $msg;
