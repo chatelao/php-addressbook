@@ -35,26 +35,6 @@
   <tr>
     <td><a href="group<?php echo $page_ext; ?>"><?php echo msg('MANAGE_GROUPS'); ?></a></td>
   </tr>
-<?php 
+<?php
 } ?>
-<?php
-if($choose_lang)
-{ ?>
-<tr><td/></tr>                                                          
-<tr><td/></tr>
-<tr><td/></tr>
-<tr><td>
-<?php
-  $lang_cnt = 0;
-  foreach($supported_langs as $supp_lang) {
-    if($supp_lang != $lang)
-    {
-    	if($lang_cnt++ % 4 == 0)
-    	  echo "<br>";
-      echo "<a href='?lang=$supp_lang'><img border=0 width=16 height=11 title='".ucfmsg($supp_lang)."' alt='".ucfmsg($supp_lang)."' src='${url_images}icons/".get_flag($supp_lang).".gif'/></a>";
-    }
-  }    
-}
-?>
-</td></tr>  
 </table>

@@ -18,6 +18,9 @@
   // Enable group administration pages
   $public_group_edit = true;
 
+  // Common languages of your visitors
+  $default_languages = "ar,cn,en,es,fr,ru";
+
   // List of excluded sites in "Homepage guessing"
   $free_mailers = array( "a3.epfl.ch"
                        , "acm.org"
