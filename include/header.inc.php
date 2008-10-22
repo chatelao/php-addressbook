@@ -25,11 +25,21 @@
 <?php
   $lang_cnt = 0;
 
-  if( $_GET["more_langs"] == "" && count($default_languages) > 0) {
-    $loop_langs = $default_languages;
-    ?>[<a title='default languages' href='?more_langs=yes'>+</a>] | <?php
+  //
+  // Filter the displayed languages:
+  // - Default if exists
+  // - Others if selected (All minus Default)
+  // - All if nothing is defined
+  //
+  if( count($default_languages) > 0) {
+    if( $_GET["more_langs"] == "") {
+      $loop_langs = $default_languages;
+      ?>[<a title='other languages'href='?more_langs=yes'>+</a>] | <?php
+    } else {
+      $loop_langs = array_diff($supported_langs, $default_languages);
+    }
   } else {
-    $loop_langs = array_diff($supported_langs, $default_languages);
+    $loop_langs = $supported_langs;
   }
   
   foreach($loop_langs as $supp_lang) {
@@ -42,7 +52,7 @@
   }    
 
   if(  ! ($_GET["more_langs"] == "" && count($default_languages) > 0) ) {
-    ?> | [<a title='default languages' href='?more_langs='> - </a>] | <?php
+    ?>[<a title='default languages' href='?more_langs='> - </a>] | <?php
   }
 ?>
 </td>
