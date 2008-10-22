@@ -27,7 +27,7 @@
 
   if( $_GET["more_langs"] == "" && count($default_languages) > 0) {
     $loop_langs = $default_languages;
-    ?>[<a title='default languages'href='?more_langs=yes'>+</a>] | <?php
+    ?>[<a title='default languages' href='?more_langs=yes'>+</a>] | <?php
   } else {
     $loop_langs = array_diff($supported_langs, $default_languages);
   }
