@@ -43,6 +43,11 @@ if(!isset($table_groups))  $table_groups  = "group_list";
 if(!isset($table_grp_adr)) $table_grp_adr = "address_in_groups";
 
 
+// Split the default (displayed) languages
+if(isset($default_languages)) {
+	$default_languages = split(",", $default_languages);
+}
+
 // Apply the table prefix, if available
 $table         = $table_prefix.$table;
 $month_lookup  = $table_prefix.$month_lookup;
@@ -190,6 +195,6 @@ $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth =
 
 $group_from_where = "$table_groups WHERE group_name = '$group_name'";
 
-$version = '3.3.3';
+$version = '3.3.4';
 
 ?>

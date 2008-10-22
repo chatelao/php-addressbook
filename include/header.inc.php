@@ -29,7 +29,7 @@
     $loop_langs = $default_languages;
     ?>[<a href='?more_langs=yes'>+</a>] | <?php
   } else {
-    $loop_langs = $supported_langs;
+    $loop_langs = array_diff($supported_langs, $default_languages);
   }
   
   foreach($loop_langs as $supp_lang) {
@@ -40,8 +40,11 @@
       echo "<a href='?lang=$supp_lang'><img border=0 width=16 height=11 title='".ucfmsg($supp_lang)."' alt='".ucfmsg($supp_lang)."' src='${url_images}icons/".get_flag($supp_lang).".gif'/></a>";
     }
   }    
+
+  if(  ! ($_GET["more_langs"] == "" && count($default_languages) > 0) ) {
+    ?> | [<a href='?more_langs='>-</a>] | <?php
+  }
 ?>
- - 
 </td>
 <td align=right valign=top>
 	<a href="preferences<?php echo $page_ext_qry; ?>from=<?php echo urlencode($_SERVER['REQUEST_URI']); ?>"><?php echo ucfmsg('PREFERENCES'); ?></td>
