@@ -52,7 +52,7 @@
   }    
 
   if(  ! ($_GET["more_langs"] == "" && count($default_languages) > 0) ) {
-    ?>[<a title='default languages' href='?more_langs='> - </a>] | <?php
+    ?> | [<a title='default languages' href='?more_langs='> - </a>]<?php
   }
 ?>
 </td>
