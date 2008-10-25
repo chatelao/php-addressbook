@@ -9,6 +9,7 @@ $default_lang   = 'en';
 
 // Register translated languages
 include("translation.ar.php");
+include("translation.ca.php");
 include("translation.cz.php");
 include("translation.cn.php");
 include("translation.de.php");
@@ -18,11 +19,14 @@ include("translation.es.php");
 include("translation.fr.php");
 include("translation.he.php");
 include("translation.hi.php");
+include("translation.it.php");
 include("translation.jp.php");
 include("translation.ko.php");
+include("translation.nl.php");
 include("translation.pl.php");
 include("translation.pt.php");
 include("translation.ru.php");
+include("translation.se.php");
 include("translation.th.php");
 include("translation.vi.php");
 
