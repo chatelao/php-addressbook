@@ -1,28 +1,15 @@
 <?php;
+//
+// New translations & fixes are welcome:
+// * chatelao(ät)users.sourceforge.net
+//
 $supported_langs[] = 'en';
 
 $use_flag['en'] = 'uk';
 
 $messages['LANGUAGE']['en'] = 'language'; // language
 $messages['auto']['en'] = 'bowser settings (automatic)'; // bowser settings (automatic)
-$messages['ar']['en'] = 'Arabic'; // Arabic
-$messages['cz']['en'] = 'Czech'; // Czech
-$messages['cn']['en'] = 'Chinese'; // Chinese
-$messages['de']['en'] = 'German'; // German
-$messages['el']['en'] = 'Greek'; // Greek
-$messages['en']['en'] = 'English'; // English
-$messages['es']['en'] = 'Spanish'; // Spanish
-$messages['fr']['en'] = 'French'; // French
-$messages['he']['en'] = 'Hebrew'; // Hebrew
-$messages['hi']['en'] = 'Hindi'; // Hindi
-$messages['jp']['en'] = 'Japanese'; // Japanese
-$messages['ko']['en'] = 'Korean'; // Korean
-$messages['pl']['en'] = 'Polish'; // Polish
-$messages['pt']['en'] = 'Portuguese'; // Portuguese
-$messages['ru']['en'] = 'Russian'; // Russian
-$messages['th']['en'] = 'Thai'; // Thai
-$messages['vi']['en'] = 'Vietnamese'; // Vietnamese
-$messages['JANUARY']['en'] = 'January'; // Vietnamese
+$messages['JANUARY']['en'] = 'January'; // January
 $messages['FEBRUARY']['en'] = 'February'; // February
 $messages['MARCH']['en'] = 'March'; // March
 $messages['APRIL']['en'] = 'April'; // April
@@ -91,4 +78,27 @@ $messages['SECONDARY']['en'] = 'Secondary'; // Secondary
 $messages['H:']['en'] = 'H:'; // H:
 $messages['M:']['en'] = 'M:'; // M:
 $messages['W:']['en'] = 'W:'; // W:
+
+$messages['ar']['en'] = 'Arabic'; // Arabic
+$messages['ca']['en'] = 'Catalonian'; //
+$messages['cn']['en'] = 'Chinese'; // Chinese
+$messages['cz']['en'] = 'Czech'; // Czech
+$messages['de']['en'] = 'German'; // German
+$messages['el']['en'] = 'Greek'; // Greek
+$messages['en']['en'] = 'English'; // English
+$messages['es']['en'] = 'Spanish'; // Spanish
+$messages['fr']['en'] = 'French'; // French
+$messages['he']['en'] = 'Hebrew'; // Hebrew
+$messages['hi']['en'] = 'Hindi'; // Hindi
+$messages['it']['en'] = 'Italian'; //
+$messages['jp']['en'] = 'Japanese'; // Japanese
+$messages['ko']['en'] = 'Korean'; // Korean
+$messages['nl']['en'] = 'Dutch'; //
+$messages['pl']['en'] = 'Polish'; // Polish
+$messages['pt']['en'] = 'Portuguese'; // Portuguese
+$messages['ru']['en'] = 'Russian'; // Russian
+$messages['se']['en'] = 'Swedish'; //
+$messages['th']['en'] = 'Thai'; // Thai
+$messages['vi']['en'] = 'Vietnamese'; // Vietnamese
+
 ?>
