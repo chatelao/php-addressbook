@@ -42,13 +42,13 @@ CREATE TABLE `address_in_groups` (
   `id` int(9) unsigned NOT NULL default '0',
   `group_id` int(9) unsigned NOT NULL default '0',
   PRIMARY KEY  (`group_id`,`id`)
-);
+) DEFAULT CHARSET=utf8;
 
 CREATE TABLE `month_lookup` (
   `bmonth` varchar(50) NOT NULL default '',
   `bmonth_short` char(3) NOT NULL default '',
   `bmonth_num` int(2) unsigned NOT NULL default '0'
-);
+) DEFAULT CHARSET=utf8;
 
 INSERT INTO `month_lookup` VALUES ('', '', 0);
 INSERT INTO `month_lookup` VALUES ('January', 'Jan', 1);
