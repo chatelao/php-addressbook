@@ -81,6 +81,7 @@ $messages['H:']['de'] = 'P:'; // H:
 $messages['M:']['de'] = 'M:'; // M:
 $messages['W:']['de'] = 'G:'; // W:
 $messages['ar']['de'] = 'Arabisch'; // Arabic
+$messages['bg']['de'] = 'Bulgarisch'; // Bulgarian
 $messages['he']['de'] = 'Hebräisch'; // Hebrew
 $messages['hi']['de'] = 'Hindi'; // Hindi
 $messages['es']['de'] = 'Spanisch'; // Spanish

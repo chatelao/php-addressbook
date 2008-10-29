@@ -80,6 +80,7 @@ $messages['M:']['en'] = 'M:'; // M:
 $messages['W:']['en'] = 'W:'; // W:
 
 $messages['ar']['en'] = 'Arabic'; // Arabic
+$messages['bg']['en'] = 'Bulgarian'; // Bulgarian
 $messages['ca']['en'] = 'Catalonian'; //
 $messages['cn']['en'] = 'Chinese'; // Chinese
 $messages['cz']['en'] = 'Czech'; // Czech
