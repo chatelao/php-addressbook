@@ -187,7 +187,13 @@ $myrow = mysql_fetch_array($result);
 }
 else
 {
-	$sql="SELECT * FROM $table_groups ORDER BY group_name ASC";
+	$sql="   SELECT groups.*
+	              , parent_groups.group_name  parent_name
+	              , parent_groups.group_id    parent_id
+	           FROM addr_group_list AS groups
+        LEFT JOIN addr_group_list AS parent_groups
+               ON groups.group_parent_id = parent_groups.group_id
+         ORDER BY groups.group_name";
 
 	$result = mysql_query($sql);
 	$resultsnumber = mysql_numrows($result);
@@ -202,7 +208,12 @@ else
 	while ($myrow = mysql_fetch_array($result))
 	{
 		echo "<input type=checkbox name='selected[]' value='".$myrow['group_id']."' title='Select (".$myrow['group_name'].")'/>";
-		echo $myrow['group_name']."<br>";
+		
+		if($myrow['parent_name'] != "") {
+		  echo $myrow['group_name']." <i>(".$myrow['parent_name'].")</i><br>";
+		} else {
+		  echo $myrow['group_name']."<br>";
+		}
 	}	
 ?>
 <br>

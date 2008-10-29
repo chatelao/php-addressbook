@@ -18,8 +18,26 @@
   // Enable group administration pages
   $public_group_edit = true;
 
-  // Common languages of your visitors
+  // Usual languages of your visitors:
+  // - United Nation Organisation (UNO)
   $default_languages = "ar,cn,en,es,fr,ru";
+  //
+  // - Western Europe
+  // $default_languages = "ca,de,en,es,fr,it,nl,se";
+  // - Eastern Europe
+  // $default_languages = "bg,cz,es,gr";
+  //
+  // - Both Americas
+  // $default_languages = "en,es,fr,pt";
+  //
+  // - Western Asia
+  // $default_languages = "en,he,hi";
+  // - Eastern Asia
+  // $default_languages = "cn,jp,ko,th,vi";
+  //
+  // - Africa
+  // $default_languages = "ar,fr,nl";
+
 
   // List of excluded sites in "Homepage guessing"
   $free_mailers = array( "a3.epfl.ch"

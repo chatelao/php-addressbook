@@ -90,6 +90,9 @@ $sql="SELECT DISTINCT $table.* FROM $base_from_where ORDER BY lastname, firstnam
 	$result = mysql_query($sql);
 	$resultsnumber = mysql_numrows($result);
 	
+	// TBD:  Pagination
+	// http://php.about.com/od/phpwithmysql/ss/php_pagination.htm
+	
 	echo "<TABLE BORDER=0 width=100%>";
 	echo "<td><strong>".msg('NUMBER_OF_RESULTS').": $resultsnumber</strong></td>";
 
