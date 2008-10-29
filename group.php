@@ -150,8 +150,10 @@ else if($edit || $id)
   if($edit) $id = $selected[0];
   if(! $read_only)
   {
-$result = mysql_query("SELECT * FROM $table_groups WHERE group_id=$id",$db);
+
+$result = mysql_query("$select_groups WHERE groups.group_id=$id",$db);
 $myrow = mysql_fetch_array($result);
+
 ?>
   <form accept-charset="utf-8" method="post">
         <input type="hidden" name="id" value="<?php echo $myrow["group_id"]?>">
@@ -187,15 +189,8 @@ $myrow = mysql_fetch_array($result);
 }
 else
 {
-	$sql="   SELECT groups.*
-	              , parent_groups.group_name  parent_name
-	              , parent_groups.group_id    parent_id
-	           FROM addr_group_list AS groups
-        LEFT JOIN addr_group_list AS parent_groups
-               ON groups.group_parent_id = parent_groups.group_id
-         ORDER BY groups.group_name";
 
-	$result = mysql_query($sql);
+	$result = mysql_query($select_groups." ORDER BY groups.group_name");
 	$resultsnumber = mysql_numrows($result);
 
 ?>

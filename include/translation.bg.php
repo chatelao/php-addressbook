@@ -1,4 +1,4 @@
-﻿<?php;
+<?php;
 $supported_langs[] = 'bg';
 
 $use_flag['bg'] = 'bg';

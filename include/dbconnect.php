@@ -129,6 +129,17 @@ foreach($_REQUEST as $key => $value)
     // TBD: prevent SQL-Injection
 }
 
+//
+// ------------------- Group query handling ------------------------
+//
+
+$select_groups = "SELECT groups.*
+       	               , parent_groups.group_name  parent_name
+       	               , parent_groups.group_id    parent_id
+       	            FROM addr_group_list AS groups
+               LEFT JOIN addr_group_list AS parent_groups
+                      ON groups.group_parent_id = parent_groups.group_id";
+          
 // Create "n-level" non-locking recursion
 $max_level = 3;
 
