@@ -119,13 +119,19 @@ function msg($value)
 	}
 }
 
+//
+// Uppercase the first character with UTF-8 if possible,
+// else try to use "ucfirst".
+//
 function ucfmsg($value) {
 	
 	$msg = msg($value);
 
   // Multibyte "ucfirst" function
-  if (function_exists('mb_strtoupper')  ) {
-  	$msg = mb_strtoupper(mb_substr($msg, 0,1,"UTF-8"),"UTF-8").mb_substr($msg, 1,4096,"UTF-8");
+  if( function_exists('mb_strtoupper') ) {
+    mb_internal_encoding("UTF-8");
+  	$msg = mb_strtoupper(mb_substr($msg, 0,1),"UTF-8").mb_substr($msg, 1);
+  	
   } else { // Backward compatiblity
   	$msg = ucfirst($msg);
   }
