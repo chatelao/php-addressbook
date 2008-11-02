@@ -30,6 +30,7 @@ include("translation.nl.php");
 include("translation.pl.php");
 include("translation.pt.php");
 include("translation.ru.php");
+// include("translation.rm.php");
 include("translation.se.php");
 include("translation.th.php");
 include("translation.vi.php");
@@ -123,15 +124,11 @@ function ucfmsg($value) {
 	$msg = msg($value);
 
   // Multibyte "ucfirst" function
-  // - Workaround for "th" and "ko" languages
-  if( array_search($lang, split(",", "ko,th")) !== FALSE ) {
-	  if (function_exists('mb_strtoupper')  ) {
-	  	$msg = mb_strtoupper($msg[0]).substr($msg, 1);
-	  	
-	  } else { // Backward compatiblity
-	  	$msg = ucfirst($msg);
-	  }
-	}
+  if (function_exists('mb_strtoupper')  ) {
+  	$msg = mb_strtoupper(mb_substr($msg, 0,1,"UTF-8"),"UTF-8").mb_substr($msg, 1,4096,"UTF-8");
+  } else { // Backward compatiblity
+  	$msg = ucfirst($msg);
+  }
 	
 	return $msg;
 }
