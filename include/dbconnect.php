@@ -3,7 +3,7 @@
 include("config/config.php");
 
 // Check for any mistakes (Debugging)
-error_reporting(E_ALL);
+// error_reporting(E_ALL);
 
 // Suppress caching, force refresh on every reload.
 header("Cache-Control: no-cache, must-revalidate");
