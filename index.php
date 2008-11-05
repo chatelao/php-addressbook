@@ -15,49 +15,6 @@
     <td>&nbsp;</td></tr>
     
   </form>
-
-<script type="text/javascript">
-function MassSelection()
-{
-  for (i = 0; i < document.getElementsByName("selected[]").length; i++)
-  {
-     document.getElementsByName("selected[]")[i].checked = document.getElementById("MassCB").checked;
-  }
-}
-
-
-function MailSelection()
-{
-
-  var addresses = "";
-  var dst_count = 0;
-
-  for (i = 0; i < document.getElementsByName("selected[]").length; i++)
-  {
-      if( document.getElementsByName("selected[]")[i].checked == true)
-      {
-         if(  document.getElementsByName("selected[]")[i].accept != ""
-           && document.getElementsByName("selected[]")[i].accept != null)
-         {
-         	  if(dst_count > 0) {
-         	  	addresses = addresses + "<?php echo getMailerDelim(); ?>";
-         	  }
-            addresses = addresses + document.getElementsByName("selected[]")[i].accept;
-            dst_count++;
-         }
-      }
-  }
-
-  if(dst_count == 0)
-    alert("No address selected.");
-  else
-    location.href = "<?php echo getMailer(); ?>"+addresses;
-}
-</script>
-
-<!--
-<table width=100%><td valign=top style="border-top-width:2.5px;border-top-style:solid;border-top-color:#FFFFFF">
--->
 <tr><td>
 <?php
 $link = "index${page_ext_qry}alphabet";
@@ -249,3 +206,43 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group)
 	include("include/footer.inc.php");
 
 ?>
+<script type="text/javascript">
+	
+	
+function MassSelection()
+{
+  for (i = 0; i < document.getElementsByName("selected[]").length; i++)
+  {
+     document.getElementsByName("selected[]")[i].checked = document.getElementById("MassCB").checked;
+  }
+}
+
+
+function MailSelection()
+{
+
+  var addresses = "";
+  var dst_count = 0;
+
+  for (i = 0; i < document.getElementsByName("selected[]").length; i++)
+  {
+      if( document.getElementsByName("selected[]")[i].checked == true)
+      {
+         if(  document.getElementsByName("selected[]")[i].accept != ""
+           && document.getElementsByName("selected[]")[i].accept != null)
+         {
+         	  if(dst_count > 0) {
+         	  	addresses = addresses + "<?php echo getMailerDelim(); ?>";
+         	  }
+            addresses = addresses + document.getElementsByName("selected[]")[i].accept;
+            dst_count++;
+         }
+      }
+  }
+
+  if(dst_count == 0)
+    alert("No address selected.");
+  else
+    location.href = "<?php echo getMailer(); ?>"+addresses;
+}
+</script>

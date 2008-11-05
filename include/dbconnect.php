@@ -3,7 +3,7 @@
 include("config/config.php");
 
 // Check for any mistakes (Debugging)
-// error_reporting(E_ALL);
+error_reporting(E_ALL);
 
 // Suppress caching, force refresh on every reload.
 header("Cache-Control: no-cache, must-revalidate");
@@ -136,8 +136,8 @@ foreach($_REQUEST as $key => $value)
 $select_groups = "SELECT groups.*
        	               , parent_groups.group_name  parent_name
        	               , parent_groups.group_id    parent_id
-       	            FROM addr_group_list AS groups
-               LEFT JOIN addr_group_list AS parent_groups
+       	            FROM $table_groups AS groups
+               LEFT JOIN $table_groups AS parent_groups
                       ON groups.group_parent_id = parent_groups.group_id";
           
 // Create "n-level" non-locking recursion
@@ -206,6 +206,6 @@ $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth =
 
 $group_from_where = "$table_groups WHERE group_name = '$group_name'";
 
-$version = '3.3.9';
+$version = '3.3.10';
 
 ?>
