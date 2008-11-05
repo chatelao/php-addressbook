@@ -1,4 +1,4 @@
-<?php;
+<?php
 //
 // New translations & fixes are welcome:
 // * chatelao(ät)users.sourceforge.net

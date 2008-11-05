@@ -1,4 +1,4 @@
-<?php;
+<?php
 $supported_langs[] = 'he';
 
 $is_right_to_left['he'] = true;

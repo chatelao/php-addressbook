@@ -1,4 +1,4 @@
-<?php;
+<?php
 $supported_langs[] = 'cz';
 
 $messages['LANGUAGE']['cz'] = 'jazyk'; // language
