@@ -42,6 +42,8 @@ if(!isset($month_lookup))  $month_lookup = "month_lookup";
 if(!isset($table_groups))  $table_groups  = "group_list";
 if(!isset($table_grp_adr)) $table_grp_adr = "address_in_groups";
 
+// Define default image location (same server)
+if(!isset($url_images)) $url_images = "";
 
 // Split the default (displayed) languages
 if(isset($default_languages)) {
