@@ -6,12 +6,29 @@
     <td width="483" valign="top">
        <br>
        <?php
+       /*
+        * Add some function only active on the 
+        * "php-addressbook.sourceforge.net" Demopage.
+        */
        if($_SERVER['SERVER_NAME'] == "php-addressbook.sourceforge.net")
        { ?>
 <script type="text/javascript" 
 	      src="http://www.ohloh.net/projects/25477/widgets/project_partner_badge">
+	      //
+	      // ohloh.net "Project Value" integration
+	      //
+        </script>
+<script type="text/javascript">
+	      //
+	      // Google-Analytics integration
+	      //
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
-        <?php } ?>
+<script type="text/javascript">
+        var pageTracker = _gat._getTracker("UA-6220233-1");
+        pageTracker._trackPageview();
+</script>        <?php } ?>
        <br>
     	 <br><a href="notes.htm">&copy; php-addressbook v<?php echo $version; ?></a></td>
   </tr>

@@ -15,7 +15,6 @@ include("translation.ar.php");
 include("translation.bg.php");
 include("translation.ca.php");
 include("translation.cz.php");
-include("translation.cn.php");
 include("translation.de.php");
 include("translation.el.php");
 include("translation.en.php");
@@ -34,6 +33,7 @@ include("translation.ru.php");
 include("translation.se.php");
 include("translation.th.php");
 include("translation.vi.php");
+include("translation.zh.php");
 
 //
 // Handle language choice
@@ -58,6 +58,11 @@ if(!isset($lang)) {
 if($lang == 'auto') {
 
   // Try to use the browser's wish
+  //
+  // TBD: Improve the handling,
+  // => http://www.w3.org/International/articles/language-tags/
+  // => Achtung: "en_us"
+  //
   $lang_variable = strtolower( $_SERVER['HTTP_ACCEPT_LANGUAGE'] );
   $accepted_languages = split('[,:=-]', $lang_variable);
   

@@ -85,6 +85,6 @@ $messages['he']['pt'] = 'Hebraico'; // Hebrew
 $messages['hi']['pt'] = 'Hindi'; // Hindi
 $messages['es']['pt'] = 'Espanhol'; // Spanish
 $messages['fr']['pt'] = 'Francês'; // French
-$messages['cn']['pt'] = 'Chinês'; // Chinese
+$messages['zh']['pt'] = 'Chinês'; // Chinese
 $messages['ru']['pt'] = 'Russo'; // Russian
 ?>

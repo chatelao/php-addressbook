@@ -36,5 +36,24 @@
     <td><a href="group<?php echo $page_ext; ?>"><?php echo msg('MANAGE_GROUPS'); ?></a></td>
   </tr>
 <?php
+} 
+/*
+ * Add some function only active on the 
+ * "php-addressbook.sourceforge.net" Demopage.
+ */
+if($_SERVER['SERVER_NAME'] == "php-addressbook.sourceforge.net")
+{ ?>
+<tr><td><br><br><br><br></td></tr>
+<tr>
+<td bgcolor=#63A624 style="border:1px solid black;">
+	<center>
+<font color=white>
+<a href="http://sourceforge.net/project/platformdownload.php?group_id=157964"><b><font color=white>Download<font></b></a>
+<?php echo "v$version"; ?>
+</font>
+</center>
+</td>
+</tr>
+<?php
 } ?>
 </table>

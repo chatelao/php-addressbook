@@ -136,11 +136,10 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group)
 		  echo "<td><a href='edit${page_ext_qry}id=$id'><img border=0 src=${url_images}icons/pencil.png width=16 height=16 title='".ucfmsg('EDIT')."' alt='".ucfmsg('EDIT')."'/></a></td>";
 		echo "<td><font size=-2><a href='vcard${page_ext_qry}id=$id'><img border=0 src=${url_images}icons/vcard.png   width=16 height=16 title='vCard' alt='vCard'/></a></font></td>";
 
-                if( substr($phone, 0, 1) == "0" || substr($phone, 0, 3) == "+41")
+    if( substr($phone, 0, 3) == "+41" )
 		{
 			$country = "Switzerland";
 		}
-		else 	$country = "";
 
 		if($map_guess)
 		{

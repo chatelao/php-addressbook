@@ -87,6 +87,6 @@ $messages['he']['ko'] = '히브리어'; // Hebrew
 $messages['hi']['ko'] = '힌디어'; // Hindi
 $messages['es']['ko'] = '스페인어'; // Spanish
 $messages['fr']['ko'] = '프랑스어'; // French
-$messages['cn']['ko'] = '중국어'; // Chinese
+$messages['zh']['ko'] = '중국어'; // Chinese
 $messages['ru']['ko'] = '러시아어'; // Russian
 ?>
