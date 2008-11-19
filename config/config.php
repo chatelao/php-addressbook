@@ -20,7 +20,7 @@
 
   // Usual languages of your visitors:
   // - United Nation Organisation (UNO)
-  $default_languages = "ar,cn,en,es,fr,ru";
+  $default_languages = "ar,zh,en,es,fr,ru";
   //
   // - Western Europe
   // $default_languages = "ca,de,en,es,fr,it,nl,se";
