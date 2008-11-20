@@ -1,10 +1,10 @@
-<?php
+﻿<?php;
 $supported_langs[] = 'bg';
 
 $use_flag['bg'] = 'bg';
 
 $messages['LANGUAGE']['bg'] = 'език'; // language
-$messages['auto']['bg'] = 'bowser settings (automatic)'; // bowser settings (automatic)
+$messages['auto']['bg'] = 'настройки на браузера (автоматични)'; // bowser settings (automatic)
 $messages['ar']['bg'] = 'Арабски'; // Arabic
 $messages['el']['bg'] = 'Гръзки'; // Greek
 $messages['en']['bg'] = 'Английски'; // English
@@ -61,11 +61,11 @@ $messages['DETAILS']['bg'] = 'детайли'; // details
 $messages['EDIT']['bg'] = 'редакция'; // edit
 $messages['MODIFY']['bg'] = 'промяна'; // modify
 $messages['PRINT']['bg'] = 'печат'; // print
-$messages['EDIT_ADD_ENTRY']['bg'] = 'РЕдакция / добяване на нов контакт'; // Edit / add address book entry
+$messages['EDIT_ADD_ENTRY']['bg'] = 'Рeдакция / добяване на нов контакт'; // Edit / add address book entry
 $messages['GUESSED_HOMEPAGE']['bg'] = 'Предполагаема интернет страница'; // Guessed homepage
 $messages['PREFERENCES']['bg'] = 'настройки'; // preferences
 $messages['FIRSTNAME']['bg'] = 'Име'; // first name
-$messages['LASTNAME']['bg'] = 'Фаминилия'; // last name
+$messages['LASTNAME']['bg'] = 'Фамилия'; // last name
 $messages['ADDRESS']['bg'] = 'адрес'; // address
 $messages['TELEPHONE']['bg'] = 'телефон'; // telephone
 $messages['PHONE_HOME']['bg'] = 'домашен'; // home
@@ -84,7 +84,7 @@ $messages['DELETE']['bg'] = 'изтрии'; // delete
 $messages['INVALID']['bg'] = 'невалиден'; // invalid
 $messages['ENTER']['bg'] = 'въведи'; // enter
 $messages['MEMBER_OF']['bg'] = 'член на'; // member of
-$messages['SECONDARY']['bg'] = 'Secondary'; // Secondary
+$messages['SECONDARY']['bg'] = 'Втори адрес'; // Secondary
 $messages['H:']['bg'] = 'H:'; // H:
 $messages['M:']['bg'] = 'M:'; // M:
 $messages['W:']['bg'] = 'W:'; // W:
