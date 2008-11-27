@@ -96,7 +96,7 @@ $messages['nl']['de'] = 'Holländisch'; // Dutch
 $messages['pt']['de'] = 'Portugiesisch'; // Portuguese
 $messages['rm']['de'] = 'Rätoromanisch'; // Rhaeto-Romance
 $messages['ru']['de'] = 'Russisch'; // Russian
-$messages['se']['de'] = 'Schwedisch'; // Swedish
+$messages['sv']['de'] = 'Schwedisch'; // Swedish
 $messages['th']['de'] = 'Thai'; // Thai
 $messages['vi']['de'] = 'Vietnamesisch'; // Vietnamese
 

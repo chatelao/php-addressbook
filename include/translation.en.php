@@ -99,7 +99,7 @@ $messages['pl']['en'] = 'Polish'; // Polish
 $messages['pt']['en'] = 'Portuguese'; // Portuguese
 $messages['rm']['en'] = 'Rhaeto-Romance'; // Rhaeto-Romance
 $messages['ru']['en'] = 'Russian'; // Russian
-$messages['se']['en'] = 'Swedish'; //
+$messages['sv']['en'] = 'Swedish'; //
 $messages['th']['en'] = 'Thai'; // Thai
 $messages['vi']['en'] = 'Vietnamese'; // Vietnamese
 

@@ -6,6 +6,8 @@ $default_lang   = 'en';
 // New translations are welcome:
 // * chatelao(@)users.sourceforge.net
 //
+
+//
 // Find your missing flag here:
 // * http://www.famfamfam.com/lab/icons/flags
 //
@@ -30,7 +32,7 @@ include("translation.pl.php");
 include("translation.pt.php");
 include("translation.ru.php");
 // include("translation.rm.php");
-include("translation.se.php");
+include("translation.sv.php");
 include("translation.th.php");
 include("translation.vi.php");
 include("translation.zh.php");

@@ -1,4 +1,8 @@
 <?php
+//
+// New translations & fixes are welcome:
+// * chatelao(ät)users.sourceforge.net
+//
 $supported_langs[] = 'he';
 
 $is_right_to_left['he'] = true;
