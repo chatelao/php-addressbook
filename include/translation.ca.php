@@ -98,5 +98,5 @@ $messages['vi']['ca'] = 'Vietnamita'; // Vietnamese
 $messages['ca']['ca'] = 'Catalunya'; // Catalonian
 $messages['it']['ca'] = 'Italià'; // Italian
 $messages['nl']['ca'] = 'Neerlandès'; // Dutch
-$messages['se']['ca'] = 'Suec'; // Swedish
+$messages['sv']['ca'] = 'Suec'; // Swedish
 ?>

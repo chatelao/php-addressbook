@@ -96,5 +96,5 @@ $messages['vi']['it'] = 'Vietnamita'; // Vietnamese
 $messages['ca']['it'] = 'Catalano'; // Catalonian
 $messages['it']['it'] = 'Italiano'; // Italian
 $messages['nl']['it'] = 'Olandese'; // Dutch
-$messages['se']['it'] = 'Svedese'; // Swedish
+$messages['sv']['it'] = 'Svedese'; // Swedish
 ?>
