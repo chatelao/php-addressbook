@@ -78,10 +78,10 @@ $messages['SECONDARY']['en'] = 'Secondary'; // Secondary
 $messages['H:']['en'] = 'H:'; // H:
 $messages['M:']['en'] = 'M:'; // M:
 $messages['W:']['en'] = 'W:'; // W:
-
 $messages['ar']['en'] = 'Arabic'; // Arabic
 $messages['bg']['en'] = 'Bulgarian'; // Bulgarian
 $messages['ca']['en'] = 'Catalonian'; //
+$messages['da']['en'] = 'Danish'; // Danish
 $messages['zh']['en'] = 'Chinese'; // Chinese
 $messages['cz']['en'] = 'Czech'; // Czech
 $messages['de']['en'] = 'German'; // German
