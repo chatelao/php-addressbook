@@ -48,7 +48,7 @@ if($_SERVER['SERVER_NAME'] == "php-addressbook.sourceforge.net")
 <td bgcolor=#63A624 style="border:1px solid black;">
 	<center>
 <font color=white>
-<a href="http://sourceforge.net/project/platformdownload.php?group_id=157964"><b><font color=white>Download<font></b></a>
+<a href="download"><b><font color=white>Download<font></b></a>
 <?php echo "v$version"; ?>
 </font>
 </center>

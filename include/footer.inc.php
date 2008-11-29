@@ -5,13 +5,13 @@
     <td width="107" valign="top">&nbsp;</td>
     <td width="483" valign="top">
        <br>
-       <?php
-       /*
-        * Add some function only active on the 
-        * "php-addressbook.sourceforge.net" Demopage.
-        */
-       if($_SERVER['SERVER_NAME'] == "php-addressbook.sourceforge.net")
-       { ?>
+<?php
+/*
+ * Add some function only active on the 
+ * "php-addressbook.sourceforge.net" Demopage.
+ */
+if($_SERVER['SERVER_NAME'] == "php-addressbook.sourceforge.net")
+{ ?>
 <script type="text/javascript" 
 	      src="http://www.ohloh.net/projects/25477/widgets/project_partner_badge">
 	      //
@@ -28,7 +28,8 @@
 <script type="text/javascript">
         var pageTracker = _gat._getTracker("UA-6220233-1");
         pageTracker._trackPageview();
-</script>        <?php } ?>
+</script>        
+<?php } ?>
        <br>
     	 <br><a href="notes.htm">&copy; php-addressbook v<?php echo $version; ?></a></td>
   </tr>
