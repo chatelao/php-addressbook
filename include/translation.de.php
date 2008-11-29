@@ -98,6 +98,7 @@ $messages['rm']['de'] = 'Rätoromanisch'; // Rhaeto-Romance
 $messages['ru']['de'] = 'Russisch'; // Russian
 $messages['sv']['de'] = 'Schwedisch'; // Swedish
 $messages['th']['de'] = 'Thai'; // Thai
+$messages['tr']['en'] = 'Türkisch'; // Turkish
 $messages['vi']['de'] = 'Vietnamesisch'; // Vietnamese
 
 ?>

@@ -34,6 +34,7 @@ include("translation.ru.php");
 // include("translation.rm.php");
 include("translation.sv.php");
 include("translation.th.php");
+include("translation.tr.php");
 include("translation.vi.php");
 include("translation.zh.php");
 

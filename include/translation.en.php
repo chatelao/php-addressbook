@@ -96,11 +96,12 @@ $messages['jp']['en'] = 'Japanese'; // Japanese
 $messages['ko']['en'] = 'Korean'; // Korean
 $messages['nl']['en'] = 'Dutch'; //
 $messages['pl']['en'] = 'Polish'; // Polish
-$messages['pt']['en'] = 'Portuguese'; // Portuguese
+$messages['pt']['en'] = 'Portugese'; // Portugese
 $messages['rm']['en'] = 'Rhaeto-Romance'; // Rhaeto-Romance
 $messages['ru']['en'] = 'Russian'; // Russian
 $messages['sv']['en'] = 'Swedish'; //
 $messages['th']['en'] = 'Thai'; // Thai
+$messages['tr']['en'] = 'Turkish'; // Turkish
 $messages['vi']['en'] = 'Vietnamese'; // Vietnamese
 
 ?>
