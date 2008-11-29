@@ -50,7 +50,7 @@ $supported_langs[] = '<?php echo $_REQUEST['target_language']?>';<br>
 	    $translation = $messages[$key][$target_language];
 	  }
 		
-	 	echo "\$messages['".$key."']['".$_REQUEST['target_language']."'] = '".$translation."';";
+	 	echo "\$messages['".$key."']['".$_REQUEST['target_language']."'] = ".'"'.$translation.'"'.";";
 	 	echo "    // ".$messages[$key]['en']."<br>";
 
 	} 
@@ -68,6 +68,7 @@ $supported_langs[] = '<?php echo $_REQUEST['target_language']?>';<br>
 	
   <h1>Prepare translation file</h1>
   => you may use: <a href="http://translate.google.de">translate.google.de</a>
+  or <a href="http://www.stars21.net/translator">www.stars21.net/translator</a>
   <br><br>
 <form accept-charset="utf-8" method=post>
 <li>Target language (e.g.: en): <input name="target_language" size="2" value="<?php echo $_GET['target_language']; ?>"/>
