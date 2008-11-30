@@ -22,6 +22,7 @@ include("translation.de.php");
 include("translation.el.php");
 include("translation.en.php");
 include("translation.es.php");
+include("translation.fi.php");
 include("translation.fr.php");
 include("translation.he.php");
 include("translation.hi.php");
