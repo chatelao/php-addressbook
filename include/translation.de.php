@@ -84,6 +84,7 @@ $messages['ar']['de'] = 'Arabisch'; // Arabic
 $messages['bg']['de'] = 'Bulgarisch'; // Bulgarian
 $messages['ca']['de'] = 'Katalanisch'; // Catalonian
 $messages['da']['de'] = 'Dänisch'; // Danish
+$messages['fi']['de'] = 'Finnisch'; // Finnish
 $messages['zh']['de'] = 'Chinesisch'; // Chinese
 $messages['el']['de'] = 'Griechisch'; // Greek
 $messages['es']['de'] = 'Spanisch'; // Spanish
