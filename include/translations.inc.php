@@ -16,7 +16,7 @@ $default_lang   = 'en';
 include("translation.ar.php");
 include("translation.bg.php");
 include("translation.ca.php");
-include("translation.cz.php");
+include("translation.cs.php");
 include("translation.da.php");
 include("translation.de.php");
 include("translation.el.php");
@@ -62,15 +62,17 @@ if(!isset($lang)) {
 //
 if($lang == 'auto') {
 
-  // Try to use the browser's wish
+  // Try to use the browser's wish:
+  // - de-ch,de-de;q=0.9,de;q=0.7,en;q=0.6,en-us;q=0.4,en-gb;q=0.3,fr;q=0.1
   //
   // TBD: Improve the handling,
   // => http://www.w3.org/International/articles/language-tags/
   // => Achtung: "en_us"
   //
-  $lang_variable = strtolower( $_SERVER['HTTP_ACCEPT_LANGUAGE'] );
-  $accepted_languages = split('[,:=-]', $lang_variable);
-  
+  foreach(split(',', strtolower( $_SERVER['HTTP_ACCEPT_LANGUAGE'] )) as $accept_lang) {
+  	$accepted_languages[] = substr($accept_lang, 0, 2);
+  }
+
   foreach($accepted_languages as $curr_lang)
   {
     if( array_search($curr_lang, $supported_langs) !== FALSE ) {
