@@ -203,10 +203,10 @@ if($group_name == "") {
     }
  }
  
-$base_from_where  = "$base_from WHERE $base_where";
-$month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth = $month_lookup.bmonth WHERE $base_where";
+$base_from_where  = "$base_from WHERE $base_where ";
+$month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth = $month_lookup.bmonth WHERE $base_where ";
 
-$group_from_where = "$table_groups WHERE group_name = '$group_name'";
+$group_from_where = "$table_groups WHERE group_name = '$group_name' ";
 
 $version = '3.3.17';
 

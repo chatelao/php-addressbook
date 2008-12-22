@@ -28,14 +28,19 @@ echo "<a style='font-size:75%' href='$link=a'>A</a> | <a style='font-size:75%' h
 <?php
 if ($searchstring)
 	{
-
-	$sql="SELECT DISTINCT $table.* FROM $base_from_where
-                AND (lastname  LIKE '%$searchstring%' 
-                  OR firstname LIKE '%$searchstring%' 
-                  OR address   LIKE '%$searchstring%' 
-                  OR email     LIKE '%$searchstring%')
-              ORDER BY lastname, firstname ASC";
-	}
+  
+    $searchwords = split(" ", $searchstring);
+  
+  	$sql = "SELECT DISTINCT $table.* FROM $base_from_where";
+  
+    foreach($searchwords as $searchword) {
+    	$sql .= "AND (   lastname  LIKE '%$searchword%' 
+                    OR firstname LIKE '%$searchword%' 
+                    OR address   LIKE '%$searchword%' 
+                    OR email     LIKE '%$searchword%')";
+    }
+    $sql .= "ORDER BY lastname, firstname ASC";
+  }
 else if ($alphabet)
 	{
 $sql = "SELECT DISTINCT $table.* FROM $base_from_where AND LEFT(lastname,1) = '$alphabet' ORDER BY lastname, firstname";
