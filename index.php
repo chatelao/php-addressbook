@@ -7,10 +7,14 @@
   <br><br>
 <center>
   <table border="0" cellspacing="2">
-  <form accept-charset="utf-8" method="POST" action="<?php $PHP_SELF ?>">
+  <form accept-charset="utf-8" method="POST" action="<?php $PHP_SELF ?>" name="searchform">
     <tr valign=center>
 	  <td valign="top"> 
-        <input type="text" value="<?php echo $searchstring; ?>" name="searchstring" title="<?php echo ucfmsg('SEARCH_FOR_ANY_TEXT'); ?>" size="45"/>
+        <input type="text" value="<?php echo $searchstring; ?>" name="searchstring" title="<?php echo ucfmsg('SEARCH_FOR_ANY_TEXT'); ?>" size="45"  tabindex="0"/>
+        <script language="javascript">
+        <!--
+           document.searchform.searchstring.focus();
+          --></script>
         <input type="submit" value="<?php echo ucfirst(msg("SEARCH")) ?>"></td>
     <td>&nbsp;</td></tr>
     
