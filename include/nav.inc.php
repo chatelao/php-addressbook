@@ -20,7 +20,7 @@ if(!$read_only && $public_group_edit && $table_groups != "" && !$is_fix_group)
   <tr>
     <td>
       <img src="<?php echo ${url_images}; ?>icons/group.png">
-    	<a href="group<?php echo $page_ext; ?>"><?php echo msg('MANAGE_GROUPS'); ?></a></td>
+    	<a href="group<?php echo $page_ext; ?>"><?php echo msg('GROUPS'); ?></a></td>
   </tr>
 <?php
 } ?>  <tr><td/></tr>
