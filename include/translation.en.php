@@ -104,5 +104,4 @@ $messages['sv']['en'] = 'Swedish'; //
 $messages['th']['en'] = 'Thai'; // Thai
 $messages['tr']['en'] = 'Turkish'; // Turkish
 $messages['vi']['en'] = 'Vietnamese'; // Vietnamese
-
 ?>
