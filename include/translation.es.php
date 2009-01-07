@@ -1,4 +1,4 @@
-<?php;
+<?php
 //
 // New translations & fixes are welcome:
 // * chatelao(ät)users.sourceforge.net
@@ -81,25 +81,25 @@ $messages['H:']['es'] = "H:"; // H:
 $messages['M:']['es'] = "M:"; // M:
 $messages['W:']['es'] = "W:"; // W:
 $messages['ar']['es'] = "Árabe"; // Arabic
-$messages['el']['es'] = "Greek"; // Greek
+$messages['el']['es'] = "Griego"; // Greek
 $messages['es']['es'] = "Español"; // Spanish
 $messages['fr']['es'] = "Francés"; // French
 $messages['zh']['es'] = "Chino"; // Chinese
 $messages['he']['es'] = "Hebreo"; // Hebrew
 $messages['hi']['es'] = "Hindi"; // Hindi
-$messages['ko']['es'] = "Korean"; // Korean
-$messages['pt']['es'] = "Portugese"; // Portugese
+$messages['ko']['es'] = "Coreano"; // Korean
+$messages['pt']['es'] = "Portugués"; // Portugese
 $messages['ru']['es'] = "Ruso"; // Russian
-$messages['jp']['es'] = "Japanese"; // Japanese
-$messages['th']['es'] = "Thai"; // Thai
-$messages['vi']['es'] = "Vietnamese"; // Vietnamese
-$messages['ca']['es'] = "Catalonian"; // Catalonian
-$messages['it']['es'] = "Italian"; // Italian
-$messages['nl']['es'] = "Dutch"; // Dutch
-$messages['sv']['es'] = "Swedish"; // Swedish
-$messages['bg']['es'] = "Bulgarian"; // Bulgarian
-$messages['rm']['es'] = "Rhaeto-Romance"; // Rhaeto-Romance
-$messages['tr']['es'] = "Turkish"; // Turkish
-$messages['da']['es'] = "Danish"; // Danish
-$messages['fi']['es'] = "Finnish"; // Finnish
+$messages['jp']['es'] = "Japonés"; // Japanese
+$messages['th']['es'] = "Tailandés"; // Thai
+$messages['vi']['es'] = "Vietnamita"; // Vietnamese
+$messages['ca']['es'] = "Cataluña"; // Catalonian
+$messages['it']['es'] = "Italiano"; // Italian
+$messages['nl']['es'] = "Holandés"; // Dutch
+$messages['sv']['es'] = "Sueco"; // Swedish
+$messages['bg']['es'] = "Búlgaro"; // Bulgarian
+$messages['rm']['es'] = "Retorrománico"; // Rhaeto-Romance
+$messages['tr']['es'] = "Turco"; // Turkish
+$messages['da']['es'] = "Danés"; // Danish
+$messages['fi']['es'] = "Finlandés"; // Finnish
 ?>
