@@ -39,6 +39,7 @@ $messages['ADD_NEW']['fr'] = 'ajouter adresse'; // add new
 $messages['PRINT_ALL']['fr'] = 'imprimer tous'; // print all
 $messages['PRINT_PHONES']['fr'] = 'imprimer cahier'; // print phones
 $messages['EXPORT_CSV']['fr'] = 'csv-export'; // export csv
+$messages['GROUP']['fr'] = 'groupe'; // group
 $messages['GROUPS']['fr'] = 'groupes'; // groups
 $messages['MANAGE_GROUPS']['fr'] = 'gérer des groupes'; // manage groups
 $messages['NEW_GROUP']['fr'] = 'nouveau groupe'; // new group

@@ -34,15 +34,23 @@ if($submit)
 
 if(! $read_only)
 {
-$sql = "INSERT INTO $table (firstname, lastname, address, home, mobile, work, email, email2, bday, bmonth, byear, address2, phone2) VALUES ('$firstname','$lastname','$address','$home','$mobile','$work','$email','$email2','$bday','$bmonth','$byear', '$address2', '$phone2')";
-$result = mysql_query($sql);
-
-$sql = "INSERT INTO $table_grp_adr SELECT LAST_INSERT_ID() id, group_id FROM $table_groups WHERE group_name = '$group_name'";
-$result = mysql_query($sql);
-
-echo "<br><br>Information entered into address book,\n";
-echo "<br><a href='edit$page_ext'>add next</a> or return to ";
-echo "<a href='index$page_ext'>home page</a>.<br>";
+	$sql = "INSERT INTO $table (firstname, lastname, address, home, mobile, work, email, email2, bday, bmonth, byear, address2, phone2) VALUES ('$firstname','$lastname','$address','$home','$mobile','$work','$email','$email2','$bday','$bmonth','$byear', '$address2', '$phone2')";
+	$result = mysql_query($sql);
+	
+	if(isset($table_groups) and $table_groups != "" ) {
+		if( !$is_fix_group ) {
+			$g_name = $new_group;
+	  } else {
+	  	$g_name = $group_name;
+	  }
+	  echo "G: ".$g_name;
+		$sql = "INSERT INTO $table_grp_adr SELECT LAST_INSERT_ID() id, group_id FROM $table_groups WHERE group_name = '$g_name'";
+		$result = mysql_query($sql);
+	
+		echo "<br><br>Information entered into address book,\n";
+		echo "<br><a href='edit$page_ext'>add next</a> or return to ";
+		echo "<a href='index$page_ext'>home page</a>.<br>";
+	}
 
 } else
   echo "<br><br>Editing is disabled.\n";
@@ -197,6 +205,33 @@ $myrow = mysql_fetch_array($result);
         <input type="text" name="byear" size="4" maxlength="4" value="<?php echo $myrow["byear"]?>">
       </td>
     </tr>
+<?php
+/* Group handling on change
+    <tr> 
+      <td><?php echo ucfmsg("GROUP") ?>: </td>
+      <td> 
+				<?php      	
+				if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
+				<select name="new_group">
+				<?php
+					if($group_name != "") 
+					{
+						echo "<option>$group_name</option>\n";
+					}
+					$sql = "SELECT group_name FROM $table_groups ORDER BY lower(group_name) ASC";
+					$result_groups = mysql_query($sql);
+					$result_gropup_snumber = mysql_numrows($result_groups);
+					
+					while ($myrow_group = mysql_fetch_array($result_groups))
+					{
+						echo "<option>".$myrow_group["group_name"]."</option>\n";
+					}
+				?>
+				</select>
+				<?php } ?>
+      </td>
+    </tr>
+ */ ?>
     <tr> 
       <td colspan=2><b><br><br><?php echo ucfmsg("SECONDARY") ?></b></td>
     </tr>
@@ -346,6 +381,36 @@ else
         <input type="text" name="byear" size="4" maxlength="4">
       </td>
     </tr>
+    <tr> 
+      <td><br></td>
+    </tr>
+		<?php      	
+    if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
+    <tr> 
+      <td><?php echo ucfmsg("GROUP") ?>: </td>
+      <td> 
+				<select name="new_group">
+				<?php
+				  echo "Hello World";
+					if($group_name != "") 
+					{
+						echo "<option>$group_name</option>\n";
+					} ?>
+          <option value="[none]">[<?php echo msg("NONE"); ?>]</option>
+          <?php
+					$sql="SELECT group_name FROM $table_groups ORDER BY lower(group_name) ASC";
+					$result_groups = mysql_query($sql);
+					$result_gropup_snumber = mysql_numrows($result_groups);
+					
+					while ($myrow_group = mysql_fetch_array($result_groups))
+					{
+						echo "<option>".$myrow_group["group_name"]."</option>\n";
+					}
+				?>
+				</select>
+      </td>
+    </tr>
+		<?php } ?>
     <tr> 
       <td colspan=2><b><br><br><?php echo ucfmsg("SECONDARY") ?></b></td>
     </tr>
