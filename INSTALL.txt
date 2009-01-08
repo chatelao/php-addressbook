@@ -12,6 +12,9 @@ Basic Installation
 Advanced Tuning (optional)
 ==========================
 
-4. (optional) Feel free to change all default parameters.
+4. (optional) Feel free to change all other parameters of "config/config.php".
 
-5. (optional) Contribute to the project, if you like.
+5. (optional) Use the "mod_auth" and "mod_rewrite" samples for 
+              your user management.
+
+6. (optional) Contribute to the project (correct/add translations, etc.).
