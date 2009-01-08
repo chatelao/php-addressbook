@@ -1,11 +1,9 @@
 <?php
 /*
- * $HeadURL$
+ * Core file for library and parameter handling:
  *
- * Core file for library and parameter handling.
- *
- * $LastChangedDate$
- * $Rev$
+ * - $LastChangedDate$
+ * - $Rev$
  */
 
 include("config/config.php");
