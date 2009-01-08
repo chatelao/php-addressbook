@@ -43,7 +43,6 @@ if(! $read_only)
 	  } else {
 	  	$g_name = $group_name;
 	  }
-	  echo "G: ".$g_name;
 		$sql = "INSERT INTO $table_grp_adr SELECT LAST_INSERT_ID() id, group_id FROM $table_groups WHERE group_name = '$g_name'";
 		$result = mysql_query($sql);
 	
