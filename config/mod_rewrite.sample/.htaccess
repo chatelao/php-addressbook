@@ -1,0 +1,10 @@
+Options +FollowSymlinks
+RewriteEngine on
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^/]+)$ $1/ [R]
+
+RewriteRule ^(all)/(.*)           addressbook/$2?%{QUERY_STRING}
+RewriteRule ^(test)/(.*)          addressbook/$2?%{QUERY_STRING}&fixgroup&group=$1
+RewriteRule ^(readonly-test)/(.*) addressbook/$2?%{QUERY_STRING}&fixgroup&readonly&group=test
