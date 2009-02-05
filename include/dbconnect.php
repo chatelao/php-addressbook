@@ -10,6 +10,10 @@ include("config/config.php");
 
 // Check for any mistakes (Debugging)
 // error_reporting(E_ALL);
+// http://www.php.net/ini.core
+// * short_open_tag  	"0"
+// * register_globals  	"0"
+// * memory_limit  	"8M"
 
 // Suppress caching, force refresh on every reload.
 header("Cache-Control: no-cache, must-revalidate");
@@ -214,6 +218,6 @@ $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth =
 
 $group_from_where = "$table_groups WHERE group_name = '$group_name' ";
 
-$version = '3.4.3';
+$version = '3.4.4';
 
 ?>

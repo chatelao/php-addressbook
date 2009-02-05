@@ -2,7 +2,7 @@
 <table width="100" cellspacing="0" cellpadding="2">
   <tr>
     <td>
-    	<img src="<?php echo ${url_images}; ?>icons/font.png">
+    	<img src="<?php echo $url_images; ?>icons/font.png">
     	<a href="./<?php echo ($group == "" || $group == "[none]" || $fixgroup ? "" : "?group=".$group); ?>"><?php echo msg('HOME'); ?></a></td>
   </tr>
   <tr><td/></tr>
@@ -10,7 +10,7 @@
 { ?>
   <tr>
     <td>
-    	<img src="<?php echo ${url_images}; ?>icons/add.png">
+    	<img src="<?php echo $url_images; ?>icons/add.png">
     	<a href="edit<?php echo $page_ext; ?>"><?php echo msg('ADD_NEW'); ?></a></td>
   </tr>
 <?php 
@@ -19,7 +19,7 @@ if(!$read_only && $public_group_edit && $table_groups != "" && !$is_fix_group)
 { ?>
   <tr>
     <td>
-      <img src="<?php echo ${url_images}; ?>icons/group.png">
+      <img src="<?php echo $url_images; ?>icons/group.png">
     	<a href="group<?php echo $page_ext; ?>"><?php echo msg('GROUPS'); ?></a></td>
   </tr>
 <?php
@@ -29,22 +29,22 @@ if(!$read_only && $public_group_edit && $table_groups != "" && !$is_fix_group)
   <tr><td/></tr>
   <tr>
     <td>
-    	<img src="<?php echo ${url_images}; ?>icons/date.png">
+    	<img src="<?php echo $url_images; ?>icons/date.png">
     	<a href="birthdays<?php echo $page_ext; ?>"><?php echo msg('NEXT_BIRTHDAYS'); ?></a></td>
   </tr>
   <tr>
     <td>
-    	<img src="<?php echo ${url_images}; ?>icons/printer.png">
+    	<img src="<?php echo $url_images; ?>icons/printer.png">
     	<a href="view<?php echo $page_ext_qry; ?>all&print"><?php echo msg('PRINT_ALL'); ?></a></td>
   </tr>
   <tr>
     <td>
-      <img src="<?php echo ${url_images}; ?>icons/book_open.png">
+      <img src="<?php echo $url_images; ?>icons/book_open.png">
       <a href="view<?php echo $page_ext_qry; ?>all&print&phones"><?php echo msg('PRINT_PHONES'); ?></a></td>
   </tr>
   <tr>
     <td>
-      <img src="<?php echo ${url_images}; ?>icons/page_excel.png">
+      <img src="<?php echo $url_images; ?>icons/page_excel.png">
     	<a href="csv<?php echo $page_ext; ?>"><?php echo msg('EXPORT_CSV'); ?></a></td>
   </tr>                                                                   
   <tr><td/></tr>                                                          

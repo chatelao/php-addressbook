@@ -30,6 +30,13 @@ echo "<a style='font-size:75%' href='$link=a'>A</a> | <a style='font-size:75%' h
 <br>
 <hr>
 <?php
+
+if(true) {
+  $sql_order = "ORDER BY lastname, firstname ASC";
+} else {
+  $sql_order = "ORDER BY firstname, lastname ASC";
+}
+
 if ($searchstring)
 	{
   
@@ -43,15 +50,12 @@ if ($searchstring)
                     OR address   LIKE '%$searchword%' 
                     OR email     LIKE '%$searchword%')";
     }
-    $sql .= "ORDER BY lastname, firstname ASC";
-  }
-else if ($alphabet)
-	{
-$sql = "SELECT DISTINCT $table.* FROM $base_from_where AND LEFT(lastname,1) = '$alphabet' ORDER BY lastname, firstname";
-	}
-else
-	{
-$sql="SELECT DISTINCT $table.* FROM $base_from_where ORDER BY lastname, firstname ASC";
+    $sql .= $sql_order;
+    
+  } else if ($alphabet) {
+    $sql = "SELECT DISTINCT $table.* FROM $base_from_where AND LEFT(lastname,1) = '$alphabet' ".$sql_order;
+  } else{
+    $sql="SELECT DISTINCT $table.* FROM $base_from_where ".$sql_order;
 	}
 	$result = mysql_query($sql);
 	$resultsnumber = mysql_numrows($result);

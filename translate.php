@@ -11,7 +11,7 @@ include("include/translations.inc.php");
 //
 if(isset($_REQUEST['translation'])) { ?>
 
-&lt;?php;<br>
+&lt;?php<br>
 //<br>
 // New translations & fixes are welcome:<br>
 // * chatelao(ät)users.sourceforge.net<br>

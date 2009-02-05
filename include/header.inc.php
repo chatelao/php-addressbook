@@ -32,7 +32,7 @@
   // - All if nothing is defined
   //
   if( count($default_languages) > 0) {
-    if( $_GET["more_langs"] == "") {
+    if( !isset($_GET["more_langs"]) || $_GET["more_langs"] == "") {
       $loop_langs = $default_languages;
       ?>[<a title='other languages'href='?more_langs=yes'>+</a>] | <?php
     } else {
@@ -51,7 +51,7 @@
     }
   }    
 
-  if(  ! ($_GET["more_langs"] == "" && count($default_languages) > 0) ) {
+  if(  ! ((!isset($_GET["more_langs"]) || $_GET["more_langs"] == "") && count($default_languages) > 0) ) {
     ?> | [<a title='default languages' href='?more_langs='> - </a>]<?php
   }
 ?>
