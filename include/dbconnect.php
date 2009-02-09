@@ -59,6 +59,9 @@ if(!isset($table_prefix))  $table_prefix  = "";
 // Show link to "group-edit" menu
 if(!isset($public_group_edit)) $public_group_edit = true;
 
+// Define default language behavoir
+if(!isset($map_guess)) $map_guess  = true;
+
 // Define default image location (same server)
 if(!isset($url_images)) $url_images = "";
 
