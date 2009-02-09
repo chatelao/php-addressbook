@@ -152,6 +152,8 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group)
     if( substr($phone, 0, 3) == "+41" )
 		{
 			$country = "Switzerland";
+		} else {
+			$country = "";
 		}
 
 		if($map_guess)
