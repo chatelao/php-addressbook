@@ -52,6 +52,10 @@ if(!isset($month_lookup))  $month_lookup = "month_lookup";
 if(!isset($table_groups))  $table_groups  = "group_list";
 if(!isset($table_grp_adr)) $table_grp_adr = "address_in_groups";
 
+// the table prefix
+if(!isset($table_prefix))  $table_prefix  = "";
+
+
 // Define default image location (same server)
 if(!isset($url_images)) $url_images = "";
 
