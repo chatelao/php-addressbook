@@ -21,6 +21,7 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 
 // Activate compression, if disabled in ".htaccess"
 if(   ini_get('zlib.output_compression') != 1
+   && isset($compression_level) 
    && $compression_level > 0) {
   ini_set('zlib.output_compression_level', $compression_level);
   ob_start('ob_gzhandler');
@@ -55,9 +56,17 @@ if(!isset($table_grp_adr)) $table_grp_adr = "address_in_groups";
 // the table prefix
 if(!isset($table_prefix))  $table_prefix  = "";
 
+// Show link to "group-edit" menu
+if(!isset($public_group_edit)) $public_group_edit = true;
 
 // Define default image location (same server)
 if(!isset($url_images)) $url_images = "";
+
+// Define default language behavoir
+if(!isset($lang)) $lang  = 'choose';
+
+// Define default UNO-languages
+if(!isset($default_languages)) $default_languages = "ar,de,fr,it,th,ru";
 
 // Split the default (displayed) languages
 if(isset($default_languages)) {
