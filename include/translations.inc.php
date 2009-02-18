@@ -69,7 +69,14 @@ if($lang == 'auto') {
   // => http://www.w3.org/International/articles/language-tags/
   // => Achtung: "en_us"
   //
-  foreach(split(',', strtolower( $_SERVER['HTTP_ACCEPT_LANGUAGE'] )) as $accept_lang) {
+  
+  if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) {
+    $http_accept_language = strtolower( $_SERVER['HTTP_ACCEPT_LANGUAGE'] );
+  } else {
+  	$http_accept_language = "";
+  }
+  
+  foreach(split(',', $http_accept_language) as $accept_lang) {
   	$accepted_languages[] = substr($accept_lang, 0, 2);
   }
 
