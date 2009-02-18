@@ -70,7 +70,7 @@ if($lang == 'auto') {
   // => Achtung: "en_us"
   //
   
-  if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) {
+  if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
     $http_accept_language = strtolower( $_SERVER['HTTP_ACCEPT_LANGUAGE'] );
   } else {
   	$http_accept_language = "";
