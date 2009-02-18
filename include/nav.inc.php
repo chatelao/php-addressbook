@@ -3,7 +3,7 @@
   <tr>
     <td>
     	<img src="<?php echo $url_images; ?>icons/font.png">
-    	<a href="./<?php echo ($group == "" || $group == "[none]" || $fixgroup ? "" : "?group=".$group); ?>"><?php echo msg('HOME'); ?></a></td>
+    	<a href="./<?php echo ($group == "" || $group == "[none]" || $is_fix_group ? "" : "?group=".$group); ?>"><?php echo msg('HOME'); ?></a></td>
   </tr>
   <tr><td/></tr>
 <?php if(! $read_only)
