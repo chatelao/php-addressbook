@@ -54,7 +54,7 @@
 
 	# Home contact
 	add(ucfmsg("ADDRESS"));
-	if($zip_patternn != "")
+	if($zip_pattern != "")
 	{
 		add(ucfmsg("ZIP"));
 		add(ucfmsg("CITY"));
@@ -97,10 +97,10 @@
                 }
 		
 		# Home contact
-		if($zip_patternn != "")
+		if($zip_pattern != "")
 		{
 
-			preg_match( "/(.*)(\b".$zip_patternn."\b)(.*)/m"
+			preg_match( "/(.*)(\b".$zip_pattern."\b)(.*)/m"
                                   , str_replace("\r\n", ", ", trim($myrow["address"])), $matches);
 		if(count($matches) > 1)
 			add(preg_replace("/,$/", "", trim($matches[1])));
