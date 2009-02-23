@@ -59,8 +59,12 @@ if(!isset($table_prefix))  $table_prefix  = "";
 // Show link to "group-edit" menu
 if(!isset($public_group_edit)) $public_group_edit = true;
 
-// Define default language behavoir
+// Define default map guessing
 if(!isset($map_guess)) $map_guess  = true;
+
+// Define default ZIP handling
+if(isset($plz_pattern)) $zip_pattern  = $plz_pattern;
+if(!isset($zip_pattern)) $zip_pattern = "";
 
 // Define default image location (same server)
 if(!isset($url_images)) $url_images = "";
@@ -234,6 +238,6 @@ $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth =
 
 $group_from_where = "$table_groups WHERE group_name = '$group_name' ";
 
-$version = '3.4.6';
+$version = '3.4.7';
 
 ?>
