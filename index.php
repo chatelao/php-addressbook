@@ -48,7 +48,10 @@ if ($searchstring)
     	$sql .= "AND (   lastname  LIKE '%$searchword%' 
                     OR firstname LIKE '%$searchword%' 
                     OR address   LIKE '%$searchword%' 
-                    OR email     LIKE '%$searchword%')";
+                    OR email     LIKE '%$searchword%'
+                    OR email2    LIKE '%$searchword%'
+                    OR address2  LIKE '%$searchword%' 
+                    )";
     }
     $sql .= $sql_order;
     
