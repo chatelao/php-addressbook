@@ -56,6 +56,10 @@ function showOneEntry($r, $only_phone = false)
 	 }	   
    $view .= ($r['phone2']   != "" ? "P: ".$r['phone2']."<br>" : "");
 
+   if(! $only_phone) {
+	$view .= "<br />".($r['notes']   != "" ? "Notes: ".$r['notes']."<br />" : "");
+   }
+
    echo $view."\n";
 
    if( !isset($print) and !$is_fix_group) {

@@ -62,6 +62,40 @@
   <tr> 
     <td width="10" bgcolor="#003366">&nbsp; </td>
     <td width="107" valign="top"> 
-      <?php include("include/nav.inc.php"); ?>
+<?php
+  if($is_logged_in) {
+    include("include/nav.inc.php"); 
+  }
+?>
     </td>
     <td valign="top">
+<?php
+//*
+if(! $is_logged_in) { ?>
+  <form accept-charset="utf-8" method="POST" action="<?php $PHP_SELF ?>" name="searchform">
+  	<table><tr><td>
+    <b>User:</b>
+    </td></tr><tr><td>
+    <input type="text" value="<?php echo $user; ?>" name="user" title="<?php echo ucfmsg('SEARCH_FOR_ANY_TEXT'); ?>" size="45"  tabindex="0"/>
+    </td></tr><tr><td>
+    <b>Password:</b>
+    </td></tr><tr><td>
+    <input type="password" name="pass" title="<?php echo ucfmsg('SEARCH_FOR_ANY_TEXT'); ?>" size="45"  tabindex="0"/>
+    </td></tr><tr><td>
+    <script language="javascript">
+    <!--
+       document.searchform.searchstring.focus();
+      --></script>
+    <input type="submit" value="<?php echo ucfirst(msg("LOGIN")) ?>"></td>
+    <!--
+    <input type="submit" value="<?php echo ucfirst(msg("NEW_PASS")) ?>"></td>
+      -->
+  </form>
+<?php
+	exit;
+} else {
+?>
+<?php
+}
+//*/
+?>

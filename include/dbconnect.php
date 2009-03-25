@@ -30,13 +30,17 @@ if(   ini_get('zlib.output_compression') != 1
 // Copy only used variables into global space.
 $get_vars = array( 'searchstring', 'alphabet', 'group', 'resultnumber'
                  , 'submit', 'update', 'delete', 'id' 
-                 , 'new', 'add', 'remove', 'edit' );
+                 , 'new', 'add', 'remove', 'edit', 'user', 'pass', 'session' );
+
+$cookie_prefix = "phpaddr_";
 
 foreach($get_vars as $get_var) {
    if(isset($_GET[$get_var])) {
      ${$get_var} = $_GET[$get_var];
    } elseif(isset($_POST[$get_var])) {
      ${$get_var} = $_POST[$get_var];
+   } elseif(isset($_COOKIE[$cookie_prefix.$get_var])) {
+     ${$get_var} = $_COOKIE[$cookie_prefix.$get_var];
    } else {
      ${$get_var} = null;
    }  	
@@ -138,6 +142,8 @@ mysql_select_db("$dbname", $db);
 mysql_query('set character set utf8;');
 mysql_query("SET NAMES `utf8`");
 
+include("login.inc.php");
+
 // To run the script on systeme with "register_globals" disabled,
 // import all variables in a bit secured way: Remove HTML Tags
 foreach($_REQUEST as $key => $value)
@@ -238,6 +244,6 @@ $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth =
 
 $group_from_where = "$table_groups WHERE group_name = '$group_name' ";
 
-$version = '3.4.8';
+$version = '4.0';
 
 ?>
