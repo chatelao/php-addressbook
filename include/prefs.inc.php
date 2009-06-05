@@ -1,5 +1,7 @@
 <?php
 
+$cookie_prefix = "phpaddr_";
+
 $cookie_names[] = 'lang';
 $cookie_names[] = 'mailer';
 

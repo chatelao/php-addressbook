@@ -1,15 +1,18 @@
-<html <?php if(is_right_to_left($lang)) echo "DIR='RTL'"; ?>>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" <?php if(is_right_to_left($lang)) echo "dir='rtl'"; ?>>
 <head>
-<!--
-<link rel="stylesheet" href="style.css" type="text/css">
-  -->
-<style>
-<?php
- //
- // Include to stylesheet, to improve the first 50%
- // of non-cached accesses to the pages.
- //
- include ("style.css");
- ?>
-</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="Description" content="PHP-Addressbook" />
+	<meta name="Keywords" content="" />
+	<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+	<link rel="icon" type="image/png" href="<?php echo $url_images; ?>icons/font.png" />
+	<?php if(is_right_to_left($lang)) { ?>
+	<style type="text/css">
+		<!--
+		/* CSS for right to left */
+		label {margin-left:0.5em;float:right;text-align:right;}
+		#nav {float:right;border:0;border-right:10px solid #036;}
+		#content,#right {float:left;}
+		-->
+	</style>
+	<?php } else {} ?>
