@@ -109,7 +109,7 @@ $is_fix_group = isset($_GET["fixgroup"]);
 // Remember the current group
 if(!$is_fix_group and $group_name)
 {
-  $page_ext_qry = "$page_ext?group=$group_name&amp;";
+  $page_ext_qry = "$page_ext?group=$group_name&";
   $page_ext     = "$page_ext?group=$group_name";
 }
 
@@ -238,6 +238,6 @@ $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth =
 
 $group_from_where = "$table_groups WHERE group_name = '$group_name' ";
 
-$version = '3.5';
+$version = '3.4.8';
 
 ?>

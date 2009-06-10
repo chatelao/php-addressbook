@@ -80,7 +80,7 @@ ORDER BY prio ASC";
 		$alternate = "1"; 
 		} 
 		echo "<tr bgcolor=$color>";
-		echo "<td>$bday.</td>";
+		echo "<td align=right>$bday.</td>";
 		echo "<td>$lastname</td>";
 		echo "<td>$firstname</td>";
 		echo "<td><a href='".getMailer()."$email'>$email</a></td>";

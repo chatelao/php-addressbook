@@ -52,7 +52,7 @@ if(! $read_only)
 	   }
 	 }
 	 
-	 $sql = "INSERT INTO $table (firstname, lastname, address, home, mobile, work, email, email2, bday, bmonth, byear, address2, phone2, notes) VALUES ('$firstname','$lastname','$address','$home','$mobile','$work','$email','$email2','$bday','$bmonth','$byear', '$address2', '$phone2', '$notes')";
+	 $sql = "INSERT INTO $table (firstname, lastname, address, home, mobile, work, email, email2, bday, bmonth, byear, address2, phone2) VALUES ('$firstname','$lastname','$address','$home','$mobile','$work','$email','$email2','$bday','$bmonth','$byear', '$address2', '$phone2')";
 	$result = mysql_query($sql);
 	
 	if(isset($table_groups) and $table_groups != "" ) {
@@ -83,7 +83,7 @@ else if($update)
 
 	if($resultsnumber > 0)
 	{
-		$sql = "UPDATE $table SET firstname='$firstname',lastname='$lastname',address='$address',home='$home',mobile='$mobile',work='$work',email='$email',email2='$email2',bday='$bday',bmonth='$bmonth',byear='$byear',address2 = '$address2', phone2 = '$phone2', notes = '$notes' WHERE id='$id'";
+		$sql = "UPDATE $table SET firstname='$firstname',lastname='$lastname',address='$address',home='$home',mobile='$mobile',work='$work',email='$email',email2='$email2',bday='$bday',bmonth='$bmonth',byear='$byear',address2 = '$address2', phone2 = '$phone2' WHERE id='$id'";
 		$result = mysql_query($sql);
 
 		// header("Location: view?id=$id");		
@@ -264,12 +264,6 @@ $myrow = mysql_fetch_array($result);
         <input type="Text" name="phone2" value="<?php echo $myrow["phone2"]?>">
       </td>
     </tr>
-    <tr> 
-      <td><?php echo ucfmsg("NOTES") ?>:</td>
-      <td> 
-        <textarea name="notes" rows="5" cols="35"><?php echo $myrow["notes"]?></textarea>
-      </td>
-    </tr>
   </table>
     <br>
     <input type="Submit" name="update" value="<?php echo ucfmsg("UPDATE") ?>">
@@ -447,12 +441,6 @@ else
       <td><?php echo ucfmsg("PHONE_HOME") ?>:</td>
       <td> 
         <input type="Text" name="phone2">
-      </td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("NOTES") ?>: </td>
-      <td> 
-        <textarea name="notes" rows="5" cols="35"></textarea>
       </td>
     </tr>
   </table>
