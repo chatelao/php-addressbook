@@ -34,7 +34,25 @@ if($submit)
 
 if(! $read_only)
 {
-	$sql = "INSERT INTO $table (firstname, lastname, address, home, mobile, work, email, email2, bday, bmonth, byear, address2, phone2, notes) VALUES ('$firstname','$lastname','$address','$home','$mobile','$work','$email','$email2','$bday','$bmonth','$byear', '$address2', '$phone2', '$notes')";
+	//
+	// Primitiv filter against spam on "sourceforge.net".
+	//
+	if($_SERVER['SERVER_NAME'] == "php-addressbook.sourceforge.net") {
+		
+	   $spam_test = $firstname.$lastname.$address.$home.$mobile.$work.$email.$email2.$bday.$bmonth.$byear.$address2.$phone2;
+     $blacklist = array( 'viagra', 'seroquel', 'zovirax', 'ultram', 'mortage', 'loan' );
+     foreach( $blacklist as $blackitem ) {
+	      if(strpos(strtolower($spam_test), $blackitem) !== FALSE ) {
+	        exit;
+	      }
+	   }
+	   if(   strlen($home)   > 15 
+	      || strlen($mobile) > 15) {
+	      	exit;
+	   }
+	 }
+	 
+	 $sql = "INSERT INTO $table (firstname, lastname, address, home, mobile, work, email, email2, bday, bmonth, byear, address2, phone2, notes) VALUES ('$firstname','$lastname','$address','$home','$mobile','$work','$email','$email2','$bday','$bmonth','$byear', '$address2', '$phone2', '$notes')";
 	$result = mysql_query($sql);
 	
 	if(isset($table_groups) and $table_groups != "" ) {
