@@ -35,7 +35,7 @@ CREATE TABLE `group_list` (
 --
 -- Test group "Rob" (For: Rob M., Autor of version 1.2).
 --
-INSERT INTO `group_list` (group_name, group_header, group_footer) VALUES ('Rob', '<td>\r\n   <font size=+1><b><center>Rob</center><hr><i>Thanks!</i></b></font>\r\n</td>', '<h2>Rob''s Widgetmonkey:</h2>\r\n<ul>\r\n<li><a href="http://www.widgetmonkey.com/">Homepage</a>\r\n<li><a href="http://www.widgetmonkey.com/app.php?id=1">The original "Address Book"</a>\r\n</ul>');
+INSERT INTO `group_list` (group_name, group_header, group_footer) VALUES ('Rob', '<div style="text-align:center;">\r\n   <h1>Rob</h1><hr /><h2><i>Thanks!</i></h2>\r\n</div>', '<h2>Rob''s Widgetmonkey:</h2>\r\n<ul>\r\n<li><a href="http://www.widgetmonkey.com/">Homepage</a></li>\r\n<li><a href="http://www.widgetmonkey.com/app.php?id=1">The original "Address Book"</a>\r\n</li></ul>');
 
 
 CREATE TABLE `address_in_groups` (

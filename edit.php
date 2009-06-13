@@ -52,7 +52,7 @@ if(! $read_only)
 	   }
 	 }
 	 
-	 $sql = "INSERT INTO $table (firstname, lastname, address, home, mobile, work, email, email2, bday, bmonth, byear, address2, phone2) VALUES ('$firstname','$lastname','$address','$home','$mobile','$work','$email','$email2','$bday','$bmonth','$byear', '$address2', '$phone2')";
+	$sql = "INSERT INTO $table (firstname, lastname, address, home, mobile, work, email, email2, bday, bmonth, byear, address2, phone2) VALUES ('$firstname','$lastname','$address','$home','$mobile','$work','$email','$email2','$bday','$bmonth','$byear', '$address2', '$phone2')";
 	$result = mysql_query($sql);
 	
 	if(isset($table_groups) and $table_groups != "" ) {
@@ -64,13 +64,12 @@ if(! $read_only)
 		$sql = "INSERT INTO $table_grp_adr SELECT LAST_INSERT_ID() id, group_id FROM $table_groups WHERE group_name = '$g_name'";
 		$result = mysql_query($sql);
 	
-		echo "<br><br>Information entered into address book,\n";
-		echo "<br><a href='edit$page_ext'>add next</a> or return to ";
-		echo "<a href='index$page_ext'>home page</a>.<br>";
+		echo "<br /><div class='msgbox'>Information entered into address book.";
+		echo "<br /><i><a href='edit$page_ext'>add next</a> or return to <a href='index$page_ext'>home page</a>.</i></div>";
 	}
 
 } else
-  echo "<br><br>Editing is disabled.\n";
+  echo "<br /><div class='msgbox'>Editing is disabled.</div>\n";
 
 }
 else if($update)
@@ -88,14 +87,13 @@ else if($update)
 
 		// header("Location: view?id=$id");		
 
-		echo "<br>".ucfmsg('ADDRESS_BOOK')." ".msg('UPDATED')."\n";
-		echo "<br><a href='index$page_ext'>".ucfmsg('HOME')."</a>";
+		echo "<br /><div class='msgbox'>".ucfmsg('ADDRESS_BOOK')." ".msg('UPDATED')."<br /><i>return to <a href='index$page_ext'>home page</a></i></div>";
 	} else {
-		echo "<br>".ucfmsg('INVALID')." ID.\n";
-		echo "<br><a href='index$page_ext'>".ucfmsg('HOME')."</a>";  
+		echo "<br /><div class='msgbox'>".ucfmsg('INVALID')." ID.<br /><i>return to <a href='index$page_ext'>home page</a></i></div>";
+		echo "";  
 	}
   } else
-    echo "<br><br>Editing is disabled.\n";
+    echo "<br /><div class='msgbox'>Editing is disabled.</div>\n";
 }
 else if($id)
 {
@@ -104,72 +102,38 @@ else if($id)
 $result = mysql_query("SELECT * FROM $base_from_where AND $table.id=$id",$db);
 $myrow = mysql_fetch_array($result);
 ?>
-  <form accept-charset="utf-8" method="post" action="edit<?php echo $page_ext; ?>">
-    
-  <table width="380" border="0" cellspacing="1" cellpadding="1">
-    <tr> 
-      <td> 
-        <input type="hidden" name="id" value="<?php echo $myrow["id"]?>">
-        <?php echo ucfmsg("FIRSTNAME") ?>: </td>
-      <td> 
-        <input type="Text" name="firstname" size="35" value="<?php echo $myrow["firstname"]?>">
-      </td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("LASTNAME") ?>:</td>
-      <td> 
-        <input type="Text" name="lastname" size="35" value="<?php echo $myrow["lastname"]?>">
-      </td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("ADDRESS") ?>: </td>
-      <td> 
-        <textarea name="address" rows="5" cols="35"><?php echo $myrow["address"]?></textarea>
-      </td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("TELEPHONE") ?></td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("PHONE_HOME") ?>:</td>
-      <td> 
-        <input type="Text" name="home" value="<?php echo $myrow["home"]?>">
-      </td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("PHONE_MOBILE") ?>:</td>
-      <td> 
-        <input type="Text" name="mobile" value="<?php echo $myrow["mobile"]?>">
-      </td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("PHONE_WORK") ?>: </td>
-      <td> 
-        <input type="Text" name="work" value="<?php echo $myrow["work"]?>">
-      </td>
-    </tr>
-    <tr> 
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("EMAIL") ?>:</td>
-      <td> 
-        <input type="Text" name="email" size="35" value="<?php echo $myrow["email"]?>">
-      </td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("EMAIL") ?>2:</td>
-      <td> 
-        <input type="Text" name="email2" size="35" value="<?php echo $myrow["email2"]?>">
-      </td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("BIRTHDAY") ?>:</td>
-      <td> 
+	<form accept-charset="utf-8" method="post" action="edit<?php echo $page_ext; ?>">
+
+		<input type="hidden" name="id" value="<?php echo $myrow['id']?>" />
+		<label><?php echo ucfmsg("FIRSTNAME") ?>:</label>
+		<input type="text" name="firstname" size="35" value="<?php echo $myrow['firstname']?>" /><br />
+
+		<label><?php echo ucfmsg("LASTNAME") ?>:</label>
+		<input type="text" name="lastname" size="35" value="<?php echo $myrow['lastname']?>" /><br />
+
+		<label><?php echo ucfmsg("ADDRESS") ?>:</label>
+		<textarea name="address" rows="5" cols="35"><?php echo $myrow["address"]?></textarea><br />
+
+		<label><?php echo ucfmsg("TELEPHONE") ?></label><br /><br class="clear" />
+
+		<label><?php echo ucfmsg("PHONE_HOME") ?>:</label>
+		<input type="text" name="home" value="<?php echo $myrow['home']?>" /><br />
+
+		<label><?php echo ucfmsg("PHONE_MOBILE") ?>:</label>
+		<input type="text" name="mobile" value="<?php echo $myrow['mobile']?>" /><br />
+
+		<label><?php echo ucfmsg("PHONE_WORK") ?>:</label>
+		<input type="text" name="work" value="<?php echo $myrow['work']?>" /><br />
+
+		<label><?php echo ucfmsg("EMAIL") ?>:</label>
+		<input type="text" name="email" size="35" value="<?php echo $myrow['email']?>" /><br />
+
+		<label><?php echo ucfmsg("EMAIL") ?>2:</label>
+		<input type="text" name="email2" size="35" value="<?php echo $myrow['email2']?>" /><br />
+
+		<label><?php echo ucfmsg("BIRTHDAY") ?>:</label>
         <select name="bday">
-	<option value="<?php echo $myrow["bday"]?>" selected><?php echo ($myrow["bday"] == 0?"-":$myrow["bday"]) ?></option>
+			<option value="<?php echo $myrow['bday']?>" selected="selected"><?php echo ($myrow["bday"] == 0?"-":$myrow["bday"]) ?></option>
           <option value="0">-</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -204,7 +168,7 @@ $myrow = mysql_fetch_array($result);
           <option value="31">31</option>
         </select>
         <select name="bmonth">
-          <option value="<?php echo $myrow["bmonth"] ?>" selected><?php echo ucfmsg(strtoupper($myrow["bmonth"])); ?></option>
+          <option value="<?php echo $myrow['bmonth'] ?>" selected="selected"><?php echo ucfmsg(strtoupper($myrow["bmonth"])); ?></option>
           <option value="-">-</option>
           <option value="January"><?php echo ucfmsg("JANUARY") ?></option>
           <option value="February"><?php echo ucfmsg("FEBRUARY") ?></option>
@@ -219,14 +183,11 @@ $myrow = mysql_fetch_array($result);
           <option value="November"><?php echo ucfmsg("NOVEMBER") ?></option>
           <option value="December"><?php echo ucfmsg("DECEMBER") ?></option>
         </select>
-        <input type="text" name="byear" size="4" maxlength="4" value="<?php echo $myrow["byear"]?>">
-      </td>
-    </tr>
+        <input type="text" name="byear" size="4" maxlength="4" value="<?php echo $myrow['byear']?>" /><br />
+
 <?php
 /* Group handling on change
-    <tr> 
-      <td><?php echo ucfmsg("GROUP") ?>: </td>
-      <td> 
+      <label><?php echo ucfmsg("GROUP") ?>:</label>
 				<?php      	
 				if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 				<select name="new_group">
@@ -246,108 +207,64 @@ $myrow = mysql_fetch_array($result);
 				?>
 				</select>
 				<?php } ?>
-      </td>
-    </tr>
+			<br />
  */ ?>
-    <tr> 
-      <td colspan=2><b><br><br><?php echo ucfmsg("SECONDARY") ?></b></td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("ADDRESS") ?>: </td>
-      <td> 
-        <textarea name="address2" rows="5" cols="35"><?php echo $myrow["address2"]?></textarea>
-      </td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("PHONE_HOME") ?>:</td>
-      <td> 
-        <input type="Text" name="phone2" value="<?php echo $myrow["phone2"]?>">
-      </td>
-    </tr>
-  </table>
-    <br>
-    <input type="Submit" name="update" value="<?php echo ucfmsg("UPDATE") ?>">
+		<br />
+		<label><b><?php echo ucfmsg("SECONDARY") ?></b></label><br /><br class="clear" />
+
+		<label><?php echo ucfmsg("ADDRESS") ?>:</label>
+		<textarea name="address2" rows="5" cols="35"><?php echo $myrow["address2"]?></textarea><br />
+
+		<label><?php echo ucfmsg("PHONE_HOME") ?>:</label>
+		<input type="text" name="phone2" value="<?php echo $myrow['phone2']?>" /><br /><br /><br />
+
+    	<input type="submit" name="update" value="<?php echo ucfmsg('UPDATE') ?>" />
   </form>
   <form method="get" action="delete<?php echo $page_ext; ?>">
-    <input type="hidden" name="id" value="<?php echo $myrow["id"]?>">
-    <input type="Submit" name="update" value="<?php echo ucfmsg("DELETE") ?>">
+		<input type="hidden" name="id" value="<?php echo $myrow['id']?>" />
+		<input type="submit" name="update" value="<?php echo ucfmsg('DELETE') ?>" />
   </form>
-  <?php
-
-  } else
-    echo "<br><br>Editing is disabled.\n";
-}
-else
-{
-  if(! $read_only)
-  {
+<?php
+	} else
+		echo "<br /><div class='msgbox'>Editing is disabled.</div>";
+	}
+	else {
+		if(! $read_only) {
 ?>
   <form accept-charset="utf-8" method="post" action="edit<?php echo $page_ext; ?>">
-    
-  <table width="380" border="0" cellspacing="1" cellpadding="1">
-    <tr> 
-      <td> 
-        <input type="hidden" name="id" value="<?php echo $myrow["id"]?>">
-        <?php echo ucfmsg("FIRSTNAME") ?>: </td>
-      <td> 
-        <input type="Text" name="firstname" size="35">
-      </td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("LASTNAME") ?>:</td>
-      <td> 
-        <input type="Text" name="lastname" size="35">
-      </td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("ADDRESS") ?>: </td>
-      <td> 
-        <textarea name="address" rows="5" cols="35"></textarea>
-      </td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("TELEPHONE") ?></td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr> 
-      <td>Home:</td>
-      <td> 
-        <input type="Text" name="home">
-      </td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("PHONE_MOBILE") ?>:</td>
-      <td> 
-        <input type="Text" name="mobile">
-      </td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("PHONE_WORK") ?>: </td>
-      <td> 
-        <input type="Text" name="work">
-      </td>
-    </tr>
-    <tr> 
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("EMAIL") ?>:</td>
-      <td> 
-        <input type="Text" name="email" size="35">
-      </td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("EMAIL") ?>2:</td>
-      <td> 
-        <input type="Text" name="email2" size="35">
-      </td>
-    </tr>
-    <tr>
-      <td><?php echo ucfmsg("BIRTHDAY") ?>:</td>
-      <td>
+
+		<input type="hidden" name="id" value="<?php echo $myrow['id']?>" />
+		<label><?php echo ucfmsg("FIRSTNAME") ?>:</label>
+		<input type="text" name="firstname" size="35" /><br />
+
+		<label><?php echo ucfmsg("LASTNAME") ?>:</label>
+		<input type="text" name="lastname" size="35" /><br />
+
+		<label><?php echo ucfmsg("ADDRESS") ?>:</label>
+		<textarea name="address" rows="5" cols="35"></textarea><br />
+
+		<label><?php echo ucfmsg("TELEPHONE") ?></label><br /><br class="clear" />
+
+		<label>Home:</label>
+		<input type="text" name="home" size="35" /><br />
+
+		<label><?php echo ucfmsg("PHONE_MOBILE") ?>:</label>
+		<input type="text" name="mobile" size="35" /><br />
+
+		<label><?php echo ucfmsg("PHONE_WORK") ?>:</label>
+		<input type="text" name="work" size="35" /><br />
+
+		<label>&nbsp;</label><br /><br class="clear" />
+
+		<label><?php echo ucfmsg("EMAIL") ?>:</label>
+		<input type="text" name="email" size="35" /><br />
+
+		<label><?php echo ucfmsg("EMAIL") ?>2:</label>
+		<input type="text" name="email2" size="35" /><br />
+
+		<label><?php echo ucfmsg("BIRTHDAY") ?>:</label>
         <select name="bday">
-          <option value="0" selected>-</option>
+          <option value="0" selected="selected">-</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -381,7 +298,7 @@ else
           <option value="31">31</option>
         </select>
         <select name="bmonth">
-          <option value="-" selected>-</option>
+          <option value="-" selected="selected">-</option>
           <option value="January"><?php echo ucfmsg("JANUARY") ?></option>
           <option value="February"><?php echo ucfmsg("FEBRUARY") ?></option>
           <option value="March"><?php echo ucfmsg("MARCH") ?></option>
@@ -395,20 +312,14 @@ else
           <option value="November"><?php echo ucfmsg("NOVEMBER") ?></option>
           <option value="December"><?php echo ucfmsg("DECEMBER") ?></option>
         </select>
-        <input type="text" name="byear" size="4" maxlength="4">
-      </td>
-    </tr>
-    <tr> 
-      <td><br></td>
-    </tr>
+        <input type="text" name="byear" size="4" maxlength="4" /><br />
+
 		<?php      	
     if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
-    <tr> 
-      <td><?php echo ucfmsg("GROUP") ?>: </td>
-      <td> 
+
+	<label><?php echo ucfmsg("GROUP") ?>:</label>
 				<select name="new_group">
 				<?php
-				  echo "Hello World";
 					if($group_name != "") 
 					{
 						echo "<option>$group_name</option>\n";
@@ -424,33 +335,23 @@ else
 						echo "<option>".$myrow_group["group_name"]."</option>\n";
 					}
 				?>
-				</select>
-      </td>
-    </tr>
+				</select><br />
 		<?php } ?>
-    <tr> 
-      <td colspan=2><b><br><br><?php echo ucfmsg("SECONDARY") ?></b></td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("ADDRESS") ?>: </td>
-      <td> 
-        <textarea name="address2" rows="5" cols="35"></textarea>
-      </td>
-    </tr>
-    <tr> 
-      <td><?php echo ucfmsg("PHONE_HOME") ?>:</td>
-      <td> 
-        <input type="Text" name="phone2">
-      </td>
-    </tr>
-  </table>
-    <br>
-    <input type="Submit" name="submit" value="<?php echo ucfmsg("ENTER") ?>">
+		
+		<br />
+		<label><b><?php echo ucfmsg("SECONDARY") ?></b></label><br /><br class="clear" />
+
+		<label><?php echo ucfmsg("ADDRESS") ?>:</label>
+		<textarea name="address2" rows="5" cols="35"></textarea><br />
+
+		<label><?php echo ucfmsg("PHONE_HOME") ?>:</label>
+		<input type="text" name="phone2" size="35" /><br /><br /><br />
+
+		<input type="submit" name="submit" value="<?php echo ucfmsg('ENTER') ?>" />
   </form>
 <?php
   } else
-    echo "<br><br>Editing is disabled.\n";
+    echo "<br /><div class='msgbox'>Editing is disabled.</div>";
 }
 
-include ("include/footer.inc.php");
-?>
+include ("include/footer.inc.php"); ?>

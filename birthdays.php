@@ -1,14 +1,12 @@
 <?php
-include ("include/dbconnect.php");
-include ("include/format.inc.php");
-  ?><title><?php echo ucfmsg("ADDRESS_BOOK").($group_name != "" ? " ($group_name)":""); ?></title><?php
-include ("include/header.inc.php");
+	include ("include/dbconnect.php");
+	include ("include/format.inc.php");
 ?>
-  <table border="0" cellspacing="2" width="380">
-    <tr>
-      <td><h1><?php echo ucfirst(msg("NEXT_BIRTHDAYS")) ?></h1></td>
-    </tr>
-  </table>
+<title><?php echo ucfmsg("ADDRESS_BOOK").($group_name != "" ? " ($group_name)":""); ?></title>
+<?php include ("include/header.inc.php"); ?>
+  
+<h1><?php echo ucfirst(msg("NEXT_BIRTHDAYS")) ?></h1>
+
 <?php
 
 $sql="
@@ -30,7 +28,8 @@ ORDER BY prio ASC";
 	$result = mysql_query($sql);
 	$resultsnumber = mysql_numrows($result);
 
-	echo "<TABLE BORDER=0>";
+	echo "<table id='birthdays'>";
+	$tablespace = 0;
 
 	$alternate = "2"; 
 
@@ -66,29 +65,35 @@ ORDER BY prio ASC";
 		if($lastmonth != $bmonth)
 		{
 			$lastmonth = $bmonth;
-			echo "<tr><td colspan=3><h2>".ucfmsg(strtoupper($myrow["bmonth"])).$myrow["display_year"]."</h2></td></tr>";
+			
+
+			if ($tablespace >=1) {
+				echo "<tr class='tablespace'><td colspan='10'><br /></td></tr>";
+			} else {}
+
+			echo "<tr><th colspan='10'>".ucfmsg(strtoupper($myrow["bmonth"])).$myrow["display_year"]."</th></tr>";
 			$alternate = "0"; 
 
 		}
 		
 		if ($alternate == "1") { 
-		$color = "#ffffff"; 
+		$color = "even"; 
 		$alternate = "2"; 
 		} 
 		else { 
-		$color = "#efefef"; 
+		$color = "odd"; 
 		$alternate = "1"; 
 		} 
-		echo "<tr bgcolor=$color>";
-		echo "<td align=right>$bday.</td>";
+		echo "<tr class='$color'>";
+		echo "<td>$bday.</td>";
 		echo "<td>$lastname</td>";
 		echo "<td>$firstname</td>";
 		echo "<td><a href='".getMailer()."$email'>$email</a></td>";
-		echo "<td align=right>$phone</td>";
-		echo "<td><a href='view${page_ext_qry}id=$id'><img border=0 src=${url_images}icons/status_online.png   width=16 height=16 title='".ucfmsg('DETAILS')."' alt='".ucfmsg('DETAILS')."'/></a></td>";
+		echo "<td>$phone</td>";
+		echo "<td class='center'><a href='view${page_ext_qry}id=$id'><img src='${url_images}icons/status_online.png' title='".ucfmsg('DETAILS')."' alt='".ucfmsg('DETAILS')."'/></a></td>";
     if(! $read_only)
-		  echo "<td><a href='edit${page_ext_qry}id=$id'><img border=0 src=${url_images}icons/pencil.png width=16 height=16 title='".ucfmsg('EDIT')."' alt='".ucfmsg('EDIT')."'/></a></td>";
-		echo "<td><font size=-2><a href='vcard${page_ext_qry}id=$id'><img border=0 src=${url_images}icons/vcard.png   width=16 height=16 title='vCard' alt='vCard'/></a></font></td>";
+		  echo "<td class='center'><a href='edit${page_ext_qry}id=$id'><img src='${url_images}icons/pencil.png' title='".ucfmsg('EDIT')."' alt='".ucfmsg('EDIT')."'/></a></td>";
+		echo "<td class='center'><a href='vcard${page_ext_qry}id=$id'><img src='${url_images}icons/vcard.png' title='vCard' alt='vCard'/></a></td>";
 
                 if( substr($phone, 0, 1) == "0" || substr($phone, 0, 3) == "+41")
 		{
@@ -99,21 +104,22 @@ ORDER BY prio ASC";
 		if($map_guess)
 		{
 		if($myrow["address"] != "")
-		echo "<td><font size=-2><a href='http://maps.google.com/maps?q=".urlencode(trim(str_replace("\r\n", ", ", $myrow["address"])).", $country")."&t=h'>
-                          <img border=0 src=${url_images}icons/car.png width=16 height=16 title='Google Maps' alt='vCard'/></a></font></td>";
+		echo "<td class='center'><a href='http://maps.google.com/maps?q=".urlencode(trim(str_replace("\r\n", ", ", $myrow["address"])).", $country")."&amp;t=h'>
+                          <img src='${url_images}icons/car.png' title='Google Maps' alt='vCard' /></a></td>";
 		else echo "<td/>";
 		}
 
 		$homepage = guessHomepage($email, $email2);
 		if(strlen($homepage) > 0)
 		{
-			echo "<td><font size=-2><a href='http://$homepage'><img border=0 src=${url_images}icons/house.png   width=16 height=16 title='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)' alt='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)'/></a></font></td>";
+			echo "<td class='center'><a href='http://$homepage'><img src='${url_images}icons/house.png' title='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)' alt='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)'/></a></td>";
 		} else
 			echo "<td/>";
 
-		echo "</TR>\n";
+		echo "</tr>\n";
+		$tablespace++;
 	}
-	echo "</TR></TABLE>";
+	echo "<!-- </tr> --> </table>";
 
 include ("include/footer.inc.php");
 

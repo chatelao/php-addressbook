@@ -109,7 +109,7 @@ $is_fix_group = isset($_GET["fixgroup"]);
 // Remember the current group
 if(!$is_fix_group and $group_name)
 {
-  $page_ext_qry = "$page_ext?group=$group_name&";
+  $page_ext_qry = "$page_ext?group=$group_name&amp;";
   $page_ext     = "$page_ext?group=$group_name";
 }
 
