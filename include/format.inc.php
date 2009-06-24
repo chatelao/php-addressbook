@@ -4,7 +4,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="Description" content="PHP-Addressbook" />
 	<meta name="Keywords" content="" />
-	<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+	<style type="text/css">
+		<?php php include("../style.css"); ?>
+  </style>
 	<link rel="icon" type="image/png" href="<?php echo $url_images; ?>icons/font.png" />
 	<?php if(is_right_to_left($lang)) { ?>
 	<style type="text/css">
