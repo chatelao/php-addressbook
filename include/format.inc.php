@@ -5,7 +5,7 @@
 	<meta name="Description" content="PHP-Addressbook" />
 	<meta name="Keywords" content="" />
 	<style type="text/css">
-		<?php php include("../style.css"); ?>
+		<?php include("style.css"); ?>
   </style>
 	<link rel="icon" type="image/png" href="<?php echo $url_images; ?>icons/font.png" />
 	<?php if(is_right_to_left($lang)) { ?>
