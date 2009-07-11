@@ -62,14 +62,14 @@ if ($searchstring) {
 
 if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 
-<form id="right" method="get" action="#">
+<form id="right">
 	<select name="group" onchange="this.parentNode.submit()">
 		<?php
 			if($group_name != "") {
 				echo "<option>$group_name</option>\n";
 			}
 		?>
-		<option value="[all]">[<?php echo msg("ALL"); ?>]</option>
+		<option value="">[<?php echo msg("ALL"); ?>]</option>
 		<option value="[none]">[<?php echo msg("NONE"); ?>]</option>
 		<?php
 			$sql="SELECT group_name FROM $table_groups ORDER BY lower(group_name) ASC";
@@ -240,4 +240,3 @@ function MailSelection() {
 //-->
 </script>
 <?php include("include/footer.inc.php"); ?>
-
