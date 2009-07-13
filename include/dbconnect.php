@@ -62,6 +62,9 @@ if(!isset($public_group_edit)) $public_group_edit = true;
 // Define default map guessing
 if(!isset($map_guess)) $map_guess  = true;
 
+// Define default ajax mode
+if(!isset($use_ajax)) $use_ajax  = true;
+
 // Define default ZIP handling
 if(isset($plz_pattern)) $zip_pattern  = $plz_pattern;
 if(!isset($zip_pattern)) $zip_pattern = "";
@@ -238,6 +241,6 @@ $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth =
 
 $group_from_where = "$table_groups WHERE group_name = '$group_name' ";
 
-$version = '4.0.2';
+$version = '4.1';
 
 ?>

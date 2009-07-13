@@ -40,8 +40,22 @@ function showOneEntry($r, $only_phone = false)
    $view .= ($r['work']   != "" ? ucfmsg('W:')." ".$r['work']."<br />" : "");
    if(! $only_phone) {
 	   $view .= "<br />";
-	   $view .= ($r['email'] != "" ?  "<a href=".'"'.getMailer().$r['email'].'"'.">".$r['email']."</a><br />" : "");
-	   $view .= ($r['email2'] != "" ? "<a href=".'"'.getMailer().$r['email2'].'"'.">".$r['email2']."</a><br />" : "");
+	   if( isset($_GET["print"])) {
+	     $view .= ($r['email'] != "" ?  "<a href=".'"'.getMailer().$r['email'].'"'.">".$r['email']."</a><br/>" : "");
+	     $view .= ($r['email2'] != "" ? "<a href=".'"'.getMailer().$r['email2'].'"'.">".$r['email2']."</a><br/>" : "");
+	   } else {
+	     include ("include/guess.inc.php");
+	     
+ 	     $view .= ($r['email'] != "" ?  "<a href=".'"'.getMailer().$r['email'].'"'.">".$r['email']."</a>" : "");
+ 	     $homepage = guessOneHomepage($r['email']);
+	     $view .= ($homepage != "" ?  " (<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>)" : "");
+	     $view .= ($r['email'] != "" ? "<br/>" : "");
+
+	     $view .= ($r['email2'] != "" ? "<a href=".'"'.getMailer().$r['email2'].'"'.">".$r['email2']."</a>" : "");
+	     $homepage = guessOneHomepage($r['email2']);
+	     $view .= ($homepage != "" ?  " (<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>)" : "");
+	     $view .= ($r['email2'] != "" ? "<br/>" : "");
+	   }
 	   $view .= "<br />";
    }
    $month = ucfmsg(strtoupper($r['bmonth']));

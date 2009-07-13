@@ -7,19 +7,24 @@
 
 <br /><br />
 <div id="search-az">
-	<form accept-charset="utf-8" method="post" action="<?php $PHP_SELF ?>" name="searchform">
-		<input type="text" value="<?php echo $searchstring; ?>" name="searchstring" title="<?php echo ucfmsg('SEARCH_FOR_ANY_TEXT'); ?>" size="45" tabindex="0" />
-		<script type="text/javascript">
-		<!--
-			document.searchform.searchstring.focus();
-		//-->
-		</script>
-		<input type="submit" value="<?php echo ucfirst(msg('SEARCH')) ?>" />    
+<?php if(! $use_ajax ) { ?>
+	<form accept-charset="utf-8" method="get" name="searchform">
+		<input type="text" value="<?php echo $searchstring; ?>" name="searchstring" title="<?php echo ucfmsg('SEARCH_FOR_ANY_TEXT'); ?>" size="45" tabindex="0"/>
+		<input name="submitsearch" type="submit" value="<?php echo ucfirst(msg('SEARCH')) ?>" />    
 	</form>
 <?php
 $link = "index${page_ext_qry}alphabet";
 echo "<div id='a-z'><a href='$link=a'>A</a> | <a href='$link=b'>B</a> | <a href='$link=c'>C</a> | <a href='$link=d'>D</a> | <a href='$link=e'>E</a> | <a href='$link=f'>F</a> | <a href='$link=g'>G</a> | <a href='$link=h'>H</a> | <a href='$link=i'>I</a> | <a href='$link=j'>J</a> | <a href='$link=k'>K</a> | <a href='$link=l'>L</a> | <a href='$link=m'>M</a> | <a href='$link=n'>N</a> | <a href='$link=o'>O</a> | <a href='$link=p'>P</a> | <a href='$link=q'>Q</a> | <a href='$link=r'>R</a> | <a href='$link=s'>S</a> | <a href='$link=t'>T</a> | <a href='$link=u'>U</a> | <a href='$link=v'>V</a> | <a href='$link=w'>W</a> | <a href='$link=x'>X</a> | <a href='$link=y'>Y</a> | <a href='$link=z'>Z</a> | <a href='index$page_ext'>".ucfmsg('ALL')."</a></div>" ;
+} else { 
 ?>
+	<form accept-charset="utf-8" method="get" name="searchform" onsubmit="return false">
+		<input type="text" value="<?php echo $searchstring; ?>" name="searchstring" title="<?php echo ucfmsg('SEARCH_FOR_ANY_TEXT'); ?>" size="45" tabindex="0" 
+		       onkeyup="filterResults(this)"/>
+	</form>
+<?php } ?>
+<script type="text/javascript">
+	document.searchform.searchstring.focus();
+</script>
 </div><br />
 <hr />
 <?php
@@ -57,12 +62,11 @@ if ($searchstring) {
 	// TBD:  Pagination
 	// http://php.about.com/od/phpwithmysql/ss/php_pagination.htm
 	
-
-	echo "<label style='width:24em;'><strong>".msg('NUMBER_OF_RESULTS').": $resultsnumber</strong></label>";
+	echo "<label style='width:24em;'><strong>".msg('NUMBER_OF_RESULTS').": <span id='search_count'>$resultsnumber</span></strong></label>";
 
 if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 
-<form id="right">
+<form id="right" method="get">
 	<select name="group" onchange="this.parentNode.submit()">
 		<?php
 			if($group_name != "") {
@@ -129,7 +133,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 			$color = "odd"; 
 			$alternate = "1"; 
 		} 
-		echo "<tr class='$color'>";
+		echo "<tr class='$color' name='entry'>";
 		$emails = $myrow['email'].(   $myrow['email']  != ""
 		                           && $myrow['email2'] != "" ? getMailerDelim() : "").$myrow['email2'];
 		echo "<td class='center'><input type='checkbox' id='id$id' name='selected[]' value='$id' title='Select ($firstname $lastname)' alt='Select ($firstname $lastname)' accept='$emails' /></td>";
@@ -210,23 +214,36 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 ?>
 <script type="text/javascript">
 <!--
+
+//
+// Select All/None items
+//
 function MassSelection() {
-	for (i = 0; i < document.getElementsByName("selected[]").length; i++) {
-		document.getElementsByName("selected[]")[i].checked = document.getElementById("MassCB").checked;
+  
+  select_count = document.getElementsByName("selected[]").length;
+  all_checked  = document.getElementById("MassCB").checked;
+  
+	for (i = 0; i < select_count; i++) {
+		document.getElementsByName("selected[]")[i].checked = all_checked;
 	}
 }
 
+//
+// Send Mail to selected persons
+//
 function MailSelection() {
 	var addresses = "";
 	var dst_count = 0;
 
-	for (i = 0; i < document.getElementsByName("selected[]").length; i++) {
-		if( document.getElementsByName("selected[]")[i].checked == true) {
-			if(  document.getElementsByName("selected[]")[i].accept != "" && document.getElementsByName("selected[]")[i].accept != null) {
+  select_count = document.getElementsByName("selected[]").length;
+	for (i = 0; i < select_count; i++) {
+		selected_i = document.getElementsByName("selected[]")[i];
+		if( selected_i.checked == true) {
+			if( selected_i.accept != "" && selected_i.accept != null) {
 				if(dst_count > 0) {
 					addresses = addresses + "<?php echo getMailerDelim(); ?>";
 				}
-				addresses = addresses + document.getElementsByName("selected[]")[i].accept;
+				addresses = addresses + selected_i.accept;
 				dst_count++;
 			}
 		}
@@ -237,6 +254,64 @@ function MailSelection() {
 	else
 		location.href = "<?php echo getMailer(); ?>"+addresses;
 }
+
+//
+// Filter the items in the fields
+//
+function filterResults(field) {
+
+  	var query = field.value;
+  	 	
+  	// split lowercase on white spaces
+  	var words = query.toLowerCase().split(" ");
+  	
+  	// loop over all lines
+  	var entries = document.getElementsByName("entry");
+  	var foundCnt = 0;
+
+  	for(i = 0; i < entries.length; i++) {
+  		
+  		// Name + Firstname + Phonenumber + Mailaddress
+  		var content = entries[i].childNodes[0].childNodes[0].accept
+  		            + " " + entries[i].childNodes[1].innerHTML
+  		            + " " + entries[i].childNodes[2].innerHTML;
+  		            
+      // Don't be case sensitive
+  		content = content.toLowerCase();
+
+      // check if all words are present  		            
+      var foundAll = true;
+  		for(j = 0; j < words.length; j++) {
+  			foundAll = foundAll && (content.search(words[j]) != -1);
+  		}
+  		
+  		// Keep selected entries
+      foundAll = foundAll || entries[i].childNodes[0].childNodes[0].checked;
+  		
+      // ^Hide entry
+      if(foundAll) {
+      	last_url = entries[i].childNodes[5].childNodes[0].href;
+      	entries[i].style.display = "";
+      	if((foundCnt % 2) == 0) {
+      	  entries[i].className = "odd";
+      	} else {
+      	  entries[i].className = "even";
+      	}
+     	  foundCnt++;
+      } else {
+      	entries[i].style.display = "none";
+      }
+  	}
+  	document.getElementById("search_count").innerHTML = foundCnt;
+  	
+  	// Auto-Forward if only one entry found
+  	if(foundCnt == 1 && false) {
+  		location = last_url;
+  	}
+}
+
+filterResults(document.getElementsByName("searchstring")[0]);
+
 //-->
 </script>
 <?php include("include/footer.inc.php"); ?>

@@ -76,4 +76,6 @@
   // Disable HTTP-Compression with 0
   $compression_level = 2;
   
+  // Disable the AJAX-Mode with "false"
+  $use_ajax = true;
 ?>

@@ -40,7 +40,11 @@ if(! $read_only)
 	if($_SERVER['SERVER_NAME'] == "php-addressbook.sourceforge.net") {
 		
 	   $spam_test = $firstname.$lastname.$address.$home.$mobile.$work.$email.$email2.$bday.$bmonth.$byear.$address2.$phone2;
-     $blacklist = array( 'viagra', 'seroquel', 'zovirax', 'ultram', 'mortage', 'loan' );
+     $blacklist = array( 'viagra', 'seroquel', 'zovirax', 'ultram', 'mortage', 'loan'
+                       , 'accutane', 'ativan', 'gun', 'sex', 'porn', 'arachidonic'
+                       , 'recipe', 'comment1'
+                       , 'naked', 'gay', 'fetish', 'domina', 'fakes', 'drugs'
+                       , 'methylphenidate', 'nevirapine', 'viramune' );
      foreach( $blacklist as $blackitem ) {
 	      if(strpos(strtolower($spam_test), $blackitem) !== FALSE ) {
 	        exit;
