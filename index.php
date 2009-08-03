@@ -275,8 +275,10 @@ function filterResults(field) {
   	var words = query.toLowerCase().split(" ");
 
   	// loop over all lines
-  	var entries = document.getElementById("maintable").childNodes[0].childNodes;
-  	var foundCnt = 0;
+  	var maintable = document.getElementById("maintable")
+  	var tbody     = maintable.getElementsByTagName("tbody");
+  	var entries   = tbody[0].children;
+  	var foundCnt  = 0;
 	
 	  // Skip header(0) + selection row(length-1)
   	for(i = 1; i < entries.length-1; i++) {
