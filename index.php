@@ -94,9 +94,15 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 	<input type="hidden" name="group" value="<?php echo $group; ?>" />
 	<table id="maintable">
 		<tr>
-			<th></th><th>surname</th><th>name</th><th>email</th><th>telephone</th><th></th><th></th><th></th><th></th><th></th>
+			<th></th>
+<?php					
+			echo "<th>".ucfmsg("FIRSTNAME")."</th>";
+			echo "<th>".ucfmsg("LASTNAME")."</th>";
+			echo "<th>".ucfmsg("EMAIL")."</th>";
+			echo "<th>".ucfmsg("TELEPHONE")."</th>";
+?>			
+			<th></th><th></th><th></th><th></th><th></th>
 		</tr>
-
 <?php
 	$alternate = "2"; 
 
@@ -224,7 +230,10 @@ function MassSelection() {
   all_checked  = document.getElementById("MassCB").checked;
   
 	for (i = 0; i < select_count; i++) {
-		document.getElementsByName("selected[]")[i].checked = all_checked;
+	  // select only visible items
+	  if( document.getElementsByName("selected[]")[i].parentNode.parentNode.style.display != "none") {
+		  document.getElementsByName("selected[]")[i].checked = all_checked;
+		}
 	}
 }
 
@@ -264,12 +273,13 @@ function filterResults(field) {
   	 	
   	// split lowercase on white spaces
   	var words = query.toLowerCase().split(" ");
-  	
-  	// loop over all lines
-  	var entries = document.getElementsByName("entry");
-  	var foundCnt = 0;
 
-  	for(i = 0; i < entries.length; i++) {
+  	// loop over all lines
+  	var entries = document.getElementById("maintable").childNodes[0].childNodes;
+  	var foundCnt = 0;
+	
+	  // Skip header(0) + selection row(length-1)
+  	for(i = 1; i < entries.length-1; i++) {
   		
   		// Name + Firstname + Phonenumber + Mailaddress
   		var content = entries[i].childNodes[0].childNodes[0].accept

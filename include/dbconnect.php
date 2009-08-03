@@ -241,6 +241,6 @@ $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth =
 
 $group_from_where = "$table_groups WHERE group_name = '$group_name' ";
 
-$version = '4.1.1';
+$version = '4.1.2';
 
 ?>

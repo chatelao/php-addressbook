@@ -50,8 +50,8 @@ if(! $read_only)
 	        exit;
 	      }
 	   }
-	   if(   preg_match('/\w{3,}/', $home) > 0
-	      || preg_match('/\w{3,}/', $mobile) > 0) {
+	   if(   preg_match('/\D{3,}/', $home) > 0
+	      || preg_match('/\D{3,}/', $mobile) > 0) {
 	      	exit;
 	   }
 	   if(   strlen($home)   > 15 
