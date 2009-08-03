@@ -5,6 +5,8 @@
 if(!isset($free_mailers))
 {
 
+  global $free_mailers;
+
   // List of excluded sites in "Homepage guessing"
   $free_mailers = array( "a3.epfl.ch"
                        , "acm.org"
