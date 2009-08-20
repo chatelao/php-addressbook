@@ -16,7 +16,11 @@ if( ($resultsnumber == 0 && !isset($all)) || (!$id && !isset($all))) {
    ?><title>Address book <?php echo ($group_name != "" ? "($group_name)":""); ?></title><?php
    include ("include/header.inc.php");
 } else {
-   ?><title><?php echo $r["firstname"]." ".$r["lastname"]." ".($group_name != "" ? "($group_name)":"")."\n"; ?></title><?php
+   if(!$id) {
+     ?><title>Address book <?php echo ($group_name != "" ? "($group_name)":""); ?></title><?php
+   } else {
+     ?><title><?php echo $r["firstname"]." ".$r["lastname"]." ".($group_name != "" ? "($group_name)":"")."\n"; ?></title><?php
+   }
    if( !isset($_GET["print"]))
    {
      include ("include/header.inc.php");
