@@ -96,8 +96,8 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 		<tr>
 			<th></th>
 <?php					
-			echo "<th>".ucfmsg("FIRSTNAME")."</th>";
 			echo "<th>".ucfmsg("LASTNAME")."</th>";
+			echo "<th>".ucfmsg("FIRSTNAME")."</th>";
 			echo "<th>".ucfmsg("EMAIL")."</th>";
 			echo "<th>".ucfmsg("TELEPHONE")."</th>";
 ?>			
@@ -114,6 +114,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 		$firstname = $myrow["firstname"];
 		$id = $myrow["id"];
 		$lastname = $myrow["lastname"];
+		$company  = $myrow["company"];
 
 		$email  = ($myrow["email"] != "" ? $myrow["email"] : ($myrow["email2"] != "" ? $myrow["email2"] : ""));
 		$email2 = $myrow["email2"];

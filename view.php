@@ -35,14 +35,16 @@ function showOneEntry($r, $only_phone = false)
 	
 	 global $db, $table, $table_grp_adr, $table_groups, $print, $is_fix_group;
 	
-   $view  = "<b>".$r['firstname']." ".$r['lastname']."</b>: <br />";
-   
-   if(! $only_phone)
-	   $view .= "<br />".str_replace("\n", "<br />", trim($r["address"]))."<br /><br />";	   
+   $view  = "<b>".$r['firstname']." ".$r['lastname']."</b>: <br />";   
+   if(! $only_phone) {
+     $view .= ($r['company']   != "" ? $r['company']."<br />" : "");
+	   $view .= "<br />".str_replace("\n", "<br />", trim($r["address"]))."<br /><br />";
+	 }
    $view .= ($r['home']   != "" ? ucfmsg('H:')." ".$r['home']."<br />" : "");
    $view .= ($r['mobile'] != "" ? ucfmsg('M:')." ".$r['mobile']."<br />" : "");
    $view .= ($r['work']   != "" ? ucfmsg('W:')." ".$r['work']."<br />" : "");
    if(! $only_phone) {
+     $view .= ($r['fax']   != "" ?  ucfmsg('F:')." ".$r['fax']."<br />" : "");
 	   $view .= "<br />";
 	   if( isset($_GET["print"])) {
 	     $view .= ($r['email'] != "" ?  "<a href=".'"'.getMailer().$r['email'].'"'.">".$r['email']."</a><br/>" : "");
@@ -60,6 +62,8 @@ function showOneEntry($r, $only_phone = false)
 	     $view .= ($homepage != "" ?  " (<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>)" : "");
 	     $view .= ($r['email2'] != "" ? "<br/>" : "");
 	   }
+	   $homepage = $r['homepage'];
+	   $view .= ($homepage != "" ?  "<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>" : "");
 	   $view .= "<br />";
    }
    $month = ucfmsg(strtoupper($r['bmonth']));
@@ -72,7 +76,9 @@ function showOneEntry($r, $only_phone = false)
 	   $view .= ($r['address2'] != "" ? "<br />".str_replace("\n", "<br />", trim($r['address2']))."<br /><br />" : "");
 	 }	   
    $view .= ($r['phone2']   != "" ? "P: ".$r['phone2']."<br />" : "");
-
+   if(! $only_phone) {
+	   $view .= ($r['notes'] != "" ? "<br />".str_replace("\n", "<br />", trim($r['notes']))."<br /><br />" : "");
+   }
    echo $view."\n";
 
    if( !isset($print) and !$is_fix_group) {
@@ -97,6 +103,12 @@ function showOneEntry($r, $only_phone = false)
 	   }
 	   if($first != true)
 	     echo "</i>";
+	     
+	   /*
+     echo "<br/><br/>";
+     echo ucfmsg('MODIFIED') . ": ".$r['modified'];
+     echo "<i>(".ucfmsg('CREATED')  . ": ".$r['created'].")</i><br/>";
+     */
    }
 }
 

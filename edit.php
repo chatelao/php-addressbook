@@ -60,7 +60,10 @@ if(! $read_only)
 	   }
 	 }
 	 
-	$sql = "INSERT INTO $table (firstname, lastname, address, home, mobile, work, email, email2, bday, bmonth, byear, address2, phone2) VALUES ('$firstname','$lastname','$address','$home','$mobile','$work','$email','$email2','$bday','$bmonth','$byear', '$address2', '$phone2')";
+	$homepage = str_replace('http://', '', $homepage);
+	 	 
+	$sql = "INSERT INTO $table (firstname,    lastname,   company,    address,   home,   mobile,   work,   fax,   email,    email2,  homepage,   bday,  bmonth,   byear,    address2,    phone2,    notes,     created, modified)
+	                    VALUES ('$firstname','$lastname', '$company', '$address','$home','$mobile','$work','$fax','$email','$email2','$homepage','$bday','$bmonth','$byear', '$address2', '$phone2', '$notes', now(),   now())";
 	$result = mysql_query($sql);
 	
 	if(isset($table_groups) and $table_groups != "" ) {
@@ -88,9 +91,29 @@ else if($update)
 	$result = mysql_query($sql);
 	$resultsnumber = mysql_numrows($result);
 
+	$homepage = str_replace('http://', '', $homepage);
+
 	if($resultsnumber > 0)
 	{
-		$sql = "UPDATE $table SET firstname='$firstname',lastname='$lastname',address='$address',home='$home',mobile='$mobile',work='$work',email='$email',email2='$email2',bday='$bday',bmonth='$bmonth',byear='$byear',address2 = '$address2', phone2 = '$phone2' WHERE id='$id'";
+		$sql = "UPDATE $table SET firstname='$firstname'
+		                        , lastname='$lastname'
+		                        , company='$company'
+		                        , address='$address'
+		                        , home='$home'
+		                        , mobile='$mobile'
+		                        , work='$work'
+		                        , fax='$fax'
+		                        , email='$email'
+		                        , email2='$email2'
+		                        , homepage='$homepage'
+		                        , bday='$bday'
+		                        , bmonth='$bmonth'
+		                        , byear='$byear'
+		                        , address2 = '$address2'
+		                        , phone2 = '$phone2'
+		                        , notes = '$notes' 
+		                        , modified = now()
+		                      WHERE id='$id'";
 		$result = mysql_query($sql);
 
 		// header("Location: view?id=$id");		
@@ -119,6 +142,9 @@ $myrow = mysql_fetch_array($result);
 		<label><?php echo ucfmsg("LASTNAME") ?>:</label>
 		<input type="text" name="lastname" size="35" value="<?php echo $myrow['lastname']?>" /><br />
 
+		<label><?php echo ucfmsg("COMPANY") ?>:</label>
+		<input type="text" name="company" size="35" value="<?php echo $myrow['company']?>" /><br />
+
 		<label><?php echo ucfmsg("ADDRESS") ?>:</label>
 		<textarea name="address" rows="5" cols="35"><?php echo $myrow["address"]?></textarea><br />
 
@@ -133,11 +159,17 @@ $myrow = mysql_fetch_array($result);
 		<label><?php echo ucfmsg("PHONE_WORK") ?>:</label>
 		<input type="text" name="work" value="<?php echo $myrow['work']?>" /><br />
 
+		<label><?php echo ucfmsg("FAX") ?>:</label>
+		<input type="text" name="fax" value="<?php echo $myrow['fax']?>" /><br />
+
 		<label><?php echo ucfmsg("EMAIL") ?>:</label>
 		<input type="text" name="email" size="35" value="<?php echo $myrow['email']?>" /><br />
 
 		<label><?php echo ucfmsg("EMAIL") ?>2:</label>
 		<input type="text" name="email2" size="35" value="<?php echo $myrow['email2']?>" /><br />
+
+		<label><?php echo ucfmsg("HOMEPAGE") ?>:</label>
+		<input type="text" name="homepage" size="35" value="<?php echo $myrow['homepage']?>" /><br />
 
 		<label><?php echo ucfmsg("BIRTHDAY") ?>:</label>
         <select name="bday">
@@ -224,7 +256,10 @@ $myrow = mysql_fetch_array($result);
 		<textarea name="address2" rows="5" cols="35"><?php echo $myrow["address2"]?></textarea><br />
 
 		<label><?php echo ucfmsg("PHONE_HOME") ?>:</label>
-		<input type="text" name="phone2" value="<?php echo $myrow['phone2']?>" /><br /><br /><br />
+		<input type="text" name="phone2" value="<?php echo $myrow['phone2']?>" /><br />
+
+		<label><?php echo ucfmsg("NOTES") ?>:</label>
+		<textarea name="notes" rows="5" cols="35"><?php echo $myrow["notes"]?></textarea><br /><br />
 
     	<input type="submit" name="update" value="<?php echo ucfmsg('UPDATE') ?>" />
   </form>
@@ -248,6 +283,9 @@ $myrow = mysql_fetch_array($result);
 		<label><?php echo ucfmsg("LASTNAME") ?>:</label>
 		<input type="text" name="lastname" size="35" /><br />
 
+		<label><?php echo ucfmsg("COMPANY") ?>:</label>
+		<input type="text" name="company" size="35" /><br />
+
 		<label><?php echo ucfmsg("ADDRESS") ?>:</label>
 		<textarea name="address" rows="5" cols="35"></textarea><br />
 
@@ -262,6 +300,9 @@ $myrow = mysql_fetch_array($result);
 		<label><?php echo ucfmsg("PHONE_WORK") ?>:</label>
 		<input type="text" name="work" size="35" /><br />
 
+		<label><?php echo ucfmsg("FAX") ?>:</label>
+		<input type="text" name="fax" size="35" /><br />
+
 		<label>&nbsp;</label><br /><br class="clear" />
 
 		<label><?php echo ucfmsg("EMAIL") ?>:</label>
@@ -269,6 +310,9 @@ $myrow = mysql_fetch_array($result);
 
 		<label><?php echo ucfmsg("EMAIL") ?>2:</label>
 		<input type="text" name="email2" size="35" /><br />
+
+		<label><?php echo ucfmsg("HOMEPAGE") ?>:</label>
+		<input type="text" name="homepage" size="35" /><br />
 
 		<label><?php echo ucfmsg("BIRTHDAY") ?>:</label>
         <select name="bday">
@@ -353,7 +397,10 @@ $myrow = mysql_fetch_array($result);
 		<textarea name="address2" rows="5" cols="35"></textarea><br />
 
 		<label><?php echo ucfmsg("PHONE_HOME") ?>:</label>
-		<input type="text" name="phone2" size="35" /><br /><br /><br />
+		<input type="text" name="phone2" size="35" /><br />
+
+		<label><?php echo ucfmsg("NOTES") ?>:</label>
+		<textarea name="notes" rows="5" cols="35"></textarea><br /><br />
 
 		<input type="submit" name="submit" value="<?php echo ucfmsg('ENTER') ?>" />
   </form>
