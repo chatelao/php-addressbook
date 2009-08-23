@@ -1,8 +1,8 @@
 --
--- Upgrade from 3.3/3.4 to 4.0
+-- Upgrade from 3.3/3.4 to 5.0
 --
 -- Included database extensions:
--- * Notes field
+-- * Notes, company, homepage fields
 -- * User login capability
 -- * User preferences storage capability
 -- * Change logging capability
@@ -12,6 +12,18 @@
 --
 
 
+--
+-- "Company" field
+--
+ALTER TABLE `addressbook` ADD `company`  varchar(255)   NULL after lastname;
+--
+-- "Fax" field
+--
+ALTER TABLE `addressbook` ADD `fax`      text           NULL after fax;
+--
+-- "Homepage" field
+--
+ALTER TABLE `addressbook` ADD `homepage` text           NULL after email2;
 --
 -- "Notes" field
 --

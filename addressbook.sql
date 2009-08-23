@@ -6,21 +6,30 @@
 --
 
 CREATE TABLE addressbook (
-   id int(9) unsigned NOT NULL auto_increment,
-   firstname varchar(255) NOT NULL,
-   lastname varchar(255) NOT NULL,
-   address text NOT NULL,
-   home text NOT NULL,
-   mobile text NOT NULL,
-   work text NOT NULL,
-   email text NOT NULL,
-   email2 text NOT NULL,
-   bday tinyint(2) NOT NULL,
-   bmonth varchar(50) NOT NULL,
-   byear varchar(4) NOT NULL,
-   address2 text NOT NULL,
-   phone2 text NOT NULL,
-   PRIMARY KEY  (id)
+  id int(9) unsigned NOT NULL auto_increment,
+  firstname varchar(255) NOT NULL,
+  lastname varchar(255) NOT NULL,
+  company varchar(255) NOT NULL,
+  address text NOT NULL,
+  home text NOT NULL,
+  mobile text NOT NULL,
+  work text NOT NULL,
+  fax text NOT NULL,
+  email text NOT NULL,
+  email2 text NOT NULL,
+  homepage text NOT NULL,
+  bday tinyint(2) NOT NULL,
+  bmonth varchar(50) NOT NULL,
+  byear varchar(4) NOT NULL,
+  address2 text NOT NULL,
+  phone2 text NOT NULL,
+  notes text NOT NULL,
+  created datetime default NULL,
+  modified datetime default NULL,
+  password varchar(256) default NULL,
+  login date default NULL,
+  role varchar(256) default NULL,
+  PRIMARY KEY  (id)
 ) DEFAULT CHARSET=utf8;
 
 CREATE TABLE `group_list` (

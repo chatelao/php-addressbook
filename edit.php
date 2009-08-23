@@ -253,7 +253,7 @@ $myrow = mysql_fetch_array($result);
 
 		<label><?php echo ucfmsg("TELEPHONE") ?></label><br /><br class="clear" />
 
-		<label>Home:</label>
+		<label><?php echo ucfmsg("PHONE_HOME") ?>:</label>
 		<input type="text" name="home" size="35" /><br />
 
 		<label><?php echo ucfmsg("PHONE_MOBILE") ?>:</label>
