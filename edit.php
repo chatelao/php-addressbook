@@ -162,6 +162,8 @@ $myrow = mysql_fetch_array($result);
 		<label><?php echo ucfmsg("FAX") ?>:</label>
 		<input type="text" name="fax" value="<?php echo $myrow['fax']?>" /><br />
 
+		<label>&nbsp;</label><br /><br class="clear" />
+
 		<label><?php echo ucfmsg("EMAIL") ?>:</label>
 		<input type="text" name="email" size="35" value="<?php echo $myrow['email']?>" /><br />
 
