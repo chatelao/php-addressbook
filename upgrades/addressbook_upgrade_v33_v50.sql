@@ -58,6 +58,8 @@ CREATE TABLE IF NOT EXISTS `user_prefs` (
   `id` int(9) unsigned NOT NULL,
   `pref_key`   varchar(255) NOT NULL default '',
   `pref_value` varchar(255) NOT NULL default '',
+  `created` datetime default NULL,
+  `modified` datetime default NULL,
   PRIMARY KEY  (`id`,`pref_key`),
   KEY `fk_id` (`id`)
-) DEFAULT CHARSET=utf8
+) DEFAULT CHARSET=utf8;

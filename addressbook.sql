@@ -35,6 +35,8 @@ CREATE TABLE addressbook (
 CREATE TABLE `group_list` (
   `group_id` int(9) unsigned NOT NULL auto_increment,
   `group_parent_id` int(9) default NULL,
+  `created` datetime default NULL,
+  `modified` datetime default NULL,
   `group_name` varchar(255) NOT NULL default '',
   `group_header` mediumtext NOT NULL,
   `group_footer` mediumtext NOT NULL,
@@ -50,6 +52,8 @@ INSERT INTO `group_list` (group_name, group_header, group_footer) VALUES ('Rob',
 CREATE TABLE `address_in_groups` (
   `id` int(9) unsigned NOT NULL default '0',
   `group_id` int(9) unsigned NOT NULL default '0',
+  `created` datetime default NULL,
+  `modified` datetime default NULL,
   PRIMARY KEY  (`group_id`,`id`)
 ) DEFAULT CHARSET=utf8;
 
@@ -72,3 +76,13 @@ INSERT INTO `month_lookup` VALUES ('September', 'Sep', 9);
 INSERT INTO `month_lookup` VALUES ('October', 'Oct', 10);
 INSERT INTO `month_lookup` VALUES ('November', 'Nov', 11);
 INSERT INTO `month_lookup` VALUES ('December', 'Dec', 12);
+
+CREATE TABLE IF NOT EXISTS `user_prefs` (
+  `id` int(9) unsigned NOT NULL,
+  `pref_key`   varchar(255) NOT NULL default '',
+  `pref_value` varchar(255) NOT NULL default '',
+  `created` datetime default NULL,
+  `modified` datetime default NULL,
+  PRIMARY KEY  (`id`,`pref_key`),
+  KEY `fk_id` (`id`)
+) DEFAULT CHARSET=utf8;
