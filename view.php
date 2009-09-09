@@ -43,8 +43,8 @@ function showOneEntry($r, $only_phone = false)
    $view .= ($r['home']   != "" ? ucfmsg('H:')." ".$r['home']."<br />" : "");
    $view .= ($r['mobile'] != "" ? ucfmsg('M:')." ".$r['mobile']."<br />" : "");
    $view .= ($r['work']   != "" ? ucfmsg('W:')." ".$r['work']."<br />" : "");
+   $view .= ($r['fax']   != "" ?  ucfmsg('F:')." ".$r['fax']."<br />" : "");
    if(! $only_phone) {
-     $view .= ($r['fax']   != "" ?  ucfmsg('F:')." ".$r['fax']."<br />" : "");
 	   $view .= "<br />";
 	   if( isset($_GET["print"])) {
 	     $view .= ($r['email'] != "" ?  "<a href=".'"'.getMailer().$r['email'].'"'.">".$r['email']."</a><br/>" : "");
