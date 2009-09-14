@@ -65,13 +65,11 @@ function showOneEntry($r, $only_phone = false)
 	   $homepage = $r['homepage'];
 	   $view .= ($homepage != "" ?  "<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>" : "");
 	   $view .= "<br />";
-   }
-   $month = ucfmsg(strtoupper($r['bmonth']));
-   $view .= ( $r['bday'] != 0 || $month != "-" || $r['byear'] != ""
-            ? ucfmsg('BIRTHDAY').": ".($r['bday'] > 0 ? $r['bday'].". " : "").($month != '-' ? $month : "")." ".$r['byear'] : "")."<br />"; 
 
+     $month = ucfmsg(strtoupper($r['bmonth']));
+     $view .= ( $r['bday'] != 0 || $month != "-" || $r['byear'] != ""
+              ? ucfmsg('BIRTHDAY').": ".($r['bday'] > 0 ? $r['bday'].". " : "").($month != '-' ? $month : "")." ".$r['byear'] : "")."<br />"; 
 
-   if(! $only_phone) {
 	   $view .= ($r['address2'] != "" || $r['phone2'] != "" ? "<br /><br /><b>".ucfmsg('SECONDARY')."</b><br />" : "");
 	   $view .= ($r['address2'] != "" ? "<br />".str_replace("\n", "<br />", trim($r['address2']))."<br /><br />" : "");
 	 }	   
