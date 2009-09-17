@@ -9,18 +9,23 @@
 </head>
 <body>
 <?php
-include("include/translations.inc.php");
+include("include/translations.inc.php");
 
 //
 // Result:
 // - Generate final translation file
 //
-if(isset($_REQUEST['translation'])) { ?>
+if(isset($_REQUEST['translation'])) { 
 
+// $trans_mode = ".php.inc"; // ".pot"
+$trans_mode = ".pot";
+
+if($trans_mode == ".php.inc") {
+?>
 &lt;?php<br />
 //<br />
 // New translations & fixes are welcome:<br />
-// * chatelao(ät)users.sourceforge.net<br />
+// * chatelao(Ã¤t)users.sourceforge.net<br />
 //<br />
 
 $supported_langs[] = '<?php echo $_REQUEST['target_language']?>';<br />
@@ -31,6 +36,9 @@ $supported_langs[] = '<?php echo $_REQUEST['target_language']?>';<br />
 	$use_flag['<?php echo $_REQUEST['target_language']?>'] = '<?php echo $_REQUEST['target_flag']?>';<br />
 	<br /><?php
 	} 
+} elseif($trans_mode == ".pot") {
+	echo "# Target language: ".$_REQUEST['target_language']."<br/><br/>";
+}
   $i = 0;
   $translations = mb_split("\r\n", $_REQUEST['translation']);
 	// foreach($messages as $key => $message) {
@@ -56,16 +64,19 @@ $supported_langs[] = '<?php echo $_REQUEST['target_language']?>';<br />
 	    $translation = $messages[$key][$target_language];
 	  }
 		
-	 	echo "\$messages['".$key."']['".$_REQUEST['target_language']."'] = ".'"'.$translation.'"'.";";
-	 	echo "    // ".$messages[$key]['en']."<br />";
-
+    if($trans_mode == ".php.inc") {
+	 	  echo "\$messages['".$key."']['".$_REQUEST['target_language']."'] = ".'"'.$translation.'"'.";";
+	 	  echo "    // ".$messages[$key]['en']."<br/>";
+	 	} elseif($trans_mode == ".pot") {
+	 		echo '# English: "'.$messages[$key]['en'].'"<br/>';
+	 		echo 'msgid "'.$key.'"<br />';
+	 		echo 'msgstr "'.$translation.'"<br/><br/>';
+	 	}
 	} 
 
-
-?>
+if($trans_mode == ".php.inc") { ?>
 ?&gt;<br />
-<?php
-
+<?php	}
 //
 // Form:
 // - Translatete texts
@@ -128,7 +139,7 @@ $supported_langs[] = '<?php echo $_REQUEST['target_language']?>';<br />
 // - Source and target language
 // - Target flag
 // - Translation mode
-} else { ?>
+} else { 	?>
 
 <h1>Generate Name List</h1>
 	<form method="get" action="#">
