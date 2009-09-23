@@ -72,7 +72,8 @@ if(! $read_only)
 	  } else {
 	  	$g_name = $group_name;
 	  }
-		$sql = "INSERT INTO $table_grp_adr SELECT LAST_INSERT_ID() id, group_id FROM $table_groups WHERE group_name = '$g_name'";
+		$sql = "INSERT INTO $table_grp_adr SELECT LAST_INSERT_ID() id, group_id, now(), now() FROM $table_groups WHERE group_name = '$g_name'";
+		echo $sql;
 		$result = mysql_query($sql);
 	
 		echo "<br /><div class='msgbox'>Information entered into address book.";
