@@ -136,6 +136,23 @@ $myrow = mysql_fetch_array($result);
 		<label><?php echo ucfmsg('GROUP_NAME'); ?></label>
 		<input type="text" name="group_name" size="35" value="<?php echo $myrow['group_name']?>" /><br />
 
+		<select name="parent_group">
+				<?php
+					$sql="SELECT group_name 
+					        FROM $table_groups 
+					       WHERE id != $id
+					      ORDER BY lower(group_name) ASC";
+					$result_groups = mysql_query($sql);
+					$result_gropup_snumber = mysql_numrows($result_groups);
+			
+					while ($myrow = mysql_fetch_array($result_groups))
+					{
+					echo "<option>".$myrow["group_name"]."</option>\n";
+					}
+				?>
+			</select>
+		</form><br /><br class="clear" />
+
 		<label><?php echo ucfmsg('GROUP_HEADER'); ?>:</label>
 		<textarea name="group_header" rows="10" cols="40"><?php echo $myrow["group_header"]?></textarea><br />
 

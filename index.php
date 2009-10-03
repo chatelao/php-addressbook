@@ -86,9 +86,9 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 			}
 		?>
 	</select>
-</form><br /><br class="clear" />
-
+</form>
 <?php } ?>
+<br /><br class="clear" />
 
 <form accept-charset="utf-8" name="MainForm" method="post" action="group<?php echo $page_ext; ?>">
 	<input type="hidden" name="group" value="<?php echo $group; ?>" />
