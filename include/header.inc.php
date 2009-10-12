@@ -2,6 +2,7 @@
 	<body>
 		<div id="container">
 			<div id="top">
+<!--
 <?php
   $lang_cnt = 0;
   //
@@ -11,7 +12,8 @@
   // - All if nothing is defined
   //
 	if( count($default_languages) > 0) {
-		if( !isset($_GET["more_langs"]) || $_GET["more_langs"] == "") {			$loop_langs = $default_languages;
+		if( !isset($_GET["more_langs"]) || $_GET["more_langs"] == "") {
+			$loop_langs = $default_languages;
 			?>[<a title="other languages" href="?more_langs=yes">+</a>] | <?php
 		} else {
 			$loop_langs = array_diff($supported_langs, $default_languages);
@@ -21,7 +23,8 @@
 	}
 	foreach($loop_langs as $supp_lang) {
 		if($supp_lang != $lang)
-	{		if($lang_cnt++ > 0)
+	{
+		if($lang_cnt++ > 0)
 			echo " | ";
       echo "<a href='?lang=$supp_lang'><img title='".ucfmsg($supp_lang)."' alt='".ucfmsg($supp_lang)."' src='${url_images}icons/".get_flag($supp_lang).".gif'/></a>";
     }
@@ -33,6 +36,7 @@
 ?> | 
 
 <a href="preferences<?php echo $page_ext_qry; ?>from=<?php echo urlencode($_SERVER['REQUEST_URI']); ?>"><?php echo ucfmsg('PREFERENCES'); ?></a>
+-->
 			</div>
 			<div id="header"><a href="."><img src="<?php echo $url_images; ?>title.png" title="Addressbook" alt="Addressbook" /></a></div>
 			<div id="nav">
@@ -48,4 +52,3 @@
 		echo $group_myrow['group_header'];
 	}
 ?>
-

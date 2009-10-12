@@ -104,10 +104,13 @@ $group_name = null;
 if(isset($_GET["group"])) {
   $group_name   = $_GET["group"];
 }
+
+$is_fix_group = false;
 if(isset($nogroups)) {
   $is_fix_group = $nogroups;
+} else {
+  $is_fix_group = isset($_GET["fixgroup"]);
 }
-$is_fix_group = isset($_GET["fixgroup"]);
 
 // Remember the current group
 if(!$is_fix_group and $group_name)
@@ -241,6 +244,6 @@ $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth =
 
 $group_from_where = "$table_groups WHERE group_name = '$group_name' ";
 
-$version = '5.1';
+$version = '5.2';
 
 ?>
