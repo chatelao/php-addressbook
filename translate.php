@@ -17,8 +17,8 @@ include("include/translations.inc.php");
 //
 if(isset($_REQUEST['translation'])) { 
 
-// $trans_mode = ".php.inc"; // ".pot"
-$trans_mode = ".pot";
+$trans_mode = ".php.inc";
+// $trans_mode = ".pot";
 
 if($trans_mode == ".php.inc") {
 ?>
