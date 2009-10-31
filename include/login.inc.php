@@ -1,6 +1,9 @@
 <?php
 
-$uin_code = md5($dbname.$dbserver); 
+//
+// Create a locally unique, daily changing cookie value.
+//
+$uin_code = md5($dbname.$dbserver.date('Y-m-d')); 
 
 $user = (isset($_POST['user'])   ? $_POST['user'] : "");
 $pass = (isset($_POST['pass'])   ? $_POST['pass'] : "");
@@ -35,7 +38,7 @@ if(!isset($userlist)) {
 			<div id="content">
         <form accept-charset="utf-8" name="LoginForm" method="post">
 	         <label><?php echo ucfmsg("USER"); ?>:</label><input name="user" tabindex="0"/><br/>
-	         <label><?php echo ucfmsg("PASS"); ?>:</label><input name="pass" type="password"/><br/>
+	         <label><?php echo ucfmsg("PASSWORD"); ?>:</label><input name="pass" type="password"/><br/>
 	         <input type=submit value="<?php echo ucfmsg("LOGIN"); ?>"/>
         </form>
       </div>
