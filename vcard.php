@@ -1,6 +1,7 @@
 <?php
 
 include ("include/dbconnect.php");
+include ("include/login.inc.php");
 
 Header("Content-Type: text/x-vCard");
 

@@ -6,6 +6,11 @@
   $dbuser     = "username"; 
   $dbpass     = "password"; 
   
+  // List of Login-Users
+  // $userlist['admin'] = "secret";
+  // $userlist['user2'] = "pass2";
+  // ...
+
   // Define table prefix
   $table_prefix = "";
   

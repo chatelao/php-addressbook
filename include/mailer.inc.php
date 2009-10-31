@@ -1,4 +1,4 @@
-<?
+<?php
 
 $mailers['Standard (mailto:)']     = "mailto:";
 // $mailers['Outlook (mailto:)']     = "mailto:";

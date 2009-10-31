@@ -1,6 +1,7 @@
 <?php
 
 include ("include/dbconnect.php");
+include ("include/login.inc.php");
 include ("include/format.inc.php");
 echo "<title>Groups | Address Book</title>";
 include ("include/header.inc.php");
