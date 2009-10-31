@@ -8,13 +8,20 @@ Basic Installation
 3. Change "config/config.php" according to your database.
 
 
+User Login (optional)
+==========================
+4. Modify $userlist in the "config/config.php" file.
+
 
 Advanced Tuning (optional)
 ==========================
 
-4. (optional) Feel free to change all other parameters of "config/config.php".
+5. (optional) Feel free to change all other parameters of "config/config.php".
 
-5. (optional) Use the "mod_auth" and "mod_rewrite" samples for 
+6. (optional) Use the "mod_auth" and "mod_rewrite" samples for 
               your user management.
 
-6. (optional) Contribute to the project (correct/add translations, etc.).
+7. (optional) Contribute to the project (correct/add translations, etc.).
+
+
+Enjoy it!
