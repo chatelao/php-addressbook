@@ -34,9 +34,9 @@ if(!isset($userlist)) {
 			<div id="nav"></div>
 			<div id="content">
         <form accept-charset="utf-8" name="LoginForm" method="post">
-	         <label>Benutzer:</label><input name="user" tabindex="0"/><br/>
-	         <label>Passwort:</label><input name="pass" type="password"/><br/>
-	         <input type=submit value="Anmelden"/>
+	         <label><?php echo ucfmsg("USER"); ?>:</label><input name="user" tabindex="0"/><br/>
+	         <label><?php echo ucfmsg("PASS"); ?>:</label><input name="pass" type="password"/><br/>
+	         <input type=submit value="<?php echo ucfmsg("LOGIN"); ?>"/>
         </form>
       </div>
 <?php

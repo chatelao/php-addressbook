@@ -9,6 +9,9 @@ $use_flag['en'] = 'uk';
 
 $messages['LANGUAGE']['en'] = 'language'; // language
 $messages['auto']['en'] = 'bowser settings (automatic)'; // bowser settings (automatic)
+$messages['USER']['en'] = 'User'; // User
+$messages['PASSWORD']['en'] = 'Password'; // Password
+$messages['LOGIN']['en'] = 'Login'; // Login
 $messages['JANUARY']['en'] = 'January'; // January
 $messages['FEBRUARY']['en'] = 'February'; // February
 $messages['MARCH']['en'] = 'March'; // March
