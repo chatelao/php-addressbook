@@ -27,6 +27,14 @@ if(!isset($userlist)) {
 
   // Request Login
   include ("include/format.inc.php");
+
+  if($_SERVER['SERVER_NAME'] == "php-addressbook.sourceforge.net") {
+  	$set_user = "demo";
+  	$set_pass = "1234";  	
+  } else {
+  	$set_user = "";
+  	$set_pass = "";  	
+  }
   
 ?>
 	</head>
@@ -37,12 +45,11 @@ if(!isset($userlist)) {
 			<div id="nav"></div>
 			<div id="content">
         <form accept-charset="utf-8" name="LoginForm" method="post">
-	         <label><?php echo ucfmsg("USER"); ?>:</label><input name="user" tabindex="0"/><br/>
-	         <label><?php echo ucfmsg("PASSWORD"); ?>:</label><input name="pass" type="password"/><br/>
+	         <label><?php echo ucfmsg("USER");     ?>:</label><input name="user" value="<?php echo $set_user; ?>" tabindex="0"/><br/>
+	         <label><?php echo ucfmsg("PASSWORD"); ?>:</label><input name="pass" value="<?php echo $set_pass; ?>" type="password"/><br/>
 	         <input type=submit value="<?php echo ucfmsg("LOGIN"); ?>"/>
         </form>
       </div>
-<?php
 	die;
 }
 ?>
