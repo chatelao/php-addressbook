@@ -14,6 +14,7 @@ $messages['pl']['de'] = 'Polnisch'; // Polish
 $messages['USER']['de'] = 'Benutzer'; // User
 $messages['PASSWORD']['de'] = 'Passwort'; // Password
 $messages['LOGIN']['de'] = 'Anmelden'; // Login
+$messages['LOGOUT']['de'] = 'Abmelden'; // Logout
 $messages['JANUARY']['de'] = 'Januar'; // January
 $messages['FEBRUARY']['de'] = 'Februar'; // February
 $messages['MARCH']['de'] = 'März'; // March

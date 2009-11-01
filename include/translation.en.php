@@ -12,6 +12,7 @@ $messages['auto']['en'] = 'bowser settings (automatic)'; // bowser settings (aut
 $messages['USER']['en'] = 'User'; // User
 $messages['PASSWORD']['en'] = 'Password'; // Password
 $messages['LOGIN']['en'] = 'Login'; // Login
+$messages['LOGOUT']['en'] = 'Logout'; // Logout
 $messages['JANUARY']['en'] = 'January'; // January
 $messages['FEBRUARY']['en'] = 'February'; // February
 $messages['MARCH']['en'] = 'March'; // March
