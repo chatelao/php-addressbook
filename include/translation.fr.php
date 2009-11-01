@@ -110,4 +110,9 @@ $messages['MODIFIED']['fr'] = "Mise à jour"; // modified
 $messages['F:']['fr'] = "F:"; // F:
 $messages['da']['fr'] = "Danois"; // Danish
 $messages['fi']['fr'] = "Finnois"; // Finnish
+$messages['USER']['fr'] = "Utilisateur"; // User
+$messages['PASSWORD']['fr'] = "Mot de passe"; // Password
+$messages['LOGIN']['fr'] = "Connexion"; // Login
+$messages['LOGOUT']['fr'] = "Déconnexion"; // Logout
+$messages['UPDATED']['fr'] = ""; //
 ?>

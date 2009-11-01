@@ -1,7 +1,7 @@
 <?php
 //
 // New translations & fixes are welcome:
-// * chatelao(ät)users.sourceforge.net
+// * chatelao(Ã¤t)users.sourceforge.net
 //
 $supported_langs[] = 'es';
 
@@ -110,4 +110,9 @@ $messages['MODIFIED']['es'] = "vez"; // modified
 $messages['F:']['es'] = "F:"; // F:
 $messages['da']['es'] = "Danés"; // Danish
 $messages['fi']['es'] = "Finlandés"; // Finnish
+$messages['USER']['es'] = "Usuario"; // User
+$messages['PASSWORD']['es'] = "Contraseña"; // Password
+$messages['LOGIN']['es'] = "Inicio de sesión"; // Login
+$messages['LOGOUT']['es'] = "Cerrar sesión"; // Logout
+$messages['UPDATED']['es'] = ""; //
 ?>
