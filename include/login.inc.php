@@ -1,9 +1,9 @@
 <?php
 
 //
-// Create a locally unique, daily changing cookie value.
+// Create a locally unique, monthly changing cookie value.
 //
-$uin_code = md5($dbname.$dbserver.date('Y-m-d')); 
+$uin_code = md5($dbname.$dbserver.$_SERVER['REMOTE_ADDR'].date('Y-m')); 
 
 $user = (isset($_POST['user'])   ? $_POST['user'] : "");
 $pass = (isset($_POST['pass'])   ? $_POST['pass'] : "");
@@ -46,10 +46,17 @@ if(!isset($userlist)) {
 			<div id="content">
         <form accept-charset="utf-8" name="LoginForm" method="post">
 	         <label><?php echo ucfmsg("USER");     ?>:</label><input name="user" value="<?php echo $set_user; ?>" tabindex="0"/><br/>
-	         <label><?php echo ucfmsg("PASSWORD"); ?>:</label><input name="pass" value="<?php echo $set_pass; ?>" type="password"/><br/>
+	         <label><?php echo ucfmsg("PASSWORD"); ?>:</label><input name="pass" value="<?php echo $set_pass; ?>" type="password"/>
+<?php
+  if($_SERVER['SERVER_NAME'] == "php-addressbook.sourceforge.net") {
+  	echo " (demo)";
+  }
+?>	         
+	         <br/>
 	         <input type=submit value="<?php echo ucfmsg("LOGIN"); ?>"/>
         </form>
       </div>
+<?php      
 	die;
 }
 ?>
