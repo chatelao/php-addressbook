@@ -9,7 +9,6 @@
   //
 
   include ("include/dbconnect.php");
-  include ("include/login.inc.php");
 
   // Check if we can produce the Unicode-Excel.
   $use_utf_16LE = function_exists('mb_convert_encoding');

@@ -1,6 +1,5 @@
 <?php
 	include ("include/dbconnect.php");
-  include ("include/login.inc.php");
 	include ("include/format.inc.php");
 ?>
 <title><?php echo ucfmsg("ADDRESS_BOOK").($group_name != "" ? " ($group_name)":""); ?></title>

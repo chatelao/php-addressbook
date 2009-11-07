@@ -244,6 +244,15 @@ $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth =
 
 $group_from_where = "$table_groups WHERE group_name = '$group_name' ";
 
-$version = '5.3';
+include("login.inc.php");
+if(!isset($required_roles)) { $required_roles = array(); }
+if( ! Login::checkRoles($required_roles) ) {
+	include ("include/format.inc.php");	
+  echo translateTags(file_get_contents("include/login.inc.html"));
+  die;
+}
+$user = Login::getUser();
+
+$version = '5.3.1';
 
 ?>
