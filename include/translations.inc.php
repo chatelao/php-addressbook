@@ -174,4 +174,13 @@ function utf8_to_latin1($text) {
 	  }
 }
 
+function translateTags($text) {
+	
+	global $messages;
+	
+	foreach($messages as $key => $translations) {
+		$text = str_replace("%".$kex."%", msg($key), $text);
+	}
+}
+
 ?>
