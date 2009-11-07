@@ -7,6 +7,7 @@ $supported_langs[] = 'he';
 
 $use_flag['he'] = 'il';
 
+$messages['DIR']['he'] = "rl"; // DIR
 $messages['LANGUAGE']['he'] = "שפה"; // language
 $messages['auto']['he'] = "ברירת המחדל של הדפדפן (אוטומטית)"; // bowser settings (automatic)
 $messages['en']['he'] = "אנגלית"; // English

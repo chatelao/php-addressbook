@@ -7,6 +7,7 @@ $supported_langs[] = 'ar';
 
 $use_flag['ar'] = 'sa';
 
+$messages['DIR']['ar'] = "rl"; // DIR
 $messages['LANGUAGE']['ar'] = "لغة"; // language
 $messages['auto']['ar'] = "مزودة بمضخة إعدادات (التلقائي)"; // bowser settings (automatic)
 $messages['en']['ar'] = "الانجليزية"; // English

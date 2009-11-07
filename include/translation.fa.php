@@ -9,6 +9,7 @@ $is_right_to_left['fa'] = true;
 
 $use_flag['fa'] = 'ir';
 
+$messages['DIR']['fa'] = "rl"; // DIR
 $messages['LANGUAGE']['fa'] = 'زبان'; // language
 $messages['auto']['fa'] = 'تنظیمات مرورگر (خودکار)'; // bowser settings (automatic)
 $messages['JANUARY']['fa'] = 'ژانویه'; // January

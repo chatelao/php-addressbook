@@ -121,10 +121,10 @@ function get_flag($language) {
 //
 function is_right_to_left($language) {
 	
-	global $is_right_to_left;
+	global $messages;
 	
-	if(isset($is_right_to_left[$language]))
-	  return $is_right_to_left[$language];
+	if(isset($messages['DIR'][$language]) && $messages['DIR'][$language] == "rl" )
+	  return true;
 	else
 	  return false;
 }
