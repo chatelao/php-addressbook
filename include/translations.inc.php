@@ -179,8 +179,9 @@ function translateTags($text) {
 	global $messages;
 	
 	foreach($messages as $key => $translations) {
-		$text = str_replace("%".$kex."%", msg($key), $text);
+		$text = str_replace("%".$key."%", msg($key), $text);
 	}
+	return $text;
 }
 
 ?>

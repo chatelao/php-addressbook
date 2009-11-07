@@ -276,17 +276,69 @@ $myrow = mysql_fetch_array($result);
 	else {
 		if(! $read_only) {
 ?>
-  <form accept-charset="utf-8" method="post" action="edit<?php echo $page_ext; ?>">
+<script type="text/javascript">
+<!--
+
+last_proposal = "";
+
+function proposeMail() {
+	
+	if(document.theform.email.value == last_proposal) {
+	
+	  has_firstname = document.theform.firstname != "";
+	  has_lastname  = document.theform.lasstname != "";
+	
+	  if(has_firstname) {
+	    new_proposal = document.theform.firstname.value.toLowerCase();
+	  }
+	  if(has_firstname && has_lastname) {
+      new_proposal += ".";
+    }
+    if(has_lastname) {
+      new_proposal += document.theform.lastname.value.toLowerCase();    	
+    }
+    new_proposal += "@" + document.theform.company.value.toLowerCase().replace(" ", "-");
+
+	  document.theform.email.value = new_proposal;
+	  last_proposal = new_proposal;
+	  
+	}
+}
+
+function ucfirst(str) {
+  return str.slice(0,1).toUpperCase() + str.slice(1);
+}
+
+function proposeNames() {
+
+	who_from =  document.theform.email.value.split("@", 2);
+
+  if(who_from.length >= 2) {
+
+	  who  = who_from[0].split(".",2);
+	  if(document.theform.firstname.value == "") {
+	    document.theform.firstname.value = ucfirst(who[0]);
+	  }
+	  if(who.length > 1 && document.theform.lastname.value == "") {
+	    document.theform.lastname.value  = ucfirst(who[1]);
+	  }
+  }
+}
+
+-->
+</script>
+
+  <form accept-charset="utf-8" method="post" action="edit<?php echo $page_ext; ?>" name="theform">
 
 		<input type="hidden" name="id" value="<?php echo $myrow['id']?>" />
 		<label><?php echo ucfmsg("FIRSTNAME") ?>:</label>
-		<input type="text" name="firstname" size="35" /><br />
+		<input type="text" name="firstname" size="35" onkeyup="proposeMail()"/><br />
 
 		<label><?php echo ucfmsg("LASTNAME") ?>:</label>
-		<input type="text" name="lastname" size="35" /><br />
+		<input type="text" name="lastname" size="35" onkeyup="proposeMail()"/><br />
 
 		<label><?php echo ucfmsg("COMPANY") ?>:</label>
-		<input type="text" name="company" size="35" /><br />
+		<input type="text" name="company" size="35" onkeyup="proposeMail()"/><br />
 
 		<label><?php echo ucfmsg("ADDRESS") ?>:</label>
 		<textarea name="address" rows="5" cols="35"></textarea><br />
@@ -308,7 +360,7 @@ $myrow = mysql_fetch_array($result);
 		<label>&nbsp;</label><br /><br class="clear" />
 
 		<label><?php echo ucfmsg("EMAIL") ?>:</label>
-		<input type="text" name="email" size="35" /><br />
+		<input type="text" name="email" size="35" onkeyup="proposeNames()"/><br />
 
 		<label><?php echo ucfmsg("EMAIL") ?>2:</label>
 		<input type="text" name="email2" size="35" /><br />

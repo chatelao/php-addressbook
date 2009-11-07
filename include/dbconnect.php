@@ -253,6 +253,6 @@ if( ! Login::checkRoles($required_roles) ) {
 }
 $user = Login::getUser();
 
-$version = '5.3.1';
+$version = '5.4';
 
 ?>

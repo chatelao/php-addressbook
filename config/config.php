@@ -7,8 +7,8 @@
   $dbpass     = "password"; 
   
   // List of Login-Users
-  // $userlist['admin'] = "secret";
-  // $userlist['user2'] = "pass2";
+  // $userlist['admin']['pass'] = "secret";
+  // $userlist['user2']['pass'] = "pass2";
   // ...
 
   // Define table prefix
