@@ -23,6 +23,9 @@ if($_SERVER['SERVER_NAME'] == "php-addressbook.sourceforge.net") { ?>
 	// "php-addressbook.sourceforge.net" Demopage.
 
 if ($_SERVER['SERVER_NAME'] == "php-addressbook.sourceforge.net") { ?>
+<a href="http://sourceforge.net/projects/php-addressbook">
+  <img src="http://sflogo.sourceforge.net/sflogo.php?group_id=157964&amp;type=13" width="120" height="30" alt="Get PHP Address Book at SourceForge.net. Fast, secure and Free Open Source software downloads" />
+</a>
 <script type="text/javascript" src="http://www.ohloh.net/projects/25477/widgets/project_partner_badge">
 // ohloh.net "Project Value" integration
 </script>
@@ -46,7 +49,7 @@ Any improvements, please email rob(at)widgetmonkey.com.
 Keep software free. 
 And please leave this copyright notice. Thanks.
 
-Major update 2007 by Olivier Chatelain, feel free to use and distribute under GPL. 
+Major update 2007-2009 by Olivier Chatelain, feel free to use and distribute under GPL. 
 Any improvements, please email chatelao(at)users.sourceforge.net. 
 
 Updated 2009 - Complete theme redesign by Leighton West. Any theme problems,
