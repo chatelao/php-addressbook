@@ -62,6 +62,9 @@ if(!isset($public_group_edit)) $public_group_edit = true;
 // Define default map guessing
 if(!isset($map_guess)) $map_guess  = true;
 
+// Use images for e-mail addresses
+if(!isset($mail_as_image)) $mail_as_image  = false;
+
 // Define default ajax mode
 if(!isset($use_ajax)) $use_ajax  = true;
 

@@ -46,21 +46,31 @@ function showOneEntry($r, $only_phone = false)
    $view .= ($r['fax']   != "" ?  ucfmsg('F:')." ".$r['fax']."<br />" : "");
    if(! $only_phone) {
 	   $view .= "<br />";
-	   if( isset($_GET["print"])) {
-	     $view .= ($r['email'] != "" ?  "<a href=".'"'.getMailer().$r['email'].'"'.">".$r['email']."</a><br/>" : "");
-	     $view .= ($r['email2'] != "" ? "<a href=".'"'.getMailer().$r['email2'].'"'.">".$r['email2']."</a><br/>" : "");
+	   if( isset($_GET["print"])) {	   	 
+	   	 if($mail_as_image) { // B64IMG: Thanks to NelloD
+	       $view .= ($r['email'] != "" ? "<TR><TD>Email:</TD><TD><img src=\"b64img.php?text=".base64_encode(($r['email']))."\"></TD></TR>" : "");
+         $view .= ($r['email2'] != "" ? "<TR><TD>Email 2:</TD><TD><img src=\"b64img.php?text=".base64_encode(($r['email2']))."\"></TD></TR>" : "");
+       } else {
+	       $view .= ($r['email'] != "" ?  "<a href=".'"'.getMailer().$r['email'].'"'.">".$r['email']."</a><br/>" : "");
+	       $view .= ($r['email2'] != "" ? "<a href=".'"'.getMailer().$r['email2'].'"'.">".$r['email2']."</a><br/>" : "");
+	     }
 	   } else {
 	     include ("include/guess.inc.php");
-	     
- 	     $view .= ($r['email'] != "" ?  "<a href=".'"'.getMailer().$r['email'].'"'.">".$r['email']."</a>" : "");
- 	     $homepage = guessOneHomepage($r['email']);
-	     $view .= ($homepage != "" ?  " (<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>)" : "");
-	     $view .= ($r['email'] != "" ? "<br/>" : "");
-
-	     $view .= ($r['email2'] != "" ? "<a href=".'"'.getMailer().$r['email2'].'"'.">".$r['email2']."</a>" : "");
-	     $homepage = guessOneHomepage($r['email2']);
-	     $view .= ($homepage != "" ?  " (<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>)" : "");
-	     $view .= ($r['email2'] != "" ? "<br/>" : "");
+	         
+	   	 if($mail_as_image) { // B64IMG: Thanks to NelloD
+	       $view .= ($r['email'] != "" ? "<TR><TD>Email:</TD><TD><img src=\"b64img.php?text=".base64_encode(($r['email']))."\"></TD></TR>" : "");
+         $view .= ($r['email2'] != "" ? "<TR><TD>Email 2:</TD><TD><img src=\"b64img.php?text=".base64_encode(($r['email2']))."\"></TD></TR>" : "");
+       } else {
+ 	       $view .= ($r['email'] != "" ?  "<a href=".'"'.getMailer().$r['email'].'"'.">".$r['email']."</a>" : "");
+ 	       $homepage = guessOneHomepage($r['email']);
+	       $view .= ($homepage != "" ?  " (<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>)" : "");
+	       $view .= ($r['email'] != "" ? "<br/>" : "");
+         
+	       $view .= ($r['email2'] != "" ? "<a href=".'"'.getMailer().$r['email2'].'"'.">".$r['email2']."</a>" : "");
+	       $homepage = guessOneHomepage($r['email2']);
+	       $view .= ($homepage != "" ?  " (<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>)" : "");
+	       $view .= ($r['email2'] != "" ? "<br/>" : "");
+	     }
 	   }
 	   $homepage = $r['homepage'];
 	   $view .= ($homepage != "" ?  "<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>" : "");
