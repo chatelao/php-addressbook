@@ -8,7 +8,6 @@ example usage:
 
 */
 
-
 header("Content-Type: image/png");
 
 // get amounts and titles from session.
@@ -16,7 +15,7 @@ $text = base64_decode($_GET['text']);
 
 // calculate required width and height of image
 $pic_width = strlen($text)*6;
-$pic_height = 16;
+$pic_height = 12;
 
 // create image
 $pic = ImageCreate($pic_width+1,$pic_height+1);
