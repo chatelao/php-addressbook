@@ -29,7 +29,7 @@ include("translation.he.php");
 include("translation.hi.php");
 include("translation.hu.php");
 include("translation.it.php");
-include("translation.jp.php");
+include("translation.ja.php");
 include("translation.ko.php");
 include("translation.nl.php");
 include("translation.pl.php");

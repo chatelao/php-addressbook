@@ -1,13 +1,13 @@
 <?php
 //
 // New translations & fixes are welcome:
-// * chatelao(ät)users.sourceforge.net
+// * chatelao(Ã¤t)users.sourceforge.net
 //
 $supported_langs[] = 'ar';
 
 $use_flag['ar'] = 'sa';
 
-$messages['DIR']['ar'] = "rl"; // DIR
+$messages['DIR']['ar'] = "rl"; //
 $messages['LANGUAGE']['ar'] = "لغة"; // language
 $messages['auto']['ar'] = "مزودة بمضخة إعدادات (التلقائي)"; // bowser settings (automatic)
 $messages['en']['ar'] = "الانجليزية"; // English
@@ -113,4 +113,9 @@ $messages['MODIFIED']['ar'] = "تعديل"; // modified
 $messages['F:']['ar'] = "واو :"; // F:
 $messages['da']['ar'] = "الدانماركية"; // Danish
 $messages['fi']['ar'] = "الفنلندية"; // Finnish
+$messages['USER']['ar'] = "مستخدم"; // User
+$messages['PASSWORD']['ar'] = "كلمة السر"; // Password
+$messages['LOGIN']['ar'] = "تسجيل الدخول"; // Login
+$messages['LOGOUT']['ar'] = "خروج"; // Logout
+$messages['UPDATED']['ar'] = ""; //
 ?>

@@ -1,7 +1,7 @@
 <?php
 //
 // New translations & fixes are welcome:
-// * chatelao(ät)users.sourceforge.net
+// * chatelao(Ã¤t)users.sourceforge.net
 //
 $supported_langs[] = 'zh';
 
@@ -112,4 +112,9 @@ $messages['MODIFIED']['zh'] = "修改"; // modified
 $messages['F:']['zh'] = "傳真："; // F:
 $messages['da']['zh'] = "丹麥文"; // Danish
 $messages['fi']['zh'] = "芬蘭文"; // Finnish
+$messages['USER']['zh'] = "用户"; // User
+$messages['PASSWORD']['zh'] = "密码"; // Password
+$messages['LOGIN']['zh'] = "注册"; // Login
+$messages['LOGOUT']['zh'] = "注销"; // Logout
+$messages['UPDATED']['zh'] = ""; //
 ?>
