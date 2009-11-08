@@ -285,8 +285,10 @@ function proposeMail() {
 	
 	if(document.theform.email.value == last_proposal) {
 	
-	  has_firstname = document.theform.firstname != "";
-	  has_lastname  = document.theform.lasstname != "";
+    new_proposal = "";
+
+	  has_firstname = document.theform.firstname.value != "";
+	  has_lastname  = document.theform.lastname.value != "";
 	
 	  if(has_firstname) {
 	    new_proposal = document.theform.firstname.value.toLowerCase();
@@ -328,7 +330,6 @@ function proposeNames() {
 
   if(who_from.length >= 2) {
 
-	  // who  = who_from[0].split(".",2);
 	  who  = who_from[0].split(/[\._]+/,2);
 	  if(who.length == 1)  {
 	    who  = who_from[0].split("_",2);
