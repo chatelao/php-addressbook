@@ -25,7 +25,7 @@ if( ($resultsnumber == 0 && !isset($all)) || (!$id && !isset($all))) {
    {
      include ("include/header.inc.php");
    } else {
-     echo '	<style type="text/css"> <!-- body{background:none;}#container{margin:0 2px 0;width:700px;} --> </style></head><body><div id="container"><div>';
+     echo '	<style type="text/css"> <!-- body{background:none;}#container{margin:0 2px 0;width:700px;} @media only screen and (max-device-width: 480px) {#container {margin:0 2px 0;width:99%;}} --> </style></head><body><div id="container"><div>';
      // echo '</head><body onload="javascript:window.setTimeout(window.print(self), 1000)";>';
    }
 }

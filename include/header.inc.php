@@ -38,14 +38,15 @@
 <a href="preferences<?php echo $page_ext_qry; ?>from=<?php echo urlencode($_SERVER['REQUEST_URI']); ?>"><?php echo ucfmsg('PREFERENCES'); ?></a>
 -->
 <?php if(isset($userlist)) { ?>
-<form name=logout method=post>
-<input type=hidden name=logout value=yes/>
+<form name="logout" method="post">
+<input type="hidden" name="logout" value="yes" />
 <a href="#" onClick="document.logout.submit();"><?php echo ucfmsg("LOGOUT"); ?></a>
 </form>
 <?php } ?>
 			</div>
 			<div id="header">
-				<a href="."><img src="<?php echo $url_images; ?>title.png" title="Addressbook" alt="Addressbook" /></a>
+				<h1><a href=".">Address Book</a></h1>
+				<a href="."><img src="<?php echo $url_images; ?>title.png" title="Addressbook" alt="Addressbook" id="logo" /></a>
 			</div>
 			<div id="nav">
       			<?php include("include/nav.inc.php"); ?>

@@ -10,6 +10,7 @@ img {border:0;}
 #container {margin:0 auto;width:780px;border:0}
 #top{margin:5px 0 0;height:20px;text-align:right;}
 #header {height:80px;}
+#header h1 {display:none;}
 
 #nav {margin:0 0 20px;height:25px;width:770px;float:left;border:0;display:inline;}
 #nav ul li a {color:#fff;padding:0 4px;}

@@ -4,9 +4,14 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="Description" content="PHP-Addressbook" />
 	<meta name="Keywords" content="" />
-	<style type="text/css">
-		<?php include("style.css"); ?>
-  </style>
+
+	<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+	<!--[if !IE]>-->
+	<link media="only screen and (max-device-width: 480px)" rel="stylesheet" type="text/css" href="iphone.css"/>
+	<!--<![endif]-->
+	<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+
+
 	<link rel="icon" type="image/png" href="<?php echo $url_images; ?>icons/font.png" />
 	<?php if(is_right_to_left($lang)) { ?>
 	<style type="text/css">
