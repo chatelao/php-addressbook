@@ -261,6 +261,6 @@ if(isset($userlist)) {
   
 }
 
-$version = '5.4.3';
+$version = '5.4.4';
 
 ?>
