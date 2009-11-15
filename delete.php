@@ -2,6 +2,9 @@
 
 	include ("include/dbconnect.php");
 	include ("include/format.inc.php");
+?>	
+	<meta HTTP-EQUIV="REFRESH" content="3;url=.">
+<?php	
 	echo "<title>Delete</title>";
 	include ("include/header.inc.php");
 

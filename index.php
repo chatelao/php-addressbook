@@ -47,6 +47,7 @@ if ($searchstring) {
                     OR email     LIKE '%$searchword%'
                     OR email2    LIKE '%$searchword%'
                     OR address2  LIKE '%$searchword%' 
+                    OR company   LIKE '%$searchword%' 
                     )";
     }
     $sql .= $sql_order;

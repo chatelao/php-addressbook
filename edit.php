@@ -3,6 +3,10 @@
 include ("include/dbconnect.php");
 include ("include/format.inc.php");
 
+if($submit || $update) { ?>
+	<meta HTTP-EQUIV="REFRESH" content="3;url=.">
+<?php }
+
 $resultsnumber = 0;
 if ($id) {
 
