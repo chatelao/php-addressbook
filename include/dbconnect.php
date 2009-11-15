@@ -261,6 +261,8 @@ if(isset($userlist)) {
   
 }
 
+include("address.class.php");
+
 $version = '5.4.4';
 
 ?>

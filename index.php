@@ -47,7 +47,6 @@ if ($searchstring) {
                     OR email     LIKE '%$searchword%'
                     OR email2    LIKE '%$searchword%'
                     OR address2  LIKE '%$searchword%' 
-                    OR company   LIKE '%$searchword%' 
                     )";
     }
     $sql .= $sql_order;
@@ -111,27 +110,22 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 
 	while ($myrow = mysql_fetch_array($result))
 	{
+		
+		$addr = new Address($myrow);
 
 		$firstname = $myrow["firstname"];
 		$id = $myrow["id"];
 		$lastname = $myrow["lastname"];
 		$company  = $myrow["company"];
+		$email2   = $myrow["email2"];
 
-		$email  = ($myrow["email"] != "" ? $myrow["email"] : ($myrow["email2"] != "" ? $myrow["email2"] : ""));
-		$email2 = $myrow["email2"];
+		$email  = $addr->firstEMail();
 		
 		$home   = $myrow["home"];
 		$mobile = $myrow["mobile"];
 		$work   = $myrow["work"];
 
-		// Phone order home->mobile->work
-		$phone = ($myrow["home"] != "" ? $myrow["home"]
-                                               : ($myrow["mobile"] != "" ? $myrow["mobile"]
-                                                                         : $myrow["work"]));
-		$phone = str_replace("'", "", 
-                         str_replace('/', "", 
-                         str_replace(" ", "", 
-                         str_replace(".", "", $phone))));
+    $phone = $addr->shortPhone();
 
 		if ($alternate == "1") { 
 			$color = "even"; 
