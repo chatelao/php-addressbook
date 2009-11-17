@@ -28,18 +28,30 @@ if(   ini_get('zlib.output_compression') != 1
 }
 
 // Copy only used variables into global space.
-$get_vars = array( 'searchstring', 'alphabet', 'group', 'resultnumber'
-                 , 'submit', 'update', 'delete', 'id' 
+$get_int_vars = array( 'group', 'id' );
+foreach($get_int_vars as $get_var) {
+   if(isset($_GET[$get_var])) {
+     ${$get_var} = intval($_GET[$get_var]);
+   } elseif(isset($_POST[$get_var])) {
+     ${$get_var} = intval($_POST[$get_var]);
+   } else {
+     ${$get_var} = null;
+   }  	
+}
+
+// Copy only used variables into global space.
+$get_vars = array( 'searchstring', 'alphabet', 'resultnumber'
+                 , 'submit', 'update', 'delete'
                  , 'new', 'add', 'remove', 'edit' );
 
 foreach($get_vars as $get_var) {
    if(isset($_GET[$get_var])) {
-     ${$get_var} = $_GET[$get_var];
+     ${$get_var} = mysql_real_escape_string($_GET[$get_var]);
    } elseif(isset($_POST[$get_var])) {
-     ${$get_var} = $_POST[$get_var];
+     ${$get_var} = mysql_real_escape_string($_POST[$get_var]);
    } else {
      ${$get_var} = null;
-   }  	
+   }
 }
 
 //
