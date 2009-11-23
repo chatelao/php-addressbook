@@ -28,30 +28,18 @@ if(   ini_get('zlib.output_compression') != 1
 }
 
 // Copy only used variables into global space.
-$get_int_vars = array( 'group', 'id' );
-foreach($get_int_vars as $get_var) {
-   if(isset($_GET[$get_var])) {
-     ${$get_var} = intval($_GET[$get_var]);
-   } elseif(isset($_POST[$get_var])) {
-     ${$get_var} = intval($_POST[$get_var]);
-   } else {
-     ${$get_var} = null;
-   }  	
-}
-
-// Copy only used variables into global space.
-$get_vars = array( 'searchstring', 'alphabet', 'resultnumber'
-                 , 'submit', 'update', 'delete'
+$get_vars = array( 'searchstring', 'alphabet', 'group', 'resultnumber'
+                 , 'submit', 'update', 'delete', 'id' 
                  , 'new', 'add', 'remove', 'edit' );
 
 foreach($get_vars as $get_var) {
    if(isset($_GET[$get_var])) {
-     ${$get_var} = mysql_real_escape_string($_GET[$get_var]);
+     ${$get_var} = $_GET[$get_var];
    } elseif(isset($_POST[$get_var])) {
-     ${$get_var} = mysql_real_escape_string($_POST[$get_var]);
+     ${$get_var} = $_POST[$get_var];
    } else {
      ${$get_var} = null;
-   }
+   }  	
 }
 
 //
@@ -79,6 +67,9 @@ if(!isset($mail_as_image)) $mail_as_image  = false;
 
 // Define default ajax mode
 if(!isset($use_ajax)) $use_ajax  = true;
+
+// Enable "doodle" mode, if keys are availabe
+$use_doodle = isset($doodle['key']) && isset($doodle['secret']);
 
 // Define default ZIP handling
 if(isset($plz_pattern)) $zip_pattern  = $plz_pattern;
@@ -270,11 +261,15 @@ if(isset($userlist)) {
     die;
   }
   $user = Login::getUser();
-  
+
+  //
+  // Check Roles
+  //  
+  $read_only = $user->hasRole("readonly");
 }
 
 include("address.class.php");
 
-$version = '5.4.4';
+$version = '5.4.5';
 
 ?>

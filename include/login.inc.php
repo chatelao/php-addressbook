@@ -1,5 +1,39 @@
 <?php
 
+class User {
+	
+	private $name;
+	private $config;
+	
+	function __construct($username, $config) {
+	  $this->name = $username;
+	  $this->config = $config;
+	}
+	
+	function getConfig() {
+		return $this->config;
+	}	
+	
+	function hasRole($rolename) {
+  
+    $config = $this->config;
+    
+    if(   isset($this->config['role'])
+       && $rolename == $this->config['role']) {
+      return true;
+    }
+    if(   isset($this->config['roles'])
+       && in_array($rolename, $this->config['roles'])) {
+      return true;
+    }
+    return false;
+  }
+
+	function getName() {
+		return $this->name;
+	}
+}
+
 class Login {
 
   static $uin;
@@ -16,8 +50,9 @@ class Login {
   	global $userlist;
 
   	foreach($userlist as $user => $config) {
-  		if(self::getUIN($user, $config['pass']) == self::$uin) {
-  			return $user;
+  		if(   array_key_exists('pass', $config)
+  		  &&  self::getUIN($user, $config['pass']) == self::$uin) {
+  			return new User($user, $config);
   		}
   	}
   	return "";

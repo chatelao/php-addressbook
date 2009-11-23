@@ -100,8 +100,11 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 			echo "<th>".ucfmsg("FIRSTNAME")."</th>";
 			echo "<th>".ucfmsg("EMAIL")."</th>";
 			echo "<th>".ucfmsg("TELEPHONE")."</th>";
+      if(!$read_only) {
+         echo "<th></th>";
+      }
 ?>			
-			<th></th><th></th><th></th><th></th><th></th>
+			<th></th><th></th><th></th><th></th>
 		</tr>
 <?php
 	$alternate = "2"; 
@@ -138,7 +141,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 		echo "<tr class='$color' name='entry'>";
 		$emails = $myrow['email'].(   $myrow['email']  != ""
 		                           && $myrow['email2'] != "" ? getMailerDelim() : "").$myrow['email2'];
-		echo "<td class='center'><input type='checkbox' id='id$id' name='selected[]' value='$id' title='Select ($firstname $lastname)' alt='Select ($firstname $lastname)' accept='$emails' /></td>";
+		echo "<td class='center'><input type='checkbox' id='$id' name='selected[]' value='$id' title='Select ($firstname $lastname)' alt='Select ($firstname $lastname)' accept='$emails' /></td>";
 		echo "<td>$lastname</td>";
 		echo "<td>$firstname</td>";
 		echo "<td><a href='".getMailer()."$email'>$email</a></td>";
@@ -177,7 +180,10 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 	echo "<td class='center'><input type='checkbox' id='MassCB' onclick=\"MassSelection()\" /></td><td><em><strong>".ucfmsg("SELECT_ALL")."</strong></em></td><td colspan='8'></td>";
 	echo "</tr>\n";
 	echo "</table><br />";
-        echo "<div class='left'><input type='button' value=\"".ucfmsg("SEND_EMAIL")."\" onclick=\"MailSelection()\" /></div>";
+	if($use_doodle) {
+    echo "<div class='left'><input type='button' value=\"".ucfmsg("DOODLE")."\" onclick=\"Doodle()\" /></div>";
+  }
+  echo "<div class='left'><input type='button' value=\"".ucfmsg("SEND_EMAIL")."\" onclick=\"MailSelection()\" /></div>";
 
 	if(isset($table_groups) and $table_groups != "" and !$is_fix_group)
 	{
@@ -258,6 +264,26 @@ function MailSelection() {
 		alert("No address selected.");
 	else
 		location.href = "<?php echo getMailer(); ?>"+addresses;
+}
+
+function Doodle() {
+	
+	var participants = "";
+	var dst_count = 0;
+
+  select_count = document.getElementsByName("selected[]").length;
+	for (i = 0; i < select_count; i++) {
+		selected_i = document.getElementsByName("selected[]")[i];
+		if( selected_i.checked == true) {
+			participants += selected_i.id+";";
+			dst_count++;
+		}
+	}
+	alert(participants);
+	if(dst_count == 0)
+		alert("No paticipants selected.");
+	else
+	  location.href = "./doodle.php?part="+participants;
 }
 
 //

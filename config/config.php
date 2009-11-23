@@ -6,10 +6,12 @@
   $dbuser     = "username"; 
   $dbpass     = "password"; 
   
-  // List of Login-Users
+  // == List of Login-Users ==
   // $userlist['admin']['pass'] = "secret";
-  // $userlist['user2']['pass'] = "pass2";
-  // ...
+  //
+  // -- Role "readonly": --
+  // $userlist['view']['pass'] = "apassword";
+  // $userlist['view']['role'] = "readonly";  
 
   // Define table prefix
   $table_prefix = "";
