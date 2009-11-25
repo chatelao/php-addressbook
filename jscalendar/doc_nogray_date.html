@@ -1,0 +1,340 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Date Object Extension</title>
+<style>
+	* {font-family:Arial, Helvetica, sans-serif;
+		font-size:9pt;}
+	.sample_swatch {float:left;
+		width:20px;
+		height:20px;
+		cursor:pointer;}
+		
+	/* table list */
+	.table_list {border-collapse:collapse;
+		border:solid #cccccc 1px;
+		width:100%;}
+	
+	.table_list td {padding:5px;
+		border:solid #efefef 1px;}
+	
+	.table_list th {background:#75b2d1;
+		padding:5px;
+		color:#ffffff;}
+	
+	.table_list tr.odd {background:#e1eff5;}
+</style>
+</head>
+<body>
+<center>
+<!-- Begin: AdBrite -->
+<script type="text/javascript">
+   var AdBrite_Title_Color = '0000FF';
+   var AdBrite_Text_Color = '000000';
+   var AdBrite_Background_Color = 'FFFFFF';
+   var AdBrite_Border_Color = 'FFFFFF';
+</script>
+<span style="white-space:nowrap;"><script src="http://ads.adbrite.com/mb/text_group.php?sid=473706&zs=3732385f3930" type="text/javascript"></script><!--
+--><a target="_top" href="http://www.adbrite.com/mb/commerce/purchase_form.php?opid=473706&afsid=1"><img src="http://files.adbrite.com/mb/images/adbrite-your-ad-here-leaderboard.gif" style="background-color:#FFFFFF" alt="Your Ad Here" width="14" height="90" border="0" /></a></span>
+<!-- End: AdBrite -->
+</center>
+<br /><br />
+<h1>Date Object Extension:</h1>
+For the latest version of the Date Object Extension, please visit <a href="http://www.nogray.com">The NoGray.com</a>
+<br /><br />
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=admin%40nogray%2ecom&item_name=NoGray%20Donation&buyer_credit_promo_code=&buyer_credit_product_category=&buyer_credit_shipping_method=&buyer_credit_user_address_change=&no_shipping=1&return=http%3a%2f%2fwww%2enogray%2ecom%2f&no_note=1&tax=0&currency_code=USD&lc=US&bn=PP%2dDonationsBF&charset=UTF%2d8" target="_blank">we thrive on your donations</a>
+<br /><br />
+nogray_date.js will extend the native JavaScript Date object and implement a few functions to allow easier date generation and formatting. You'll need the latest version on <a href="http://www.mootools.net">mootools</a> Class.Extras file.
+<br />
+<br style="clear:both;" />
+<table class="table_list">
+	<tr>
+		<th>Option</th>
+		<th>Description</th>
+		<th>Arguments</th>
+		<th>Return Value</th>
+	</tr>
+	<tr>
+		<td><strong>language</strong></td>
+		<td>An object that contain the language to be used in formatting
+			the output from the print function</td>
+		<td>N/A</td>
+		<td>N/A</td>
+	</tr>
+	<tr>
+		<td colspan="4">
+		Example:
+		<pre>alert(new Date().language.days.short[1]); // will alert Mo (short for Monday)</pre>
+		</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>daysInMonth</strong></td>
+		<td>Returns the number of days in the month</td>
+		<td>N/A</td>
+		<td>Number of days</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="4">Example:
+		<pre>alert(new Date(2007, 8, 1).daysInMonth());	// will alert 30 (30 days in Septembar)</pre>
+		</td>
+	</tr>
+	<tr>
+		<td><strong>isLeapYear</strong></td>
+		<td>Check if the year is a leap year or not</td>
+		<td>N/A</td>
+		<td>Boolean; true if the year is leap, false otherwise.</td>
+	</tr>
+	<tr>
+		<td colspan="4">Example:
+			<pre>alert(new Date(2008,0,1).isLeapYear());	// will alert true
+alert(new Date(2009,0,1).isLeapYear()); // will alert false</pre></td>
+	</tr>
+	<tr class="odd">
+		<td><strong>fromString</strong></td>
+		<td>Create a date object from a string</td>
+		<td><strong>str:</strong> see below</td>
+		<td>A new date object</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="4">
+			<strong>str:</strong> the string variable for the date. If the date can't be parsed using Date.parse() a list of custom values are provided below.
+			<br />
+			All custom values are relative to the date object.
+			<br /><br />
+			<strong>Possible values:</strong>
+			<ul>
+			<li>Any string that can be parsed by Date.parse()
+				<ul>
+					<li>Short dates can use either a "/", "\" or "-" date separator, but must follow the month/day/year format, for example "7/20/96".<br />
+							<em>month are 1 for January 12 for December</em></li>
+					<li>Long dates of the form "July 10 1995" can be given with the year, month, and day in any order, and the year in 2-digit or 4-digit form. If you use the 2-digit form, the year must be greater than or equal to 70. </li>
+					<li>Month and day names must have two or more characters. Two character names that are not unique are resolved as the last match. For example, "Ju" is resolved as July, not June. </li>
+					<li>Handles all standard time zones, as well as Universal Coordinated Time (UTC) and Greenwich Mean Time (GMT).</li>
+					<li>Colons separate hours, minutes, and seconds, although all need not be specified. "10:", "10:11", and "10:11:12" are all valid.</li>
+					<li>If the 24-hour clock is used, it is an error to specify "PM" for times later than 12 noon. For example, "23:15 PM" is an error. </li>
+					<li>A string containing an invalid date is an error. For example, a string containing two years or two months is an error. </li>
+				</ul>
+			<li><strong>"yesterday"</strong> a day before relative to the date object</li>
+			<li><strong>"tomorrow"</strong> a day after relative to the date object</li>
+			<li><strong>"today+<em>[n]</em>"</strong> <em>[n]</em> is any number</li>
+				add the <em>[n]</em> number of days to the date</li>
+			<li><strong>"today-<em>[n]</em>"</strong> <em>[n]</em> is any number<br />
+				subtract the <em>[n]</em> number of days from the date</li>
+			<li><strong>"last month"</strong> a month before relative to the date object</li>
+			<li><strong>"next month"</strong> a month after relative to the date object</li>
+			<li><strong>"month+<em>[n]</em>"</strong> <em>[n]</em> is any number<br />
+				add the <em>[n]</em> number of months to the date</li>
+			<li><strong>"month-<em>[n]</em>"</strong> <em>[n]</em> is any number<br />
+				subtract the <em>[n]</em> number of days from the date</li>
+			<li><strong>"last year"</strong></li>
+			<li><strong>"next year"</strong></li>
+			<li><strong>"year+<em>[n]</em>"</strong></li>
+			<li><strong>"year-<em>[n]</em>"</strong></li>
+			</ul>
+		</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="4">Example:
+			<pre>alert(new Date().fromString("yesterday"));	// will alert yesterday's day</pre></td>
+	</tr>
+	<tr>
+		<td><strong>fromObject</strong></td>
+		<td>Create a date from an object</td>
+		<td><strong>date_obj:</strong> see below</td>
+		<td>A new date object</td>
+	</tr>
+	<tr>
+		<td colspan="4">
+		<strong>date_obj:</strong> is a javascript object (key and value object) and 
+		should have the following attributes
+		
+		<ul>
+			<li><strong>date:</strong> can be either a number or a string<br />
+				if string, the following values are allowed
+				<ul>
+					<li>"[1st | 2nd | 3rd | 4th | 5th | last] sunday" either the 1st, 2nd, or 3rd, etc... sunday of the month.<br />
+						will return the date for the [nth] or last sunday of the month</li>
+					<li>"[1st | 2nd | 3rd | 4th | 5th | last] monday" same as above but for monday</li>
+					<li>"[1st | 2nd | 3rd | 4th | 5th | last] tuesday"</li>
+					<li>"[1st | 2nd | 3rd | 4th | 5th | last] wednesday"</li>
+					<li>"[1st | 2nd | 3rd | 4th | 5th | last] thursday"</li>
+					<li>"[1st | 2nd | 3rd | 4th | 5th | last] friday"</li>
+					<li>"[1st | 2nd | 3rd | 4th | 5th | last] saturday"</li>
+				</ul>
+			<li><strong>month:</strong> a numerical value for the month<br />
+					<em>0 for January 11 for December</em></li>
+			<li><strong>year:</strong> a numerical value for the year (for digits format)</li>
+			<li><strong>hour:</strong> a numerical value for the hour</li>
+			<li><strong>minute:</strong> a numerical value for the minute</li>
+			<li><strong>second:</strong> a numerical value for the second</li>
+			<li><strong>millisecond:</strong> a numerical value for the millisecond</li>
+		</ul>
+		
+		if any of the values above is not defined, the current date value will be used.
+		</td>
+	</tr>
+	<tr>
+		<td colspan="4">Example:
+			<pre>alert(new Date(2007,8,1).fromObject({'date':'last friday'}));	// will alert the date for Sep 28th 2007
+alert(new Date(2007,8,1).fromObject({'date':'3rd Monday'}));	// will alert the date for Sep 17th 2007</pre></td>
+	</tr>
+	<tr class="odd">
+		<td><strong>print</strong></td>
+		<td>Returns a formatted date string similar to PHP date function.<br />
+		Please visit <a href="http://us.php.net/manual/en/function.date.php" target="_blank">http://us.php.net/manual/en/function.date.php</a> for more details
+		on the possible values. The only exception is the Y and o will return the same value</td>
+		<td><strong>format:</strong> the format of the date.
+		<br />
+		<strong>lang:</strong> a language object if using a different language than the date object</td>
+		<td>String of the formatted date</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="4">alert(new Date(2007,8,12).print("D, d M Y")); // will alert Wed, 12 Sep 2007</pre></td>
+	</tr>
+	<tr>
+		<td><strong>getWeekInYear</strong></td>
+		<td>Returns the number of week in the year</td>
+		<td>N/A</td>
+		<td>Number of weeks</td>
+	</tr>
+	<tr>
+		<td colspan="4">Example:
+		<pre>alert(new Date(2007,8,12).getWeekInYear());	// will alert 36</pre>
+		</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>getDayInYear</strong></td>
+		<td>Returns the number of day in the year</td>
+		<td>N/A</td>
+		<td>Number of days</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="4">Example:
+		<pre>alert(new Date(2007,8,12).getDayInYear());	// will alert 253</pre>
+		</td>
+	</tr>
+	<tr>
+		<td><strong>getHourInYear</strong></td>
+		<td>~~~~~~~</td>
+		<td>N/A</td>
+		<td>Number of hours</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>getMinuteInYear</strong></td>
+		<td>~~~~~~~</td>
+		<td>N/A</td>
+		<td>Number of minutes</td>
+	</tr>
+	<tr>
+		<td><strong>getSecondInYear</strong></td>
+		<td>~~~~~~~</td>
+		<td>N/A</td>
+		<td>Number of seconds</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>getMillisecondInYear</strong></td>
+		<td>~~~~~~~</td>
+		<td>N/A</td>
+		<td>Number of milliseconds</td>
+	</tr>
+	
+	<tr>
+		<td><strong>getWeekSince</strong></td>
+		<td>Returns the number of week since a given date</td>
+		<td><strong>date:</strong> a JavaScript Date</td>
+		<td>Number of weeks</td>
+	</tr>
+	<tr>
+		<td colspan="4">Example:
+		<pre>alert(new Date(2007,8,12).getWeekSince(new Date(2006,2,14)));	// will alert 78</pre>
+		</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>getDaySince</strong></td>
+		<td>Returns the number of day in the year</td>
+		<td><strong>date:</strong> a JavaScript Date</td>
+		<td>Number of days</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="4">Example:
+		<pre>alert(new Date(2007,8,12).getDaySince(new Date(2006,2,14)));	// will alert 547</pre>
+		</td>
+	</tr>
+	<tr>
+		<td><strong>getHourSince</strong></td>
+		<td>~~~~~~~</td>
+		<td>~~~~~~~</td>
+		<td>Number of hours</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>getMinuteSince</strong></td>
+		<td>~~~~~~~</td>
+		<td>~~~~~~~</td>
+		<td>Number of minutes</td>
+	</tr>
+	<tr>
+		<td><strong>getSecondSince</strong></td>
+		<td>~~~~~~~</td>
+		<td>~~~~~~~</td>
+		<td>Number of seconds</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>getMillisecondSince</strong></td>
+		<td>~~~~~~~</td>
+		<td>~~~~~~~</td>
+		<td>Number of milliseconds</td>
+	</tr>
+	<tr>
+		<td><strong>timeDifference</strong></td>
+		<td>Returns the time difference in milliseconds between the date and the arguments date</td>
+		<td><strong>date:</strong> a JavaScript Date</td>
+		<td>Difference in milliseconds</td>
+	</tr>
+	<tr>
+		<td colspan="4">Example:
+		<pre>alert(new Date(2007,8,12).timeDifference(new Date(2006,2,14))); // will alert 47260800000</pre>
+		</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>toSwatchInternetTime</strong></td>
+		<td>Returns the number of beats as a string (including the @ sign)
+			This function assume the browser handles the time zone and day time saving.<br />
+			For more details about the Swatch Internet Time, please visit <a href="http://www.swatch.com/internettime/">http://www.swatch.com/internettime/</a></td>
+		<td>N/A</td>
+		<td>beats</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="4">Example:
+		<pre>alert(new Date(2007,8,12,8,52,0).toSwatchInternetTime()); // will alert @702 (based on timezone)</pre>
+		</td>
+	</tr>
+	<tr>
+		<td><strong>fromSwatchInternetTime</strong></td>
+		<td>Returns a JavaScript Date object (approximate time) from the given bean.<br />
+			This function assume the browser handles the time zone and day time saving.<br />
+			For more details about the Swatch Internet Time, please visit <a href="http://www.swatch.com/internettime/">http://www.swatch.com/internettime/</a></td>
+		<td><strong>beat:</strong> Swatch Internet Time beat</td>
+		<td>A new date object</td>
+	</tr>
+	<tr>
+		<td colspan="4">Example:
+		<pre>alert(new Date().fromSwatchInternetTime(354)); // will alert the time at 10:47:31 (based on timezone)</pre>
+		</td>
+	</tr>
+</table>
+
+<br /><br />
+<center>
+<!-- Begin: AdBrite -->
+<script type="text/javascript">
+   var AdBrite_Title_Color = '0000FF';
+   var AdBrite_Text_Color = '000000';
+   var AdBrite_Background_Color = 'FFFFFF';
+   var AdBrite_Border_Color = 'FFFFFF';
+</script>
+<span style="white-space:nowrap;"><script src="http://ads.adbrite.com/mb/text_group.php?sid=473706&zs=3732385f3930" type="text/javascript"></script><!--
+--><a target="_top" href="http://www.adbrite.com/mb/commerce/purchase_form.php?opid=473706&afsid=1"><img src="http://files.adbrite.com/mb/images/adbrite-your-ad-here-leaderboard.gif" style="background-color:#FFFFFF" alt="Your Ad Here" width="14" height="90" border="0" /></a></span>
+<!-- End: AdBrite -->
+</center>
+</body>
+</html>

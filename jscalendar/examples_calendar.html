@@ -1,0 +1,692 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>NoGray Calendar Component</title>
+
+<script src="mootools.v1.11.js" type="text/javascript"></script>
+<script src="nogray_date_calendar_vs1_min.js" type="text/javascript"></script>
+
+<script language="javascript">
+	window.addEvent("domready", function(){
+		var today = new Date();
+		
+		var calender1 = new Calendar("calendar1", "cal1_toggler", {inputField:'date1'});
+		
+		var td_events = [];
+		var d_16 = (today.getMonth()+1)+'-16-'+today.getFullYear();
+		td_events[d_16] = {'click':function(td, date_str){alert(new Date().fromString(date_str));}};
+		
+		
+		var dateon = [];
+		var d_14 = (today.getMonth()+1)+'-14-'+today.getFullYear();
+		dateon[d_14] = function(td, date_str){
+			td.setStyle('background-color', '#aad7ea');
+		};
+		
+		var calender2 = new Calendar("calendar2", "cal2_toggler", {inputField:{date:'date',
+																	month:'month',
+																	year:'year'},
+																	inputType:'select',
+																	idPrefix:'cal2',
+																	numMonths:4,
+																	tdEvents:td_events,
+																	dateOnAvailable:dateon
+																});
+		
+		var us_holidays = [{date:1,
+					month:0},
+					{date:"3rd Monday",
+					month:0},
+					{date:"3rd Monday",
+					month:1},
+					{date:"last Monday",
+					month:4},
+					{date:4,
+					month:6},
+					{date:"1st Monday",
+					month:8},
+					{date:"2nd Monday",
+					month:9},
+					{date:11,
+					month:10},
+					{date:"4th Thursday",
+					month:10},
+					{date:25,
+					month:11}];
+																		
+		var calender3 = new Calendar("calendar3", "cal3_toggler", {inputField:'date3',
+																	datesOff:us_holidays,
+																	numMonths:3,
+																	multiSelection:true,
+																	maxSelection:5,
+																	forceSelections:[
+																			{date:'last Saturday'}
+																		],
+																	dateFormat:'D, d M Y ::  ',
+																	idPrefix:'cal3'});
+																	
+		var calender4 = new Calendar("calendar4", null, {visible:true,
+														allowSelection:false,
+														datesOff:us_holidays,
+														startDate:new Date(today.getFullYear(), 0, 1),
+														endDate:new Date(today.getFullYear(), 11, 31),
+														idPrefix:'cal4',
+														inputType:'none',
+														onSelect: function(){
+															alert(this.options.selectedDate);
+														}});
+	});
+</script>
+<link href="nogray_calendar_vs1.css" rel="stylesheet" type="text/css" />
+<style>
+	* {font-family:Arial, Helvetica, sans-serif;
+		font-size:9pt;}
+		
+	/* table list */
+	.table_list {border-collapse:collapse;
+		border:solid #cccccc 1px;
+		width:100%;}
+	
+	.table_list td {padding:5px;
+		border:solid #efefef 1px;}
+	
+	.table_list th {background:#75b2d1;
+		padding:5px;
+		color:#ffffff;}
+	
+	.table_list tr.odd {background:#e1eff5;}
+	
+	
+	/* calendar styles */
+	#calendar1, #calendar2, #calendar3, #calendar4 {border:solid #666666 1px;
+		background:#ffffff;
+		padding-bottom:5px;
+		padding-top:5px;}
+	
+	#calendar1 {width:183px;}
+	#calendar1 .ng-cal-header-table {width:173px;}
+	
+	#calendar2 {width:370px;}
+	#calendar2 .ng-cal-header-table {width:360px;}
+	#calendar2 .ng-cal, #calendar3 .ng-cal {width:178px;
+		float:left;
+		margin-right:0px;}
+	
+	#calendar3 {width:555px;}
+	#calendar3 .ng-cal-header-table {width:545px;}
+	
+	#calendar4 {width:350px;}
+	#calendar4 .ng-cal-header-table {width:340px;}
+	#calendar4 .ng-dateOff {background:#81b8c4;
+					color:#1e6372;}
+					
+	#calendar4 .ng-cal * {font-size:10pt;}
+	#calendar4 .ng-cal td {padding:3px;
+		width:50px;
+		height:30px;
+		border:solid #9eefee 1px;}
+</style>
+</head>
+<body>
+<center>
+<!-- Begin: AdBrite -->
+<script type="text/javascript">
+   var AdBrite_Title_Color = '0000FF';
+   var AdBrite_Text_Color = '000000';
+   var AdBrite_Background_Color = 'FFFFFF';
+   var AdBrite_Border_Color = 'FFFFFF';
+</script>
+<span style="white-space:nowrap;"><script src="http://ads.adbrite.com/mb/text_group.php?sid=473706&zs=3732385f3930" type="text/javascript"></script><!--
+--><a target="_top" href="http://www.adbrite.com/mb/commerce/purchase_form.php?opid=473706&afsid=1"><img src="http://files.adbrite.com/mb/images/adbrite-your-ad-here-leaderboard.gif" style="background-color:#FFFFFF" alt="Your Ad Here" width="14" height="90" border="0" /></a></span>
+<!-- End: AdBrite -->
+</center>
+<br /><br />
+<h1>The NoGray Calendar Component:</h1>
+This file contains a few examples to help you start using the calendar component, for the latest version please visit <a href="http://www.nogray.com">The NoGray.com</a>
+<ul>
+	<li><a href="#requirments">Requirements</a></li>
+	<li><a href="#create">Create It</a></li>
+	<li><a href="#tryit">Try It</a></li>
+	<li><a href="#congfigurations">Configurations</a></li>
+	<li><a href="#skinning">Skinning</a></li>
+	<li><a href="#options">Options</a></li>
+	<li><a href="#events">Events</a><br />&nbsp;</li>
+	<li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=admin%40nogray%2ecom&item_name=NoGray%20Donation&buyer_credit_promo_code=&buyer_credit_product_category=&buyer_credit_shipping_method=&buyer_credit_user_address_change=&no_shipping=1&return=http%3a%2f%2fwww%2enogray%2ecom%2f&no_note=1&tax=0&currency_code=USD&lc=US&bn=PP%2dDonationsBF&charset=UTF%2d8" target="_blank">we thrive on your donations</a></li>
+</ul>
+
+<a name="requirments"></a><b>Requirements:</b><br />
+The NoGray Calendar requires an XHTML doctype, which means your &lt;html&gt; tag should look like
+<pre>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;<br />&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;</pre>
+<br /><br />
+<a name="create"></a><strong>Create It</strong><br /><br />
+To create a calendar, you'll need to call the calendar class with two elements and a set of options.
+<ul>
+<li><strong>holdingElement:</strong> the element that will hold the calendar parts.</li>
+<li><strong>toggler:</strong> the element that will toggle the calendar on and off (if not visible). Can be null if no toggler is required, just use the openCalendar and closeCalendar functions to open and close the calendar.</li>
+<li><strong><a href="#options">options</a></strong></li>
+</ul>
+Example:
+<pre>HTML:
+&lt;input type=&quot;text&quot; id=&quot;date3&quot; name=&quot;date3&quot;&gt;
+&lt;a href=&quot;#&quot; id=&quot;cal3_toggler&quot;&gt;Open Calendar&lt;/a&gt;
+&lt;div id=&quot;calendar3&quot;&gt;&lt;/div&gt;
+...
+later
+...
+Script:
+var calender3 = new Calendar("calendar3", "cal3_toggler", {inputField:'date3',
+                                                                                       numMonths:3,
+                                                                                       multiSelection:true,
+                                                                                       maxSelection:5,
+                                                                                       forceSelections:[
+                                                                                             {date:'last Saturday'}
+                                                                                       ],
+                                                                                       dateFormat:'D, d M Y ::  ',
+                                                                                       idPrefix:'cal3'});</pre>
+<br />
+<a name="tryit"></a><b>Try It:</b>
+<br />
+<br />
+Simple Calendar with a text field input:<br />
+<input type="text" name="date1" id="date1" /> 
+<a href="#" id="cal1_toggler">Open Calendar</a>
+<div id="calendar1"></div>
+
+<br /><br /><br />
+Four months calendar with events handling and select drop downs fields:<br />
+<select name="date" id="date"></select>
+<select name="month" id="month"></select>
+<select name="year" id="year"></select>
+<a href="#" id="cal2_toggler">Open Calendar</a>
+<div id="calendar2"></div>
+<br />
+The 14<sup>th</sup> of this month will have a blue background and when you click on the 16<sup>th</sup> an alert will display the date of the 16<sup>th</sup>
+
+<br /><br /><br />
+Multi date selection with a textarea (text or select drop downs can be used):<br />
+Select up to 5 dates:<br />
+<textarea rows="3" cols="50" id="date3" name="date3"></textarea> 
+<a href="#" id="cal3_toggler">Open Calendar</a>
+<div id="calendar3"></div>
+
+<br /><br /><br />
+Visible Menu with no input and not selectable (larger display and holidays have a different background color using CSS):<br />
+<div id="calendar4"></div>
+
+<br /><br />
+<a name="congfigurations"></a><b>Configurations:</b><br /><br />
+
+You can customized the look and feel of the calendar component by changing the nogray_calendar_vs1.css file or adding your own custom classes. Each calendar can have a class and id prefix which make it easier to have more than one calendar in the same page.
+
+<br /><br />
+Options objects are a key: value object with the following syntax
+<pre>{option: value,
+option: {option: value,
+		option: value},
+option: [value1, value2]}</pre>
+<br /><br />
+<a name="date_object"></a>Date objects for the calendar can be one of the following
+<br />
+String: a date in a string format or special value (check nogray_date.js)<br />
+Object: an object that include the date values (check nogray_date.js)<br />
+JavaScript Date<br />
+Number: JavaScript time value (number of milliseconds since 1970)
+<br /><br />
+<a name="event_object"></a>Events objects for the calendar are objects where the key is the event (without the on) and the value is the function to execute.<br />
+for example an onclick event will be something like this<br />
+<pre>{click:function(){
+	...
+	do something
+	...
+	}
+)
+</pre>
+
+<a name="skinning"></a><b>Skinning:</b><br /><br />
+The Calendar Component use CSS to skin the different parts of the calendar. The gray border around the calendar is the style for the holding element (div in this case).
+The following images illustrate the different parts with their class names, ids and HTML values.
+<br />
+<img src="images/ng_cal_outer_parts.gif" border="0" alt="NoGray Calendar Outer Parts" />
+<br />
+<img src="images/ng_cal_inner_parts.gif" border="0" alt="NoGray Calendar Inner Parts" />
+<br /><br />
+
+<a name="options"></a><b>Options</b>
+<table class="table_list">
+	<tr>
+		<th>Option</th>
+		<th>Description</th>
+		<th>Default Value</th>
+	</tr>
+	<tr>
+		<td><strong>visible</strong></td>
+		<td>Indicates weather the calendar will be visible when loaded or not</td>
+		<td>false</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+		Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {visible:false});</pre></td>
+	</tr>
+	<tr class="odd">
+		<td><strong>offset</strong></td>
+		<td>The calendar by default will show at the lower left corner of the input field.
+			offset allows for moving the offsetting the calendar position</td>
+		<td>{x:0, y:0}</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {offset:{x:50, y:50}});</pre></td>
+	</tr>
+	<tr>
+		<td><strong>dateFormat</strong></td>
+		<td>The format of the date output (for text field).<br />
+				check nogray_date.js for details<br />
+				check <a href="http://us3.php.net/manual/en/function.date.php" target="_blank">http://us3.php.net/manual/en/function.date.php</a> for formatting details</td>
+		<td>D, d M Y</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+		Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {dateFormat:"Y-m-d"});</pre>
+	  </td>
+	</tr>
+	<tr class="odd">
+		<td><strong>numMonths</strong></td>
+		<td>The number of months per calendar.<br />
+		<strong style="color:#cc0000;">Warnings:</strong> Firefox is slow when handling date objects. If using datesoff or forcedSelection
+				try to use 1 month per calendar</td>
+		<td>1</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="3">
+		Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {numMonths:4});</pre></td>
+	</tr>
+	<tr>
+		<td><strong>classPrefix</strong></td>
+		<td>The CSS class prefix, check the <a href="#skinning">skinning</a> section for instructions</td>
+		<td>ng-</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+		Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {classPrefix:'new_calendar'});</pre></td>
+	</tr>
+	<tr class="odd">
+		<td><strong>idPrefix</strong></td>
+		<td>The id prefix for the dates, use this if using more than one calendar.</td>
+		<td>ng-</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {idPrefix:'cal_1'});</pre></td>
+	</tr>
+	<tr>
+		<td><strong>startDay</strong></td>
+		<td>The first day of the week. 0 for Sunday, 1 for Monday ... 6 for Saturday</td>
+		<td>0</td>
+	</tr>
+	<tr>
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {startDay:1});</pre></td>
+	</tr>
+	<tr class="odd">
+		<td><strong>startDate</strong></td>
+		<td>The first selectable date, use a <a href="#date_object">date object</a></td>
+		<td>today</td>
+
+	</tr>
+	<tr class="odd">
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {startDate:new Date(2007,0,1)});</pre></td>
+	</tr>
+	<tr>
+		<td><strong>endDate</strong></td>
+		<td>The last selectable date, use a <a href="#date_object">date object</a></td>
+		<td>year+10</td>
+	</tr>
+	<tr>
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {endDate:new Date(2017,0,1)});</pre></td>
+	</tr>
+	<tr class="odd">
+		<td><strong>inputType</strong></td>
+		<td>The type of input fields. It can be one of the following values:
+			<ul><li>text (for text of textarea fields)</li><li>select (for drop down select menus)</li><li>none (no input field)</li></ul></td>
+		<td>text</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {inputType:'select'});</pre></td>
+	</tr>
+	<tr>
+		<td><strong>inputField</strong></td>
+		<td>The input field to be used. If the inputType is text it can be either an HTML input object or the object ID. If the inputType is select it must be an object with the date, month and year HTML object</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td colspan="3">Example:
+		<pre>HTML:
+	&lt;input type=&quot;text&quot; name=&quot;date&quot; id=&quot;date&quot; /&gt;
+...
+later
+...
+Script:
+	var cal = new Calendar('holdingElement', 'toggeler', {inputField:'date'});
+
+HTML:
+	&lt;select name=&quot;date&quot; id=&quot;date&quot;&gt;&lt;/select&gt;
+	&lt;select name=&quot;month&quot; id=&quot;month&quot;&gt;&lt;/select&gt;
+	&lt;select name=&quot;year&quot; id=&quot;year&quot;&gt;&lt;/select&gt;
+...
+later
+...
+Script:
+	var cal = new Calendar('holdingElement', 'toggeler', {inputField:{date:'date',
+					month:'month',
+					year:'year'}});</pre></td>
+	</tr>
+	<tr class="odd">
+		<td><strong>allowSelection</strong></td>
+		<td>Allows the user to select a date</td>
+		<td>true</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {allowSelection:false});</pre></td>
+	</tr>
+	<tr>
+		<td><strong>multiSelection</strong></td>
+		<td>Allows the user to select more than one date</td>
+		<td>false</td>
+	</tr>
+	<tr>
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {multiSelection:true});</pre></td>
+	</tr>
+	<tr class="odd">
+		<td><strong>maxSelection</strong></td>
+		<td>The maximum number of dates the user can select if multiSelection is true.
+					If 0, unlimited number of dates is selectable.</td>
+		<td>0</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {maxSelection:3});</pre></td>
+	</tr>
+	<tr>
+		<td><strong>selectedDate</strong></td>
+		<td>The initially selected date, use a <a href="#date_object">date object</a></td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {selectedDate:'today'});</pre></td>
+	</tr>
+	<tr class="odd">
+		<td><strong>datesOff</strong></td>
+		<td>An array of <a href="#date_object">date objects</a> for the holidays. Holidays are unselectable unless allowDatesOffSelection is true.</td>
+		<td>[]</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {datesOff:{date:25, month:11}});</pre></td>
+	</tr>
+	<tr>
+		<td><strong>allowDatesOffSelection</strong></td>
+		<td>Allows the user to select the dates off.</td>
+		<td>false</td>
+	</tr>
+	<tr>
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {allowDatesOffSelection:true});</pre></td>
+	</tr>
+	<tr class="odd">
+		<td><strong>daysOff</strong></td>
+		<td>An array of numbers (0 for Sunday, 1 for Monday ... 6 for Saturday) for the days off in the week (beside weekends). daysOff are unselectable unless allowDaysOffSelection is true.</td>
+		<td>[]</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {daysOff:[4]});</pre></td>
+	</tr>
+	<tr>
+		<td><strong>allowDaysOffSelection</strong></td>
+		<td>Allows the user to select the days off.</td>
+		<td>false</td>
+	</tr>
+	<tr>
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {allowDaysOffSelection:true});</pre></td>
+	</tr>
+	<tr class="odd">
+		<td><strong>weekend</strong></td>
+		<td>An array of numbers (0 for Sunday, 1 for Monday ... 6 for Saturday) for the weekend. Weekend are unselectable unless allowWeekendSelection is true.</td>
+		<td>[]</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {weekend:[4,5]});</pre></td>
+	</tr>
+	<tr>
+		<td><strong>allowWeekendSelection</strong></td>
+		<td>Allows the user to select the weekend.</td>
+		<td>false</td>
+	</tr>
+	<tr>
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {allowDaysOffSelection:true});</pre></td>
+	</tr>
+	<tr class="odd">
+		<td><strong>forceSelections</strong></td>
+		<td>an Array of <a href="#date_object">date objects</a> that are forced to be selectable regardless where they fall
+				(e.g. if the user can select the last Saturday of the month but not other weekend days)</td>
+		<td>[]</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {forceSelections:[{date:'last Saturday'}, 'today']});</pre></td>
+	</tr>
+	<tr>
+		<td><strong>formmater</strong></td>
+		<td>A function that will return the HTML for the table cell and takes the Date as an argument. Default return is the date’s getDate() value.</td>
+		<td nowrap="nowrap">function (date){<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return date.getDate();<br />}</td>
+	</tr>
+	<tr>
+		<td colspan="3">Example:
+		<pre>var cal = new Calendar('holdingElement', 'toggeler', {
+     formmater: function(date){
+          if (date.getDate() == 25) return "It's the 25th";
+          else return date.getDate();
+     }
+});</pre></td>
+	</tr>
+	<tr class="odd">
+		<td><strong>outOfRangeFormmater</strong></td>
+		<td>Same as formmater but for out of range dates</td>
+		<td>~~~~~~</td>
+	</tr>
+	<tr>
+		<td><strong>weekendFormmater</strong></td>
+		<td>Same as formmater but for the weekend dates</td>
+		<td>~~~~~~</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>daysOffFormmater</strong></td>
+		<td>Same as formmater but for days off dates</td>
+		<td>~~~~~~</td>
+	</tr>
+	<tr>
+		<td><strong>datesOffFormmater</strong></td>
+		<td>Same as formmater but for dates off dates (holidays)</td>
+		<td>~~~~~~</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>selectedDateFormmater</strong></td>
+		<td>Same as formmater but for the selected date</td>
+		<td>~~~~~~</td>
+	</tr>
+	<tr>
+		<td><strong>language</strong></td>
+		<td>a language object (check nogray_date.js for details). Used for translation.</td>
+		<td> null (for English)</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>daysText</strong></td>
+		<td>The days format to be used on the calendar. The key for the language.days object.</td>
+		<td>mid</td>
+	</tr>
+	<tr>
+		<td><strong>monthsText</strong></td>
+		<td>The months format to be used on the calendar. The key for the language.months object.</td>
+		<td>long</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>preTdHTML</strong></td>
+		<td>The HTML for the previous months arrow</td>
+		<td>&amp;laquo;</td>
+	</tr>
+	<tr>
+		<td><strong>preTdHTMLOff</strong></td>
+		<td>The HTML for the previous months arrow when the calendar at the first month.</td>
+		<td>&amp;nbsp;</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>nexTdHTML</strong></td>
+		<td>The HTML for the next months arrow</td>
+		<td>&amp;raquo;</td>
+	</tr>
+	<tr>
+		<td><strong>nexTdHTMLOff</strong></td>
+		<td>The HTML for the next months arrow when the calendar at the last month.</td>
+		<td>&amp;nbsp;</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>closeLinkHTML</strong></td>
+		<td>The HTML for the close link.</td>
+		<td>Close</td>
+	</tr>
+	<tr>
+		<td><strong>clearLinkHTML</strong></td>
+		<td>The HTML for the clear link (only visible when multiSelection is true).</td>
+		<td>Clear</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>calEvents</strong></td>
+		<td>an <a href="#event_object">Events object</a> for all the selectable table cell.<br />
+		Arguments passed to the function:
+		<ul>
+			<li><strong>this:</strong> the calendar object.</li>
+			<li><strong>td:</strong> the table cell (TD) HTML object.</li>
+			<li><strong>date_str:</strong> the date in a string format.</li>
+		</ul></td>
+		<td>mouseover: add a mouse-over class to the table cell<br />
+			mouseleave: remove the mouse-over class from the table cell</td>
+	</tr>
+	<tr>
+		<td><strong>tdEvents</strong></td>
+		<td>An array of <a href="#event_object">Events objects</a> to attach events to a specific table cells.
+			The array key must be the date in the following format
+			<em>month-date-year</em> (8 for August)<br />
+		Arguments passed to the function:
+		<ul>
+			<li><strong>this:</strong> the calendar object.</li>
+			<li><strong>td:</strong> the table cell (TD) HTML object.</li>
+			<li><strong>date_str:</strong> the date in a string format.</li>
+		</ul></td>
+		<td>[]</td>
+	</tr>
+	<tr>
+		<td colspan="3">Example:
+		<pre>var events_arr = [];
+events_arr['8-15-2007'] = {click: function(td, date_str){
+          alert(td.innerHTML+" "+new Date().fromString(date_str));
+     }
+};
+var cal = new Calendar('holdingElement', 'toggeler', {
+     tdEvents: events_arr
+});</pre></td>
+	</tr>
+	<tr class="odd">
+		<td><strong>dateOnAvailable</strong></td>
+		<td>An array of functions to run when a specific date is rendered.
+			The array key must be the date in the following format
+			<em>month-date-year</em> (8 for August)<br />
+		Arguments passed to the function:
+		<ul>
+			<li><strong>this:</strong> the calendar object.</li>
+			<li><strong>td:</strong> the table cell (TD) HTML object.</li>
+			<li><strong>date_str:</strong> the date in a string format.</li>
+		</ul></td>
+		<td>[]</td>
+	</tr>
+	<tr class="odd">
+		<td colspan="3">Example:
+		<pre>var dates_func_arr = [];
+dates_func_arr['8-15-2007'] = function(td, date_str){td.setHTML(date_str);}
+var cal = new Calendar('holdingElement', 'toggeler', {
+     dateOnAvailable: dates_func_arr
+});</pre></td>
+	</tr>
+	<tr>
+		<td><strong>speedFireFox</strong></td>
+		<td>Option to speed the calendar creation in Firefox, 
+				since firefox is slow when handling date objects, this option will illuminate
+				the datesOff (holidays) daysOff and forcedSelection for better performance.</td>
+		<td>false</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>closeOpenCalendars</strong></td>
+		<td>Close all the open calendars when the calendar opens</td>
+		<td>true</td>
+	</tr>
+</table>
+
+<br /><br />
+<a name="events"></a><b>Events</b>
+<table class="table_list">
+	<tr>
+		<th>Event</th>
+		<th>When Fired</th>
+	</tr>
+	<tr>
+		<td><strong>onSelect</strong></td>
+		<td>When a date is selected.</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>onUnSelect</strong></td>
+		<td>When a date is unselected.</td>
+	</tr>
+	<tr>
+		<td><strong>onCalendarLoad</strong></td>
+		<td>When the calendar is completely rendered.</td>
+	</tr>
+	<tr class="odd">
+		<td class="odd"><strong>onOpen</strong></td>
+		<td>When the calendar is opened.</td>
+	</tr>
+	<tr>
+		<td><strong>onClose</strong></td>
+		<td>When the calendar is closed.</td>
+	</tr>
+	<tr class="odd">
+		<td><strong>onClear</strong></td>
+		<td>When the calendar is cleared.</td>
+	</tr>
+</table>
+<br /><br />
+<center>
+<!-- Begin: AdBrite -->
+<script type="text/javascript">
+   var AdBrite_Title_Color = '0000FF';
+   var AdBrite_Text_Color = '000000';
+   var AdBrite_Background_Color = 'FFFFFF';
+   var AdBrite_Border_Color = 'FFFFFF';
+</script>
+<span style="white-space:nowrap;"><script src="http://ads.adbrite.com/mb/text_group.php?sid=473706&zs=3732385f3930" type="text/javascript"></script><!--
+--><a target="_top" href="http://www.adbrite.com/mb/commerce/purchase_form.php?opid=473706&afsid=1"><img src="http://files.adbrite.com/mb/images/adbrite-your-ad-here-leaderboard.gif" style="background-color:#FFFFFF" alt="Your Ad Here" width="14" height="90" border="0" /></a></span>
+<!-- End: AdBrite -->
+</center>
+</body>
+</html>

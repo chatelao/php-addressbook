@@ -19,7 +19,9 @@ echo "<div id='a-z'><a href='$link=a'>A</a> | <a href='$link=b'>B</a> | <a href=
 ?>
 	<form accept-charset="utf-8" method="get" name="searchform" onsubmit="return false">
 		<input type="text" value="<?php echo $searchstring; ?>" name="searchstring" title="<?php echo ucfmsg('SEARCH_FOR_ANY_TEXT'); ?>" size="45" tabindex="0" 
+<?php if($use_ajax) { ?>		
 		       onkeyup="filterResults(this)"/>
+<?php } ?>
 	</form>
 <?php } ?>
 <script type="text/javascript">
@@ -43,10 +45,15 @@ if ($searchstring) {
     foreach($searchwords as $searchword) {
     	$sql .= "AND (   lastname  LIKE '%$searchword%' 
                     OR firstname LIKE '%$searchword%' 
+                    OR company   LIKE '%$searchword%' 
                     OR address   LIKE '%$searchword%' 
+                    OR home      LIKE '%$searchword%'
+                    OR mobile    LIKE '%$searchword%'
+                    OR work      LIKE '%$searchword%'
                     OR email     LIKE '%$searchword%'
                     OR email2    LIKE '%$searchword%'
                     OR address2  LIKE '%$searchword%' 
+                    OR notes     LIKE '%$searchword%' 
                     )";
     }
     $sql .= $sql_order;
@@ -344,7 +351,9 @@ function filterResults(field) {
   	}
 }
 
+<?php if($use_ajax) { ?>
 filterResults(document.getElementsByName("searchstring")[0]);
+<?php } ?>
 
 //-->
 </script>

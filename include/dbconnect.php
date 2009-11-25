@@ -27,16 +27,28 @@ if(   ini_get('zlib.output_compression') != 1
   ob_start('ob_gzhandler');
 }
 
+$get_vars = array( 'id' );
+
+foreach($get_vars as $get_var) {
+   if(isset($_GET[$get_var])) {
+     ${$get_var} = intval($_GET[$get_var]);
+   } elseif(isset($_POST[$get_var])) {
+     ${$get_var} = intval($_POST[$get_var]);
+   } else {
+     ${$get_var} = null;
+   }  	
+}
+
 // Copy only used variables into global space.
 $get_vars = array( 'searchstring', 'alphabet', 'group', 'resultnumber'
-                 , 'submit', 'update', 'delete', 'id' 
+                 , 'submit', 'update', 'delete'
                  , 'new', 'add', 'remove', 'edit' );
 
 foreach($get_vars as $get_var) {
    if(isset($_GET[$get_var])) {
-     ${$get_var} = $_GET[$get_var];
+     ${$get_var} = mysql_real_escape_string($_GET[$get_var]);
    } elseif(isset($_POST[$get_var])) {
-     ${$get_var} = $_POST[$get_var];
+     ${$get_var} = mysql_real_escape_string($_POST[$get_var]);
    } else {
      ${$get_var} = null;
    }  	
@@ -107,8 +119,8 @@ if(!isset($read_only))
 $read_only = $read_only || isset($_GET["readonly"]);
 
 $group_name = null;
-if(isset($_GET["group"])) {
-  $group_name   = $_GET["group"];
+if(isset($group)) {
+  $group_name   = $group;
 }
 
 $is_fix_group = false;
