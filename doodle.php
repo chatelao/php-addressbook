@@ -91,8 +91,8 @@ function getHref($consumer_key, $url, $secret, $token = null) {
   $response = curl_exec($curl);
 
   echo $response."<br>";
- */
-/*  
+*/
+/*/
 require "OAuth.php";  
 
 $consumer_key = '9xah1eip56s4xl3w94w3d7orj8kc57dn';
@@ -166,8 +166,8 @@ echo "Select your date";
 														allowWeekendSelection:true,
 														startDate:new Date(today),
 														endDate:new Date(today.getFullYear()+1, 11, 31),
-														idPrefix:'cal4',
-														inputType:'none',
+														inputField:'selDates',
+														dateFormat:'Y-m-d;'
 														});
 	});
 </script>
@@ -210,8 +210,9 @@ echo "Select your date";
 <form>
 	<label name=title><b>Participants:</b></label><br>
 <?php
-$participants = $_GET['part'];
-$participants = array_filter(explode(';', $participants));
+
+$part = $_GET['part'];
+$participants = array_filter(explode(';', $part));
 
 $sql  = "SELECT DISTINCT id, firstname, lastname FROM $base_from_where";
 $sql .= "AND (id = '".implode("' OR id = '",  $participants)."')";
@@ -229,11 +230,13 @@ while ($myrow = mysql_fetch_array($result)) {
 }
 echo implode(" - ", $rows);
 ?>	
+	<input name="part" type="hidden" value="<?php echo $part; ?>">
   <br>
 	<label name=title><b>Titel:</b></label><br>
 	<input size=40 name=title><br>
+	<input type=hidden size=40 id=selDates name=dates><br>
 	<label name=title><b>Description:</b></label><br>
-<textarea name=description cols="100" rows="35">
+<textarea name=description cols="100" rows="25">
 Dear %firstname%,
 
 Please vote for your prefered date:
