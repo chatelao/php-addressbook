@@ -283,7 +283,7 @@ if(isset($userlist)) {
 include("address.class.php");
 
 $revision = '$Rev$';
-$revision = str_replace(' $', '', str_replace('$Rev$revision));
+$revision = str_replace('$', '', str_replace(' ', '', str_replace('Rev: ', '', $revision)));
 $version = '5.4.6'.' - r'.$revision;
 
 ?>
