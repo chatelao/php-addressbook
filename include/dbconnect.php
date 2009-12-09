@@ -27,6 +27,27 @@ if(   ini_get('zlib.output_compression') != 1
   ob_start('ob_gzhandler');
 }
 
+// --- Connect to DB, retry 5 times ---
+for ($i = 0; $i < 5; $i++) {
+	
+    $db = mysql_connect("$dbserver", "$dbuser", "$dbpass");
+    $errno = mysql_errno();
+    if ($errno == 1040 || $errno == 1226 || $errno == 1203) {
+        sleep(1);
+    }  else {
+        break;
+    }
+}
+mysql_select_db("$dbname", $db);
+
+//
+// Setup the UTF-8 parameters:
+// * http://www.phpforum.de/forum/showthread.php?t=217877#PHP
+//
+// header('Content-type: text/html; charset=utf-8');
+mysql_query('set character set utf8;');
+mysql_query("SET NAMES `utf8`");
+
 $get_vars = array( 'id' );
 
 foreach($get_vars as $get_var) {
@@ -46,12 +67,12 @@ $get_vars = array( 'searchstring', 'alphabet', 'group', 'resultnumber'
 
 foreach($get_vars as $get_var) {
    if(isset($_GET[$get_var])) {
-     ${$get_var} = mysql_real_escape_string($_GET[$get_var]);
+     ${$get_var} = mysql_real_escape_string($_GET[$get_var], $db);
    } elseif(isset($_POST[$get_var])) {
-     ${$get_var} = mysql_real_escape_string($_POST[$get_var]);
+     ${$get_var} = mysql_real_escape_string($_POST[$get_var], $db);
    } else {
      ${$get_var} = null;
-   }  	
+   }
 }
 
 //
@@ -140,27 +161,6 @@ if(!$is_fix_group and $group_name)
 include("prefs.inc.php");
 include("translations.inc.php");
 include("mailer.inc.php");
-
-// --- Connect to DB, retry 5 times ---
-for ($i = 0; $i < 5; $i++) {
-	
-    $db = mysql_connect("$dbserver", "$dbuser", "$dbpass");
-    $errno = mysql_errno();
-    if ($errno == 1040 || $errno == 1226 || $errno == 1203) {
-        sleep(1);
-    }  else {
-        break;
-    }
-}
-mysql_select_db("$dbname", $db);
-
-//
-// Setup the UTF-8 parameters:
-// * http://www.phpforum.de/forum/showthread.php?t=217877#PHP
-//
-// header('Content-type: text/html; charset=utf-8');
-mysql_query('set character set utf8;');
-mysql_query("SET NAMES `utf8`");
 
 // To run the script on systeme with "register_globals" disabled,
 // import all variables in a bit secured way: Remove HTML Tags
@@ -282,6 +282,8 @@ if(isset($userlist)) {
 
 include("address.class.php");
 
-$version = '5.4.5';
+$revision = '$Rev$';
+$revision = str_replace(' $', '', str_replace('$Rev$revision));
+$version = '5.4.6'.' - r'.$revision;
 
 ?>
