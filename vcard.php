@@ -24,6 +24,8 @@ $sql = "SELECT * FROM $month_from_where AND $table.id=$id";
    $bmonth_num = utf8_to_latin1($links["bmonth_num"]);
    $byear      = utf8_to_latin1($links["byear"]);
 
+   Header('Content-Disposition: attachment; filename="'.$firstname.'_'.$lastname."_".$id."-".date("Ymd").'.vcf"');
+
 	  echo "BEGIN:VCARD\n";
 	  echo "VERSION:2.1\n";
 	  echo "N:$lastname;$firstname;;;;\n";
