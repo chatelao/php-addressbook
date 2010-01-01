@@ -13,6 +13,8 @@
 
 
 	<link rel="icon" type="image/png" href="<?php echo $url_images; ?>icons/font.png" />
+    <script type="text/javascript" src="js/addressbook.js"></script>
+	<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
 	<?php if(is_right_to_left($lang)) { ?>
 	<style type="text/css">
 		<!--

@@ -1,5 +1,5 @@
 	</div>
-	<div id="footer">
+	<div id="bookFooter">
 <?php
 
 	// Add some function only active on the 

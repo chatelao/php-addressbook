@@ -30,9 +30,43 @@ echo "<div id='a-z'><a href='$link=a'>A</a> | <a href='$link=b'>B</a> | <a href=
 </div><br />
 <hr />
 <?php
+	if(false) {
+		$sql_order = "ORDER BY lastname, firstname ASC";
+	} else {
+		$sql_order = "ORDER BY firstname, lastname ASC";
+	}
 
-  $addresses = new Addresses($searchstring);
-  $result = $addresses->getResults();
+if ($searchstring) {
+  
+    $searchwords = split(" ", $searchstring);
+  
+  	$sql = "SELECT DISTINCT " . $table . ".*, "
+        . $table_address . ".*, "
+        . $table_phone . ".*, "
+        . $table_email . ".* FROM "
+        . $table_address . " ,"
+        . $table_phone . " ,"
+        . $table_email . " ,"
+        . $base_from_where;
+  
+    foreach($searchwords as $searchword) {
+    	$sql .= "AND (   lastname  LIKE '%$searchword%' 
+                    OR firstname LIKE '%$searchword%' 
+                    OR company   LIKE '%$searchword%' 
+                    OR postal_address   LIKE '%$searchword%'
+                    OR phone_number     LIKE '%$searchword%'
+                    OR email_address    LIKE '%$searchword%'
+                    OR notes     LIKE '%$searchword%' 
+                    )";
+    }
+    $sql .= $sql_order;
+    
+  } else if ($alphabet) {
+    $sql = "SELECT DISTINCT $table.* FROM $base_from_where AND LEFT(lastname,1) = '$alphabet' ".$sql_order;
+  } else{
+    $sql="SELECT DISTINCT $table.* FROM $base_from_where ".$sql_order;
+	}
+	$result = mysql_query($sql);
 	$resultsnumber = mysql_numrows($result);
 	
 	// TBD:  Pagination
@@ -56,8 +90,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 			$result_groups = mysql_query($sql);
 			$result_gropup_snumber = mysql_numrows($result_groups);
 	
-			while ($myrow = mysql_fetch_array($result_groups))
-			{
+			while ($myrow = mysql_fetch_array($result_groups)) {
 			echo "<option>".$myrow["group_name"]."</option>\n";
 			}
 		?>
@@ -72,8 +105,8 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 		<tr>
 			<th></th>
 <?php					
-			echo "<th>".ucfmsg("LASTNAME")."</th>";
 			echo "<th>".ucfmsg("FIRSTNAME")."</th>";
+			echo "<th>".ucfmsg("LASTNAME")."</th>";
 			echo "<th>".ucfmsg("EMAIL")."</th>";
 			echo "<th>".ucfmsg("TELEPHONE")."</th>";
       if(!$read_only) {
@@ -87,48 +120,71 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 
 	include ("include/guess.inc.php");
 
-	while ($addr = $addresses->nextAddress()) {
+	while ($myrow = mysql_fetch_array($result))	{
+		
+		$addr = new Address($myrow);
+                // addition by rehan@itlinkonline.com
+                // phone
+                $phoneQuery = 'SELECT * FROM ' . $table_phone . ' p LEFT JOIN ' . $table_phone_type . ' pt on pt.phone_type_id = p.phone_type_id WHERE p.addressbook_id = ' . $myrow['id'] . ' ORDER BY phone_type asc';
+                // email
+                $emailQuery = 'SELECT * FROM ' . $table_email . ' e LEFT JOIN ' . $table_email_type . ' et on et.email_type_id = e.email_type_id WHERE e.addressbook_id = ' . $myrow['id'] . ' ORDER BY email_type asc';
+                // address
+                $addQuery = 'SELECT * FROM ' . $table_address . ' a LEFT JOIN ' . $table_address_type . ' at on at.address_type_id = a.address_type_id WHERE a.addressbook_id = ' . $myrow['id'] . ' ORDER BY address_type asc ';
 
-		$color = ($alternate++ % 2) ? "even" : "odd";
-		echo "<tr class='".$color."' name='entry'>";
+                $addr->setPhones($phoneQuery);
+                $addr->setEmails($emailQuery);
+                $addr->setAddresses($addQuery);
+                // end addition by rehan@itlinkonline.com
 
-    $myrow = $addr->getData();
-    
-    foreach($myrow as $mycol => $mycolval) {
-       ${$mycol} = $mycolval;
-    }
-		$email     = $addr->firstEMail();
-    $phone     = $addr->shortPhone();
+		$firstname = $myrow["firstname"];
+		$id = $myrow["id"];
+		$lastname = $myrow["lastname"];
+		$company  = $myrow["company"];
 
+		$email  = $addr->firstEMail();
+		
+    $phone = $addr->shortPhone();
+
+		if ($alternate == "1") { 
+			$color = "even"; 
+			$alternate = "2"; 
+		} 
+		else { 
+			$color = "odd"; 
+			$alternate = "1"; 
+		} 
+		echo "<tr class='$color' name='entry'>";
 		$emails = $myrow['email'].(   $myrow['email']  != ""
 		                           && $myrow['email2'] != "" ? getMailerDelim() : "").$myrow['email2'];
 		echo "<td class='center'><input type='checkbox' id='$id' name='selected[]' value='$id' title='Select ($firstname $lastname)' alt='Select ($firstname $lastname)' accept='$emails' /></td>";
-		echo "<td>$lastname</td>";
 		echo "<td>$firstname</td>";
+		echo "<td>$lastname</td>";
 		echo "<td><a href='".getMailer()."$email'>$email</a></td>";
 		echo "<td>$phone</td>";
 		echo "<td class='center'><a href='view${page_ext_qry}id=$id'><img src='${url_images}icons/status_online.png' title='".ucfmsg('DETAILS')."' alt='".ucfmsg('DETAILS')."' /></a></td>";
                 if(! $read_only)
 		  echo "<td class='center'><a href='edit${page_ext_qry}id=$id'><img src='${url_images}icons/pencil.png' title='".ucfmsg('EDIT')."' alt='".ucfmsg('EDIT')."'/></a></td>";
 		echo "<td class='center'><a href='vcard${page_ext_qry}id=$id'><img src='${url_images}icons/vcard.png' title='vCard' alt='vCard'/></a></td>";
-
-    if( substr($phone, 0, 3) == "+41" ) {
-			$country = "Switzerland";
-		} else {
-			$country = "";
-		}
-
-		if($map_guess)
-		{
+		// addition by rehan@itlinkonline.com
+    	switch(substr($phone, 0, 3)){
+            case "+41": $country = "Switzerland";   break;
+            case "+92": $country = "Pakistan";      break;
+            case "+91": $country = "India";         break;
+            case "+86": $country = "China";         break;
+            case "+96": $country = "Suadia Arabia"; break;
+            default:    $country = "";              break;
+        }
+		// end addition by rehan@itlinkonline.com
+		$myrow['address'] = $addr->firstAddress();
+		if($map_guess) {
 		if($myrow["address"] != "")
-		echo "<td class='center'><a href='http://maps.google.com/maps?q=".urlencode(trim(str_replace("\r\n", ", ", $myrow["address"])).", $country")."&amp;t=h'>
+		echo "<td class='center'><a href='http://maps.google.com/maps?q=".urlencode(trim(str_replace("\r\n", ", ", $myrow["address"])).", $country")."&amp;t=h' target='_blank'>
                           <img src='${url_images}icons/car.png' title='Google Maps' alt='vCard'/></a></td>";
 		else echo "<td/>";
 		}
 
 		$homepage = guessHomepage($email, $email2);
-		if(strlen($homepage) > 0)
-		{
+		if(strlen($homepage) > 0)		{
 			echo "<td class='center'><a href='http://$homepage'><img src='${url_images}icons/house.png' title='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)' alt='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)'/></a></td>";
 		} else
 			echo "<td/>";
@@ -145,12 +201,10 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
   }
   echo "<div class='left'><input type='button' value=\"".ucfmsg("SEND_EMAIL")."\" onclick=\"MailSelection()\" /></div>";
 
-	if(isset($table_groups) and $table_groups != "" and !$is_fix_group)
-	{
+	if(isset($table_groups) and $table_groups != "" and !$is_fix_group)	{
 
 		// -- Remove from group --
-		if($group_name != "" and $group_name != "[none]") 
-		{
+		if($group_name != "" and $group_name != "[none]") 		{
 	        	echo "<div class='left'><input type='submit' name='remove' value='".ucfmsg("REMOVE_FROM")." \"$group_name\"'/></div>";
 		} else
 	        	echo "<div></div>";
@@ -163,8 +217,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 		$result = mysql_query($sql);
 		$resultsnumber = mysql_numrows($result);
 	
-		while ($myrow = mysql_fetch_array($result))
-		{
+		while ($myrow = mysql_fetch_array($result))		{
 			echo "<option>".$myrow["group_name"]."</option>\n";
 		}
         	echo "</select>";
@@ -173,8 +226,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 	echo "</div><br /><br class='clear' /></form>";
 
 	// Show group footer
-        if($group_name != "" and $group_myrow['group_footer'] != "")
-        {  
+        if($group_name != "" and $group_myrow['group_footer'] != "")        {  
             echo "<hr />";
             echo $group_myrow['group_footer'];
             echo "<hr />";
@@ -182,23 +234,6 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 ?>
 <script type="text/javascript">
 <!--
-
-//
-// Select All/None items
-//
-function MassSelection() {
-  
-  select_count = document.getElementsByName("selected[]").length;
-  all_checked  = document.getElementById("MassCB").checked;
-  
-	for (i = 0; i < select_count; i++) {
-	  // select only visible items
-	  if( document.getElementsByName("selected[]")[i].parentNode.parentNode.style.display != "none") {
-		  document.getElementsByName("selected[]")[i].checked = all_checked;
-		}
-	}
-}
-
 //
 // Send Mail to selected persons
 //
@@ -225,89 +260,9 @@ function MailSelection() {
 	else
 		location.href = "<?php echo getMailer(); ?>"+addresses;
 }
-
-function Doodle() {
-	
-	var participants = "";
-	var dst_count = 0;
-
-  select_count = document.getElementsByName("selected[]").length;
-	for (i = 0; i < select_count; i++) {
-		selected_i = document.getElementsByName("selected[]")[i];
-		if( selected_i.checked == true) {
-			participants += selected_i.id+";";
-			dst_count++;
-		}
-	}
-	alert(participants);
-	if(dst_count == 0)
-		alert("No paticipants selected.");
-	else
-	  location.href = "./doodle.php?part="+participants;
-}
-
-//
-// Filter the items in the fields
-//
-function filterResults(field) {
-
-  	var query = field.value;
-  	 	
-  	// split lowercase on white spaces
-  	var words = query.toLowerCase().split(" ");
-
-  	// loop over all lines
-  	var maintable = document.getElementById("maintable")
-  	var tbody     = maintable.getElementsByTagName("tbody");
-  	var entries   = tbody[0].children;
-  	var foundCnt  = 0;
-	
-	  // Skip header(0) + selection row(length-1)
-  	for(i = 1; i < entries.length-1; i++) {
-  		
-  		// Name + Firstname + Phonenumber + Mailaddress
-  		var content = entries[i].childNodes[0].childNodes[0].accept
-  		            + " " + entries[i].childNodes[1].innerHTML
-  		            + " " + entries[i].childNodes[2].innerHTML;
-  		            
-      // Don't be case sensitive
-  		content = content.toLowerCase();
-
-      // check if all words are present  		            
-      var foundAll = true;
-  		for(j = 0; j < words.length; j++) {
-  			foundAll = foundAll && (content.search(words[j]) != -1);
-  		}
-  		
-  		// Keep selected entries
-      foundAll = foundAll || entries[i].childNodes[0].childNodes[0].checked;
-  		
-      // ^Hide entry
-      if(foundAll) {
-      	last_url = entries[i].childNodes[5].childNodes[0].href;
-      	entries[i].style.display = "";
-      	if((foundCnt % 2) == 0) {
-      	  entries[i].className = "odd";
-      	} else {
-      	  entries[i].className = "even";
-      	}
-     	  foundCnt++;
-      } else {
-      	entries[i].style.display = "none";
-      }
-  	}
-  	document.getElementById("search_count").innerHTML = foundCnt;
-  	
-  	// Auto-Forward if only one entry found
-  	if(foundCnt == 1 && false) {
-  		location = last_url;
-  	}
-}
-
 <?php if($use_ajax) { ?>
 filterResults(document.getElementsByName("searchstring")[0]);
 <?php } ?>
-
 //-->
 </script>
 <?php include("include/footer.inc.php"); ?>

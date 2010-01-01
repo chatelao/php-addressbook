@@ -6,8 +6,21 @@ $resultsnumber = 0;
 if ($id) {
 
    $sql = "SELECT * FROM $base_from_where AND $table.id='$id'";
+
    $result = mysql_query($sql, $db);
    $r = mysql_fetch_array($result);
+
+    // addition by rehan@itlinkonline.com
+    // phone
+    $query = 'SELECT p.phone_number, pt.phone_type FROM ' . $table_phone . ' p LEFT JOIN ' . $table_phone_type . ' pt on pt.phone_type_id = p.phone_type_id WHERE p.addressbook_id = ' . $r['id'] . ' ORDER BY phone_type asc';
+    $phones = mysql_query($query, $db);
+    // email
+    $query = 'SELECT e.email_address, et.email_type FROM ' . $table_email . ' e LEFT JOIN ' . $table_email_type . ' et on et.email_type_id = e.email_type_id WHERE e.addressbook_id = ' . $r['id'] . ' ORDER BY email_type asc';
+    $emails = mysql_query($query, $db);
+    // address
+    $query = 'SELECT a.postal_address, at.address_type FROM ' . $table_address . ' a LEFT JOIN ' . $table_address_type . ' at on at.address_type_id = a.address_type_id WHERE a.addressbook_id = ' . $r['id'] . ' ORDER BY address_type asc';
+    $addresses = mysql_query($query, $db);
+    // end addition by rehan@itlinkonline.com
 
    $resultsnumber = mysql_numrows($result);
 }
@@ -29,57 +42,72 @@ if( ($resultsnumber == 0 && !isset($all)) || (!$id && !isset($all))) {
      // echo '</head><body onload="javascript:window.setTimeout(window.print(self), 1000)";>';
    }
 }
-
-function showOneEntry($r, $only_phone = false) 
-{
-	
+// addition by rehan@itlinkonline.com
+function showOneEntry($r, $phoneArray, $emailArray, $addressArray, $only_phone = false, $primary = false) {
+// end addition by rehan@itlinkonline.com	
 	 global $db, $table, $table_grp_adr, $table_groups, $print, $is_fix_group, $mail_as_image;
 	
    $view  = "<b>".$r['firstname']." ".$r['lastname']."</b>: <br />";   
    if(! $only_phone) {
      $view .= ($r['company']   != "" ? $r['company']."<br />" : "");
-	   $view .= "<br />".str_replace("\n", "<br />", trim($r["address"]))."<br /><br />";
+	   // addition by rehan@itlinkonline.com
+                while($address = mysql_fetch_array($addressArray)){
+                    if(!$primary){
+                        $view .= "<b><br />".str_replace("\n", "<br />", trim($address["address_type"])).":</b>";
+                        $view .= "<br />".str_replace("\n", "<br />", trim($address["postal_address"]))."<br /><br />";
+                    }else{
+                        if($address['primary_address']){
+                            $view .= "<b><br />".str_replace("\n", "<br />", trim($address["address_type"])).":</b>";
+                            $view .= "<br />".str_replace("\n", "<br />", trim($address["postal_address"]))."<br /><br />";
+                        }
+                    }
+                }
+                //$view .= "<br />".str_replace("\n", "<br />", trim($r["address"]))."<br /><br />";
+            }
+            while($phone = mysql_fetch_array($phoneArray)){
+                if(!$primary){
+                    $view .= ucfmsg($phone['phone_type'].':')." ".$phone['phone_number']."<br />";
+                }else{
+                    if($phone['primary_number']){
+                        $view .= '<b>' . ucfmsg($phone['phone_type'].':</b><br />')." ".$phone['phone_number']."<br />";
+                    }
+                }
+				// end addition by rehan@itlinkonline.com
 	 }
-   $view .= ($r['home']   != "" ? ucfmsg('H:')." ".$r['home']."<br />" : "");
-   $view .= ($r['mobile'] != "" ? ucfmsg('M:')." ".$r['mobile']."<br />" : "");
-   $view .= ($r['work']   != "" ? ucfmsg('W:')." ".$r['work']."<br />" : "");
-   $view .= ($r['fax']   != "" ?  ucfmsg('F:')." ".$r['fax']."<br />" : "");
    if(! $only_phone) {
 	   $view .= "<br />";
+// addition by rehan@itlinkonline.com
+                while($email = mysql_fetch_array($emailArray)){
+                if($mail_as_image) { // B64IMG: Thanks to NelloD
+                        $view .= "<img src=\"b64img.php?text=".base64_encode(($email['email_address']))."\"><br/>";
+                } else {
+                    if( isset($_GET["print"])) {
+                        if(!$primary){
+                           $view .= $email['email_type'] . ": <a href=".'"'.getMailer().$email['email_address'].'"'.">".$email['email_address']."</a><br />";
+                        }else{
+                            if($email['primary_email']){
+                                $view .= '<b>'.$email['email_type'] . ":</b><br /><a href=".'"'.getMailer().$email['email_address'].'"'.">".$email['email_address']."</a><br />";
+                            }
+                        }
+                    } else {
+                        include_once ("include/guess.inc.php");
 
-  	 if($mail_as_image) { // B64IMG: Thanks to NelloD
-      $view .= ($r['email'] != "" ? "<img src=\"b64img.php?text=".base64_encode(($r['email']))."\"><br/>" : "");
-       $view .= ($r['email2'] != "" ? "<img src=\"b64img.php?text=".base64_encode(($r['email2']))."\"><br/>" : "");
-     } else {
-  	   if( isset($_GET["print"])) {	   	 
-  	       $view .= ($r['email'] != "" ?  "<a href=".'"'.getMailer().$r['email'].'"'.">".$r['email']."</a><br/>" : "");
-  	       $view .= ($r['email2'] != "" ? "<a href=".'"'.getMailer().$r['email2'].'"'.">".$r['email2']."</a><br/>" : "");
-  	   } else {
-  	     include ("include/guess.inc.php");
-  	         
-   	       $view .= ($r['email'] != "" ?  "<a href=".'"'.getMailer().$r['email'].'"'.">".$r['email']."</a>" : "");
-   	       $homepage = guessOneHomepage($r['email']);
-  	       $view .= ($homepage != "" ?  " (<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>)" : "");
-  	       $view .= ($r['email'] != "" ? "<br/>" : "");
-           
-  	       $view .= ($r['email2'] != "" ? "<a href=".'"'.getMailer().$r['email2'].'"'.">".$r['email2']."</a>" : "");
-  	       $homepage = guessOneHomepage($r['email2']);
-  	       $view .= ($homepage != "" ?  " (<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>)" : "");
-  	       $view .= ($r['email2'] != "" ? "<br/>" : "");
-	     }
-	   }
-	   $homepage = $r['homepage'];
-	   $view .= ($homepage != "" ?  "<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>" : "");
-	   $view .= "<br />";
+                        $view .= $email['email_type'] . ": <a href=".'"'.getMailer().$email['email_address'].'"'.">".$email['email_address']."</a>";
+                        $homepage = guessOneHomepage($email['email_address']);
+                        $view .= ($homepage != "" ?  " (<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>)" : "");
+                        $view .= "<br/>";
+                    }
+                }
+                }
+                $homepage = $r['homepage'];
+                $view .= ($homepage != "" ?  "<br /><a href=".'"http://'.$homepage.'"'.">".$homepage."</a>" : "");
+                $view .= "<br />";
 
-     $month = ucfmsg(strtoupper($r['bmonth']));
-     $view .= ( $r['bday'] != 0 || $month != "-" || $r['byear'] != ""
-              ? ucfmsg('BIRTHDAY').": ".($r['bday'] > 0 ? $r['bday'].". " : "").($month != '-' ? $month : "")." ".$r['byear'] : "")."<br />"; 
-
-	   $view .= ($r['address2'] != "" || $r['phone2'] != "" ? "<br /><br /><b>".ucfmsg('SECONDARY')."</b><br />" : "");
-	   $view .= ($r['address2'] != "" ? "<br />".str_replace("\n", "<br />", trim($r['address2']))."<br /><br />" : "");
-	 }	   
-   $view .= ($r['phone2']   != "" ? "P: ".$r['phone2']."<br />" : "");
+                $month = ucfmsg(strtoupper($r['bmonth']));
+                $view .= ( $r['bday'] != 0 || $month != "-" || $r['byear'] != ""
+                        ? '<br />'.ucfmsg('BIRTHDAY').": ".($r['bday'] > 0 ? $r['bday'].". " : "").($month != '-' ? $month : "")." ".$r['byear'] : "")."<br />";
+            }
+			// addition by rehan@itlinkonline.com
    if(! $only_phone) {
 	   $view .= ($r['notes'] != "" ? "<br />".str_replace("\n", "<br />", trim($r['notes']))."<br /><br />" : "");
    }
@@ -123,13 +151,12 @@ if($resultsnumber == 0) {
 
 } else {
 
-showOneEntry($r);
+showOneEntry($r,$phones,$emails,$addresses);
 
 ?>	
 <br />
 <br />
-<?php if( !isset($_GET["print"])) 
-{ ?>
+<?php if( !isset($_GET["print"])) { ?>
 <form method="get" action="edit<?php echo $page_ext; ?>">
     <input type="hidden" name="id" value="<?php echo $id; ?>" />
 <?php if(! $read_only) { ?>
@@ -146,8 +173,9 @@ showOneEntry($r);
 }
 }
 } else if(isset($_REQUEST['all'])) {
-
-   $sql = "SELECT * FROM $base_from_where order by lastname, firstname";
+	// addition by rehan@itlinkonline.com
+    $sql = "SELECT * FROM $base_from_where order by firstname, lastname";
+	// end addition by rehan@itlinkonline.com
    $result = mysql_query($sql, $db);
 
 	 $cnt = 0;
@@ -157,13 +185,27 @@ showOneEntry($r);
 
    <?php
    while($r = mysql_fetch_array($result)) {
+    // addition by rehan@itlinkonline.com
+    // phone
+    $query = 'SELECT * FROM ' . $table_phone . ' p LEFT JOIN ' . $table_phone_type . ' pt on pt.phone_type_id = p.phone_type_id WHERE p.addressbook_id = ' . $r['id'] . ' ORDER BY phone_type asc';
+    $phones = mysql_query($query, $db);
+    // email
+    $query = 'SELECT * FROM ' . $table_email . ' e LEFT JOIN ' . $table_email_type . ' et on et.email_type_id = e.email_type_id WHERE e.addressbook_id = ' . $r['id'] . ' ORDER BY email_type asc';
+    $emails = mysql_query($query, $db);
+    // address
+    $query = 'SELECT * FROM ' . $table_address . ' a LEFT JOIN ' . $table_address_type . ' at on at.address_type_id = a.address_type_id WHERE a.addressbook_id = ' . $r['id'] . ' ORDER BY address_type asc';
+    $addresses = mysql_query($query, $db);
+    // end addition by rehan@itlinkonline.com
+
        if( ($cnt % 6) == 0)
        		echo "<tr class='odd'>";
        if( ($cnt % 6) == 3)
        		echo "<tr class='even'>";
        		
        echo "<td valign='top'>";
-   	   showOneEntry($r, isset($_REQUEST['phones']));
+                    // addition by rehan@itlinkonline.com
+                    showOneEntry($r, $phones, $emails, $addresses, isset($_REQUEST['phones']), isset($_REQUEST['primary']));
+					// end addition by rehan@itlinkonline.com
        echo "</td>";
 
        $cnt++;
@@ -171,8 +213,7 @@ showOneEntry($r);
        		echo "</tr>";
        		
    }
-   while(($cnt % 3) != 0)
-   {
+   while(($cnt % 3) != 0)   {
       echo "<td>.</td>";   	
       $cnt++;
    }
@@ -187,5 +228,4 @@ showOneEntry($r);
 }
 
 include ("include/footer.inc.php");
-
 ?>

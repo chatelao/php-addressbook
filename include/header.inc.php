@@ -44,7 +44,7 @@
 </form>
 <?php } ?>
 			</div>
-			<div id="header">
+			<div id="bookHeader">
 				<h1><a href=".">Address Book</a></h1>
 				<a href="."><img src="<?php echo $url_images; ?>title.png" title="Addressbook" alt="Addressbook" id="logo" /></a>
 			</div>
