@@ -1,5 +1,4 @@
 <?php
-require_once('dbconnect.php');
 
 class Address {
 	
@@ -9,46 +8,6 @@ class Address {
     	$this->address = $data;
     }
 
-    // addition by rehan@itlinkonline.com
-    public function setPhones($query) {
-
-        $result = mysql_query($query);
-        while($phone = mysql_fetch_array($result)) {
-            if($phone['primary_number']){
-                $this->address['phone']['primary'] = $phone['phone_number'];
-            }else{
-                $this->address['phone'][] = $phone['phone_number'];
-            }
-        }
-    }
-
-    public function setEmails($query) {
-
-        $result = mysql_query($query);
-        $resultnumber = mysql_numrows($result);
-        while($email = mysql_fetch_array($result)) {
-            if($email['primary_email']){
-                $this->address['email']['primary'] = $email['email_address'];
-            }else{
-                $this->address['email'][] = $email['email_address'];
-            }
-        }
-
-    }
-
-    public function setAddresses($query) {
-        
-        $result = mysql_query($query);
-        while($address = mysql_fetch_array($result)) {
-            if($address['primary_address']){
-                $this->address['address']['primary'] = $address['postal_address'];
-            }else{
-                $this->address['address'][] = $address['postal_address'];
-            }
-        }
-    }
-    // end addition by rehan@itlinkonline.com
-
     public function getData() {
         return $this->address;
     }
@@ -56,59 +15,33 @@ class Address {
     public function getEMails() {
     	
       $result = array();
-    	// addition by rehan@itlinkonline.com
-        for($i = 0; $i < count($this->address['email']); $i++) {
-            $result[] = $this->address['email'][$i];
-        }
-        // end addition by rehan@itlinkonline.com
+    	if($this->address["email"]  != "")  $result[] = $this->address["email"];    	
+    	if($this->address["email2"]  != "") $result[] = $this->address["email2"];
     	return $result;
     }
     
-    // addition by rehan@itlinkonline.com
-    public function primaryEmail(){
-
-        return $this->address['email']['primary'];
-    }
-	// addition by rehan@itlinkonline.com
-
     public function firstEMail() {
-        // addition by rehan@itlinkonline.com
-        $email = $this->primaryEmail();
-        if(!isset($email)){
-            $emails = $this->getEMails();
-            $email = (count($emails) > 0 ? $emails[0] : "");
-        }
-        return $email;
-		// end addition by rehan@itlinkonline.com
+    	  
+      $emails = $this->getEMails();
+      return (count($emails) > 0 ? $emails[0] : "");
     }
     
+    //    
+    // Phone order home->mobile->work
+    //
     public function getPhones() {
     	
       $phones = array();
-        // addition by rehan@itlinkonline.com
-        for($i = 0; $i < count($this->address['phone']); $i++) {
-            $phones[] = $this->address['phone'][$i];
-        }
-        // end addition by rehan@itlinkonline.com
+    	if($this->address["home"]   != "") $phones[] = $this->address["home"];
+    	if($this->address["mobile"] != "") $phones[] = $this->address["mobile"];
+    	if($this->address["work"]   != "") $phones[] = $this->address["work"];    	  
    	  return $phones;
    	}
     	
-	// addition by rehan@itlinkonline.com
-    public function primaryPhone(){
-    
-        return $this->address['phone']['primary'];
-    }
-	// end addition by rehan@itlinkonline.com
-
     public function firstPhone() {
-		// addition by rehan@itlinkonline.com
-        $phone = $this->primaryPhone();
-        if(!isset($phone)){
-            $phones = $this->getPhones();
-            $phone = (count($phones) > 0 ? $phones[0] : "");
-        }
-        return $phone;
-		// end addition by rehan@itlinkonline.com
+    	
+      $phones = $this->getPhones();
+      return (count($phones) > 0 ? $phones[0] : "");
     }
 
     public function shortPhone() {
@@ -118,31 +51,58 @@ class Address {
                          str_replace(" ", "", 
                          str_replace(".", "", $this->firstPhone()))));
     }
+}
 
-    // addition by rehan@itlinkonline.com
-    public function getAddress() {
-        $address = array();
-        for($i = 0; $i < count($this->address['address']); $i++) {
-            $address[] = $this->address['address'][$i];
+class Addresses {
+	  	
+    private $result;
+
+    function __construct($searchstring) {
+    	
+	    global $base_from_where, $table;
+
+     	$sql = "SELECT DISTINCT $table.* FROM $base_from_where";
+        
+      if ($searchstring) {
+        
+          $searchwords = split(" ", $searchstring);
+        
+          foreach($searchwords as $searchword) {
+          	$sql .= "AND (   lastname  LIKE '%$searchword%' 
+                          OR firstname LIKE '%$searchword%' 
+                          OR company   LIKE '%$searchword%' 
+                          OR address   LIKE '%$searchword%' 
+                          OR home      LIKE '%$searchword%'
+                          OR mobile    LIKE '%$searchword%'
+                          OR work      LIKE '%$searchword%'
+                          OR email     LIKE '%$searchword%'
+                          OR email2    LIKE '%$searchword%'
+                          OR address2  LIKE '%$searchword%' 
+                          OR notes     LIKE '%$searchword%' 
+                          )";
+          }          
         }
-        return $address;
+        
+        if(true) {
+            $sql .= "ORDER BY lastname, firstname ASC";
+        } else {
+          	$sql .= "ORDER BY firstname, lastname ASC";
+        }
+      	$this->result = mysql_query($sql);
     }
     
-    public function primaryAddress() {
-
-        return $this->address['address']['primary'];
-    }
-    
-    public function firstAddress() {
-
-        $address = $this->primaryAddress();
-        if(!isset($address)){
-            $addresses = $this->getAddress();
-            $address = (count($addresses) > 0 ? $addresses[0] : "");
-        }
-        return $address;
+    public function nextAddress() {
+    	
+    	$myrow = mysql_fetch_array($this->result);
+    	if($myrow) {
+		      return new Address($myrow);
+		  } else {
+		      return false;
+		  }		  
     }
 
-    // end addition by rehan@itlinkonline.com
+    public function getResults() {
+    	return $this->result;
+    }
 }
 ?>

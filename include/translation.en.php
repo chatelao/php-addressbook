@@ -29,15 +29,10 @@ $messages['ADDRESS_BOOK']['en'] = 'address book'; // address book
 $messages['FOR']['en'] = 'for'; // for
 $messages['SEARCH']['en'] = 'search'; // search
 $messages['HOME']['en'] = 'home'; // home
-// modification by rehan@itlinkonline.com
-$messages['NEXT_BIRTHDAYS']['en'] = 'birthdays'; // next birthdays
-// end modification by rehan@itlinkonline.com
+$messages['NEXT_BIRTHDAYS']['en'] = 'next birthdays'; // next birthdays
 $messages['ADD_NEW']['en'] = 'add new'; // add new
-// modification by rehan@itlinkonline.com
-$messages['PRINT_ALL']['en'] = 'all'; // print all
-$messages['PRINT_PHONES']['en'] = 'phones'; // print phones
-$messages['PRINT_PRIMARY']['en'] = 'primary'; // print phones
-// end modification by rehan@itlinkonline.com
+$messages['PRINT_ALL']['en'] = 'print all'; // print all
+$messages['PRINT_PHONES']['en'] = 'print phones'; // print phones
 $messages['EXPORT_CSV']['en'] = 'export csv'; // export csv
 $messages['GROUP']['en'] = 'group'; // group
 $messages['GROUPS']['en'] = 'groups'; // groups
@@ -48,24 +43,6 @@ $messages['EDIT_GROUP']['en'] = 'edit group'; // edit group
 $messages['GROUP_NAME']['en'] = 'group name'; // group name
 $messages['GROUP_HEADER']['en'] = 'Group header (Logo)'; // Group header (Logo)
 $messages['GROUP_FOOTER']['en'] = 'Group footer (Comment)'; // Group footer (Comment)
-// addition by rehan@itlinkonline.com
-// phone
-$messages['TYPES']['en'] = 'types'; // just the heading types
-$messages['PHONE_TYPE']['en'] = 'phone'; // phone
-$messages['NEW_PHONE_TYPE']['en'] = 'new phone type'; // new phone type
-$messages['DELETE_PHONE_TYPE']['en'] = 'delete phone type'; // delete phone type
-$messages['EDIT_PHONE_TYPE']['en'] = 'edit phone type'; // edit phone type
-// email
-$messages['EMAIL_TYPE']['en'] = 'email'; // email
-$messages['NEW_EMAIL_TYPE']['en'] = 'new email type'; // new email type
-$messages['DELETE_EMAIL_TYPE']['en'] = 'delete email type'; // delete email type
-$messages['EDIT_EMAIL_TYPE']['en'] = 'edit email type'; // edit email type
-// address
-$messages['ADDRESS_TYPE']['en'] = 'address'; // address
-$messages['NEW_ADDRESS_TYPE']['en'] = 'new address type'; // new address type
-$messages['DELETE_ADDRESS_TYPE']['en'] = 'delete address type'; // delete address type
-$messages['EDIT_ADDRESS_TYPE']['en'] = 'edit address type'; // edit address type
-// end addition by rehan@itlinkonline.com
 $messages['SEARCH_FOR_ANY_TEXT']['en'] = 'search for any text'; // search for any text
 $messages['NUMBER_OF_RESULTS']['en'] = 'Number of results'; // Number of results
 $messages['ALL']['en'] = 'all'; // all

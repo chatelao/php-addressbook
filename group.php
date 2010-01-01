@@ -140,9 +140,8 @@ $myrow = mysql_fetch_array($result);
 				<?php
 					$sql="SELECT group_name 
 					        FROM $table_groups 
-					       WHERE group_id !=" . $id . "
+					       WHERE id != $id
 					      ORDER BY lower(group_name) ASC";
-
 					$result_groups = mysql_query($sql);
 					$result_gropup_snumber = mysql_numrows($result_groups);
 			
@@ -152,7 +151,7 @@ $myrow = mysql_fetch_array($result);
 					}
 				?>
 			</select>
-		<br /><br class="clear" />
+		</form><br /><br class="clear" />
 
 		<label><?php echo ucfmsg('GROUP_HEADER'); ?>:</label>
 		<textarea name="group_header" rows="10" cols="40"><?php echo $myrow["group_header"]?></textarea><br />
@@ -182,7 +181,7 @@ else
 
 <?php
 	while ($myrow = mysql_fetch_array($result)) {
-		echo "<input type='checkbox' name='selected[]' value='".$myrow['group_id']."' title='Select (".$myrow['group_name'].")'/>&nbsp;";
+		echo "<input type='checkbox' name='selected[]' value='".$myrow['group_id']."' title='Select (".$myrow['group_name'].")'/>";
 		if($myrow['parent_name'] != "") {
 			echo $myrow['group_name']." <i>(".$myrow['parent_name'].")</i><br />";
 		} else {

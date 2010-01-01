@@ -1,34 +1,29 @@
-/*
-	changes to adjust in my local project
-	rehan@itlinkonline.com
-*/
-#bookFooter,ul {margin:0;padding:0;}
-body,p,td,h1,h2,a,a:hover {font-family:Verdana,Helvetica,sans-serif;font-size:12px}
-/*	end rehan@itlinkonline.com */
+body,#footer,ul {margin:0;padding:0;}
+body {background-image:url('./header.jpg');background-repeat:repeat-x;background-position:top left;}
+body,p,td,h1,h2,a,a:hover {font-family:Arial,Helvetica,sans-serif;font-size:12px}
 h1 {font-size:18px}
 h2 {font-size:14px}
 a {color:#036}
 a:hover {color:#06C;text-decoration:none}
 img {border:0;}
 
-#container {margin:0 auto;width:770px; border:0; background-image:url('./header.jpg');background-repeat:repeat-x;background-position:top left;}
+#container {margin:0 auto;width:780px;border:0}
 #top{margin:5px 0 0;height:20px;text-align:right;}
-#bookHeader {height:80px;}
-#bookHeader h1 {display:none;}
+#header {height:80px;}
+#header h1 {display:none;}
 
-#nav {margin:0 0 20px;height:25px;width:770px;border:0;display:inline;}
-#nav ul li.heading{ font-weight: 700;}
+#nav {margin:0 0 20px;height:25px;width:770px;float:left;border:0;display:inline;}
 #nav ul li a {color:#fff;padding:0 4px;}
 #nav ul li img {display:none;}
 
 #content {margin:20px 0 0;width:780px;}
-#bookFooter {margin:45px 0 0;padding:20px 0;clear:both;}
+#footer {margin:45px 0 0;padding:20px 0;clear:both;}
 
 ul {list-style:none;}
 ul li {display:inline;}
-#bookFooter ul li {display:block;}
+#footer ul li {display:block;}
 
-label, .label {margin-right:0.5em; margin-left:0.5em; width:10em; float:left;text-align:left;display:block;}
+label {margin-right:0.5em;width:10em;float:left;text-align:left;display:block;}
 
 #search-az {text-align:center;padding:2px;}
 #a-z a {font-size:75%;} 
@@ -61,8 +56,3 @@ table#view td {padding:5px;}
 /* Source Forge */
 #download {margin:0;width:180px;background:#63A624;color:#fff;border:1px solid #000;text-align:center;}
 #download a,#top a {color:#fff;}
-
-/* addition by rehan@itlinkonline.com */
-a.duplicater{ }
-.remove, #email, #phone, #postal_address{display:none;}
-/* end addition by rehan@itlinkonline.com */

@@ -69,15 +69,7 @@ foreach($get_vars as $get_var) {
    if(isset($_GET[$get_var])) {
      ${$get_var} = mysql_real_escape_string($_GET[$get_var], $db);
    } elseif(isset($_POST[$get_var])) {
-	// editing by rehan@itlinkonline.com to handle arrays
-        if(is_array($_POST[$get_var])) {
-            foreach($_POST[$get_var] as $tmpGetVar) {
-                ${$get_var} = mysql_real_escape_string($tmpGetVar, $db);
-            }
-        }else {
      ${$get_var} = mysql_real_escape_string($_POST[$get_var], $db);
-        }
-        // end editing by rehan@itlinkonline.com to handle arrays
    } else {
      ${$get_var} = null;
    }
@@ -89,20 +81,6 @@ foreach($get_vars as $get_var) {
 //
 if(!isset($table))         $table        = "addressbook";
 if(!isset($month_lookup))  $month_lookup = "month_lookup";
-
-// addition by rehan@itlinkonline.com
-// phone and phone types
-if(!isset($table_phone_type))   $table_phone_type   = "phone_type";
-if(!isset($table_phone))        $table_phone        = "phone";
-
-// email and email types
-if(!isset($table_email_type))   $table_email_type   = "email_type";
-if(!isset($table_email))        $table_email        = "email";
-
-// address and address types
-if(!isset($table_address_type))   $table_address_type   = "address_type";
-if(!isset($table_address))        $table_address        = "address";
-// end addition by rehan@itlinkonline.com
 
 // (optional) group function
 if(!isset($table_groups))  $table_groups  = "group_list";
@@ -150,40 +128,6 @@ $month_lookup  = $table_prefix.$month_lookup;
 $table_groups  = $table_prefix.$table_groups;
 $table_grp_adr = $table_prefix.$table_grp_adr;
 
-// addition by rehan@itlinkonline.com
-// phone
-$table_phone            = $table_prefix.$table_phone;
-$table_phone_type       = $table_prefix.$table_phone_type;
-// email
-$table_email            = $table_prefix.$table_email;
-$table_email_type       = $table_prefix.$table_email_type;
-// address
-$table_address          = $table_prefix.$table_address;
-$table_address_type     = $table_prefix.$table_address_type;
-
-// Array containing name of fields with are posted under $_GET or $_POST as html input arrays
-// This list is created to exclude from the array handling of $_REQUEST $key => $value function
-// phone
-$exclude_fields[] = 'phone_type_id';
-$exclude_fields[] = 'phone_id';
-$exclude_fields[] = 'phone_number';
-$exclude_fields[] = 'remove_id';
-$exclude_fields[] = 'primary_number';
-// email
-$exclude_fields[] = 'email_type_id';
-$exclude_fields[] = 'email_id';
-$exclude_fields[] = 'email_address';
-$exclude_fields[] = 'email_remove_id';
-$exclude_fields[] = 'primary_email';
-// address
-$exclude_fields[] = 'address_type_id';
-$exclude_fields[] = 'address_id';
-$exclude_fields[] = 'postal_address';
-$exclude_fields[] = 'address_remove_id';
-$exclude_fields[] = 'primary_address';
-
-
-// end addition by rehan@itlinkonline.com
 //
 // --- Set default values to parameters, if need
 //
@@ -208,7 +152,8 @@ if(isset($nogroups)) {
 }
 
 // Remember the current group
-if(!$is_fix_group and $group_name){
+if(!$is_fix_group and $group_name)
+{
   $page_ext_qry = "$page_ext?group=$group_name&amp;";
   $page_ext     = "$page_ext?group=$group_name";
 }
@@ -219,20 +164,18 @@ include("mailer.inc.php");
 
 // To run the script on systeme with "register_globals" disabled,
 // import all variables in a bit secured way: Remove HTML Tags
-foreach($_REQUEST as $key => $value){
+foreach($_REQUEST as $key => $value)
+{
 	  // Allow all tags in headers and footers
 	  if($key == "group_header" || $key == "group_footer"){
 	  	${$key} = $value;
 	  	
 	  // Handle arrays
 	  } elseif(is_array($value)) {
-        // addition by rehan@itlinkonline.com to handle html input arrays
-        if(!in_array((string)$key, $exclude_fields)){
-	  	foreach($value as $entry)	  	{
+	  	foreach($value as $entry)
+	  	{
 	  		${$key}[] = strip_tags($entry);
 	  	}
-        }
-        // end addition by rehan@itlinkonline.com to handle html input arrays
 	  // Handle the rest
 	  } else {
     	// ${$key} = htmlspecialchars($value); --chatelao-20071121, doesn't work with Chinese Characters
@@ -259,7 +202,8 @@ $max_level = 3;
 $sql_from  = "";
 $sql_where = "";
                    
-for($i = 0; $i < $max_level; $i++){
+for($i = 0; $i < $max_level; $i++)
+{
 	if($i > 0) {
     $sql_from  .= "     , ";
 		$sql_where .= " OR ";
@@ -267,7 +211,8 @@ for($i = 0; $i < $max_level; $i++){
  	$sql_from  .= "$table_groups g$i";
 	$sql_where .= "( ";
 	
-  for($j = 0; $j < $max_level; $j++)  {
+  for($j = 0; $j < $max_level; $j++)
+  {
   	if($j > 0) {
   		$sql_where .= "\n  AND ";    	
   	}
@@ -288,19 +233,22 @@ if($group_name == "") {
     $base_where = "1=1";
  } else {
 
-    if($group_name == "[none]")    {
+    if($group_name == "[none]")
+    {
       $base_select = " * ";
       $base_from   = "$table";
       $base_where  = "$table.id not in (select distinct id from $table_grp_adr)";
     }
-    elseif(isset($_REQUEST['nosubgroups']) )    {
+    elseif(isset($_REQUEST['nosubgroups']) )
+    {
       $base_select = " * ";
       $base_from  = "$table_grp_adr, $table_groups, $table";
       $base_where = "$table.id = $table_grp_adr.id "
                    ."AND $table_grp_adr.group_id  = $table_groups.group_id "
                    ."AND $table_groups.group_name = '$group_name'";
     }
-    else    {
+    else
+    {
       $base_select = "DISTINCT $table.*";
       $base_from   = "$table_grp_adr, $sql_from, $table";
       $base_where  = "$table.id = $table_grp_adr.id "
@@ -317,9 +265,7 @@ $group_from_where = "$table_groups WHERE group_name = '$group_name' ";
 if(isset($userlist)) {
 	
   include("login.inc.php");
-  if(!isset($required_roles)) { 
-	$required_roles = array(); 
-  }
+  if(!isset($required_roles)) { $required_roles = array(); }
   
   if( ! Login::checkRoles($required_roles) ) {
   	include ("include/format.inc.php");	
@@ -338,27 +284,6 @@ include("address.class.php");
 
 $revision = '$Rev$';
 $revision = str_replace('$', '', str_replace(' ', '', str_replace('Rev: ', '', $revision)));
-$version = '5.5.0'.''.$revision;
+$version = '5.4.6'.' - r'.$revision;
 
-// addition by rehan@itlinkonline.com
-function outputOptions($tbl,$idcol,$idval,$selected,$where,$sql="",$child_col="") {
-    global $db;
-    if($sql=="") {
-        $cmd = "SELECT " . $idcol . "," . $idval . " FROM " . $tbl ;
-        if($where!="") {
-            $cmd = $cmd . " WHERE " . $where;
-        }
-    }else { $cmd = $sql; }
-
-    $result = mysql_query ($cmd, $db)
-        or die ("Query failed:[ReadFromTable]" . $cmd);
-
-    while($line = mysql_fetch_array($result)) {
-        echo "<option value='" . $line[0] ."' " . ($selected==$line[0] || (($child_col!='') && ($line[$child_col]!=null)  ) ? " selected=\"selected\"" : "")
-            . ">" . $line[1] . "</option>";
-
-    };
-    mysql_close($link);
-}
-// end addition by rehan@itlinkonline.com
 ?>

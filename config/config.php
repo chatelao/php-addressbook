@@ -1,10 +1,10 @@
 <?php
 
   // Database access definition
-  $dbname     = "addressbook"; 
+  $dbname     = "your_database"; 
   $dbserver   = "localhost"; 
-  $dbuser     = "root"; 
-  $dbpass     = "root"; 
+  $dbuser     = "username"; 
+  $dbpass     = "password"; 
   
   // == List of Login-Users ==
   // $userlist['admin']['pass'] = "secret";
