@@ -113,7 +113,6 @@ else if($update)
                                                ", group_footer='$group_footer'". 
                                                ", group_parent_id=$gpid".
                                              " WHERE group_id=$id";
-echo $sql;
 		$result = mysql_query($sql);
 
 		// header("Location: view?id=$id");		
