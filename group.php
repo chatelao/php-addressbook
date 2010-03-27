@@ -104,10 +104,16 @@ else if($update)
 
 	if($resultsnumber > 0)
 	{
-		$sql = "UPDATE $table_groups SET group_name='$group_name'
-                                               , group_header='$group_header' 
-                                               , group_footer='$group_footer' 
-                                             WHERE group_id=$id";
+		if (!is_numeric($group_parent_id))
+			$gpid='null';
+		else
+			$gpid=$group_parent_id;
+		$sql = "UPDATE $table_groups SET group_name='$group_name'".
+                                               ", group_header='$group_header'".
+                                               ", group_footer='$group_footer'". 
+                                               ", group_parent_id=$gpid".
+                                             " WHERE group_id=$id";
+echo $sql;
 		$result = mysql_query($sql);
 
 		// header("Location: view?id=$id");		
@@ -122,36 +128,57 @@ else if($update)
 // Open for Editing
 else if($edit || $id)
 {
-  if($edit) $id = $selected[0];
+  if($edit)
+    $id = $selected[0];
   if(! $read_only)
   {
 
-$result = mysql_query("$select_groups WHERE groups.group_id=$id",$db);
-$myrow = mysql_fetch_array($result);
+    $result = mysql_query("$select_groups WHERE groups.group_id=$id",$db);
+    $myrow = mysql_fetch_array($result);
 
 ?>
 	<form accept-charset="utf-8" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
         <input type="hidden" name="id" value="<?php echo $myrow['group_id']?>" />
 
 		<label><?php echo ucfmsg('GROUP_NAME'); ?></label>
-		<input type="text" name="group_name" size="35" value="<?php echo $myrow['group_name']?>" /><br />
+		<input type="text" name="group_name" size="35" value="<?php echo $myrow['group_name'];?>" /><br />
 
-		<select name="parent_group">
+		<select name="group_parent_id">
 				<?php
-					$sql="SELECT group_name 
+					$sql="SELECT group_name, group_id
 					        FROM $table_groups 
-					       WHERE id != $id
-					      ORDER BY lower(group_name) ASC";
+					       WHERE group_id != $id
+					      ORDER BY lower(group_name) ASC;";
+
 					$result_groups = mysql_query($sql);
 					$result_gropup_snumber = mysql_numrows($result_groups);
-			
-					while ($myrow = mysql_fetch_array($result_groups))
+
+					//	has parent row in list been found?
+					$parent_found = false;
+					while ($myrow2 = mysql_fetch_array($result_groups))
 					{
-					echo "<option>".$myrow["group_name"]."</option>\n";
+						//	look for selected parent
+						if ($myrow['group_parent_id'] == $myrow2['group_id']) {
+							$selected_text = ' selected';
+							$parent_found = true;
+						} else {
+							//	not found, reset selected text
+							$selected_text = '';
+						}
+
+						//	parent option
+						echo "<option value=\"".$myrow2['group_id']."\"$selected_text>".$myrow2["group_name"]."</option>\n";
 					}
+					//	if no matching parent found, default to none
+					if (!$parent_found)
+						$selected_text = ' selected';
+					else
+						$selected_text = '';
+					//	none option
+					echo "<option value=\"none\"$selected_text>[none]</option>\n";
 				?>
 			</select>
-		</form><br /><br class="clear" />
+		<br /><br class="clear" />
 
 		<label><?php echo ucfmsg('GROUP_HEADER'); ?>:</label>
 		<textarea name="group_header" rows="10" cols="40"><?php echo $myrow["group_header"]?></textarea><br />
@@ -168,7 +195,6 @@ $myrow = mysql_fetch_array($result);
 }
 else
 {
-
 	$result = mysql_query($select_groups." ORDER BY groups.group_name");
 	$resultsnumber = mysql_numrows($result);
 
