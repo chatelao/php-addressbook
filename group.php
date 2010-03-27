@@ -140,8 +140,10 @@ else if($edit || $id)
         <input type="hidden" name="id" value="<?php echo $myrow['group_id']?>" />
 
 		<label><?php echo ucfmsg('GROUP_NAME'); ?></label>
-		<input type="text" name="group_name" size="35" value="<?php echo $myrow['group_name'];?>" /><br />
+		<input type="text" name="group_name" size="35" value="<?php echo $myrow['group_name'];?>" />
+    <br /><br />
 
+		<label><?php echo ucfmsg('GROUP_PARENT'); ?></label>
 		<select name="group_parent_id">
 				<?php
 					$sql="SELECT group_name, group_id
