@@ -99,18 +99,25 @@
 		# Home contact
 		if($zip_pattern != "")
 		{
-
+		  $address = "";
+		  $zip     = "";
+		  $city    = "";
 			preg_match( "/(.*)(\b".$zip_pattern."\b)(.*)/m"
                                   , str_replace("\r\n", ", ", trim($myrow["address"])), $matches);
 		if(count($matches) > 1)
-			add(preg_replace("/,$/", "", trim($matches[1])));
+			$address = preg_replace("/,$/", "", trim($matches[1]));
 		if(count($matches) > 2)
-			add($matches[2]);
+			$zip = $matches[2];
 		if(count($matches) > 3)
-			add(preg_replace("/^,/", "", trim($matches[3])));
+			$city = preg_replace("/^,/", "", trim($matches[3]));
+			
+		add($address);
+		add($zip);
+		add($city);		
 		}
 		else add($myrow["address"]);
 
+		# Privat contact
 		add($myrow["home"]);
 		add($myrow["mobile"]);
 		add($myrow["email"]);
