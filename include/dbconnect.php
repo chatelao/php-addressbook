@@ -284,6 +284,6 @@ include("address.class.php");
 
 $revision = '$Rev$';
 $revision = str_replace('$', '', str_replace(' ', '', str_replace('Rev: ', '', $revision)));
-$version = '5.4.8'.' - r'.$revision;
+$version = '5.4.9'.' - r'.$revision;
 
 ?>
