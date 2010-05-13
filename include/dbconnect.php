@@ -62,7 +62,7 @@ foreach($get_vars as $get_var) {
 
 // Copy only used variables into global space.
 $get_vars = array( 'searchstring', 'alphabet', 'group', 'resultnumber'
-                 , 'submit', 'update', 'delete'
+                 , 'submit', 'update', 'delete', 'part'
                  , 'new', 'add', 'remove', 'edit' );
 
 foreach($get_vars as $get_var) {
@@ -73,6 +73,20 @@ foreach($get_vars as $get_var) {
    } else {
      ${$get_var} = null;
    }
+}
+
+if(isset($part)) {
+  $participants = array_filter(explode(';', $part));
+	$part_ids = array();
+	
+  foreach($participants as $one_part) {
+  	if(ctype_digit($one_part)) {
+  	  $part_ids[] = $one_part;
+    }
+  }
+  $part_sql = "(id = '".implode("' OR id = '",  $part_ids)."')";
+} else if(isset($id)) {
+  $part_sql = "id = '$id'";
 }
 
 //

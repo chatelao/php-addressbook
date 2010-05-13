@@ -184,9 +184,10 @@ function addRow($row) {
 	echo "</tr>\n";
 	echo "</table><br />";
 	if($use_doodle) {
-    echo "<div class='left'><input type='button' value=\"".ucfmsg("DOODLE")."\" onclick=\"Doodle()\" /></div>";
+    echo "<div class='left'><input type='button' value=\"".ucfmsg("DOODLE")."\"   onclick=\"Doodle()\" /></div>";
   }
   echo "<div class='left'><input type='button' value=\"".ucfmsg("SEND_EMAIL")."\" onclick=\"MailSelection()\" /></div>";
+  echo "<div class='left'><input type='button' value=\"".ucfmsg("DELETE")."\"     onclick=\"DeleteSel()\" /></div>";
 
 	if(isset($table_groups) and $table_groups != "" and !$is_fix_group)
 	{
@@ -287,6 +288,26 @@ function Doodle() {
 		alert("No paticipants selected.");
 	else
 	  location.href = "./doodle.php?part="+participants;
+}
+
+function DeleteSel() {
+	
+	var participants = "";
+	var dst_count = 0;
+
+  select_count = document.getElementsByName("selected[]").length;
+	for (i = 0; i < select_count; i++) {
+		selected_i = document.getElementsByName("selected[]")[i];
+		if( selected_i.checked == true) {
+			participants += selected_i.id+";";
+			dst_count++;
+		}
+	}
+
+	if(dst_count == 0)
+		alert("No paticipants selected.");
+	else
+	  location.href = "./delete.php?part="+participants;
 }
 
 //
