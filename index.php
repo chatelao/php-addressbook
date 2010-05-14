@@ -307,7 +307,9 @@ function DeleteSel() {
 	if(dst_count == 0)
 		alert("No paticipants selected.");
 	else
-	  location.href = "./delete.php?part="+participants;
+		if(confirm('Delete '+dst_count+' addresses?')) {
+	    location.href = "./delete.php?part="+participants;
+	  }
 }
 
 //
