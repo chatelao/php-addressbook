@@ -204,9 +204,8 @@ else
   <input type="submit" name="new" value="<?php echo ucfmsg('NEW_GROUP'); ?>" />
 	<input type="submit" name="delete" value="<?php echo ucfmsg('DELETE_GROUPS'); ?>" />
 	<input type="submit" name="edit" value="<?php echo ucfmsg('EDIT_GROUP'); ?>" />
-</form>
+
 <hr />
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
 
 <?php
 	while ($myrow = mysql_fetch_array($result)) {
