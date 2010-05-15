@@ -91,7 +91,7 @@ class Addresses {
 	  	
     private $result;
 
-    function __construct($searchstring) {
+    function __construct($searchstring, $alphabet = "") {
     	
 	    global $base_from_where, $table;
 
@@ -114,15 +114,20 @@ class Addresses {
                           OR address2  LIKE '%$searchword%' 
                           OR notes     LIKE '%$searchword%' 
                           )";
-          }          
-        }
-        
-        if(true) {
-            $sql .= "ORDER BY lastname, firstname ASC";
-        } else {
-          	$sql .= "ORDER BY firstname, lastname ASC";
-        }
-      	$this->result = mysql_query($sql);
+          }
+      }
+      if($alphabet) {
+      	$sql .= "AND (   lastname  LIKE '$alphabet%'           	
+                      OR firstname LIKE '$alphabet%' 
+                      )";
+      }
+     
+      if(true) {
+          $sql .= "ORDER BY lastname, firstname ASC";
+      } else {
+        	$sql .= "ORDER BY firstname, lastname ASC";
+      }
+      $this->result = mysql_query($sql);
     }
     
     public function nextAddress() {

@@ -31,7 +31,7 @@ echo "<div id='a-z'><a href='$link=a'>A</a> | <a href='$link=b'>B</a> | <a href=
 <hr />
 <?php
 
-  $addresses = new Addresses($searchstring);
+  $addresses = new Addresses($searchstring, $alphabet);
   $result = $addresses->getResults();
 	$resultsnumber = mysql_numrows($result);
 	
