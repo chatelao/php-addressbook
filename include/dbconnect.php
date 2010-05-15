@@ -295,6 +295,7 @@ if(isset($userlist)) {
 }
 
 include("address.class.php");
+include("group.class.php");
 
 $revision = '$Rev$';
 $revision = str_replace('$', '', str_replace(' ', '', str_replace('Rev: ', '', $revision)));

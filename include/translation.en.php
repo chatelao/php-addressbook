@@ -34,6 +34,7 @@ $messages['ADD_NEW']['en'] = 'add new'; // add new
 $messages['PRINT_ALL']['en'] = 'print all'; // print all
 $messages['PRINT_PHONES']['en'] = 'print phones'; // print phones
 $messages['EXPORT_CSV']['en'] = 'export csv'; // export csv
+$messages['IMPORT']['en'] = 'import'; // import
 $messages['GROUP']['en'] = 'group'; // group
 $messages['GROUPS']['en'] = 'groups'; // groups
 $messages['MANAGE_GROUPS']['en'] = 'groups'; // groups

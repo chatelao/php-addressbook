@@ -36,6 +36,7 @@ $messages['ADD_NEW']['de'] = 'Neuer Eintrag'; // add new
 $messages['PRINT_ALL']['de'] = 'Alle drucken'; // print all
 $messages['PRINT_PHONES']['de'] = 'Telefonliste'; // print phones
 $messages['EXPORT_CSV']['de'] = 'CSV-Export'; // export csv
+$messages['IMPORT']['de'] = 'Import'; // import
 $messages['GROUP']['de'] = 'Gruppe'; // group
 $messages['GROUPS']['de'] = 'Gruppen'; // groups
 $messages['MANAGE_GROUPS']['de'] = 'Gruppen'; // manage groups

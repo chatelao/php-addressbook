@@ -86,6 +86,7 @@ if($trans_mode == ".php.inc") { ?>
   <h1>Prepare translation file</h1>
   => you may use: <a href="http://translate.google.de">translate.google.de</a>
   or <a href="http://www.stars21.net/translator">www.stars21.net/translator</a>
+  or <a href="http://www.microsoft.com/language">www.microsoft.com/language</a>
   <br /><br />
 
 <form accept-charset="utf-8" method="post" action="#">

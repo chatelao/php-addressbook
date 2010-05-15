@@ -1,5 +1,39 @@
 <?php
 
+function saveAddress($addr_array, $group_name = "") {
+	
+	  global $table, $table_grp_adr, $table_groups;
+
+    $sql = "INSERT INTO $table ( firstname,    lastname,   company,    address,   home,   mobile,   work,   fax,   email,    email2,  homepage,   bday,  bmonth,   byear,    address2,    phone2,    notes,     created, modified)
+                        VALUES ( '".$addr_array['firstname']."'
+                               , '".$addr_array['lastname']."'
+                               , '".$addr_array['company']."'
+                               , '".$addr_array['address']."'
+                               , '".$addr_array['home']."'
+                               , '".$addr_array['mobile']."'
+                               , '".$addr_array['work']."'
+                               , '".$addr_array['fax']."'
+                               , '".$addr_array['email']."'
+                               , '".$addr_array['email2']."'
+                               , '".$addr_array['homepage']."'
+                               , '".$addr_array['bday']."'
+                               , '".$addr_array['bmonth']."'
+                               , '".$addr_array['byear']."'
+                               , '".$addr_array['address2']."'
+                               , '".$addr_array['phone2']."'
+                               , '".$addr_array['notes']."'
+                               , now(), now())";
+
+    $result = mysql_query($sql);
+    
+    // $id = "SELECT LAST_INSERT_ID()"
+    
+    if($group_name) {
+    	$sql = "INSERT INTO $table_grp_adr SELECT LAST_INSERT_ID() id, group_id, now(), now() FROM $table_groups WHERE group_name = '$group_name'";
+    	$result = mysql_query($sql);
+    }
+}
+    
 class Address {
 	
     private $address;
