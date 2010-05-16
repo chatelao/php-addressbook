@@ -27,7 +27,7 @@ if(!$read_only && $public_group_edit && $table_groups != "" && !$is_fix_group)
     	<a href="csv<?php echo $page_ext; ?>"><?php echo msg('EXPORT_CSV'); ?></a>
   </li> 
 <?php if(!$read_only) { ?>
-	<li class="import">
+	<li class="export">
     	<a href="import<?php echo $page_ext; ?>"><?php echo msg('IMPORT'); ?></a>
   </li> 
 <?php } ?>
