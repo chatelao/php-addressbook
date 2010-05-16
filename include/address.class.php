@@ -1,27 +1,36 @@
 <?php
 
+function getIfSetFromAddr($addr_array, $key) {
+	
+	if(isset($addr_array[$key]) && isset($addr_array[$key])) {
+	  return $addr_array[$key];
+	} else {
+		return "";
+	}
+}
+
 function saveAddress($addr_array, $group_name = "") {
 	
 	  global $table, $table_grp_adr, $table_groups;
 
     $sql = "INSERT INTO $table ( firstname,    lastname,   company,    address,   home,   mobile,   work,   fax,   email,    email2,  homepage,   bday,  bmonth,   byear,    address2,    phone2,    notes,     created, modified)
-                        VALUES ( '".$addr_array['firstname']."'
-                               , '".$addr_array['lastname']."'
-                               , '".$addr_array['company']."'
-                               , '".$addr_array['address']."'
-                               , '".$addr_array['home']."'
-                               , '".$addr_array['mobile']."'
-                               , '".$addr_array['work']."'
-                               , '".$addr_array['fax']."'
-                               , '".$addr_array['email']."'
-                               , '".$addr_array['email2']."'
-                               , '".$addr_array['homepage']."'
-                               , '".$addr_array['bday']."'
-                               , '".$addr_array['bmonth']."'
-                               , '".$addr_array['byear']."'
-                               , '".$addr_array['address2']."'
-                               , '".$addr_array['phone2']."'
-                               , '".$addr_array['notes']."'
+                        VALUES ( '".getIfSetFromAddr($addr_array, 'firstname')."'
+                               , '".getIfSetFromAddr($addr_array, 'lastname')."'
+                               , '".getIfSetFromAddr($addr_array, 'company')."'
+                               , '".getIfSetFromAddr($addr_array, 'address')."'
+                               , '".getIfSetFromAddr($addr_array, 'home')."'
+                               , '".getIfSetFromAddr($addr_array, 'mobile')."'
+                               , '".getIfSetFromAddr($addr_array, 'work')."'
+                               , '".getIfSetFromAddr($addr_array, 'fax')."'
+                               , '".getIfSetFromAddr($addr_array, 'email')."'
+                               , '".getIfSetFromAddr($addr_array, 'email2')."'
+                               , '".getIfSetFromAddr($addr_array, 'homepage')."'
+                               , '".getIfSetFromAddr($addr_array, 'bday')."'
+                               , '".getIfSetFromAddr($addr_array, 'bmonth')."'
+                               , '".getIfSetFromAddr($addr_array, 'byear')."'
+                               , '".getIfSetFromAddr($addr_array, 'address2')."'
+                               , '".getIfSetFromAddr($addr_array, 'phone2')."'
+                               , '".getIfSetFromAddr($addr_array, 'notes')."'
                                , now(), now())";
 
     $result = mysql_query($sql);
