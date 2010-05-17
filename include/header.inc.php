@@ -40,7 +40,7 @@
 
 <a href="preferences<?php echo $page_ext_qry; ?>from=<?php echo urlencode($_SERVER['REQUEST_URI']); ?>"><?php echo ucfmsg('PREFERENCES'); ?></a>
 -->
-<?php if(isset($userlist)) { ?>
+<?php if(isset($userlist) && !(isset($iplist) && hasRoleFromIP($iplist))) { ?>
 <form name="logout" method="post">
 <input type="hidden" name="logout" value="yes" />
 <a href="#" onClick="document.logout.submit();"><?php echo ucfmsg("LOGOUT"); ?></a>

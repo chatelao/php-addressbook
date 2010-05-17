@@ -276,9 +276,15 @@ $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth =
 
 $group_from_where = "$table_groups WHERE group_name = '$group_name' ";
 
-if(isset($userlist)) {
+include("login.inc.php");
+
+if(isset($iplist) && hasRoleFromIP($iplist)) {
+
+  $role = hasRoleFromIP($iplist);
+  $read_only = ($role['role'] == "readonly");
+  
+} elseif(isset($userlist)) {
 	
-  include("login.inc.php");
   if(!isset($required_roles)) { $required_roles = array(); }
   
   if( ! Login::checkRoles($required_roles) ) {

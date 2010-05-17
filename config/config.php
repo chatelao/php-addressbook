@@ -13,6 +13,11 @@
   // $userlist['view']['pass'] = "apassword";
   // $userlist['view']['role'] = "readonly";  
 
+  // == List of IP-Users ==
+  //
+  //$iplist['169.168.1.1']['role']  = "admin";
+  //$iplist['169.168.1.1']['role']  = "readonly";
+
   // Define table prefix
   $table_prefix = "";
   

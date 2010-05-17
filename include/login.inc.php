@@ -1,5 +1,17 @@
 <?php
 
+function hasRoleFromIP($iplist) {
+	
+	$ip = $_SERVER['REMOTE_ADDR'];
+	$is_white = array_key_exists($ip, $iplist);
+	
+	if($is_white) {
+	  return $iplist[$ip];
+	} else {
+		return false;
+	}
+}
+
 class User {
 	
 	private $name;
