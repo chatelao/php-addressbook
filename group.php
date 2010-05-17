@@ -10,7 +10,8 @@ echo "<h1>".ucfmsg('GROUPS')."</h1>";
 
 if($submit) {
 	if(! $read_only) {
-		$sql = "INSERT INTO $table_groups (group_name, group_header, group_footer) VALUES ('$group_name','$group_header','$group_footer')";
+		$sql = "INSERT INTO $table_groups (group_name, group_header, group_footer,  group_parent_id)
+		                           VALUES ('$group_name','$group_header','$group_footer','$group_parent_id')";
 		$result = mysql_query($sql);
 
 		echo "<br /><div class='msgbox'>A new group has been entered into the address book.<br /><i>return to the <a href='group$page_ext'>group page</a></i></div>";
@@ -22,10 +23,30 @@ else if($new) {
 	if(! $read_only) {
 ?>
   <form accept-charset="utf-8" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-    <label>Group name:</label>
-	<input type="text" name="group_name" size="35" /><br />
+		<label>Group name:</label>
+  	<input type="text" name="group_name" size="35" /><br />
 
-    <label>Group header (Logo):</label>
+		<label><?php echo ucfmsg('GROUP_PARENT'); ?></label>
+		<select name="group_parent_id">
+  	  <option value=\"none\">[none]</option>
+  	<?php
+  		$sql="SELECT group_name, group_id
+  		        FROM $table_groups 
+  		      ORDER BY lower(group_name) ASC;";
+  
+  		$result_groups = mysql_query($sql);
+  		$result_gropup_snumber = mysql_numrows($result_groups);
+  
+  		//	has parent row in list been found?
+  		$parent_found = false;
+  		while ($myrow2 = mysql_fetch_array($result_groups))
+  		{
+  			echo "<option value=\"".$myrow2['group_id']."\">".$myrow2["group_name"]."</option>\n";
+  		}
+  	?>
+   </select><br />
+
+      <label>Group header (Logo):</label>
 	<textarea name="group_header" rows="10" cols="40"></textarea><br />
 
     <label>Group footer (Comment):</label>
@@ -55,7 +76,6 @@ else if($add)
 	$sql = "select * from $table_groups where group_name = '$to_group'";
 
 	$result = mysql_query($sql);
-	// $resultsnumber = mysql_numrows($result);
 
 	$myrow = mysql_fetch_array($result);
 	$group_id   = $myrow["group_id"];

@@ -46,6 +46,7 @@ $messages['EDIT_GROUP']['de'] = 'Gruppe anpassen'; // edit group
 $messages['GROUP_NAME']['de'] = 'Gruppenname'; // group name
 $messages['GROUP_HEADER']['de'] = 'Kopfzeile (Logo)'; // Group header (Logo)
 $messages['GROUP_FOOTER']['de'] = 'Fusszeile (Kommentar)'; // Group footer (Comment)
+$messages['GROUP_PARENT']['de'] = 'Übergerdnete Gruppe'; // Parent group
 $messages['SEARCH_FOR_ANY_TEXT']['de'] = 'Freitextsuche'; // search for any text
 $messages['NUMBER_OF_RESULTS']['de'] = 'Suchtreffer'; // Number of results
 $messages['ALL']['de'] = 'Alle'; // all

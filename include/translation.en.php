@@ -44,6 +44,7 @@ $messages['EDIT_GROUP']['en'] = 'edit group'; // edit group
 $messages['GROUP_NAME']['en'] = 'group name'; // group name
 $messages['GROUP_HEADER']['en'] = 'Group header (Logo)'; // Group header (Logo)
 $messages['GROUP_FOOTER']['en'] = 'Group footer (Comment)'; // Group footer (Comment)
+$messages['GROUP_PARENT']['en'] = 'Parent group'; // Group footer (Comment)
 $messages['SEARCH_FOR_ANY_TEXT']['en'] = 'search for any text'; // search for any text
 $messages['NUMBER_OF_RESULTS']['en'] = 'Number of results'; // Number of results
 $messages['ALL']['en'] = 'all'; // all

@@ -66,6 +66,7 @@
 
 	# Work contact
 	add(ucfmsg("PHONE_WORK"));
+	add(ucfmsg("FAX_WORK"));
 	add(ucfmsg("E_MAIL_OFFICE"));
 
 
@@ -125,6 +126,7 @@
 
 		# Work contact
 		add($myrow["work"]);
+		add($myrow["fax"]);
 		add($myrow["email2"]);
 
 		# 2nd contact

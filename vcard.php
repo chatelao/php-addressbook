@@ -17,6 +17,7 @@ $sql = "SELECT * FROM $month_from_where AND $table.id=$id";
    $home       = utf8_to_latin1($links["home"]);
    $mobile     = utf8_to_latin1($links["mobile"]);
    $work       = utf8_to_latin1($links["work"]);
+   $fax        = utf8_to_latin1($links["fax"]);
    $email      = utf8_to_latin1($links["email"]);
    $email2     = utf8_to_latin1($links["email2"]);
  
@@ -33,6 +34,7 @@ $sql = "SELECT * FROM $month_from_where AND $table.id=$id";
 	  echo "TEL;HOME;VOICE:$home\n";
 	  echo "TEL;cell;VOICE:$mobile\n";
 	  echo "TEL;work;VOICE:$work\n";
+	  echo "TEL;fax:$fax\n";
 	  echo "EMAIL;PREF;INTERNET:$email2\n";
 	  echo "EMAIL;PREF;INTERNET:$email\n";
 	  echo "BDAY:$byear-".(strlen($bmonth_num) == 1?"0":"")."$bmonth_num-$bday\n";
