@@ -81,6 +81,12 @@ function showOneEntry($r, $only_phone = false)
 	 }	   
    $view .= ($r['phone2']   != "" ? "P: ".$r['phone2']."<br />" : "");
    if(! $only_phone) {
+   	
+   	 // Detect URLs (http://*, www.*) and show as link.
+   	 //
+   	 // $text = "Hello, http://www.google.com";
+     // $new = preg_replace("/(http:\/\/[^\s]+)/", "<a href=\"$1\">$1</a>", $test);
+   	 //
 	   $view .= ($r['notes'] != "" ? "<br />".str_replace("\n", "<br />", trim($r['notes']))."<br /><br />" : "");
    }
    echo $view."\n";
