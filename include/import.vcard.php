@@ -34,7 +34,9 @@ foreach($file_lines as $vcards_line) {
   	for($i = 1; $i < count($subkeys); $i++) {
   	  $subkey = explode('=', $subkeys[$i]);
   	  $subkey_name = strtoupper($subkey[0]);
-  	  if(isset($subkey[1])) {
+  	  if(!isset($subkey[1])) {
+  	    $addr_line[$subkey_name] = "";
+  	  } else {
   	    $addr_line[$subkey_name][] = $subkey[1];
   	    
   	    if($subkey[0] == 'TYPE' && count(explode(',',$subkey[1])) > 1) {
@@ -91,10 +93,18 @@ foreach($addresses as $address) {
     	  $dest_address = trim($street."\n".$postal_code." ".$city."\n".$country);
     	  
     	  if(strlen($dest_address) > 0) {
-    	    if($entry['TYPE'][0] == "home") {
-    	      $dest_addr['address']  = $dest_address;
+    	  	if(isset($entry['TYPE'])) {
+    	      if($entry['TYPE'][0] == "home") {
+    	        $dest_addr['address']  = $dest_address;
+    	      } else {
+    	        $dest_addr['address2'] = $dest_address;
+    	      }
     	    } else {
-    	      $dest_addr['address2'] = $dest_address;
+    	      if(array_key_exists('HOME',$entry)) {
+    	    	  $dest_addr['address']  = $dest_address;
+    	    	} else {
+    	        $dest_addr['address2'] = $dest_address;
+    	      }
     	    }
     	  }
     	}
@@ -118,17 +128,32 @@ foreach($addresses as $address) {
 
     	foreach($entries as $entry) {
     		  	
-    	  if($entry['TYPE'][0]       == "home") {
-    	    $dest_addr['home']   = $entry['VALUE'];
-    	  } elseif($entry['TYPE'][0] == "work") {
-    	    $dest_addr['work']   = $entry['VALUE'];
-    	  } elseif(count($entry['SUBTYPE']) > 0 && in_array('fax', $entry['SUBTYPE'])) {
-    	    $dest_addr['fax']    = $entry['VALUE'];  	  	
-    	  } elseif(count($entry['SUBTYPE']) > 0 && in_array('cell', $entry['SUBTYPE'])) {
-    	    $dest_addr['mobile'] = $entry['VALUE'];  	  	
+    	  if(isset($entry['TYPE'])) {
+    	    if($entry['TYPE'][0]       == "home") {
+    	      $dest_addr['home']   = $entry['VALUE'];
+    	    } elseif($entry['TYPE'][0] == "work") {
+    	      $dest_addr['work']   = $entry['VALUE'];
+    	    } elseif(count($entry['SUBTYPE']) > 0 && in_array('fax', $entry['SUBTYPE'])) {
+    	      $dest_addr['fax']    = $entry['VALUE'];  	  	
+    	    } elseif(count($entry['SUBTYPE']) > 0 && in_array('cell', $entry['SUBTYPE'])) {
+    	      $dest_addr['mobile'] = $entry['VALUE'];  	  	
+    	    } else {
+    	      $dest_addr['phone2'] = $entry['VALUE'];  	  	
+    	    }
     	  } else {
-    	    $dest_addr['phone2'] = $entry['VALUE'];  	  	
-    	  }  	  
+    	    if(      array_key_exists('HOME',$entry)) {
+    	      $dest_addr['home']   = $entry['VALUE'];
+    	    } elseif(array_key_exists('WORK',$entry)) {
+    	      $dest_addr['work']   = $entry['VALUE'];
+    	    } elseif(array_key_exists('FAX',$entry)) {
+    	      $dest_addr['fax']    = $entry['VALUE'];  	  	
+    	    } elseif(array_key_exists('CELL',$entry)) {
+    	      $dest_addr['mobile'] = $entry['VALUE'];  	  	
+    	    } else {
+    	      $dest_addr['phone2'] = $entry['VALUE'];  	  	
+    	    }
+    	  	
+    	  }
     	}
     }
   
@@ -140,7 +165,7 @@ foreach($addresses as $address) {
     // - BDAY:1996-04-15
     // - BDAY:1953-10-15T23:10:00Z
     // - BDAY:1987-09-27T08:30:00-06:00
-    if($type == "BDAY") {
+    if($type == "BDAY" && strlen($entries[0]['VALUE']) >= 10) {
     	$date = substr($entries[0]['VALUE'], 0, 10);
     	$date_parts = explode("-",$date);
 
