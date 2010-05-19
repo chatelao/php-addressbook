@@ -66,7 +66,7 @@
 
 	# Work contact
 	add(ucfmsg("PHONE_WORK"));
-	add(ucfmsg("FAX_WORK"));
+	add(ucfmsg("FAX"));
 	add(ucfmsg("E_MAIL_OFFICE"));
 
 
