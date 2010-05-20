@@ -5,7 +5,7 @@
 	<meta name="Description" content="PHP-Addressbook" />
 	<meta name="Keywords" content="" />
 
-	<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="style.css" />
 	<!--[if !IE]>-->
 	<link media="only screen and (max-device-width: 480px)" rel="stylesheet" type="text/css" href="iphone.css"/>
 	<!--<![endif]-->
