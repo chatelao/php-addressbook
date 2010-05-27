@@ -182,7 +182,7 @@ showOneEntry($r);
        		echo "</tr>";
        		
    }
-   while(($cnt % 3) != 0)
+   while(($cnt % $addr_per_line) != 0)
    {
       echo "<td>.</td>";   	
       $cnt++;
