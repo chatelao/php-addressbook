@@ -28,7 +28,7 @@ if(!$submit) {
 <?php
 } else if ($_FILES["file"]["error"] > 0 || $read_only) {
     echo "Error: " . $_FILES["file"]["error"] . "<br />";
-  } else {
+} else {
   
   $file_lines = file($_FILES["file"]["tmp_name"], FILE_IGNORE_NEW_LINES); 
   
@@ -51,6 +51,11 @@ if(!$submit) {
 	} elseif(preg_match( "/^BEGIN:VCARD/", $file_lines[0] )) { // Is a vCard-File
   	$import_type = "VCARD";
 		include ("include/import.vcard.php");
+/*		
+	} elseif(substr_count($file_lines[0], ';') > 5 || substr_count($file_lines[0], ',') > 5) {
+  	$import_type = "CSV";
+		include ("include/import.csv.php");
+*/		
 	} else {
   	$import_type = "UNKNOWN";
   }
