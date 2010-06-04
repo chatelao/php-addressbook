@@ -91,8 +91,9 @@ class Address {
     	
 		  return str_replace("'", "", 
                          str_replace('/', "", 
+                         str_replace("-", "", 
                          str_replace(" ", "", 
-                         str_replace(".", "", $this->firstPhone()))));
+                         str_replace(".", "", $this->firstPhone())))));
     }
 }
 

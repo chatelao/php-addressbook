@@ -74,17 +74,24 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
   $is_mobile = false;
   
   if(! $is_mobile) {
-			echo "<th></th>";
-			echo "<th>".ucfmsg("LASTNAME")."</th>";
-			echo "<th>".ucfmsg("FIRSTNAME")."</th>";
-			echo "<th>".ucfmsg("EMAIL")."</th>";
-			echo "<th>".ucfmsg("TELEPHONE")."</th>";
-      if(!$read_only) {
-         echo "<th></th>";
-      }
+    foreach($disp_cols as $col) {
+    	
+    	 if(!in_array($col, array("select", "edit", "details"))) {
+	      echo "<th>".ucfmsg($col)."</th>";
+	    } else {
+        echo "<th></th>";
+	    	if($col == "edit" || $col == "details") {
+      	  if(!$read_only) {
+            echo "<th></th>";
+          }
+	    	  if($col == "details") {
+            echo "<th></th>";
+	    	  }
+        }
+	    }
+    }
 ?>      
-			<th></th><th></th><th></th><th></th>
-		</tr>
+	</tr>
 <?php
   }
 	$alternate = "2"; 
@@ -106,24 +113,36 @@ function addRow($row) {
 		$emails = $myrow['email'].(   $myrow['email']  != ""
 		                           && $myrow['email2'] != "" ? getMailerDelim() : "").$myrow['email2'];
 
+    if($email != "" && $email != $myrow['email2']) {
+    	$email2 = $myrow['email2'];
+    } else {
+    	$email2 = "";
+    }
+
     if($row == "select") {
 		  echo "<td class='center'><input type='checkbox' id='$id' name='selected[]' value='$id' title='Select ($firstname $lastname)' alt='Select ($firstname $lastname)' accept='$emails' /></td>";
 		}
     if($row == "lastname")   echo "<td>$lastname</td>";
     if($row == "firstname")  echo "<td>$firstname</td>";
-    if($row == "first_last") echo "<td>$firstname<br>$lastname</td>";
+    if($row == "first_last") echo "<td>$firstname $lastname</td>";
+    if($row == "last_first") echo "<td>$lastname $firstname</td>";
 		if($row == "email")      echo "<td><a href='".getMailer()."$email'>$email</a></td>";
+		if($row == "email2")     echo "<td><a href='".getMailer()."$email2'>$email2</a></td>";
 
-    $phone = $addr->shortPhone();
-		if($row == "shortphone") echo "<td>$phone</td>";
+    $phone  = $addr->shortPhone();
+		if($row == "telephone") echo "<td>$phone</td>";
 
     $phones = $addr->getPhones();
 		if($row == "all_phones") echo "<td>".implode("<br>", $phones)."</td>";
 		if($row == "home")   echo "<td>$home</td>";
 		if($row == "mobile") echo "<td>$mobile</td>";
 		if($row == "work")   echo "<td>$work</td>";
+		if($row == "fax")    echo "<td>$fax</td>";
+		if($row == "phone2") echo "<td>$phone2</td>";
 		 
-    if($row == "edit" || $row == "details") {
+		if($row == "address") echo "<td>".str_replace("\n", ", ", $address)."</td>";
+
+    if($row == "edit") {
 		  echo "<td class='center'><a href='view${page_ext_qry}id=$id'><img src='${url_images}icons/status_online.png' title='".ucfmsg('DETAILS')."' alt='".ucfmsg('DETAILS')."' /></a></td>";
       if(! $read_only)
 		    echo "<td class='center'><a href='edit${page_ext_qry}id=$id'><img src='${url_images}icons/pencil.png' title='".ucfmsg('EDIT')."' alt='".ucfmsg('EDIT')."'/></a></td>";
@@ -168,12 +187,9 @@ function addRow($row) {
 		   // addRow("email");
 		   addRow("edit");
     } else {
-		   addRow("select");
-		   addRow("lastname");
-		   addRow("firstname");
-		   addRow("email");
-		   addRow("shortphone");
-		   addRow("details");
+    	 foreach($disp_cols as $col) {
+	       addRow($col);
+    	 }
     }
 
 		echo "</tr>\n";
