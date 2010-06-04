@@ -6,6 +6,18 @@
   $dbuser     = "username"; 
   $dbpass     = "password"; 
   
+  // Define table prefix
+  $table_prefix = "";
+  
+  // Don't display groups
+  $nogroups = false;
+
+  // Disable all "edit/create" actions
+  $read_only  = false;
+
+  // Enable group administration pages
+  $public_group_edit = true;
+
   // == List of Login-Users ==
   // $userlist['admin']['pass'] = "secret";
   //
@@ -18,17 +30,27 @@
   //$iplist['169.168.1.1']['role']  = "admin";
   //$iplist['169.168.1.1']['role']  = "readonly";
 
-  // Define table prefix
-  $table_prefix = "";
-  
-  // Don't display groups
-  $nogroups = false;
-
-  // Disable all "edit/create" actions
-  $read_only  = false;
-
-  // Enable group administration pages
-  $public_group_edit = true;
+  //
+  // Select displayed columns in "index.php"
+  // - EARLY BETA
+  //
+  /*
+  $disp_cols
+    = array( "select"
+           , "first_last"
+           , "last_first"
+           , "lastname"
+           , "firstname"
+           , "address"
+           , "email"
+           , "telephone"
+           , "home"
+           , "mobile"
+           , "work"
+           , "fax"
+           , "edit"
+           , "details" );
+  */  
 
   // View e-mail addresses as images
   $mail_as_image = false;
