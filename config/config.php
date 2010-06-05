@@ -18,21 +18,27 @@
   // Enable group administration pages
   $public_group_edit = true;
 
-  // == List of Login-Users ==
-  // $userlist['admin']['pass'] = "secret";
   //
-  // -- Role "readonly": --
-  // $userlist['view']['pass'] = "apassword";
-  // $userlist['view']['role'] = "readonly";  
+  // List of Login-Users:
+  //
+  /*
+  $userlist['admin']['pass'] = "secret";
+  
+  -- Role "readonly": --
+  $userlist['view']['pass'] = "apassword";
+  $userlist['view']['role'] = "readonly";  
+  */
 
   // == List of IP-Users ==
   //
-  //$iplist['169.168.1.1']['role']  = "admin";
-  //$iplist['169.168.1.1']['role']  = "readonly";
+  /*
+  $iplist['169.168.1.1']['role']  = "admin";
+  $iplist['169.168.1.1']['role']  = "readonly";
+  */
 
   //
   // Select displayed columns in "index.php"
-  // - EARLY BETA
+  // - EARLY BETA!! (Search may not work well)
   //
   /*
   $disp_cols
