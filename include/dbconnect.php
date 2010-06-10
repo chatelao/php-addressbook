@@ -90,6 +90,20 @@ if(isset($part)) {
 }
 
 //
+// Setup the default columns displayed
+//
+if(!isset($disp_cols)) {
+  $disp_cols
+    = array( "select"
+           , "lastname"
+           , "firstname"
+           , "email"
+           , "telephone"
+           , "edit"
+           , "details" );
+}
+
+//
 // Define the tablenames,
 // if not defined in "config.php"
 //
@@ -305,6 +319,6 @@ include("group.class.php");
 
 $revision = '$Rev$';
 $revision = str_replace('$', '', str_replace(' ', '', str_replace('Rev: ', '', $revision)));
-$version = '5.7.3'.' - r'.$revision;
+$version = '5.7.4'.' - r'.$revision;
 
 ?>
