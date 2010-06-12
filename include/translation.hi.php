@@ -1,12 +1,13 @@
 <?php
 //
 // New translations & fixes are welcome:
-// * chatelao(ät)users.sourceforge.net
+// * chatelao(Ã¤t)users.sourceforge.net
 //
 $supported_langs[] = 'hi';
 
 $use_flag['hi'] = 'in';
 
+$messages['DIR']['hi'] = ""; //
 $messages['LANGUAGE']['hi'] = "भाषा"; // language
 $messages['auto']['hi'] = "bowser सेटिंग्स () स्वत:"; // bowser settings (automatic)
 $messages['en']['hi'] = "अंग्रेज़ी"; // English
@@ -112,4 +113,17 @@ $messages['MODIFIED']['hi'] = "संशोधित"; // modified
 $messages['F:']['hi'] = "एफ:"; // F:
 $messages['da']['hi'] = "डैनीश"; // Danish
 $messages['fi']['hi'] = "फिनिश"; // Finnish
+$messages['USER']['hi'] = "उपयोगकर्ता"; // User
+$messages['PASSWORD']['hi'] = "पासवर्ड"; // Password
+$messages['LOGIN']['hi'] = "लॉग इन"; // Login
+$messages['LOGOUT']['hi'] = "लॉगआउट"; // Logout
+$messages['UPDATED']['hi'] = ""; //
+$messages['EXPORT']['hi'] = "निर्यात"; // export
+$messages['IMPORT']['hi'] = "आयात"; // import
+$messages['GROUP_PARENT']['hi'] = "माता पिता के समूह"; // Parent group
+$messages['TRANSLATOR']['hi'] = ""; //
+$messages['sr']['hi'] = "सर्बियाई"; // Serbian
+$messages['sl']['hi'] = "स्लोवेनियाई"; // Slovenian
+$messages['fa']['hi'] = "फारसी"; // Farsi
+$messages['hu']['hi'] = "हंगरी"; // Hungarian
 ?>

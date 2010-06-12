@@ -1,10 +1,11 @@
 <?php
 //
 // New translations & fixes are welcome:
-// * chatelao(ät)users.sourceforge.net
+// * chatelao(Ã¤t)users.sourceforge.net
 //
 $supported_langs[] = 'fi';
 
+$messages['DIR']['fi'] = ""; //
 $messages['LANGUAGE']['fi'] = "kieli"; // language
 $messages['auto']['fi'] = "bowser asetukset (automaattinen)"; // bowser settings (automatic)
 $messages['en']['fi'] = "Englanti"; // English
@@ -33,7 +34,7 @@ $messages['PRINT_ALL']['fi'] = "Tulosta kaikki"; // print all
 $messages['PRINT_PHONES']['fi'] = "Tulostettava puhelimet"; // print phones
 $messages['EXPORT_CSV']['fi'] = "vienti csv"; // export csv
 $messages['GROUPS']['fi'] = "ryhmät"; // groups
-$messages['MANAGE_GROUPS']['fi'] = "Ryhmien hallinta"; // manage groups
+$messages['MANAGE_GROUPS']['fi'] = "Ryhmien hallinta"; // groups
 $messages['NEW_GROUP']['fi'] = "uusi ryhmä"; // new group
 $messages['DELETE_GROUPS']['fi'] = "poistaa (t)"; // delete group(s)
 $messages['EDIT_GROUP']['fi'] = "muokata ryhmän"; // edit group
@@ -100,5 +101,27 @@ $messages['sv']['fi'] = "Ruotsi"; // Swedish
 $messages['bg']['fi'] = "Bulgaria"; // Bulgarian
 $messages['rm']['fi'] = "Retoromaani"; // Rhaeto-Romance
 $messages['tr']['fi'] = "Turkki"; // Turkish
+$messages['GROUP']['fi'] = "ryhmä"; // group
+$messages['COMPANY']['fi'] = "yhtiö"; // company
+$messages['FAX']['fi'] = "faksi"; // fax
+$messages['HOMEPAGE']['fi'] = "Kotisivu"; // Homepage
+$messages['NOTES']['fi'] = "toteaa"; // notes
+$messages['CREATED']['fi'] = "luonut"; // created
+$messages['MODIFIED']['fi'] = "muutettu"; // modified
+$messages['F:']['fi'] = "F:"; // F:
 $messages['da']['fi'] = "Tanska"; // Danish
+$messages['fi']['fi'] = "Suomi"; // Finnish
+$messages['USER']['fi'] = "Käyttäjä"; // User
+$messages['PASSWORD']['fi'] = "Salasana"; // Password
+$messages['LOGIN']['fi'] = "Kirjaudu sisään"; // Login
+$messages['LOGOUT']['fi'] = "Kirjaudu ulos"; // Logout
+$messages['UPDATED']['fi'] = ""; //
+$messages['EXPORT']['fi'] = "vienti"; // export
+$messages['IMPORT']['fi'] = "tuonti"; // import
+$messages['GROUP_PARENT']['fi'] = "Parent ryhmä"; // Parent group
+$messages['TRANSLATOR']['fi'] = ""; //
+$messages['sr']['fi'] = "Serbialainen"; // Serbian
+$messages['sl']['fi'] = "Slovenian"; // Slovenian
+$messages['fa']['fi'] = "Persia"; // Farsi
+$messages['hu']['fi'] = "Unkari"; // Hungarian
 ?>

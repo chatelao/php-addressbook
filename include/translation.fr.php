@@ -5,6 +5,7 @@
 //
 $supported_langs[] = 'fr';
 
+$messages['DIR']['fr'] = ""; //
 $messages['LANGUAGE']['fr'] = "Langue"; // language
 $messages['auto']['fr'] = "Paramètres du navigateur (automatique)"; // bowser settings (automatic)
 $messages['en']['fr'] = "Anglais"; // English
@@ -115,4 +116,12 @@ $messages['PASSWORD']['fr'] = "Mot de passe"; // Password
 $messages['LOGIN']['fr'] = "Connexion"; // Login
 $messages['LOGOUT']['fr'] = "Déconnexion"; // Logout
 $messages['UPDATED']['fr'] = ""; //
+$messages['EXPORT']['fr'] = "exportation"; // export
+$messages['IMPORT']['fr'] = "importation"; // import
+$messages['GROUP_PARENT']['fr'] = "groupe de parents"; // Parent group
+$messages['TRANSLATOR']['fr'] = ""; //
+$messages['sr']['fr'] = "Serbe"; // Serbian
+$messages['sl']['fr'] = "Slovène"; // Slovenian
+$messages['fa']['fr'] = "Persan"; // Farsi
+$messages['hu']['fr'] = "Hongroise"; // Hungarian
 ?>

@@ -1,13 +1,13 @@
 <?php
 //
 // New translations & fixes are welcome:
-// * chatelao(ät)users.sourceforge.net
-// Update: 20100402
-
+// * chatelao(Ã¤t)users.sourceforge.net
+//
 $supported_langs[] = 'el';
 
 $use_flag['el'] = 'gr';
 
+$messages['DIR']['el'] = ""; //
 $messages['LANGUAGE']['el'] = "γλώσσα"; // language
 $messages['auto']['el'] = "bowser ρυθμίσεων (αυτόματο)"; // bowser settings (automatic)
 $messages['en']['el'] = "Αγγλικά"; // English
@@ -113,4 +113,17 @@ $messages['MODIFIED']['el'] = "Τροποποιημένα"; // modified
 $messages['F:']['el'] = "F:"; // F:
 $messages['da']['el'] = "Δανική"; // Danish
 $messages['fi']['el'] = "Φινλανδική"; // Finnish
+$messages['USER']['el'] = "Χρήστη"; // User
+$messages['PASSWORD']['el'] = "Κωδικός πρόσβασης"; // Password
+$messages['LOGIN']['el'] = "Σύνδεση"; // Login
+$messages['LOGOUT']['el'] = "Αποσύνδεση"; // Logout
+$messages['UPDATED']['el'] = ""; //
+$messages['EXPORT']['el'] = "εξαγωγή"; // export
+$messages['IMPORT']['el'] = "εισαγωγή"; // import
+$messages['GROUP_PARENT']['el'] = "Μητρική της ομάδας"; // Parent group
+$messages['TRANSLATOR']['el'] = ""; //
+$messages['sr']['el'] = "Σέρβος"; // Serbian
+$messages['sl']['el'] = "Σλοβενική"; // Slovenian
+$messages['fa']['el'] = "Περσικά"; // Farsi
+$messages['hu']['el'] = "Ουγγρικός"; // Hungarian
 ?>

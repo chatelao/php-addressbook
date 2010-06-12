@@ -1,12 +1,13 @@
 <?php
 //
 // New translations & fixes are welcome:
-// * chatelao(ät)users.sourceforge.net
+// * chatelao(Ã¤t)users.sourceforge.net
 //
 $supported_langs[] = 'ko';
 
 $use_flag['ko'] = 'kr';
 
+$messages['DIR']['ko'] = ""; //
 $messages['LANGUAGE']['ko'] = "언어"; // language
 $messages['auto']['ko'] = "bowser 설정을 자동으로"; // bowser settings (automatic)
 $messages['en']['ko'] = "영어"; // English
@@ -112,4 +113,17 @@ $messages['MODIFIED']['ko'] = "수정"; // modified
 $messages['F:']['ko'] = "F :"; // F:
 $messages['da']['ko'] = "덴마크어"; // Danish
 $messages['fi']['ko'] = "핀란드어"; // Finnish
+$messages['USER']['ko'] = "사용자"; // User
+$messages['PASSWORD']['ko'] = "암호"; // Password
+$messages['LOGIN']['ko'] = "로그인"; // Login
+$messages['LOGOUT']['ko'] = "로그아웃"; // Logout
+$messages['UPDATED']['ko'] = ""; //
+$messages['EXPORT']['ko'] = "수출"; // export
+$messages['IMPORT']['ko'] = "수입"; // import
+$messages['GROUP_PARENT']['ko'] = "상위 그룹"; // Parent group
+$messages['TRANSLATOR']['ko'] = ""; //
+$messages['sr']['ko'] = "세르비아의"; // Serbian
+$messages['sl']['ko'] = "슬로베니아"; // Slovenian
+$messages['fa']['ko'] = "이 란어"; // Farsi
+$messages['hu']['ko'] = "헝가리의"; // Hungarian
 ?>

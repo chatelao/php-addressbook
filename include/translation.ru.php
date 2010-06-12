@@ -1,10 +1,11 @@
 <?php
 //
 // New translations & fixes are welcome:
-// * chatelao(ät)users.sourceforge.net
+// * chatelao(Ã¤t)users.sourceforge.net
 //
 $supported_langs[] = 'ru';
 
+$messages['DIR']['ru'] = ""; //
 $messages['LANGUAGE']['ru'] = "язык"; // language
 $messages['auto']['ru'] = "баузер параметры (автоматический)"; // bowser settings (automatic)
 $messages['en']['ru'] = "Английский"; // English
@@ -107,11 +108,20 @@ $messages['HOMEPAGE']['ru'] = "Главная страница"; // Homepage
 $messages['NOTES']['ru'] = "Заметки"; // notes
 $messages['CREATED']['ru'] = "создано"; // created
 $messages['MODIFIED']['ru'] = "Изменения"; // modified
+$messages['F:']['ru'] = "F:"; // F:
+$messages['da']['ru'] = "Датский"; // Danish
+$messages['fi']['ru'] = "Финский"; // Finnish
 $messages['USER']['ru'] = "Пользователь"; // User
 $messages['PASSWORD']['ru'] = "Пароль"; // Password
 $messages['LOGIN']['ru'] = "Войти"; // Login
 $messages['LOGOUT']['ru'] = "Выйти"; // Logout
-$messages['F:']['ru'] = "F:"; // F:
-$messages['da']['ru'] = "Датский"; // Danish
-$messages['fi']['ru'] = "Финский"; // Finnish
+$messages['UPDATED']['ru'] = ""; //
+$messages['EXPORT']['ru'] = "экспорт"; // export
+$messages['IMPORT']['ru'] = "импорт"; // import
+$messages['GROUP_PARENT']['ru'] = "Родитель группы"; // Parent group
+$messages['TRANSLATOR']['ru'] = ""; //
+$messages['sr']['ru'] = "Сербский"; // Serbian
+$messages['sl']['ru'] = "Словенский"; // Slovenian
+$messages['fa']['ru'] = "Персидский"; // Farsi
+$messages['hu']['ru'] = "Венгерский"; // Hungarian
 ?>

@@ -1,10 +1,11 @@
 <?php
 //
 // New translations & fixes are welcome:
-// * chatelao(ät)users.sourceforge.net
+// * chatelao(Ã¤t)users.sourceforge.net
 //
 $supported_langs[] = 'it';
 
+$messages['DIR']['it'] = ""; //
 $messages['LANGUAGE']['it'] = "lingua"; // language
 $messages['auto']['it'] = "bowser impostazioni (automatico)"; // bowser settings (automatic)
 $messages['en']['it'] = "Inglese"; // English
@@ -39,7 +40,7 @@ $messages['DELETE_GROUPS']['it'] = "Elimina gruppo (i)"; // delete group(s)
 $messages['EDIT_GROUP']['it'] = "Modifica gruppo"; // edit group
 $messages['GROUP_NAME']['it'] = "nome del gruppo"; // group name
 $messages['GROUP_HEADER']['it'] = "Intestazione gruppo (logo)"; // Group header (Logo)
-$messages['GROUP_FOOTER']['it'] = "Piè di pagina gruppo (Commenti)"; // Group footer (Comment)
+$messages['GROUP_FOOTER']['it'] = "Pi? di pagina gruppo (Commenti)"; // Group footer (Comment)
 $messages['SEARCH_FOR_ANY_TEXT']['it'] = "ricerca testo"; // search for any text
 $messages['NUMBER_OF_RESULTS']['it'] = "Numero di risultati"; // Number of results
 $messages['ALL']['it'] = "tutti"; // all
@@ -65,7 +66,7 @@ $messages['PHONE_MOBILE']['it'] = "cellulare"; // mobile
 $messages['PHONE_WORK']['it'] = "lavoro"; // work
 $messages['EMAIL']['it'] = "e-mail"; // e-mail
 $messages['ZIP']['it'] = "CAP"; // ZIP
-$messages['CITY']['it'] = "città"; // city
+$messages['CITY']['it'] = "citt?"; // city
 $messages['E_MAIL_HOME']['it'] = "e-mail casa"; // e-mail home
 $messages['E_MAIL_OFFICE']['it'] = "e-mail lavoro"; // e-mail office
 $messages['2ND_ADDRESS']['it'] = "secondo indirizzo"; // second address
@@ -101,7 +102,7 @@ $messages['bg']['it'] = "Bulgaro"; // Bulgarian
 $messages['rm']['it'] = "Retoromanzo"; // Rhaeto-Romance
 $messages['tr']['it'] = "Turco"; // Turkish
 $messages['GROUP']['it'] = "gruppo"; // group
-$messages['COMPANY']['it'] = "società"; // company
+$messages['COMPANY']['it'] = "societ?"; // company
 $messages['FAX']['it'] = "fax"; // fax
 $messages['HOMEPAGE']['it'] = "Homepage"; // Homepage
 $messages['NOTES']['it'] = "Note"; // notes
@@ -110,4 +111,17 @@ $messages['MODIFIED']['it'] = "modificato"; // modified
 $messages['F:']['it'] = "F:"; // F:
 $messages['da']['it'] = "Danese"; // Danish
 $messages['fi']['it'] = "Finlandese"; // Finnish
+$messages['USER']['it'] = "Utente"; // User
+$messages['PASSWORD']['it'] = "Password"; // Password
+$messages['LOGIN']['it'] = "Accesso"; // Login
+$messages['LOGOUT']['it'] = "Logout"; // Logout
+$messages['UPDATED']['it'] = ""; //
+$messages['EXPORT']['it'] = "esportazione"; // export
+$messages['IMPORT']['it'] = "importazione"; // import
+$messages['GROUP_PARENT']['it'] = "Capogruppo"; // Parent group
+$messages['TRANSLATOR']['it'] = ""; //
+$messages['sr']['it'] = "Serbo"; // Serbian
+$messages['sl']['it'] = "Sloveno"; // Slovenian
+$messages['fa']['it'] = "Farsi"; // Farsi
+$messages['hu']['it'] = "Ungherese"; // Hungarian
 ?>

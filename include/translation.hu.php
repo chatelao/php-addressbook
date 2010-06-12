@@ -1,10 +1,11 @@
 <?php
 //
 // New translations & fixes are welcome:
-// * chatelao(ät)users.sourceforge.net
+// * chatelao(Ã¤t)users.sourceforge.net
 //
 $supported_langs[] = 'hu';
 
+$messages['DIR']['hu'] = ""; //
 $messages['LANGUAGE']['hu'] = "nyelv"; // language
 $messages['auto']['hu'] = "Bowser beállítások (automata)"; // bowser settings (automatic)
 $messages['en']['hu'] = "Angol"; // English
@@ -110,4 +111,17 @@ $messages['MODIFIED']['hu'] = "módosítása"; // modified
 $messages['F:']['hu'] = "F:"; // F:
 $messages['da']['hu'] = "Dán"; // Danish
 $messages['fi']['hu'] = "Finn"; // Finnish
+$messages['USER']['hu'] = "Felhasználó"; // User
+$messages['PASSWORD']['hu'] = "Jelszó"; // Password
+$messages['LOGIN']['hu'] = "Bejelentkezés"; // Login
+$messages['LOGOUT']['hu'] = "Kijelentkezés"; // Logout
+$messages['UPDATED']['hu'] = ""; //
+$messages['EXPORT']['hu'] = "export"; // export
+$messages['IMPORT']['hu'] = "behozatali"; // import
+$messages['GROUP_PARENT']['hu'] = "Szülő csoport"; // Parent group
+$messages['TRANSLATOR']['hu'] = ""; //
+$messages['sr']['hu'] = "Szerb"; // Serbian
+$messages['sl']['hu'] = "Szlovén"; // Slovenian
+$messages['fa']['hu'] = "Perzsa"; // Farsi
+$messages['hu']['hu'] = "Magyar"; // Hungarian
 ?>

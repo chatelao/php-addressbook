@@ -7,6 +7,7 @@ $supported_langs[] = 'zh';
 
 $use_flag['zh'] = 'cn';
 
+$messages['DIR']['zh'] = ""; //
 $messages['LANGUAGE']['zh'] = "語言"; // language
 $messages['auto']['zh'] = "瀏覽器設定（自動）"; // bowser settings (automatic)
 $messages['en']['zh'] = "英語"; // English
@@ -117,4 +118,12 @@ $messages['PASSWORD']['zh'] = "密码"; // Password
 $messages['LOGIN']['zh'] = "注册"; // Login
 $messages['LOGOUT']['zh'] = "注销"; // Logout
 $messages['UPDATED']['zh'] = ""; //
+$messages['EXPORT']['zh'] = "出口"; // export
+$messages['IMPORT']['zh'] = "进口"; // import
+$messages['GROUP_PARENT']['zh'] = "家长组"; // Parent group
+$messages['TRANSLATOR']['zh'] = ""; //
+$messages['sr']['zh'] = "塞尔维亚"; // Serbian
+$messages['sl']['zh'] = "斯洛文尼亚"; // Slovenian
+$messages['fa']['zh'] = "波斯语"; // Farsi
+$messages['hu']['zh'] = "匈牙利"; // Hungarian
 ?>

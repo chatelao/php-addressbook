@@ -59,7 +59,7 @@ $supported_langs[] = '<?php echo $_REQUEST['target_language']?>';<br />
 	     || !isset($messages[$key][$target_language] )
 			 || $messages[$key][$target_language] == "" ) {
 	  
-	    $translation = $translations[$i++];
+	    $translation = trim($translations[$i++]);
 	  } else {
 	    $translation = $messages[$key][$target_language];
 	  }
@@ -99,8 +99,32 @@ if($trans_mode == ".php.inc") { ?>
 <input name="target_flag" size="2" value="<?php echo $use_flag[$_GET['target_language']]; ?>"/><br />
 (see also: <a href="http://www.anglistikguide.de/info/tools/countrycode.html">countrycode.html</a>)<br /><br />
 
-<input type="submit" value="2. Send translation" /><br />
-<textarea name="translation" rows="<?php echo count($messages); ?>" cols="50">
+<script type="text/javascript" src="http://www.google.com/jsapi">
+</script>
+<script type="text/javascript">
+
+    google.load("language", "1");
+
+    function initialize() {
+      var origtext = document.getElementById("translation").value;
+      var text = origtext.replace(/\n/g, "<br/>");
+          google.language.translate(text, "", "<?php echo $_GET['target_language']; ?>", 
+                                     function(result) {
+            var translated = document.getElementById("translation");
+            // alert(result.translation);
+            var nlcrtrans  = result.translation.replace(/<br\/>/g, "\n")
+            
+            if (result.translation) {
+              translated.value = nlcrtrans;
+            }
+            alert(origtext);
+        });
+    };
+    google.setOnLoadCallback(initialize);
+</script>
+
+<input type="submit" value="2b. Send translation" /><br />
+<textarea id="translation" name="translation" rows="<?php echo count($messages); ?>" cols="50">
 <?php
 
   $source_language = $_GET['lang'];

@@ -1,13 +1,13 @@
 <?php
 //
 // New translations & fixes are welcome:
-// * chatelao(ät)users.sourceforge.net
+// * chatelao(Ã¤t)users.sourceforge.net
 //
 $supported_langs[] = 'he';
 
 $use_flag['he'] = 'il';
 
-$messages['DIR']['he'] = "rl"; // DIR
+$messages['DIR']['he'] = "rl"; //
 $messages['LANGUAGE']['he'] = "שפה"; // language
 $messages['auto']['he'] = "ברירת המחדל של הדפדפן (אוטומטית)"; // bowser settings (automatic)
 $messages['en']['he'] = "אנגלית"; // English
@@ -101,6 +101,7 @@ $messages['it']['he'] = "איטלקית"; // Italian
 $messages['nl']['he'] = "הולנדית"; // Dutch
 $messages['sv']['he'] = "שוודית"; // Swedish
 $messages['bg']['he'] = "בולגרית"; // Bulgarian
+$messages['rm']['he'] = ""; // Rhaeto-Romance
 $messages['tr']['he'] = "טורקית"; // Turkish
 $messages['GROUP']['he'] = "קבוצה"; // group
 $messages['COMPANY']['he'] = "חברה"; // company
@@ -112,4 +113,17 @@ $messages['MODIFIED']['he'] = "Modified"; // modified
 $messages['F:']['he'] = "F:"; // F:
 $messages['da']['he'] = "דנית"; // Danish
 $messages['fi']['he'] = "פינית"; // Finnish
+$messages['USER']['he'] = "משתמש"; // User
+$messages['PASSWORD']['he'] = "סיסמה"; // Password
+$messages['LOGIN']['he'] = "התחברות"; // Login
+$messages['LOGOUT']['he'] = "התנתקות"; // Logout
+$messages['UPDATED']['he'] = ""; //
+$messages['EXPORT']['he'] = "יצוא"; // export
+$messages['IMPORT']['he'] = "יבוא"; // import
+$messages['GROUP_PARENT']['he'] = "האם הקבוצה"; // Parent group
+$messages['TRANSLATOR']['he'] = ""; //
+$messages['sr']['he'] = "הסרבית"; // Serbian
+$messages['sl']['he'] = "סלובנית"; // Slovenian
+$messages['fa']['he'] = "פרסית"; // Farsi
+$messages['hu']['he'] = "הונגרי"; // Hungarian
 ?>

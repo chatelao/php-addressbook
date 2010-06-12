@@ -122,7 +122,8 @@ $messages['EXPORT']['ar'] = "تصدير"; // export
 $messages['IMPORT']['ar'] = "استيراد"; // import
 $messages['GROUP_PARENT']['ar'] = "المجموعة الأم"; // Parent group
 $messages['TRANSLATOR']['ar'] = ""; //
-$messages['ja']['ar'] = "اليابانية"; //
-$messages['sr']['ar'] = "صربي"; //
-$messages['sl']['ar'] = "السلوفينية"; //
+$messages['sr']['ar'] = "صربي"; // Serbian
+$messages['sl']['ar'] = "السلوفينية"; // Slovenian
+$messages['fa']['ar'] = "الفارسية"; // Farsi
+$messages['hu']['ar'] = "الهنغارية"; // Hungarian
 ?>
