@@ -76,8 +76,10 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
   if(! $is_mobile) {
     foreach($disp_cols as $col) {
     	
-    	 if(!in_array($col, array("select", "edit", "details"))) {
-	      echo "<th>".ucfmsg($col)."</th>";
+    	if(!in_array($col, array("home", "work", "mobile", "select", "edit", "details"))) {
+	      echo "<th>".ucfmsg(strtoupper($col))."</th>";
+    	} elseif(in_array($col, array("home", "work", "mobile"))) {
+	      echo "<th>".ucfmsg("PHONE_".strtoupper($col))."</th>";
 	    } else {
         echo "<th></th>";
 	    	if($col == "edit" || $col == "details") {
