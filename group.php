@@ -82,14 +82,17 @@ else if($add)
 	$group_name = $myrow["group_name"];
 
 	// Add people to the group, who are not alread in the group!
-	foreach($selected as $user_id)
-	{
+	if(isset($selected)){
+		foreach($selected as $user_id)
+	  {
 		
-		$sql = "insert into $table_grp_adr (id, group_id) values ($user_id, $group_id)";
-		$result = mysql_query($sql);
+		  $sql = "insert into $table_grp_adr (id, group_id) values ($user_id, $group_id)";
+		  $result = mysql_query($sql);
+	  }
+  	  echo "<div class='msgbox'>Users added.<br /><i>Go to <a href='./?group=$group_name'>group page \"$group_name\"</a>.</i></div>";
+	} else {
+  	  echo "<div class='msgbox'><i>No users selected.<br />Please use the checkbox to select a user.</i></div>";
 	}
-	
-	echo "<div class='msgbox'>Users added.<br /><i>Go to <a href='./?group=$group_name'>group page \"$group_name\"</a>.</i></div>";
 }
 // -- Remove people from a group
 else if($remove)
