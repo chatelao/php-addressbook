@@ -58,6 +58,9 @@ Any improvements, please email chatelao(at)users.sourceforge.net.
 Updated 2009 - Complete theme redesign by Leighton West. Any theme problems,
 please email retrorobot(at)users.sourceforge.net.
 
-Major contribution Mark James ("famfamfam"-icons)
+Major contribution Mark James ("famfamfam"-icons, cc-by-2.5)
 For more details see: http://www.famfamfam.com/lab/icons/silk/
+
+Major contribution "frequency decoder" ("Unobtrusive Table Sort Script", cc-by-sa-2.5)
+For more details see: http://www.frequency-decoder.com/2006/09/16/unobtrusive-table-sort-script-revisited/
 -->
