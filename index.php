@@ -68,7 +68,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 
 <form accept-charset="utf-8" name="MainForm" method="post" action="group<?php echo $page_ext; ?>">
 	<input type="hidden" name="group" value="<?php echo $group; ?>" />
-	<table id="maintable">
+	<table id="maintable" class="sortcompletecallback-applyZebra">
 		<tr>
 <?php					
   $is_mobile = false;
@@ -77,7 +77,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
     foreach($disp_cols as $col) {
     	
     	if(!in_array($col, array("home", "work", "mobile", "select", "edit", "details"))) {
-	      echo "<th>".ucfmsg(strtoupper($col))."</th>";
+	      echo "<th class='sortable'>".ucfmsg(strtoupper($col))."</th>";
     	} elseif(in_array($col, array("home", "work", "mobile"))) {
 	      echo "<th>".ucfmsg("PHONE_".strtoupper($col))."</th>";
 	    } else {
@@ -177,7 +177,7 @@ function addRow($row) {
 
 	while ($addr = $addresses->nextAddress()) {
 
-		$color = ($alternate++ % 2) ? "even" : "odd";
+		$color = ($alternate++ % 2) ? "odd" : "";
 		echo "<tr class='".$color."' name='entry'>";
 
     if($is_mobile) {
@@ -195,12 +195,10 @@ function addRow($row) {
     }
 
 		echo "</tr>\n";
-	}
-
-	echo "<tr>";
-	echo "<td class='center'><input type='checkbox' id='MassCB' onclick=\"MassSelection()\" /></td><td><em><strong>".ucfmsg("SELECT_ALL")."</strong></em></td><td colspan='8'></td>";
-	echo "</tr>\n";
-	echo "</table><br />";
+	} 
+	
+	echo "</table>";
+	echo "&nbsp;<input type='checkbox' id='MassCB' onclick=\"MassSelection()\" /> <em><strong>".ucfmsg("SELECT_ALL")."</strong></em><br><br>";
 	if($use_doodle) {
     echo "<div class='left'><input type='button' value=\"".ucfmsg("DOODLE")."\"   onclick=\"Doodle()\" /></div>";
   }
@@ -330,6 +328,27 @@ function DeleteSel() {
 	  }
 }
 
+function applyZebra() {
+	
+  	// loop over all lines
+  	var maintable = document.getElementById("maintable")
+  	var tbody     = maintable.getElementsByTagName("tbody");
+  	var entries   = tbody[0].children;
+  	var zebraCnt  = 0;
+
+	  // Skip header(0) + selection row(length-1)
+  	for(i = 1; i < entries.length; i++) {
+  		if(entries[i].style.display != "none") {
+      	if((zebraCnt % 2) == 0) {
+      	  entries[i].className = "";
+      	} else {
+      	  entries[i].className = "odd";
+      	}
+     	  zebraCnt++;
+  		}
+    }
+}
+
 //
 // Filter the items in the fields
 //
@@ -347,7 +366,7 @@ function filterResults(field) {
   	var foundCnt  = 0;
 	
 	  // Skip header(0) + selection row(length-1)
-  	for(i = 1; i < entries.length-1; i++) {
+  	for(i = 1; i < entries.length; i++) {
   		
   		// Name + Firstname + Phonenumber + Mailaddress
   		var content = entries[i].childNodes[0].childNodes[0].accept
@@ -368,24 +387,15 @@ function filterResults(field) {
   		
       // ^Hide entry
       if(foundAll) {
-      	last_url = entries[i].childNodes[5].childNodes[0].href;
       	entries[i].style.display = "";
-      	if((foundCnt % 2) == 0) {
-      	  entries[i].className = "odd";
-      	} else {
-      	  entries[i].className = "even";
-      	}
-     	  foundCnt++;
+     	  foundCnt++;  			
       } else {
       	entries[i].style.display = "none";
       }
-  	}
+  	}  	
   	document.getElementById("search_count").innerHTML = foundCnt;
   	
-  	// Auto-Forward if only one entry found
-  	if(foundCnt == 1 && false) {
-  		location = last_url;
-  	}
+  	applyZebra();
 }
 
 <?php if($use_ajax) { ?>
@@ -395,3 +405,4 @@ filterResults(document.getElementsByName("searchstring")[0]);
 //-->
 </script>
 <?php include("include/footer.inc.php"); ?>
+<script type="text/javascript" src="jstablesort/tablesort.min.js"></script>
