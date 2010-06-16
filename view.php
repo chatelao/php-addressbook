@@ -168,6 +168,8 @@ showOneEntry($r);
    $addr_per_line  = ($only_phones ? 4 : 3);
    
    while($r = mysql_fetch_array($result)) {
+   	 $address = new Address($r);
+   	 if($address->hasPhone()) {
        if( ($cnt % (2*$addr_per_line)) == 0)
        		echo "<tr class='odd'>";
        if( ($cnt % (2*$addr_per_line)) == $addr_per_line)
@@ -179,8 +181,8 @@ showOneEntry($r);
 
        $cnt++;
        if( ($cnt % $addr_per_line) == 0)
-       		echo "</tr>";
-       		
+       		echo "</tr>";       	
+     }	
    }
    while(($cnt % $addr_per_line) != 0)
    {

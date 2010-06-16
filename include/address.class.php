@@ -81,10 +81,15 @@ class Address {
    	  return $phones;
    	}
     	
+    public function hasPhone() {
+    	
+      return (count($this->getPhones()) > 0);
+   	}
+
     public function firstPhone() {
     	
       $phones = $this->getPhones();
-      return (count($phones) > 0 ? $phones[0] : "");
+      return ($this->hasPhone() ? $phones[0] : "");
     }
 
     public function shortPhone() {
@@ -95,6 +100,7 @@ class Address {
                          str_replace(" ", "", 
                          str_replace(".", "", $this->firstPhone())))));
     }
+
 }
 
 class Addresses {
