@@ -1,5 +1,5 @@
+table#maintable th a {color:#fff;}
 body,#footer,ul {margin:0;padding:0;}
-body {background-image:url('./header.jpg');background-repeat:repeat-x;background-position:top left;}
 body,p,td,h1,h2,a,a:hover {font-family:Arial,Helvetica,sans-serif;font-size:12px}
 h1 {font-size:18px}
 h2 {font-size:14px}
@@ -42,8 +42,6 @@ table {width:100%;border:1px solid #ccc;border-collapse:collapse;}
 table tr td {border:1px solid #ccc;padding:2px 1px}
 table img,.center {text-align:center;}
 table th {text-align:left;font-size:14px;padding:8px 4px;}
-
-table#maintable th {text-align:center;border:1px solid #ccc;font-size:12px;background:#739fce;color:#fff;}
 
 table#birthdays {border:0;}
 table#birthdays th {color:#fff;background:#739fce;margin:25px;border:1px solid #ccc;}

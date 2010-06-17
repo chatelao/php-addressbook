@@ -12,11 +12,8 @@
   // Don't display groups
   $nogroups = false;
 
-  // Disable all "edit/create" actions
-  $read_only  = false;
-
-  // Enable group administration pages
-  $public_group_edit = true;
+  // blue, brown, green, grey, pink, purple, red, turquoise, yellow
+  $skin_color = "blue";
 
   //
   // List of Login-Users:
@@ -85,6 +82,12 @@
 
   // Setup for "Country guessing" (Beta: Switzerland, US, Belgium)
   $map_guess  = true;
+
+  // Disable all "edit/create" actions
+  $read_only  = false;
+
+  // Enable group administration pages
+  $public_group_edit = true;
 
   // Setup language usage (auto, choose, en, de)
   $lang  = 'choose';

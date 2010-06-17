@@ -5,6 +5,42 @@
 	<meta name="Description" content="PHP-Addressbook" />
 	<meta name="Keywords" content="" />
 
+	<style type="text/css">
+<?php
+// Define default map guessing
+switch($skin_color) {
+  case "blue":
+    $skin_mt_color = '#739fce';
+    break;
+  case "brown":
+    $skin_mt_color = '#c59469';
+    break;
+  case "green":
+    $skin_mt_color = '#66a749';
+    break;
+  case "grey":
+    $skin_mt_color = '#777777';
+    break;
+  case "pink":
+    $skin_mt_color = '#a84989';
+    break;
+  case "purple":
+    $skin_mt_color = '#5349a9';
+    break;
+  case "red":
+    $skin_mt_color = '#b63a3a';
+    break;
+  case "turquoise":
+    $skin_mt_color = '#48a89d';
+    break;
+  case "yellow":
+    $skin_mt_color = '#b4b43a';
+    break;
+}
+?>		
+    body {background-image:url('./skins/header-<?php echo $skin_color; ?>.jpg');background-repeat:repeat-x;background-position:top left;}
+    table#maintable th {text-align:center;border:1px solid #ccc;font-size:12px;background:<?php echo $skin_mt_color; ?>;color:#fff;}
+	</style>
 	<link rel="stylesheet" type="text/css" media="all" href="style.css" />
 	<!--[if !IE]>-->
 	<link media="only screen and (max-device-width: 480px)" rel="stylesheet" type="text/css" href="iphone.css"/>

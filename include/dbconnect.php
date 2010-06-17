@@ -121,6 +121,11 @@ if(!isset($table_prefix))  $table_prefix  = "";
 if(!isset($public_group_edit)) $public_group_edit = true;
 
 // Define default map guessing
+if(!isset($skin_color)) {
+	$skin_color  = "blue";
+}
+
+// Define default map guessing
 if(!isset($map_guess)) $map_guess  = true;
 
 // Use images for e-mail addresses
@@ -319,6 +324,6 @@ include("group.class.php");
 
 $revision = '$Rev$';
 $revision = str_replace('$', '', str_replace(' ', '', str_replace('Rev: ', '', $revision)));
-$version = '5.8'.' - r'.$revision;
+$version = '5.8.1'.' - r'.$revision;
 
 ?>
