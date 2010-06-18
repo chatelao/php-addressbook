@@ -6,6 +6,7 @@
 --
 
 CREATE TABLE addressbook (
+  domain_id int(9) unsigned NOT NULL default '0',
   id int(9) unsigned NOT NULL auto_increment,
   firstname varchar(255) NOT NULL,
   lastname varchar(255) NOT NULL,
@@ -26,17 +27,20 @@ CREATE TABLE addressbook (
   notes text NOT NULL,
   created datetime default NULL,
   modified datetime default NULL,
-  password varchar(256) default NULL,
+  deprecated datetime default NULL,
+    password varchar(256) default NULL,
   login date default NULL,
   role varchar(256) default NULL,
   PRIMARY KEY  (id)
 ) DEFAULT CHARSET=utf8;
 
 CREATE TABLE `group_list` (
+  `domain_id` int(9) unsigned NOT NULL default '0',
   `group_id` int(9) unsigned NOT NULL auto_increment,
   `group_parent_id` int(9) default NULL,
   `created` datetime default NULL,
   `modified` datetime default NULL,
+  `deprecated` datetime default NULL,
   `group_name` varchar(255) NOT NULL default '',
   `group_header` mediumtext NOT NULL,
   `group_footer` mediumtext NOT NULL,
@@ -46,14 +50,16 @@ CREATE TABLE `group_list` (
 --
 -- Test group "Rob" (For: Rob M., Autor of version 1.2).
 --
-INSERT INTO `group_list` (group_name, group_header, group_footer) VALUES ('Rob', '<div style="text-align:center;">\r\n   <h1>Rob</h1><hr /><h2><i>Thanks!</i></h2>\r\n</div>', '<h2>Rob''s Widgetmonkey:</h2>\r\n<ul>\r\n<li><a href="http://www.widgetmonkey.com/">Homepage</a></li>\r\n<li><a href="http://www.widgetmonkey.com/app.php?id=1">The original "Address Book"</a>\r\n</li></ul>');
+INSERT INTO `group_list` (domain_id, group_name, group_header, group_footer) VALUES (0, 'Rob', '<div style="text-align:center;">\r\n   <h1>Rob</h1><hr /><h2><i>Thanks!</i></h2>\r\n</div>', '<h2>Rob''s Widgetmonkey:</h2>\r\n<ul>\r\n<li><a href="http://www.widgetmonkey.com/">Homepage</a></li>\r\n<li><a href="http://www.widgetmonkey.com/app.php?id=1">The original "Address Book"</a>\r\n</li></ul>');
 
 
 CREATE TABLE `address_in_groups` (
+  `domain_id` int(9) unsigned NOT NULL default '0',
   `id` int(9) unsigned NOT NULL default '0',
   `group_id` int(9) unsigned NOT NULL default '0',
   `created` datetime default NULL,
   `modified` datetime default NULL,
+  `deprecated` datetime default NULL,
   PRIMARY KEY  (`group_id`,`id`)
 ) DEFAULT CHARSET=utf8;
 
@@ -78,11 +84,13 @@ INSERT INTO `month_lookup` VALUES ('November', 'Nov', 11);
 INSERT INTO `month_lookup` VALUES ('December', 'Dec', 12);
 
 CREATE TABLE IF NOT EXISTS `user_prefs` (
+  `domain_id` int(9) unsigned NOT NULL default '0',
   `id` int(9) unsigned NOT NULL,
-  `pref_key`   varchar(255) NOT NULL default '',
+  `pref_key` varchar(255) NOT NULL default '',
   `pref_value` varchar(255) NOT NULL default '',
   `created` datetime default NULL,
   `modified` datetime default NULL,
+  `deprecated` datetime default NULL,
   PRIMARY KEY  (`id`,`pref_key`),
   KEY `fk_id` (`id`)
 ) DEFAULT CHARSET=utf8;
