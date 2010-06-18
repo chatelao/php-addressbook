@@ -24,7 +24,7 @@ if(!$read_only && $public_group_edit && $table_groups != "" && !$is_fix_group)
       <a href="view<?php echo $page_ext_qry; ?>all&amp;print&amp;phones"><?php echo msg('PRINT_PHONES'); ?></a>
   </li>
 	<li class="export">
-    	<a href="csv<?php echo $page_ext; ?>"><?php echo msg('EXPORT_CSV'); ?></a>
+    	<a href="export<?php echo $page_ext; ?>"><?php echo msg('EXPORT'); ?></a>
   </li> 
 <?php if(!$read_only) { ?>
 	<li class="export">

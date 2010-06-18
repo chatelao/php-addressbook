@@ -7,7 +7,77 @@
 
 	<style type="text/css">
 <?php
-// Define default map guessing
+// Thanks to "dustingreen" for the "th" color contribution:
+switch($skin_color) {
+  case 1:
+  case "brown":
+    $skin_mt_color = '#c59469';
+    $skin_color    = 'brown';
+    break;
+  case 2:
+  case "green":
+    $skin_mt_color = '#66a749';
+    $skin_color    = 'green';
+    break;
+  case 3:
+  case "grey":
+    $skin_mt_color = '#777777';
+    $skin_color    = 'grey';
+    break;
+  case 4:
+  case "pink":
+    $skin_mt_color = '#a84989';
+    $skin_color    = 'pink';
+    break;
+  case 5:
+  case "purple":
+    $skin_mt_color = '#5349a9';
+    $skin_color    = 'purple';
+    break;
+  case 6:
+  case "red":
+    $skin_mt_color = '#b63a3a';
+    $skin_color    = 'red';
+    break;
+  case 7:
+  case "turquoise":
+    $skin_mt_color = '#48a89d';
+    $skin_color    = 'turquoise';
+    break;
+  case 8:
+  case "yellow":
+    $skin_mt_color = '#b4b43a';
+    $skin_color    = 'yellow';
+    break;
+  case "blue":
+  case 0:
+  default:
+    $skin_mt_color = '#739fce';
+    $skin_color    = 'blue';
+    break;
+}
+?>		
+    body {background-image:url('./skins/header-<?php echo $skin_color; ?>.jpg');background-repeat:repeat-x;background-position:top left;}
+    table#maintable th {text-align:center;border:1px solid #ccc;font-size:12px;background:<?php echo $skin_mt_color; ?>;color:#fff;}
+	</style>
+	<link rel="stylesheet" type="text/css" media="all" href="style.css" />
+	<!--[if !IE]>-->
+	<link media="only screen and (max-device-width: 480px)" rel="stylesheet" type="text/css" href="iphone.css"/>
+	<!--<![endif]-->
+	<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+
+
+	<link rel="icon" type="image/png" href="<?php echo $url_images; ?>icons/font.png" />
+	<?php if(is_right_to_left($lang)) { ?>
+	<style type="text/css">
+		<!--
+		/* CSS for right to left */
+		label {margin-left:0.5em;float:right;text-align:right;}
+		#content,#right,.right {float:left;}
+		#nav,#left,.left {float:right;}
+		-->
+	</style>
+	<?php } else {} ?>
 switch($skin_color) {
   case "blue":
     $skin_mt_color = '#739fce';
