@@ -41,6 +41,13 @@ class User {
     return false;
   }
 
+	function getDomain() {
+    if(isset($this->config['domain'])) {
+      return $this->config['domain'];
+    } else {
+      return 0; // the default domain
+    }
+	}
 	function getName() {
 		return $this->name;
 	}

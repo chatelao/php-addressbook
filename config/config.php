@@ -24,6 +24,10 @@
   -- Role "readonly": --
   $userlist['view']['pass'] = "apassword";
   $userlist['view']['role'] = "readonly";  
+
+  -- A second, independent domain: --
+  $userlist['adm2']['pass']   = "adm2";
+  $userlist['adm2']['domain'] = 1;
   */
 
   // == List of IP-Users ==

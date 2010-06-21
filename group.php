@@ -10,8 +10,8 @@ echo "<h1>".ucfmsg('GROUPS')."</h1>";
 
 if($submit) {
 	if(! $read_only) {
-		$sql = "INSERT INTO $table_groups (group_name, group_header, group_footer,  group_parent_id)
-		                           VALUES ('$group_name','$group_header','$group_footer','$group_parent_id')";
+		$sql = "INSERT INTO $table_groups (domain_id, group_name, group_header, group_footer,  group_parent_id)
+		                           VALUES ('$domain_id', '$group_name','$group_header','$group_footer','$group_parent_id')";
 		$result = mysql_query($sql);
 
 		echo "<br /><div class='msgbox'>A new group has been entered into the address book.<br /><i>return to the <a href='group$page_ext'>group page</a></i></div>";
@@ -61,11 +61,11 @@ else if($new) {
 	foreach($selected as $group_id)
 	{
 		// Delete links between addresses and groups
-		$sql = "delete from $table_grp_adr where group_id = $group_id";
+		$sql = "delete from $table_grp_adr where domain_id = $domain_id AND group_id = $group_id";
 		$result = mysql_query($sql);
 
 		// Delete groups
-		$sql = "delete from $table_groups  where group_id = $group_id";
+		$sql = "delete from $groups_from_where AND group_id = $group_id";
 		$result = mysql_query($sql);
 	}
 	echo "<div class='msgbox'>Group has been removed.<br /><i>return to the <a href='group$page_ext'>group page</a></i></div>";	
@@ -73,7 +73,7 @@ else if($new) {
 else if($add)
 {
 	// Lookup for the group_id
-	$sql = "select * from $table_groups where group_name = '$to_group'";
+	$sql = "select * from $groups_from_where AND group_name = '$to_group'";
 
 	$result = mysql_query($sql);
 
@@ -86,7 +86,8 @@ else if($add)
 		foreach($selected as $user_id)
 	  {
 		
-		  $sql = "insert into $table_grp_adr (id, group_id) values ($user_id, $group_id)";
+		  $sql = "insert into $table_grp_adr (domain_id, id, group_id, created, modified) 
+		                              values ($domain_id, $user_id, $group_id, now(), now())";
 		  $result = mysql_query($sql);
 	  }
   	  echo "<div class='msgbox'>Users added.<br /><i>Go to <a href='./?group=$group_name'>group page \"$group_name\"</a>.</i></div>";

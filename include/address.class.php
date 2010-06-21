@@ -11,10 +11,11 @@ function getIfSetFromAddr($addr_array, $key) {
 
 function saveAddress($addr_array, $group_name = "") {
 	
-	  global $table, $table_grp_adr, $table_groups;
+	  global $domain_id, $table, $table_grp_adr, $table_groups;
 
-    $sql = "INSERT INTO $table ( firstname,    lastname,   company,    address,   home,   mobile,   work,   fax,   email,    email2,  homepage,   bday,  bmonth,   byear,    address2,    phone2,    notes,     created, modified)
-                        VALUES ( '".getIfSetFromAddr($addr_array, 'firstname')."'
+    $sql = "INSERT INTO $table ( domain_id, firstname,    lastname,   company,    address,   home,   mobile,   work,   fax,   email,    email2,  homepage,   bday,  bmonth,   byear,    address2,    phone2,    notes,     created, modified)
+                        VALUES ( '$domain_id'
+                               , '".getIfSetFromAddr($addr_array, 'firstname')."'
                                , '".getIfSetFromAddr($addr_array, 'lastname')."'
                                , '".getIfSetFromAddr($addr_array, 'company')."'
                                , '".getIfSetFromAddr($addr_array, 'address')."'

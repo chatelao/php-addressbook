@@ -173,9 +173,9 @@ foreach($addresses as $address) {
     	$dest_addr['byear'] = $date_parts[0];
       switch ($date_parts[1]) {
         case "01":
-             $dest_addr['bmonth'] = "Januar"; break;
+             $dest_addr['bmonth'] = "January"; break;
         case "02":
-             $dest_addr['bmonth'] = "Februar"; break;
+             $dest_addr['bmonth'] = "February"; break;
         case "03":
              $dest_addr['bmonth'] = "March"; break;
         case "04":
@@ -191,7 +191,7 @@ foreach($addresses as $address) {
         case "09":
              $dest_addr['bmonth'] = "September"; break;
         case "10":
-             $dest_addr['bmonth'] = "Oktober"; break;
+             $dest_addr['bmonth'] = "October"; break;
         case "11":
              $dest_addr['bmonth'] = "November"; break;
         case "12":

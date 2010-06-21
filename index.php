@@ -52,7 +52,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 		<option value="">[<?php echo msg("ALL"); ?>]</option>
 		<option value="[none]">[<?php echo msg("NONE"); ?>]</option>
 		<?php
-			$sql="SELECT group_name FROM $table_groups ORDER BY lower(group_name) ASC";
+			$sql="SELECT group_name FROM $groups_from_where ORDER BY lower(group_name) ASC";
 			$result_groups = mysql_query($sql);
 			$result_gropup_snumber = mysql_numrows($result_groups);
 	
@@ -219,7 +219,7 @@ function addRow($row) {
         	echo "<div class='right'><input type='submit' name='add' value='".ucfmsg("ADD_TO")."'/>-";
         	echo "<select name='to_group'>";
 
-		$sql="SELECT group_name FROM $table_groups ORDER BY lower(group_name) ASC";
+		$sql="SELECT group_name FROM $groups_from_where ORDER BY lower(group_name) ASC";
 		$result = mysql_query($sql);
 		$resultsnumber = mysql_numrows($result);
 	

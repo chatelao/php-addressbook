@@ -66,8 +66,8 @@ if(! $read_only)
 	 
 	$homepage = str_replace('http://', '', $homepage);
 	 	 
-	$sql = "INSERT INTO $table (firstname,    lastname,   company,    address,   home,   mobile,   work,   fax,   email,    email2,  homepage,   bday,  bmonth,   byear,    address2,    phone2,    notes,     created, modified)
-	                    VALUES ('$firstname','$lastname', '$company', '$address','$home','$mobile','$work','$fax','$email','$email2','$homepage','$bday','$bmonth','$byear', '$address2', '$phone2', '$notes', now(),   now())";
+	$sql = "INSERT INTO $table (domain_id,  firstname,    lastname,   company,    address,   home,   mobile,   work,   fax,   email,    email2,  homepage,   bday,  bmonth,   byear,    address2,    phone2,    notes,     created, modified)
+	                    VALUES ($domain_id, '$firstname','$lastname', '$company', '$address','$home','$mobile','$work','$fax','$email','$email2','$homepage','$bday','$bmonth','$byear', '$address2', '$phone2', '$notes', now(),   now())";
 	$result = mysql_query($sql);
 	
 	if(isset($table_groups) and $table_groups != "" ) {
@@ -76,7 +76,7 @@ if(! $read_only)
 	  } else {
 	  	$g_name = $group_name;
 	  }
-		$sql = "INSERT INTO $table_grp_adr SELECT LAST_INSERT_ID() id, group_id, now(), now() FROM $table_groups WHERE group_name = '$g_name'";
+		$sql = "INSERT INTO $table_grp_adr SELECT $domain_id domain_id, LAST_INSERT_ID() id, group_id, now(), now() FROM $groups_from_where and group_name = '$g_name'";
 		$result = mysql_query($sql);
 	
 		echo "<br /><div class='msgbox'>Information entered into address book.";
@@ -117,7 +117,8 @@ else if($update)
 		                        , phone2 = '$phone2'
 		                        , notes = '$notes' 
 		                        , modified = now()
-		                      WHERE id='$id'";
+		                      WHERE id='$id'
+		                        AND domain_id = '$domain_id'";
 		$result = mysql_query($sql);
 
 		// header("Location: view?id=$id");		
@@ -454,7 +455,7 @@ function proposeNames() {
 					} ?>
           <option value="[none]">[<?php echo msg("NONE"); ?>]</option>
           <?php
-					$sql="SELECT group_name FROM $table_groups ORDER BY lower(group_name) ASC";
+					$sql="SELECT group_name FROM $groups_from_where ORDER BY lower(group_name) ASC";
 					$result_groups = mysql_query($sql);
 					$result_gropup_snumber = mysql_numrows($result_groups);
 					

@@ -3,7 +3,7 @@
 include "address2vcard/testset.php";
 include "../include/export.vcard.php";
 
-echo "Tests started.<br>";
+echo count($tests)." tests starting.<br>";
 
 foreach($tests as $test) {
 	
@@ -31,6 +31,6 @@ foreach($tests as $test) {
 	}
 }
 
-echo "Tests successful finished.<br>";
+echo count($tests)." tests successful finished.<br>";
 
 ?>

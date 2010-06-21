@@ -2,8 +2,8 @@
 
 function text2adr($address) {
    	
-   	  preg_match_all('/[^\d](\d{4,6})[^\d]/', $address, $zips);
-   	  preg_match_all('/[^\d](\d{1,3})[^\d]/', $address, $street_nrs);
+   	  preg_match_all('/(^|[^\d])(\d{4,6})([^\d]|$)/', $address, $zips);
+   	  preg_match_all('/(^|[^\d])(\d{1,3})([^\d]|$)/', $address, $street_nrs);
       
       $address = str_replace("\r", "", $address);
       $addr_lines = explode("\n", $address);
@@ -18,7 +18,7 @@ function text2adr($address) {
       $zip  = "";
       $city = "";
       if(count($zips[0]) > 0) {
-      	$zip = $zips[1][0];
+      	$zip = $zips[2][0];
       	for($i = 0; $i < $cnt_lines; $i++) {
         	if(FALSE !== strpos($addr_lines[$i], $zip)) {
         		$city_line = $i;
@@ -45,10 +45,11 @@ function text2adr($address) {
       $addr      = "";
       $street    = "";
       $street_nr = "";
-      if(count($street_nrs[0]) > 0) {
-      	$street_nr = $street_nrs[1][0];
+      if(count($street_nrs[2]) > 0) {
+      	$street_nr = $street_nrs[2][0];
         for($i = 0; $i < $cnt_lines; $i++) {
-        	if(FALSE !== strpos($addr_lines[$i], $street_nr)) {
+        	preg_match_all('/(^|[^\d])'.$street_nr.'([^\d]|$)/', $addr_lines[$i], $matches);
+        	if(count($matches[0]) > 0) {
         		$addr_line = $i;
       	    $addr = $addr_lines[$addr_line];
         		$street = trim(str_replace($street_nr, "", $addr_lines[$i]), ", ");
@@ -138,7 +139,7 @@ function address2vcard($links) {
 	 $result .= "TEL:$phone2\n";
 	 $result .= "EMAIL;PREF;INTERNET:$email\n";
 	 $result .= "EMAIL;PREF;INTERNET:$email2\n";
-	 $result .= "BDAY:$byear-".(strlen($bmonth_num) == 1?"0":"")."$bmonth_num-$bday\n";
+	 $result .= "BDAY:$byear-".(strlen($bmonth_num) == 1?"0":"")."$bmonth_num-".(strlen($bday) == 1?"0":"")."$bday\n";
 	 $result .= "END:VCARD\n";
 	 
    return $result;

@@ -21,7 +21,7 @@
 	   }
 	   $result = mysql_query($sql);
      while($address = mysql_fetch_array($result)) {	
-     	 $vcfname = $address['lastname']."_".$address['firstname']."-".$address['id'].".vcf";
+     	 $vcfname = $address['firstname']."_".$address['lastname']."-".$address['id'].".vcf";
      	 setlocale(LC_ALL, 'en_US.UTF8');
      	 $vcfname = str_replace( "?", "", iconv('UTF-8', 'ASCII//TRANSLIT', $vcfname));
        $zip->addFromString($vcfname, address2vcard($address));

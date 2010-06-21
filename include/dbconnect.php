@@ -114,16 +114,14 @@ if(!isset($month_lookup))  $month_lookup = "month_lookup";
 if(!isset($table_groups))  $table_groups  = "group_list";
 if(!isset($table_grp_adr)) $table_grp_adr = "address_in_groups";
 
+// the domain
+if(!isset($domain_id)) $domain_id  = 0;
+
 // the table prefix
 if(!isset($table_prefix))  $table_prefix  = "";
 
 // Show link to "group-edit" menu
 if(!isset($public_group_edit)) $public_group_edit = true;
-
-// Define default map guessing
-if(!isset($skin_color)) {
-	$skin_color  = "blue";
-}
 
 // Define default map guessing
 if(!isset($map_guess)) $map_guess  = true;
@@ -194,6 +192,37 @@ if(!$is_fix_group and $group_name)
 include("prefs.inc.php");
 include("translations.inc.php");
 include("mailer.inc.php");
+include("login.inc.php");
+
+if(isset($iplist) && hasRoleFromIP($iplist)) {
+
+  $role = hasRoleFromIP($iplist);
+  $read_only = ($role['role'] == "readonly");
+  
+} elseif(isset($userlist)) {
+	
+  if(!isset($required_roles)) { $required_roles = array(); }
+  
+  if( ! Login::checkRoles($required_roles) ) {
+  	include ("include/format.inc.php");	
+    echo translateTags(file_get_contents("include/login.inc.html"));
+    die;
+  }
+  $user = Login::getUser();
+
+  // Get domain
+  $domain_id= $user->getDomain();
+
+  // Check Roles
+  $read_only = $user->hasRole("readonly");
+  
+}
+
+if(isset($domain) && isset($domain[$domain_id])) {
+  $skin_color = $domain[$domain_id]['skin'];
+} elseif(!isset($skin_color)) {
+	$skin_color = "blue";
+}
 
 // To run the script on systeme with "register_globals" disabled,
 // import all variables in a bit secured way: Remove HTML Tags
@@ -227,7 +256,8 @@ $select_groups = "SELECT groups.*
        	               , parent_groups.group_id    parent_id
        	            FROM $table_groups AS groups
                LEFT JOIN $table_groups AS parent_groups
-                      ON groups.group_parent_id = parent_groups.group_id";
+                      ON groups.group_parent_id = parent_groups.group_id
+                   WHERE groups.domain_id = $domain_id";
           
 // Create "n-level" non-locking recursion
 $max_level = 3;
@@ -260,23 +290,23 @@ for($i = 0; $i < $max_level; $i++)
       // echo nl2br("select * from ".$sql_from." WHERE ".$sql_where."\n");
 
 // Assemble the statements
+$base_where = "$table.domain_id = $domain_id ";
 if($group_name == "") {
     $base_select = " * ";
     $base_from  = $table;
-    $base_where = "1=1";
  } else {
 
     if($group_name == "[none]")
     {
       $base_select = " * ";
       $base_from   = "$table";
-      $base_where  = "$table.id not in (select distinct id from $table_grp_adr)";
+      $base_where  .= "AND $table.id not in (select distinct id from $table_grp_adr)";
     }
     elseif(isset($_REQUEST['nosubgroups']) )
     {
       $base_select = " * ";
       $base_from  = "$table_grp_adr, $table_groups, $table";
-      $base_where = "$table.id = $table_grp_adr.id "
+      $base_where .= "AND $table.id = $table_grp_adr.id "
                    ."AND $table_grp_adr.group_id  = $table_groups.group_id "
                    ."AND $table_groups.group_name = '$group_name'";
     }
@@ -284,7 +314,7 @@ if($group_name == "") {
     {
       $base_select = "DISTINCT $table.*";
       $base_from   = "$table_grp_adr, $sql_from, $table";
-      $base_where  = "$table.id = $table_grp_adr.id "
+      $base_where  .= "AND $table.id = $table_grp_adr.id "
                     ."AND $table_grp_adr.group_id  = g0.group_id "
                     ."AND ($sql_where)";
     }
@@ -293,31 +323,8 @@ if($group_name == "") {
 $base_from_where  = "$base_from WHERE $base_where ";
 $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth = $month_lookup.bmonth WHERE $base_where ";
 
-$group_from_where = "$table_groups WHERE group_name = '$group_name' ";
-
-include("login.inc.php");
-
-if(isset($iplist) && hasRoleFromIP($iplist)) {
-
-  $role = hasRoleFromIP($iplist);
-  $read_only = ($role['role'] == "readonly");
-  
-} elseif(isset($userlist)) {
-	
-  if(!isset($required_roles)) { $required_roles = array(); }
-  
-  if( ! Login::checkRoles($required_roles) ) {
-  	include ("include/format.inc.php");	
-    echo translateTags(file_get_contents("include/login.inc.html"));
-    die;
-  }
-  $user = Login::getUser();
-
-  //
-  // Check Roles
-  //  
-  $read_only = $user->hasRole("readonly");
-}
+$groups_from_where = "$table_groups WHERE domain_id = '$domain_id' ";
+$group_from_where  = $groups_from_where."group_name = '$group_name' ";
 
 include("address.class.php");
 include("group.class.php");
