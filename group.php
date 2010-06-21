@@ -31,7 +31,7 @@ else if($new) {
   	  <option value=\"none\">[none]</option>
   	<?php
   		$sql="SELECT group_name, group_id
-  		        FROM $table_groups 
+  		        FROM $groups_from_where
   		      ORDER BY lower(group_name) ASC;";
   
   		$result_groups = mysql_query($sql);
@@ -156,7 +156,7 @@ else if($edit || $id)
   if(! $read_only)
   {
 
-    $result = mysql_query("$select_groups WHERE groups.group_id=$id",$db);
+    $result = mysql_query("$select_groups AND groups.group_id=$id",$db);
     $myrow = mysql_fetch_array($result);
 
 ?>

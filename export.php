@@ -1,7 +1,7 @@
 <?php
 	include ("include/dbconnect.php");
    
-  if($submit) {
+  if(isset($_REQUEST['type']) && $_REQUEST['type'] == "vCard-zip") {
    	
      require "include/export.vcard.php";
      
@@ -30,7 +30,19 @@
      readfile($filename);
      unlink($filename);
 
-  } else {
+  } elseif(isset($_REQUEST['type']) && $_REQUEST['type'] == "vCard-one") {
+  	
+     Header("Content-Type: text/x-vCard");
+     $filename = utf8_to_latin1("All_Contacts_of_domin-".$domain_id."-".date("Y_m_d-Hi"));
+     Header('Content-Disposition: attachment; filename="'.$filename.'.vcf"');
+     require "include/export.vcard.php";
+
+    $sql = "SELECT * FROM $month_from_where";
+     $result = mysql_query($sql);
+     while($links  = mysql_fetch_array($result)) {
+        echo address2vcard($links);
+     }
+  }else {
   	
 	include ("include/format.inc.php");
 ?>
@@ -39,6 +51,12 @@
  <h1><?php echo ucfmsg('EXPORT'); ?></h1> 
 <form>
   <label>vCards for Outlook:</label>
+  <input type="hidden" name="type"   value="vCard-zip">
+  <input type="submit" name="submit" value="Download"><br>
+</form>
+<form>
+  <label>All in one vCard:</label>
+  <input type="hidden" name="type"   value="vCard-one">
   <input type="submit" name="submit" value="Download"><br>
 </form>
 <form method="get" action="csv<?php echo $page_ext; ?>">

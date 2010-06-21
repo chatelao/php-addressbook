@@ -2,10 +2,10 @@
 
 function saveGroup($group_name, $group_header = "", $group_footer = "") {
 
-  global $table_groups;
+  global $domain_id, $table_groups;
   
-  $sql = "INSERT INTO $table_groups (group_name, group_header, group_footer) 
-                             VALUES ('$group_name','$group_header','$group_footer')";
+  $sql = "INSERT INTO $table_groups (domain_id,    group_name,   group_header,    group_footer) 
+                             VALUES ('$domain_id', '$group_name','$group_header', '$group_footer')";
   $result = mysql_query($sql);
 
 }

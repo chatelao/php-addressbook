@@ -117,6 +117,9 @@ if(!isset($table_grp_adr)) $table_grp_adr = "address_in_groups";
 // the domain
 if(!isset($domain_id)) $domain_id  = 0;
 
+// the default color
+if(!isset($skin_color)) $skin_color = "blue";
+
 // the table prefix
 if(!isset($table_prefix))  $table_prefix  = "";
 
@@ -220,8 +223,6 @@ if(isset($iplist) && hasRoleFromIP($iplist)) {
 
 if(isset($domain) && isset($domain[$domain_id])) {
   $skin_color = $domain[$domain_id]['skin'];
-} elseif(!isset($skin_color)) {
-	$skin_color = "blue";
 }
 
 // To run the script on systeme with "register_globals" disabled,
@@ -331,6 +332,6 @@ include("group.class.php");
 
 $revision = '$Rev$';
 $revision = str_replace('$', '', str_replace(' ', '', str_replace('Rev: ', '', $revision)));
-$version = '5.8.1'.' - r'.$revision;
+$version = '6.0'.' - r'.$revision;
 
 ?>
