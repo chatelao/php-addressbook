@@ -64,11 +64,23 @@ if(! $read_only)
 	   }
 	 }
 	 
-	$homepage = str_replace('http://', '', $homepage);
-	 	 
-	$sql = "INSERT INTO $table (domain_id,  firstname,    lastname,   company,    address,   home,   mobile,   work,   fax,   email,    email2,  homepage,   bday,  bmonth,   byear,    address2,    phone2,    notes,     created, modified)
-	                    VALUES ($domain_id, '$firstname','$lastname', '$company', '$address','$home','$mobile','$work','$fax','$email','$email2','$homepage','$bday','$bmonth','$byear', '$address2', '$phone2', '$notes', now(),   now())";
-	$result = mysql_query($sql);
+		$addr['firstname'] = $firstname;
+		$addr['lastname']  = $lastname;
+		$addr['company']   = $company;
+		$addr['address']   = $address;
+		$addr['home']      = $home;
+		$addr['mobile']    = $mobile;
+		$addr['work']      = $work;
+		$addr['fax']       = $fax;
+		$addr['email']     = $email;
+		$addr['email2']    = $email2;
+		$addr['homepage']  = $homepage;
+		$addr['bday']      = $bday;
+		$addr['bmonth']    = $bmonth;
+		$addr['byear']     = $byear;
+		$addr['address2']  = $address2;
+		$addr['phone2']    = $phone2;
+		$addr['notes']     = $notes;
 	
 	if(isset($table_groups) and $table_groups != "" ) {
 		if( !$is_fix_group ) {
@@ -76,8 +88,7 @@ if(! $read_only)
 	  } else {
 	  	$g_name = $group_name;
 	  }
-		$sql = "INSERT INTO $table_grp_adr SELECT $domain_id domain_id, LAST_INSERT_ID() id, group_id, now(), now() FROM $groups_from_where and group_name = '$g_name'";
-		$result = mysql_query($sql);
+    saveAddress($addr, $g_name);
 	
 		echo "<br /><div class='msgbox'>Information entered into address book.";
 		echo "<br /><i><a href='edit$page_ext'>add next</a> or return to <a href='index$page_ext'>home page</a>.</i></div>";
@@ -91,38 +102,26 @@ else if($update)
 {
   if(! $read_only)
   {
-	$sql="SELECT * FROM $base_from_where AND $table.id='$id'";
-	$result = mysql_query($sql);
-	$resultsnumber = mysql_numrows($result);
+		$addr['id']        = $id;
+		$addr['firstname'] = $firstname;
+		$addr['lastname']  = $lastname;
+		$addr['company']   = $company;
+		$addr['address']   = $address;
+		$addr['home']      = $home;
+		$addr['mobile']    = $mobile;
+		$addr['work']      = $work;
+		$addr['fax']       = $fax;
+		$addr['email']     = $email;
+		$addr['email2']    = $email2;
+		$addr['homepage']  = $homepage;
+		$addr['bday']      = $bday;
+		$addr['bmonth']    = $bmonth;
+		$addr['byear']     = $byear;
+		$addr['address2']  = $address2;
+		$addr['phone2']    = $phone2;
+		$addr['notes']     = $notes;
 
-	$homepage = str_replace('http://', '', $homepage);
-
-	if($resultsnumber > 0)
-	{
-		$sql = "UPDATE $table SET firstname='$firstname'
-		                        , lastname='$lastname'
-		                        , company='$company'
-		                        , address='$address'
-		                        , home='$home'
-		                        , mobile='$mobile'
-		                        , work='$work'
-		                        , fax='$fax'
-		                        , email='$email'
-		                        , email2='$email2'
-		                        , homepage='$homepage'
-		                        , bday='$bday'
-		                        , bmonth='$bmonth'
-		                        , byear='$byear'
-		                        , address2 = '$address2'
-		                        , phone2 = '$phone2'
-		                        , notes = '$notes' 
-		                        , modified = now()
-		                      WHERE id='$id'
-		                        AND domain_id = '$domain_id'";
-		$result = mysql_query($sql);
-
-		// header("Location: view?id=$id");		
-
+    if(updateAddress($addr)) {
 		echo "<br /><div class='msgbox'>".ucfmsg('ADDRESS_BOOK')." ".msg('UPDATED')."<br /><i>return to <a href='index$page_ext'>home page</a></i></div>";
 	} else {
 		echo "<br /><div class='msgbox'>".ucfmsg('INVALID')." ID.<br /><i>return to <a href='index$page_ext'>home page</a></i></div>";
@@ -139,6 +138,8 @@ $result = mysql_query("SELECT * FROM $base_from_where AND $table.id=$id",$db);
 $myrow = mysql_fetch_array($result);
 ?>
 	<form accept-charset="utf-8" method="post" action="edit<?php echo $page_ext; ?>">
+
+   	<input type="submit" name="update" value="<?php echo ucfmsg('UPDATE') ?>" /><br />
 
 		<input type="hidden" name="id" value="<?php echo $myrow['id']?>" />
 		<label><?php echo ucfmsg("FIRSTNAME") ?>:</label>
@@ -352,6 +353,8 @@ function proposeNames() {
 </script>
 
   <form accept-charset="utf-8" method="post" action="edit<?php echo $page_ext; ?>" name="theform">
+
+		<input type="submit" name="submit" value="<?php echo ucfmsg('ENTER') ?>" /><br /><br />
 
 		<input type="hidden" name="id" value="<?php echo $myrow['id']?>" />
 		<label><?php echo ucfmsg("FIRSTNAME") ?>:</label>

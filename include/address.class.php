@@ -9,39 +9,125 @@ function getIfSetFromAddr($addr_array, $key) {
 	}
 }
 
+function deleteAddresses($part_sql) {
+
+  global $keep_history, $domain_id, $base_from_where, $table, $table_grp_adr, $table_groups;
+
+  $sql = "SELECT * FROM $base_from_where AND ".$part_sql;
+  $result = mysql_query($sql);
+  $resultsnumber = mysql_numrows($result);
+
+  $is_valid = $resultsnumber > 0;
+
+  if($is_valid) {
+  	if($keep_history) {
+  	  $sql = "UPDATE $table
+  	          SET deprecated = now()
+  	          WHERE deprecated is null AND ".$part_sql;
+  	  mysql_query($sql);
+  	  $sql = "UPDATE $table_grp_adr
+  	          SET deprecated = now()
+  	          WHERE deprecated is null AND ".$part_sql;
+  	  mysql_query($sql);
+  	} else {
+  	  $sql = "DELETE FROM $table_grp_adr WHERE ".$part_sql;
+  	  mysql_query($sql);
+  	  $sql = "DELETE FROM $table         WHERE ".$part_sql;
+  	  mysql_query($sql);
+    }
+  }
+
+  return $is_valid;
+}
+
 function saveAddress($addr_array, $group_name = "") {
 	
 	  global $domain_id, $table, $table_grp_adr, $table_groups;
 
-    $sql = "INSERT INTO $table ( domain_id, firstname,    lastname,   company,    address,   home,   mobile,   work,   fax,   email,    email2,  homepage,   bday,  bmonth,   byear,    address2,    phone2,    notes,     created, modified)
-                        VALUES ( '$domain_id'
-                               , '".getIfSetFromAddr($addr_array, 'firstname')."'
-                               , '".getIfSetFromAddr($addr_array, 'lastname')."'
-                               , '".getIfSetFromAddr($addr_array, 'company')."'
-                               , '".getIfSetFromAddr($addr_array, 'address')."'
-                               , '".getIfSetFromAddr($addr_array, 'home')."'
-                               , '".getIfSetFromAddr($addr_array, 'mobile')."'
-                               , '".getIfSetFromAddr($addr_array, 'work')."'
-                               , '".getIfSetFromAddr($addr_array, 'fax')."'
-                               , '".getIfSetFromAddr($addr_array, 'email')."'
-                               , '".getIfSetFromAddr($addr_array, 'email2')."'
-                               , '".getIfSetFromAddr($addr_array, 'homepage')."'
-                               , '".getIfSetFromAddr($addr_array, 'bday')."'
-                               , '".getIfSetFromAddr($addr_array, 'bmonth')."'
-                               , '".getIfSetFromAddr($addr_array, 'byear')."'
-                               , '".getIfSetFromAddr($addr_array, 'address2')."'
-                               , '".getIfSetFromAddr($addr_array, 'phone2')."'
-                               , '".getIfSetFromAddr($addr_array, 'notes')."'
-                               , now(), now())";
+    if(isset($addr_array['id'])) {
+    	$set_id = "'".$addr_array['id']."'";
+    } else {
+    	$set_id = "ifnull(max(id),0)+1"; // '0' is a bad ID
+    }
 
+    $sql = "INSERT INTO $table ( domain_id, id, firstname,    lastname,   company,    address,   home,   mobile,   work,   fax,   email,    email2,  homepage,   bday,  bmonth,   byear,    address2,    phone2,    notes,     created, modified)
+                        SELECT   '$domain_id'                                     domain_id
+                               , ".$set_id."                                      id
+                               , '".getIfSetFromAddr($addr_array, 'firstname')."' firstname
+                               , '".getIfSetFromAddr($addr_array, 'lastname')."'  lastname 
+                               , '".getIfSetFromAddr($addr_array, 'company')."'   company  
+                               , '".getIfSetFromAddr($addr_array, 'address')."'   address  
+                               , '".getIfSetFromAddr($addr_array, 'home')."'      home     
+                               , '".getIfSetFromAddr($addr_array, 'mobile')."'    mobile   
+                               , '".getIfSetFromAddr($addr_array, 'work')."'      work     
+                               , '".getIfSetFromAddr($addr_array, 'fax')."'       fax      
+                               , '".getIfSetFromAddr($addr_array, 'email')."'     email    
+                               , '".getIfSetFromAddr($addr_array, 'email2')."'    email2   
+                               , '".getIfSetFromAddr($addr_array, 'homepage')."'  homepage 
+                               , '".getIfSetFromAddr($addr_array, 'bday')."'      bday     
+                               , '".getIfSetFromAddr($addr_array, 'bmonth')."'    bmonth   
+                               , '".getIfSetFromAddr($addr_array, 'byear')."'     byear    
+                               , '".getIfSetFromAddr($addr_array, 'address2')."'  address2 
+                               , '".getIfSetFromAddr($addr_array, 'phone2')."'    phone2   
+                               , '".getIfSetFromAddr($addr_array, 'notes')."'     notes    
+                               , now(), now()
+                          FROM $table;";
     $result = mysql_query($sql);
-    
-    // $id = "SELECT LAST_INSERT_ID()"
-    
-    if($group_name) {
-    	$sql = "INSERT INTO $table_grp_adr SELECT LAST_INSERT_ID() id, group_id, now(), now() FROM $table_groups WHERE group_name = '$group_name'";
+
+    if(!isset($addr_adday['id']) && $group_name) {
+    	$sql = "INSERT INTO $table_grp_adr SELECT $set_id id, group_id, now(), now() FROM $table_groups WHERE group_name = '$group_name'";
     	$result = mysql_query($sql);
     }
+}
+
+function updateAddress($addr) {
+
+  global $keep_history, $domain_id, $base_from_where, $table, $table_grp_adr, $table_groups;
+
+  $sql = "SELECT * FROM $base_from_where AND $table.id = '".$addr['id']."';";
+    $result = mysql_query($sql);
+	$resultsnumber = mysql_numrows($result);
+
+	$homepage = str_replace('http://', '', $addr['homepage']);
+    
+	$is_valid = $resultsnumber > 0;
+    
+	if($is_valid)
+	{
+		if($keep_history) {
+	    $sql = "UPDATE $table 
+	               SET deprecated = now()
+		           WHERE deprecated is null
+		             AND id       = '".$addr['id']."';";
+    	$result = mysql_query($sql);
+		  saveAddress($addr);
+		} else {
+	    $sql = "UPDATE $table SET firstname = '".$addr['firstname']."'
+	                            , lastname  = '".$addr['lastname']."'
+	                            , company   = '".$addr['company']."'
+	                            , address   = '".$addr['address']."'
+	                            , home      = '".$addr['home']."'
+	                            , mobile    = '".$addr['mobile']."'
+	                            , work      = '".$addr['work']."'
+	                            , fax       = '".$addr['fax']."'
+	                            , email     = '".$addr['email']."'
+	                            , email2    = '".$addr['email2']."'
+	                            , homepage  = '".$addr['homepage']."'
+	                            , bday      = '".$addr['bday']."'
+	                            , bmonth    = '".$addr['bmonth']."'
+	                            , byear     = '".$addr['byear']."'
+	                            , address2  = '".$addr['address2']."'
+	                            , phone2    = '".$addr['phone2']."'
+	                            , notes     = '".$addr['notes']."'
+	                            , modified  = now()
+		                        WHERE id        = '".$addr['id']."'
+		                          AND domain_id = '$domain_id';";
+		  $result = mysql_query($sql);
+    }
+		// header("Location: view?id=$id");
+    }
+
+	return $is_valid;
 }
     
 class Address {

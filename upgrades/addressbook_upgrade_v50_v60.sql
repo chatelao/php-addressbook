@@ -9,7 +9,7 @@
 --
 
 --
--- "domain_id" field, to separate more than one domain.
+-- Add "domain_id" field, to separate more than one domain.
 --
 ALTER TABLE `addressbook`       ADD `domain_id` int(9) unsigned NOT NULL default 0 FIRST;
 ALTER TABLE `group_list`        ADD `domain_id` int(9) unsigned NOT NULL default 0 FIRST;
@@ -17,9 +17,10 @@ ALTER TABLE `address_in_groups` ADD `domain_id` int(9) unsigned NOT NULL default
 ALTER TABLE `user_prefs`        ADD `domain_id` int(9) unsigned NOT NULL default 0 FIRST;
 
 --
--- "deprected" field, to allow recovery enable deletion and timeline handling.
+-- Add "deprecated" field, to enable deletion recovery and timeline handling.
 --
 ALTER TABLE `addressbook`       ADD `deprecated` datetime default NULL AFTER `modified`;
 ALTER TABLE `group_list`        ADD `deprecated` datetime default NULL AFTER `modified`;
 ALTER TABLE `address_in_groups` ADD `deprecated` datetime default NULL AFTER `modified`;
 ALTER TABLE `user_prefs`        ADD `deprecated` datetime default NULL AFTER `modified`;
+

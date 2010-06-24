@@ -11,17 +11,19 @@
 
 	echo '<h1>Delete record</h1>';
 
+  if(! $read_only)
+  {
 	$sql="SELECT * FROM $base_from_where AND ".$part_sql;
 	$result = mysql_query($sql);
 	$resultsnumber = mysql_numrows($result);
 
-	if($resultsnumber > 0) {
-		$sql = "DELETE FROM $table_grp_adr WHERE ".$part_sql;
-		mysql_query($sql,$db);
-		$sql = "DELETE FROM $table         WHERE ".$part_sql;
-		mysql_query($sql,$db);
+  	if(! deleteAddresses($part_sql)) {
+  		echo "<br /><div class='msgbox'>Invalid record, sorry but the record no longer exsists<br /><i>return to <a href='index.php'>home page</a></i></div>";
+  	} else {
+  		echo "<br /><div class='msgbox'>Record successful deleted</i></div>";
+  	}
 	} else {
-		echo "<br /><div class='msgbox'>Invalid record, sorry but the record no longer exsists<br /><i>return to <a href='index.php'>home page</a></i></div>";	
+    echo "<br /><div class='msgbox'>Deleting is disabled.</div>\n";  	
 	}
 
 	include ("include/footer.inc.php");

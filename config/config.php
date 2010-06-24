@@ -93,6 +93,9 @@
   // Enable group administration pages
   $public_group_edit = true;
 
+  // Keep a history of all changes, incl. deletion. Used for intelligent merge.
+  $keep_history = true;
+
   // Setup language usage (auto, choose, en, de)
   $lang  = 'choose';
   
