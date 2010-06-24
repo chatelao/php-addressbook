@@ -74,7 +74,10 @@ function showOneEntry($r, $only_phone = false)
 
      $month = ucfmsg(strtoupper($r['bmonth']));
      $view .= ( $r['bday'] != 0 || $month != "-" || $r['byear'] != ""
-              ? ucfmsg('BIRTHDAY').": ".($r['bday'] > 0 ? $r['bday'].". " : "").($month != '-' ? $month : "")." ".$r['byear'] : "")."<br />"; 
+              ? ucfmsg('BIRTHDAY').": ".($r['bday'] > 0 ? $r['bday'].". " : "").($month != '-' ? $month : "")." ".$r['byear'] : "");
+     $age = date("Y")-$r['byear'];
+     $view .= ($age < 120 ? " (".$age.")" : ""); 
+     $view .="<br />"; 
 
 	   $view .= ($r['address2'] != "" || $r['phone2'] != "" ? "<br /><br /><b>".ucfmsg('SECONDARY')."</b><br />" : "");
 	   $view .= ($r['address2'] != "" ? "<br />".str_replace("\n", "<br />", trim($r['address2']))."<br /><br />" : "");
@@ -198,7 +201,5 @@ showOneEntry($r);
 	echo "<div class'msgbox'>Please select a valid entry.</div>";
 
 }
-
 include ("include/footer.inc.php");
-
 ?>

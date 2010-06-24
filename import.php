@@ -19,7 +19,7 @@ function getIfSet($ldif_record, $key) {
 if(!$submit) {
 ?>
 <form method="post" enctype="multipart/form-data">
-  <label for="file">LDIF / vCard:</label>
+  <label for="file">LDIF / vCard(s):</label>
   <input size=30 type="file" name="file" id="file" />
   <br/>
   <input type="submit" name="submit" value="Submit" />
