@@ -22,16 +22,14 @@ ORDER BY prio ASC";
 	$resultsnumber = mysql_numrows($result);
 
 $use_ics = isset($_REQUEST['ics']);
-// $use_ics = true;
 if($use_ics) {
 
    header('Content-type: text/calendar; charset=utf-8');
    header('Content-Disposition: inline; filename=calendar.ics');
 
    echo "BEGIN:VCALENDAR\r\n";
-   echo "PRODID:-//Google Inc//Google Calendar 70.9054//EN\r\n";
+   echo "PRODID:-//PHP Adress Book//php-addressbook ".$version."//EN\r\n";
    echo "VERSION:2.0\r\n";
-   // echo "PRODID:-/php-addressbook///php-addressbook ".$version."//EN\r\n";
    echo "CALSCALE:GREGORIAN\r\n";
    echo "METHOD:PUBLISH\r\n";
    echo "X-WR-CALNAME:PHP Adressbook Birthdays\r\n";
