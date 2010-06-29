@@ -118,7 +118,7 @@ if(!isset($table_grp_adr)) $table_grp_adr = "address_in_groups";
 if(!isset($domain_id)) $domain_id  = 0;
 
 // keep a history instead of deleting and updating
-if(!isset($keep_history)) $keep_history = true;
+if(!isset($keep_history)) $keep_history = false;
 
 // the default color
 if(!isset($skin_color)) $skin_color = "blue";
