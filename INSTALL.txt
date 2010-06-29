@@ -5,7 +5,7 @@ Basic Installation
 
 1. Unzip the files and place them on your webserver.
 
-2. Apply "addressbook.sql" to your Database.
+2. Apply "addressbook.sql" to your database.
 
 3. Change "config/config.php" according to your database.
 
