@@ -74,8 +74,13 @@ function saveAddress($addr_array, $group_name = "") {
                           FROM $table;";
     $result = mysql_query($sql);
 
+    $sql = "SELECT max(id) max_id from $table";
+    $result = mysql_query($sql);
+    $rec = mysql_fetch_array($result);
+    $id = $rec['max_id'];
+
     if(!isset($addr_adday['id']) && $group_name) {
-    	$sql = "INSERT INTO $table_grp_adr SELECT $set_id id, group_id, now(), now() FROM $table_groups WHERE group_name = '$group_name'";
+    	$sql = "INSERT INTO $table_grp_adr SELECT $domain_id domain_id, $id id, group_id, now(), now(), NULL FROM $table_groups WHERE group_name = '$group_name'";
     	$result = mysql_query($sql);
     }
 }
@@ -85,7 +90,7 @@ function updateAddress($addr) {
   global $keep_history, $domain_id, $base_from_where, $table, $table_grp_adr, $table_groups;
 
   $sql = "SELECT * FROM $base_from_where AND $table.id = '".$addr['id']."';";
-    $result = mysql_query($sql);
+  $result = mysql_query($sql);
 	$resultsnumber = mysql_numrows($result);
 
 	$homepage = str_replace('http://', '', $addr['homepage']);

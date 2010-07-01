@@ -8,6 +8,10 @@ $addresses = array();
 
 foreach($file_lines as $vcards_line) {
 	
+	// Apple Addressbook preprocessing
+	// - Remove "itemX." prefixes
+	$vcards_line = preg_replace('/^item\d+\./', '', $vcards_line);
+	
 	// Basic split
   $kv = explode(':', $vcards_line, 2);
  	$key = strtoupper($kv[0]);
@@ -59,12 +63,36 @@ foreach($file_lines as $vcards_line) {
   }
 }
 
+//
+// Check the different variations of typing:
+// * ADR;WORK:032115675
+// * ADR;type=WORK:032115675
+// * ADR;TYPE=fax,work:032115675
+//
+function checkType($entry, $type) {
+	
+  //
+  // Preprocessing:
+  // * Merge types and subtypes from different format.
+  //
+  if(array_key_exists('TYPE', $entry) && array_key_exists('SUBTYPE', $entry)) {
+    $all_types = array_merge(array_keys($entry), $entry['TYPE'], $entry['SUBTYPE']);
+  } elseif(array_key_exists('TYPE', $entry)) {
+    $all_types = array_merge(array_keys($entry), $entry['TYPE']);
+  } else {
+  	$all_types = array_keys($entry);
+  }
+  
+  return in_array($type, $all_types);
+  
+}
+
 foreach($addresses as $address) {
 
-  	$dest_addr = array();
+  $dest_addr = array();
 
-    foreach($address as $type => $entries) {  	
-
+  foreach($address as $type => $entries) {  	
+    
     //
     // "N" Type, X.520 based, delimiter ";" (5 fields)
     //
@@ -74,7 +102,7 @@ foreach($addresses as $address) {
       $dest_addr['lastname']  = $entries[0]['SEMI-COLON'][0];
       $dest_addr['firstname'] = $entries[0]['SEMI-COLON'][1];
     }
-  
+    
     //
     // "ADR" Type, delimiter ";" (7 fields)
     //
@@ -83,7 +111,7 @@ foreach($addresses as $address) {
     // province); the postal code; the country name
     //
     if($type == "ADR") {
-  
+    
     	foreach($entries as $entry) {
     	  $street      = $entry['SEMI-COLON'][2];
     	  $city        = $entry['SEMI-COLON'][3];
@@ -93,28 +121,20 @@ foreach($addresses as $address) {
     	  $dest_address = trim($street."\n".$postal_code." ".$city."\n".$country);
     	  
     	  if(strlen($dest_address) > 0) {
-    	  	if(isset($entry['TYPE'])) {
-    	      if($entry['TYPE'][0] == "home") {
-    	        $dest_addr['address']  = $dest_address;
-    	      } else {
-    	        $dest_addr['address2'] = $dest_address;
-    	      }
+    	    if(checkType($entry, 'HOME')) {
+    	      $dest_addr['address']  = $dest_address;
     	    } else {
-    	      if(array_key_exists('HOME',$entry)) {
-    	    	  $dest_addr['address']  = $dest_address;
-    	    	} else {
-    	        $dest_addr['address2'] = $dest_address;
-    	      }
+    	      $dest_addr['address2'] = $dest_address;
     	    }
     	  }
     	}
     }
-  
+    
     //
     // "EMAIL" e-Mail address
     //
     if($type == "EMAIL") {
-
+    
       $dest_addr['email']  = $entries[0]['VALUE'];
       if(isset($entries[1]['VALUE'])) {
         $dest_addr['email2'] = $entries[1]['VALUE'];
@@ -125,40 +145,21 @@ foreach($addresses as $address) {
     // "TEL" Type, X.500 Telephone Number attribute
     //
     if($type == "TEL") {
-
+    
     	foreach($entries as $entry) {
-    		
-        //
-        // Preprocessing:
-        // * Merge types and subtypes from different format.
-        //
-        if(array_key_exists('TYPE', $entry) && array_key_exists('SUBTYPE', $entry)) {
-          $all_types = array_merge($entry, $entry['TYPE'], $entry['SUBTYPE']);
-        } elseif(array_key_exists('TYPE', $entry)) {
-          $all_types = array_merge($entry, $entry['TYPE']);
-        } else {
-        	$all_types = $entry;
-        }
-        
-        //
+    		                
         // Mapping:
         // * Paste value in correct field.
-        //
-    	  if(array_key_exists('HOME', $all_types) || in_array('HOME', $all_types)) {
-    	    $dest_addr['home']   = $entry['VALUE'];
-    	  } elseif(array_key_exists('WORK', $all_types) || in_array('HOME', $all_types)) {
-    	    $dest_addr['work']   = $entry['VALUE'];
-    	  } elseif(array_key_exists('FAX', $all_types)  || in_array('FAX', $all_types)) {
-    	    $dest_addr['fax']    = $entry['VALUE'];  	  	
-    	  } elseif(array_key_exists('CELL', $all_types) || in_array('CELL', $all_types)) {
-    	    $dest_addr['mobile'] = $entry['VALUE'];  	  	
-    	  } else {
-    	    $dest_addr['phone2'] = $entry['VALUE'];  	  	
+    	        if(checkType($entry, 'HOME')) { $dest_addr['home']   = $entry['VALUE'];
+    	  } elseif(checkType($entry, 'WORK')) { $dest_addr['work']   = $entry['VALUE'];
+    	  } elseif(checkType($entry, 'FAX'))  { $dest_addr['fax']    = $entry['VALUE'];  	  	
+    	  } elseif(checkType($entry, 'CELL')) { $dest_addr['mobile'] = $entry['VALUE'];  	  	
+    	  } else {                        	    $dest_addr['phone2'] = $entry['VALUE'];  	  	
     	  }
     	  	
     	}
     }
-  
+    
     //
     // "BDAY" Type, Birthday
     //
@@ -170,7 +171,7 @@ foreach($addresses as $address) {
     if($type == "BDAY" && strlen($entries[0]['VALUE']) >= 10) {
     	$date = substr($entries[0]['VALUE'], 0, 10);
     	$date_parts = explode("-",$date);
-
+    
     	$dest_addr['bday']  = ltrim($date_parts[2],"0");
     	$dest_addr['byear'] = $date_parts[0];
       switch ($date_parts[1]) {
