@@ -49,6 +49,7 @@
 <title><?php echo ucfmsg("ADDRESS_BOOK").($group_name != "" ? " ($group_name)":""); ?></title>
 <?php include ("include/header.inc.php"); ?>
  <h1><?php echo ucfmsg('EXPORT'); ?></h1> 
+ <h2>Addressbook</h2> 
 <form>
   <label>vCards for Outlook:</label>
   <input type="hidden" name="type"   value="vCard-zip">
@@ -62,6 +63,12 @@
 <form method="get" action="csv<?php echo $page_ext; ?>">
   <label>CSV for Excel: </label>
   <input type="submit" name="submit" value="Download"><br>
+</form>
+ <h2>Kalendar</h2> 
+<form method="get" action="birthdays<?php echo $page_ext; ?>">
+  <label>Birthdays (iCalendar): </label>
+  <input type="hidden" name="ics"    value="">
+  <input type="submit" name="submit" value="Download"> (<a href="birthdays<?php echo $page_ext; ?>?ics&user=XXX&pass=YYY">Link</a>)<br>
 </form>
 <?php
 
