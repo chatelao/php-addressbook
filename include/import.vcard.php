@@ -10,7 +10,7 @@ foreach($file_lines as $vcards_line) {
 	
 	// Basic split
   $kv = explode(':', $vcards_line, 2);
- 	$key = $kv[0];
+ 	$key = strtoupper($kv[0]);
   
   if($key == "BEGIN") {
     $address   = array();  	
@@ -33,13 +33,13 @@ foreach($file_lines as $vcards_line) {
   	
   	for($i = 1; $i < count($subkeys); $i++) {
   	  $subkey = explode('=', $subkeys[$i]);
-  	  $subkey_name = strtoupper($subkey[0]);
+  	  $subkey_name = $subkey[0];
   	  if(!isset($subkey[1])) {
   	    $addr_line[$subkey_name] = "";
   	  } else {
   	    $addr_line[$subkey_name][] = $subkey[1];
   	    
-  	    if($subkey[0] == 'TYPE' && count(explode(',',$subkey[1])) > 1) {
+  	    if($subkey_name == 'TYPE' && count(explode(',',$subkey[1])) > 1) {
   	      foreach(explode(',',$subkey[1]) as $subtype) {
   	    	  $addr_line['SUBTYPE'][] = $subtype;
   	    	}
@@ -111,7 +111,7 @@ foreach($addresses as $address) {
     }
   
     //
-    // "TEL" Type, X.500 Telephone Number attribute
+    // "EMAIL" e-Mail address
     //
     if($type == "EMAIL") {
 
@@ -127,33 +127,35 @@ foreach($addresses as $address) {
     if($type == "TEL") {
 
     	foreach($entries as $entry) {
-    		  	
-    	  if(isset($entry['TYPE'])) {
-    	    if($entry['TYPE'][0]       == "home") {
-    	      $dest_addr['home']   = $entry['VALUE'];
-    	    } elseif($entry['TYPE'][0] == "work") {
-    	      $dest_addr['work']   = $entry['VALUE'];
-    	    } elseif(count($entry['SUBTYPE']) > 0 && in_array('fax', $entry['SUBTYPE'])) {
-    	      $dest_addr['fax']    = $entry['VALUE'];  	  	
-    	    } elseif(count($entry['SUBTYPE']) > 0 && in_array('cell', $entry['SUBTYPE'])) {
-    	      $dest_addr['mobile'] = $entry['VALUE'];  	  	
-    	    } else {
-    	      $dest_addr['phone2'] = $entry['VALUE'];  	  	
-    	    }
+    		
+        //
+        // Preprocessing:
+        // * Merge types and subtypes from different format.
+        //
+        if(array_key_exists('TYPE', $entry) && array_key_exists('SUBTYPE', $entry)) {
+          $all_types = array_merge($entry, $entry['TYPE'], $entry['SUBTYPE']);
+        } elseif(array_key_exists('TYPE', $entry)) {
+          $all_types = array_merge($entry, $entry['TYPE']);
+        } else {
+        	$all_types = $entry;
+        }
+        
+        //
+        // Mapping:
+        // * Paste value in correct field.
+        //
+    	  if(array_key_exists('HOME', $all_types) || in_array('HOME', $all_types)) {
+    	    $dest_addr['home']   = $entry['VALUE'];
+    	  } elseif(array_key_exists('WORK', $all_types) || in_array('HOME', $all_types)) {
+    	    $dest_addr['work']   = $entry['VALUE'];
+    	  } elseif(array_key_exists('FAX', $all_types)  || in_array('FAX', $all_types)) {
+    	    $dest_addr['fax']    = $entry['VALUE'];  	  	
+    	  } elseif(array_key_exists('CELL', $all_types) || in_array('CELL', $all_types)) {
+    	    $dest_addr['mobile'] = $entry['VALUE'];  	  	
     	  } else {
-    	    if(      array_key_exists('HOME',$entry)) {
-    	      $dest_addr['home']   = $entry['VALUE'];
-    	    } elseif(array_key_exists('WORK',$entry)) {
-    	      $dest_addr['work']   = $entry['VALUE'];
-    	    } elseif(array_key_exists('FAX',$entry)) {
-    	      $dest_addr['fax']    = $entry['VALUE'];  	  	
-    	    } elseif(array_key_exists('CELL',$entry)) {
-    	      $dest_addr['mobile'] = $entry['VALUE'];  	  	
-    	    } else {
-    	      $dest_addr['phone2'] = $entry['VALUE'];  	  	
-    	    }
-    	  	
+    	    $dest_addr['phone2'] = $entry['VALUE'];  	  	
     	  }
+    	  	
     	}
     }
   
