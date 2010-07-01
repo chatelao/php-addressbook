@@ -207,7 +207,7 @@ class Addresses {
         
       if ($searchstring) {
         
-          $searchwords = split(" ", $searchstring);
+          $searchwords = explode(" ", $searchstring);
         
           foreach($searchwords as $searchword) {
           	$sql .= "AND (   lastname  LIKE '%$searchword%' 

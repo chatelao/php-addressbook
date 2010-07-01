@@ -141,7 +141,7 @@ $myrow = mysql_fetch_array($result);
 
    	<input type="submit" name="update" value="<?php echo ucfmsg('UPDATE') ?>" /><br />
 
-		<input type="hidden" name="id" value="<?php echo $myrow['id']?>" />
+ 		<input type="hidden" name="id" value="<?php echo isset($myrow['id']) ? $myrow['id'] : ''; ?>" />
 		<label><?php echo ucfmsg("FIRSTNAME") ?>:</label>
 		<input type="text" name="firstname" size="35" value="<?php echo $myrow['firstname']?>" /><br />
 
@@ -332,19 +332,19 @@ function trim(str, chars) {
 function proposeNames() {
  
   document.theform.email.value = trim(document.theform.email.value, " \t");
-  who_from =  document.theform.email.value.split("@", 2);
+  who_from =  document.theform.email.value.explode("@", 2);
 
   if(who_from.length >= 2) {
 
-	  who  = who_from[0].split(/[\._]+/,2);
+	  who  = who_from[0].explode(/[\._]+/,2);
 	  if(who.length == 1)  {
-	    who  = who_from[0].split("_",2);
+	    who  = who_from[0].explode("_",2);
 	  }
 	  if(document.theform.firstname.value == "") {
-	    document.theform.firstname.value = ucf_arr(who[0].split("-")).join("-");
+	    document.theform.firstname.value = ucf_arr(who[0].explode("-")).join("-");
 	  }
 	  if(who.length > 1 && document.theform.lastname.value == "") {
-	    document.theform.lastname.value = ucf_arr(who[1].split("-")).join("-");
+	    document.theform.lastname.value = ucf_arr(who[1].explode("-")).join("-");
 	  }
   }
 }

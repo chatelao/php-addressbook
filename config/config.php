@@ -15,6 +15,9 @@
   // blue, brown, green, grey, pink, purple, red, turquoise, yellow
   $skin_color = "blue";
 
+  // keep a history instead of deleting and updating
+  $keep_history = false;
+  
   //
   // List of Login-Users:
   //

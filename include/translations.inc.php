@@ -80,7 +80,7 @@ if($lang == 'auto') {
   	$http_accept_language = "";
   }
   
-  foreach(split(',', $http_accept_language) as $accept_lang) {
+  foreach(explode(',', $http_accept_language) as $accept_lang) {
   	$accepted_languages[] = substr($accept_lang, 0, 2);
   }
 

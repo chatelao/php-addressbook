@@ -156,7 +156,7 @@ if(!isset($default_languages)) $default_languages = "ar,de,fr,it,th,ru";
 
 // Split the default (displayed) languages
 if(isset($default_languages)) {
-	$default_languages = split(",", $default_languages);
+	$default_languages = explode(",", $default_languages);
 }
 
 // Apply the table prefix, if available
