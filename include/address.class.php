@@ -42,15 +42,17 @@ function deleteAddresses($part_sql) {
 
 function saveAddress($addr_array, $group_name = "") {
 	
-	  global $domain_id, $table, $table_grp_adr, $table_groups, $month_lookup;
+	  global $domain_id, $table, $table_grp_adr, $table_groups, $month_lookup, $base_from_where;
 
     if(isset($addr_array['id'])) {
-    	$set_id = "'".$addr_array['id']."'";
+    	$set_id  = "'".$addr_array['id']."'";
+    	$src_tbl = $month_lookup." WHERE bmonth_num = 1";
     } else {
-    	$set_id = "ifnull(max(id),0)+1"; // '0' is a bad ID
+    	$set_id  = "ifnull(max(id),0)+1"; // '0' is a bad ID
+    	$src_tbl = $table;
     }
 
-    $sql = "INSERT INTO $table ( domain_id, id, firstname,    lastname,   company,    address,   home,   mobile,   work,   fax,   email,    email2,  homepage,   bday,  bmonth,   byear,    address2,    phone2,    notes,     created, modified)
+    $sql = "INSERT INTO $table ( domain_id, id, firstname, lastname, company, address, home, mobile, work, fax, email, email2, homepage, bday, bmonth, byear, address2, phone2, notes, created, modified)
                         SELECT   $domain_id                                       domain_id
                                , ".$set_id."                                      id
                                , '".getIfSetFromAddr($addr_array, 'firstname')."' firstname
@@ -71,7 +73,7 @@ function saveAddress($addr_array, $group_name = "") {
                                , '".getIfSetFromAddr($addr_array, 'phone2')."'    phone2   
                                , '".getIfSetFromAddr($addr_array, 'notes')."'     notes    
                                , now(), now()
-                          FROM $month_lookup WHERE bmonth_num = 1";
+                            FROM ".$src_tbl;
     $result = mysql_query($sql);
 
     $sql = "SELECT max(id) max_id from $table";
