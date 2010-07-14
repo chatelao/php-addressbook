@@ -42,7 +42,7 @@ function deleteAddresses($part_sql) {
 
 function saveAddress($addr_array, $group_name = "") {
 	
-	  global $domain_id, $table, $table_grp_adr, $table_groups;
+	  global $domain_id, $table, $table_grp_adr, $table_groups, $month_lookup;
 
     if(isset($addr_array['id'])) {
     	$set_id = "'".$addr_array['id']."'";
@@ -51,7 +51,7 @@ function saveAddress($addr_array, $group_name = "") {
     }
 
     $sql = "INSERT INTO $table ( domain_id, id, firstname,    lastname,   company,    address,   home,   mobile,   work,   fax,   email,    email2,  homepage,   bday,  bmonth,   byear,    address2,    phone2,    notes,     created, modified)
-                        SELECT   '$domain_id'                                     domain_id
+                        SELECT   $domain_id                                       domain_id
                                , ".$set_id."                                      id
                                , '".getIfSetFromAddr($addr_array, 'firstname')."' firstname
                                , '".getIfSetFromAddr($addr_array, 'lastname')."'  lastname 
@@ -71,7 +71,7 @@ function saveAddress($addr_array, $group_name = "") {
                                , '".getIfSetFromAddr($addr_array, 'phone2')."'    phone2   
                                , '".getIfSetFromAddr($addr_array, 'notes')."'     notes    
                                , now(), now()
-                          FROM $table;";
+                          FROM $month_lookup WHERE bmonth_num = 1";
     $result = mysql_query($sql);
 
     $sql = "SELECT max(id) max_id from $table";
@@ -79,7 +79,7 @@ function saveAddress($addr_array, $group_name = "") {
     $rec = mysql_fetch_array($result);
     $id = $rec['max_id'];
 
-    if(!isset($addr_adday['id']) && $group_name) {
+    if(!isset($addr_array['id']) && $group_name) {
     	$sql = "INSERT INTO $table_grp_adr SELECT $domain_id domain_id, $id id, group_id, now(), now(), NULL FROM $table_groups WHERE group_name = '$group_name'";
     	$result = mysql_query($sql);
     }

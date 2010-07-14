@@ -24,11 +24,11 @@
   /*
   $userlist['admin']['pass'] = "secret";
   
-  -- Role "readonly": --
+  // -- Role "readonly" --
   $userlist['view']['pass'] = "apassword";
   $userlist['view']['role'] = "readonly";  
 
-  -- A second, independent domain: --
+  // -- A user in a second domain "1", (0 is default) --
   $userlist['adm2']['pass']   = "adm2";
   $userlist['adm2']['domain'] = 1;
   */
