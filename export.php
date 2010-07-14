@@ -64,7 +64,7 @@
   <label>CSV for Excel: </label>
   <input type="submit" name="submit" value="Download"><br>
 </form>
- <h2>Kalendar</h2> 
+ <h2>Calendar</h2> 
 <form method="get" action="birthdays<?php echo $page_ext; ?>">
   <label>Birthdays (iCalendar): </label>
   <input type="hidden" name="ics"    value="">

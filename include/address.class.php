@@ -162,7 +162,7 @@ class Address {
     }
     
     //    
-    // Phone order home->mobile->work
+    // Phone order home->mobile->work->phone2
     //
     public function getPhones() {
     	
@@ -170,6 +170,7 @@ class Address {
     	if($this->address["home"]   != "") $phones[] = $this->address["home"];
     	if($this->address["mobile"] != "") $phones[] = $this->address["mobile"];
     	if($this->address["work"]   != "") $phones[] = $this->address["work"];    	  
+    	if($this->address["phone2"] != "") $phones[] = $this->address["work"];    	  
    	  return $phones;
    	}
     	

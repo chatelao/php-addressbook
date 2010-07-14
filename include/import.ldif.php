@@ -70,9 +70,9 @@ foreach($ldif_as_array as $r) {
   $bmonth = getIfSetDouble($r,'birthmonth');
   switch ($bmonth) {
     case "01":
-         $addressbook['bmonth'] = "Januar"; break;
+         $addressbook['bmonth'] = "January"; break;
     case "02":
-         $addressbook['bmonth'] = "Februar"; break;
+         $addressbook['bmonth'] = "February"; break;
     case "03":
          $addressbook['bmonth'] = "March"; break;
     case "04":
@@ -88,11 +88,11 @@ foreach($ldif_as_array as $r) {
     case "09":
          $addressbook['bmonth'] = "September"; break;
     case "10":
-         $addressbook['bmonth'] = "Oktober"; break;
+         $addressbook['bmonth'] = "October"; break;
     case "11":
          $addressbook['bmonth'] = "November"; break;
     case "12":
-         $addressbook['bmonth'] = "Dezember"; break;
+         $addressbook['bmonth'] = "December"; break;
     default:
          $addressbook['bmonth'] = "";
   }

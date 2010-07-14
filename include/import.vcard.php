@@ -198,7 +198,7 @@ foreach($addresses as $address) {
         case "11":
              $dest_addr['bmonth'] = "November"; break;
         case "12":
-             $dest_addr['bmonth'] = "Dezember"; break;
+             $dest_addr['bmonth'] = "December"; break;
         default:
              $dest_addr['bmonth'] = "";
       }
