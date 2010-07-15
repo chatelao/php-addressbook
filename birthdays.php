@@ -2,25 +2,6 @@
 
 include ("include/dbconnect.php");
 
-$sql="
-SELECT DISTINCT $table.*, $month_lookup.* ,
-IF ($month_lookup.bmonth_num < MONTH( CURDATE( ) )
-    OR $month_lookup.bmonth_num = MONTH( CURDATE( ) )
-       AND $table.bday < DAYOFMONTH( CURDATE( ) ) , CONCAT( ' ', YEAR( CURDATE( ) ) +1 ) , ''
-) display_year,
-IF (
-$month_lookup.bmonth_num < MONTH( CURDATE( ) )
-OR $month_lookup.bmonth_num = MONTH( CURDATE( ) )
-AND $table.bday < DAYOFMONTH( CURDATE( ) ) , $month_lookup.bmonth_num+12, $month_lookup.bmonth_num
-)*32+bday prio
-FROM $month_lookup,
-$base_from_where AND $table.bmonth = $month_lookup.bmonth AND $table.bday > 0
-ORDER BY prio ASC";
-
-
-	$result = mysql_query($sql);
-	$resultsnumber = mysql_numrows($result);
-
 $use_ics = isset($_REQUEST['ics']);
 if($use_ics) {
 
@@ -81,9 +62,27 @@ if($use_ics) {
   }     
 
 	$lastmonth = '';
+
+$sql="
+SELECT DISTINCT $table.*, $month_lookup.* ,
+IF ($month_lookup.bmonth_num < MONTH( CURDATE( ) )
+    OR $month_lookup.bmonth_num = MONTH( CURDATE( ) )
+       AND $table.bday < DAYOFMONTH( CURDATE( ) ) , CONCAT( ' ', YEAR( CURDATE( ) ) +1 ) , ''
+) display_year,
+IF (
+$month_lookup.bmonth_num < MONTH( CURDATE( ) )
+OR $month_lookup.bmonth_num = MONTH( CURDATE( ) )
+AND $table.bday < DAYOFMONTH( CURDATE( ) ) , $month_lookup.bmonth_num+12, $month_lookup.bmonth_num
+)*32+bday prio
+FROM $month_lookup,
+$base_from_where AND $table.bmonth = $month_lookup.bmonth AND $table.bday > 0
+ORDER BY prio ASC;";
+
+	$result = mysql_query($sql);
+	$resultsnumber = mysql_num_rows($result);
+
 	while ($myrow = mysql_fetch_array($result))
 	{
-
 		$firstname = $myrow["firstname"];
 		$id = $myrow["id"];
 		$lastname = $myrow["lastname"];
