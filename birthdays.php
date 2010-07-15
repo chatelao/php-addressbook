@@ -14,7 +14,7 @@ OR $month_lookup.bmonth_num = MONTH( CURDATE( ) )
 AND $table.bday < DAYOFMONTH( CURDATE( ) ) , $month_lookup.bmonth_num+12, $month_lookup.bmonth_num
 )*32+bday prio
 FROM $month_lookup,
-$base_from_where AND $table.bmonth = $month_lookup.bmonth
+$base_from_where AND $table.bmonth = $month_lookup.bmonth AND $table.bday > 0
 ORDER BY prio ASC";
 
 
