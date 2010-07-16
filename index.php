@@ -121,6 +121,11 @@ function addRow($row) {
     	$email2 = "";
     }
     
+    $phone  = $addr->shortPhone();
+    
+    // Special value for short phone
+    $row = ($row == "telephone" ? "phone" : $row);
+    
     switch ($row) {
       case "select":
         echo "<td class='center'><input type='checkbox' id='$id' name='selected[]' value='$id' title='Select ($firstname $lastname)' alt='Select ($firstname $lastname)' accept='$emails' /></td>";
@@ -134,10 +139,6 @@ function addRow($row) {
       case "email":
       case "email2":
         echo "<td><a href='".getMailer()."${$row}'>${$row}</a></td>";
-        break;
-      case "telephone":
-        $phone  = $addr->shortPhone();
-  		  echo "<td>$phone</td>";
         break;
       case "all_phones":
         $phones = $addr->getPhones();
