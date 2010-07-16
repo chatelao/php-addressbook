@@ -120,59 +120,66 @@ function addRow($row) {
     } else {
     	$email2 = "";
     }
-
-    if($row == "select") {
-		  echo "<td class='center'><input type='checkbox' id='$id' name='selected[]' value='$id' title='Select ($firstname $lastname)' alt='Select ($firstname $lastname)' accept='$emails' /></td>";
-		}
-    if($row == "lastname")   echo "<td>$lastname</td>";
-    if($row == "firstname")  echo "<td>$firstname</td>";
-    if($row == "first_last") echo "<td>$firstname $lastname</td>";
-    if($row == "last_first") echo "<td>$lastname $firstname</td>";
-		if($row == "email")      echo "<td><a href='".getMailer()."$email'>$email</a></td>";
-		if($row == "email2")     echo "<td><a href='".getMailer()."$email2'>$email2</a></td>";
-
-    $phone  = $addr->shortPhone();
-		if($row == "telephone") echo "<td>$phone</td>";
-
-    $phones = $addr->getPhones();
-		if($row == "all_phones") echo "<td>".implode("<br>", $phones)."</td>";
-		if($row == "home")   echo "<td>$home</td>";
-		if($row == "mobile") echo "<td>$mobile</td>";
-		if($row == "work")   echo "<td>$work</td>";
-		if($row == "fax")    echo "<td>$fax</td>";
-		if($row == "phone2") echo "<td>$phone2</td>";
-		 
-		if($row == "address") echo "<td>".str_replace("\n", ", ", $address)."</td>";
-
-    if($row == "edit") {
-		  echo "<td class='center'><a href='view${page_ext_qry}id=$id'><img src='${url_images}icons/status_online.png' title='".ucfmsg('DETAILS')."' alt='".ucfmsg('DETAILS')."' /></a></td>";
-      if(! $read_only)
-		    echo "<td class='center'><a href='edit${page_ext_qry}id=$id'><img src='${url_images}icons/pencil.png' title='".ucfmsg('EDIT')."' alt='".ucfmsg('EDIT')."'/></a></td>";
-		}    
-    if($row == "details") {		  
-		  echo "<td class='center'><a href='vcard${page_ext_qry}id=$id'><img src='${url_images}icons/vcard.png' title='vCard' alt='vCard'/></a></td>";
-      
-      if( substr($phone, 0, 3) == "+41" ) {
-		  	$country = "Switzerland";
-		  } else {
-		  	$country = "";
-		  }
-      
-		  if($map_guess)
-		  {
-		  if($myrow["address"] != "")
-		  echo "<td class='center'><a href='http://maps.google.com/maps?q=".urlencode(trim(str_replace("\r\n", ", ", $myrow["address"])).", $country")."&amp;t=h'>
-                            <img src='${url_images}icons/car.png' title='Google Maps' alt='vCard'/></a></td>";
-		  else echo "<td/>";
-		  }
-      
-		  $homepage = guessHomepage($email, $email2);
-		  if(strlen($homepage) > 0)
-		  {
-		  	echo "<td class='center'><a href='http://$homepage'><img src='${url_images}icons/house.png' title='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)' alt='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)'/></a></td>";
-		  } else
-		  	echo "<td/>";
-		}
+    
+    switch ($row) {
+      case "select":
+        echo "<td class='center'><input type='checkbox' id='$id' name='selected[]' value='$id' title='Select ($firstname $lastname)' alt='Select ($firstname $lastname)' accept='$emails' /></td>";
+        break;
+      case "first_last":
+        echo "<td>$firstname $lastname</td>";
+        break;
+      case "last_first":
+        echo "<td>$lastname $firstname</td>";
+        break;
+      case "email":
+      case "email2":
+        echo "<td><a href='".getMailer()."${$row}'>${$row}</a></td>";
+        break;
+      case "telephone":
+        $phone  = $addr->shortPhone();
+  		  echo "<td>$phone</td>";
+        break;
+      case "all_phones":
+        $phones = $addr->getPhones();
+    	  echo "<td>".implode("<br>", $phones)."</td>";
+        break;
+      case "address":
+  		  echo "<td>".str_replace("\n", ", ", $address)."</td>";
+  		  break;
+      case "edit":
+        echo "<td class='center'><a href='view${page_ext_qry}id=$id'><img src='${url_images}icons/status_online.png' title='".ucfmsg('DETAILS')."' alt='".ucfmsg('DETAILS')."' /></a></td>";
+        if(! $read_only) {
+          echo "<td class='center'><a href='edit${page_ext_qry}id=$id'><img src='${url_images}icons/pencil.png' title='".ucfmsg('EDIT')."' alt='".ucfmsg('EDIT')."'/></a></td>";
+        }
+  		  break;
+      case "details":
+        echo "<td class='center'><a href='vcard${page_ext_qry}id=$id'><img src='${url_images}icons/vcard.png' title='vCard' alt='vCard'/></a></td>";        
+  
+        if( substr($phone, 0, 3) == "+41" ) {
+        	$country = "Switzerland";
+        } else {
+        	$country = "";
+        }
+        
+        if($map_guess) {
+          if($myrow["address"] != "")
+          echo "<td class='center'><a href='http://maps.google.com/maps?q=".urlencode(trim(str_replace("\r\n", ", ", $myrow["address"])).", $country")."&amp;t=h'>
+                                <img src='${url_images}icons/car.png' title='Google Maps' alt='vCard'/></a></td>";
+          else echo "<td/>";
+        }
+        
+        if($homepage == "") {
+          $homepage = guessHomepage($email, $email2);
+        }        
+        if(strlen($homepage) > 0) {
+        	echo "<td class='center'><a href='http://$homepage'><img src='${url_images}icons/house.png' title='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)' alt='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)'/></a></td>";
+        } else {
+        	echo "<td/>";
+        }		    
+  		  break;
+  	  default: // firstname, lastname, home, mobile, work, fax, phone2
+         echo "<td>${$row}</td>";
+    }
 }
 
 	while ($addr = $addresses->nextAddress()) {

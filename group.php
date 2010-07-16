@@ -28,7 +28,7 @@ else if($new) {
 
 		<label><?php echo ucfmsg('GROUP_PARENT'); ?></label>
 		<select name="group_parent_id">
-  	  <option value=\"none\">[none]</option>
+  	  <option value="0">[none]</option>
   	<?php
   		$sql="SELECT group_name, group_id
   		        FROM $groups_from_where
