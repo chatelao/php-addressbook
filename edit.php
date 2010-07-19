@@ -332,19 +332,19 @@ function trim(str, chars) {
 function proposeNames() {
  
   document.theform.email.value = trim(document.theform.email.value, " \t");
-  who_from =  document.theform.email.value.explode("@", 2);
+  who_from = document.theform.email.value.split("@", 2);
 
   if(who_from.length >= 2) {
 
-	  who  = who_from[0].explode(/[\._]+/,2);
+	  who  = who_from[0].split(/[\._]+/,2);
 	  if(who.length == 1)  {
-	    who  = who_from[0].explode("_",2);
+	    who  = who_from[0].split("_",2);
 	  }
 	  if(document.theform.firstname.value == "") {
-	    document.theform.firstname.value = ucf_arr(who[0].explode("-")).join("-");
+	    document.theform.firstname.value = ucf_arr(who[0].split("-")).join("-");
 	  }
 	  if(who.length > 1 && document.theform.lastname.value == "") {
-	    document.theform.lastname.value = ucf_arr(who[1].explode("-")).join("-");
+	    document.theform.lastname.value = ucf_arr(who[1].split("-")).join("-");
 	  }
   }
 }

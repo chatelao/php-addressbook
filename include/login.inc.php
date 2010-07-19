@@ -101,8 +101,14 @@ class Login {
   	
   	global $userlist, $_POST, $_COOKIE, $_SERVER;
   	
-    $user       = (isset($_POST['user'])  ? $_POST['user'] : (isset($_GET['user'])  ? $_GET['user'] : ""));
-    $pass       = (isset($_POST['pass'])  ? $_POST['pass'] : (isset($_GET['pass'])  ? $_GET['pass'] : ""));
+    $user       = (isset($_POST['user'])  ? $_POST['user'] 
+                : (isset($_GET['user'])   ? $_GET['user'] 
+                : (isset($_SERVER['PHP_AUTH_USER']) ? $_SERVER['PHP_AUTH_USER']
+                : "")));
+    $pass       = (isset($_POST['pass'])  ? $_POST['pass'] 
+                : (isset($_GET['pass'])   ? $_GET['pass'] 
+                : (isset($_SERVER['PHP_AUTH_PW']) ? $_SERVER['PHP_AUTH_PW']
+                : "")));
     self::$uin  = (isset($_COOKIE['uin']) ? $_COOKIE['uin']: "");
     
     if(!isset($userlist)) { 
