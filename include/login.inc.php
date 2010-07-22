@@ -107,7 +107,7 @@ class Login {
 
   public static function checkRoles($roles = array()) {
   	
-  	global $userlist, $_POST, $_COOKIE, $_SERVER;
+  	global $userlist;
   	
     $user       = (isset($_POST['user'])  ? $_POST['user'] 
                 : (isset($_GET['user'])   ? $_GET['user'] 
