@@ -13,7 +13,9 @@
   $nogroups = false;
 
   // blue, brown, green, grey, pink, purple, red, turquoise, yellow
-  $skin_color = "blue";
+  $domain[0]['skin'] = "blue";
+  $domain[1]['skin'] = "pink";
+  $domain[2]['skin'] = "yellow";
 
   // keep a history instead of deleting and updating
   $keep_history = false;
@@ -21,14 +23,19 @@
   //
   // List of Login-Users:
   //
-  /*
+  // -- Setup an "admin" user --
   $userlist['admin']['pass'] = "secret";
-  
-  // -- Role "readonly" --
-  $userlist['view']['pass'] = "apassword";
-  $userlist['view']['role'] = "readonly";  
 
-  // -- A user in a second domain "1", (0 is default) --
+  /*  
+  // Setup a "readonly" user
+  $userlist['view']['pass']  = "apassword";
+  $userlist['view']['role']  = "readonly";  
+
+  // Setup a user accessing only one group
+  $userlist['mygroup']['pass']  = "apassword";
+  $userlist['mygroup']['group'] = "My group";
+
+  // Setup a user for the second domain (0 = default)
   $userlist['adm2']['pass']   = "adm2";
   $userlist['adm2']['domain'] = 1;
   */

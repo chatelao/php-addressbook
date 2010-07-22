@@ -39,6 +39,15 @@ if(!$submit) {
   	  	
   	$line = $file_lines[$i];
     $encoding = mb_detect_encoding($line."a", 'ASCII, UTF-8, ISO-8859-1');
+    // Special detection of UTF-16
+    if(   strlen($line) >= 4
+       && $line[1] != "\0"
+       && $line[0] == "\0"
+       && $line[1] != "\0"
+       && $line[2] == "\0" 
+       && $line[3] != "\0") {
+      $encoding = 'UTF-16';
+    }
     $file_lines[$i] = mb_convert_encoding($line, 'UTF-8', $encoding);
   }
   
@@ -59,7 +68,7 @@ if(!$submit) {
 	} else {
   	$import_type = "UNKNOWN";
   }
-	
+
   //
   // Save the group & addresses
   //

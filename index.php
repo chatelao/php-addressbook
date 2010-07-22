@@ -168,11 +168,10 @@ function addRow($row) {
           else echo "<td/>";
         }
         
-        if($homepage == "") {
-          $homepage = guessHomepage($email, $email2);
-        }        
-        if(strlen($homepage) > 0) {
-        	echo "<td class='center'><a href='http://$homepage'><img src='${url_images}icons/house.png' title='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)' alt='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)'/></a></td>";
+        if($homepage != "") {
+            echo "<td class='center'><a href='http://$homepage'><img src='${url_images}icons/house.png' title='$homepage' alt='$homepage'/></a></td>";
+        } elseif(($homepage = guessHomepage($email, $email2)) != "") {
+            echo "<td class='center'><a href='http://$homepage'><img src='${url_images}icons/house.png' title='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)' alt='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)'/></a></td>";
         } else {
         	echo "<td/>";
         }		    

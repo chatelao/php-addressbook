@@ -7,23 +7,28 @@ Basic Installation
 
 2. Apply "addressbook.sql" to your database.
 
-3. Change "config/config.php" according to your database.
+3. Change database connection in "config/config.php".
 
+4. Change the password of "admin" in "config/config.php".
 
-User Login (optional)
+Setup the Users (optional)
 ==========================
-4. Modify $userlist in the "config/config.php" file.
+5. Modify $userlist in the "config/config.php" file.
 
+Change displayed cols (optional)
+================================
+6. Modify $disp_cols in the "config/config.php" file.
 
-Advanced Tuning (optional)
+Activate change history (optional)
+==================================
+7. Set "$keep_history = true;" in the "config/config.php" file.
+
+More (optional)
 ==========================
 
-5. (optional) Feel free to change all other parameters of "config/config.php".
+8. Feel free to change all other parameters of "config/config.php".
 
-6. (optional) Use the "mod_auth" and "mod_rewrite" samples for 
-              your user management.
-
-7. (optional) Contribute to the project (correct/add translations, etc.).
+9. Just post your question here: http://sourceforge.net/projects/php-addressbook/
 
 
 Enjoy it!
