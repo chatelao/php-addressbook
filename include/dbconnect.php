@@ -221,6 +221,13 @@ if(isset($iplist) && hasRoleFromIP($iplist)) {
 
   // Check Roles
   $read_only = $user->hasRole("readonly");
+
+  // Check Roles
+  if($user->getGroup() != "") {
+  	$is_fix_group = true;
+  	$group        = $user->getGroup();
+  	$group_name   = $user->getGroup();
+  };
   
 }
 

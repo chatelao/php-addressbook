@@ -51,6 +51,14 @@ class User {
 	function getName() {
 		return $this->name;
 	}
+
+    function getGroup() {
+        if(isset($this->config['group'])) {
+            return $this->config['group'];
+        } else {
+            return ""; // no group
+        }
+    }
 }
 
 class Login {

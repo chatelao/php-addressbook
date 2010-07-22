@@ -82,13 +82,12 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 	      echo "<th>".ucfmsg("PHONE_".strtoupper($col))."</th>";
 	    } else {
         echo "<th></th>";
-	    	if($col == "edit" || $col == "details") {
-      	  if(!$read_only) {
+	    	if($col == "edit" && !$read_only) { // row for edit
             echo "<th></th>";
-          }
-	    	  if($col == "details") {
+        }
+	    	if($col == "details") {
             echo "<th></th>";
-	    	  }
+            echo "<th></th>";
         }
 	    }
     }

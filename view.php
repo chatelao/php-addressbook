@@ -48,7 +48,7 @@ function showOneEntry($r, $only_phone = false)
 	   $view .= "<br />";
 
   	 if($mail_as_image) { // B64IMG: Thanks to NelloD
-      $view .= ($r['email'] != "" ? "<img src=\"b64img.php?text=".base64_encode(($r['email']))."\"><br/>" : "");
+       $view .= ($r['email'] != "" ? "<img src=\"b64img.php?text=".base64_encode(($r['email']))."\"><br/>" : "");
        $view .= ($r['email2'] != "" ? "<img src=\"b64img.php?text=".base64_encode(($r['email2']))."\"><br/>" : "");
      } else {
   	   if( isset($_GET["print"])) {	   	 

@@ -15,6 +15,7 @@ if(!isset($free_mailers))
                        , "bluewin.ch"
                        , "bluemail.ch"
                        , "email.ch"
+                       , "eml.cc"
                        , "freesurf.ch"
                        , "gmail.com"
                        , "gmx."
