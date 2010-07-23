@@ -111,8 +111,10 @@ ORDER BY prio ASC;";
 		if($use_ics) {
 
       // Last year
+      /* -- commented to reduce traffic
       $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y')-1,0);      
       Birthday2vCal($date);
+      */
       
       // Current year
       $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y'),0);      
