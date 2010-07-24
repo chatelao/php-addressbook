@@ -1,6 +1,6 @@
 <?php
 
-function text2adr($address) {
+function label2adr($address) {
    	
    	  preg_match_all('/(^|[^\d])(\d{4,6})([^\d]|$)/', $address, $zips);
    	  preg_match_all('/(^|[^\d])(\d{1,3})([^\d]|$)/', $address, $street_nrs);
@@ -114,7 +114,7 @@ function address2vcard($links) {
 	 $result .= "VERSION:2.1\n";
 	 $result .= "N:$lastname;$firstname;;;;\n";
 	 $result .= "FN:$firstname $lastname\n";
-	 $adr = text2adr($address);
+	 $adr = label2adr($address);
 	 $result .= "ADR;home:"
 	               .$adr['pbox']
 	           .";".$adr['exta']
@@ -123,7 +123,7 @@ function address2vcard($links) {
 	           .";".$adr['region']
 	           .";".$adr['zip']
 	           .";".$adr['country']."\n";
-	 $adr = text2adr($address2);
+	 $adr = label2adr($address2);
 	 $result .= "ADR;work:"
 	               .$adr['pbox']
 	           .";".$adr['exta']

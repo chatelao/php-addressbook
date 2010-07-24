@@ -1,7 +1,9 @@
 <?php
 
 //
-// see: http://tools.ietf.org/html/rfc2426
+// see: 
+// * http://tools.ietf.org/html/rfc2426
+// * http://en.wikipedia.org/wiki/VCard#Properties
 //
 
 $addresses = array();

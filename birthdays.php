@@ -9,7 +9,7 @@ if($use_ics) {
    header('Content-Disposition: inline; filename=calendar.ics');
 
    echo "BEGIN:VCALENDAR\r\n";
-   echo "PRODID:-//PHP Adress Book//php-addressbook ".$version."//EN\r\n";
+   echo "PRODID:-//PHP Address Book//php-addressbook ".$version."//EN\r\n";
    echo "VERSION:2.0\r\n";
    echo "CALSCALE:GREGORIAN\r\n";
    echo "METHOD:PUBLISH\r\n";

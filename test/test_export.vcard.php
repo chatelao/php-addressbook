@@ -8,7 +8,7 @@ echo count($tests)." tests starting.<br>";
 foreach($tests as $test) {
 	
 	$expected = $test['output'];
-	$result   = text2adr($test['input']);
+	$result   = label2adr($test['input']);
 	
 	
 	$diff = array_merge( array_diff($expected, $result)
