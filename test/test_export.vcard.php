@@ -1,7 +1,9 @@
 <?php
 
-include "address2vcard/testset.php";
+// Code
 include "../include/export.vcard.php";
+// Data
+include "export.vcard/testdata_label2adr.php";
 
 echo count($tests)." tests starting.<br>";
 
