@@ -1,7 +1,7 @@
 <?php
 //
 // New translations & fixes are welcome:
-// * chatelao(ät)users.sourceforge.net
+// * chatelao(t)users.sourceforge.net
 //
 $supported_langs[] = 'en';
 
@@ -62,15 +62,28 @@ $messages['PRINT']['en'] = 'print'; // print
 $messages['EDIT_ADD_ENTRY']['en'] = 'Edit / add address book entry'; // Edit / add address book entry
 $messages['GUESSED_HOMEPAGE']['en'] = 'Guessed homepage'; // Guessed homepage
 $messages['PREFERENCES']['en'] = 'preferences'; // preferences
+$messages['NAME_PREFIX']['en'] = 'prefix';	// prefix or formal address
 $messages['FIRSTNAME']['en'] = 'first name'; // first name
+$messages['MIDDLENAME']['en'] = 'middle name/inital(s)';	// middle name(s) or initial
 $messages['LASTNAME']['en'] = 'last name'; // last name
+$messages['NAME_SUFFIX']['en'] = 'suffix';	// titles or honors
+$messages['NICKNAME']['en'] = 'nickname';	// nickname or popular name
 $messages['COMPANY']['en'] = 'company'; // company
+$messages['DEPT']['en'] = 'Dept.';	// department
+$messages['OCCUPATION']['en'] = 'job title'; // job title
+$messages['TITLES']['en'] = 'titles';	// job title;name prefix;name suffix
 $messages['ADDRESS']['en'] = 'address'; // address
+$messages['POB']['en'] = 'box or number';	// PO Box
+$messages['APT']['en'] = 'apartment or stop';	// apt or other special number
+$messages['STREET']['en'] = 'street Address';	// street address
+$messages['STATE']['en'] = 'state';	// state
+$messages['COUNTRY']['en'] = 'country';	// country
 $messages['TELEPHONE']['en'] = 'telephone'; // telephone
-$messages['PHONE_HOME']['en'] = 'home'; // home
-$messages['PHONE_MOBILE']['en'] = 'mobile'; // mobile
-$messages['PHONE_WORK']['en'] = 'work'; // work
-$messages['FAX']['en'] = 'fax'; // fax
+$messages['PHONE_HOME']['en'] = 'home'; // home phone
+$messages['PHONE_MOBILE']['en'] = 'mobile'; // mobile phone
+$messages['PHONE_WORK']['en'] = 'work'; // work phone
+$messages['FAX']['en'] = 'fax'; // fax phone
+$messages['PAGER']['en'] = 'pager'; // pager number
 $messages['EMAIL']['en'] = 'e-mail'; // e-mail
 $messages['HOMEPAGE']['en'] = 'Homepage'; // homepage
 $messages['ZIP']['en'] = 'ZIP'; // ZIP
@@ -80,6 +93,7 @@ $messages['E_MAIL_OFFICE']['en'] = 'e-mail office'; // e-mail office
 $messages['2ND_ADDRESS']['en'] = 'second address'; // second address
 $messages['2ND_PHONE']['en'] = 'second phone'; // second phone
 $messages['NOTES']['en'] = 'notes'; // notes
+$messages['MISC']['en'] = 'Misc'; // miscellaneous items
 $messages['BIRTHDAY']['en'] = 'birthday'; // birthday
 $messages['CREATED']['en']  = 'created';  // created
 $messages['MODIFIED']['en'] = 'modified'; // modified
@@ -93,6 +107,7 @@ $messages['H:']['en'] = 'H:'; // H:
 $messages['M:']['en'] = 'M:'; // M:
 $messages['W:']['en'] = 'W:'; // W:
 $messages['F:']['en'] = 'F:'; // F:
+$messages['P:']['en'] = 'P:'; // F:
 $messages['ar']['en'] = 'Arabic'; // Arabic
 $messages['bg']['en'] = 'Bulgarian'; // Bulgarian
 $messages['ca']['en'] = 'Catalonian'; //
