@@ -5,9 +5,55 @@
 // * http://tools.ietf.org/html/rfc2426
 // * http://en.wikipedia.org/wiki/VCard#Properties
 //
+class ImportVCards  {
 
+   protected $ab = array();
+
+   //
+   // Check the different variations of typing:
+   // * ADR;WORK:032115675
+   // * ADR;type=WORK:032115675
+   // * ADR;TYPE=fax,work:032115675
+   //
+   public static function checkType($entry, $type) {
+   	
+     //
+     // Preprocessing:
+     // * Merge types and subtypes from different format.
+     //
+     if(array_key_exists('TYPE', $entry) && array_key_exists('SUBTYPE', $entry)) {
+       $all_types = array_merge(array_keys($entry), $entry['TYPE'], $entry['SUBTYPE']);
+     } elseif(array_key_exists('TYPE', $entry)) {
+       $all_types = array_merge(array_keys($entry), $entry['TYPE']);
+     } else {
+     	$all_types = array_keys($entry);
+     }
+     
+     return in_array($type, $all_types);
+     
+   }
+    
+  function __construct($file_lines) {
+
+//
+// Concat multi-line records (e.g.: photos)
+//
+$concated_lines = array();
+foreach($file_lines as $file_line) {
+  $file_line = str_replace("\n", "", $file_line);
+  $file_line = str_replace("\r", "", $file_line);
+	if(preg_match('/^  /', $file_line)) {
+		$concated_lines[count($concated_lines)-1] .= preg_replace('/^  /','', $file_line);
+	} else {
+		$concated_lines[] = $file_line;
+	}
+}
+$file_lines = $concated_lines;
+
+//
+// Split every line to semi-structured records
+//
 $addresses = array();
-
 foreach($file_lines as $vcards_line) {
 	
 	// Apple Addressbook preprocessing
@@ -56,6 +102,11 @@ foreach($file_lines as $vcards_line) {
   	//
   	// Value Analyzer
   	//
+      	// Replace escape values
+      	$val = str_replace("=0D","\r",$val);
+      	$val = str_replace("=0A","\n",$val);
+      	$val = str_replace("\\r","\r",$val);
+      	$val = str_replace("\\n","\n",$val);
   	$addr_line['VALUE'] = $val;
   	if(count(explode(';', $val)) > 1) {
   	  $addr_line['SEMI-COLON'] = explode(';', $val);  	  
@@ -63,30 +114,6 @@ foreach($file_lines as $vcards_line) {
 
   	$address[$pkey][] = $addr_line;
   }
-}
-
-//
-// Check the different variations of typing:
-// * ADR;WORK:032115675
-// * ADR;type=WORK:032115675
-// * ADR;TYPE=fax,work:032115675
-//
-function checkType($entry, $type) {
-	
-  //
-  // Preprocessing:
-  // * Merge types and subtypes from different format.
-  //
-  if(array_key_exists('TYPE', $entry) && array_key_exists('SUBTYPE', $entry)) {
-    $all_types = array_merge(array_keys($entry), $entry['TYPE'], $entry['SUBTYPE']);
-  } elseif(array_key_exists('TYPE', $entry)) {
-    $all_types = array_merge(array_keys($entry), $entry['TYPE']);
-  } else {
-  	$all_types = array_keys($entry);
-  }
-  
-  return in_array($type, $all_types);
-  
 }
 
 foreach($addresses as $address) {
@@ -123,7 +150,7 @@ foreach($addresses as $address) {
     	  $dest_address = trim($street."\n".$postal_code." ".$city."\n".$country);
     	  
     	  if(strlen($dest_address) > 0) {
-    	    if(checkType($entry, 'HOME')) {
+        	    if(self::checkType($entry, 'HOME')) {
     	      $dest_addr['address']  = $dest_address;
     	    } else {
     	      $dest_addr['address2'] = $dest_address;
@@ -152,10 +179,10 @@ foreach($addresses as $address) {
     		                
         // Mapping:
         // * Paste value in correct field.
-    	        if(checkType($entry, 'HOME')) { $dest_addr['home']   = $entry['VALUE'];
-    	  } elseif(checkType($entry, 'WORK')) { $dest_addr['work']   = $entry['VALUE'];
-    	  } elseif(checkType($entry, 'FAX'))  { $dest_addr['fax']    = $entry['VALUE'];  	  	
-    	  } elseif(checkType($entry, 'CELL')) { $dest_addr['mobile'] = $entry['VALUE'];  	  	
+        	        if(self::checkType($entry, 'HOME')) { $dest_addr['home']   = $entry['VALUE'];
+        	  } elseif(self::checkType($entry, 'WORK')) { $dest_addr['work']   = $entry['VALUE'];
+        	  } elseif(self::checkType($entry, 'FAX'))  { $dest_addr['fax']    = $entry['VALUE'];  	  	
+        	  } elseif(self::checkType($entry, 'CELL')) { $dest_addr['mobile'] = $entry['VALUE'];  	  	
     	  } else {                        	    $dest_addr['phone2'] = $entry['VALUE'];  	  	
     	  }
     	  	
@@ -213,14 +240,27 @@ foreach($addresses as $address) {
     if($type == "ORG") {
       $dest_addr['company']  = $entries[0]['VALUE'];
     }
-    
+
     //
     // "NOTE" Type, just Notes
     //
     if($type == "NOTE") {
       $dest_addr['notes']  = $entries[0]['VALUE'];
     }    
+    
+    //
+    // "PHOTO" Type, the photo
+    //
+    if($type == "PHOTO") {
+      $dest_addr['photo']  = $entries[0]['VALUE'];
+    }
   }
-  $ab[] = $dest_addr;
+      $this->ab[] = $dest_addr;
+    }
+  }
+  
+  function getResult() {
+  	return $this->ab;
+  }
 }
 ?>

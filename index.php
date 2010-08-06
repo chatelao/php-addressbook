@@ -187,7 +187,7 @@ function addRow($row) {
 		echo "<tr class='".$color."' name='entry'>";
 
     if($is_mobile) {
-		   addRow("select");
+		   // addRow("select");
 		   addRow("lastname");
 		   addRow("firstname");
 		   // addRow("first_last");

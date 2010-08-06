@@ -308,22 +308,17 @@ if($group_name == "") {
     $base_from  = $table;
  } else {
 
-    if($group_name == "[none]")
-    {
+    if($group_name == "[none]" || $group_name == "[no group]") {
       $base_select = " * ";
       $base_from   = "$table";
       $base_where  .= "AND $table.id not in (select distinct id from $table_grp_adr)";
-    }
-    elseif(isset($_REQUEST['nosubgroups']) )
-    {
+    } elseif(isset($_REQUEST['nosubgroups']) ) {
       $base_select = " * ";
       $base_from  = "$table_grp_adr, $table_groups, $table";
       $base_where .= "AND $table.id = $table_grp_adr.id "
                    ."AND $table_grp_adr.group_id  = $table_groups.group_id "
                    ."AND $table_groups.group_name = '$group_name'";
-    }
-    else
-    {
+    } else {
       $base_select = "DISTINCT $table.*";
       $base_from   = "$table_grp_adr, $sql_from, $table";
       $base_where  .= "AND $table.id = $table_grp_adr.id "

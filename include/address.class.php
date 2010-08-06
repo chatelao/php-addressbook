@@ -2,8 +2,8 @@
 
 function getIfSetFromAddr($addr_array, $key) {
 	
-	if(isset($addr_array[$key]) && isset($addr_array[$key])) {
-	  return $addr_array[$key];
+	if(isset($addr_array[$key])) {
+	  return mysql_real_escape_string($addr_array[$key]);
 	} else {
 		return "";
 	}
@@ -52,7 +52,7 @@ function saveAddress($addr_array, $group_name = "") {
     	$src_tbl = $table;
     }
 
-    $sql = "INSERT INTO $table ( domain_id, id, firstname, lastname, company, address, home, mobile, work, fax, email, email2, homepage, bday, bmonth, byear, address2, phone2, notes, created, modified)
+    $sql = "INSERT INTO $table ( domain_id, id, firstname, lastname, company, address, home, mobile, work, fax, email, email2, homepage, bday, bmonth, byear, address2, phone2, photo, notes, created, modified)
                         SELECT   $domain_id                                       domain_id
                                , ".$set_id."                                      id
                                , '".getIfSetFromAddr($addr_array, 'firstname')."' firstname
@@ -71,6 +71,7 @@ function saveAddress($addr_array, $group_name = "") {
                                , '".getIfSetFromAddr($addr_array, 'byear')."'     byear    
                                , '".getIfSetFromAddr($addr_array, 'address2')."'  address2 
                                , '".getIfSetFromAddr($addr_array, 'phone2')."'    phone2   
+                               , '".getIfSetFromAddr($addr_array, 'photo')."'     photo   
                                , '".getIfSetFromAddr($addr_array, 'notes')."'     notes    
                                , now(), now()
                             FROM ".$src_tbl;
