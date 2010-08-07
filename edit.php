@@ -294,25 +294,25 @@ function proposeMail() {
     new_proposal = "";
 
 	  has_firstname = document.theform.firstname.value != "";
-	  has_lastname  = document.theform.lastname.value != "";
+	  has_lastname  = document.theform.lastname.value  != "";
 	
 	  if(has_firstname) {
-	    new_proposal = document.theform.firstname.value.toLowerCase();
+	    new_proposal = document.theform.firstname.value.toLowerCase().replace(/^\s+|\s+$/g, '');
 	  }
 	  if(has_firstname && has_lastname) {
       new_proposal += ".";
     }
     if(has_lastname) {
-      new_proposal += document.theform.lastname.value.toLowerCase();    	
+      new_proposal += document.theform.lastname.value.toLowerCase().replace(/^\s+|\s+$/g, '');
     }
-    new_proposal += "@" + document.theform.company.value.toLowerCase().replace(" ", "-");
+    new_proposal += "@" + document.theform.company.value.toLowerCase().replace(/^\s+|\s+$/g, '');
 
+    new_proposal = new_proposal.replace(/ /g, "-");
 	  document.theform.email.value = new_proposal;
 	  last_proposal = new_proposal;
 	  
 	}
 }
-
 function ucfirst(str) {
   return str.slice(0,1).toUpperCase() + str.slice(1);
 }
