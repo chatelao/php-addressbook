@@ -5,25 +5,20 @@
   $dbserver   = "localhost"; 
   $dbuser     = "username"; 
   $dbpass     = "password"; 
-  
+
   // Define table prefix
-  $table_prefix = "";
-  
-  // Don't display groups
-  $nogroups = false;
+  $table_prefix = ""; 
 
-  // blue, brown, green, grey, pink, purple, red, turquoise, yellow
-  $domain[0]['skin'] = "blue";
-  $domain[1]['skin'] = "pink";
-  $domain[2]['skin'] = "yellow";
-
-  // keep a history instead of deleting and updating
-  $keep_history = false;
+  /* 
+  // Your key to enable "Google Maps" support (optional):
+  // * http://code.google.com/intl/en-US/apis/maps/signup.html
+  $google_maps_keys['yourdomain.com'] = "XXXXXXXXX_YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY_ZZZZZZZZZZZZZZZZZZ_AAAAAAAAAAAAAAA";
+  */
   
   //
-  // List of Login-Users:
+  // List of Login/Users:
   //
-  // -- Setup an "admin" user --
+  // -- Setup an "admin" user, with password "secret" --
   $userlist['admin']['pass'] = "secret";
 
   /*  
@@ -39,6 +34,18 @@
   $userlist['adm2']['pass']   = "adm2";
   $userlist['adm2']['domain'] = 1;
   */
+
+  // Don't display groups
+  $nogroups = false;
+
+  // blue, brown, green, grey, pink, purple, red, turquoise, yellow
+  $domain[0]['skin'] = "blue";
+  $domain[1]['skin'] = "pink";
+  $domain[2]['skin'] = "yellow";
+
+  // keep a history instead of deleting and updating
+  $keep_history = false;
+  
 
   // == List of IP-Users ==
   //

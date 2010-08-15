@@ -38,6 +38,7 @@ $messages['PRINT_PHONES']['de'] = 'Telefonliste'; // print phones
 $messages['EXPORT_CSV']['de'] = 'CSV-Export'; // export csv
 $messages['EXPORT']['de'] = 'Export'; // export
 $messages['IMPORT']['de'] = 'Import'; // import
+$messages['MAP']['de'] = 'Karte'; // map
 $messages['GROUP']['de'] = 'Gruppe'; // group
 $messages['GROUPS']['de'] = 'Gruppen'; // groups
 $messages['MANAGE_GROUPS']['de'] = 'Gruppen'; // manage groups

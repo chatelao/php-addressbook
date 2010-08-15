@@ -33,6 +33,7 @@ $messages['ADD_NEW']['nl'] = "nieuwe"; // add new
 $messages['PRINT_ALL']['nl'] = "druk"; // print all
 $messages['PRINT_PHONES']['nl'] = "telefoons"; // print phones
 $messages['EXPORT_CSV']['nl'] = "csv export"; // export csv
+$messages['MAP']['nl'] = 'kaart'; // map
 $messages['GROUPS']['nl'] = "groepen"; // groups
 $messages['MANAGE_GROUPS']['nl'] = "groepen beheren"; // groups
 $messages['NEW_GROUP']['nl'] = "nieuwe groep"; // new group
