@@ -53,7 +53,7 @@ CREATE TABLE group_list (
   `group_name` varchar(255) NOT NULL default '',
   `group_header` mediumtext NOT NULL,
   `group_footer` mediumtext NOT NULL,
-  PRIMARY KEY  (`group_id`)
+  PRIMARY KEY (`group_id`, deprecated)
 ) DEFAULT CHARSET=utf8;
 
 CREATE TABLE address_in_groups (
@@ -63,13 +63,14 @@ CREATE TABLE address_in_groups (
   `created` datetime default NULL,
   `modified` datetime default NULL,
   `deprecated` datetime default NULL,
-  PRIMARY KEY  (`group_id`,`id`)
+  PRIMARY KEY (`group_id`,`id`, deprecated)
 ) DEFAULT CHARSET=utf8;
 
 CREATE TABLE month_lookup (
   `bmonth` varchar(50) NOT NULL default '',
   `bmonth_short` char(3) NOT NULL default '',
   `bmonth_num` int(2) unsigned NOT NULL default '0'
+  PRIMARY KEY (bmonth_num)
 ) DEFAULT CHARSET=utf8;
 
 INSERT INTO `month_lookup` VALUES ('', '', 0);
