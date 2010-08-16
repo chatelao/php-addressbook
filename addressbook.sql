@@ -4,6 +4,10 @@
 -- * You may add table prefixes, if the "$table_prefix"
 --   parameter is set in "config.php".
 --
+-- $LastChangedDate: 2010-08-15 22:29:55 +0200 (So, 15 Aug 2010) $
+-- $Rev: 390 $
+-- 
+--
 
 CREATE TABLE addressbook (
   domain_id int(9) unsigned NOT NULL default '0',
@@ -12,6 +16,9 @@ CREATE TABLE addressbook (
   lastname varchar(255) NOT NULL,
   company varchar(255) NOT NULL,
   address text NOT NULL,
+  addr_long text,
+  addr_lat text,
+  addr_status text,
   home text NOT NULL,
   mobile text NOT NULL,
   work text NOT NULL,
@@ -25,10 +32,12 @@ CREATE TABLE addressbook (
   address2 text NOT NULL,
   phone2 text NOT NULL,
   notes text NOT NULL,
+  photo mediumtext,
+  x_vcard mediumtext,
   created datetime default NULL,
   modified datetime default NULL,
   deprecated datetime default NULL,
-    password varchar(256) default NULL,
+  password varchar(256) default NULL,
   login date default NULL,
   role varchar(256) default NULL,
   PRIMARY KEY (id, deprecated)
@@ -76,15 +85,3 @@ INSERT INTO `month_lookup` VALUES ('September', 'Sep', 9);
 INSERT INTO `month_lookup` VALUES ('October', 'Oct', 10);
 INSERT INTO `month_lookup` VALUES ('November', 'Nov', 11);
 INSERT INTO `month_lookup` VALUES ('December', 'Dec', 12);
-
-CREATE TABLE user_prefs (
-  `domain_id` int(9) unsigned NOT NULL default '0',
-  `id` int(9) unsigned NOT NULL,
-  `pref_key` varchar(255) NOT NULL default '',
-  `pref_value` varchar(255) NOT NULL default '',
-  `created` datetime default NULL,
-  `modified` datetime default NULL,
-  `deprecated` datetime default NULL,
-  PRIMARY KEY  (`id`,`pref_key`),
-  KEY `fk_id` (`id`)
-) DEFAULT CHARSET=utf8;

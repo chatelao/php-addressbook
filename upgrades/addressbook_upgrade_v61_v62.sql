@@ -7,6 +7,6 @@
 --
 ALTER TABLE `addressbook` ADD `addr_long`   text   default NULL AFTER `address`;
 ALTER TABLE `addressbook` ADD `addr_lat`    text   default NULL AFTER `addr_long`;
-ALTER TABLE `addressbook` ADD `addr_statis` text   default NULL AFTER `addr_lat`;
+ALTER TABLE `addressbook` ADD `addr_status` text   default NULL AFTER `addr_lat`;
 ALTER TABLE `addressbook` ADD `photo`   mediumtext default NULL AFTER `notes`;
 ALTER TABLE `addressbook` ADD `x_vcard` mediumtext default NULL AFTER `photo`;
