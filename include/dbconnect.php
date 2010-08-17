@@ -228,34 +228,10 @@ if(isset($iplist) && hasRoleFromIP($iplist)) {
   	$group        = $user->getGroup();
   	$group_name   = $user->getGroup();
   };
-  
 }
 
 if(isset($domain) && isset($domain[$domain_id])) {
   $skin_color = $domain[$domain_id]['skin'];
-}
-
-// To run the script on systeme with "register_globals" disabled,
-// import all variables in a bit secured way: Remove HTML Tags
-foreach($_REQUEST as $key => $value)
-{
-	  // Allow all tags in headers and footers
-	  if($key == "group_header" || $key == "group_footer"){
-	  	${$key} = $value;
-	  	
-	  // Handle arrays
-	  } elseif(is_array($value)) {
-	  	foreach($value as $entry)
-	  	{
-	  		${$key}[] = strip_tags($entry);
-	  	}
-	  // Handle the rest
-	  } else {
-    	// ${$key} = htmlspecialchars($value); --chatelao-20071121, doesn't work with Chinese Characters
-    	${$key} = strip_tags($value);
-    }
-    
-    // TBD: prevent SQL-Injection
 }
 
 //
@@ -275,7 +251,7 @@ $max_level = 3;
 
 $sql_from  = "";
 $sql_where = "";
-                   
+
 for($i = 0; $i < $max_level; $i++)
 {
 	if($i > 0) {
