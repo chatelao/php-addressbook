@@ -69,7 +69,7 @@ CREATE TABLE address_in_groups (
 CREATE TABLE month_lookup (
   `bmonth` varchar(50) NOT NULL default '',
   `bmonth_short` char(3) NOT NULL default '',
-  `bmonth_num` int(2) unsigned NOT NULL default '0'
+  `bmonth_num` int(2) unsigned NOT NULL default '0',
   PRIMARY KEY (bmonth_num)
 ) DEFAULT CHARSET=utf8;
 
