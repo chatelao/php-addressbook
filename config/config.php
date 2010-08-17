@@ -20,6 +20,7 @@
   //
   // -- Setup an "admin" user, with password "secret" --
   $userlist['admin']['pass'] = "secret";
+  $userlist['admin']['role'] = "root"; // used to call "/diag.php"
 
   /*  
   // Setup a "readonly" user
