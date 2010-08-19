@@ -211,6 +211,7 @@ if(isset($iplist) && hasRoleFromIP($iplist)) {
   
   if( ! Login::checkRoles($required_roles) ) {
   	include ("include/format.inc.php");	
+  	echo "<title>".ucfmsg("ADDRESS_BOOK")."</title>";
     echo translateTags(file_get_contents("include/login.inc.html"));
     die;
   }
@@ -234,6 +235,32 @@ if(isset($domain) && isset($domain[$domain_id])) {
   $skin_color = $domain[$domain_id]['skin'];
 }
 
+// To run the script on systeme with "register_globals" disabled,
+// import all variables in a bit secured way: Remove HTML Tags
+foreach($_REQUEST as $key => $value)
+{
+	  // Allow all tags in headers and footers
+	  if(in_array($key, array('domain_id', 'read_only'))) {
+	  	
+	  	// Security-Fix: ignore this fields!!
+	  	
+	  } elseif(in_array($key, array('group_header','group_footer'))) {
+	  	${$key} = $value;
+	  	
+	  // Handle arrays
+	  } elseif(is_array($value)) {
+	  	foreach($value as $entry)
+	  	{
+	  		${$key}[] = strip_tags($entry);
+	  	}
+	  } else {
+    	// ${$key} = htmlspecialchars($value); --chatelao-20071121, doesn't work with Chinese Characters
+    	${$key} = strip_tags($value);
+    }
+    
+    // TBD: prevent SQL-Injection
+}
+
 //
 // ------------------- Group query handling ------------------------
 //
@@ -251,7 +278,7 @@ $max_level = 3;
 
 $sql_from  = "";
 $sql_where = "";
-
+                   
 for($i = 0; $i < $max_level; $i++)
 {
 	if($i > 0) {
@@ -314,6 +341,6 @@ include("group.class.php");
 
 $revision = '$Rev$';
 $revision = str_replace('$', '', str_replace(' ', '', str_replace('Rev: ', '', $revision)));
-$version = '6.2.1'.' - r'.$revision;
+$version = '6.2.2'.' - r'.$revision;
 
 ?>

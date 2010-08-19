@@ -484,6 +484,9 @@ function proposeNames() {
 
 		<input type="submit" name="submit" value="<?php echo ucfmsg('ENTER') ?>" />
   </form>
+  <script type="text/javascript">
+	  document.theform.email.focus();
+  </script>
 <?php
   } else
     echo "<br /><div class='msgbox'>Editing is disabled.</div>";
