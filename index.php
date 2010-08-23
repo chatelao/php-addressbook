@@ -163,13 +163,13 @@ function addRow($row) {
         
         if($map_guess) {
           if($myrow["address"] != "")
-          echo "<td class='center'><a href='http://maps.google.com/maps?q=".urlencode(trim(str_replace("\r\n", ", ", $myrow["address"])).", $country")."&amp;t=h'>
+          echo "<td class='center'><a href='http://maps.google.com/maps?q=".urlencode(trim(str_replace("\r\n", ", ", $myrow["address"])).", $country")."&amp;t=h' target='_blank'>
                                 <img src='${url_images}icons/car.png' title='Google Maps' alt='vCard'/></a></td>";
           else echo "<td/>";
         }
         
         if($homepage != "") {
-            echo "<td class='center'><a href='http://$homepage'><img src='${url_images}icons/house.png' title='$homepage' alt='$homepage'/></a></td>";
+            echo "<td class='center'><a href='http://$homepage' target='_blank'><img src='${url_images}icons/house.png' title='$homepage' alt='$homepage'/></a></td>";
         } elseif(($homepage = guessHomepage($email, $email2)) != "") {
             echo "<td class='center'><a href='http://$homepage'><img src='${url_images}icons/house.png' title='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)' alt='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)'/></a></td>";
         } else {

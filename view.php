@@ -57,15 +57,15 @@ function showOneEntry($r, $only_phone = false)
   	   } else {
   	     include ("include/guess.inc.php");
   	         
-   	       $view .= ($r['email'] != "" ?  "<a href=".'"'.getMailer().$r['email'].'"'.">".$r['email']."</a>" : "");
-   	       $homepage = guessOneHomepage($r['email']);
-  	       $view .= ($homepage != "" ?  " (<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>)" : "");
-  	       $view .= ($r['email'] != "" ? "<br/>" : "");
-           
-  	       $view .= ($r['email2'] != "" ? "<a href=".'"'.getMailer().$r['email2'].'"'.">".$r['email2']."</a>" : "");
-  	       $homepage = guessOneHomepage($r['email2']);
-  	       $view .= ($homepage != "" ?  " (<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>)" : "");
-  	       $view .= ($r['email2'] != "" ? "<br/>" : "");
+         $view .= ($r['email'] != "" ?  "<a href=".'"'.getMailer().$r['email'].'"'.">".$r['email']."</a>" : "");
+         $homepage = guessOneHomepage($r['email']);
+         $view .= ($homepage != "" ?  " (<a href=".'"http://'.$homepage.'" target="_new"'.">".$homepage."</a>)" : "");
+         $view .= ($r['email'] != "" ? "<br/>" : "");
+         
+         $view .= ($r['email2'] != "" ? "<a href=".'"'.getMailer().$r['email2'].'"'.">".$r['email2']."</a>" : "");
+         $homepage = guessOneHomepage($r['email2']);
+         $view .= ($homepage != "" ?  " (<a href=".'"http://'.$homepage.'" target="_new"'.">".$homepage."</a>)" : "");
+         $view .= ($r['email2'] != "" ? "<br/>" : "");
 	     }
 	   }
 	   $homepage = $r['homepage'];
