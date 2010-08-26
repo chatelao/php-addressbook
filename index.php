@@ -169,7 +169,10 @@ function addRow($row) {
         }
         
         if($homepage != "") {
-            echo "<td class='center'><a href='http://$homepage' target='_blank'><img src='${url_images}icons/house.png' title='$homepage' alt='$homepage'/></a></td>";
+        	  $homepage = (strcasecmp(substr($homepage, 0, strlen("http")),"http")== 0
+        	              ? $homepage
+        	              : "http://".$homepage);
+            echo "<td class='center'><a href='$homepage'><img src='${url_images}icons/house.png' title='$homepage' alt='$homepage'/></a></td>";
         } elseif(($homepage = guessHomepage($email, $email2)) != "") {
             echo "<td class='center'><a href='http://$homepage'><img src='${url_images}icons/house.png' title='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)' alt='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)'/></a></td>";
         } else {

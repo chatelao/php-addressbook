@@ -36,10 +36,10 @@ if($use_ics) {
 
 	include ("include/guess.inc.php");
 
-  function Birthday2vCal($date) {
-  	
+  function Birthday2vCal($date, $age) {
+
   	global $id, $firstname, $lastname, $email, $home, $mobile, $work, $byear;
-  	
+
     echo "BEGIN:VEVENT\r\n";
     echo "UID:".date('Y', $date).$id."@php-addressbook.sourceforge.net\r\n";
     echo "DTSTART;VALUE=DATE:".date("Ymd", $date)."\r\n";
@@ -51,7 +51,7 @@ if($use_ics) {
     echo "LOCATION:\r\n";
     echo "STATUS:CONFIRMED\r\n";
     echo "SUMMARY:".ucfmsg("BIRTHDAY")." ".$firstname." ".$lastname
-                   .($byear != "" ? " (".(date('Y', $date)-$byear).")" : "")."\r\n";
+                   .$age."\r\n";
     echo "DESCRIPTION:Mail:\\n- ".$email
                      ."\\n\\n".ucfmsg("TELEPHONE")
                      .($home   != "" ? "\\n- ".$home   : "")
@@ -59,7 +59,7 @@ if($use_ics) {
                      .($work   != "" ? "\\n- ".$work   : "")
                      ."\r\n";
     echo "END:VEVENT\r\n";
-  }     
+  }
 
 	$lastmonth = '';
 
@@ -94,6 +94,8 @@ ORDER BY prio ASC;";
 		$mobile = $myrow["mobile"];
 		$work   = $myrow["work"];
 
+		$homepage = $myrow["homepage"];
+
 		// Phone order home->mobile->work
 		$phone = ($myrow["home"] != "" ? $myrow["home"]
                                                : ($myrow["mobile"] != "" ? $myrow["mobile"]
@@ -103,26 +105,30 @@ ORDER BY prio ASC;";
                          str_replace(" ", "",
                          str_replace(".", "", $phone))));
 
-		$bday       = $myrow["bday"];
-		$bmonth     = $myrow["bmonth"];
-		$bmonth_num = $myrow["bmonth_num"];
-		$byear      = $myrow["byear"];
+		$bday         = $myrow["bday"];
+		$bmonth       = $myrow["bmonth"];
+		$bmonth_num   = $myrow["bmonth_num"];
+		$byear        = $myrow["byear"];
+		$display_year = $myrow["display_year"];
 
-		if($use_ics) {
+	  // Current year
+    $year_offset = ($display_year == "" ? 0 : 1);
+    $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y') + $year_offset,0);    
+    $age = ($byear != "" ? " (".(date('Y', $date)-$byear).")" : "");
+  	if($use_ics) {
 
       // Last year
       /* -- commented to reduce traffic
-      $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y')-1,0);      
+      $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y')-1,0);
       Birthday2vCal($date);
       */
-      
-      // Current year
-      $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y'),0);      
-      Birthday2vCal($date);
-      
+
+      Birthday2vCal($date, $age);
+
       // Next year
-      $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y')+1,0);      
-      Birthday2vCal($date);
+      $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y')+1+$year_offest,0);
+      $age = ($byear != "" ? " (".(date('Y', $date)-$byear).")" : "");
+      Birthday2vCal($date, $age);
 
 	  } else {
 
@@ -134,7 +140,7 @@ ORDER BY prio ASC;";
 		  		echo "<tr class='tablespace'><td colspan='10'><br /></td></tr>";
 		  	} else {}
 
-		  	echo "<tr><th colspan='10'>".ucfmsg(strtoupper($myrow["bmonth"])).$myrow["display_year"]."</th></tr>";
+		  	echo "<tr><th colspan='11'>".ucfmsg(strtoupper($myrow["bmonth"])).$myrow["display_year"]."</th></tr>";
 		  	$alternate = "0";
 		  }
 
@@ -150,6 +156,7 @@ ORDER BY prio ASC;";
 		  echo "<td align=right>$bday.</td>";
 		  echo "<td>$lastname</td>";
 		  echo "<td>$firstname</td>";
+		  echo "<td align='right'><i>$age</i></td>";
 		  echo "<td><a href='".getMailer()."$email'>$email</a></td>";
 		  echo "<td>$phone</td>";
 		  echo "<td class='center'><a href='view${page_ext_qry}id=$id'><img src='${url_images}icons/status_online.png' title='".ucfmsg('DETAILS')."' alt='".ucfmsg('DETAILS')."'/></a></td>";
@@ -170,12 +177,16 @@ ORDER BY prio ASC;";
 		    else echo "<td/>";
 		  }
 
-		  $homepage = guessHomepage($email, $email2);
-		  if(strlen($homepage) > 0)
-		  {
-		  	echo "<td class='center'><a href='http://$homepage'><img src='${url_images}icons/house.png' title='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)' alt='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)'/></a></td>";
-		  } else
-		  	echo "<td/>";
+      if($homepage != "") {
+      	  $homepage = (strcasecmp(substr($homepage, 0, strlen("http")),"http")== 0
+      	              ? $homepage
+      	              : "http://".$homepage);
+          echo "<td class='center'><a href='$homepage'><img src='${url_images}icons/house.png' title='$homepage' alt='$homepage'/></a></td>";
+      } elseif(($homepage = guessHomepage($email, $email2)) != "") {
+          echo "<td class='center'><a href='http://$homepage'><img src='${url_images}icons/house.png' title='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)' alt='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)'/></a></td>";
+      } else {
+      	echo "<td/>";
+      }		    
 
 		  echo "</tr>\n";
 		  $tablespace++;
