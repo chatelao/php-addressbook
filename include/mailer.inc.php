@@ -22,14 +22,9 @@ function getMailerDelim() {
 	 
 	global $mailers;
 	
-	if(   isset($mailers[getPref('mailer')]) 
-	   && getPref('mailer') == 'Thunderbird (mailto:)') {
+	if(getPref('mailer') == 'colon') {
 		return ",";
-/*		
-	} elsif(isset($mailers[getPref('mailer')]) 
-	   && getPref('mailer') == 'gmail') {
-		return "%3B";
-*/	} else {
+  } else {
 		// return ";";
 		return "%3B";
 	}

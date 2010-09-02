@@ -50,6 +50,15 @@ table#birthdays {border:0;}
 table#view,table#view td {border:1px solid #000;border-collapse:collapse;}
 table#view td {padding:5px;}
 
+/* Edit.php */
+#content input[type=text],#content textarea {width:220px; margin-bottom:3px;}
+#content input[type=text] {height:1,1em}
+#content textarea {height:8em}
+input.byear{width:4em !important;}
+
 /* Source Forge */
 #download {margin:0;width:180px;background:#63A624;color:#fff;border:1px solid #000;text-align:center;}
 #download a,#top a {color:#fff;}
+
+/* Login */
+#content input[name=user],input[name=pass] {width:150px; margin-bottom:3px;}

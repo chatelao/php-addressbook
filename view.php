@@ -69,6 +69,11 @@ function showOneEntry($r, $only_phone = false)
 	     }
 	   }
 	   $homepage = $r['homepage'];
+     if($homepage != "") {
+     	  $homepage = (strcasecmp(substr($homepage, 0, strlen("http")),"http")== 0
+     	              ? $homepage
+     	              : "http://".$homepage);
+     }		   
 	   $view .= ($homepage != "" ?  "<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>" : "");
 	   $view .= "<br />";
 

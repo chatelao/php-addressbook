@@ -231,7 +231,7 @@ $myrow = mysql_fetch_array($result);
           <option value="November"><?php echo ucfmsg("NOVEMBER") ?></option>
           <option value="December"><?php echo ucfmsg("DECEMBER") ?></option>
         </select>
-        <input type="text" name="byear" size="4" maxlength="4" value="<?php echo $myrow['byear']?>" /><br />
+        <input class="byear" type="text" name="byear" size="4" maxlength="4" value="<?php echo $myrow['byear']?>" /><br />
 
 <?php
 /* Group handling on change
@@ -444,7 +444,7 @@ function proposeNames() {
           <option value="November"><?php echo ucfmsg("NOVEMBER") ?></option>
           <option value="December"><?php echo ucfmsg("DECEMBER") ?></option>
         </select>
-        <input type="text" name="byear" size="4" maxlength="4" /><br />
+        <input class="byear" type="text" name="byear" size="4" maxlength="4" /><br />
 
 		<?php      	
     if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
