@@ -113,7 +113,7 @@ ORDER BY prio ASC;";
 
 	  // Current year
     $year_offset = ($display_year == "" ? 0 : 1);
-    $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y') + $year_offset,0);    
+    $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y') + $year_offset);
     $age = ($byear != "" ? " (".(date('Y', $date)-$byear).")" : "");
   	if($use_ics) {
 
@@ -126,7 +126,7 @@ ORDER BY prio ASC;";
       Birthday2vCal($date, $age);
 
       // Next year
-      $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y')+1+$year_offest,0);
+      $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y')+1+$year_offest);
       $age = ($byear != "" ? " (".(date('Y', $date)-$byear).")" : "");
       Birthday2vCal($date, $age);
 

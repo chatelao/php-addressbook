@@ -220,10 +220,10 @@ if(isset($iplist) && hasRoleFromIP($iplist)) {
   // Get domain
   $domain_id= $user->getDomain();
 
-  // Check Roles
+  // Check "read only"
   $read_only = $user->hasRole("readonly");
 
-  // Check Roles
+  // Check "forced group"
   if($user->getGroup() != "") {
   	$is_fix_group = true;
   	$group        = $user->getGroup();

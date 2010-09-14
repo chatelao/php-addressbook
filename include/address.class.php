@@ -172,8 +172,8 @@ class Address {
       $phones = array();
     	if($this->address["home"]   != "") $phones[] = $this->address["home"];
     	if($this->address["mobile"] != "") $phones[] = $this->address["mobile"];
-    	if($this->address["work"]   != "") $phones[] = $this->address["work"];    	  
-    	if($this->address["phone2"] != "") $phones[] = $this->address["work"];    	  
+    	if($this->address["work"]   != "") $phones[] = $this->address["work"];
+    	if($this->address["phone2"] != "") $phones[] = $this->address["phone2"];    	  
    	  return $phones;
    	}
     	
