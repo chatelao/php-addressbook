@@ -62,6 +62,7 @@
 </form>
 <form method="get" action="csv<?php echo $page_ext; ?>">
   <label>CSV for Excel: </label>
+  <input type="hidden" name="group"  value="<?php echo $group; ?>">
   <input type="submit" name="submit" value="Download"><br>
 </form>
  <h2>Calendar</h2> 

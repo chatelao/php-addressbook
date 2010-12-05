@@ -101,7 +101,7 @@ function showOneEntry($r, $only_phone = false)
 
    if( !isset($print) and !$is_fix_group) {
    	 
-	   $sql = "SELECT group_name 
+	   $sql = "SELECT DISTINCT $table_groups.group_id, group_name 
 	             FROM $table_grp_adr, $table_groups, $table
 	            WHERE $table.id = $table_grp_adr.id
 	              AND $table.id = ".$r['id']."
