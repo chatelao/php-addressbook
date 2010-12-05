@@ -236,7 +236,7 @@ if(isset($domain) && isset($domain[$domain_id])) {
 }
 
 // To run the script on systeme with "register_globals" disabled,
-// import all variables in a bit secured way: Remove HTML Tags
+// import all variables in a bit secured way: Remove HTML Tags.
 foreach($_REQUEST as $key => $value)
 {
 	  // Allow all tags in headers and footers

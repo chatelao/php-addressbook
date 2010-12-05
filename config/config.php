@@ -44,10 +44,6 @@
   $domain[1]['skin'] = "pink";
   $domain[2]['skin'] = "yellow";
 
-  // keep a history instead of deleting and updating
-  $keep_history = false;
-  
-
   // == List of IP-Users ==
   //
   /*

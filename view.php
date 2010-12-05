@@ -74,7 +74,8 @@ function showOneEntry($r, $only_phone = false)
      	              ? $homepage
      	              : "http://".$homepage);
      }		   
-	   $view .= ($homepage != "" ?  "<a href=".'"http://'.$homepage.'"'.">".$homepage."</a>" : "");
+	   $view .= ($homepage != "" ?  "<a href='".$homepage."'>".str_replace("http://", "",
+	                                                           str_replace("https://", "", $homepage))."</a>" : "");
 	   $view .= "<br />";
 
      $month = ucfmsg(strtoupper($r['bmonth']));
