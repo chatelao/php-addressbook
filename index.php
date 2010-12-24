@@ -102,7 +102,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 
 function addRow($row) {
 
-    global $addr, $page_ext_qry, $url_images, $read_only, $map_guess;
+    global $addr, $page_ext_qry, $url_images, $read_only, $map_guess, $full_phone;
 	
     $myrow = $addr->getData();
     
@@ -120,7 +120,11 @@ function addRow($row) {
     	$email2 = "";
     }
     
-    $phone  = $addr->shortPhone();
+    if($full_phone) {
+      $phone  = $addr->firstPhone();
+    } else {
+    	$phone  = $addr->shortPhone();
+    }
     
     // Special value for short phone
     $row = ($row == "telephone" ? "phone" : $row);
@@ -225,8 +229,8 @@ function addRow($row) {
 	        	echo "<div></div>";
 
 		// -- Add to a group --
-        	echo "<div class='right'><input type='submit' name='add' value='".ucfmsg("ADD_TO")."'/>-";
-        	echo "<select name='to_group'>";
+    echo "<div class='right'><input type='submit' name='add' value='".ucfmsg("ADD_TO")."'/>-";
+    echo "<select name='to_group'>";
 
 		$sql="SELECT group_name FROM $groups_from_where ORDER BY lower(group_name) ASC";
 		$result = mysql_query($sql);
@@ -238,8 +242,9 @@ function addRow($row) {
 		}
         	echo "</select>";
 
+	  echo "</div><br/>";
 	}
-	echo "</div><br /><br class='clear' /></form>";
+	echo "</form>";
 
 	// Show group footer
         if($group_name != "" and $group_myrow['group_footer'] != "")

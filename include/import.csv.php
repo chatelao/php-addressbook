@@ -27,13 +27,13 @@ function __construct( $file_lines
   //
   $delim = maxChar($delims, $first_line);
   $quote = maxChar($quotes, $first_line);
-  
+
   //
   // Detect if a quote is probable and remove the first + last
   //
-  if(   substr($first_line,1,1) == substr($first_line,-1,1) 
-     && substr($first_line,1,1) == $quote
-     && substr_count($quote) > 1.5*substr_count($delim)) {
+  if(   substr($first_line,0,1) == substr($first_line,-1,1) 
+     && substr($first_line,0,1) == $quote
+     && substr_count($first_line, $quote) > 1.5*substr_count($first_line, $delim)) {
   	// $quote = $quote;
   } else {
   	$quote = "";	
@@ -111,6 +111,7 @@ function __construct( $file_lines
   }
   
   $count = 0;
+  
   echo "<table>";
   for($i = 0; $i < count($first_line_fields); $i++) {
    	echo "<tr>";

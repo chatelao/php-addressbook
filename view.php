@@ -30,106 +30,6 @@ if( ($resultsnumber == 0 && !isset($all)) || (!$id && !isset($all))) {
    }
 }
 
-function showOneEntry($r, $only_phone = false) 
-{
-	
-	 global $db, $table, $table_grp_adr, $table_groups, $print, $is_fix_group, $mail_as_image;
-	
-   $view  = "<b>".$r['firstname']." ".$r['lastname']."</b>: <br />";   
-   if(! $only_phone) {
-     $view .= ($r['company']   != "" ? $r['company']."<br />" : "");
-	   $view .= "<br />".str_replace("\n", "<br />", trim($r["address"]))."<br /><br />";
-	 }
-   $view .= ($r['home']   != "" ? ucfmsg('H:')." ".$r['home']."<br />" : "");
-   $view .= ($r['mobile'] != "" ? ucfmsg('M:')." ".$r['mobile']."<br />" : "");
-   $view .= ($r['work']   != "" ? ucfmsg('W:')." ".$r['work']."<br />" : "");
-   $view .= ($r['fax']   != "" ?  ucfmsg('F:')." ".$r['fax']."<br />" : "");
-   if(! $only_phone) {
-	   $view .= "<br />";
-
-  	 if($mail_as_image) { // B64IMG: Thanks to NelloD
-       $view .= ($r['email'] != "" ? "<img src=\"b64img.php?text=".base64_encode(($r['email']))."\"><br/>" : "");
-       $view .= ($r['email2'] != "" ? "<img src=\"b64img.php?text=".base64_encode(($r['email2']))."\"><br/>" : "");
-     } else {
-  	   if( isset($_GET["print"])) {	   	 
-  	       $view .= ($r['email'] != "" ?  "<a href=".'"'.getMailer().$r['email'].'"'.">".$r['email']."</a><br/>" : "");
-  	       $view .= ($r['email2'] != "" ? "<a href=".'"'.getMailer().$r['email2'].'"'.">".$r['email2']."</a><br/>" : "");
-  	   } else {
-  	     include ("include/guess.inc.php");
-  	         
-         $view .= ($r['email'] != "" ?  "<a href=".'"'.getMailer().$r['email'].'"'.">".$r['email']."</a>" : "");
-         $homepage = guessOneHomepage($r['email']);
-         $view .= ($homepage != "" ?  " (<a href=".'"http://'.$homepage.'" target="_new"'.">".$homepage."</a>)" : "");
-         $view .= ($r['email'] != "" ? "<br/>" : "");
-         
-         $view .= ($r['email2'] != "" ? "<a href=".'"'.getMailer().$r['email2'].'"'.">".$r['email2']."</a>" : "");
-         $homepage = guessOneHomepage($r['email2']);
-         $view .= ($homepage != "" ?  " (<a href=".'"http://'.$homepage.'" target="_new"'.">".$homepage."</a>)" : "");
-         $view .= ($r['email2'] != "" ? "<br/>" : "");
-	     }
-	   }
-	   $homepage = $r['homepage'];
-     if($homepage != "") {
-     	  $homepage = (strcasecmp(substr($homepage, 0, strlen("http")),"http")== 0
-     	              ? $homepage
-     	              : "http://".$homepage);
-     }		   
-	   $view .= ($homepage != "" ?  "<a href='".$homepage."'>".str_replace("http://", "",
-	                                                           str_replace("https://", "", $homepage))."</a>" : "");
-	   $view .= "<br />";
-
-     $month = ucfmsg(strtoupper($r['bmonth']));
-     $view .= ( $r['bday'] != 0 || $month != "-" || $r['byear'] != ""
-              ? ucfmsg('BIRTHDAY').": ".($r['bday'] > 0 ? $r['bday'].". " : "").($month != '-' ? $month : "")." ".$r['byear'] : "");
-     $age = date("Y")-$r['byear'];
-     $view .= ($age < 120 ? " (".$age.")" : ""); 
-     $view .="<br />"; 
-
-	   $view .= ($r['address2'] != "" || $r['phone2'] != "" ? "<br /><br /><b>".ucfmsg('SECONDARY')."</b><br />" : "");
-	   $view .= ($r['address2'] != "" ? "<br />".str_replace("\n", "<br />", trim($r['address2']))."<br /><br />" : "");
-	 }	   
-   $view .= ($r['phone2']   != "" ? "P: ".$r['phone2']."<br />" : "");
-   if(! $only_phone) {
-   	
-   	 // Detect URLs (http://*, www.*) and show as link.
-   	 //
-   	 // $text = "Hello, http://www.google.com";
-     // $new = preg_replace("/(http:\/\/[^\s]+)/", "<a href=\"$1\">$1</a>", $test);
-   	 //
-	   $view .= ($r['notes'] != "" ? "<br />".str_replace("\n", "<br />", trim($r['notes']))."<br /><br />" : "");
-   }
-   echo $view."\n";
-
-   if( !isset($print) and !$is_fix_group) {
-   	 
-	   $sql = "SELECT DISTINCT $table_groups.group_id, group_name 
-	             FROM $table_grp_adr, $table_groups, $table
-	            WHERE $table.id = $table_grp_adr.id
-	              AND $table.id = ".$r['id']."
-	              AND $table_grp_adr.group_id  = $table_groups.group_id";
-	
-	   $result = mysql_query($sql, $db);
-	
-	   $first = true;
-	   while($g = mysql_fetch_array($result)) {
-	   	 if($first)
-	   	   echo "<br /><i>".ucfmsg('MEMBER_OF').": ";
-	   	 else
-			echo ", ";
-			echo "<a href='./?group=".urlencode($g['group_name'])."'>".$g['group_name']."</a>";
-	   	   
-	   	 $first = false;
-	   }
-	   if($first != true)
-	     echo "</i>";
-	     
-	   /*
-     echo "<br/><br/>";
-     echo ucfmsg('MODIFIED') . ": ".$r['modified'];
-     echo "<i>(".ucfmsg('CREATED')  . ": ".$r['created'].")</i><br/>";
-     */
-   }
-}
 
 if ($id) {
 if($resultsnumber == 0) {
@@ -138,6 +38,7 @@ if($resultsnumber == 0) {
 
 } else {
 
+include "widget/view.w.php";
 showOneEntry($r);
 
 ?>	
@@ -161,6 +62,8 @@ showOneEntry($r);
 }
 }
 } else if(isset($_REQUEST['all'])) {
+
+   include "widget/view.w.php";
 
    $sql = "SELECT * FROM $base_from_where order by lastname, firstname";
    $result = mysql_query($sql, $db);

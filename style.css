@@ -6,6 +6,7 @@ h2 {font-size:14px}
 a {color:#036}
 a:hover {color:#06C;text-decoration:none}
 img {border:0;}
+textarea {font-family:Arial,Helvetica,sans-serif;font-size:10pt}
 
 #container {margin:0 auto;width:780px;border:0}
 #top{margin:5px 0 0;height:20px;text-align:right;}
