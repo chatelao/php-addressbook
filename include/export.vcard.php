@@ -95,6 +95,7 @@ function address2vcard($links) {
 	
    $firstname  = utf8_to_latin1($links["firstname"]);
    $lastname   = utf8_to_latin1($links["lastname"]);
+   $company    = utf8_to_latin1($links["company"]);
    $address    = utf8_to_latin1($links["address"]);
    $home       = utf8_to_latin1($links["home"]);
    $mobile     = utf8_to_latin1($links["mobile"]);
@@ -114,6 +115,7 @@ function address2vcard($links) {
 	 $result .= "VERSION:2.1\n";
 	 $result .= "N:$lastname;$firstname;;;;\n";
 	 $result .= "FN:$firstname $lastname\n";
+	 $result .= "ORG:$company\n";
 	 $adr = label2adr($address);
 	 $result .= "ADR;home:"
 	               .$adr['pbox']
@@ -136,7 +138,7 @@ function address2vcard($links) {
 	 $result .= "TEL;cell;VOICE:$mobile\n";
 	 $result .= "TEL;work;VOICE:$work\n";
 	 $result .= "TEL;fax:$fax\n";
-	 $result .= "TEL:$phone2\n";
+	 $result .= "TEL;voice:$phone2\n";
 	 $result .= "EMAIL;PREF;INTERNET:$email\n";
 	 $result .= "EMAIL;PREF;INTERNET:$email2\n";
 	 $result .= "BDAY:$byear-".(strlen($bmonth_num) == 1?"0":"")."$bmonth_num-".(strlen($bday) == 1?"0":"")."$bday\n";

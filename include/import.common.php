@@ -1,5 +1,46 @@
 <?php
- 
+
+  function MonthToName($number) {
+  
+    switch ($number) {
+      case 1:
+      case "01":
+           return "January"; break;
+      case 2:
+      case "02":
+           return "February"; break;
+      case 3:
+      case "03":
+           return "March"; break;
+      case 4:
+      case "04":
+           return "April"; break;
+      case 5:
+      case "05":
+           return "May"; break;
+      case 6:
+      case "06":
+           return "June"; break;
+      case 7:
+      case "07":
+           return "July"; break;
+      case 8:
+      case "08":
+           return "August"; break;
+      case 9:
+      case "09":
+           return "September"; break;
+      case "10":
+           return "October"; break;
+      case "11":
+           return "November"; break;
+      case "12":
+           return "December"; break;
+      default:
+           return "";
+    }
+  }
+  
   //
   // Pre-Convert to UTF-8:
   // * assumes file loaded into array "file_lines"
@@ -9,12 +50,15 @@
   	$line = $file_lines[$i];
     $encoding = mb_detect_encoding($line."a", 'ASCII, UTF-8, ISO-8859-1');
     // Special detection of UTF-16
-    if(   strlen($line) >= 4
-       && $line[1] != "\0"
-       && $line[0] == "\0"
-       && $line[1] != "\0"
-       && $line[2] == "\0" 
-       && $line[3] != "\0") {
+    if(   strlen($line) >= 6
+       && (  ($line[2] == "\0" 
+           && $line[3] != "\0"
+           && $line[4] == "\0"
+           && $line[5] != "\0")      
+          || ($line[2] != "\0"
+           && $line[3] == "\0"
+           && $line[4] != "\0" 
+           && $line[5] == "\0")))  {
       $encoding = 'UTF-16';
     }
     $file_lines[$i] = mb_convert_encoding($line, 'UTF-8', $encoding);
@@ -31,13 +75,16 @@
 		include_once ("import.vcard.php");
 		$ivc = new ImportVCards($file_lines);
 		$ab = $ivc->getResult();
-	} elseif(substr_count($file_lines[0], ';') > 5 || substr_count($file_lines[0], ',') > 5) {
+	} elseif(  substr_count($file_lines[0], ';')  > 5    // Is a CSV-File
+	        || substr_count($file_lines[0], ',')  > 5 	        
+	        || substr_count($file_lines[0], "\t") > 5) {
   	$import_type = "CSV";
 		include_once ("include/import.csv.php");
 		$icsv = new ImportCsv($file_lines);		
-		$ab = array();
+		$ab = $icsv->getResult();
 	} else {
   	$import_type = "UNKNOWN";
+  	$ab = array();
   }
   
 ?>

@@ -87,9 +87,8 @@ function showOneEntry($r, $only_phone = false) {
      $view .= add($r['company']);
 	   $view .= addGroup($r, array('address'));
 	   $view .= add(str_replace("\n", "<br />", trim($r["address"])));
+	   $view .= addGroup($r, array('home','mobile','work','fax'));
 	 }
-	 
-	 $view .= addGroup($r, array('home','mobile','work','fax'));
    $view .= add($r['home'],   ucfmsg('H:'));
    $view .= add($r['mobile'], ucfmsg('M:'));
    $view .= add($r['work'],   ucfmsg('W:'));
@@ -111,6 +110,7 @@ function showOneEntry($r, $only_phone = false) {
 	   
 	   $view .= addGroup($r, array('address2','phone2'), "<b>".ucfmsg('SECONDARY')."</b>");
 	   $view .= add(str_replace("\n", "<br />", trim($r['address2'])));
+  	 $view .= addGroup($r, array('phone2'));
 	 }	   
    $view .= add($r['phone2'], ucfmsg('P:'));
    

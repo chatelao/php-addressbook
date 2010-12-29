@@ -239,6 +239,14 @@ class Addresses {
       } else {
         	$sql .= "ORDER BY firstname, lastname ASC";
       }
+      
+      //* Paging
+      $page = 1;
+      $pagesize = 2200;
+      if($pagesize > 0) {
+          $sql .= " LIMIT ".($page-1)*$pagesize.",".$pagesize;
+      }
+      //*/
       $this->result = mysql_query($sql);
     }
     
