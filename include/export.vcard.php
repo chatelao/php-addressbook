@@ -103,6 +103,7 @@ function address2vcard($links) {
    $fax        = utf8_to_latin1($links["fax"]);
    $email      = utf8_to_latin1($links["email"]);
    $email2     = utf8_to_latin1($links["email2"]);
+   $homepage   = utf8_to_latin1($links["homepage"]);
  
    $bday       = utf8_to_latin1($links["bday"]);
    $bmonth_num = utf8_to_latin1($links["bmonth_num"]);
@@ -141,6 +142,8 @@ function address2vcard($links) {
 	 $result .= "TEL;voice:$phone2\n";
 	 $result .= "EMAIL;PREF;INTERNET:$email\n";
 	 $result .= "EMAIL;PREF;INTERNET:$email2\n";
+	 $result .= "URL;WORK:$homepage\n";
+
 	 $result .= "BDAY:$byear-".(strlen($bmonth_num) == 1?"0":"")."$bmonth_num-".(strlen($bday) == 1?"0":"")."$bday\n";
 	 $result .= "END:VCARD\n";
 	 
