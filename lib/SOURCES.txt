@@ -1,0 +1,5 @@
+CSV-Parser (parsecsv.lib.php):
+* http://code.google.com/p/parsecsv-for-php/
+
+Excel Reader (excel_reader2.php):
+* http://code.google.com/p/php-excel-reader/
