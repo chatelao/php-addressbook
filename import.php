@@ -19,9 +19,11 @@ function getIfSet($ldif_record, $key) {
 if(!$submit) {
 ?>
 <form method="post" enctype="multipart/form-data">
-  <label for="file">LDIF / vCard(s):</label>
-  <input size=30 type="file" name="file" id="file" />
-  <br/>
+  <label size=50 for="file">LDIF/VCF/CSV/XLS:</label>
+  <input size=40 type="file" name="file" id="file" /><br/>
+  <label for="del_format">CSV- / XLS-Format:</label>
+  <input type="radio" name="del_format" value="phpaddr" checked>PHP-Addressbook
+  <input type="radio" name="del_format" value="outlook" >Outlook<br>
   <input type="submit" name="submit" value="Submit" />
 </form>
 
@@ -30,7 +32,9 @@ if(!$submit) {
     echo "Error: " . $_FILES["file"]["error"] . "<br />";
 } else {
   
-  $file_lines = file($_FILES["file"]["tmp_name"], FILE_IGNORE_NEW_LINES); 
+  $file_tmp_name = $_FILES["file"]["tmp_name"];
+  $file_lines    = file($file_tmp_name, FILE_IGNORE_NEW_LINES); 
+  $file_name     = $_FILES["file"]["name"];
   
   include "include/import.common.php";
   
@@ -39,7 +43,7 @@ if(!$submit) {
   //
   $file_group_name = "";
   if(count($ab) > 0) {  	
-  	$file_group_name = "@IMPORT-".$_FILES["file"]["name"]."-".Date("Y-m-j_H:i:s");
+  	$file_group_name = "@IMPORT-".$file_name."-".Date("Y-m-j_H:i:s");
     saveGroup($file_group_name);
   }
   

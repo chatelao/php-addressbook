@@ -42,7 +42,11 @@
      while($links  = mysql_fetch_array($result)) {
         echo address2vcard($links);
      }
-  }else {
+  } elseif(isset($_REQUEST['type']) && $_REQUEST['type'] == "xls-Nokia") {  	
+  	
+     require "include/export.xls-nokia.php";     
+     
+  } else {
   	
 	include ("include/format.inc.php");
 ?>
@@ -63,6 +67,11 @@
 <form method="get" action="csv<?php echo $page_ext; ?>">
   <label>CSV for Excel: </label>
   <input type="hidden" name="group"  value="<?php echo $group; ?>">
+  <input type="submit" name="submit" value="Download"><br>
+</form>
+<form>
+  <label>CSV for Nokia:</label>
+  <input type="hidden" name="type"   value="xls-Nokia">
   <input type="submit" name="submit" value="Download"><br>
 </form>
  <h2>Calendar</h2> 

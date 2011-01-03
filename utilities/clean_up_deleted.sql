@@ -1,0 +1,1 @@
+DELETE FROM addressbook where deprecated > 0

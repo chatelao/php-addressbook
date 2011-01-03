@@ -1,20 +1,27 @@
-<META HTTP-EQUIV="content-type" CONTENT="text/html; charset=utf-8">
 <?php
-//
-// Read and execute all test files
-//
-if ($handle = opendir('.')) {
+  
+  //
+  // http://www.simpletest.org/en/start-testing.html
+  //
+  
+  
+  set_include_path(get_include_path() . PATH_SEPARATOR . "/home/users/n/next2u/www/"
+                                      . PATH_SEPARATOR . "/home/users/n/next2u/www/generic"
+                                      . PATH_SEPARATOR . "/home/users/n/next2u/www/generic/test");
+                                      
+  require_once("simpletest/autorun.php");
 
-  // This is the correct way to loop over the directory.
-  while (false !== ($file = readdir($handle))) {
-      if(is_file($file) && $file != "index.php") {
-      	echo "<h2>".$file."</h2>";
-      	$tests = array();
-      	include $file;
-      };
-  }
-
-  closedir($handle);
-
+class AllTests extends TestSuite {
+	
+    function AllTests() {
+        $this->TestSuite('All tests');
+        $this->addFile('test_export.vcard.php');
+        $this->addFile('test_phones.php');
+/*        
+        $this->addFile('test_log.php');
+        $this->addFile('test_import.vcard.php');
+        $this->addFile('test_get.mainpages.php');
+*/        
+    }
 }
 ?>

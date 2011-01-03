@@ -70,18 +70,27 @@
   if(preg_match( "/^dn: /", $file_lines[0] ))       { // Is a LDIF-File
   	$import_type = "LDIF";
 	  include_once ("import.ldif.php");
+	  
 	} elseif(preg_match( "/^BEGIN:VCARD/", $file_lines[0] )) { // Is a vCard-File
   	$import_type = "VCARD";
 		include_once ("import.vcard.php");
 		$ivc = new ImportVCards($file_lines);
 		$ab = $ivc->getResult();
+		
 	} elseif(  substr_count($file_lines[0], ';')  > 5    // Is a CSV-File
 	        || substr_count($file_lines[0], ',')  > 5 	        
 	        || substr_count($file_lines[0], "\t") > 5) {
   	$import_type = "CSV";
-		include_once ("include/import.csv.php");
+		include_once ("import.csv.php");
 		$icsv = new ImportCsv($file_lines);		
 		$ab = $icsv->getResult();
+		
+	} elseif(   strtolower(pathinfo($file_name, PATHINFO_EXTENSION)) == "xls") {
+		$import_type = "EXCEL";
+		include_once ("import.xls.php");
+		$ixls = new ImportXls($file_tmp_name);
+		$ab = $ixls->getResult();
+  			
 	} else {
   	$import_type = "UNKNOWN";
   	$ab = array();

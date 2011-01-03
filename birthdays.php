@@ -38,7 +38,7 @@ if($use_ics) {
 
   function Birthday2vCal($date, $age) {
 
-  	global $id, $firstname, $lastname, $email, $home, $mobile, $work, $byear;
+  	global $id, $firstname, $lastname, $email, $email2, $home, $mobile, $work, $byear;
 
     echo "BEGIN:VEVENT\r\n";
     echo "UID:".date('Y', $date).$id."@php-addressbook.sourceforge.net\r\n";
@@ -53,11 +53,12 @@ if($use_ics) {
     echo "SUMMARY:".ucfmsg("BIRTHDAY")." ".$firstname." ".$lastname
                    .$age."\r\n";
     echo "DESCRIPTION:Mail:\\n- ".$email
-                     ."\\n\\n".ucfmsg("TELEPHONE")
-                     .($home   != "" ? "\\n- ".$home   : "")
-                     .($mobile != "" ? "\\n- ".$mobile : "")
-                     .($work   != "" ? "\\n- ".$work   : "")
-                     ."\r\n";
+                         ."\\n- ".$email2
+                         ."\\n\\n".ucfmsg("TELEPHONE")
+                         .($home   != "" ? "\\n- ".$home   : "")
+                         .($mobile != "" ? "\\n- ".$mobile : "")
+                         .($work   != "" ? "\\n- ".$work   : "")
+                         ."\r\n";
     echo "END:VEVENT\r\n";
   }
 

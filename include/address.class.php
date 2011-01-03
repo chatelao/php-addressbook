@@ -1,7 +1,9 @@
 <?php
 
+include "phone.intl_prefixes.php";
+      
 function getIfSetFromAddr($addr_array, $key) {
-	
+
 	if(isset($addr_array[$key])) {
 	  return mysql_real_escape_string($addr_array[$key]);
 	} else {
@@ -41,7 +43,7 @@ function deleteAddresses($part_sql) {
 }
 
 function saveAddress($addr_array, $group_name = "") {
-	
+
 	  global $domain_id, $table, $table_grp_adr, $table_groups, $month_lookup, $base_from_where;
 
     if(isset($addr_array['id'])) {
@@ -56,23 +58,23 @@ function saveAddress($addr_array, $group_name = "") {
                         SELECT   $domain_id                                       domain_id
                                , ".$set_id."                                      id
                                , '".getIfSetFromAddr($addr_array, 'firstname')."' firstname
-                               , '".getIfSetFromAddr($addr_array, 'lastname')."'  lastname 
-                               , '".getIfSetFromAddr($addr_array, 'company')."'   company  
-                               , '".getIfSetFromAddr($addr_array, 'address')."'   address  
-                               , '".getIfSetFromAddr($addr_array, 'home')."'      home     
-                               , '".getIfSetFromAddr($addr_array, 'mobile')."'    mobile   
-                               , '".getIfSetFromAddr($addr_array, 'work')."'      work     
-                               , '".getIfSetFromAddr($addr_array, 'fax')."'       fax      
-                               , '".getIfSetFromAddr($addr_array, 'email')."'     email    
-                               , '".getIfSetFromAddr($addr_array, 'email2')."'    email2   
-                               , '".getIfSetFromAddr($addr_array, 'homepage')."'  homepage 
-                               , '".getIfSetFromAddr($addr_array, 'bday')."'      bday     
-                               , '".getIfSetFromAddr($addr_array, 'bmonth')."'    bmonth   
-                               , '".getIfSetFromAddr($addr_array, 'byear')."'     byear    
-                               , '".getIfSetFromAddr($addr_array, 'address2')."'  address2 
-                               , '".getIfSetFromAddr($addr_array, 'phone2')."'    phone2   
-                               , '".getIfSetFromAddr($addr_array, 'photo')."'     photo   
-                               , '".getIfSetFromAddr($addr_array, 'notes')."'     notes    
+                               , '".getIfSetFromAddr($addr_array, 'lastname')."'  lastname
+                               , '".getIfSetFromAddr($addr_array, 'company')."'   company
+                               , '".getIfSetFromAddr($addr_array, 'address')."'   address
+                               , '".getIfSetFromAddr($addr_array, 'home')."'      home
+                               , '".getIfSetFromAddr($addr_array, 'mobile')."'    mobile
+                               , '".getIfSetFromAddr($addr_array, 'work')."'      work
+                               , '".getIfSetFromAddr($addr_array, 'fax')."'       fax
+                               , '".getIfSetFromAddr($addr_array, 'email')."'     email
+                               , '".getIfSetFromAddr($addr_array, 'email2')."'    email2
+                               , '".getIfSetFromAddr($addr_array, 'homepage')."'  homepage
+                               , '".getIfSetFromAddr($addr_array, 'bday')."'      bday
+                               , '".getIfSetFromAddr($addr_array, 'bmonth')."'    bmonth
+                               , '".getIfSetFromAddr($addr_array, 'byear')."'     byear
+                               , '".getIfSetFromAddr($addr_array, 'address2')."'  address2
+                               , '".getIfSetFromAddr($addr_array, 'phone2')."'    phone2
+                               , '".getIfSetFromAddr($addr_array, 'photo')."'     photo
+                               , '".getIfSetFromAddr($addr_array, 'notes')."'     notes
                                , now(), now()
                             FROM ".$src_tbl;
     $result = mysql_query($sql);
@@ -97,13 +99,13 @@ function updateAddress($addr) {
 	$resultsnumber = mysql_numrows($result);
 
 	$homepage = str_replace('http://', '', $addr['homepage']);
-    
+
 	$is_valid = $resultsnumber > 0;
-    
+
 	if($is_valid)
 	{
 		if($keep_history) {
-	    $sql = "UPDATE $table 
+	    $sql = "UPDATE $table
 	               SET deprecated = now()
 		           WHERE deprecated is null
 		             AND id       = '".$addr['id']."';";
@@ -137,9 +139,9 @@ function updateAddress($addr) {
 
 	return $is_valid;
 }
-    
+
 class Address {
-	
+
     private $address;
 
     function __construct($data) {
@@ -149,97 +151,136 @@ class Address {
     public function getData() {
         return $this->address;
     }
-    
+
     public function getEMails() {
-    	
+
       $result = array();
-    	if($this->address["email"]  != "")  $result[] = $this->address["email"];    	
+    	if($this->address["email"]  != "")  $result[] = $this->address["email"];
     	if($this->address["email2"]  != "") $result[] = $this->address["email2"];
     	return $result;
     }
-    
+
     public function firstEMail() {
-    	  
+
       $emails = $this->getEMails();
       return (count($emails) > 0 ? $emails[0] : "");
     }
-    
-    //    
+
+    //
     // Phone order home->mobile->work->phone2
     //
     public function getPhones() {
-    	
+
       $phones = array();
     	if($this->address["home"]   != "") $phones[] = $this->address["home"];
     	if($this->address["mobile"] != "") $phones[] = $this->address["mobile"];
     	if($this->address["work"]   != "") $phones[] = $this->address["work"];
-    	if($this->address["phone2"] != "") $phones[] = $this->address["phone2"];    	  
+    	if($this->address["phone2"] != "") $phones[] = $this->address["phone2"];
    	  return $phones;
    	}
-    	
+
     public function hasPhone() {
-    	
+
       return (count($this->getPhones()) > 0);
    	}
 
     public function firstPhone() {
-    	
+
       $phones = $this->getPhones();
       return ($this->hasPhone() ? $phones[0] : "");
     }
 
+    //
+    // Create a unified format for comparision an display.
+    //
+    public function unifyPhone( $prefix = ""
+                              , $remove_prefix = false ) {
+                              	
+      global $intl_prefix_reg;
+                              	
+    	// Remove all optical delimiters
+		  $phone =  str_replace("'", "",
+                str_replace('/', "",
+                str_replace("-", "",
+                str_replace(" ", "",
+                str_replace("(", "",
+                str_replace(")", "",
+                str_replace(".", "", $this->firstPhone())))))));
+                
+                
+    	if($prefix != "" || $remove_prefix = true) {
+    		
+    	  // Replace 00xxx => +xx
+    	  $phone = preg_replace('/^00/', "+", $phone);
+        
+    	  // Replace xx (0) yy => xxyy
+        $phone = preg_replace("/^(".$intl_prefix_reg.")0/", '${1}', $phone);   		
+        
+    	  // Replace 0 with $prefix
+    	  if($prefix != "") {
+    	    $phone = preg_replace('/^0/', $prefix, $phone);
+    	  }
+        
+    	  // Replace +xx with 0
+    	  if($remove_prefix) {
+    	  	$phone = preg_replace("/^(".$intl_prefix_reg.")/", "0", $phone);
+        }
+      }
+
+    	return $phone;
+
+    }
+
+    //
+    // Show the phone number in the shortes readable format.
+    //
     public function shortPhone() {
-    	
-		  return str_replace("'", "", 
-                         str_replace('/', "", 
-                         str_replace("-", "", 
-                         str_replace(" ", "", 
-                         str_replace(".", "", $this->firstPhone())))));
+    	return $this->unifyPhone();
     }
 
 }
 
 class Addresses {
-	  	
+
     private $result;
 
     function __construct($searchstring, $alphabet = "") {
-    	
+
 	    global $base_from_where, $table;
 
      	$sql = "SELECT DISTINCT $table.* FROM $base_from_where";
-        
+
       if ($searchstring) {
-        
+
           $searchwords = explode(" ", $searchstring);
-        
+
           foreach($searchwords as $searchword) {
-          	$sql .= "AND (   lastname  LIKE '%$searchword%' 
-                          OR firstname LIKE '%$searchword%' 
-                          OR company   LIKE '%$searchword%' 
-                          OR address   LIKE '%$searchword%' 
+          	$sql .= "AND (   lastname  LIKE '%$searchword%'
+                          OR firstname LIKE '%$searchword%'
+                          OR company   LIKE '%$searchword%'
+                          OR address   LIKE '%$searchword%'
                           OR home      LIKE '%$searchword%'
                           OR mobile    LIKE '%$searchword%'
                           OR work      LIKE '%$searchword%'
                           OR email     LIKE '%$searchword%'
                           OR email2    LIKE '%$searchword%'
-                          OR address2  LIKE '%$searchword%' 
-                          OR notes     LIKE '%$searchword%' 
+                          OR address2  LIKE '%$searchword%'
+                          OR notes     LIKE '%$searchword%'
                           )";
           }
       }
       if($alphabet) {
-      	$sql .= "AND (   lastname  LIKE '$alphabet%'           	
-                      OR firstname LIKE '$alphabet%' 
+      	$sql .= "AND (   lastname  LIKE '$alphabet%'
+                      OR firstname LIKE '$alphabet%'
                       )";
       }
-     
+
       if(true) {
           $sql .= "ORDER BY lastname, firstname ASC";
       } else {
         	$sql .= "ORDER BY firstname, lastname ASC";
       }
-      
+
       //* Paging
       $page = 1;
       $pagesize = 2200;
@@ -249,15 +290,15 @@ class Addresses {
       //*/
       $this->result = mysql_query($sql);
     }
-    
+
     public function nextAddress() {
-    	
+
     	$myrow = mysql_fetch_array($this->result);
     	if($myrow) {
 		      return new Address($myrow);
 		  } else {
 		      return false;
-		  }		  
+		  }
     }
 
     public function getResults() {
