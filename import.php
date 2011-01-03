@@ -21,9 +21,7 @@ if(!$submit) {
 <form method="post" enctype="multipart/form-data">
   <label size=50 for="file">LDIF/VCF/CSV/XLS:</label>
   <input size=40 type="file" name="file" id="file" /><br/>
-  <label for="del_format">CSV- / XLS-Format:</label>
-  <input type="radio" name="del_format" value="phpaddr" checked>PHP-Addressbook
-  <input type="radio" name="del_format" value="outlook" >Outlook<br>
+  <input type="hidden" name="del_format" value="phpaddr">
   <input type="submit" name="submit" value="Submit" />
 </form>
 
