@@ -216,6 +216,7 @@ if(isset($iplist) && hasRoleFromIP($iplist)) {
     die;
   }
   $user = Login::getUser();
+  $username = $user->getName();
 
   // Get domain
   $domain_id= $user->getDomain();

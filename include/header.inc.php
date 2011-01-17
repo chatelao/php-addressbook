@@ -41,10 +41,13 @@
 <a href="preferences<?php echo $page_ext_qry; ?>from=<?php echo urlencode($_SERVER['REQUEST_URI']); ?>"><?php echo ucfmsg('PREFERENCES'); ?></a>
 -->
 <?php if(isset($userlist) && !(isset($iplist) && hasRoleFromIP($iplist))) { ?>
-<form name="logout" method="post">
+<form name="logout" method="post" class=header>
 <input type="hidden" name="logout" value="yes" />
+<?php if(isset($username)) echo "<b>(".$username.")</b> "; ?>
 <a href="#" onClick="document.logout.submit();"><?php echo ucfmsg("LOGOUT"); ?></a>
 </form>
+<?php } else { ?>
+<?php echo "<b>(".$_SERVER['REMOTE_ADDR'].")</b>"; ?>
 <?php } ?>
 			</div>
 			<div id="header">

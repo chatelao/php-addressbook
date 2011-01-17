@@ -17,6 +17,21 @@ $link = "index${page_ext_qry}alphabet";
 echo "<div id='a-z'><a href='$link=a'>A</a> | <a href='$link=b'>B</a> | <a href='$link=c'>C</a> | <a href='$link=d'>D</a> | <a href='$link=e'>E</a> | <a href='$link=f'>F</a> | <a href='$link=g'>G</a> | <a href='$link=h'>H</a> | <a href='$link=i'>I</a> | <a href='$link=j'>J</a> | <a href='$link=k'>K</a> | <a href='$link=l'>L</a> | <a href='$link=m'>M</a> | <a href='$link=n'>N</a> | <a href='$link=o'>O</a> | <a href='$link=p'>P</a> | <a href='$link=q'>Q</a> | <a href='$link=r'>R</a> | <a href='$link=s'>S</a> | <a href='$link=t'>T</a> | <a href='$link=u'>U</a> | <a href='$link=v'>V</a> | <a href='$link=w'>W</a> | <a href='$link=x'>X</a> | <a href='$link=y'>Y</a> | <a href='$link=z'>Z</a> | <a href='index$page_ext'>".ucfmsg('ALL')."</a></div>" ;
 } else { 
 ?>
+
+<?php if($_SERVER['SERVER_NAME'] == "php-addressbook.sourceforge.net") { ?>
+<table border=0>
+<tr>
+	<td>
+		Advertisment: Just try for 2$ per month:<br>
+		<img src="icons/cross.png">
+		  <a href="http://swiss-addressbook.com">www.swiss-addressbook.com</a>
+		<img src="icons/cross.png"><br>
+		  <b><i>"PHP-Addressbook as a Service"</i></b>
+		</td></tr>
+</table>
+<br>
+<?php } ?>
+
 	<form accept-charset="utf-8" method="get" name="searchform" onsubmit="return false">
 		<input type="text" value="<?php echo $searchstring; ?>" name="searchstring" title="<?php echo ucfmsg('SEARCH_FOR_ANY_TEXT'); ?>" size="45" tabindex="0" 
 <?php if($use_ajax) { ?>		

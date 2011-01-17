@@ -25,16 +25,16 @@ function deleteAddresses($part_sql) {
   	if($keep_history) {
   	  $sql = "UPDATE $table
   	          SET deprecated = now()
-  	          WHERE deprecated is null AND ".$part_sql;
+  	          WHERE deprecated is null AND ".$part_sql." AND domain_id = ".$domain_id;
   	  mysql_query($sql);
   	  $sql = "UPDATE $table_grp_adr
   	          SET deprecated = now()
-  	          WHERE deprecated is null AND ".$part_sql;
+  	          WHERE deprecated is null AND ".$part_sql." AND domain_id = ".$domain_id;
   	  mysql_query($sql);
   	} else {
-  	  $sql = "DELETE FROM $table_grp_adr WHERE ".$part_sql;
+  	  $sql = "DELETE FROM $table_grp_adr WHERE ".$part_sql." AND domain_id = ".$domain_id;
   	  mysql_query($sql);
-  	  $sql = "DELETE FROM $table         WHERE ".$part_sql;
+  	  $sql = "DELETE FROM $table         WHERE ".$part_sql." AND domain_id = ".$domain_id;
   	  mysql_query($sql);
     }
   }
@@ -88,6 +88,8 @@ function saveAddress($addr_array, $group_name = "") {
     	$sql = "INSERT INTO $table_grp_adr SELECT $domain_id domain_id, $id id, group_id, now(), now(), NULL FROM $table_groups WHERE group_name = '$group_name'";
     	$result = mysql_query($sql);
     }
+    
+    return $id;
 }
 
 function updateAddress($addr) {
