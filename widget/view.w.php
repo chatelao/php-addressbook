@@ -1,4 +1,4 @@
-<?
+<?php
 include ("include/guess.inc.php");
   	         
 function add($value, $prefix = "") {
