@@ -113,9 +113,14 @@ ORDER BY prio ASC;";
 		$display_year = $myrow["display_year"];
 
 	  // Current year
-    $year_offset = ($display_year == "" ? 0 : 1);
-    $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y') + $year_offset);
-    $age = ($byear != "" ? " (".(date('Y', $date)-$byear).")" : "");
+
+    $addr = new Address($myrow);
+    if($addr->getBirthday()->getAge() != -1) {
+      $age = "(".$addr->getBirthday()->getAge().")";
+    } else {
+    	$age = "";
+    }    
+    
   	if($use_ics) {
 
       // Last year

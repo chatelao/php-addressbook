@@ -1,6 +1,7 @@
 <?php
 
 include "phone.intl_prefixes.php";
+include "birthday.class.php";
       
 function getIfSetFromAddr($addr_array, $key) {
 
@@ -166,6 +167,10 @@ class Address {
 
       $emails = $this->getEMails();
       return (count($emails) > 0 ? $emails[0] : "");
+    }
+
+    public function getBirthday() {
+    	return new Birthday($this->address);
     }
 
     //

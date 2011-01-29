@@ -54,8 +54,11 @@ function addBirthday($bday, $bmonth, $byear, $prefix) {
              .($byear != ""  ? " ".$byear : "");
              
     // Add the age
-    $age = date("Y")-$byear;
-    $result .= ($age < 120 ? " (".$age.")" : ""); 
+    $birthday = new Birthday($bday, $bmonth, $byear);    
+    $result .= ( $birthday->getAge() != -1 
+               ? " (".$birthday->getAge().")" 
+               : "");
+    
 	  return add($result, $prefix);
   } else return "";     
 }
