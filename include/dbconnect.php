@@ -215,6 +215,7 @@ if(isset($iplist) && hasRoleFromIP($iplist)) {
     echo translateTags(file_get_contents("include/login.inc.html"));
     die;
   }
+
   $user = Login::getUser();
   $username = $user->getName();
 
