@@ -80,13 +80,18 @@ class ImportVCards  {
     	}
     	
     	//
-    	// Value Analyzer
+    	// Value Analyzer: Replace escape values
     	//
-      // Replace escape values
+      if(   isset($addr_line["ENCODING"]) 
+         && count($addr_line["ENCODING"]) == 1
+         && $addr_line["ENCODING"][0] == "QUOTED-PRINTABLE") {
+        $val = utf8_encode(quoted_printable_decode($val));
+      }
       $val = str_replace("=0D", "\r", $val);
       $val = str_replace("=0A", "\n", $val);
       $val = str_replace("\\r", "\r", $val);
-      $val = str_replace("\\n", "\n", $val);
+      $val = str_replace("\\n", "\n", $val);      
+      
     	$addr_line['VALUE'] = $val;
     	if(count(explode(';', $val)) > 1) {
     	  $addr_line['SEMI-COLON'] = explode(';', $val);  	  

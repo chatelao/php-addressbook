@@ -19,6 +19,7 @@ if(!isset($free_mailers))
                        , "freesurf.ch"
                        , "gmail.com"
                        , "gmx."
+                       , "hispeed.ch"
                        , "hotmail.com"
                        , "ieee.org"
                        , "intergga.ch"
