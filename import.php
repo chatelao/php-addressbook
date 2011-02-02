@@ -24,7 +24,8 @@ if(!$submit) {
   <input type="hidden" name="del_format" value="phpaddr">
   <input type="submit" name="submit" value="Submit" />
 </form>
-
+<br><br>
+<i>Sample (.csv, .xls): <a href="import_sample.csv">import_sample.csv</a></i>
 <?php
 } else if ($_FILES["file"]["error"] > 0 || $read_only) {
     echo "Error: " . $_FILES["file"]["error"] . "<br />";

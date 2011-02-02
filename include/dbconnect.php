@@ -343,6 +343,6 @@ include("group.class.php");
 
 $revision = '$Rev$';
 $revision = str_replace('$', '', str_replace(' ', '', str_replace('Rev: ', '', $revision)));
-$version = '6.2.8'.' - r'.$revision;
+$version = '6.2.9'.' - r'.$revision;
 
 ?>
