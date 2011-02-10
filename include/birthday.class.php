@@ -8,6 +8,8 @@ class Birthday {
     var $month;    // 1-12, -1 = undefined
     var $year;     // xxxx, -1 = undefined
 
+    var $prefix = "";
+
     var $name_of_months = array( 'January' , 'February' , 'March'
                                , 'April'   , 'May'      , 'June'
                                , 'July'    , 'August'   , 'September'
@@ -113,10 +115,10 @@ class Birthday {
     	}
     	
     	if(is_array($val0)) {
-    		$prefix = ($val1 != "" ? $val1 : "b");
-    		$this->setDay(   $val0[$prefix.'day']);
-    		$this->setMonth( $val0[$prefix.'month']);
-    		$this->setYear(  $val0[$prefix.'year']);
+    		$this->prefix = $val1;
+    		$this->setDay(   $val0[$this->prefix.'day']);
+    		$this->setMonth( $val0[$this->prefix.'month']);
+    		$this->setYear(  $val0[$this->prefix.'year']);
     		
     		return true;
     	}
@@ -143,6 +145,30 @@ class Birthday {
     	}
     }
 
+    function setPrefix($prefix) {
+    	 
+    	 $this->prefix = $prefix;
+    	 return $this;
+    }
+     
+    function addToAddr($addr) {
+ 
+    	 if($this->day   != -1) {
+    	   $addr[$this->prefix."day"] = $this->day;
+    	 }
+
+    	 if($this->month != -1) {
+    	   $addr[$this->prefix."month"] = $this->name_of_months[$this->month - 1];
+    	 }
+
+    	 if($this->year != -1) {
+         $addr[$this->prefix."year"]  = $this->year;
+       }
+       
+       return $addr;
+
+    }
+    
     function getAge() {
 
       $age =  date("Y", $this->today)  - $this->year;

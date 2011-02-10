@@ -31,7 +31,7 @@
   while($myrow = mysql_fetch_array($result)) {
 
     $coord['addr']   = str_replace("\n", ", ", $myrow['address']);
-    $coord['html']   = "<b>".$myrow['firstname']." ".$myrow['lastname']."</b><br>".str_replace("\r\n","",nl2br($myrow['address']));
+    $coord['html']   = "<b>".$myrow['firstname']." ".$myrow['lastname']."</b><br>".str_replace("\n","",str_replace("\r","",nl2br($myrow['address'])));
     $coord['id']     = $myrow['id'];
     $coord['long']   = $myrow['addr_long'];
     $coord['lati']   = $myrow['addr_lat'];
@@ -99,7 +99,7 @@
        		   $bubble_html  = $coord['html']."<br>";
        		   $bubble_html .= "<b><a href='view.php?id=".$coord['id']."'>...mehr</a></b>";
 
-          	  // Sample für den Thumbnail-Marker: http://www.schockwellenreiter.de/maps/tut03.html
+          	  // Sample fr den Thumbnail-Marker: http://www.schockwellenreiter.de/maps/tut03.html
           		?>
           	  var point<?php echo $i; ?>  = new GLatLng( <?php echo $coord['lati'].", ".$coord['long'] ?>);
   		        var marker<?php echo $i; ?> = new GMarker(point<?php echo $i; ?>);
