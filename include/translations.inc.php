@@ -13,37 +13,12 @@ $default_lang   = 'en';
 //
 
 // Register translated languages
-include("translation.ar.php");
-include("translation.bg.php");
-include("translation.ca.php");
-include("translation.cs.php");
-include("translation.da.php");
-include("translation.de.php");
-include("translation.el.php");
-include("translation.en.php");
-include("translation.es.php");
-include("translation.fa.php");
-include("translation.fi.php");
-include("translation.fr.php");
-include("translation.he.php");
-include("translation.hi.php");
-include("translation.hu.php");
-include("translation.it.php");
-include("translation.ja.php");
-include("translation.ko.php");
-include("translation.nl.php");
-include("translation.pl.php");
-include("translation.pt.php");
-include("translation.ru.php");
-// include("translation.rm.php");
-include("translation.sr.php");
-include("translation.sv.php");
-include("translation.sl.php");
-include("translation.th.php");
-include("translation.tr.php");
-include("translation.vi.php");
-include("translation.zh.php");
-
+$supported_langs = array("ar","bg","ca","cs","da"
+                        ,"de","el","en","es","fa"
+                        ,"fi","fr","he","hi","hu"
+                        ,"it","ja","ko","nl","pl"
+                        ,"pt","ru","on","sr","sv"
+                        ,"sl","th","tr","vi","zh");
 //
 // Handle language choice
 //
@@ -100,6 +75,10 @@ if( array_search($lang, $supported_langs) === FALSE ) {
  	$lang = $default_lang;
 }
 
+//
+// Include only the selected language
+//
+include("translation.".$lang.".php");
 
 //
 // Return the country flag for a language
@@ -146,14 +125,18 @@ function msg($value)
 // Uppercase the first character with UTF-8 if possible,
 // else try to use "ucfirst".
 //
+$has_mb_strtoupper = function_exists('mb_strtoupper');
+mb_internal_encoding("UTF-8");
+
 function ucfmsg($value) {
+	
+	global $has_mb_strtoupper;
 	
 	$msg = msg($value);
 
   // Multibyte "ucfirst" function
-  if( function_exists('mb_strtoupper') ) {
-    mb_internal_encoding("UTF-8");
-  	$msg = mb_strtoupper(mb_substr($msg, 0,1),"UTF-8").mb_substr($msg, 1);
+  if( $has_mb_strtoupper ) {
+  	$msg = mb_strtoupper(mb_substr($msg, 0,1)).mb_substr($msg, 1);
   	
   } else { // Backward compatiblity
   	$msg = ucfirst($msg);

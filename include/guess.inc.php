@@ -58,16 +58,20 @@ function guessOneHomepage($email) {
 
 function guessHomepage($email1, $email2) {
 
+	if($email != "") {
 	$homepage = guessOneHomepage($email1);
 	if(strlen($homepage) > 0)
 	{
 		return $homepage;
 	}
+  }
 
+	if($email2 != "") {
 	$homepage = guessOneHomepage($email2);
 	if(strlen($homepage) > 0)
 	{
 		return $homepage;
+	}
 	}
 
 	return "";

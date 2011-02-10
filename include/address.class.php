@@ -145,10 +145,15 @@ function updateAddress($addr) {
 
 class Address {
 
-    private $address;
+    private $address; // mother of all data
+    
+    private $phones;
+    private $emails;
 
     function __construct($data) {
     	$this->address = $data;
+    	$this->phones = $this->getPhones();
+    	$this->emails = $this->getEMails();
     }
 
     public function getData() {
@@ -164,9 +169,7 @@ class Address {
     }
 
     public function firstEMail() {
-
-      $emails = $this->getEMails();
-      return (count($emails) > 0 ? $emails[0] : "");
+      return (!empty($this->emails) ? $this->emails[0] : "");
     }
 
     public function getBirthday() {
@@ -188,13 +191,11 @@ class Address {
 
     public function hasPhone() {
 
-      return (count($this->getPhones()) > 0);
+      return !empty($this->phones);
    	}
 
     public function firstPhone() {
-
-      $phones = $this->getPhones();
-      return ($this->hasPhone() ? $phones[0] : "");
+      return (!empty($this->phones) ? $this->phones[0] : "");
     }
 
     //
@@ -213,7 +214,6 @@ class Address {
                 str_replace("(", "",
                 str_replace(")", "",
                 str_replace(".", "", $this->firstPhone())))))));
-                
                 
     	if($prefix != "" || $remove_prefix = true) {
     		
