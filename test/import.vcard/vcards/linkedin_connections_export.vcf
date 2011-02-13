@@ -1,0 +1,17 @@
+BEGIN:VCARD
+VERSION:2.1
+N:Person;Sample;;;
+FN:Sample Person
+TITLE:Global Account Manager
+ORG:The Company
+EMAIL;INTERNET:user@homehost.org
+END:VCARD
+BEGIN:VCARD
+VERSION:2.1
+N:User;Other
+FN:Other Person
+TITLE:IT-Outsourcing
+ORG:Any Company
+EMAIL;INTERNET:other.person@companyhost.com
+END:VCARD
+

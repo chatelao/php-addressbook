@@ -1,0 +1,44 @@
+BEGIN:VCARD
+VERSION:2.1
+N;CHARSET=ISO-8859-1:Person;Sample;;;
+FN;CHARSET=ISO-8859-1:Sample Person
+SORT-STRING:sample
+CLASS:PRIVATE
+EMAIL;TYPE=internet;type=WORK;type=pref:sample.person@companyhost.com
+EMAIL;TYPE=internet;type=HOME:user@homehost.org
+BDAY:2001-01-01
+ADR;TYPE=work;CHARSET=ISO-8859-1:;;1234 Any Street;New York;NY;12321;USA
+ADR;TYPE=home;CHARSET=ISO-8859-1:;;5432 This Street\, NW;Smalltown;NC;27537;USA
+TEL;TYPE=work:456-789-0123
+TEL;TYPE=home:345-678-9012
+TEL;TYPE=cell,work:234-567-8901
+ORG;CHARSET=ISO-8859-1:The Company
+TITLE;CHARSET=ISO-8859-1:Global Account Manager
+CATEGORIES;CHARSET=ISO-8859-1:A Category
+PHOTO;VALUE=URL;TYPE=JPEG:http://www.photo.com/mynicepicture.jpg
+NOTE;CHARSET=ISO-8859-1:15.05.2010, 11:29 - XING - http://www.xing.com/profile/xxx
+PRODID:-//XING//www.xing.com//version 2.0//DE
+UID:XING-UID-11
+END:VCARD
+
+BEGIN:VCARD
+VERSION:2.1
+N;CHARSET=ISO-8859-1:User;Other;;
+FN;CHARSET=ISO-8859-1:Other Person
+SORT-STRING:person
+CLASS:PRIVATE
+EMAIL;TYPE=internet;type=WORK;type=pref:other.person@companyhost.com
+BDAY:1964-11-23
+ADR;TYPE=work;CHARSET=ISO-8859-1:;;PO Box 0;Oldtown;CA;93620;USA
+ADR;TYPE=home;CHARSET=ISO-8859-1:;;;;;;
+TEL;TYPE=work:123-456-789
+ORG;CHARSET=ISO-8859-1:Any Company
+URL;TYPE=work:http://www.rtc.ch
+TITLE;CHARSET=ISO-8859-1:IT-Outsourcing
+CATEGORIES;CHARSET=ISO-8859-1:Another Categorey
+PHOTO;VALUE=URL;TYPE=JPEG:http://www.xing.com/img/users/3/d/2/9558919cc.18918,1.jpg
+NOTE;CHARSET=ISO-8859-1:15.05.2010, 11:29 - XING - http://www.xing.com/profile/yyy
+PRODID:-//XING//www.xing.com//version 2.0//DE
+UID:XING-UID-12
+END:VCARD
+

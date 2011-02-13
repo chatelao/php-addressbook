@@ -3,7 +3,7 @@ VERSION:3.0
 N:Person;Sample;;;
 FN:Sample Person
 ORG:The Company;
-EMAIL;type=INTERNET;type=WORK;type=pref:user@companyhost.com
+EMAIL;type=INTERNET;type=WORK;type=pref:sample.person@companyhost.com
 EMAIL;type=INTERNET;type=HOME:user@homehost.org
 item1.EMAIL;type=INTERNET:user@otherhost.net
 item1.X-ABLabel:_$!<Other>!$_
