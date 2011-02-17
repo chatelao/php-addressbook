@@ -173,7 +173,7 @@ class Address {
     }
 
     public function getBirthday() {
-    	return new Birthday($this->address);
+    	return new Birthday($this->address, "b");
     }
 
     //
