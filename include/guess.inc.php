@@ -58,7 +58,7 @@ function guessOneHomepage($email) {
 
 function guessHomepage($email1, $email2) {
 
-	if($email != "") {
+	if($email1 != "") {
 	$homepage = guessOneHomepage($email1);
 	if(strlen($homepage) > 0)
 	{

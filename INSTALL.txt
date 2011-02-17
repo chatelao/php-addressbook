@@ -1,14 +1,3 @@
-~~~~~~~~~~~~~~~~~~~~ Advertisment ~~~~~~~~~~~~~~~~~~~~~~~
-
-Without Installation: "Adressbook as a Service"
-===============================================
-* http://swiss-addressbook.com
-* Free trial for 30 days.
-* Additional features available (e.g.: Outlook import).
-
-~~~~~~~~~~~~~~~~~~~~ Advertisment ~~~~~~~~~~~~~~~~~~~~~~~
-
-
 Basic Installation
 ==================
 0. Be sure your server has PHP >=5 installed (4.x is not supported any more).
@@ -20,6 +9,18 @@ Basic Installation
 3. Change database connection in "config/config.php".
 
 4. Change the password of "admin" in "config/config.php".
+
+
+   ~~~~~~~~~~~~~~~~~~~~ Advertisment ~~~~~~~~~~~~~~~~~~~~~~~
+
+   Without Installation: "Adressbook-as-a-Service"
+   ===============================================
+   * http://swiss-addressbook.com
+   * Free trial for 30 days, 2$ per month after trial.
+   * Additional features available (e.g.: Outlook import).
+
+   ~~~~~~~~~~~~~~~~~~~~ Advertisment ~~~~~~~~~~~~~~~~~~~~~~~
+
 
 Setup the Users (optional)
 ==========================
@@ -33,12 +34,15 @@ Activate change history (optional)
 ==================================
 7. Set "$keep_history = true;" in the "config/config.php" file.
 
+Don't show guessed homepages (optional)
+==================================
+8. Set "homepage_guess = false;" in the "config/config.php" file.
+
 More (optional)
 ==========================
+9. Feel free to change all other parameters of "config/config.php".
 
-8. Feel free to change all other parameters of "config/config.php".
-
-9. Just post your question here: http://sourceforge.net/projects/php-addressbook/
+10. Just post your question here: https://sourceforge.net/projects/php-addressbook/support
 
 Enjoy it!
 

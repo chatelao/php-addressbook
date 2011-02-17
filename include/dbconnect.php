@@ -129,6 +129,9 @@ if(!isset($table_prefix))  $table_prefix  = "";
 // Show link to "group-edit" menu
 if(!isset($public_group_edit)) $public_group_edit = true;
 
+// Define default homepage guessing
+if(!isset($homepage_guess)) $homepage_guess  = true;
+
 // Define default map guessing
 if(!isset($map_guess)) $map_guess  = true;
 
@@ -343,6 +346,6 @@ include("group.class.php");
 
 $revision = '$Rev$';
 $revision = str_replace('$', '', str_replace(' ', '', str_replace('Rev: ', '', $revision)));
-$version = '6.2.9'.' - r'.$revision;
+$version = '6.2.10'.' - r'.$revision;
 
 ?>

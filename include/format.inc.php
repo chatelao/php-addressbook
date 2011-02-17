@@ -41,8 +41,8 @@ switch($skin_color) {
     body {background-image:url('./skins/header-<?php echo $skin_color; ?>.jpg');background-repeat:repeat-x;background-position:top left;}
     table#maintable th {text-align:center;border:1px solid #ccc;font-size:12px;background:<?php echo $skin_mt_color; ?>;color:#fff;}
     table#birthdays th {color:#fff;background:<?php echo $skin_mt_color; ?>;margin:25px;border:1px solid #ccc;}
+		<?php include "style.css"; ?>
 	</style>
-	<link rel="stylesheet" type="text/css" media="all" href="style.css" />
 	<!--[if !IE]>-->
 	<link media="only screen and (max-device-width: 480px)" rel="stylesheet" type="text/css" href="iphone.css"/>
 	<!--<![endif]-->

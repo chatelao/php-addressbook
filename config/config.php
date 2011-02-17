@@ -52,7 +52,10 @@
   */
 
   //
-  // Select displayed columns in "index.php"
+  // Select the columns displayed in "index.php":
+  //  1. Uncomment the "$disp_cols" variable below.
+  //  2. Remove unwantend cols from the array.
+  //
   // - EARLY BETA!! (Search may not work well)
   //
   /*
@@ -62,6 +65,7 @@
            , "last_first"
            , "lastname"
            , "firstname"
+           , "company"
            , "address"
            , "email"
            , "telephone"
@@ -71,10 +75,13 @@
            , "fax"
            , "edit"
            , "details" );
-  */  
+  //*/  
 
   // View e-mail addresses as images
   $mail_as_image = false;
+
+  // Guess homepage from e-mail, excluding the freemailers defined below
+  $homepage_guess  = true;
 
   // List of excluded sites in "Homepage guessing"
   $free_mailers = array( "a3.epfl.ch"

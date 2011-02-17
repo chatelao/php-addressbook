@@ -204,7 +204,7 @@ class Address {
     public function unifyPhone( $prefix = ""
                               , $remove_prefix = false ) {
                               	
-      global $intl_prefix_reg;
+      global $intl_prefix_reg, $default_provider;
                               	
     	// Remove all optical delimiters
 		  $phone =  str_replace("'", "",
@@ -220,17 +220,22 @@ class Address {
     	  // Replace 00xxx => +xx
     	  $phone = preg_replace('/^00/', "+", $phone);
         
-    	  // Replace xx (0) yy => xxyy
-        $phone = preg_replace("/^(".$intl_prefix_reg.")0/", '${1}', $phone);   		
-        
-    	  // Replace 0 with $prefix
+    	  // Replace 0 with $prefix (00 is already "+")
     	  if($prefix != "") {
     	    $phone = preg_replace('/^0/', $prefix, $phone);
     	  }
         
+    	  // Replace xx (0) yy => xxyy
+        $phone = preg_replace("/^(".$intl_prefix_reg.")0/", '${1}', $phone);   		
+                
     	  // Replace +xx with 0
     	  if($remove_prefix) {
-    	  	$phone = preg_replace("/^(".$intl_prefix_reg.")/", "0", $phone);
+    	  	if(isset($default_provider)) {
+    	  		$remove_prefixes = str_replace("+", "\+",$default_provider);
+    	  	} else {
+    	  		$remove_prefixes = $intl_prefix_reg;
+    	  	}
+    	  	$phone = preg_replace("/^(".$remove_prefixes.")/", "0", $phone);
         }
       }
 

@@ -9,10 +9,12 @@ $mailers['hotmail']   = "http://www.hotmail.msn.com/secure/start?action=compose&
 
 function getMailer() {
 	 
-	global $mailers;
+	global $mailers, $webmailer;
 	
 	if(isset($mailers[getPref('mailer')])) {
 		return $mailers[getPref('mailer')];
+	} elseif(isset($webmailer) && isset($mailers[$webmailer])) {
+		return $mailers[$webmailer];
 	} else {
 		return "mailto:";
 	}

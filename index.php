@@ -117,7 +117,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 
 function addRow($row) {
 
-    global $addr, $page_ext_qry, $url_images, $read_only, $map_guess, $full_phone;
+    global $addr, $page_ext_qry, $url_images, $read_only, $map_guess, $full_phone, $homepage_guess;
 	
     $myrow = $addr->getData();
     
@@ -192,7 +192,7 @@ function addRow($row) {
         	              ? $homepage
         	              : "http://".$homepage);
             echo "<td class='center'><a href='$homepage'><img src='${url_images}icons/house.png' title='$homepage' alt='$homepage'/></a></td>";
-        } elseif(($homepage = guessHomepage($email, $email2)) != "") {
+        } elseif($homepage_guess && ($homepage = guessHomepage($email, $email2)) != "") {
             echo "<td class='center'><a href='http://$homepage'><img src='${url_images}icons/house.png' title='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)' alt='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)'/></a></td>";
         } else {
         	echo "<td/>";
