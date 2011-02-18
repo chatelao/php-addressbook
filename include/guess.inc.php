@@ -17,10 +17,12 @@ if(!isset($free_mailers))
                        , "email.ch"
                        , "eml.cc"
                        , "freesurf.ch"
+                       , "freenet.de"
                        , "gmail.com"
+                       , "googlemail.com"
                        , "gmx."
                        , "hispeed.ch"
-                       , "hotmail.com"
+                       , "hotmail."
                        , "ieee.org"
                        , "intergga.ch"
                        , "msn."
@@ -32,7 +34,6 @@ if(!isset($free_mailers))
                        , "web.de"
                        , "yahoo."
                       );
-}
 
 function guessOneHomepage($email) {
 

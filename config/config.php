@@ -90,21 +90,26 @@
                        , "bigfoot.com"
                        , "bluewin.ch"
                        , "bluemail.ch"
+                       , "email.ch"
+                       , "eml.cc"
                        , "freesurf.ch"
+                       , "freenet.de"
                        , "gmail.com"
+                       , "googlemail.com"
                        , "gmx."
-                       , "hotmail.com"
+                       , "hispeed.ch"
+                       , "hotmail."
                        , "ieee.org"
                        , "intergga.ch"
                        , "msn."
                        , "pobox.com"
                        , "swissonline.ch"
                        , "spectraweb.ch"
+                       , "tiscalinet.ch"
                        , "t-online.de"
                        , "web.de"
                        , "yahoo."
                       );
-
   // Setup for "Country guessing" (Beta: Switzerland, US, Belgium)
   $map_guess  = true;
 
