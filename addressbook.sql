@@ -10,7 +10,7 @@
 --
 
 CREATE TABLE addressbook (
-  domain_id int(9) unsigned NOT NULL default '0',
+  domain_id int(9) unsigned NOT NULL default 0,
   id int(9) unsigned NOT NULL auto_increment,
   firstname varchar(255) NOT NULL,
   lastname varchar(255) NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE addressbook (
 ) DEFAULT CHARSET=utf8;
 
 CREATE TABLE group_list (
-  `domain_id` int(9) unsigned NOT NULL default '0',
+  `domain_id` int(9) unsigned NOT NULL default 0,
   `group_id` int(9) unsigned NOT NULL auto_increment,
   `group_parent_id` int(9) default NULL,
   `created` datetime default NULL,
@@ -65,9 +65,9 @@ CREATE TABLE group_list (
 ) DEFAULT CHARSET=utf8;
 
 CREATE TABLE address_in_groups (
-  `domain_id` int(9) unsigned NOT NULL default '0',
-  `id` int(9) unsigned NOT NULL default '0',
-  `group_id` int(9) unsigned NOT NULL default '0',
+  `domain_id` int(9) unsigned NOT NULL default 0,
+  `id` int(9) unsigned NOT NULL default 0,
+  `group_id` int(9) unsigned NOT NULL default 0,
   `created` datetime default NULL,
   `modified` datetime default NULL,
   `deprecated` datetime default NULL,
@@ -77,7 +77,7 @@ CREATE TABLE address_in_groups (
 CREATE TABLE month_lookup (
   `bmonth` varchar(50) NOT NULL default '',
   `bmonth_short` char(3) NOT NULL default '',
-  `bmonth_num` int(2) unsigned NOT NULL default '0',
+  `bmonth_num` int(2) unsigned NOT NULL default 0,
   PRIMARY KEY (bmonth_num)
 ) DEFAULT CHARSET=utf8;
 
