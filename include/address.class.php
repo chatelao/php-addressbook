@@ -5,10 +5,11 @@ include "birthday.class.php";
       
 function getIfSetFromAddr($addr_array, $key) {
 
-	if(isset($addr_array[$key])) {
-	  return mysql_real_escape_string($addr_array[$key]);
+	if(isset($addr_array[$key])) {	  
+	  // $result = mysql_real_escape_string($addr_array[$key]);
+	  $result = $addr_array[$key];
 	} else {
-		return "";
+		$result = "";
 	}
 }
 
