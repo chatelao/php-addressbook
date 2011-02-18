@@ -75,20 +75,6 @@ foreach($get_vars as $get_var) {
    }
 }
 
-if(isset($part)) {
-  $participants = array_filter(explode(';', $part));
-	$part_ids = array();
-	
-  foreach($participants as $one_part) {
-  	if(ctype_digit($one_part)) {
-  	  $part_ids[] = $one_part;
-    }
-  }
-  $part_sql = "(id = '".implode("' OR id = '",  $part_ids)."')";
-} else if(isset($id)) {
-  $part_sql = "id = '$id'";
-}
-
 //
 // Setup the default columns displayed
 //
@@ -341,11 +327,25 @@ $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth =
 $groups_from_where = "$table_groups WHERE domain_id = '$domain_id' ";
 $group_from_where  = $groups_from_where."group_name = '$group_name' ";
 
+if(isset($part)) {
+  $participants = array_filter(explode(';', $part));
+	$part_ids = array();
+	
+  foreach($participants as $one_part) {
+  	if(ctype_digit($one_part)) {
+  	  $part_ids[] = $one_part;
+    }
+  }
+  $part_sql = "(".$table.".id = '".implode("' OR id = '",  $part_ids)."')";
+} else if(isset($id)) {
+  $part_sql = $table."id = '$id'";
+}
+
 include("address.class.php");
 include("group.class.php");
 
 $revision = '$Rev$';
 $revision = str_replace('$', '', str_replace(' ', '', str_replace('Rev: ', '', $revision)));
-$version = '6.2.10'.' - r'.$revision;
+$version = '6.2.11'.' - r'.$revision;
 
 ?>
