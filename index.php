@@ -182,7 +182,7 @@ function addRow($row) {
         
         if($map_guess) {
           if($myrow["address"] != "")
-          echo "<td class='center'><a href='http://maps.google.com/maps?q=".urlencode(trim(str_replace("\r\n", ", ", $myrow["address"])).", $country")."&amp;t=h' target='_blank'>
+          echo "<td class='center'><a href='http://maps.google.com/maps?q=".urlencode(trim(str_replace("\r\n", ", ", trim($myrow["address"]))))."&amp;t=h' target='_blank'>
                                 <img src='${url_images}icons/car.png' title='Google Maps' alt='vCard'/></a></td>";
           else echo "<td/>";
         }

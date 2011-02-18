@@ -11,6 +11,7 @@ function getIfSetFromAddr($addr_array, $key) {
 	} else {
 		$result = "";
 	}
+	return $result;
 }
 
 function deleteAddresses($part_sql) {
