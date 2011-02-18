@@ -37,6 +37,7 @@ $messages['EXPORT_CSV']['en'] = 'export csv'; // export csv
 $messages['EXPORT']['en'] = 'export'; // export
 $messages['IMPORT']['en'] = 'import'; // import
 $messages['MAP']['en'] = 'map'; // map
+$messages['MORE']['en'] = 'more'; // more
 $messages['GROUP']['en'] = 'group'; // group
 $messages['GROUPS']['en'] = 'groups'; // groups
 $messages['MANAGE_GROUPS']['en'] = 'groups'; // groups

@@ -78,6 +78,23 @@
   	 $coords = array();
   	 $coords[] = $single_coord;
   }
+  
+  //
+  // Concat multiple entries on one place:
+  // * Sort places
+  // * Concat content
+  //
+  $longs = array();
+  $latis = array();
+  foreach ($coords as $key => $coord) {
+    $longs[$key] = $coord['long'];
+    $latis[$key] = $coord['lati'];
+    
+    $coords[$key]['bubble']  = $coord['html']."<br>";
+    $coords[$key]['bubble'] .= "<b><a href='view.php?id=".$coord['id']."'>...".msg('MORE')."</a></b>";   
+  }
+  array_multisort($longs, SORT_ASC, $latis, SORT_ASC, $coords);
+  // print_r($coords);
 
   ?>
     <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=<? echo $google_maps_key; ?>" type="text/javascript"></script>
@@ -94,22 +111,33 @@
           // PHP-Thumbnails:
           // - http://icant.co.uk/articles/phpthumbnails/
           $i = 0;
-          foreach($coords as $coord) {
-          	if($coord['status'] == 200) {
-       		   $bubble_html  = $coord['html']."<br>";
-       		   $bubble_html .= "<b><a href='view.php?id=".$coord['id']."'>...mehr</a></b>";
+//           foreach($coords as $coord) {
+          for($i = 0; $i < count($coords); $i++) {
+          	
+          	$coord = $coords[$i];
+          	if($coord['status'] != 200) {
+          		continue;
+          	}
+          	
+          	if(   isset($coords[$i+1]) 
+               && $coords[$i]['long'] == $coords[$i+1]['long']
+          	   && $coords[$i]['lati'] == $coords[$i+1]['lati']) {
+          	         	
+          	  // Add html to next bubble
+          	  $coords[$i+1]['bubble'] .= "<br><br>".$coords[$i]['bubble'];
+          	  continue;
+          	}
+          	
+          	// Sample fr den Thumbnail-Marker: http://www.schockwellenreiter.de/maps/tut03.html
+          	?>
+          	var point<?php echo $i; ?>  = new GLatLng( <?php echo $coord['lati'].", ".$coord['long'] ?>);
+  		      var marker<?php echo $i; ?> = new GMarker(point<?php echo $i; ?>);
+            GEvent.addListener( marker<?php echo $i; ?>, "mouseover"
+                              , function() { marker<?php echo $i; ?>.openInfoWindowHtml(<?php echo '"'.$coord['bubble'].'"'?>);});
+  		      map.addOverlay(marker<?php echo $i; ?>);
+  		      bounds.extend(point<?php echo $i; ?>);
 
-          	  // Sample fr den Thumbnail-Marker: http://www.schockwellenreiter.de/maps/tut03.html
-          		?>
-          	  var point<?php echo $i; ?>  = new GLatLng( <?php echo $coord['lati'].", ".$coord['long'] ?>);
-  		        var marker<?php echo $i; ?> = new GMarker(point<?php echo $i; ?>);
-              GEvent.addListener( marker<?php echo $i; ?>, "mouseover"
-                                , function() { marker<?php echo $i; ?>.openInfoWindowHtml(<?php echo '"'.$bubble_html.'"'?>);});
-  		        map.addOverlay(marker<?php echo $i; ?>);
-  		        bounds.extend(point<?php echo $i; ?>);
   		     <?php
-  		        $i++;
-  		      }
   		    }
   		    //
           // Auto zoom around the markers
