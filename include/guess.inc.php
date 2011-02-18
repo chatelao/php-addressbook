@@ -34,6 +34,7 @@ if(!isset($free_mailers))
                        , "web.de"
                        , "yahoo."
                       );
+}
 
 function guessOneHomepage($email) {
 
