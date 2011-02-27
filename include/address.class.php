@@ -22,7 +22,7 @@ function deleteAddresses($part_sql) {
   $result = mysql_query($sql);
   $resultsnumber = mysql_numrows($result);
 
-  $is_valid = $resultsnumber > 0;
+  $is_valid = $resultsnumber > 0; 
 
   if($is_valid) {
   	if($keep_history) {
