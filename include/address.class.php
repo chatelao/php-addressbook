@@ -145,6 +145,8 @@ function updateAddress($addr) {
 	return $is_valid;
 }
 
+$phone_delims = array("'", '/', "-", " ", "(", ")", ".");
+
 class Address {
 
     private $address; // mother of all data
@@ -206,16 +208,13 @@ class Address {
     public function unifyPhone( $prefix = ""
                               , $remove_prefix = false ) {
                               	
-      global $intl_prefix_reg, $default_provider;
+      global $intl_prefix_reg, $default_provider, $phone_delims;
                               	
     	// Remove all optical delimiters
-		  $phone =  str_replace("'", "",
-                str_replace('/', "",
-                str_replace("-", "",
-                str_replace(" ", "",
-                str_replace("(", "",
-                str_replace(")", "",
-                str_replace(".", "", $this->firstPhone())))))));
+    	$phone = $this->firstPhone();
+    	foreach($phone_delims as $phone_delim) {
+    		$phone = str_replace($phone_delim, "", $phone);
+    	}
                 
     	if($prefix != "" || $remove_prefix = true) {
     		
@@ -258,6 +257,19 @@ class Addresses {
 
     private $result;
 
+    function likePhone($row, $searchword) {
+    	
+    	global $phone_delims;
+    	
+    	$replace = $row;
+    	$like    = "'$searchword'";
+     	foreach($phone_delims as $phone_delim) {
+    	  $replace = "replace(".$replace.", '".mysql_real_escape_string($phone_delim)."','')"; 
+    	  $like    = "replace(".$like.   ", '".mysql_real_escape_string($phone_delim)."','')"; 
+     	}     	
+     	return $replace." LIKE CONCAT('%',".$like.",'%')";    	
+    }
+
     function __construct($searchstring, $alphabet = "") {
 
 	    global $base_from_where, $table;
@@ -273,9 +285,10 @@ class Addresses {
                           OR firstname LIKE '%$searchword%'
                           OR company   LIKE '%$searchword%'
                           OR address   LIKE '%$searchword%'
-                          OR home      LIKE '%$searchword%'
-                          OR mobile    LIKE '%$searchword%'
-                          OR work      LIKE '%$searchword%'
+                          OR ".$this->likePhone('home',   $searchword)."
+                          OR ".$this->likePhone('work',   $searchword)."
+                          OR ".$this->likePhone('mobile', $searchword)."
+                          OR ".$this->likePhone('fax',    $searchword)."
                           OR email     LIKE '%$searchword%'
                           OR email2    LIKE '%$searchword%'
                           OR address2  LIKE '%$searchword%'

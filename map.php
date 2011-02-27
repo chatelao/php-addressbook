@@ -30,7 +30,7 @@
   //  foreach($addresses as $address) {
   while($myrow = mysql_fetch_array($result)) {
 
-    $coord['addr']   = str_replace("\n", ", ", $myrow['address']);
+    $coord['addr']   = trim(str_replace("\n", ", ", trim($myrow['address'])),",");
     $coord['html']   = "<b>".$myrow['firstname']." ".$myrow['lastname']."</b><br>".str_replace("\n","",str_replace("\r","",nl2br($myrow['address'])));
     $coord['id']     = $myrow['id'];
     $coord['long']   = $myrow['addr_long'];

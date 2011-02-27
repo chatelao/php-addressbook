@@ -15,6 +15,7 @@ CREATE TABLE addressbook (
   firstname varchar(255) NOT NULL,
   lastname varchar(255) NOT NULL,
   company varchar(255) NOT NULL,
+  title varchar(255) NOT NULL,
   address text NOT NULL,
   addr_long text,
   addr_lat text,
