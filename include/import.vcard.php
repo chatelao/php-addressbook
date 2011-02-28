@@ -224,8 +224,8 @@ foreach($addresses as $address) {
         // Mapping:
         // * Paste value in correct field.
         	        if(self::checkType($entry, 'HOME')) { $dest_addr['home']   = $entry['VALUE'];
-        	  } elseif(self::checkType($entry, 'WORK')) { $dest_addr['work']   = $entry['VALUE'];
         	  } elseif(self::checkType($entry, 'FAX'))  { $dest_addr['fax']    = $entry['VALUE'];  	  	
+        	  } elseif(self::checkType($entry, 'WORK')) { $dest_addr['work']   = $entry['VALUE'];
         	  } elseif(self::checkType($entry, 'CELL')) { $dest_addr['mobile'] = $entry['VALUE'];  	  	
     	  } else {                        	    $dest_addr['phone2'] = $entry['VALUE'];  	  	
     	  }

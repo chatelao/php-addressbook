@@ -338,7 +338,7 @@ if(isset($part)) {
   }
   $part_sql = "(".$table.".id = '".implode("' OR id = '",  $part_ids)."')";
 } else if(isset($id)) {
-  $part_sql = $table."id = '$id'";
+  $part_sql = $table.".id = '$id'";
 }
 
 include("address.class.php");
@@ -346,6 +346,6 @@ include("group.class.php");
 
 $revision = '$Rev$';
 $revision = str_replace('$', '', str_replace(' ', '', str_replace('Rev: ', '', $revision)));
-$version = '6.2.11'.' - r'.$revision;
+$version = '6.2.12'.' - r'.$revision;
 
 ?>
