@@ -136,9 +136,6 @@ function initDoodle($key, $secret) {
   
 }
 
-  $doodle['key']    = '9xah1eip56s4xl3w94w3d7orj8kc57dn';
-  $doodle['secret'] = 'hdhi4monswz3hxbwcyrul1ki8h2k72o2';
-
   $in_params = initDoodle($doodle['key'] , $doodle['secret']);
 
   //
