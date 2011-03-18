@@ -47,7 +47,7 @@
 		  $first_fetch = false;
 		  $csv = file_get_contents($request_url) or die("url not loading");
 
-			$csvSplit = split(",", $csv);
+			$csvSplit = explode(",", $csv);
 
       // http://code.google.com/intl/de-DE/apis/maps/documentation/javascript/v2/reference.html#GGeoStatusCode
 			$coord['status'] = $csvSplit[0];

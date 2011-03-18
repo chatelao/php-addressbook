@@ -11,7 +11,7 @@ Basic Installation
 4. Change the password of "admin" in "config/config.php".
 
 
-   ~~~~~~~~~~~~~~~~~~~~ Advertisment ~~~~~~~~~~~~~~~~~~~~~~~
+   ~~~~~~~~~~~~~~~~~~~~ Start Advertisment ~~~~~~~~~~~~~~~~~
 
    Without Installation: "Adressbook-as-a-Service"
    ===============================================
@@ -19,7 +19,7 @@ Basic Installation
    * Free trial for 30 days, 2$ per month after trial.
    * Additional features available (e.g.: Outlook import).
 
-   ~~~~~~~~~~~~~~~~~~~~ Advertisment ~~~~~~~~~~~~~~~~~~~~~~~
+   ~~~~~~~~~~~~~~~~~~~~ End Advertisment ~~~~~~~~~~~~~~~~~~~
 
 
 Setup the Users (optional)
@@ -45,8 +45,6 @@ More (optional)
 10. Just post your question here: https://sourceforge.net/projects/php-addressbook/support
 
 Enjoy it!
-
-
 
 
                         -- end --

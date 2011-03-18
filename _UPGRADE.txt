@@ -1,0 +1,13 @@
+Basic Upgrade
+==============
+0. Backup at least the "config.php" or all files.
+
+1. Unzip the files and place them on your webserver.
+
+2. Restore the old "config.php".
+
+Advanced Upgrade
+================
+3. Apply the database patches fromm "./upgrades".
+
+4. Have a look at "_INSTALL.txt" for new features.
