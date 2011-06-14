@@ -126,7 +126,6 @@ function msg($value)
 // else try to use "ucfirst".
 //
 $has_mb_strtoupper = function_exists('mb_strtoupper');
-mb_internal_encoding("UTF-8");
 
 function ucfmsg($value) {
 	
@@ -136,7 +135,8 @@ function ucfmsg($value) {
 
   // Multibyte "ucfirst" function
   if( $has_mb_strtoupper ) {
-  	$msg = mb_strtoupper(mb_substr($msg, 0,1)).mb_substr($msg, 1);
+  	mb_internal_encoding("UTF-8");
+  	$msg = mb_strtoupper(mb_substr($msg, 0,1),"UTF-8").mb_substr($msg, 1);
   	
   } else { // Backward compatiblity
   	$msg = ucfirst($msg);

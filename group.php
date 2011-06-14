@@ -8,19 +8,18 @@ include ("include/header.inc.php");
 
 echo "<h1>".ucfmsg('GROUPS')."</h1>";
 
+if($read_only) {
+	echo "<br /><div class='msgbox'>Editing is disabled.<br /><i>return to the <a href='group$page_ext'>group page</a></i></div>";
+} else {
 if($submit) {
-	if(! $read_only) {
 		$sql = "INSERT INTO $table_groups (domain_id, group_name, group_header, group_footer,  group_parent_id)
 		                           VALUES ('$domain_id', '$group_name','$group_header','$group_footer','$group_parent_id')";
 		$result = mysql_query($sql);
 
 		echo "<br /><div class='msgbox'>A new group has been entered into the address book.<br /><i>return to the <a href='group$page_ext'>group page</a></i></div>";
-	} else
-		echo "<br /><div class='msgbox'>Editing is disabled.<br /><i>return to the <a href='group$page_ext'>group page</a></i></div>";
-	}
+
 // -- Add people to a group
-else if($new) {
-	if(! $read_only) {
+} else if($new) {
 ?>
   <form accept-charset="utf-8" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
 		<label>Group name:</label>
@@ -54,9 +53,9 @@ else if($new) {
     <input type="submit" name="submit" value="Enter information" />
   </form>
 <?php
-	} else
-		echo "<br /><div class='msgbox'>Editing is disabled.</div>\n";
-	} else if($delete) {
+		
+} else if($delete) {
+	
 	// Remove the groups
 	foreach($selected as $group_id)
 	{
@@ -120,8 +119,6 @@ else if($remove)
 }
 else if($update)
 {
-  if(! $read_only)
-  {
 	$sql="SELECT * FROM $table_groups WHERE group_id=$id";
 	$result = mysql_query($sql);
 	$resultsnumber = mysql_numrows($result);
@@ -145,16 +142,12 @@ else if($update)
 	} else {
 		echo "<br /><div class='msgbox'>Invalid ID.<br /><i>return to the <a href='group$page_ext'>group page</a></i></div>"; 
 	}
-  } else
-    echo "<br /><div class='msgbox'>Editing is disabled.</div>";
 }
 // Open for Editing
 else if($edit || $id)
 {
   if($edit)
     $id = $selected[0];
-  if(! $read_only)
-  {
 
     $result = mysql_query("$select_groups AND groups.group_id=$id",$db);
     $myrow = mysql_fetch_array($result);
@@ -215,8 +208,6 @@ else if($edit || $id)
     <br />
   <?php
 
-  } else
-    echo "<br /><div class='msgbox'>Editing is disabled.</div>\n";
 }
 else
 {
@@ -247,6 +238,7 @@ else
 	<input type="submit" name="edit" value="<?php echo ucfmsg('EDIT_GROUP'); ?>" />
 </form>
 <?php 
+}
 }
 include ("include/footer.inc.php");
 ?>

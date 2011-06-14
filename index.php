@@ -231,35 +231,37 @@ function addRow($row) {
     echo "<div class='left'><input type='button' value=\"".ucfmsg("DOODLE")."\"   onclick=\"Doodle()\" /></div>";
   }
   echo "<div class='left'><input type='button' value=\"".ucfmsg("SEND_EMAIL")."\" onclick=\"MailSelection()\" /></div>";
-  echo "<div class='left'><input type='button' value=\"".ucfmsg("DELETE")."\"     onclick=\"DeleteSel()\" /></div>";
-
-	if(isset($table_groups) and $table_groups != "" and !$is_fix_group)
-	{
-
-		// -- Remove from group --
-		if($group_name != "" and $group_name != "[none]") 
-		{
-	        	echo "<div class='left'><input type='submit' name='remove' value='".ucfmsg("REMOVE_FROM")." \"$group_name\"'/></div>";
-		} else
-	        	echo "<div></div>";
-
-		// -- Add to a group --
-    echo "<div class='right'><input type='submit' name='add' value='".ucfmsg("ADD_TO")."'/>-";
-    echo "<select name='to_group'>";
-
-		$sql="SELECT group_name FROM $groups_from_where ORDER BY lower(group_name) ASC";
-		$result = mysql_query($sql);
-		$resultsnumber = mysql_numrows($result);
-	
-		while ($myrow = mysql_fetch_array($result))
-		{
-			echo "<option>".$myrow["group_name"]."</option>\n";
-		}
-        	echo "</select>";
-
-	  echo "</div><br/>";
-	}
-	echo "</form>";
+  if(! $read_only) {
+    echo "<div class='left'><input type='button' value=\"".ucfmsg("DELETE")."\"     onclick=\"DeleteSel()\" /></div>";
+    
+	  if(isset($table_groups) and $table_groups != "" and !$is_fix_group)
+	  {
+    
+	  	// -- Remove from group --
+	  	if($group_name != "" and $group_name != "[none]") 
+	  	{
+	          	echo "<div class='left'><input type='submit' name='remove' value='".ucfmsg("REMOVE_FROM")." \"$group_name\"'/></div>";
+	  	} else
+	          	echo "<div></div>";
+    
+	  	// -- Add to a group --
+      echo "<div class='right'><input type='submit' name='add' value='".ucfmsg("ADD_TO")."'/>-";
+      echo "<select name='to_group'>";
+    
+	  	$sql="SELECT group_name FROM $groups_from_where ORDER BY lower(group_name) ASC";
+	  	$result = mysql_query($sql);
+	  	$resultsnumber = mysql_numrows($result);
+	  
+	  	while ($myrow = mysql_fetch_array($result))
+	  	{
+	  		echo "<option>".$myrow["group_name"]."</option>\n";
+	  	}
+          	echo "</select>";
+    
+	    echo "</div>";
+	  }
+  }
+	echo "<br/></form>";
 
 	// Show group footer
         if($group_name != "" and $group_myrow['group_footer'] != "")
@@ -397,10 +399,12 @@ function filterResults(field) {
 	  // Skip header(0) + selection row(length-1)
   	for(i = 1; i < entries.length; i++) {
   		
-  		// Name + Firstname + Phonenumber + Mailaddress
-  		var content = entries[i].childNodes[0].childNodes[0].accept
-  		            + " " + entries[i].childNodes[1].innerHTML
-  		            + " " + entries[i].childNodes[2].innerHTML;
+      // Use all columns that don't have the css class "center"
+      var content = entries[i].childNodes[0].childNodes[0].accept;
+      for(var j=0;j<entries[i].childNodes.length;j++) {
+          if(entries[i].childNodes[j].className == "center") continue;
+          content += " "+entries[i].childNodes[j].innerHTML;
+      }
   		            
       // Don't be case sensitive
   		content = content.toLowerCase();
