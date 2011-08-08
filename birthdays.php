@@ -51,7 +51,7 @@ if($use_ics) {
     echo "LOCATION:\r\n";
     echo "STATUS:CONFIRMED\r\n";
     echo "SUMMARY:".ucfmsg("BIRTHDAY")." ".$firstname." ".$lastname
-                   .$age."\r\n";
+                   ." ".$age."\r\n";
     echo "DESCRIPTION:Mail:\\n- ".$email
                          ."\\n- ".$email2
                          ."\\n\\n".ucfmsg("TELEPHONE")
