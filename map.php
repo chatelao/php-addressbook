@@ -31,7 +31,9 @@
   while($myrow = mysql_fetch_array($result)) {
 
     $coord['addr']   = trim(str_replace("\n", ", ", trim($myrow['address'])),",");
-    $coord['html']   = "<b>".$myrow['firstname']." ".$myrow['lastname']."</b><br>".str_replace("\n","",str_replace("\r","",nl2br($myrow['address'])));
+    $coord['html']    = "<b>".$myrow['firstname']." ".$myrow['lastname']."</b><br>";
+    $coord['html']   .= ($myrow['company'] != "" ? "<i>".$myrow['company']."</i><br>" : "");
+    $coord['html']   .= str_replace("\n","",str_replace("\r","",nl2br($myrow['address'])));
     $coord['id']     = $myrow['id'];
     $coord['long']   = $myrow['addr_long'];
     $coord['lati']   = $myrow['addr_lat'];
