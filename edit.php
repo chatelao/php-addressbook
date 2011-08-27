@@ -269,7 +269,7 @@ $myrow = mysql_fetch_array($result);
 		<label><?php echo ucfmsg("NOTES") ?>:</label>
 		<textarea name="notes" rows="5" cols="35"><?php echo $myrow["notes"]?></textarea><br /><br />
 
-    	<input type="submit" name="update" value="<?php echo ucfmsg('UPDATE') ?>" />
+    <input type="submit" name="update" value="<?php echo ucfmsg('UPDATE') ?>" />
   </form>
   <form method="get" action="delete<?php echo $page_ext; ?>">
 		<input type="hidden" name="id" value="<?php echo $myrow['id']?>" />
@@ -278,9 +278,33 @@ $myrow = mysql_fetch_array($result);
 <?php
 	} else
 		echo "<br /><div class='msgbox'>Editing is disabled.</div>";
+  }
+  else if( !(isset($_POST['quickskip']) || isset($_POST['quickadd'])) 
+         && (isset($_GET['quickadd']) || isset($_POST['quickadd']) || $quickadd))
+  {
+?>
+	<form accept-charset="utf-8" method="post">
+  	<input type="submit" name="quickskip" value="<?php echo ucfmsg('ADD EMPTY') ?>" />
+  	<input type="submit" name="quickadd"  value="<?php echo ucfmsg('NEXT') ?>" /><br/><br/>
+
+		<label><?php echo ucfmsg("ADDRESS") ?>:</label>
+		<textarea name="address" rows="20"></textarea><br/><br/>
+  	<input type="submit" name="quickskip" value="<?php echo ucfmsg('ADD EMPTY') ?>" />
+  	<input type="submit" name="quickadd"  value="<?php echo ucfmsg('NEXT') ?>" /><br/>
+  </form>
+<?php  	
 	}
 	else {
 		if(! $read_only) {
+			
+      if(isset($_POST['quickadd'])) {
+      	
+      	include_once("include/guess.inc.php");
+      	$addr = guessAddressFields($address);
+      	// echo nl2br(print_r($addr, true));
+      } else {      	
+      	$addr = array();      	
+      }
 ?>
 <script type="text/javascript">
 <!--
@@ -358,41 +382,41 @@ function proposeNames() {
 
 		<input type="hidden" name="id" value="<?php echo $myrow['id']?>" />
 		<label><?php echo ucfmsg("FIRSTNAME") ?>:</label>
-		<input type="text" name="firstname" size="35" onkeyup="proposeMail()"/><br />
+		<input type="text" name="firstname" value="<?php echoIfSet($addr, 'firstname'); ?>" size="35" onkeyup="proposeMail()"/><br />
 
 		<label><?php echo ucfmsg("LASTNAME") ?>:</label>
-		<input type="text" name="lastname" size="35" onkeyup="proposeMail()"/><br />
+		<input type="text" name="lastname"  value="<?php echoIfSet($addr, 'lastname'); ?>"  size="35" onkeyup="proposeMail()"/><br />
 
 		<label><?php echo ucfmsg("COMPANY") ?>:</label>
-		<input type="text" name="company" size="35" onkeyup="proposeMail()"/><br />
+		<input type="text" name="company"   value="<?php echoIfSet($addr, 'company'); ?>"   size="35" onkeyup="proposeMail()"/><br />
 
 		<label><?php echo ucfmsg("ADDRESS") ?>:</label>
-		<textarea name="address" rows="5" cols="35"></textarea><br />
+		<textarea name="address" rows="5" cols="35"><?php echoIfSet($addr, 'address'); ?></textarea><br />
 
 		<label><?php echo ucfmsg("TELEPHONE") ?></label><br /><br class="clear" />
 
 		<label><?php echo ucfmsg("PHONE_HOME") ?>:</label>
-		<input type="text" name="home" size="35" /><br />
+		<input type="text" name="home"      value="<?php echoIfSet($addr, 'home'); ?>"    size="35" /><br />
 
 		<label><?php echo ucfmsg("PHONE_MOBILE") ?>:</label>
-		<input type="text" name="mobile" size="35" /><br />
+		<input type="text" name="mobile"    value="<?php echoIfSet($addr, 'mobile'); ?>"  size="35" /><br />
 
 		<label><?php echo ucfmsg("PHONE_WORK") ?>:</label>
-		<input type="text" name="work" size="35" /><br />
+		<input type="text" name="work"      value="<?php echoIfSet($addr, 'work'); ?>" size="35" /><br />
 
 		<label><?php echo ucfmsg("FAX") ?>:</label>
-		<input type="text" name="fax" size="35" /><br />
+		<input type="text" name="fax"       value="<?php echoIfSet($addr, 'fax'); ?>" size="35" /><br />
 
 		<label>&nbsp;</label><br /><br class="clear" />
 
 		<label><?php echo ucfmsg("EMAIL") ?>:</label>
-		<input type="text" name="email" size="35" onkeyup="proposeNames()"/><br />
+		<input type="text" name="email"     value="<?php echoIfSet($addr, 'email'); ?>" size="35" onkeyup="proposeNames()"/><br />
 
 		<label><?php echo ucfmsg("EMAIL") ?>2:</label>
-		<input type="text" name="email2" size="35" /><br />
+		<input type="text" name="email2"    value="<?php echoIfSet($addr, 'email2'); ?>" size="35" /><br />
 
 		<label><?php echo ucfmsg("HOMEPAGE") ?>:</label>
-		<input type="text" name="homepage" size="35" /><br />
+		<input type="text" name="homepage"  value="<?php echoIfSet($addr, 'homepage'); ?>" size="35" /><br />
 
 		<label><?php echo ucfmsg("BIRTHDAY") ?>:</label>
         <select name="bday">
@@ -477,7 +501,7 @@ function proposeNames() {
 		<textarea name="address2" rows="5" cols="35"></textarea><br />
 
 		<label><?php echo ucfmsg("PHONE_HOME") ?>:</label>
-		<input type="text" name="phone2" size="35" /><br />
+		<input type="text" name="phone2"  value="<?php echoIfSet($addr, 'phone2'); ?>" size="35" /><br />
 
 		<label><?php echo ucfmsg("NOTES") ?>:</label>
 		<textarea name="notes" rows="5" cols="35"></textarea><br /><br />

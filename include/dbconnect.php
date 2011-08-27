@@ -118,6 +118,9 @@ if(!isset($public_group_edit)) $public_group_edit = true;
 // Define default homepage guessing
 if(!isset($homepage_guess)) $homepage_guess  = true;
 
+// Define quick address adding
+if(!isset($quickadd)) $quickadd  = false;
+
 // Define default map guessing
 if(!isset($map_guess)) $map_guess  = true;
 
@@ -346,6 +349,6 @@ include("group.class.php");
 
 $revision = '$Rev$';
 $revision = str_replace('$', '', str_replace(' ', '', str_replace('Rev: ', '', $revision)));
-$version = '6.2.13'.' - r'.$revision;
+$version = '6.2.12'.' - r'.$revision;
 
 ?>
