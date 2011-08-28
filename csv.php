@@ -19,7 +19,8 @@
   	
   	// Remove whitespaces, Replace newlines and escape ["] character
   	$res = trim($value);
-  	$res = str_replace("\r\n", ", ", $res);
+  	$res = str_replace("\r", "", $res);
+  	$res = str_replace("\n", ", ", $res);
   	$res = str_replace('"', '""',  $res);
   
   	// Add to result
@@ -104,7 +105,7 @@
 		  $zip     = "";
 		  $city    = "";
 			preg_match( "/(.*)(\b".$zip_pattern."\b)(.*)/m"
-                                  , str_replace("\r\n", ", ", trim($myrow["address"])), $matches);
+                                  , str_replace("\r", "", str_replace("\n", ", ", trim($myrow["address"]))), $matches);
 		if(count($matches) > 1)
 			$address = preg_replace("/,$/", "", trim($matches[1]));
 		if(count($matches) > 2)
