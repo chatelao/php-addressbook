@@ -79,7 +79,16 @@ showOneEntry($r);
 
    $addr_per_line  = ($only_phones ? 4 : 3);
    
+   function trimAll($r) {
+    	$res = array();
+    	foreach($r as $key => $val) {
+    		$res[$key] = trim($val);
+    	}
+    	return $res;
+   } 
+
    while($r = mysql_fetch_array($result)) {
+   	 $r = trimAll($r);   	
    	 $address = new Address($r);
    	 if($address->hasPhone() || !$only_phones) {
        if( ($cnt % (2*$addr_per_line)) == 0)

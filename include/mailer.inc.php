@@ -1,6 +1,7 @@
 <?php
 
 $mailers['Standard (mailto:)']     = "mailto:";
+$mailers['Standard (mailto-bcc)']    = "mailto:?bcc=";
 // $mailers['Outlook (mailto:)']     = "mailto:";
 // $mailers['Thunderbird (mailto:)'] = "mailto:";
 $mailers['gmail']     = "https://mail.google.com/mail/?fs=1&view=cm&shva=1&to=";

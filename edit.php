@@ -43,7 +43,7 @@ if(! $read_only)
 	//
 	if($_SERVER['SERVER_NAME'] == "php-addressbook.sourceforge.net") {
 		
-	   $spam_test = $firstname.$lastname.$address.$home.$mobile.$work.$email.$email2.$bday.$bmonth.$byear.$address2.$phone2;
+	   $spam_test = $firstname.$lastname.$address.$home.$mobile.$work.$email.$email2.$email3.$bday.$bmonth.$byear.$aday.$amonth.$ayear.$address2.$phone2;
      $blacklist = array( 'viagra', 'seroquel', 'zovirax', 'ultram', 'mortage', 'loan'
                        , 'accutane', 'ativan', 'gun', 'sex', 'porn', 'arachidonic'
                        , 'recipe', 'comment1'
@@ -66,6 +66,7 @@ if(! $read_only)
 	 
 		$addr['firstname'] = $firstname;
 		$addr['lastname']  = $lastname;
+		$addr['title']     = $title;
 		$addr['company']   = $company;
 		$addr['address']   = $address;
 		$addr['home']      = $home;
@@ -74,10 +75,14 @@ if(! $read_only)
 		$addr['fax']       = $fax;
 		$addr['email']     = $email;
 		$addr['email2']    = $email2;
+		$addr['email3']    = $email3;
 		$addr['homepage']  = $homepage;
 		$addr['bday']      = $bday;
 		$addr['bmonth']    = $bmonth;
 		$addr['byear']     = $byear;
+		$addr['aday']      = $aday;
+		$addr['amonth']    = $amonth;
+		$addr['ayear']     = $ayear;
 		$addr['address2']  = $address2;
 		$addr['phone2']    = $phone2;
 		$addr['notes']     = $notes;
@@ -105,6 +110,7 @@ else if($update)
 		$addr['id']        = $id;
 		$addr['firstname'] = $firstname;
 		$addr['lastname']  = $lastname;
+		$addr['title']     = $title;
 		$addr['company']   = $company;
 		$addr['address']   = $address;
 		$addr['home']      = $home;
@@ -113,10 +119,14 @@ else if($update)
 		$addr['fax']       = $fax;
 		$addr['email']     = $email;
 		$addr['email2']    = $email2;
+		$addr['email3']    = $email3;
 		$addr['homepage']  = $homepage;
 		$addr['bday']      = $bday;
 		$addr['bmonth']    = $bmonth;
 		$addr['byear']     = $byear;
+		$addr['aday']      = $aday;
+		$addr['amonth']    = $amonth;
+		$addr['ayear']     = $ayear;
 		$addr['address2']  = $address2;
 		$addr['phone2']    = $phone2;
 		$addr['notes']     = $notes;
@@ -151,6 +161,9 @@ $myrow = mysql_fetch_array($result);
 		<label><?php echo ucfmsg("COMPANY") ?>:</label>
 		<input type="text" name="company" size="35" value="<?php echo $myrow['company']?>" /><br />
 
+		<label><?php echo ucfmsg("TITLE") ?>:</label>
+		<input type="text" name="title" size="35" value="<?php echo $myrow['title']?>" /><br />
+
 		<label><?php echo ucfmsg("ADDRESS") ?>:</label>
 		<textarea name="address" rows="5" cols="35"><?php echo $myrow["address"]?></textarea><br />
 
@@ -175,6 +188,9 @@ $myrow = mysql_fetch_array($result);
 
 		<label><?php echo ucfmsg("EMAIL") ?>2:</label>
 		<input type="text" name="email2" size="35" value="<?php echo $myrow['email2']?>" /><br />
+
+		<label><?php echo ucfmsg("EMAIL") ?>3:</label>
+		<input type="text" name="email3" size="35" value="<?php echo $myrow['email3']?>" /><br />
 
 		<label><?php echo ucfmsg("HOMEPAGE") ?>:</label>
 		<input type="text" name="homepage" size="35" value="<?php echo $myrow['homepage']?>" /><br />
@@ -232,6 +248,60 @@ $myrow = mysql_fetch_array($result);
           <option value="December"><?php echo ucfmsg("DECEMBER") ?></option>
         </select>
         <input class="byear" type="text" name="byear" size="4" maxlength="4" value="<?php echo $myrow['byear']?>" /><br />
+
+		<label><?php echo ucfmsg("ANNIVERSARY") ?>:</label>
+        <select name="aday">
+			<option value="<?php echo $myrow['aday']?>" selected="selected"><?php echo ($myrow["aday"] == 0?"-":$myrow["aday"]) ?></option>
+          <option value="0">-</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+        </select>
+        <select name="amonth">
+          <option value="<?php echo $myrow['amonth'] ?>" selected="selected"><?php echo ucfmsg(strtoupper($myrow["amonth"])); ?></option>
+          <option value="-">-</option>
+          <option value="january"><?php echo ucfmsg("january") ?></option>
+          <option value="february"><?php echo ucfmsg("february") ?></option>
+          <option value="march"><?php echo ucfmsg("march") ?></option>
+          <option value="april"><?php echo ucfmsg("april") ?></option>
+          <option value="may"><?php echo ucfmsg("may") ?></option>
+          <option value="june"><?php echo ucfmsg("june") ?></option>
+          <option value="july"><?php echo ucfmsg("july") ?></option>
+          <option value="august"><?php echo ucfmsg("august") ?></option>
+          <option value="september"><?php echo ucfmsg("september") ?></option>
+          <option value="october"><?php echo ucfmsg("october") ?></option>
+          <option value="november"><?php echo ucfmsg("november") ?></option>
+          <option value="december"><?php echo ucfmsg("december") ?></option>
+        </select>
+        <input class="byear" type="text" name="ayear" size="4" maxlength="4" value="<?php echo $myrow['ayear']?>" /><br />
 
 <?php
 /* Group handling on change
@@ -387,6 +457,9 @@ function proposeNames() {
 		<label><?php echo ucfmsg("LASTNAME") ?>:</label>
 		<input type="text" name="lastname"  value="<?php echoIfSet($addr, 'lastname'); ?>"  size="35" onkeyup="proposeMail()"/><br />
 
+		<label><?php echo ucfmsg("TITLE") ?>:</label>
+		<input type="text" name="title" size="35" value="<?php echoIfSet($addr, 'title'); ?>" /><br />
+
 		<label><?php echo ucfmsg("COMPANY") ?>:</label>
 		<input type="text" name="company"   value="<?php echoIfSet($addr, 'company'); ?>"   size="35" onkeyup="proposeMail()"/><br />
 
@@ -414,6 +487,9 @@ function proposeNames() {
 
 		<label><?php echo ucfmsg("EMAIL") ?>2:</label>
 		<input type="text" name="email2"    value="<?php echoIfSet($addr, 'email2'); ?>" size="35" /><br />
+
+		<label><?php echo ucfmsg("EMAIL") ?>3:</label>
+		<input type="text" name="email3"    value="<?php echoIfSet($addr, 'email3'); ?>" size="35" /><br />
 
 		<label><?php echo ucfmsg("HOMEPAGE") ?>:</label>
 		<input type="text" name="homepage"  value="<?php echoIfSet($addr, 'homepage'); ?>" size="35" /><br />
@@ -469,6 +545,58 @@ function proposeNames() {
           <option value="December"><?php echo ucfmsg("DECEMBER") ?></option>
         </select>
         <input class="byear" type="text" name="byear" size="4" maxlength="4" /><br />
+
+		<label><?php echo ucfmsg("ANNIVERSARY") ?>:</label>
+        <select name="aday">
+          <option value="0" selected="selected">-</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+        </select>
+        <select name="amonth">
+          <option value="-" selected="selected">-</option>
+          <option value="January"><?php echo ucfmsg("JANUARY") ?></option>
+          <option value="February"><?php echo ucfmsg("FEBRUARY") ?></option>
+          <option value="March"><?php echo ucfmsg("MARCH") ?></option>
+          <option value="April"><?php echo ucfmsg("APRIL") ?></option>
+          <option value="May"><?php echo ucfmsg("MAY") ?></option>
+          <option value="June"><?php echo ucfmsg("JUNE") ?></option>
+          <option value="July"><?php echo ucfmsg("JULY") ?></option>
+          <option value="August"><?php echo ucfmsg("AUGUST") ?></option>
+          <option value="September"><?php echo ucfmsg("SEPTEMBER") ?></option>
+          <option value="October"><?php echo ucfmsg("OCTOBER") ?></option>
+          <option value="November"><?php echo ucfmsg("NOVEMBER") ?></option>
+          <option value="December"><?php echo ucfmsg("DECEMBER") ?></option>
+        </select>
+        <input class="byear" type="text" name="ayear" size="4" maxlength="4" /><br />
 
 		<?php      	
     if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>

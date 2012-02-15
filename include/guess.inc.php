@@ -1,5 +1,22 @@
 <?php
 
+// Default list of external phone book providers,
+// may be overridden in "config.php"
+if(!isset($providers))
+{
+	$providers = array( "+33" => array("name" => "pagesblanches.fr"
+	                                  ,"url"  => "http://www.pagesjaunes.fr/pagesblanches/rechercheInverse.do?portail=PJ&numeroTelephone=")
+	                  , "+39" => array("name" => "paginebianche.it"
+	                                  ,"url"  => "http://www.paginebianche.it/execute.cgi?btt=1&ts=106&rk=&qs=")
+	                  , "+41" => array("name" => "local.ch"
+	                                  ,"url"  => "http://www.local.ch/de/q/?what=")
+	                  , "+43" => array("name" => "herold.at"
+	                                  ,"url"  => "http://www.herold.at/servlet/at.herold.sp.servlet.SPWPSearchServlet?searchterm=")
+	                  , "+49" => array("name" => "dastelefonbuch.de"
+	                                  ,"url"  => "http://www1.dastelefonbuch.de/Rueckwaerts-Suche.html?cmd=search&kw=")
+	                  );
+}
+
 // Default list of free_mailers,
 // may be overridden in "config.php"
 if(!isset($free_mailers))
@@ -91,7 +108,7 @@ function guessAddressFields($address) {
   // * Remove whitespaces & empty lines
   //  
 	$address = stripslashes($address);
-	$addr_list = preg_split("/(\n|\s[*|,-]\s)/", $address);
+	$addr_list = preg_split("/(\n|\s?[*|,-]\s)/", $address);
 	for($i = 0; $i < count($addr_list); $i++) {
 		$addr_line = $addr_list[$i];
 		$addr_line = trim($addr_line);
@@ -107,8 +124,8 @@ function guessAddressFields($address) {
 	$unparsed_addr_lines = array();
 	$phones    = array();
 	$mails     = array();
-	$company   = "";
-	$homepage  = "";
+	// $company   = "";
+	// $homepage  = "";
 
 	$firstname = "";
 	$lastname  = "";
@@ -117,6 +134,10 @@ function guessAddressFields($address) {
 	for($i = 0; $i < count($addr_list); $i++) {
 		
 		$addr_line = $addr_list[$i];
+		$addr_line = str_replace("(at)",  "@", $addr_line);
+		$addr_line = str_replace("{at}",  "@", $addr_line);
+		$addr_line = str_replace("'at'",  "@", $addr_line);
+		$addr_line = str_replace("'dot'", ".", $addr_line);
 		$keep_line = true;
 		
 		if(function_exists("mb_strtoupper")) {
@@ -131,11 +152,21 @@ function guessAddressFields($address) {
     // * Deu: AG, GmbH
     // * Frz: SA, SaRL
     //
+    // Title
+    // * Eng: Office, Member
+    // * Deu: AG, GmbH
+    //
+    $title_exts = array( "OFFICER", "MEMBER", "LEADER", "MANAGER" );
+
     $company_exts = array( "LTD", "PLC", "AG", "GMBH", "SA", "SARL"
                          , "HOTEL", "MOTEL", "REST", "RESTAURANT" );
-	  if(   $company == "" 
+	  if((!isset($company) || $company == "")
 	     && preg_match("/ (".implode("|", $company_exts).")(\w|$)/", strtoupper($addr_line), $matches) > 0) {
 	  	$company = $addr_line;
+		  $keep_line = false;
+	  } elseif((!isset($title) || $title == "")
+	     && preg_match("/ (".implode("|", $title_exts).")(\w|$)/", strtoupper($addr_line), $matches) > 0) {
+	  	$title = $addr_line;
 		  $keep_line = false;
 	  } else
 
@@ -156,7 +187,7 @@ function guessAddressFields($address) {
     //
     // Mailadressen
     //
-	  elseif(preg_match("/([A-Za-z\.\-])*\@([A-Za-z\.\-_])*\.([A-Za-z]){2,3}/", $addr_line, $matches) > 0) {
+	  elseif(preg_match("/([A-Za-z0-9\.\-_])*\@([A-Za-z0-9\.\-_])*\.([A-Za-z]){2,3}/", $addr_line, $matches) > 0) {
 	  	$mails[] = $matches[0];
 		  $keep_line = false;
 	  }
@@ -167,7 +198,8 @@ function guessAddressFields($address) {
     // * https://
     // * www.
     //
-  	elseif($homepage == ""
+  	elseif((    !isset($homepage) 
+  	         || $homepage == "")
   	       && preg_match("/(http(s)?:\/\/|www\.)([A-Za-z\.\-_])*\.([A-Za-z]){2,3}([\/A-Za-z\.\-_])*/", $addr_line, $matches) > 0) {
   		$homepage = $matches[0];
   		$homepage = str_replace("http://", "", $homepage);
@@ -183,30 +215,30 @@ function guessAddressFields($address) {
 	  	$phone_type = "";
 
 	  	// Telefon, Fon, Privat(e), Home
-      $phone_exts = array( "P", "PRIVATE"
-                         , "H", "HOME"
+      $phone_exts = array("TEL P",  "P", "PRIVATE"
+                         ,"TEL H",  "H", "HOME"
                          // , "T", "TEL", "TELEFON", "TELEPHON", "TELEPHONE", "PHONE"
                          // , "FON"
                          );
-	    if(preg_match("/^(".implode("|", $phone_exts).")[:\.]? /", $addr_line_upper, $matches) > 0) {
+	    if(preg_match("/^(".implode("|", $phone_exts).")(\.)?(:)?(\s)+/", $addr_line_upper, $matches) > 0) {
 	  	  $phone_type = "HOME";
 	    }
 	  	
 	  	// Mobil(e), Natel, Cell
-      $phone_exts = array("M", "MOBIL", "MOBILE", "N", "NATEL", "C", "CELL");
-	    if(preg_match("/^(".implode("|", $phone_exts).")[:\.]? /", $addr_line_upper, $matches) > 0) {
+      $phone_exts = array("TEL M", "M", "MOBIL", "MOBILE", "N", "NATEL", "C", "CELL");
+	    if(preg_match("/^(".implode("|", $phone_exts).")(\.)?(:)?(\s)+/", $addr_line_upper, $matches) > 0) {
 	  	  $phone_type = "CELL";
 	    }
 	  	
 	  	// Geschäft, Business
-      $phone_exts = array("G", "GESCHÄFT", "B", "BUSINESS");
-	    if(preg_match("/^(".implode("|", $phone_exts).")[:\.]? /", $addr_line_upper, $matches) > 0) {
+      $phone_exts = array("TEL G", "G", "GESCHÄFT", "B", "BUSINESS");
+	    if(preg_match("/^(".implode("|", $phone_exts).")(\.)?(:)?(\s)+/", $addr_line_upper, $matches) > 0) {
 	  	  $phone_type = "WORK";
 	    }
 	  	
 	  	// Fax, Facsmile
       $phone_exts = array("F", "FAX", "TELEFAX");
-	    if(preg_match("/^(".implode("|", $phone_exts).")[:\.]? /", $addr_line_upper, $matches) > 0) {
+	    if(preg_match("/^(".implode("|", $phone_exts).")(\.)?(:)?(\s)+/", $addr_line_upper, $matches) > 0) {
 	  	  $phone_type = "FAX";
 	    }
 	  	
@@ -223,8 +255,8 @@ function guessAddressFields($address) {
 	//
 	// Redistribute the phone numbers
 	//
-	$phone_types   = array('WORK', 'FAX', 'CELL',   'HOME');
-	$phone_targets = array('work', 'fax', 'mobile', 'home', 'phone2');
+	$phone_types   = array('WORK', 'FAX', 'HOME', 'CELL');
+	$phone_targets = array('work', 'fax', 'home', 'mobile', 'phone2');
 	
   for($i = 0; $i < count($phone_types); $i++) {
     $phone_type   = $phone_types[$i];
@@ -237,7 +269,7 @@ function guessAddressFields($address) {
 	// Better distribution of "neutral" phone types
 	// * If fax OR company is set + Business empty => business phone
 	// Else: Privat or Phone2
-	if(count($phones['']) > 0) {
+	if(isset($phones['']) && count($phones['']) > 0) {
 		if(isset($phones['FAX']) && count($phones['FAX']) > 0 && !isset($phones['WORK'])) {
 			$work = $phones[''][0];
 		} elseif(!isset($phones['HOME'])) {
@@ -245,16 +277,26 @@ function guessAddressFields($address) {
 		} else {
 			$phone2 = $phones[''][0];
 		}
+    
+    $phone_type = '';
+  	for($j = 1; $j < count($phones[$phone_type]); $j++) {
+ 	    foreach($phone_targets as $phone_target) {
+ 	      if(!isset($$phone_target) || $$phone_target == "") {
+ 	   	 	  $$phone_target = $phones[$phone_type][$j];
+ 	   	 	  break;
+ 	   	  }
+ 	    }
+  	}
 	}
 	
-  for($i = 0; $i < count($phone_type); $i++) {
+  for($i = 0; $i < count($phone_types); $i++) {
     $phone_type   = $phone_types[$i];
     $phone_target = $phone_targets[$i];
     if(isset($phones[$phone_type]) && count($phones[$phone_type]) > 1) {
-    	 for($i = 1; $i < count($phones[$phone_type]); $i++) {
+    	 for($j = 1; $j < count($phones[$phone_type]); $j++) {
     	   foreach($phone_targets as $phone_target) {
     	   	 if(!isset($$phone_target) || $$phone_target == "") {
-    	   	 	 $$phone_target = $phones[$phone_type][$i];
+    	   	 	 $$phone_target = $phones[$phone_type][$j];
     	   	 	 break;
     	   	 }
     	   }
@@ -262,9 +304,9 @@ function guessAddressFields($address) {
     }
 	}
 	
-	$result['firstname'] = $firstname;
-	$result['lastname']  = $lastname;
-	$result['company']   = $company;
+	if(isset($firstname)) $result['firstname'] = $firstname;
+	if(isset($lastname))  $result['lastname']  = $lastname;
+	if(isset($company))  $result['company']   = $company;
 
 	$result['address']   = implode("\n", $unparsed_addr_lines);
 

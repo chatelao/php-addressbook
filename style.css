@@ -54,7 +54,7 @@ table#view td {padding:5px;}
 /* Edit.php */
 #content input[type=text],#content textarea {width:220px; margin-bottom:3px;}
 #content input[type=text] {height:1,1em}
-#content textarea {height:8em}
+// #content textarea {height:8em}
 input.byear{width:4em !important;}
 
 /* Source Forge */

@@ -21,7 +21,8 @@ foreach($cookie_names as $cookie_name) {
 //
 function getPref($key) {
 	
-	global $cookie_prefix, $_POST, $_GET, $_COOKIE;
+	global $username, $userlist
+	     , $cookie_prefix, $_POST, $_GET, $_COOKIE;
 	
 	if(isset($_POST[$key])) {
 		return $_POST[$key];
@@ -29,6 +30,10 @@ function getPref($key) {
 		return $_GET[$key];
 	} elseif(isset($_COOKIE[$cookie_prefix.$key])) {
 		return $_COOKIE[$cookie_prefix.$key];		
+	} elseif(isset($userlist[$username][$key])) {
+		return $userlist[$username][$key];
+	} else {
+		return "";
 	}
 }
 

@@ -135,14 +135,16 @@ function addRow($row) {
     	$email2 = "";
     }
     
+    // Special value for short phone
+    $row = ($row == "telephone" ? "phone" : $row);
+    
+    if($row == "phone") {
     if($full_phone) {
       $phone  = $addr->firstPhone();
     } else {
     	$phone  = $addr->shortPhone();
     }
-    
-    // Special value for short phone
-    $row = ($row == "telephone" ? "phone" : $row);
+    }
     
     switch ($row) {
       case "select":
@@ -174,11 +176,13 @@ function addRow($row) {
       case "details":
         echo "<td class='center'><a href='vcard${page_ext_qry}id=$id'><img src='${url_images}icons/vcard.png' title='vCard' alt='vCard'/></a></td>";        
   
+  /*
         if( substr($phone, 0, 3) == "+41" ) {
         	$country = "Switzerland";
         } else {
         	$country = "";
         }
+  */
         
         if($map_guess) {
           if($myrow["address"] != "")

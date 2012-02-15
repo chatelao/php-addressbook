@@ -121,28 +121,32 @@ function showOneEntry($r, $only_phone = false) {
   
    if(! $only_phone) {
      $view .= add($r['company']);
-	   $view .= addGroup($r, array('address'));
-	   $view .= add(str_replace("\n", "<br />", trim($r["address"])));
-	   $view .= addGroup($r, array('home','mobile','work','fax'));
-	 }
+     $view .= add($r['title']);
+     $view .= addGroup($r, array('address'));
+     $view .= add(str_replace("\n", "<br />", trim($r["address"])));
+     $view .= addGroup($r, array('home','mobile','work','fax'));
+   }
    $view .= addPhone($r['home'],   ucfmsg('H:'));
    $view .= addPhone($r['mobile'], ucfmsg('M:'));
    $view .= addPhone($r['work'],   ucfmsg('W:'));
    $view .= addPhone($r['fax'],    ucfmsg('F:'));
    if(! $only_phone) {
 
-  	 $view .= addGroup($r, array('email','email2','homepage'));
-	   if($mail_as_image) { // B64IMG: Thanks to NelloD
+       $view .= addGroup($r, array('email','email2','email3','homepage'));
+     if($mail_as_image) { // B64IMG: Thanks to NelloD
        $view .= ($r['email'] != ""  ? "<img src=\"b64img.php?text=".base64_encode(($r['email']))."\"><br/>" : "");
        $view .= ($r['email2'] != "" ? "<img src=\"b64img.php?text=".base64_encode(($r['email2']))."\"><br/>" : "");
+       $view .= ($r['email3'] != "" ? "<img src=\"b64img.php?text=".base64_encode(($r['email3']))."\"><br/>" : "");
      } else {
        $view .= addEmail($r['email']);
        $view .= addEmail($r['email2']);
-	   }
+       $view .= addEmail($r['email3']);
+     }
 	   $view .= addHomepage($r['homepage']);
 
   	 $view .= addGroup($r, array('bday','bmonth','byear'));
 	   $view .= addBirthday($r['bday'], $r['bmonth'], $r['byear'], ucfmsg('BIRTHDAY'));
+	   $view .= addBirthday($r['aday'], $r['amonth'], $r['ayear'], ucfmsg('ANNIVERSARY'));
 
 	   $view .= addGroup($r, array('address2','phone2'), "<b>".ucfmsg('SECONDARY')."</b>");
 	   $view .= add(str_replace("\n", "<br />", trim($r['address2'])));

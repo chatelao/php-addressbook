@@ -14,6 +14,11 @@ function getIfSetFromAddr($addr_array, $key) {
 	return $result;
 }
 
+function echoIfSet($addr_array, $key) {
+	echo getIfSetFromAddr($addr_array, $key);
+}
+
+
 function deleteAddresses($part_sql) {
 
   global $keep_history, $domain_id, $base_from_where, $table, $table_grp_adr, $table_groups;
@@ -57,12 +62,13 @@ function saveAddress($addr_array, $group_name = "") {
     	$src_tbl = $table;
     }
 
-    $sql = "INSERT INTO $table ( domain_id, id, firstname, lastname, company, address, home, mobile, work, fax, email, email2, homepage, bday, bmonth, byear, address2, phone2, photo, notes, created, modified)
+    $sql = "INSERT INTO $table ( domain_id, id, firstname, lastname, company, title, address, home, mobile, work, fax, email, email2, email3, homepage, aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, created, modified)
                         SELECT   $domain_id                                       domain_id
                                , ".$set_id."                                      id
                                , '".getIfSetFromAddr($addr_array, 'firstname')."' firstname
                                , '".getIfSetFromAddr($addr_array, 'lastname')."'  lastname
                                , '".getIfSetFromAddr($addr_array, 'company')."'   company
+                               , '".getIfSetFromAddr($addr_array, 'title')."'     title
                                , '".getIfSetFromAddr($addr_array, 'address')."'   address
                                , '".getIfSetFromAddr($addr_array, 'home')."'      home
                                , '".getIfSetFromAddr($addr_array, 'mobile')."'    mobile
@@ -70,7 +76,11 @@ function saveAddress($addr_array, $group_name = "") {
                                , '".getIfSetFromAddr($addr_array, 'fax')."'       fax
                                , '".getIfSetFromAddr($addr_array, 'email')."'     email
                                , '".getIfSetFromAddr($addr_array, 'email2')."'    email2
+                               , '".getIfSetFromAddr($addr_array, 'email3')."'    email3
                                , '".getIfSetFromAddr($addr_array, 'homepage')."'  homepage
+                               , '".getIfSetFromAddr($addr_array, 'aday')."'      aday
+                               , '".getIfSetFromAddr($addr_array, 'amonth')."'    amonth
+                               , '".getIfSetFromAddr($addr_array, 'ayear')."'     ayear
                                , '".getIfSetFromAddr($addr_array, 'bday')."'      bday
                                , '".getIfSetFromAddr($addr_array, 'bmonth')."'    bmonth
                                , '".getIfSetFromAddr($addr_array, 'byear')."'     byear
@@ -120,6 +130,7 @@ function updateAddress($addr) {
 	    $sql = "UPDATE $table SET firstname = '".$addr['firstname']."'
 	                            , lastname  = '".$addr['lastname']."'
 	                            , company   = '".$addr['company']."'
+	                            , title     = '".$addr['title']."'
 	                            , address   = '".$addr['address']."'
 	                            , home      = '".$addr['home']."'
 	                            , mobile    = '".$addr['mobile']."'
@@ -127,7 +138,11 @@ function updateAddress($addr) {
 	                            , fax       = '".$addr['fax']."'
 	                            , email     = '".$addr['email']."'
 	                            , email2    = '".$addr['email2']."'
+	                            , email3    = '".$addr['email3']."'
 	                            , homepage  = '".$addr['homepage']."'
+	                            , aday      = '".$addr['aday']."'
+	                            , amonth    = '".$addr['amonth']."'
+	                            , ayear     = '".$addr['ayear']."'
 	                            , bday      = '".$addr['bday']."'
 	                            , bmonth    = '".$addr['bmonth']."'
 	                            , byear     = '".$addr['byear']."'
@@ -169,6 +184,7 @@ class Address {
       $result = array();
     	if($this->address["email"]  != "")  $result[] = $this->address["email"];
     	if($this->address["email2"]  != "") $result[] = $this->address["email2"];
+    	if($this->address["email3"]  != "") $result[] = $this->address["email3"];
     	return $result;
     }
 
@@ -291,6 +307,7 @@ class Addresses {
                           OR ".$this->likePhone('fax',    $searchword)."
                           OR email     LIKE '%$searchword%'
                           OR email2    LIKE '%$searchword%'
+                          OR email3    LIKE '%$searchword%'
                           OR address2  LIKE '%$searchword%'
                           OR notes     LIKE '%$searchword%'
                           )";

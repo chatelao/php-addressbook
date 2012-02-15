@@ -97,6 +97,7 @@ $messages['2ND_PHONE']['en'] = 'second phone'; // second phone
 $messages['NOTES']['en'] = 'notes'; // notes
 $messages['MISC']['en'] = 'Misc'; // miscellaneous items
 $messages['BIRTHDAY']['en'] = 'birthday'; // birthday
+$messages['ANNIVERSARY']['en'] = 'anniversary'; // anniversary
 $messages['CREATED']['en']  = 'created';  // created
 $messages['MODIFIED']['en'] = 'modified'; // modified
 $messages['UPDATE']['en'] = 'update'; // update

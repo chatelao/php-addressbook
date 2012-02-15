@@ -238,10 +238,20 @@ foreach($addresses as $address) {
     //
     // Examples
     //
+    // - BDAY:19960415
     // - BDAY:1996-04-15
     // - BDAY:1953-10-15T23:10:00Z
     // - BDAY:1987-09-27T08:30:00-06:00
-    if($type == "BDAY" && strlen($entries[0]['VALUE']) >= 10) {
+    //
+    if($type == "BDAY") {
+            if(strlen($entries[0]['VALUE']) ==  8) {
+
+    	  $dest_addr['bday']   = ltrim(substr($entries[0]['VALUE'], 6, 2),"0");
+    	  $dest_addr['bmonth'] = MonthToName(ltrim(substr($entries[0]['VALUE'], 4, 2),"0"));
+    	  $dest_addr['byear']  = substr($entries[0]['VALUE'], 0, 4);
+            	
+      } elseif(strlen($entries[0]['VALUE']) >= 10) {
+      	
     	$date = substr($entries[0]['VALUE'], 0, 10);
     	$date_parts = explode("-",$date);
     
@@ -249,7 +259,7 @@ foreach($addresses as $address) {
     	$dest_addr['byear'] = $date_parts[0];
     	
     	$dest_addr['bmonth'] = MonthToName($date_parts[1]);
-  	
+      }
     }  
     
     //

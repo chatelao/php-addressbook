@@ -16,9 +16,9 @@ $default_lang   = 'en';
 $supported_langs = array("ar","bg","ca","cs","da"
                         ,"de","el","en","es","fa"
                         ,"fi","fr","he","hi","hu"
-                        ,"it","ja","ko","nl","pl"
-                        ,"pt","ru","on","sr","sv"
-                        ,"sl","th","tr","vi","zh");
+                        ,"it","ja","ko","nl","no",
+                        ,"pl","pt","ru","on","sr"
+                        ,"sv","sl","th","tr","vi","zh");
 //
 // Handle language choice
 //
@@ -127,12 +127,17 @@ function msg($value)
 //
 $has_mb_strtoupper = function_exists('mb_strtoupper');
 
+$ucf_messages = array();
+
 function ucfmsg($value) {
 	
-	global $has_mb_strtoupper;
+	global $has_mb_strtoupper,$ucf_messages;
 	
 	$msg = msg($value);
 
+	if(isset($ucf_messages[$value])) {
+	  $msg = $ucf_messages[$value];
+	} else {
   // Multibyte "ucfirst" function
   if( $has_mb_strtoupper ) {
   	mb_internal_encoding("UTF-8");
@@ -141,6 +146,8 @@ function ucfmsg($value) {
   } else { // Backward compatiblity
   	$msg = ucfirst($msg);
   }
+	  $ucf_messages[$value] = $msg;
+	}
 	
 	return $msg;
 }

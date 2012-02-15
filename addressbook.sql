@@ -49,7 +49,7 @@ CREATE TABLE addressbook (
   password varchar(256) default NULL,
   login date default NULL,
   role varchar(256) default NULL,
-  PRIMARY KEY (id, deprecated)
+  PRIMARY KEY (id,deprecated,domain_id)
 ) DEFAULT CHARSET=utf8;
 
 CREATE TABLE group_list (
@@ -62,7 +62,7 @@ CREATE TABLE group_list (
   `group_name` varchar(255) NOT NULL default '',
   `group_header` mediumtext NOT NULL,
   `group_footer` mediumtext NOT NULL,
-  PRIMARY KEY (`group_id`, deprecated)
+  PRIMARY KEY (group_id,deprecated,domain_id)
 ) DEFAULT CHARSET=utf8;
 
 CREATE TABLE address_in_groups (

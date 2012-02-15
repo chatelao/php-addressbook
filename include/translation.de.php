@@ -85,6 +85,7 @@ $messages['2ND_ADDRESS']['de'] = 'Zweitadresse'; // second address
 $messages['2ND_PHONE']['de'] = 'Zweittelefon'; // second phone
 $messages['NOTES']['de'] = 'Notizen'; // notes
 $messages['BIRTHDAY']['de'] = 'Geburtstag'; // birthday
+$messages['ANNIVERSARY']['de'] = 'Jahrestag'; // anniversary
 $messages['CREATED']['de']  = 'erstellt';  // created
 $messages['MODIFIED']['de'] = 'geändert'; // modified
 $messages['UPDATE']['de'] = 'aktualisieren'; // update
