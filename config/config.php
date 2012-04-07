@@ -9,12 +9,12 @@
   // Define table prefix
   $table_prefix = ""; 
 
-  /* 
-  // Your key to enable "Google Maps" support (optional):
-  // * http://code.google.com/intl/en-US/apis/maps/signup.html
-  $google_maps_keys['yourdomain.com'] = "XXXXXXXXX_YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY_ZZZZZZZZZZZZZZZZZZ_AAAAAAAAAAAAAAA";
-  */
-  
+  // Parse free text first
+  $quickadd = true;
+
+  // List external phonebook providers
+  $default_provider = "+41";
+
   //
   // List of Login/Users:
   //
@@ -36,6 +36,12 @@
   $userlist['adm2']['domain'] = 1;
   */
 
+  /* 
+  // Your key to enable "Google Maps" support (optional):
+  // * http://code.google.com/intl/en-US/apis/maps/signup.html
+  $google_maps_keys['yourdomain.com'] = "XXXXXXXXX_YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY_ZZZZZZZZZZZZZZZZZZ_AAAAAAAAAAAAAAA";
+  */
+  
   // Don't display groups
   $nogroups = false;
 
