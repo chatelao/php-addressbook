@@ -99,8 +99,16 @@ function guessHomepage($email1, $email2) {
 
 function guessAddressFields($address) {
 	
+  global $company_exts, $title_exts;
+  
+  if(!isset($company_exts)) $company_exts = array();
+  if(!isset($title_exts))   $title_exts   = array();
+
   $new_addr_list = array();
 
+	$address = preg_replace("/--(-)*/", "", $address);
+	$address = preg_replace("/__(_)*/", "", $address);
+	$address = preg_replace("/==(=)*/", "", $address);
   //
   // Preprocess:
   // * Revert "mysql_real_escape"
@@ -146,26 +154,13 @@ function guessAddressFields($address) {
 		  $addr_line_upper = strtoupper($addr_line);
 		}
 
-    //
-    // Firmen
-    // * Eng: Ltd, Plc
-    // * Deu: AG, GmbH
-    // * Frz: SA, SaRL
-    //
-    // Title
-    // * Eng: Office, Member
-    // * Deu: AG, GmbH
-    //
-    $title_exts = array( "OFFICER", "MEMBER", "LEADER", "MANAGER" );
-
-    $company_exts = array( "LTD", "PLC", "AG", "GMBH", "SA", "SARL"
-                         , "HOTEL", "MOTEL", "REST", "RESTAURANT" );
+                         
 	  if((!isset($company) || $company == "")
-	     && preg_match("/ (".implode("|", $company_exts).")(\w|$)/", strtoupper($addr_line), $matches) > 0) {
+	     && preg_match("/ (".implode("|", $company_exts).")(\W|$)/", strtoupper($addr_line), $matches) > 0) {
 	  	$company = $addr_line;
 		  $keep_line = false;
 	  } elseif((!isset($title) || $title == "")
-	     && preg_match("/ (".implode("|", $title_exts).")(\w|$)/", strtoupper($addr_line), $matches) > 0) {
+	     && preg_match("/(^| )(".implode("|", $title_exts).")(\W|$)/", strtoupper($addr_line), $matches) > 0) {
 	  	$title = $addr_line;
 		  $keep_line = false;
 	  } else
@@ -270,13 +265,13 @@ function guessAddressFields($address) {
 	// * If fax OR company is set + Business empty => business phone
 	// Else: Privat or Phone2
 	if(isset($phones['']) && count($phones['']) > 0) {
-		if(isset($phones['FAX']) && count($phones['FAX']) > 0 && !isset($phones['WORK'])) {
-			$work = $phones[''][0];
-		} elseif(!isset($phones['HOME'])) {
-			$home = $phones[''][0];			
-		} else {
-			$phone2 = $phones[''][0];
-		}
+    if(isset($phones['FAX']) && count($phones['FAX']) > 0 && !isset($phones['WORK'])) {
+    	$work = $phones[''][0];
+    } elseif(!isset($phones['HOME'])) {
+    	$home = $phones[''][0];			
+    } else {
+    	$phone2 = $phones[''][0];
+    }
     
     $phone_type = '';
   	for($j = 1; $j < count($phones[$phone_type]); $j++) {
@@ -306,7 +301,8 @@ function guessAddressFields($address) {
 	
 	if(isset($firstname)) $result['firstname'] = $firstname;
 	if(isset($lastname))  $result['lastname']  = $lastname;
-	if(isset($company))  $result['company']   = $company;
+	if(isset($company))   $result['company']   = $company;
+	if(isset($title))     $result['title']     = $title;
 
 	$result['address']   = implode("\n", $unparsed_addr_lines);
 

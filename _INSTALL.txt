@@ -13,9 +13,13 @@ Basic Installation
 
    ~~~~~~~~~~~~~~~~~~~~ Start Advertisment ~~~~~~~~~~~~~~~~~
 
-   Without Installation: "Adressbook-as-a-Service"
-   ===============================================
-   * http://swiss-addressbook.com
+   Better without installation: "Adressbook-as-a-Service"
+   ======================================================
+   * https://swiss-addressbook.com
+   *
+   * Secure Website
+   * iPhone + Android direct support
+   * company + title guessing
    * Free trial for 30 days, 2$ per month after trial.
    * Additional features available (e.g.: Outlook import).
 

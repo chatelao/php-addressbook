@@ -25,9 +25,13 @@ function addPhone($phone, $prefix = "") {
   		
   		if(($pos !== FALSE && $pos == 0) || ($use_default && $pprefix == $default_provider)) {
   		  $links[] = "<a href='".$provider['url'].urlencode($phone)."'>".$provider['name']."</a>";
+  		  $urls[]  = "<a href='".$provider['url'].urlencode($phone)."'>";
   		}
   	}
-  	if(count($links) > 0) {
+  	if(count($links) == 1) {
+  	  $phone = $urls[0].$phone."</a>";
+  	}
+  	if(count($links) > 1) {
   	  $phone .= " (".implode(", ", $links).")";
   	}
   }
@@ -107,7 +111,8 @@ function showOneEntry($r, $only_phone = false) {
 	 global $db, $table, $table_grp_adr, $table_groups, $print, $is_fix_group, $mail_as_image;
 
 	 $view = "";
-   $view .= add("<b>".$r['firstname']." ".$r['lastname']."</b>:");
+   $view .= add("<b>".$r['firstname']." ".$r['lastname']."</b>");
+   $view .= add($r['nickname']);
 
    $b64 = explode(";", $r['photo']);
    if(count($b64) >= 3 && ! $only_phone) {
@@ -120,9 +125,9 @@ function showOneEntry($r, $only_phone = false) {
    }
   
    if(! $only_phone) {
+     $view .= ($r['title'] != ""?"<i>":"").add($r['title']).($r['title'] != ""?"</i>":"");
      $view .= add($r['company']);
-     $view .= add($r['title']);
-     $view .= addGroup($r, array('address'));
+//     $view .= addGroup($r, array('address'));
      $view .= add(str_replace("\n", "<br />", trim($r["address"])));
      $view .= addGroup($r, array('home','mobile','work','fax'));
    }
@@ -144,7 +149,7 @@ function showOneEntry($r, $only_phone = false) {
      }
 	   $view .= addHomepage($r['homepage']);
 
-  	 $view .= addGroup($r, array('bday','bmonth','byear'));
+	   $view .= addGroup($r, array('bday','bmonth','byear'));
 	   $view .= addBirthday($r['bday'], $r['bmonth'], $r['byear'], ucfmsg('BIRTHDAY'));
 	   $view .= addBirthday($r['aday'], $r['amonth'], $r['ayear'], ucfmsg('ANNIVERSARY'));
 

@@ -192,26 +192,20 @@ include("translations.inc.php");
 include("mailer.inc.php");
 include("login.inc.php");
 
-if(isset($iplist) && hasRoleFromIP($iplist)) {
-
-  $role = hasRoleFromIP($iplist);
-  $read_only = ($role['role'] == "readonly");
-  
-} elseif(isset($userlist)) {
+$login = AuthLoginFactory::getBestLogin();
 	
-  if(!isset($required_roles)) { $required_roles = array(); }
+if(!isset($required_roles)) { $required_roles = array(); }
   
-  if( ! Login::checkRoles($required_roles) ) {
+if(!$login->hasRoles($required_roles) ) {
   	include ("include/format.inc.php");	
   	echo "<title>".ucfmsg("ADDRESS_BOOK")."</title>";
     echo translateTags(file_get_contents("include/login.inc.html"));
     die;
-  }
-
-  $user = Login::getUser();
-  $username = $user->getName();
+} else {
 
   // Get domain
+  $user      = $login->getUser();
+  $username = $user->getName();
   $domain_id= $user->getDomain();
 
   // Check "read only"

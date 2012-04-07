@@ -66,6 +66,7 @@ if(! $read_only)
 	 
 		$addr['firstname'] = $firstname;
 		$addr['lastname']  = $lastname;
+		$addr['nickname']  = $nickname;
 		$addr['title']     = $title;
 		$addr['company']   = $company;
 		$addr['address']   = $address;
@@ -110,6 +111,7 @@ else if($update)
 		$addr['id']        = $id;
 		$addr['firstname'] = $firstname;
 		$addr['lastname']  = $lastname;
+		$addr['nickname']  = $nickname;
 		$addr['title']     = $title;
 		$addr['company']   = $company;
 		$addr['address']   = $address;
@@ -157,6 +159,9 @@ $myrow = mysql_fetch_array($result);
 
 		<label><?php echo ucfmsg("LASTNAME") ?>:</label>
 		<input type="text" name="lastname" size="35" value="<?php echo $myrow['lastname']?>" /><br />
+
+		<label><?php echo ucfmsg("NICKNAME") ?>:</label>
+		<input type="text" name="nickname" size="35" value="<?php echo $myrow['nickname']?>" /><br />
 
 		<label><?php echo ucfmsg("COMPANY") ?>:</label>
 		<input type="text" name="company" size="35" value="<?php echo $myrow['company']?>" /><br />
@@ -354,12 +359,10 @@ $myrow = mysql_fetch_array($result);
   {
 ?>
 	<form accept-charset="utf-8" method="post">
-  	<input type="submit" name="quickskip" value="<?php echo ucfmsg('ADD EMPTY') ?>" />
   	<input type="submit" name="quickadd"  value="<?php echo ucfmsg('NEXT') ?>" /><br/><br/>
 
 		<label><?php echo ucfmsg("ADDRESS") ?>:</label>
 		<textarea name="address" rows="20"></textarea><br/><br/>
-  	<input type="submit" name="quickskip" value="<?php echo ucfmsg('ADD EMPTY') ?>" />
   	<input type="submit" name="quickadd"  value="<?php echo ucfmsg('NEXT') ?>" /><br/>
   </form>
 <?php  	
@@ -456,6 +459,9 @@ function proposeNames() {
 
 		<label><?php echo ucfmsg("LASTNAME") ?>:</label>
 		<input type="text" name="lastname"  value="<?php echoIfSet($addr, 'lastname'); ?>"  size="35" onkeyup="proposeMail()"/><br />
+
+		<label><?php echo ucfmsg("NICKNAME") ?>:</label>
+		<input type="text" name="nickname"  value="<?php echoIfSet($addr, 'nickname'); ?>"  size="35" onkeyup="proposeMail()"/><br />
 
 		<label><?php echo ucfmsg("TITLE") ?>:</label>
 		<input type="text" name="title" size="35" value="<?php echoIfSet($addr, 'title'); ?>" /><br />

@@ -62,11 +62,12 @@ function saveAddress($addr_array, $group_name = "") {
     	$src_tbl = $table;
     }
 
-    $sql = "INSERT INTO $table ( domain_id, id, firstname, lastname, company, title, address, home, mobile, work, fax, email, email2, email3, homepage, aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, created, modified)
+    $sql = "INSERT INTO $table ( domain_id, id, firstname, lastname, nickname, company, title, address, home, mobile, work, fax, email, email2, email3, homepage, aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, created, modified)
                         SELECT   $domain_id                                       domain_id
                                , ".$set_id."                                      id
                                , '".getIfSetFromAddr($addr_array, 'firstname')."' firstname
                                , '".getIfSetFromAddr($addr_array, 'lastname')."'  lastname
+                               , '".getIfSetFromAddr($addr_array, 'nickname')."'  nickname
                                , '".getIfSetFromAddr($addr_array, 'company')."'   company
                                , '".getIfSetFromAddr($addr_array, 'title')."'     title
                                , '".getIfSetFromAddr($addr_array, 'address')."'   address
@@ -129,6 +130,7 @@ function updateAddress($addr) {
 		} else {
 	    $sql = "UPDATE $table SET firstname = '".$addr['firstname']."'
 	                            , lastname  = '".$addr['lastname']."'
+	                            , nickname  = '".$addr['nickname']."'
 	                            , company   = '".$addr['company']."'
 	                            , title     = '".$addr['title']."'
 	                            , address   = '".$addr['address']."'
@@ -182,7 +184,7 @@ class Address {
     public function getEMails() {
 
       $result = array();
-    	if($this->address["email"]  != "")  $result[] = $this->address["email"];
+    	if($this->address["email"]   != "") $result[] = $this->address["email"];
     	if($this->address["email2"]  != "") $result[] = $this->address["email2"];
     	if($this->address["email3"]  != "") $result[] = $this->address["email3"];
     	return $result;
@@ -299,6 +301,7 @@ class Addresses {
           foreach($searchwords as $searchword) {
           	$sql .= "AND (   lastname  LIKE '%$searchword%'
                           OR firstname LIKE '%$searchword%'
+                          OR nickname  LIKE '%$searchword%'
                           OR company   LIKE '%$searchword%'
                           OR address   LIKE '%$searchword%'
                           OR ".$this->likePhone('home',   $searchword)."
@@ -315,6 +318,7 @@ class Addresses {
       }
       if($alphabet) {
       	$sql .= "AND (   lastname  LIKE '$alphabet%'
+                      OR nickname  LIKE '$alphabet%'
                       OR firstname LIKE '$alphabet%'
                       )";
       }
@@ -324,7 +328,7 @@ class Addresses {
       } else {
         	$sql .= "ORDER BY firstname, lastname ASC";
       }
-
+      
       //* Paging
       $page = 1;
       $pagesize = 2200;

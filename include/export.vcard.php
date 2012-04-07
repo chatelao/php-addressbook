@@ -95,6 +95,7 @@ function address2vcard($links) {
 	
    $firstname  = utf8_to_latin1($links["firstname"]);
    $lastname   = utf8_to_latin1($links["lastname"]);
+   $title      = utf8_to_latin1($links["title"]);
    $company    = utf8_to_latin1($links["company"]);
    $address    = utf8_to_latin1($links["address"]);
    $home       = utf8_to_latin1($links["home"]);
@@ -103,11 +104,16 @@ function address2vcard($links) {
    $fax        = utf8_to_latin1($links["fax"]);
    $email      = utf8_to_latin1($links["email"]);
    $email2     = utf8_to_latin1($links["email2"]);
+   $email3     = utf8_to_latin1($links["email3"]);
    $homepage   = utf8_to_latin1($links["homepage"]);
  
    $bday       = utf8_to_latin1($links["bday"]);
    $bmonth_num = utf8_to_latin1($links["bmonth_num"]);
    $byear      = utf8_to_latin1($links["byear"]);
+
+   $aday       = utf8_to_latin1($links["aday"]);
+   $amonth_num = utf8_to_latin1($links["amonth_num"]);
+   $ayear      = utf8_to_latin1($links["ayear"]);
 
    $phone2     = utf8_to_latin1($links["phone2"]);
    $address2   = utf8_to_latin1($links["address2"]);
@@ -117,6 +123,7 @@ function address2vcard($links) {
 	 $result .= "N:$lastname;$firstname;;;;\n";
 	 $result .= "FN:$firstname $lastname\n";
 	 $result .= "ORG:$company\n";
+	 $result .= "TITLE:$title\n";
 	 $adr = label2adr($address);
 	 $result .= "ADR;home:"
 	               .$adr['pbox']
@@ -141,10 +148,12 @@ function address2vcard($links) {
 	 $result .= "TEL;fax:$fax\n";
 	 $result .= "TEL;voice:$phone2\n";
 	 $result .= "EMAIL;PREF;INTERNET:$email\n";
-	 $result .= "EMAIL;PREF;INTERNET:$email2\n";
+	 $result .= "EMAIL;INTERNET:$email2\n";
+	 $result .= "EMAIL;INTERNET:$email3\n";
 	 $result .= "URL;WORK:$homepage\n";
 
-	 $result .= "BDAY:$byear-".(strlen($bmonth_num) == 1?"0":"")."$bmonth_num-".(strlen($bday) == 1?"0":"")."$bday\n";
+	 $result .= "BDAY:"."$byear-".(strlen($bmonth_num) == 1?"0":"")."$bmonth_num-".(strlen($bday) == 1?"0":"")."$bday\n";
+	 $result .= "X-ANNIVERSARY:"."$ayear-".(strlen($amonth_num) == 1?"0":"")."$amonth_num-".(strlen($aday) == 1?"0":"")."$aday\n";
 	 $result .= "END:VCARD\n";
 	 
    return $result;

@@ -129,6 +129,7 @@ foreach($file_lines as $vcards_line) {
   
   // Parse and add a field to the addess.
   $res = self::parseLine($vcards_line);
+
   if(isset($res['pkey'])) {
     $address[$res['pkey']][] = $res['value'];  
   }
@@ -188,13 +189,16 @@ foreach($addresses as $address) {
     }
     
     //
-    // "EMAIL" e-Mail address
+    // "EMAIL" e-Mail addresses
     //
     if($type == "EMAIL") {
     
       $dest_addr['email']  = $entries[0]['VALUE'];
       if(isset($entries[1]['VALUE'])) {
         $dest_addr['email2'] = $entries[1]['VALUE'];
+      }
+      if(isset($entries[2]['VALUE'])) {
+        $dest_addr['email3'] = $entries[2]['VALUE'];
       }
     }
     
@@ -252,21 +256,47 @@ foreach($addresses as $address) {
             	
       } elseif(strlen($entries[0]['VALUE']) >= 10) {
       	
-    	$date = substr($entries[0]['VALUE'], 0, 10);
-    	$date_parts = explode("-",$date);
-    
-    	$dest_addr['bday']  = ltrim($date_parts[2],"0");
-    	$dest_addr['byear'] = $date_parts[0];
-    	
-    	$dest_addr['bmonth'] = MonthToName($date_parts[1]);
+    	  $date = substr($entries[0]['VALUE'], 0, 10);
+    	  $date_parts = explode("-",$date);
+        
+    	  $dest_addr['bday']  = ltrim($date_parts[2],"0");
+    	  $dest_addr['byear'] = $date_parts[0];
+    	  
+    	  $dest_addr['bmonth'] = MonthToName($date_parts[1]);
       }
-    }  
+    }
+    
+    if($type == "X-ANNIVERSARY") {
+            if(strlen($entries[0]['VALUE']) ==  8) {
+
+    	  $dest_addr['aday']   = ltrim(substr($entries[0]['VALUE'], 6, 2),"0");
+    	  $dest_addr['amonth'] = MonthToName(ltrim(substr($entries[0]['VALUE'], 4, 2),"0"));
+    	  $dest_addr['ayear']  = substr($entries[0]['VALUE'], 0, 4);
+            	
+      } elseif(strlen($entries[0]['VALUE']) >= 10) {
+      	
+    	  $date = substr($entries[0]['VALUE'], 0, 10);
+    	  $date_parts = explode("-",$date);
+        
+    	  $dest_addr['aday']  = ltrim($date_parts[2],"0");
+    	  $dest_addr['ayear'] = $date_parts[0];
+    	  
+    	  $dest_addr['amonth'] = MonthToName($date_parts[1]);
+      }
+    }
     
     //
     // "ORG" Type, the Company
     //  
     if($type == "ORG") {
       $dest_addr['company']  = $entries[0]['VALUE'];
+    }
+
+    //
+    // "TITLE" Type, the title
+    //  
+    if($type == "TITLE") {
+      $dest_addr['title']  = $entries[0]['VALUE'];
     }
 
     //
