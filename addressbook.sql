@@ -11,9 +11,10 @@
 
 CREATE TABLE addressbook (
   domain_id int(9) unsigned NOT NULL default 0,
-  id int(9) unsigned NOT NULL auto_increment,
+  id int(9) unsigned NOT NULL,
   firstname varchar(255) NOT NULL,
   lastname varchar(255) NOT NULL,
+  nickname varchar(255) NOT NULL,
   company varchar(255) NOT NULL,
   title varchar(255) NOT NULL,
   address text NOT NULL,
@@ -49,7 +50,8 @@ CREATE TABLE addressbook (
   password varchar(256) default NULL,
   login date default NULL,
   role varchar(256) default NULL,
-  PRIMARY KEY (id,deprecated,domain_id)
+  PRIMARY KEY (id,deprecated,domain_id),
+  KEY deprecated_domain_id_idx (deprecated,domain_id)
 ) DEFAULT CHARSET=utf8;
 
 CREATE TABLE group_list (
