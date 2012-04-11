@@ -253,7 +253,7 @@ abstract class AuthLoginUserPass extends AuthLoginImpl {
 
 		parent::__construct();
 
-		$this->ip_date  = $_SERVER['REMOTE_ADDR']."_".date('Y-m');
+    $this->ip_date  = $_SERVER['HTTP_USER_AGENT'].date('Y-m');
     $this->uin      = (isset($_COOKIE['uin']) ? $_COOKIE['uin'] : "");
 
 	  //

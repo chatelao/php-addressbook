@@ -22,11 +22,11 @@ echo "<div id='a-z'><a href='$link=a'>A</a> | <a href='$link=b'>B</a> | <a href=
 <table border=0>
 <tr>
 	<td>
-		Advertisment: Just try for 2$ per month:<br>
+		  <i><b>PHP-Addressbook</b> + iPhone-Contacts-Synchronization</i><br>
 		<img src="icons/cross.png">
 		  <a href="http://swiss-addressbook.com">www.swiss-addressbook.com</a>
 		<img src="icons/cross.png"><br>
-		  <b><i>"PHP-Addressbook as a Service"</i></b>
+		Advertisment: 2 months for free, then just 2$ per month!<br>
 		</td></tr>
 </table>
 <br>
