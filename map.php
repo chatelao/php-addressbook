@@ -7,12 +7,13 @@
 
 
   // Check if we have a key for this domain?
-	$google_maps_key = "";
-  if(isset($google_maps_keys)) {
-    foreach($google_maps_keys as $domain => $key) {
-    	if(str_replace($domain,"",$_SERVER['SERVER_NAME']).$domain == $_SERVER['SERVER_NAME']) {
-    		$google_maps_key = $key;
-    	}
+	if(!isset($google_maps_key) ||  $google_maps_key == "") {
+    if(isset($google_maps_keys)) {
+      foreach($google_maps_keys as $domain => $key) {
+      	if(str_replace($domain,"",$_SERVER['SERVER_NAME']).$domain == $_SERVER['SERVER_NAME']) {
+      		$google_maps_key = $key;
+      	}
+      }
     }
   }
   
