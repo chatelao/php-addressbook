@@ -11,19 +11,22 @@
   // Setup for "Country guessing" (Beta: Switzerland, US, Belgium)
   $map_guess  = true;
 
+  // Pattern for PLZ guessing
+  $plz_pattern = "[0-9A-Z]{4,8}";
+
   // === static lookup tables ==
 
   $providers = array( "+33" => array("name" => "pagesblanches.fr"
-	                                   ,"url"  => "http://www.pagesjaunes.fr/pagesblanches/rechercheInverse.do?portail=PJ&numeroTelephone=")
-	                   , "+39" => array("name" => "paginebianche.it"
-	                                   ,"url"  => "http://www.paginebianche.it/execute.cgi?btt=1&ts=106&rk=&qs=")
-	                   , "+41" => array("name" => "local.ch"
-	                                   ,"url"  => "http://www.local.ch/de/q/?what=")
-	                   , "+43" => array("name" => "herold.at"
-	                                   ,"url"  => "http://www.herold.at/servlet/at.herold.sp.servlet.SPWPSearchServlet?searchterm=")
-	                   , "+49" => array("name" => "dastelefonbuch.de"
-	                                   ,"url"  => "http://www1.dastelefonbuch.de/Rueckwaerts-Suche.html?cmd=search&kw=")
-	                   );
+                                    ,"url"  => "http://www.pagesjaunes.fr/pagesblanches/rechercheInverse.do?portail=PJ&numeroTelephone=")
+                    , "+39" => array("name" => "paginebianche.it"
+                                    ,"url"  => "http://www.paginebianche.it/execute.cgi?btt=1&ts=106&rk=&qs=")
+                    , "+41" => array("name" => "local.ch"
+                                    ,"url"  => "http://www.local.ch/de/q/?what=")
+                    , "+43" => array("name" => "herold.at"
+                                    ,"url"  => "http://www.herold.at/servlet/at.herold.sp.servlet.SPWPSearchServlet?searchterm=")
+                    , "+49" => array("name" => "dastelefonbuch.de"
+                                    ,"url"  => "http://www1.dastelefonbuch.de/Rueckwaerts-Suche.html?cmd=search&kw=")
+                    );
 
   // List of excluded sites in "Homepage guessing"
   $free_mailers = array( "a3.epfl.ch"
@@ -52,5 +55,4 @@
                        , "web.de"
                        , "yahoo."
                       );
-
 ?>

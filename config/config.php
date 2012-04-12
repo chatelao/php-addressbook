@@ -8,7 +8,7 @@
   // Page access configuration
   $page_ext   = ".php";
 
-  // Parse free text first
+  // Enable quick adding of unstructured addresses
   $quickadd = true;
 
   // Don't display groups
@@ -16,6 +16,9 @@
 
   // Disable all "edit/create" actions
   $read_only  = false;
+
+  // Enable group administration pages
+  $public_group_edit = true;
 
   // Disable the AJAX-Mode with "false"
   $use_ajax = true;
@@ -40,9 +43,6 @@
 
   // View e-mail addresses as images
   $mail_as_image = false;
-
-  // Enable group administration pages
-  $public_group_edit = true;
 
   // Change the location of the images (e.g. a CDN Source)
   $url_images = "";
