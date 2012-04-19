@@ -141,11 +141,4 @@ $messages['th']['nl'] = "Thai"; // Thai
 $messages['tr']['nl'] = "Turks"; // Turkish
 $messages['vi']['nl'] = "Vietnamees"; // Vietnamese
 $messages['zh']['nl'] = "Chinees"; // Chinese
-$messages['DIR']['nl'] = ""; // 
-$messages['UPDATED']['nl'] = ""; // 
-$messages['TRANSLATOR']['nl'] = ""; // 
-$messages['TITLE']['nl'] = ""; // 
-$messages['MOBILE']['nl'] = ""; // 
-$messages['WORK']['nl'] = ""; // 
-$messages['FIRST_LAST']['nl'] = ""; // 
 ?>

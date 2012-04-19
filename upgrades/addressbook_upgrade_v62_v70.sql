@@ -6,6 +6,8 @@
 -- Add anniversary-fields (aday, amonth, ayear), email3, im, im2, im3, x_activesync
 --
 ALTER TABLE `addressbook` ADD `nickname` varchar(255) default NULL AFTER `lastname`;
+ALTER TABLE `addressbook` ADD `company`  varchar(255) default NULL AFTER `nickname`;
+ALTER TABLE `addressbook` ADD `title`    varchar(255) default NULL AFTER `company`;
 
 ALTER TABLE `addressbook` ADD `aday`   tinyint(2)   default NULL   AFTER `byear`;
 ALTER TABLE `addressbook` ADD `amonth` varchar(50)  default NULL   AFTER `aday`;
