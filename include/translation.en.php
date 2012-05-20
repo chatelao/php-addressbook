@@ -142,6 +142,7 @@ $messages['sr']['en'] = "Serbian"; // Serbian
 $messages['sv']['en'] = "Swedish"; // Swedish
 $messages['th']['en'] = "Thai"; // Thai
 $messages['tr']['en'] = "Turkish"; // Turkish
+$messages['ua']['en'] = "Ukrainian"; // Ukrainian
 $messages['vi']['en'] = "Vietnamese"; // Vietnamese
 $messages['zh']['en'] = "Chinese"; // Chinese
 $messages['DIR']['en'] = ""; // 
