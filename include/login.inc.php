@@ -92,6 +92,12 @@ class AuthLoginFactory {
     if((!isset($login) || !$login->hasRoles()) && isset($userlist)) {
       $login = new AuthLoginUserList($userlist);
     }
+    if((!isset($login) || !$login->hasRoles()) && isset($usertable)) {
+      $login = new AuthLoginDb($db, $usertable);
+    }
+    if(!isset($login) || !$login->hasRoles()) {
+      $login = new AuthHybrid($db, $usertable);
+    }
     if(!isset($iplist) && !isset($userlist)) {
       $login = new AuthLoginAlways();
     }
@@ -378,5 +384,182 @@ class AuthLoginUserList extends AuthLoginUserPass {
 	}
 }
 
+class AuthLoginDb extends AuthLoginUserPass {
 
+  // return md5($username.$md5_pass.$this->ip_date);
+
+	function __construct($db_conn, $table) {
+		
+		parent::__construct();
+
+		//
+		// Check if UIN is valid in DB.
+		//
+		$cnt = 0;
+	  if($this->getUIN() != "") {
+	  	$uin = $this->getUIN();
+			$sql = "select * from ".$table
+			      ." where md5(concat(username,md5_pass,'".$this->getIpDate()."'))"
+			          ." = '".mysql_real_escape_string($uin)."'";
+
+      $result = mysql_query($sql);
+      $rec = mysql_fetch_array($result);
+      $cnt = mysql_numrows($result);
+	  }
+	  	 
+	  //
+		// Check if user is valid in DB.
+		//
+		if($cnt == 0 && $this->getUserName() != "") {
+			$username       = $this->getUserName();
+			$username_lower = strtolower($this->getUserName());
+			$md5_pass       = md5($this->getPassWord());
+			$md5_pass_lower = md5(strtolower($this->getPassWord()));
+
+			$sql = "select user_id, domain_id, username, md5_pass from ".$table
+			      ." where username in ('".mysql_real_escape_string($username)."','"
+			                              .mysql_real_escape_string($username_lower)."')"
+			        ." and md5_pass in ('".$md5_pass."','".$md5_pass_lower."');";
+
+      $result = mysql_query($sql);
+      $rec = mysql_fetch_array($result);
+      $cnt = mysql_numrows($result);      
+    }
+	  
+    if($cnt == 1) {
+		  $this->user_id  = $rec['user_id'];
+		  $this->username = $rec['username'];
+		  $this->md5_pass = $rec['md5_pass'];
+		  $this->user_cfg = array('domain' => $rec['domain_id']);
+    }
+    
+    $this->finishConstruct();
+	}
+}
+
+class AuthHybrid extends AuthLoginDb {
+
+  // return md5($username.$md5_pass.$this->ip_date);
+
+	function __construct($db_conn, $table) {
+		
+		parent::__construct($db_conn, $table);
+
+    $cnt = 0;
+
+	  //
+		// Check if user is valid in DB.
+		//
+		$hybrid_types = array("Facebook", "Google", "Yahoo", "Live");
+	  $username = $this->getUserName();
+		if($username != "" && in_array($username, $hybrid_types)) {
+			
+			//
+			// START - Call Hybrid Auth
+			//
+			// $hybridauth_config = /* dirname(__FILE__) . */ '../../hybridauth/config.php';
+ 	    // require_once( "../../hybridauth/Hybrid/Auth.php" );
+			$hybridauth_config = /* dirname(__FILE__) . */ '/home/apps/hybridauth/config.php';
+ 	    require_once( "/home/apps/hybridauth/Hybrid/Auth.php" );
+      
+		  try{
+		  	
+		  // create an instance for Hybridauth with the configuration file path as parameter
+		  	$hybridauth = new Hybrid_Auth( $hybridauth_config );
+      
+		  // try to authenticate the selected $provider
+		  	$adapter = $hybridauth->authenticate( $username );
+      
+		  // grab the user profile
+		  	$user_profile = $adapter->getUserProfile();
+		  	
+		  	// a) Does user with "xxx" = identifier exist?
+		  	//   -> Yes, then login as user			   
+      
+		  	// b) Does email of user exist?
+		  	//   -> No, then create new user
+      
+		  	// c) Does email of user exist?
+		  	//   -> Yes, ask for regular login. Preset email = login
+		  	
+		  	// var_dump($provider_uid);
+		  	
+		  	$provider_uid  = $user_profile->identifier;
+		  	$email         = $user_profile->email;
+		  	$first_name    = $user_profile->firstName;
+		  	$last_name     = $user_profile->lastName;
+		  	$display_name  = $user_profile->displayName;
+		  	$website_url   = $user_profile->webSiteURL;
+		  	$profile_url   = $user_profile->profileURL;
+		  	$password      = rand( ) ; # for the password we generate something random
+		  	
+//		  	echo $provider_uid."<br>";
+//		  	echo $email;
+
+        //
+        // Check if user is valid in DB.
+        //
+        if($cnt == 0 && $this->getUserName() != "") {
+        	
+           $username       = $this->getUserName();
+           $username_lower = strtolower($this->getUserName());
+           $md5_pass       = md5($this->getPassWord());
+           $md5_pass_lower = md5(strtolower($this->getPassWord()));
+           
+           $sql = "select user_id, domain_id, username, md5_pass from ".$table
+                ." where sso_".strtolower($username)."_uid = '".$provider_uid."';";
+           
+           $result = mysql_query($sql);
+           $rec = mysql_fetch_array($result);
+           $cnt = mysql_numrows($result);      
+        }
+
+        if($cnt == 1) {
+    		  $this->user_id  = $rec['user_id'];
+    		  $this->username = $rec['username'];
+    		  $this->md5_pass = $rec['md5_pass'];
+    		  $this->user_cfg = array('domain' => $rec['domain_id']);
+        }    
+		  }
+		  catch( Exception $e ){
+		  	// Display the recived error
+		  	switch( $e->getCode() ){ 
+		  		case 0 : $error = "Unspecified error."; break;
+		  		case 1 : $error = "Hybriauth configuration error."; break;
+		  		case 2 : $error = "Provider not properly configured."; break;
+		  		case 3 : $error = "Unknown or disabled provider."; break;
+		  		case 4 : $error = "Missing provider application credentials."; break;
+		  		case 5 : $error = "Authentification failed. The user has canceled the authentication or the provider refused the connection."; break;
+		  		case 6 : $error = "User profile request failed. Most likely the user is not connected to the provider and he should to authenticate again."; 
+		  			     $adapter->logout(); 
+		  			     break;
+		  		case 7 : $error = "User not connected to the provider."; 
+		  			     $adapter->logout(); 
+		  			     break;
+		  	} 
+      }
+			//
+			// ENDE - Call Hybrid Auth
+			//
+			
+			$sql = "select user_id, domain_id, username, md5_pass from ".$table
+			      ." where username in ('".mysql_real_escape_string($username)."','"
+			                              .mysql_real_escape_string($username_lower)."')"
+			        ." and md5_pass in ('".$md5_pass."','".$md5_pass_lower."');";
+
+      $result = mysql_query($sql);
+      $rec = mysql_fetch_array($result);
+      $cnt = mysql_numrows($result);      
+    }
+	  
+    if($cnt == 1) {
+		  $this->user_id  = $rec['user_id'];
+		  $this->username = $rec['username'];
+		  $this->md5_pass = $rec['md5_pass'];
+		  $this->user_cfg = array('domain' => $rec['domain_id']);
+    }
+
+    $this->finishConstruct();
+	}
+}
 ?>

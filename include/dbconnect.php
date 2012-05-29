@@ -100,6 +100,9 @@ if(!isset($month_lookup))  $month_lookup = "month_lookup";
 if(!isset($table_groups))  $table_groups  = "group_list";
 if(!isset($table_grp_adr)) $table_grp_adr = "address_in_groups";
 
+// (optional) group function
+$usertable     = "user";
+
 // the domain
 if(!isset($domain_id)) $domain_id  = 0;
 
@@ -156,6 +159,7 @@ $table         = $table_prefix.$table;
 $month_lookup  = $table_prefix.$month_lookup;
 $table_groups  = $table_prefix.$table_groups;
 $table_grp_adr = $table_prefix.$table_grp_adr;
+$usertable     = $table_prefix.$usertable;
 
 //
 // --- Set default values to parameters, if need
@@ -343,6 +347,6 @@ include("group.class.php");
 
 $revision = '$Rev$';
 $revision = str_replace('$', '', str_replace(' ', '', str_replace('Rev: ', '', $revision)));
-$version = '7.0.0'.' - r'.$revision;
+$version = '8.0.0'.' - r'.$revision;
 
 ?>

@@ -4,53 +4,15 @@
 // may be overridden in "config.php"
 if(!isset($providers))
 {
-	$providers = array( "+33" => array("name" => "pagesblanches.fr"
-	                                  ,"url"  => "http://www.pagesjaunes.fr/pagesblanches/rechercheInverse.do?portail=PJ&numeroTelephone=")
-	                  , "+39" => array("name" => "paginebianche.it"
-	                                  ,"url"  => "http://www.paginebianche.it/execute.cgi?btt=1&ts=106&rk=&qs=")
-	                  , "+41" => array("name" => "local.ch"
-	                                  ,"url"  => "http://www.local.ch/de/q/?what=")
-	                  , "+43" => array("name" => "herold.at"
-	                                  ,"url"  => "http://www.herold.at/servlet/at.herold.sp.servlet.SPWPSearchServlet?searchterm=")
-	                  , "+49" => array("name" => "dastelefonbuch.de"
-	                                  ,"url"  => "http://www1.dastelefonbuch.de/Rueckwaerts-Suche.html?cmd=search&kw=")
-	                  );
+	$providers = array();
 }
 
 // Default list of free_mailers,
 // may be overridden in "config.php"
 if(!isset($free_mailers))
 {
-
-  global $free_mailers;
-
   // List of excluded sites in "Homepage guessing"
-  $free_mailers = array( "a3.epfl.ch"
-                       , "acm.org"
-                       , "aol.com"
-                       , "bigfoot.com"
-                       , "bluewin.ch"
-                       , "bluemail.ch"
-                       , "email.ch"
-                       , "eml.cc"
-                       , "freesurf.ch"
-                       , "freenet.de"
-                       , "gmail.com"
-                       , "googlemail.com"
-                       , "gmx."
-                       , "hispeed.ch"
-                       , "hotmail."
-                       , "ieee.org"
-                       , "intergga.ch"
-                       , "msn."
-                       , "pobox.com"
-                       , "swissonline.ch"
-                       , "spectraweb.ch"
-                       , "tiscalinet.ch"
-                       , "t-online.de"
-                       , "web.de"
-                       , "yahoo."
-                      );
+  $free_mailers = array();
 }
 
 function guessOneHomepage($email) {
@@ -142,6 +104,8 @@ function guessAddressFields($address) {
 	for($i = 0; $i < count($addr_list); $i++) {
 		
 		$addr_line = $addr_list[$i];
+		$addr_line = trim($addr_line);
+		$addr_line = preg_replace('/^\p{Z}+|\p{Z}+$/u','',$addr_line);
 		$addr_line = str_replace("(at)",  "@", $addr_line);
 		$addr_line = str_replace("{at}",  "@", $addr_line);
 		$addr_line = str_replace("'at'",  "@", $addr_line);
@@ -154,19 +118,20 @@ function guessAddressFields($address) {
 		  $addr_line_upper = strtoupper($addr_line);
 		}
 
-                         
 	  if((!isset($company) || $company == "")
-	     && preg_match("/ (".implode("|", $company_exts).")(\W|$)/", strtoupper($addr_line), $matches) > 0) {
+	     && function_exists("mb_ereg_match")
+	     && mb_ereg_match("(^|.* )(".implode("|", $company_exts).")(\W|$)", $addr_line_upper)) {
 	  	$company = $addr_line;
 		  $keep_line = false;
 	  } elseif((!isset($title) || $title == "")
-	     && preg_match("/(^| )(".implode("|", $title_exts).")(\W|$)/", strtoupper($addr_line), $matches) > 0) {
+	     && function_exists("mb_ereg_match")
+	     && mb_ereg_match("(^|.* |.*-)(".implode("|", $title_exts).")(\W|$)", $addr_line_upper)) {
 	  	$title = $addr_line;
 		  $keep_line = false;
 	  } else
 
     //
-    // Vorname Nachname
+    // fistname Lastname
     //
 	  if(! $has_name) {
 	  	$names = explode(" ", $addr_line, 2);
@@ -180,7 +145,7 @@ function guessAddressFields($address) {
 	  }
 
     //
-    // Mailadressen
+    // Mail addresses
     //
 	  elseif(preg_match("/([A-Za-z0-9\.\-_])*\@([A-Za-z0-9\.\-_])*\.([A-Za-z]){2,3}/", $addr_line, $matches) > 0) {
 	  	$mails[] = $matches[0];
@@ -188,7 +153,7 @@ function guessAddressFields($address) {
 	  }
 
     //
-    // Webseiten:
+    // websites:
     // * http://
     // * https://
     // * www.
@@ -202,7 +167,7 @@ function guessAddressFields($address) {
   	}
 
     //
-    // Telefonnummern
+    // phone nummers
     //
 	  elseif(preg_match("/(\+)?([0-9\(\)])+([0-9\(\) -\/'])*/", $addr_line, $matches) > 0) {
 	  	$phone_number = $matches[0];
@@ -225,8 +190,8 @@ function guessAddressFields($address) {
 	  	  $phone_type = "CELL";
 	    }
 	  	
-	  	// Geschäft, Business
-      $phone_exts = array("TEL G", "G", "GESCHÄFT", "B", "BUSINESS");
+	  	// Geschï¿½ft, Business
+      $phone_exts = array("TEL G", "G", "GESCHï¿½FT", "B", "BUSINESS");
 	    if(preg_match("/^(".implode("|", $phone_exts).")(\.)?(:)?(\s)+/", $addr_line_upper, $matches) > 0) {
 	  	  $phone_type = "WORK";
 	    }
@@ -314,6 +279,7 @@ function guessAddressFields($address) {
 
 	if(isset($mails[0])) $result['email']  = $mails[0];
 	if(isset($mails[1])) $result['email2'] = $mails[1];
+	if(isset($mails[2])) $result['email3'] = $mails[2];
 
 	if(isset($homepage)) $result['homepage'] = $homepage;
 	

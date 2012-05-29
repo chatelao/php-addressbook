@@ -28,6 +28,106 @@
                                     ,"url"  => "http://www1.dastelefonbuch.de/Rueckwaerts-Suche.html?cmd=search&kw=")
                     );
 
+  //
+  // Companies postfixes
+  //
+  $company_exts = array( "INC"
+                       , "LTD"
+                       , "PLC"
+                       , "HOTEL"
+                       , "MOTEL"
+                       , "REST."
+                       , "RESTAURANT"
+
+                       , "SA"
+                       , "SARL"
+
+                       , "AB"
+
+                       , "AG"
+                       , "AMT "
+                       , "DEPARTEMENT"
+                       , "GMBH" );
+
+  //
+  // Title
+  //
+  $title_exts = array( 
+                     //
+                     // English
+                     //
+                       "ADVISOR"
+                     , "ANALYST"
+                     , "ARCHITECT"
+                     , "ASSISTANT"
+                     , "ASSOCIATE"
+                     , "C\w?O"
+                     , "CHAIR(WO)?MAN"
+                     , "CHIEF"
+                     , "CONSULTANT"
+                     , "COUNSEL"
+                     , "COUNSELOR"
+                     , "\\w*DIRECTOR"
+                     , "\\w*ENGINEER"
+                     , "\\w*EXECUTIVE"
+                     , "\\w*EXPERT"
+                     , "FOUNDER"
+                     , "HEAD"
+                     , "\\w*LEAD(ER)?"
+                     , "\\w*MANAGER"
+                     , "MEMBER"
+                     , "METHODOLOGIST"
+                     , "\\w*OFFICER"
+                     , "OWNER"
+                     , "PRESIDENT"
+                     , "PROPRIETOR"
+                     , "SPECIALIST"
+                     , "SURGEON"
+                     , "WRITER"
+
+                     //
+                     // French
+                     //
+                     , "ADJOINT"
+                     , "DÉVELOPPEUR"
+                     , "INTÉGRATEUR"
+
+                     //
+                     // German
+                     //
+                     , "\\w*ADMINISTRATOR(IN)"
+                     , "\\w*(ANTWALT|ANTWÄTIN)" 
+                     , "\\w*ASSISTENT(IN)?" 
+                     , "\\w*ARZT|\\w*ÄRZTIN" 
+                     , "\\w*ARCHITEKT(IN)?" 
+                     , "\\w*BERATER(IN)?"
+                     , "\\w*BETRIEBS(RAT|RÄTIN)?"
+                     , "\\w*BETREUER(IN)?"
+                     , "\\w*DIREKTOR(IN)"
+                     , "\\w*DOZENT(IN)"
+                     , "\\w*ENTWICKLER(IN)?"
+                     , "\\w*FÜHRER(IN)?"
+                     , "\\w*FÜRSPRECHER(IN)?"
+                     , "\\w*INFORMATIKER(IN)?"
+                     , "\\w*INGENIEUR(IN)?"
+                     , "\\w*INHABER(IN)?"
+                     , "\\w*KURIER(IN)"
+                     , "\\w*LEITER(IN)?"
+                     , "\\w*MITGLIED"
+                     , "\\w*MODERATOR"
+                     , "\\w*PARTNER(IN)?"
+                     , "\\w*PRÄSIDENT(IN)?"
+                     , "\\w*PROFESSOR(IN)"
+                     , "\\w*SEKRETÄR(IN)?"
+                     , "\\w*SPEZIALIST(IN)"
+                     , "\\w*UNTERNEHMER(IN)"
+                     , "\\w*VERANTWORTLICHE(R)?"
+                     , "\\w*VERWALTUNGS(RAT|RÄTIN)"
+                     , "\\w*VORSTEHER(IN)?"
+                     , "\\w*VORSITZENDE(R)?"
+                     
+                     );
+
   // List of excluded sites in "Homepage guessing"
   $free_mailers = array( "a3.epfl.ch"
                        , "acm.org"

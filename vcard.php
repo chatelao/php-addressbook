@@ -9,10 +9,9 @@ if ($id) {
    $result = mysql_query($sql, $db);
    $links  = mysql_fetch_array($result);
    
-   Header("Content-Type: text/x-vCard");
-   $filename = utf8_to_latin1($links['firstname'].'_'.$links['lastname']."-".date("Y_m_d-Hi"));
-   Header('Content-Disposition: attachment; filename="'.$filename.'.vcf"');
    require "include/export.vcard.php";
+   
+   header2vcard($links);
    echo address2vcard($links);
 	
 } else {

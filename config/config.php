@@ -1,9 +1,9 @@
 <?php
 
-  include "cfg.db.php";
-  include "cfg.user.php";   
-  include "cfg.guess.php";   
-  include "cfg.ext.php";   
+  include dirname(__FILE__).DIRECTORY_SEPARATOR."cfg.sys.php";
+  include dirname(__FILE__).DIRECTORY_SEPARATOR."cfg.user.php";   
+  include dirname(__FILE__).DIRECTORY_SEPARATOR."cfg.guess.php";   
+  include dirname(__FILE__).DIRECTORY_SEPARATOR."cfg.ext.php";   
 
   // Page access configuration
   $page_ext   = ".php";

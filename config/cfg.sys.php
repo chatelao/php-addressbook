@@ -11,5 +11,10 @@
 
   // You may use a table-prefix if you have only one DB-User
   $table_prefix = "";
+
+  // Domain to send / receive emails (IMAP) for address guessing
+  $email_domain = "";
+  $email_user   = "";
+  $email_pass   = "";
   
 ?>

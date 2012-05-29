@@ -21,6 +21,10 @@
   $userlist['adm2']['domain'] = 1;
   */
 
+  //
+  // == User table in database ==
+  //
+  $usertable = "user";
 
   // == List of IP-Users ==
   //

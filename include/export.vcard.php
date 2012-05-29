@@ -91,6 +91,20 @@ function label2adr($address) {
    	
 }
 
+function headers2vcard($links) {
+   $result[] = "Content-Type: text/x-vCard";
+   $filename = utf8_to_latin1($links['firstname'].'_'.$links['lastname']."-".date("Y_m_d-Hi"));
+   $result[] = 'Content-Disposition: attachment; filename="'.$filename.'.vcf"';
+   
+   return $result;
+}
+
+function header2vcard($links) {
+   Header("Content-Type: text/x-vCard");
+   $filename = utf8_to_latin1($links['firstname'].'_'.$links['lastname']."-".date("Y_m_d-Hi"));
+   Header('Content-Disposition: attachment; filename="'.$filename.'.vcf"');	
+}
+
 function address2vcard($links) {
 	
    $firstname  = utf8_to_latin1($links["firstname"]);

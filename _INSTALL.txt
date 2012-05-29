@@ -6,9 +6,9 @@ Basic Installation
 
 2. Apply "addressbook.sql" to your database.
 
-3. Change database connection in "config/config.php".
+3. Change database connection in "config/cfg.sys.php".
 
-4. Change the password of "admin" in "config/config.php".
+4. Change the password of "admin" in "config/cfg.user.php".
 
 
    ~~~~~~~~~~~~~~~~~~~~ Start Advertisment ~~~~~~~~~~~~~~~~~
@@ -28,19 +28,19 @@ Basic Installation
 
 Setup the Users (optional)
 ==========================
-5. Modify $userlist in the "config/config.php" file.
+5. Modify $userlist in the "config/cfg.user.php" file.
 
 Change displayed cols (optional)
 ================================
-6. Modify $disp_cols in the "config/config.php" file.
+6. Modify $disp_cols in the "config/cfg.user.php" file.
 
 Activate change history (optional)
 ==================================
-7. Set "$keep_history = true;" in the "config/config.php" file.
+7. Set "$keep_history = true;" in the "config/cfg.user.php" file.
 
 Don't show guessed homepages (optional)
 ==================================
-8. Set "homepage_guess = false;" in the "config/config.php" file.
+8. Set "homepage_guess = false;" in the "config/cfg.user.php" file.
 
 More (optional)
 ==========================

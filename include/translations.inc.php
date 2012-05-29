@@ -18,7 +18,8 @@ $supported_langs = array("ar","bg","ca","cs","da"
                         ,"fi","fr","he","hi","hu"
                         ,"it","ja","ko","nl","no"
                         ,"pl","pt","ru","on","sr"
-                        ,"sv","sl","th","tr","vi","zh","ua");
+                        ,"sv","sl","th","tr","ua"
+                        ,"vi","zh");
 //
 // Handle language choice
 //

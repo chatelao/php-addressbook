@@ -1,7 +1,7 @@
 <?php
 //
 // New translations & fixes are welcome:
-// * chatelao(Ã¤t)users.sourceforge.net
+// * chatelao(ät)users.sourceforge.net
 //
 $supported_langs[] = 'ru';
 
