@@ -1,0 +1,11 @@
+PHP Addressbook - 8.0.0
+=======================
+
+User management in database.
+
+- 0000025: Add database for user login (Chatelao) - solved.
+- 0000024: Add company + title guessing (Chatelao) - solved.
+- 0000001: Fix unstable Login on SF demo page (Chatelao) - solved.
+- 0000023: Fix russian translation (Chatelao) - solved.
+- 0000022: Add ukrainian translation (Chatelao) - solved.
+- 0000007: Add new hindi translation (Chatelao) - solved.
