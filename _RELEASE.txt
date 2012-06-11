@@ -1,11 +1,21 @@
+PHP Addressbook - Change Log
+
+PHP Addressbook - 8.1.0
+=======================
+
+Add Exchange/ActiveSync support with a z-push integration
+
+- 0000026: Add: ActiveSync Support over z-Push (chatelao) - resolved.
+- 0000027: Fix: "usertable" default value will not override user value. (chatelao) - resolved.
+
 PHP Addressbook - 8.0.0
 =======================
 
 User management in database.
 
-- 0000025: Add database for user login (Chatelao) - solved.
-- 0000024: Add company + title guessing (Chatelao) - solved.
-- 0000001: Fix unstable Login on SF demo page (Chatelao) - solved.
-- 0000023: Fix russian translation (Chatelao) - solved.
-- 0000022: Add ukrainian translation (Chatelao) - solved.
-- 0000007: Add new hindi translation (Chatelao) - solved.
+- 0000023: Fix: Russian translation (chatelao) - resolved.
+- 0000007: Chg: Extend hindi translation (chatelao) - resolved.
+- 0000022: Add: Ukrainian translation (chatelao) - resolved.
+- 0000001: Fix: Unstable Login on SF demo page (chatelao) - resolved.
+- 0000024: Add: Company + title guessing (chatelao) - resolved.
+- 0000025: Add: Database table for user login (chatelao) - resolved.
