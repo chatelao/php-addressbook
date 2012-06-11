@@ -100,8 +100,8 @@ if(!isset($month_lookup))  $month_lookup = "month_lookup";
 if(!isset($table_groups))  $table_groups  = "group_list";
 if(!isset($table_grp_adr)) $table_grp_adr = "address_in_groups";
 
-// (optional) group function
-$usertable     = "user";
+// (optional) user from database
+if(!isset($usertable)) $usertable         = "user";
 
 // the domain
 if(!isset($domain_id)) $domain_id  = 0;
