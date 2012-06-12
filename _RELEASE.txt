@@ -1,5 +1,12 @@
 PHP Addressbook - Change Log
 
+PHP Addressbook - 8.1.1
+=======================
+
+Fix urgent bugs from 8.x
+
+- 0000028: Fix: Remove spaces from "cfg.user.php" (chatelao) - resolved.
+
 PHP Addressbook - 8.1.0
 =======================
 
@@ -11,7 +18,7 @@ Add Exchange/ActiveSync support with a z-push integration
 PHP Addressbook - 8.0.0
 =======================
 
-User management in database.
+Add user management in database.
 
 - 0000023: Fix: Russian translation (chatelao) - resolved.
 - 0000007: Chg: Extend hindi translation (chatelao) - resolved.
