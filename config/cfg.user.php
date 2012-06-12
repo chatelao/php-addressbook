@@ -44,4 +44,4 @@
   $domain[1]['skin'] = "pink";
   $domain[2]['skin'] = "yellow";
 
-?>  
+?>

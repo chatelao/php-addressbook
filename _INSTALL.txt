@@ -30,23 +30,27 @@ Setup the Users (optional)
 ==========================
 5. Modify $userlist in the "config/cfg.user.php" file.
 
+Setup mobile access (Exchange/ActiveSync with z-push)
+=====================================================
+6. Add the ".htaccess_for_mobilesync" to your ".htaccess".
+
 Change displayed cols (optional)
 ================================
-6. Modify $disp_cols in the "config/cfg.user.php" file.
+7. Modify $disp_cols in the "config/cfg.user.php" file.
 
 Activate change history (optional)
 ==================================
-7. Set "$keep_history = true;" in the "config/cfg.user.php" file.
+8. Set "$keep_history = true;" in the "config/cfg.user.php" file.
 
 Don't show guessed homepages (optional)
 ==================================
-8. Set "homepage_guess = false;" in the "config/cfg.user.php" file.
+9. Set "homepage_guess = false;" in the "config/cfg.user.php" file.
 
 More (optional)
 ==========================
-9. Feel free to change all other parameters of "config/config.php".
+10. Feel free to change all other parameters of "config/config.php".
 
-10. Just post your question here: https://sourceforge.net/projects/php-addressbook/support
+11. Just post your question here: https://sourceforge.net/projects/php-addressbook/support
 
 Enjoy it!
 
