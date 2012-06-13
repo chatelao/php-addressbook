@@ -1,0 +1,24 @@
+cURRENTLY HELP IS NEEDED FOR THIS TOPICS
+========================================
+
+Documentation
+* Wiki contributions: https://sourceforge.net/p/php-addressbook/wiki
+* Tutorials, Video-Tutorials, ....
+
+Translation
+* Send us all your fixes
+* Send us your missing mother tongue
+
+HTML/CSS
+* Help to implement a newer layout
+
+JavaScript
+* Improve loading with 1k+ records
+* Improve AJAX sort / query speed
+* Implement a local HTML5 cache
+
+PHP
+* Photo upload
+* Round robin Excel import/export
+
+* OR ... your implemented idea ...

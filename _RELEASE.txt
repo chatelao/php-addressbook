@@ -1,5 +1,13 @@
 PHP Addressbook - Change Log
 
+PHP Addressbook - 8.1.2
+=======================
+
+Fix more Bugs from versions 8.x
+
+- 0000029: Add: Affero License (chatelao) - resolved.
+- 0000031: Fix: "$read_only" config option works again (chatelao) - resolved.
+
 PHP Addressbook - 8.1.1
 =======================
 

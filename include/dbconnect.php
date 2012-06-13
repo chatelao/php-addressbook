@@ -213,7 +213,7 @@ if(!$login->hasRoles($required_roles) ) {
   $domain_id= $user->getDomain();
 
   // Check "read only"
-  $read_only = $user->hasRole("readonly");
+  $read_only = $read_only || $user->hasRole("readonly");
 
   // Check "forced group"
   if($user->getGroup() != "") {
@@ -347,6 +347,6 @@ include("group.class.php");
 
 $revision = '$Rev$';
 $revision = str_replace('$', '', str_replace(' ', '', str_replace('Rev: ', '', $revision)));
-$version = '8.1.1'.' - r'.$revision;
+$version = '8.1.2'.' - r'.$revision;
 
 ?>
