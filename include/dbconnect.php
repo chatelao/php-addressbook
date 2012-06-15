@@ -27,6 +27,14 @@ if(   ini_get('zlib.output_compression') != 1
   ob_start('ob_gzhandler');
 }
 
+if(!isset($dbuser_read)) $dbuser_read = $dbuser;
+if(!isset($dbpass_read)) $dbpass_read = $dbpass;
+
+if($read_only) {
+  $dbuser = $dbuser_read;
+  $dbpass = $dbpass_read;
+}
+
 // --- Connect to DB, retry 5 times ---
 for ($i = 0; $i < 5; $i++) {
 	
