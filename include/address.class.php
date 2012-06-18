@@ -241,8 +241,8 @@ class Address {
     // Create a unified format for comparison an display.
     //
     public function unifyPhones( $phones
-    	 	 	 	 	 	   , $prefixe = ""
-                              , $remove_prefix = false ) {
+    	 	 	 	   , $prefix = ""
+                               , $remove_prefix = false ) {
                               	
       global $intl_prefix_reg, $default_provider, $phone_delims;
                               	
