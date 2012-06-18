@@ -79,14 +79,6 @@ showOneEntry($r);
 
    $addr_per_line  = ($only_phones ? 4 : 3);
    
-   function trimAll($r) {
-    	$res = array();
-    	foreach($r as $key => $val) {
-    		$res[$key] = trim($val);
-    	}
-    	return $res;
-   } 
-
    while($r = mysql_fetch_array($result)) {
    	 $r = trimAll($r);   	
    	 $address = new Address($r);
