@@ -106,7 +106,7 @@ function guessAddressFields($address) {
 		
 		$addr_line = $addr_list[$i];
 		$addr_line = trim($addr_line);
-		$addr_line = preg_replace('/^\p{Z}+|\p{Z}+$/u','',$addr_line);
+		// $addr_line = preg_replace('/^\p{Z}+|\p{Z}+$/u','',$addr_line);
 		$addr_line = str_replace("(at)",  "@", $addr_line);
 		$addr_line = str_replace("{at}",  "@", $addr_line);
 		$addr_line = str_replace("'at'",  "@", $addr_line);
