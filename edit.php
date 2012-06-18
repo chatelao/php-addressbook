@@ -2,6 +2,7 @@
 
 include ("include/dbconnect.php");
 include ("include/format.inc.php");
+include ("include/photo.class.php");
 
 if($submit || $update) { ?>
 	<meta HTTP-EQUIV="REFRESH" content="3;url=.">
@@ -88,6 +89,16 @@ if(! $read_only)
 		$addr['phone2']    = $phone2;
 		$addr['notes']     = $notes;
 	
+  if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] <= 0) {
+    
+    $file_tmp_name = $_FILES["photo"]["tmp_name"];
+    $file_name     = $_FILES["photo"]["name"];    
+    $photo = new Photo($file_tmp_name);
+    $photo->scaleToMaxSide(150);
+    $addr['photo'] = $photo->getBase64();
+
+  }	
+	
 	if(isset($table_groups) and $table_groups != "" ) {
 		if( !$is_fix_group ) {
 			$g_name = $new_group;
@@ -133,7 +144,26 @@ else if($update)
 		$addr['phone2']    = $phone2;
 		$addr['notes']     = $notes;
 
-    if(updateAddress($addr)) {
+		$keep_photo = true;
+		if(isset($delete_photo)) {
+		  $keep_photo =  !$delete_photo;
+		}
+						
+		if(isset($_FILES["photo"])
+		  	  && $_FILES["photo"]["error"] <= 0) {
+    
+      $file_tmp_name = $_FILES["photo"]["tmp_name"];
+      $file_name     = $_FILES["photo"]["name"];    
+      $photo = new Photo($file_tmp_name);
+      $photo->scaleToMaxSide(150);
+      $addr['photo'] = $photo->getBase64();
+		  $keep_photo = false;
+		} else  {
+      $addr['photo']  = '';
+		}
+
+		
+    if(updateAddress($addr, $keep_photo)) {
 		echo "<br /><div class='msgbox'>".ucfmsg('ADDRESS_BOOK')." ".msg('UPDATED')."<br /><i>return to <a href='index$page_ext'>home page</a></i></div>";
 	} else {
 		echo "<br /><div class='msgbox'>".ucfmsg('INVALID')." ID.<br /><i>return to <a href='index$page_ext'>home page</a></i></div>";
@@ -149,7 +179,11 @@ else if($id)
 $result = mysql_query("SELECT * FROM $base_from_where AND $table.id=$id",$db);
 $myrow = mysql_fetch_array($result);
 ?>
-	<form accept-charset="utf-8" method="post" action="edit<?php echo $page_ext; ?>">
+
+  <form enctype="multipart/form-data" 
+  	    accept-charset="utf-8"
+  	    method="post"
+  	    action="edit<?php echo $page_ext; ?>">
 
    	<input type="submit" name="update" value="<?php echo ucfmsg('UPDATE') ?>" /><br />
 
@@ -161,7 +195,13 @@ $myrow = mysql_fetch_array($result);
 		<input type="text" name="lastname" size="35" value="<?php echo $myrow['lastname']?>" /><br />
 
 		<label><?php echo ucfmsg("NICKNAME") ?>:</label>
-		<input type="text" name="nickname" size="35" value="<?php echo $myrow['nickname']?>" /><br />
+c<input type="text" name="nickname" size="35" value="<?php echo $myrow['nickname']?>" /><br />
+
+<label><?php echo ucfmsg("PHOTO") ?>:</label>
+    <input type="file"  name="photo" /><br />
+    
+    <label><?php echo msg("DELETE") ?>:</label>
+  <input type="checkbox"  name="delete_photo" /><br />
 
 		<label><?php echo ucfmsg("COMPANY") ?>:</label>
 		<input type="text" name="company" size="35" value="<?php echo $myrow['company']?>" /><br />
@@ -449,7 +489,11 @@ function proposeNames() {
 -->
 </script>
 
-  <form accept-charset="utf-8" method="post" action="edit<?php echo $page_ext; ?>" name="theform">
+  <form name="theform"
+  	    enctype="multipart/form-data" 
+  	    accept-charset="utf-8"
+  	    method="post"
+  	    action="edit<?php echo $page_ext; ?>">
 
 		<input type="submit" name="submit" value="<?php echo ucfmsg('ENTER') ?>" /><br /><br />
 
@@ -462,6 +506,9 @@ function proposeNames() {
 
 		<label><?php echo ucfmsg("NICKNAME") ?>:</label>
 		<input type="text" name="nickname"  value="<?php echoIfSet($addr, 'nickname'); ?>"  size="35" onkeyup="proposeMail()"/><br />
+
+		<label><?php echo ucfmsg("PHOTO") ?>:</label>
+    <input type="file"  name="photo" /><br />
 
 		<label><?php echo ucfmsg("TITLE") ?>:</label>
 		<input type="text" name="title" size="35" value="<?php echoIfSet($addr, 'title'); ?>" /><br />
