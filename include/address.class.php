@@ -284,9 +284,9 @@ class Address {
 	public function unifyPhone( $prefix = ""
                               , $remove_prefix = false ) {
        $phones = array();
-       $phones[] = firstPhone();
+       $phones[] = $this->firstPhone();
        
-       $unifons = unifyPhones($phones, $prefix, $remove_prefix);
+       $unifons = $this->unifyPhones($phones, $prefix, $remove_prefix);
        return $unifons[0];            
     }
 
