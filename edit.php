@@ -5,7 +5,7 @@ include ("include/format.inc.php");
 include ("include/photo.class.php");
 
 if($submit || $update) { ?>
-	<meta HTTP-EQUIV="REFRESH" content="3;url=.">
+  <meta HTTP-EQUIV="REFRESH" content="3;url=.">
 <?php }
 
 $resultsnumber = 0;
@@ -39,56 +39,56 @@ if($submit)
 
 if(! $read_only)
 {
-	//
-	// Primitiv filter against spam on "sourceforge.net".
-	//
-	if($_SERVER['SERVER_NAME'] == "php-addressbook.sourceforge.net") {
-		
-	   $spam_test = $firstname.$lastname.$address.$home.$mobile.$work.$email.$email2.$email3.$bday.$bmonth.$byear.$aday.$amonth.$ayear.$address2.$phone2;
+  //
+  // Primitiv filter against spam on "sourceforge.net".
+  //
+  if($_SERVER['SERVER_NAME'] == "php-addressbook.sourceforge.net") {
+    
+     $spam_test = $firstname.$lastname.$address.$home.$mobile.$work.$email.$email2.$email3.$bday.$bmonth.$byear.$aday.$amonth.$ayear.$address2.$phone2;
      $blacklist = array( 'viagra', 'seroquel', 'zovirax', 'ultram', 'mortage', 'loan'
                        , 'accutane', 'ativan', 'gun', 'sex', 'porn', 'arachidonic'
                        , 'recipe', 'comment1'
                        , 'naked', 'gay', 'fetish', 'domina', 'fakes', 'drugs'
                        , 'methylphenidate', 'nevirapine', 'viramune' );
      foreach( $blacklist as $blackitem ) {
-	      if(strpos(strtolower($spam_test), $blackitem) !== FALSE ) {
-	        exit;
-	      }
-	   }
-	   if(   preg_match('/\D{3,}/', $home) > 0
-	      || preg_match('/\D{3,}/', $mobile) > 0) {
-	      	exit;
-	   }
-	   if(   strlen($home)   > 15 
-	      || strlen($mobile) > 15) {
-	      	exit;
-	   }
-	 }
-	 
-		$addr['firstname'] = $firstname;
-		$addr['lastname']  = $lastname;
-		$addr['nickname']  = $nickname;
-		$addr['title']     = $title;
-		$addr['company']   = $company;
-		$addr['address']   = $address;
-		$addr['home']      = $home;
-		$addr['mobile']    = $mobile;
-		$addr['work']      = $work;
-		$addr['fax']       = $fax;
-		$addr['email']     = $email;
-		$addr['email2']    = $email2;
-		$addr['email3']    = $email3;
-		$addr['homepage']  = $homepage;
-		$addr['bday']      = $bday;
-		$addr['bmonth']    = $bmonth;
-		$addr['byear']     = $byear;
-		$addr['aday']      = $aday;
-		$addr['amonth']    = $amonth;
-		$addr['ayear']     = $ayear;
-		$addr['address2']  = $address2;
-		$addr['phone2']    = $phone2;
-		$addr['notes']     = $notes;
-	
+        if(strpos(strtolower($spam_test), $blackitem) !== FALSE ) {
+          exit;
+        }
+     }
+     if(   preg_match('/\D{3,}/', $home) > 0
+        || preg_match('/\D{3,}/', $mobile) > 0) {
+          exit;
+     }
+     if(   strlen($home)   > 15 
+        || strlen($mobile) > 15) {
+          exit;
+     }
+   }
+   
+    $addr['firstname'] = $firstname;
+    $addr['lastname']  = $lastname;
+    $addr['nickname']  = $nickname;
+    $addr['title']     = $title;
+    $addr['company']   = $company;
+    $addr['address']   = $address;
+    $addr['home']      = $home;
+    $addr['mobile']    = $mobile;
+    $addr['work']      = $work;
+    $addr['fax']       = $fax;
+    $addr['email']     = $email;
+    $addr['email2']    = $email2;
+    $addr['email3']    = $email3;
+    $addr['homepage']  = $homepage;
+    $addr['bday']      = $bday;
+    $addr['bmonth']    = $bmonth;
+    $addr['byear']     = $byear;
+    $addr['aday']      = $aday;
+    $addr['amonth']    = $amonth;
+    $addr['ayear']     = $ayear;
+    $addr['address2']  = $address2;
+    $addr['phone2']    = $phone2;
+    $addr['notes']     = $notes;
+  
   if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] <= 0) {
     
     $file_tmp_name = $_FILES["photo"]["tmp_name"];
@@ -97,19 +97,19 @@ if(! $read_only)
     $photo->scaleToMaxSide(150);
     $addr['photo'] = $photo->getBase64();
 
-  }	
-	
-	if(isset($table_groups) and $table_groups != "" ) {
-		if( !$is_fix_group ) {
-			$g_name = $new_group;
-	  } else {
-	  	$g_name = $group_name;
-	  }
+  } 
+  
+  if(isset($table_groups) and $table_groups != "" ) {
+    if( !$is_fix_group ) {
+      $g_name = $new_group;
+    } else {
+      $g_name = $group_name;
+    }
     saveAddress($addr, $g_name);
-	
-		echo "<br /><div class='msgbox'>Information entered into address book.";
-		echo "<br /><i><a href='edit$page_ext'>add next</a> or return to <a href='index$page_ext'>home page</a>.</i></div>";
-	}
+  
+    echo "<br /><div class='msgbox'>Information entered into address book.";
+    echo "<br /><i><a href='edit$page_ext'>add next</a> or return to <a href='index$page_ext'>home page</a>.</i></div>";
+  }
 
 } else
   echo "<br /><div class='msgbox'>Editing is disabled.</div>\n";
@@ -119,56 +119,56 @@ else if($update)
 {
   if(! $read_only)
   {
-		$addr['id']        = $id;
-		$addr['firstname'] = $firstname;
-		$addr['lastname']  = $lastname;
-		$addr['nickname']  = $nickname;
-		$addr['title']     = $title;
-		$addr['company']   = $company;
-		$addr['address']   = $address;
-		$addr['home']      = $home;
-		$addr['mobile']    = $mobile;
-		$addr['work']      = $work;
-		$addr['fax']       = $fax;
-		$addr['email']     = $email;
-		$addr['email2']    = $email2;
-		$addr['email3']    = $email3;
-		$addr['homepage']  = $homepage;
-		$addr['bday']      = $bday;
-		$addr['bmonth']    = $bmonth;
-		$addr['byear']     = $byear;
-		$addr['aday']      = $aday;
-		$addr['amonth']    = $amonth;
-		$addr['ayear']     = $ayear;
-		$addr['address2']  = $address2;
-		$addr['phone2']    = $phone2;
-		$addr['notes']     = $notes;
+    $addr['id']        = $id;
+    $addr['firstname'] = $firstname;
+    $addr['lastname']  = $lastname;
+    $addr['nickname']  = $nickname;
+    $addr['title']     = $title;
+    $addr['company']   = $company;
+    $addr['address']   = $address;
+    $addr['home']      = $home;
+    $addr['mobile']    = $mobile;
+    $addr['work']      = $work;
+    $addr['fax']       = $fax;
+    $addr['email']     = $email;
+    $addr['email2']    = $email2;
+    $addr['email3']    = $email3;
+    $addr['homepage']  = $homepage;
+    $addr['bday']      = $bday;
+    $addr['bmonth']    = $bmonth;
+    $addr['byear']     = $byear;
+    $addr['aday']      = $aday;
+    $addr['amonth']    = $amonth;
+    $addr['ayear']     = $ayear;
+    $addr['address2']  = $address2;
+    $addr['phone2']    = $phone2;
+    $addr['notes']     = $notes;
 
-		$keep_photo = true;
-		if(isset($delete_photo)) {
-		  $keep_photo =  !$delete_photo;
-		}
-						
-		if(isset($_FILES["photo"])
-		  	  && $_FILES["photo"]["error"] <= 0) {
+    $keep_photo = true;
+    if(isset($delete_photo)) {
+      $keep_photo =  !$delete_photo;
+    }
+            
+    if(isset($_FILES["photo"])
+          && $_FILES["photo"]["error"] <= 0) {
     
       $file_tmp_name = $_FILES["photo"]["tmp_name"];
       $file_name     = $_FILES["photo"]["name"];    
       $photo = new Photo($file_tmp_name);
       $photo->scaleToMaxSide(150);
       $addr['photo'] = $photo->getBase64();
-		  $keep_photo = false;
-		} else  {
+      $keep_photo = false;
+    } else  {
       $addr['photo']  = '';
-		}
+    }
 
-		
+    
     if(updateAddress($addr, $keep_photo)) {
-		echo "<br /><div class='msgbox'>".ucfmsg('ADDRESS_BOOK')." ".msg('UPDATED')."<br /><i>return to <a href='index$page_ext'>home page</a></i></div>";
-	} else {
-		echo "<br /><div class='msgbox'>".ucfmsg('INVALID')." ID.<br /><i>return to <a href='index$page_ext'>home page</a></i></div>";
-		echo "";  
-	}
+    echo "<br /><div class='msgbox'>".ucfmsg('ADDRESS_BOOK')." ".msg('UPDATED')."<br /><i>return to <a href='index$page_ext'>home page</a></i></div>";
+  } else {
+    echo "<br /><div class='msgbox'>".ucfmsg('INVALID')." ID.<br /><i>return to <a href='index$page_ext'>home page</a></i></div>";
+    echo "";  
+  }
   } else
     echo "<br /><div class='msgbox'>Editing is disabled.</div>\n";
 }
@@ -181,68 +181,68 @@ $myrow = mysql_fetch_array($result);
 ?>
 
   <form enctype="multipart/form-data" 
-  	    accept-charset="utf-8"
-  	    method="post"
-  	    action="edit<?php echo $page_ext; ?>">
+        accept-charset="utf-8"
+        method="post"
+        action="edit<?php echo $page_ext; ?>">
 
-   	<input type="submit" name="update" value="<?php echo ucfmsg('UPDATE') ?>" /><br />
+    <input type="submit" name="update" value="<?php echo ucfmsg('UPDATE') ?>" /><br />
 
- 		<input type="hidden" name="id" value="<?php echo isset($myrow['id']) ? $myrow['id'] : ''; ?>" />
-		<label><?php echo ucfmsg("FIRSTNAME") ?>:</label>
-		<input type="text" name="firstname" size="35" value="<?php echo $myrow['firstname']?>" /><br />
+    <input type="hidden" name="id" value="<?php echo isset($myrow['id']) ? $myrow['id'] : ''; ?>" />
+    <label><?php echo ucfmsg("FIRSTNAME") ?>:</label>
+    <input type="text" name="firstname" size="35" value="<?php echo $myrow['firstname']?>" /><br />
 
-		<label><?php echo ucfmsg("LASTNAME") ?>:</label>
-		<input type="text" name="lastname" size="35" value="<?php echo $myrow['lastname']?>" /><br />
+    <label><?php echo ucfmsg("LASTNAME") ?>:</label>
+    <input type="text" name="lastname" size="35" value="<?php echo $myrow['lastname']?>" /><br />
 
-		<label><?php echo ucfmsg("NICKNAME") ?>:</label>
-c<input type="text" name="nickname" size="35" value="<?php echo $myrow['nickname']?>" /><br />
+    <label><?php echo ucfmsg("NICKNAME") ?>:</label>
+    <input type="text" name="nickname" size="35" value="<?php echo $myrow['nickname']?>" /><br />
 
-<label><?php echo ucfmsg("PHOTO") ?>:</label>
+    <label><?php echo ucfmsg("PHOTO") ?>:</label>
     <input type="file"  name="photo" /><br />
     
     <label><?php echo msg("DELETE") ?>:</label>
-  <input type="checkbox"  name="delete_photo" /><br />
+    <input type="checkbox"  name="delete_photo" /><br />
 
-		<label><?php echo ucfmsg("COMPANY") ?>:</label>
-		<input type="text" name="company" size="35" value="<?php echo $myrow['company']?>" /><br />
+    <label><?php echo ucfmsg("COMPANY") ?>:</label>
+    <input type="text" name="company" size="35" value="<?php echo $myrow['company']?>" /><br />
 
-		<label><?php echo ucfmsg("TITLE") ?>:</label>
-		<input type="text" name="title" size="35" value="<?php echo $myrow['title']?>" /><br />
+    <label><?php echo ucfmsg("TITLE") ?>:</label>
+    <input type="text" name="title" size="35" value="<?php echo $myrow['title']?>" /><br />
 
-		<label><?php echo ucfmsg("ADDRESS") ?>:</label>
-		<textarea name="address" rows="5" cols="35"><?php echo $myrow["address"]?></textarea><br />
+    <label><?php echo ucfmsg("ADDRESS") ?>:</label>
+    <textarea name="address" rows="5" cols="35"><?php echo $myrow["address"]?></textarea><br />
 
-		<label><?php echo ucfmsg("TELEPHONE") ?></label><br /><br class="clear" />
+    <label><?php echo ucfmsg("TELEPHONE") ?></label><br /><br class="clear" />
 
-		<label><?php echo ucfmsg("PHONE_HOME") ?>:</label>
-		<input type="text" name="home" value="<?php echo $myrow['home']?>" /><br />
+    <label><?php echo ucfmsg("PHONE_HOME") ?>:</label>
+    <input type="text" name="home" value="<?php echo $myrow['home']?>" /><br />
 
-		<label><?php echo ucfmsg("PHONE_MOBILE") ?>:</label>
-		<input type="text" name="mobile" value="<?php echo $myrow['mobile']?>" /><br />
+    <label><?php echo ucfmsg("PHONE_MOBILE") ?>:</label>
+    <input type="text" name="mobile" value="<?php echo $myrow['mobile']?>" /><br />
 
-		<label><?php echo ucfmsg("PHONE_WORK") ?>:</label>
-		<input type="text" name="work" value="<?php echo $myrow['work']?>" /><br />
+    <label><?php echo ucfmsg("PHONE_WORK") ?>:</label>
+    <input type="text" name="work" value="<?php echo $myrow['work']?>" /><br />
 
-		<label><?php echo ucfmsg("FAX") ?>:</label>
-		<input type="text" name="fax" value="<?php echo $myrow['fax']?>" /><br />
+    <label><?php echo ucfmsg("FAX") ?>:</label>
+    <input type="text" name="fax" value="<?php echo $myrow['fax']?>" /><br />
 
-		<label>&nbsp;</label><br /><br class="clear" />
+    <label>&nbsp;</label><br /><br class="clear" />
 
-		<label><?php echo ucfmsg("EMAIL") ?>:</label>
-		<input type="text" name="email" size="35" value="<?php echo $myrow['email']?>" /><br />
+    <label><?php echo ucfmsg("EMAIL") ?>:</label>
+    <input type="text" name="email" size="35" value="<?php echo $myrow['email']?>" /><br />
 
-		<label><?php echo ucfmsg("EMAIL") ?>2:</label>
-		<input type="text" name="email2" size="35" value="<?php echo $myrow['email2']?>" /><br />
+    <label><?php echo ucfmsg("EMAIL") ?>2:</label>
+    <input type="text" name="email2" size="35" value="<?php echo $myrow['email2']?>" /><br />
 
-		<label><?php echo ucfmsg("EMAIL") ?>3:</label>
-		<input type="text" name="email3" size="35" value="<?php echo $myrow['email3']?>" /><br />
+    <label><?php echo ucfmsg("EMAIL") ?>3:</label>
+    <input type="text" name="email3" size="35" value="<?php echo $myrow['email3']?>" /><br />
 
-		<label><?php echo ucfmsg("HOMEPAGE") ?>:</label>
-		<input type="text" name="homepage" size="35" value="<?php echo $myrow['homepage']?>" /><br />
+    <label><?php echo ucfmsg("HOMEPAGE") ?>:</label>
+    <input type="text" name="homepage" size="35" value="<?php echo $myrow['homepage']?>" /><br />
 
-		<label><?php echo ucfmsg("BIRTHDAY") ?>:</label>
+    <label><?php echo ucfmsg("BIRTHDAY") ?>:</label>
         <select name="bday">
-			<option value="<?php echo $myrow['bday']?>" selected="selected"><?php echo ($myrow["bday"] == 0?"-":$myrow["bday"]) ?></option>
+      <option value="<?php echo $myrow['bday']?>" selected="selected"><?php echo ($myrow["bday"] == 0?"-":$myrow["bday"]) ?></option>
           <option value="0">-</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -294,9 +294,9 @@ c<input type="text" name="nickname" size="35" value="<?php echo $myrow['nickname
         </select>
         <input class="byear" type="text" name="byear" size="4" maxlength="4" value="<?php echo $myrow['byear']?>" /><br />
 
-		<label><?php echo ucfmsg("ANNIVERSARY") ?>:</label>
+    <label><?php echo ucfmsg("ANNIVERSARY") ?>:</label>
         <select name="aday">
-			<option value="<?php echo $myrow['aday']?>" selected="selected"><?php echo ($myrow["aday"] == 0?"-":$myrow["aday"]) ?></option>
+      <option value="<?php echo $myrow['aday']?>" selected="selected"><?php echo ($myrow["aday"] == 0?"-":$myrow["aday"]) ?></option>
           <option value="0">-</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -351,72 +351,72 @@ c<input type="text" name="nickname" size="35" value="<?php echo $myrow['nickname
 <?php
 /* Group handling on change
       <label><?php echo ucfmsg("GROUP") ?>:</label>
-				<?php      	
-				if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
-				<select name="new_group">
-				<?php
-					if($group_name != "") 
-					{
-						echo "<option>$group_name</option>\n";
-					}
-					$sql = "SELECT group_name FROM $table_groups ORDER BY lower(group_name) ASC";
-					$result_groups = mysql_query($sql);
-					$result_gropup_snumber = mysql_numrows($result_groups);
-					
-					while ($myrow_group = mysql_fetch_array($result_groups))
-					{
-						echo "<option>".$myrow_group["group_name"]."</option>\n";
-					}
-				?>
-				</select>
-				<?php } ?>
-			<br />
+        <?php       
+        if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
+        <select name="new_group">
+        <?php
+          if($group_name != "") 
+          {
+            echo "<option>$group_name</option>\n";
+          }
+          $sql = "SELECT group_name FROM $table_groups ORDER BY lower(group_name) ASC";
+          $result_groups = mysql_query($sql);
+          $result_gropup_snumber = mysql_numrows($result_groups);
+          
+          while ($myrow_group = mysql_fetch_array($result_groups))
+          {
+            echo "<option>".$myrow_group["group_name"]."</option>\n";
+          }
+        ?>
+        </select>
+        <?php } ?>
+      <br />
  */ ?>
-		<br />
-		<label><b><?php echo ucfmsg("SECONDARY") ?></b></label><br /><br class="clear" />
+    <br />
+    <label><b><?php echo ucfmsg("SECONDARY") ?></b></label><br /><br class="clear" />
 
-		<label><?php echo ucfmsg("ADDRESS") ?>:</label>
-		<textarea name="address2" rows="5" cols="35"><?php echo $myrow["address2"]?></textarea><br />
+    <label><?php echo ucfmsg("ADDRESS") ?>:</label>
+    <textarea name="address2" rows="5" cols="35"><?php echo $myrow["address2"]?></textarea><br />
 
-		<label><?php echo ucfmsg("PHONE_HOME") ?>:</label>
-		<input type="text" name="phone2" value="<?php echo $myrow['phone2']?>" /><br />
+    <label><?php echo ucfmsg("PHONE_HOME") ?>:</label>
+    <input type="text" name="phone2" value="<?php echo $myrow['phone2']?>" /><br />
 
-		<label><?php echo ucfmsg("NOTES") ?>:</label>
-		<textarea name="notes" rows="5" cols="35"><?php echo $myrow["notes"]?></textarea><br /><br />
+    <label><?php echo ucfmsg("NOTES") ?>:</label>
+    <textarea name="notes" rows="5" cols="35"><?php echo $myrow["notes"]?></textarea><br /><br />
 
     <input type="submit" name="update" value="<?php echo ucfmsg('UPDATE') ?>" />
   </form>
   <form method="get" action="delete<?php echo $page_ext; ?>">
-		<input type="hidden" name="id" value="<?php echo $myrow['id']?>" />
-		<input type="submit" name="update" value="<?php echo ucfmsg('DELETE') ?>" />
+    <input type="hidden" name="id" value="<?php echo $myrow['id']?>" />
+    <input type="submit" name="update" value="<?php echo ucfmsg('DELETE') ?>" />
   </form>
 <?php
-	} else
-		echo "<br /><div class='msgbox'>Editing is disabled.</div>";
+  } else
+    echo "<br /><div class='msgbox'>Editing is disabled.</div>";
   }
   else if( !(isset($_POST['quickskip']) || isset($_POST['quickadd'])) 
          && (isset($_GET['quickadd']) || isset($_POST['quickadd']) || $quickadd))
   {
 ?>
-	<form accept-charset="utf-8" method="post">
-  	<input type="submit" name="quickadd"  value="<?php echo ucfmsg('NEXT') ?>" /><br/><br/>
+  <form accept-charset="utf-8" method="post">
+    <input type="submit" name="quickadd"  value="<?php echo ucfmsg('NEXT') ?>" /><br/><br/>
 
-		<label><?php echo ucfmsg("ADDRESS") ?>:</label>
-		<textarea name="address" rows="20"></textarea><br/><br/>
-  	<input type="submit" name="quickadd"  value="<?php echo ucfmsg('NEXT') ?>" /><br/>
+    <label><?php echo ucfmsg("ADDRESS") ?>:</label>
+    <textarea name="address" rows="20"></textarea><br/><br/>
+    <input type="submit" name="quickadd"  value="<?php echo ucfmsg('NEXT') ?>" /><br/>
   </form>
-<?php  	
-	}
-	else {
-		if(! $read_only) {
-			
+<?php   
+  }
+  else {
+    if(! $read_only) {
+      
       if(isset($_POST['quickadd'])) {
-      	
-      	include_once("include/guess.inc.php");
-      	$addr = guessAddressFields($address);
-      	// echo nl2br(print_r($addr, true));
-      } else {      	
-      	$addr = array();      	
+        
+        include_once("include/guess.inc.php");
+        $addr = guessAddressFields($address);
+        // echo nl2br(print_r($addr, true));
+      } else {        
+        $addr = array();        
       }
 ?>
 <script type="text/javascript">
@@ -425,18 +425,18 @@ c<input type="text" name="nickname" size="35" value="<?php echo $myrow['nickname
 last_proposal = "";
 
 function proposeMail() {
-	
-	if(document.theform.email.value == last_proposal) {
-	
+  
+  if(document.theform.email.value == last_proposal) {
+  
     new_proposal = "";
 
-	  has_firstname = document.theform.firstname.value != "";
-	  has_lastname  = document.theform.lastname.value  != "";
-	
-	  if(has_firstname) {
-	    new_proposal = document.theform.firstname.value.toLowerCase().replace(/^\s+|\s+$/g, '');
-	  }
-	  if(has_firstname && has_lastname) {
+    has_firstname = document.theform.firstname.value != "";
+    has_lastname  = document.theform.lastname.value  != "";
+  
+    if(has_firstname) {
+      new_proposal = document.theform.firstname.value.toLowerCase().replace(/^\s+|\s+$/g, '');
+    }
+    if(has_firstname && has_lastname) {
       new_proposal += ".";
     }
     if(has_lastname) {
@@ -445,10 +445,10 @@ function proposeMail() {
     new_proposal += "@" + document.theform.company.value.toLowerCase().replace(/^\s+|\s+$/g, '');
 
     new_proposal = new_proposal.replace(/ /g, "-");
-	  document.theform.email.value = new_proposal;
-	  last_proposal = new_proposal;
-	  
-	}
+    document.theform.email.value = new_proposal;
+    last_proposal = new_proposal;
+    
+  }
 }
 function ucfirst(str) {
   return str.slice(0,1).toUpperCase() + str.slice(1);
@@ -462,8 +462,8 @@ function ucf_arr(str_arr) {
 }
 
 function trim(str, chars) {
-	no_left = str.replace(new RegExp("^[" + chars + "]+", "g"), "");
-	return no_left.replace(new RegExp("[" + chars + "]+$", "g"), "");
+  no_left = str.replace(new RegExp("^[" + chars + "]+", "g"), "");
+  return no_left.replace(new RegExp("[" + chars + "]+$", "g"), "");
 }
 
 function proposeNames() {
@@ -473,16 +473,16 @@ function proposeNames() {
 
   if(who_from.length >= 2) {
 
-	  who  = who_from[0].split(/[\._]+/,2);
-	  if(who.length == 1)  {
-	    who  = who_from[0].split("_",2);
-	  }
-	  if(document.theform.firstname.value == "") {
-	    document.theform.firstname.value = ucf_arr(who[0].split("-")).join("-");
-	  }
-	  if(who.length > 1 && document.theform.lastname.value == "") {
-	    document.theform.lastname.value = ucf_arr(who[1].split("-")).join("-");
-	  }
+    who  = who_from[0].split(/[\._]+/,2);
+    if(who.length == 1)  {
+      who  = who_from[0].split("_",2);
+    }
+    if(document.theform.firstname.value == "") {
+      document.theform.firstname.value = ucf_arr(who[0].split("-")).join("-");
+    }
+    if(who.length > 1 && document.theform.lastname.value == "") {
+      document.theform.lastname.value = ucf_arr(who[1].split("-")).join("-");
+    }
   }
 }
 
@@ -490,64 +490,64 @@ function proposeNames() {
 </script>
 
   <form name="theform"
-  	    enctype="multipart/form-data" 
-  	    accept-charset="utf-8"
-  	    method="post"
-  	    action="edit<?php echo $page_ext; ?>">
+        enctype="multipart/form-data" 
+        accept-charset="utf-8"
+        method="post"
+        action="edit<?php echo $page_ext; ?>">
 
-		<input type="submit" name="submit" value="<?php echo ucfmsg('ENTER') ?>" /><br /><br />
+    <input type="submit" name="submit" value="<?php echo ucfmsg('ENTER') ?>" /><br /><br />
 
-		<input type="hidden" name="id" value="<?php echo $myrow['id']?>" />
-		<label><?php echo ucfmsg("FIRSTNAME") ?>:</label>
-		<input type="text" name="firstname" value="<?php echoIfSet($addr, 'firstname'); ?>" size="35" onkeyup="proposeMail()"/><br />
+    <input type="hidden" name="id" value="<?php echo $myrow['id']?>" />
+    <label><?php echo ucfmsg("FIRSTNAME") ?>:</label>
+    <input type="text" name="firstname" value="<?php echoIfSet($addr, 'firstname'); ?>" size="35" onkeyup="proposeMail()"/><br />
 
-		<label><?php echo ucfmsg("LASTNAME") ?>:</label>
-		<input type="text" name="lastname"  value="<?php echoIfSet($addr, 'lastname'); ?>"  size="35" onkeyup="proposeMail()"/><br />
+    <label><?php echo ucfmsg("LASTNAME") ?>:</label>
+    <input type="text" name="lastname"  value="<?php echoIfSet($addr, 'lastname'); ?>"  size="35" onkeyup="proposeMail()"/><br />
 
-		<label><?php echo ucfmsg("NICKNAME") ?>:</label>
-		<input type="text" name="nickname"  value="<?php echoIfSet($addr, 'nickname'); ?>"  size="35" onkeyup="proposeMail()"/><br />
+    <label><?php echo ucfmsg("NICKNAME") ?>:</label>
+    <input type="text" name="nickname"  value="<?php echoIfSet($addr, 'nickname'); ?>"  size="35"/><br />
 
-		<label><?php echo ucfmsg("PHOTO") ?>:</label>
+    <label><?php echo ucfmsg("PHOTO") ?>:</label>
     <input type="file"  name="photo" /><br />
 
-		<label><?php echo ucfmsg("TITLE") ?>:</label>
-		<input type="text" name="title" size="35" value="<?php echoIfSet($addr, 'title'); ?>" /><br />
+    <label><?php echo ucfmsg("TITLE") ?>:</label>
+    <input type="text" name="title" size="35" value="<?php echoIfSet($addr, 'title'); ?>" /><br />
 
-		<label><?php echo ucfmsg("COMPANY") ?>:</label>
-		<input type="text" name="company"   value="<?php echoIfSet($addr, 'company'); ?>"   size="35" onkeyup="proposeMail()"/><br />
+    <label><?php echo ucfmsg("COMPANY") ?>:</label>
+    <input type="text" name="company"   value="<?php echoIfSet($addr, 'company'); ?>"   size="35" onkeyup="proposeMail()"/><br />
 
-		<label><?php echo ucfmsg("ADDRESS") ?>:</label>
-		<textarea name="address" rows="5" cols="35"><?php echoIfSet($addr, 'address'); ?></textarea><br />
+    <label><?php echo ucfmsg("ADDRESS") ?>:</label>
+    <textarea name="address" rows="5" cols="35"><?php echoIfSet($addr, 'address'); ?></textarea><br />
 
-		<label><?php echo ucfmsg("TELEPHONE") ?></label><br /><br class="clear" />
+    <label><?php echo ucfmsg("TELEPHONE") ?></label><br /><br class="clear" />
 
-		<label><?php echo ucfmsg("PHONE_HOME") ?>:</label>
-		<input type="text" name="home"      value="<?php echoIfSet($addr, 'home'); ?>"    size="35" /><br />
+    <label><?php echo ucfmsg("PHONE_HOME") ?>:</label>
+    <input type="text" name="home"      value="<?php echoIfSet($addr, 'home'); ?>"    size="35" /><br />
 
-		<label><?php echo ucfmsg("PHONE_MOBILE") ?>:</label>
-		<input type="text" name="mobile"    value="<?php echoIfSet($addr, 'mobile'); ?>"  size="35" /><br />
+    <label><?php echo ucfmsg("PHONE_MOBILE") ?>:</label>
+    <input type="text" name="mobile"    value="<?php echoIfSet($addr, 'mobile'); ?>"  size="35" /><br />
 
-		<label><?php echo ucfmsg("PHONE_WORK") ?>:</label>
-		<input type="text" name="work"      value="<?php echoIfSet($addr, 'work'); ?>" size="35" /><br />
+    <label><?php echo ucfmsg("PHONE_WORK") ?>:</label>
+    <input type="text" name="work"      value="<?php echoIfSet($addr, 'work'); ?>" size="35" /><br />
 
-		<label><?php echo ucfmsg("FAX") ?>:</label>
-		<input type="text" name="fax"       value="<?php echoIfSet($addr, 'fax'); ?>" size="35" /><br />
+    <label><?php echo ucfmsg("FAX") ?>:</label>
+    <input type="text" name="fax"       value="<?php echoIfSet($addr, 'fax'); ?>" size="35" /><br />
 
-		<label>&nbsp;</label><br /><br class="clear" />
+    <label>&nbsp;</label><br /><br class="clear" />
 
-		<label><?php echo ucfmsg("EMAIL") ?>:</label>
-		<input type="text" name="email"     value="<?php echoIfSet($addr, 'email'); ?>" size="35" onkeyup="proposeNames()"/><br />
+    <label><?php echo ucfmsg("EMAIL") ?>:</label>
+    <input type="text" name="email"     value="<?php echoIfSet($addr, 'email'); ?>" size="35" onkeyup="proposeNames()"/><br />
 
-		<label><?php echo ucfmsg("EMAIL") ?>2:</label>
-		<input type="text" name="email2"    value="<?php echoIfSet($addr, 'email2'); ?>" size="35" /><br />
+    <label><?php echo ucfmsg("EMAIL") ?>2:</label>
+    <input type="text" name="email2"    value="<?php echoIfSet($addr, 'email2'); ?>" size="35" /><br />
 
-		<label><?php echo ucfmsg("EMAIL") ?>3:</label>
-		<input type="text" name="email3"    value="<?php echoIfSet($addr, 'email3'); ?>" size="35" /><br />
+    <label><?php echo ucfmsg("EMAIL") ?>3:</label>
+    <input type="text" name="email3"    value="<?php echoIfSet($addr, 'email3'); ?>" size="35" /><br />
 
-		<label><?php echo ucfmsg("HOMEPAGE") ?>:</label>
-		<input type="text" name="homepage"  value="<?php echoIfSet($addr, 'homepage'); ?>" size="35" /><br />
+    <label><?php echo ucfmsg("HOMEPAGE") ?>:</label>
+    <input type="text" name="homepage"  value="<?php echoIfSet($addr, 'homepage'); ?>" size="35" /><br />
 
-		<label><?php echo ucfmsg("BIRTHDAY") ?>:</label>
+    <label><?php echo ucfmsg("BIRTHDAY") ?>:</label>
         <select name="bday">
           <option value="0" selected="selected">-</option>
           <option value="1">1</option>
@@ -599,7 +599,7 @@ function proposeNames() {
         </select>
         <input class="byear" type="text" name="byear" size="4" maxlength="4" /><br />
 
-		<label><?php echo ucfmsg("ANNIVERSARY") ?>:</label>
+    <label><?php echo ucfmsg("ANNIVERSARY") ?>:</label>
         <select name="aday">
           <option value="0" selected="selected">-</option>
           <option value="1">1</option>
@@ -651,46 +651,46 @@ function proposeNames() {
         </select>
         <input class="byear" type="text" name="ayear" size="4" maxlength="4" /><br />
 
-		<?php      	
+    <?php       
     if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 
-	<label><?php echo ucfmsg("GROUP") ?>:</label>
-				<select name="new_group">
-				<?php
-					if($group_name != "") 
-					{
-						echo "<option>$group_name</option>\n";
-					} ?>
+  <label><?php echo ucfmsg("GROUP") ?>:</label>
+        <select name="new_group">
+        <?php
+          if($group_name != "") 
+          {
+            echo "<option>$group_name</option>\n";
+          } ?>
           <option value="[none]">[<?php echo msg("NONE"); ?>]</option>
           <?php
-					$sql="SELECT group_name FROM $groups_from_where ORDER BY lower(group_name) ASC";
-					$result_groups = mysql_query($sql);
-					$result_gropup_snumber = mysql_numrows($result_groups);
-					
-					while ($myrow_group = mysql_fetch_array($result_groups))
-					{
-						echo "<option>".$myrow_group["group_name"]."</option>\n";
-					}
-				?>
-				</select><br />
-		<?php } ?>
-		
-		<br />
-		<label><b><?php echo ucfmsg("SECONDARY") ?></b></label><br /><br class="clear" />
+          $sql="SELECT group_name FROM $groups_from_where ORDER BY lower(group_name) ASC";
+          $result_groups = mysql_query($sql);
+          $result_gropup_snumber = mysql_numrows($result_groups);
+          
+          while ($myrow_group = mysql_fetch_array($result_groups))
+          {
+            echo "<option>".$myrow_group["group_name"]."</option>\n";
+          }
+        ?>
+        </select><br />
+    <?php } ?>
+    
+    <br />
+    <label><b><?php echo ucfmsg("SECONDARY") ?></b></label><br /><br class="clear" />
 
-		<label><?php echo ucfmsg("ADDRESS") ?>:</label>
-		<textarea name="address2" rows="5" cols="35"></textarea><br />
+    <label><?php echo ucfmsg("ADDRESS") ?>:</label>
+    <textarea name="address2" rows="5" cols="35"></textarea><br />
 
-		<label><?php echo ucfmsg("PHONE_HOME") ?>:</label>
-		<input type="text" name="phone2"  value="<?php echoIfSet($addr, 'phone2'); ?>" size="35" /><br />
+    <label><?php echo ucfmsg("PHONE_HOME") ?>:</label>
+    <input type="text" name="phone2"  value="<?php echoIfSet($addr, 'phone2'); ?>" size="35" /><br />
 
-		<label><?php echo ucfmsg("NOTES") ?>:</label>
-		<textarea name="notes" rows="5" cols="35"></textarea><br /><br />
+    <label><?php echo ucfmsg("NOTES") ?>:</label>
+    <textarea name="notes" rows="5" cols="35"></textarea><br /><br />
 
-		<input type="submit" name="submit" value="<?php echo ucfmsg('ENTER') ?>" />
+    <input type="submit" name="submit" value="<?php echo ucfmsg('ENTER') ?>" />
   </form>
   <script type="text/javascript">
-	  document.theform.email.focus();
+    document.theform.email.focus();
   </script>
 <?php
   } else

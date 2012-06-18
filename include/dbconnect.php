@@ -203,6 +203,7 @@ include("prefs.inc.php");
 include("translations.inc.php");
 include("mailer.inc.php");
 include("login.inc.php");
+include("version.inc.php");
 
 $login = AuthLoginFactory::getBestLogin();
 	
