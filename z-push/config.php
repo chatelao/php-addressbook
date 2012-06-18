@@ -168,10 +168,9 @@
     // **********************
     //  BackendPhpaddressbook settings
     // **********************
-    include("/home/www/books/config/config.php");
-    dirname(__FILE__).DIRECTORY_SEPARATOR.".."
+    include(dirname(__FILE__).DIRECTORY_SEPARATOR.".."
                      .DIRECTORY_SEPARATOR."config"
-                     .DIRECTORY_SEPARATOR."config.php";
+               	 	         .DIRECTORY_SEPARATOR."config.php");
 
     //
     // Define the tablenames,

@@ -7,6 +7,11 @@
 
 	<style type="text/css">
 <?php
+/*
+ * - $LastChangedDate: 2012-06-18 11:37:10 +0200 (Mo, 18 Jun 2012) $
+ * - $Rev: 489 $
+ */
+
 // Define default map guessing
 switch($skin_color) {
   case "blue":

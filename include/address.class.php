@@ -238,15 +238,16 @@ class Address {
     }
 
     //
-    // Create a unified format for comparision an display.
+    // Create a unified format for comparison an display.
     //
-    public function unifyPhone( $prefix = ""
+    public function unifyPhones( $phones
+    	 	 	 	 	 	   , $prefixe = ""
                               , $remove_prefix = false ) {
                               	
       global $intl_prefix_reg, $default_provider, $phone_delims;
                               	
     	// Remove all optical delimiters
-    	$phone = $this->firstPhone();
+    	foreach($phones as $phone) {
     	foreach($phone_delims as $phone_delim) {
     		$phone = str_replace($phone_delim, "", $phone);
     	}
@@ -274,9 +275,19 @@ class Address {
     	  	$phone = preg_replace("/^(".$remove_prefixes.")/", "0", $phone);
         }
       }
+        $unifons[] = $phone;  
+      }
+      return $unifons;
 
-    	return $phone;
-
+    }
+    
+	public function unifyPhone( $prefix = ""
+                              , $remove_prefix = false ) {
+       $phones = array();
+       $phones[] = firstPhone();
+       
+       $unifons = unifyPhones($phones, $prefix, $remove_prefix);
+       return $unifons[0];            
     }
 
     //
@@ -286,6 +297,9 @@ class Address {
     	return $this->unifyPhone();
     }
 
+    public function shortPhones() {
+    	return $this->unifyPhones($this->getPhones());
+    }
 }
 
 class Addresses {

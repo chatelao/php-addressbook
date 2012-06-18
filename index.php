@@ -168,6 +168,14 @@ function addRow($row) {
         $phones = $addr->getPhones();
     	  echo "<td>".implode("<br>", $phones)."</td>";
         break;
+      case "all_emails":
+        $emails = $addr->getEMails();
+        $amails = array();
+        foreach($emails as $amail) {
+          $amails[] = "<a href='".getMailer()."$amail'>$amail</a>";
+        }
+        echo "<td>".implode("<br>", $amails)."</td>";
+        break;
       case "address":
   		  echo "<td>".str_replace("\n", ", ", $address)."</td>";
   		  break;

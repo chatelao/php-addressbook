@@ -1,13 +1,22 @@
 PHP Addressbook - Change Log
 
+PHP Addressbook - 8.1.6
+=======================
+
+Fix some bugs.
+
+- 0000004: Add "nickname" to exchange interface (chatelao) - closed.
+- 0000037: Fix: z-push config.php include path should be relativ (chatelao) - closed.
+
 PHP Addressbook - 8.1.5
 =======================
 
 Add photo upload support
 
+- 0000033: Chg: Rescale images after upload (chatelao) - closed.
+- 0000034: Add: Show the photos in the main view "index.php" (chatelao) - closed.
 - 0000002: Add: Contact photo upload (chatelao) - closed.
 - 0000030: Fix: SQL injection issue (chatelao) - closed.
-- 0000034: Add: Show the photos in the main view "index.php" (chatelao) - closed.
 
 PHP Addressbook - 8.1.2
 =======================
