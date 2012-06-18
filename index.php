@@ -1,6 +1,7 @@
 <?php
 	include ("include/dbconnect.php");
 	include ("include/format.inc.php");
+	include ("include/photo.class.php");
 ?>
 <title><?php echo ucfmsg("ADDRESS_BOOK").($group_name != "" ? " ($group_name)":""); ?></title>
 <?php include ("include/header.inc.php"); ?>
@@ -155,6 +156,9 @@ function addRow($row) {
         break;
       case "last_first":
         echo "<td>$lastname $firstname</td>";
+        break;
+      case "photo":
+        echo "<td>".embeddedImg($photo)."</td>";
         break;
       case "email":
       case "email2":

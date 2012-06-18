@@ -20,15 +20,15 @@
 *
 */
 
-function embeddedImg($base64) {
+function embeddedImg($photo) {
 	
-   $base64 = explode(";", $r['photo']);
-   if(count($base64) >= 3 && ! $only_phone) {
+   $base64 = explode(";", $photo);
+   if(count($base64) >= 3) {
      $base64 = $base64[2];
      $base64 = explode(":", $base64);
      if(count($base64) >= 2) {
        $base64 = str_replace(" ", "", $base64[1]);
-       return ($r['photo'] != "" ? '<img alt="Embedded Image" width=75 src="data:image/jpg;base64,'.$base64.'"/><br>' : "");
+       return ($photo != "" ? '<img alt="Embedded Image" width=75 src="data:image/jpg;base64,'.$base64.'"/><br>' : "");
      }
    }
    return "";

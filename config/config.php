@@ -28,6 +28,7 @@
   $disp_cols
     = array( "select"
            // , "last_first"
+           , "photo"
            , "lastname"
            , "firstname"
            // , "address"

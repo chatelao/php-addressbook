@@ -1,36 +1,45 @@
 PHP Addressbook - Change Log
 
+PHP Addressbook - 8.1.5
+=======================
+
+Add photo upload support
+
+- 0000002: Add: Contact photo upload (chatelao) - closed.
+- 0000030: Fix: SQL injection issue (chatelao) - closed.
+- 0000034: Add: Show the photos in the main view "index.php" (chatelao) - closed.
+
 PHP Addressbook - 8.1.2
 =======================
 
 Fix more Bugs from versions 8.x
 
-- 0000029: Add: Affero License (chatelao) - resolved.
-- 0000031: Fix: "$read_only" config option works again (chatelao) - resolved.
+- 0000029: Add: Affero License (chatelao) - closed.
+- 0000031: Fix: "$read_only" config option works again (chatelao) - closed.
 
 PHP Addressbook - 8.1.1
 =======================
 
 Fix urgent bugs from 8.x
 
-- 0000028: Fix: Remove spaces from "cfg.user.php" (chatelao) - resolved.
+- 0000028: Fix: Remove spaces from "cfg.user.php" (chatelao) - closed.
 
 PHP Addressbook - 8.1.0
 =======================
 
 Add Exchange/ActiveSync support with a z-push integration
 
-- 0000026: Add: ActiveSync Support over z-Push (chatelao) - resolved.
-- 0000027: Fix: "usertable" default value will not override user value. (chatelao) - resolved.
+- 0000026: Add: ActiveSync Support over z-Push (chatelao) - closed.
+- 0000027: Fix: "usertable" default value will not override user value. (chatelao) - closed.
 
 PHP Addressbook - 8.0.0
 =======================
 
 Add user management in database.
 
-- 0000023: Fix: Russian translation (chatelao) - resolved.
-- 0000007: Chg: Extend hindi translation (chatelao) - resolved.
-- 0000022: Add: Ukrainian translation (chatelao) - resolved.
-- 0000001: Fix: Unstable Login on SF demo page (chatelao) - resolved.
-- 0000024: Add: Company + title guessing (chatelao) - resolved.
-- 0000025: Add: Database table for user login (chatelao) - resolved.
+- 0000001: Fix: Unstable Login on SF demo page (chatelao) - closed.
+- 0000007: Chg: Extend hindi translation (chatelao) - closed.
+- 0000022: Add: Ukrainian translation (chatelao) - closed.
+- 0000023: Fix: Russian translation (chatelao) - closed.
+- 0000024: Add: Company + title guessing (chatelao) - closed.
+- 0000025: Add: Database table for user login (chatelao) - closed.
