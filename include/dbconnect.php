@@ -220,7 +220,7 @@ if(!$login->hasRoles($required_roles) ) {
   $username = $user->getName();
   $domain_id= $user->getDomain();
 
-  // Check "read only"
+  // Check "read only" of user
   $read_only = $read_only || $user->hasRole("readonly");
 
   // Check "forced group"

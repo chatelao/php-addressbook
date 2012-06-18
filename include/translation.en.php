@@ -71,6 +71,7 @@ $messages['MIDDLENAME']['en'] = "middle name/inital(s)"; // middle name/inital(s
 $messages['LASTNAME']['en'] = "last name"; // last name
 $messages['NAME_SUFFIX']['en'] = "suffix"; // suffix
 $messages['NICKNAME']['en'] = "nickname"; // nickname
+$messages['PHOTO']['en'] = "photo"; // photo
 $messages['COMPANY']['en'] = "company"; // company
 $messages['DEPT']['en'] = "Dept."; // Dept.
 $messages['OCCUPATION']['en'] = "job title"; // job title

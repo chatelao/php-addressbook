@@ -69,6 +69,7 @@ $messages['MIDDLENAME']['de'] = "zweiter Vorname / inital (s)"; // middle name/i
 $messages['LASTNAME']['de'] = "Nachname"; // last name
 $messages['NAME_SUFFIX']['de'] = "Suffix"; // suffix
 $messages['NICKNAME']['de'] = "Rufname"; // nickname
+$messages['PHOTO']['de'] = "Foto"; // photo
 $messages['COMPANY']['de'] = "Firma"; // company
 $messages['DEPT']['de'] = "Abt."; // Dept.
 $messages['OCCUPATION']['de'] = "Beruf"; // job title

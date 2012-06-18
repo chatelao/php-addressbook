@@ -78,7 +78,8 @@ function guessAddressFields($address) {
   // * Remove whitespaces & empty lines
   //  
 	$address = stripslashes($address);
-	$addr_list = preg_split("/(\n|\s?[*|,-]\s)/", $address);
+	$sign_delims = "�*|,-";
+	$addr_list = preg_split("/(\n|\s?[".$sign_delims."]\s)/", $address);
 	for($i = 0; $i < count($addr_list); $i++) {
 		$addr_line = $addr_list[$i];
 		$addr_line = trim($addr_line);

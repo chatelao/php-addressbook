@@ -14,6 +14,14 @@ function getIfSetFromAddr($addr_array, $key) {
 	return $result;
 }
 
+function trimAll($r) {
+  $res = array();
+  foreach($r as $key => $val) {
+  	$res[$key] = trim($val);
+  }
+  return $res;
+}   
+
 function echoIfSet($addr_array, $key) {
 	echo getIfSetFromAddr($addr_array, $key);
 }
@@ -106,13 +114,12 @@ function saveAddress($addr_array, $group_name = "") {
     return $id;
 }
 
-function updateAddress($addr) {
+function updateAddress($addr, $keep_photo = true) {
 
   global $keep_history, $domain_id, $base_from_where, $table, $table_grp_adr, $table_groups;
 
-  $sql = "SELECT * FROM $base_from_where AND $table.id = '".$addr['id']."';";
-  $result = mysql_query($sql);
-	$resultsnumber = mysql_numrows($result);
+	$addresses = new Addresses($addr['id']);
+	$resultsnumber = $addresses->count();
 
 	$homepage = str_replace('http://', '', $addr['homepage']);
 
@@ -121,11 +128,20 @@ function updateAddress($addr) {
 	if($is_valid)
 	{
 		if($keep_history) {
+		
+			// Get current photo, if "$keep_photo"
+			if($keep_photo) {
+		 	  $r = $addresses->nextAddress()->getData();
+		 	  $addr['photo'] = $r['photo'];
+			}
+
 	    $sql = "UPDATE $table
 	               SET deprecated = now()
 		           WHERE deprecated is null
-		             AND id       = '".$addr['id']."';";
+		             AND id	       = '".$addr['id']."'
+		             AND domain_id = '".$domain_id."';";
     	$result = mysql_query($sql);
+    	
 		  saveAddress($addr);
 		} else {
 	    $sql = "UPDATE $table SET firstname = '".$addr['firstname']."'
@@ -151,6 +167,7 @@ function updateAddress($addr) {
 	                            , address2  = '".$addr['address2']."'
 	                            , phone2    = '".$addr['phone2']."'
 	                            , notes     = '".$addr['notes']."'
+	    ".($keep_photo ? "" : ", photo     = '".$addr['photo']."'")."
 	                            , modified  = now()
 		                        WHERE id        = '".$addr['id']."'
 		                          AND domain_id = '$domain_id';";
@@ -294,7 +311,11 @@ class Addresses {
 
      	$sql = "SELECT DISTINCT $table.* FROM $base_from_where";
 
-      if ($searchstring) {
+      if(preg_match("/^([0-9])+$/",$searchstring)) {
+
+	 	    $sql .= " AND $table.id='$searchstring'";
+
+      } elseif ($searchstring) {
 
           $searchwords = explode(" ", $searchstring);
 
@@ -343,7 +364,7 @@ class Addresses {
 
     	$myrow = mysql_fetch_array($this->result);
     	if($myrow) {
-		      return new Address($myrow);
+		      return new Address(trimAll($myrow));
 		  } else {
 		      return false;
 		  }
@@ -351,6 +372,10 @@ class Addresses {
 
     public function getResults() {
     	return $this->result;
+    }
+    
+    public function count() {
+    	return mysql_numrows($this->getResults());
     }
 }
 ?>

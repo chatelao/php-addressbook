@@ -64,7 +64,7 @@ function addHomepage($homepage) {
            : "http://".$homepage);
 
   	// Display the homepage without protocol-prefixs (http/https)
-	  $result = "<a href='".$url."'>".str_replace("http://",  "",
+	  $result = "<label>Homepage:</label><a href='".$url."'>".str_replace("http://",  "",
 	                                  str_replace("https://", "", $url))."</a>";
 	  return add($result);
 	} else return "";
@@ -181,7 +181,7 @@ function showOneEntry($r, $only_phone = false) {
 	   $result = mysql_query($sql, $db);
 
 	   $first = true;
-	   while($g = mysql_fetch_array($result)) {
+	   while($result && $g = mysql_fetch_array($result)) {
 	   	 if($first)
 	   	   echo "<br /><i>".ucfmsg('MEMBER_OF').": ";
 	   	 else
