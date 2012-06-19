@@ -58,26 +58,32 @@
 
 
 /**********************************************************************************
+ *  Include the php-addressbook config.php
+ */
+    include(dirname(__FILE__).DIRECTORY_SEPARATOR.".."
+                             .DIRECTORY_SEPARATOR."config"
+                             .DIRECTORY_SEPARATOR."config.php");
+
+/**********************************************************************************
  *  Default FileStateMachine settings
  */
-    define('STATE_DIR', dirname(__FILE__).DIRECTORY_SEPARATOR."states".DIRECTORY_SEPARATOR);
+    define('STATE_DIR', $zpush_states_dir);
 
 
 /**********************************************************************************
  *  Logging settings
  */
-    define('LOGFILEDIR', dirname(__FILE__).DIRECTORY_SEPARATOR."logs".DIRECTORY_SEPARATOR);
+    define('LOGFILEDIR', $zpush_logs_dir);
     define('LOGFILE', LOGFILEDIR . 'z-push.log');
     define('LOGERRORFILE', LOGFILEDIR . 'z-push-error.log');
-    define('LOGLEVEL', LOGLEVEL_INFO);
-    // define('LOGLEVEL', LOGLEVEL_DEBUG);
+    define('LOGLEVEL', $zpush_logs_level);
     define('LOGAUTHFAIL', false);
 
 
     // To save e.g. WBXML data only for selected users, add the usernames to the array
     // The data will be saved into a dedicated file per user in the LOGFILEDIR
-    define('LOGUSERLEVEL', LOGLEVEL_WBXML);
-    $specialLogUsers = array();
+    define('LOGUSERLEVEL', $zpush_log_users_level);
+    $specialLogUsers = $zpush_log_users;
 
 
 /**********************************************************************************

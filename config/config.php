@@ -4,6 +4,7 @@
   include dirname(__FILE__).DIRECTORY_SEPARATOR."cfg.user.php";   
   include dirname(__FILE__).DIRECTORY_SEPARATOR."cfg.guess.php";   
   include dirname(__FILE__).DIRECTORY_SEPARATOR."cfg.ext.php";   
+  include dirname(__FILE__).DIRECTORY_SEPARATOR."cfg.zpush.php";   
 
   // Page access configuration
   $page_ext   = ".php";
@@ -23,6 +24,9 @@
   // Disable the AJAX-Mode with "false"
   $use_ajax = true;
 
+  // Enable beta fetures, not recommended for production.
+  $beta_features = false;
+
   //
   // Select the columns displayed in "index.php":
   $disp_cols
@@ -32,7 +36,9 @@
            , "lastname"
            , "firstname"
            // , "address"
+           // , "all_emails"
            , "email"
+           // , "all_phones"
            , "telephone"
            // , "home"
            // , "mobile"
