@@ -398,13 +398,17 @@ $myrow = mysql_fetch_array($result);
          && (isset($_GET['quickadd']) || isset($_POST['quickadd']) || $quickadd))
   {
 ?>
-  <form accept-charset="utf-8" method="post">
+  <form accept-charset="utf-8" method="post" name="quickadd" >
     <input type="submit" name="quickadd"  value="<?php echo ucfmsg('NEXT') ?>" /><br/><br/>
 
     <label><?php echo ucfmsg("ADDRESS") ?>:</label>
-    <textarea name="address" rows="20"></textarea><br/><br/>
+    <textarea name="address" rows="20" tabindex="0"></textarea><br/><br/>
     <input type="submit" name="quickadd"  value="<?php echo ucfmsg('NEXT') ?>" /><br/>
   </form>
+  <script type="text/javascript">
+	  document.quickadd.address.focus();
+  </script>
+
 <?php   
   }
   else {

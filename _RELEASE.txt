@@ -1,5 +1,13 @@
 PHP Addressbook - Change Log
 
+PHP Addressbook - 8.1.7
+=======================
+
+Fix major z-push defect.
+
+- 0000020: Chg: Autofocus in first field of "Add" page (chatelao) - resolved.
+- 0000044: Fix: Correct log dir name for z-push from "log" to "logs" (chatelao) - resolved.
+
 PHP Addressbook - 8.1.6
 =======================
 
