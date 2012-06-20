@@ -1,7 +1,7 @@
 <?php
 
   $zpush_states_dir = dirname(__FILE__).DIRECTORY_SEPARATOR.".."
-                                       .DIRECTORY_SEPARATOR."s-push"
+                                       .DIRECTORY_SEPARATOR."z-push"
                                        .DIRECTORY_SEPARATOR."states"
                                        .DIRECTORY_SEPARATOR;
 
