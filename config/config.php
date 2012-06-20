@@ -4,7 +4,6 @@
   include dirname(__FILE__).DIRECTORY_SEPARATOR."cfg.user.php";   
   include dirname(__FILE__).DIRECTORY_SEPARATOR."cfg.guess.php";   
   include dirname(__FILE__).DIRECTORY_SEPARATOR."cfg.ext.php";   
-  include dirname(__FILE__).DIRECTORY_SEPARATOR."cfg.zpush.php";   
 
   // Page access configuration
   $page_ext   = ".php";
