@@ -1,5 +1,15 @@
 <?php
 
+$name_of_months = array( 'January' , 'February' , 'March'
+                       , 'April'   , 'May'      , 'June'
+                       , 'July'    , 'August'   , 'September'
+                       , 'October' , 'November' ,'December');
+
+$name_of_months_langs = array();
+foreach($name_of_months as $name_of_month) {
+   $name_of_months_langs[] = strtoupper(ucfmsg(strtoupper($name_of_month)));
+}
+
 class Birthday {
 
     var $today;    // Today's date
@@ -9,11 +19,6 @@ class Birthday {
     var $year;     // xxxx, -1 = undefined
 
     var $prefix = "";
-
-    var $name_of_months = array( 'January' , 'February' , 'March'
-                               , 'April'   , 'May'      , 'June'
-                               , 'July'    , 'August'   , 'September'
-                               , 'October' , 'November' , 'December');
 
     function __construct() {
 
@@ -82,12 +87,14 @@ class Birthday {
 
     function setMonth($month) {
 
+  	  global $name_of_months;
+  	  
   	  $val = intval($month);
   	  if(1 <= $val && $val <= 12) {
   	    $this->month = $val;
   	    return true;
-  	  } elseif(in_array($month, $this->name_of_months)) {
-  	  	$this->month = array_search($month, $this->name_of_months)+1;
+  	  } elseif(in_array($month, $name_of_months)) {
+  	  	$this->month = array_search($month, $name_of_months)+1;
   	  } else {
   	    $this->month = -1;
     	  return self::isEmptyVal($month);
@@ -153,12 +160,14 @@ class Birthday {
      
     function addToAddr($addr) {
  
+    	 global $name_of_months;
+    	 
     	 if($this->day   != -1) {
     	   $addr[$this->prefix."day"] = $this->day;
     	 }
 
     	 if($this->month != -1) {
-    	   $addr[$this->prefix."month"] = $this->name_of_months[$this->month - 1];
+    	   $addr[$this->prefix."month"] = $name_of_months[$this->month - 1];
     	 }
 
     	 if($this->year != -1) {

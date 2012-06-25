@@ -553,7 +553,8 @@ function proposeNames() {
 
     <label><?php echo ucfmsg("BIRTHDAY") ?>:</label>
         <select name="bday">
-          <option value="0" selected="selected">-</option>
+            <option value="<?php echoIfSet($addr, 'bday'); ?>" selected="selected"><?php echoIfSet($addr, 'bday'); ?></option>
+          <option value="0">-</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -587,7 +588,11 @@ function proposeNames() {
           <option value="31">31</option>
         </select>
         <select name="bmonth">
-          <option value="-" selected="selected">-</option>
+     <?php   if(isset($addr['bmonth'])) { ?>
+          <option value="<?php echoIfSet($addr, 'bmonth'); ?>" selected="selected"><?php 
+           echo ucfmsg(strtoupper($addr['bmonth'])); ?></option>
+     <?php } ?>
+          <option value="-">-</option>
           <option value="January"><?php echo ucfmsg("JANUARY") ?></option>
           <option value="February"><?php echo ucfmsg("FEBRUARY") ?></option>
           <option value="March"><?php echo ucfmsg("MARCH") ?></option>
@@ -601,11 +606,12 @@ function proposeNames() {
           <option value="November"><?php echo ucfmsg("NOVEMBER") ?></option>
           <option value="December"><?php echo ucfmsg("DECEMBER") ?></option>
         </select>
-        <input class="byear" type="text" name="byear" size="4" maxlength="4" /><br />
+        <input class="byear" type="text" name="byear" size="4" maxlength="4" value="<?php echoIfSet($addr, 'byear'); ?>"/><br />
 
     <label><?php echo ucfmsg("ANNIVERSARY") ?>:</label>
         <select name="aday">
-          <option value="0" selected="selected">-</option>
+                 <option value="<?php echoIfSet($addr, 'aday'); ?>" selected="selected"><?php echoIfSet($addr, 'aday'); ?></option>
+          <option value="0">-</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -639,7 +645,11 @@ function proposeNames() {
           <option value="31">31</option>
         </select>
         <select name="amonth">
-          <option value="-" selected="selected">-</option>
+     <?php   if(isset($addr['amonth'])) { ?>
+          <option value="<?php echoIfSet($addr, 'amonth'); ?>" selected="selected"><?php 
+           echo ucfmsg(strtoupper($addr['amonth'])); ?></option>
+     <?php } ?>     
+          <option value="-">-</option>
           <option value="January"><?php echo ucfmsg("JANUARY") ?></option>
           <option value="February"><?php echo ucfmsg("FEBRUARY") ?></option>
           <option value="March"><?php echo ucfmsg("MARCH") ?></option>
@@ -653,7 +663,7 @@ function proposeNames() {
           <option value="November"><?php echo ucfmsg("NOVEMBER") ?></option>
           <option value="December"><?php echo ucfmsg("DECEMBER") ?></option>
         </select>
-        <input class="byear" type="text" name="ayear" size="4" maxlength="4" /><br />
+        <input class="byear" type="text" name="ayear" size="4" maxlength="4" value="<?php echoIfSet($addr, 'ayear'); ?>"/><br />
 
     <?php       
     if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>

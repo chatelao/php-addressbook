@@ -1,5 +1,7 @@
 <?php
 
+include_once('birthday.class.php'); 
+
 // Default list of external phone book providers,
 // may be overridden in "config.php"
 if(!isset($providers))
@@ -61,7 +63,7 @@ function guessHomepage($email1, $email2) {
 
 function guessAddressFields($address) {
 	
-  global $company_exts, $title_exts;
+  global $company_exts, $title_exts, $name_of_months_langs, $name_of_months;
   
   if(!isset($company_exts)) $company_exts = array();
   if(!isset($title_exts))   $title_exts   = array();
@@ -102,6 +104,8 @@ function guessAddressFields($address) {
 	$lastname  = "";
   $has_name  = false;
 	
+	$has_birthday = false;
+	
 	for($i = 0; $i < count($addr_list); $i++) {
 		
 		$addr_line = $addr_list[$i];
@@ -111,6 +115,7 @@ function guessAddressFields($address) {
 		$addr_line = str_replace("{at}",  "@", $addr_line);
 		$addr_line = str_replace("'at'",  "@", $addr_line);
 		$addr_line = str_replace("'dot'", ".", $addr_line);
+		
 		$keep_line = true;
 		
 		if(function_exists("mb_strtoupper")) {
@@ -119,7 +124,30 @@ function guessAddressFields($address) {
 		  $addr_line_upper = strtoupper($addr_line);
 		}
 
-	  if((!isset($company) || $company == "")
+		$guessed_date  = date_parse(str_replace($name_of_months_langs, $name_of_months, strtoupper($addr_line)));
+		
+		$guessed_year  = $guessed_date['year'];
+		$guessed_month = $guessed_date['month'];
+		$guessed_day   = $guessed_date['day'];
+
+	  if( $guessed_month != false 
+	   && $guessed_day   != false) {
+	   
+	   if(!$has_birthday) {
+	   
+	   $bday   = ($guessed_day   == false ? '' : $guessed_day);
+	   $bmonth = ($guessed_month == false ? '' : $guessed_month);
+	   $byear  = ($guessed_year  == false ? '' : $guessed_year);
+	   
+	   $has_birthday = true;
+	   }else {
+	   $aday   = ($guessed_day   == false ? '' : $guessed_day);
+	   $amonth = ($guessed_month == false ? '' : $guessed_month);
+	   $ayear  = ($guessed_year  == false ? '' : $guessed_year);
+	   }
+	   $keep_line = false;
+
+	  } elseif((!isset($company) || $company == "")
 	     && function_exists("mb_ereg_match")
 	     && mb_ereg_match("(^|.* )(".implode("|", $company_exts).")(\W|$)", $addr_line_upper)) {
 	  	$company = $addr_line;
@@ -282,6 +310,14 @@ function guessAddressFields($address) {
 	if(isset($mails[1])) $result['email2'] = $mails[1];
 	if(isset($mails[2])) $result['email3'] = $mails[2];
 
+	if(isset($aday))   $result['aday']   = $aday;
+	if(isset($amonth)) $result['amonth'] = $name_of_months[$amonth-1];
+	if(isset($ayear))  $result['ayear']  = $ayear;
+	
+	if(isset($bday))   $result['bday']   = $bday;
+	if(isset($bmonth)) $result['bmonth'] = $name_of_months[$bmonth-1];
+	if(isset($byear))  $result['byear']  = $byear;
+	
 	if(isset($homepage)) $result['homepage'] = $homepage;
 	
 	return $result;
