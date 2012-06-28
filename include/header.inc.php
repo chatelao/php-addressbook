@@ -40,8 +40,8 @@
 
 <a href="preferences<?php echo $page_ext_qry; ?>from=<?php echo urlencode($_SERVER['REQUEST_URI']); ?>"><?php echo ucfmsg('PREFERENCES'); ?></a>
 -->
-<?php if(isset($userlist) && !(isset($iplist) && hasRoleFromIP($iplist))) { ?>
-<form name="logout" method="post" class=header>
+<?php if(isset($userlist) /* && !(isset($iplist) && hasRoleFromIP($iplist))*/) { ?>
+<form name="logout" method="post" class="header">
 <input type="hidden" name="logout" value="yes" />
 <?php if(isset($username)) echo "<b>(".$username.")</b> "; ?>
 <a href="#" onClick="document.logout.submit();"><?php echo ucfmsg("LOGOUT"); ?></a>
@@ -52,7 +52,7 @@
 			</div>
 			<div id="header">
 				<h1><a href=".">Address Book</a></h1>
-				<a href="."><img src="<?php echo $url_images; ?>title.png" title="Addressbook" alt="Addressbook" id="logo" /></a>
+				<a href="."><img src="<?php echo $url_images; ?>title_x2.png" width=340 height=75 title="Addressbook" alt="Addressbook" id="logo" /></a>
 			</div>
 			<div id="nav">
       			<?php include("include/nav.inc.php"); ?>

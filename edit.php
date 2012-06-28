@@ -501,7 +501,7 @@ function proposeNames() {
 
     <input type="submit" name="submit" value="<?php echo ucfmsg('ENTER') ?>" /><br /><br />
 
-    <input type="hidden" name="id" value="<?php echo $myrow['id']?>" />
+    <input type="hidden" name="id" value="<?php echo echoIfSet($addr, 'id'); ?>" />
     <label><?php echo ucfmsg("FIRSTNAME") ?>:</label>
     <input type="text" name="firstname" value="<?php echoIfSet($addr, 'firstname'); ?>" size="35" onkeyup="proposeMail()"/><br />
 

@@ -2,20 +2,21 @@
   	<body>
   		<div id="container">
   			<div id="top"></div>
-        <div id="header"><a href="."><img src="title.png" title="%ADDRESS_BOOK%" alt="%ADDRESS_BOOK%" /></a></div>
+        <div id="header"><a href="."><img width="340" height="75" src="title_x2.png" title="%ADDRESS_BOOK%" alt="%ADDRESS_BOOK%" /></a></div>
   			<div id="nav"></div>
   			<div id="content">
-  	      <form accept-charset="utf-8" name="LoginForm" method="post">
+  	      <form accept-charset="utf-8" id="LoginForm" name="LoginForm" method="post">
   	         <label>%USER%:</label><input name="user" tabindex="0"/><br/>
-  	         <label>%PASSWORD%:</label><input name="pass" type="password"/>
-  	         <br/>
-  	         <input type=submit value="%LOGIN%"/>
-  	         <br/>
-  	         <br/>
+  	         <label>%PASSWORD%:</label><input name="pass" type="password"/><br/>
+  	         <input type=submit value="%LOGIN%"/><br><br>
           </form>
-<!--  	         
-  	         <a href="../register">%CREATE_ACCOUNT%</a>
-  	         | <a href="../register">%FORGOT_PASSWORD%</a>  	         
+  <script type="text/javascript">
+    document.LoginForm.user.focus();
+  </script>
+  	         <b><a href="index.php?user=demo&pass=demo">Demo</a></b>
+  	         | <a href="../basiclogin">%CREATE_ACCOUNT%</a>
+  	         | <a href="contact.html">%FORGOT_PASSWORD%</a>  	         
+
   	         <br><br>
   	         <br>
   	         <hr>
@@ -25,12 +26,23 @@
   	         <input name="user" type="hidden"/>
   	         <input name="pass" type="hidden"/>
           </form>
-  	         
+  	         <label>%SIGN_IN_WITH%:</label>
   	         <a href="javascript:hLoginForm.user.value='Facebook';hLoginForm.submit();"><img src="icons/facebook.png"></a>
   	         <a href="javascript:hLoginForm.user.value='Google';hLoginForm.submit();"><img src="icons/google.png"></a>
   	         <a href="javascript:hLoginForm.user.value='Yahoo';hLoginForm.submit();"><img src="icons/yahoo.png"></a>
   	         <a href="javascript:hLoginForm.user.value='Live';hLoginForm.submit();"><img src="icons/microsoft.png"></a>
   	         <br><br><br>
+  	         
+  	         <b>New features</b>
+  	         	<ul>- Connect your iPhone using <a href="http://simultaneouspancakes.com/Lessons/2010/06/24/connecting-an-iphone-4-to-exchange/">Exchange suppport</a></ul>
+  	         	<ul>- Connect your Android using <a href="http://portal.smartertools.com/KB/a1148/setup-an-android-phone-or-tablet-for-exchange-activesync.aspx">Exchange suppport</a></ul>
+
+<!--
+  	         <br>
+  	         <b>Support</b>
+  	         	<ul>
+  	         	<li>- Send us a mail to <a href="mailto:support@swiss-addressbook.com">support(at)swiss-addressbook.com</a></li>
+  	         	</ul>
 -->
   <script>				
     document.LoginForm.user.focus();

@@ -12,8 +12,7 @@
  */
 
   $sso_ptotocol = 'https';
-  // $sso_endpoint = 'addressbook/hybridauth';
-  $sso_endpoint = 'auth';
+  $sso_endpoint = 'addressbook/hybridauth';
   
   // https://developers.facebook.com/apps
   $sso_facebook_id     = '';

@@ -16,7 +16,8 @@
 							echo "<option value='$supp_lang'>".ucfmsg($supp_lang)."</option>\n";
 						} ?>
 					</select><br /><br />
-				-->				<label><?php echo ucfmsg("MAIL_CLIENT") ?>:</label>
+				-->				
+				<label><?php echo ucfmsg("MAIL_CLIENT") ?>:</label>
 				<select name="mailer">
 					<?php
 						foreach($mailers as $mailer => $url) {
@@ -25,4 +26,14 @@
 				</select>
 				<input type="submit" name="update" value="<?php echo ucfmsg("UPDATE") ?>" />
 		</form>
+<br>
+		<form method="post" name="sso_form" action="<?php echo urldecode($_GET['from']); ?>">
+  	         <input name="user" type="hidden"/>
+				<label><?php echo ucfmsg("SIGN_IN_WITH") ?>:</label>
+  	         <a href="javascript:sso_form.user.value='Facebook';sso_form.submit();"><img src="icons/facebook.png"></a>
+  	         <a href="javascript:sso_form.user.value='Google';sso_form.submit();"><img src="icons/google.png"></a>
+  	         <a href="javascript:sso_form.user.value='Yahoo';sso_form.submit();"><img src="icons/yahoo.png"></a>
+  	         <a href="javascript:sso_form.user.value='Live';sso_form.submit();"><img src="icons/microsoft.png"></a>
+		</form>
+
 <?php include ("include/footer.inc.php"); ?>

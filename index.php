@@ -92,7 +92,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
   if(! $is_mobile) {
     foreach($disp_cols as $col) {
     	
-    	if(!in_array($col, array("home", "work", "mobile", "select", "edit", "details"))) {
+    	if(!in_array($col, array("home", "work", "mobile", "select", "edit", "vcard", "map", "homepage", "details"))) {
 	      echo "<th class='sortable'>".ucfmsg(strtoupper($col))."</th>";
     	} elseif(in_array($col, array("home", "work", "mobile"))) {
 	      echo "<th>".ucfmsg("PHONE_".strtoupper($col))."</th>";
@@ -185,17 +185,31 @@ function addRow($row) {
           echo "<td class='center'><a href='edit${page_ext_qry}id=$id'><img src='${url_images}icons/pencil.png' title='".ucfmsg('EDIT')."' alt='".ucfmsg('EDIT')."'/></a></td>";
         }
   		  break;
+      case "vcard":
+        echo "<td class='center'><a href='vcard${page_ext_qry}id=$id'><img src='${url_images}icons/vcard.png' title='vCard' alt='vCard'/></a></td>";        
+  	    break;
+      case "map":      
+        if($map_guess) {
+          if($myrow["address"] != "")
+          echo "<td class='center'><a href='http://maps.google.com/maps?q=".urlencode(trim(str_replace("\r\n", ", ", trim($myrow["address"]))))."&amp;t=h' target='_blank'>
+                                <img src='${url_images}icons/car.png' title='Google Maps' alt='vCard'/></a></td>";
+          else echo "<td/>";
+        }
+        break;
+      case "homepage":    
+        if($homepage != "") {
+        	  $homepage = (strcasecmp(substr($homepage, 0, strlen("http")),"http")== 0
+        	              ? $homepage
+        	              : "http://".$homepage);
+            echo "<td class='center'><a href='$homepage'><img src='${url_images}icons/house.png' title='$homepage' alt='$homepage'/></a></td>";
+        } elseif($homepage_guess && ($homepage = guessHomepage($email, $email2)) != "") {
+            echo "<td class='center'><a href='http://$homepage'><img src='${url_images}icons/house.png' title='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)' alt='".ucfmsg("GUESSED_HOMEPAGE")." ($homepage)'/></a></td>";
+        } else {
+        	echo "<td/>";
+        }		    
+  		  break;
       case "details":
         echo "<td class='center'><a href='vcard${page_ext_qry}id=$id'><img src='${url_images}icons/vcard.png' title='vCard' alt='vCard'/></a></td>";        
-  
-  /*
-        if( substr($phone, 0, 3) == "+41" ) {
-        	$country = "Switzerland";
-        } else {
-        	$country = "";
-        }
-  */
-        
         if($map_guess) {
           if($myrow["address"] != "")
           echo "<td class='center'><a href='http://maps.google.com/maps?q=".urlencode(trim(str_replace("\r\n", ", ", trim($myrow["address"]))))."&amp;t=h' target='_blank'>
