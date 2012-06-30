@@ -67,6 +67,8 @@ class SyncCollections implements Iterator {
     private $globalWindowSize;
     private $lastSyncTime;
 
+    private $waitingTime = 0;
+
 
     /**
      * Constructor
@@ -446,6 +448,9 @@ class SyncCollections implements Iterator {
         $started = time();
         $endat = time() + $lifetime;
         while(($now = time()) < $endat) {
+            // how long are we waiting for changes
+            $this->waitingTime = $now-$started;
+
             $nextInterval = $interval;
             // we should not block longer than the lifetime
             if ($endat - $now < $nextInterval)
@@ -479,7 +484,7 @@ class SyncCollections implements Iterator {
             if ($changesSink) {
                 // in some occasions we do realize a full export to see if there are pending changes
                 // every 5 minutes this is also done to see if there were "missed" notifications
-                if ($forceRealExport+300 <= $now) {
+                if (SINK_FORCERECHECK !== false && $forceRealExport+SINK_FORCERECHECK <= $now) {
                     if ($this->CountChanges($onlyPingable)) {
                         ZLog::Write(LOGLEVEL_DEBUG, "SyncCollections->CheckForChanges(): Using ChangesSink but found relevant changes on regular export");
                         return true;
@@ -490,22 +495,25 @@ class SyncCollections implements Iterator {
                 ZPush::GetTopCollector()->AnnounceInformation(sprintf("Sink %d/%ds on %s", ($now-$started), $lifetime, $checkClasses));
                 $notifications = ZPush::GetBackend()->ChangesSink($nextInterval);
 
+                $validNotifications = false;
                 foreach ($notifications as $folderid) {
                     // check if the notification on the folder is within our filter
                     if ($this->CountChange($folderid)) {
                         ZLog::Write(LOGLEVEL_DEBUG, sprintf("SyncCollections->CheckForChanges(): Notification received on folder '%s'", $folderid));
-                        return true;
+                        $validNotifications = true;
                     }
                     else {
                         ZLog::Write(LOGLEVEL_DEBUG, sprintf("SyncCollections->CheckForChanges(): Notification received on folder '%s', but it is not relevant", $folderid));
                     }
                 }
+                if ($validNotifications)
+                    return true;
             }
             // use polling mechanism
             else {
                 ZPush::GetTopCollector()->AnnounceInformation(sprintf("Polling %d/%ds on %s", ($now-$started), $lifetime, $checkClasses));
                 if ($this->CountChanges($onlyPingable)) {
-                    ZLog::Write(LOGLEVEL_DEBUG, sprintf("SyncCollections->CheckForChanges(): FOUND CHANGES", print_r($this->changes,1)));
+                    ZLog::Write(LOGLEVEL_DEBUG, sprintf("SyncCollections->CheckForChanges(): Found changes polling"));
                     return true;
                 }
                 else {
@@ -562,6 +570,7 @@ class SyncCollections implements Iterator {
             $exporter = ZPush::GetBackend()->GetExporter($folderid);
             if ($exporter !== false && isset($this->addparms[$folderid]["state"])) {
                 $importer = false;
+
                 $exporter->Config($this->addparms[$folderid]["state"], BACKEND_DISCARD_DATA);
                 $exporter->ConfigContentParameters($spa->GetCPO());
                 $ret = $exporter->InitializeExporter($importer);
@@ -602,6 +611,17 @@ class SyncCollections implements Iterator {
      */
     public function GetChangedFolderIds() {
         return $this->changes;
+    }
+
+    /**
+     * Indicates if the process did wait in a sink, polling or before running a
+     * regular export to find changes
+     *
+     * @access public
+     * @return array
+     */
+    public function WaitedForChanges() {
+        return ($this->waitingTime > 1);
     }
 
     /**
