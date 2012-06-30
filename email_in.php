@@ -1,8 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" >
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<body>
 <?php
 
 include "include/dbconnect.php";
@@ -137,6 +132,8 @@ foreach($flattenedParts as $partNumber => $part) {
 
 $to    = $hds->from[0]->mailbox."@".$hds->from[0]->host;
 $addr  = guessAddressFields($message);
+
+// saveAddress($addr);
 
 // Generate vCard
 $vcard = address2vcard($addr);

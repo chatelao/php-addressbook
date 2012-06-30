@@ -246,8 +246,10 @@ class Address {
                               	
       global $intl_prefix_reg, $default_provider, $phone_delims;
                               	
-    	// Remove all optical delimiters
-    	foreach($phones as $phone) {
+      $unifons = array();
+                              	
+     // Remove all optical delimiters
+     foreach($phones as $phone) {
     	foreach($phone_delims as $phone_delim) {
     		$phone = str_replace($phone_delim, "", $phone);
     	}

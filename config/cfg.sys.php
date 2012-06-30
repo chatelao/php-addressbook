@@ -19,10 +19,4 @@
   // You may use a table-prefix if you have only one DB-User
   $table_prefix = "";
 
-
-  // IMAP connection string (optional) for "email_in.php"
-  // - See: http://www.php.net/manual/de/function.imap-open.php
-  // $mail_box  = "{imap.gmail.com:993/imap/ssl}INBOX";
-  // $mail_user = "firstname.lastname@gmail.com";
-  // $mail_pass = "mysecretpassword";
 ?>

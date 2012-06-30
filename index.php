@@ -165,7 +165,7 @@ function addRow($row) {
         echo "<td><a href='".getMailer()."${$row}'>${$row}</a></td>";
         break;
       case "all_phones":
-        $phones = $addr->getPhones();
+        $phones = $addr->shortPhones();
     	  echo "<td>".implode("<br>", $phones)."</td>";
         break;
       case "all_emails":
@@ -177,7 +177,7 @@ function addRow($row) {
         echo "<td>".implode("<br>", $amails)."</td>";
         break;
       case "address":
-  		  echo "<td>".str_replace("\n", ", ", $address)."</td>";
+  		  echo "<td>".str_replace("\n", "<br>", $address)."</td>";
   		  break;
       case "edit":
         echo "<td class='center'><a href='view${page_ext_qry}id=$id'><img src='${url_images}icons/status_online.png' title='".ucfmsg('DETAILS')."' alt='".ucfmsg('DETAILS')."' /></a></td>";
