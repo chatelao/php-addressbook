@@ -29,8 +29,15 @@
   // == List of IP-Users ==
   //
   /*
-  $iplist['169.168.1.1']['role']  = "admin";
-  $iplist['169.168.1.1']['role']  = "readonly";
+  // Autorize one IP-Address
+  $iplist['169.168.1.42']['role']      = "admin";
+
+  // Autorize an IP-Range
+  $iplist['169.168.1.*']['role']      = "readonly";
+  $iplist['169.168.1.1-100']['role']  = "readonly";
+
+  // Block an IP-Address
+  $blacklist['169.168.1.5'] = "";
   */
 
 
