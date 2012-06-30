@@ -1,12 +1,29 @@
 PHP Addressbook - Change Log
 
+PHP Addressbook - 8.1.9
+=======================
+
+Guess birthday and anniversary. Fix bugs.
+
+- 0000012: Add: History- / Domain-Purge scripts (chatelao) - resolved.
+- 0000057: Fix: IP based login does not work (chatelao) - resolved.
+- 0000059: Add: Logout from (readonly) IP-User to login with user/pass or SocialID (chatelao) - resolved.
+- 0000054: Add: Guess birthday and anniversary (chatelao) - resolved.
+- 0000055: Chg: Lowercase username (chatelao) - resolved.
+
+PHP Addressbook - 8.1.8
+=======================
+- 0000040: Add: Flag "$beta_features" in "config.php" to enable beta-grade features. (chatelao) - closed.
+- 0000047: Fix: cfg.zpush.php extraction errors (chatelao) - closed.
+- 0000046: Add: Extract config for z-push "cfg.zpush.php" (chatelao) - closed.
+
 PHP Addressbook - 8.1.7
 =======================
 
 Fix major z-push defect.
 
-- 0000020: Chg: Autofocus in first field of "Add" page (chatelao) - resolved.
-- 0000044: Fix: Correct log dir name for z-push from "log" to "logs" (chatelao) - resolved.
+- 0000044: Fix: Correct log dir name for z-push from "log" to "logs" (chatelao) - closed.
+- 0000020: Chg: Autofocus in first field of "Add" page (chatelao) - closed.
 
 PHP Addressbook - 8.1.6
 =======================

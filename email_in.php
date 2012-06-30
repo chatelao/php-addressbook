@@ -2,7 +2,7 @@
 
 include "include/dbconnect.php";
 include "include/export.vcard.php";
-include "widget/view.w.php";
+include "include/view.w.php";
 
 function strip_html_tags( $text )
 {

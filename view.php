@@ -38,7 +38,7 @@ if($resultsnumber == 0) {
 
 } else {
 
-include "widget/view.w.php";
+include "include/view.w.php";
 showOneEntry($r);
 
 ?>	
@@ -63,7 +63,7 @@ showOneEntry($r);
 }
 } else if(isset($_REQUEST['all'])) {
 
-   include "widget/view.w.php";
+   include "include/view.w.php";
 
    $sql = "SELECT * FROM $base_from_where order by lastname, firstname";
    $result = mysql_query($sql, $db);
