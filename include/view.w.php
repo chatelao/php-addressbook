@@ -153,7 +153,7 @@ function showOneEntry($r, $only_phone = false) {
 	   $view .= addBirthday($r['bday'], $r['bmonth'], $r['byear'], ucfmsg('BIRTHDAY'));
 	   $view .= addBirthday($r['aday'], $r['amonth'], $r['ayear'], ucfmsg('ANNIVERSARY'));
 
-	   $view .= addGroup($r, array('address2','phone2'), "<b>".ucfmsg('SECONDARY')."</b>");
+	   $view .= addGroup($r, array('address2','phone2'));
 	   $view .= add(str_replace("\n", "<br />", trim($r['address2'])));
   	 $view .= addGroup($r, array('phone2'));
 	 }

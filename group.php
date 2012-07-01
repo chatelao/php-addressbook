@@ -43,7 +43,7 @@ if($submit) {
   			echo "<option value=\"".$myrow2['group_id']."\">".$myrow2["group_name"]."</option>\n";
   		}
   	?>
-   </select><br />
+   </select><br /><br />
 
       <label>Group header (Logo):</label>
 	<textarea name="group_header" rows="10" cols="40"></textarea><br />

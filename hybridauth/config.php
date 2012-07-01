@@ -46,7 +46,7 @@
 			"Google" => array ( 
 				"scope"   => ""
 			)
-	  )
+	  );
 
 	return $result;
 	
