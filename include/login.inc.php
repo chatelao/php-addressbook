@@ -454,8 +454,9 @@ class AuthHybrid extends AuthLoginDb {
 		$provider = $this->getUserName();
     
     // create an instance for Hybridauth with the configuration file path as parameter
-		$hybridauth_config = '../hybridauth/config.php';
- 	  require_once( "../hybridauth/Hybrid/Auth.php" );
+ 	  $hybridauth_config = "hybridauth".DIRECTORY_SEPARATOR."config.php";
+ 	  require_once( "hybridauth".DIRECTORY_SEPARATOR."Hybrid".DIRECTORY_SEPARATOR."Auth.php" );
+
 		$hybridauth = new Hybrid_Auth( $hybridauth_config ); 	  
 		$loaded_providers = Hybrid_Auth::getConnectedProviders();
 		
