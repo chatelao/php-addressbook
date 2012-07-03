@@ -6,20 +6,17 @@ Basic Installation
 
 2. Apply "addressbook.sql" to your database.
 
-3. Change database connection in "config/cfg.sys.php".
+3. Change database connection in "config/cfg.db.php".
 
 4. Change the password of "admin" in "config/cfg.user.php".
 
 
    ~~~~~~~~~~~~~~~~~~~~ Start Advertisment ~~~~~~~~~~~~~~~~~
 
-   Better without installation: "Adressbook-as-a-Service"
-   ======================================================
+   No installation - "Adressbook-as-a-Service"
+   ==========================================
    * https://swiss-addressbook.com
-   *
-   * Secure Website
-   * iPhone + Android direct support
-   * company + title guessing
+
    * Free trial for 30 days, 2$ per month after trial.
    * Additional features available (e.g.: Outlook import).
 

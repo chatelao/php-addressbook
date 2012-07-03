@@ -5,9 +5,10 @@ PHP Addressbook - 8.1.9
 
 Guess birthday and anniversary. Fix bugs.
 
+- 0000071: Fix: Human hugarian translation (chatelao) - resolved.
+- 0000049: Chg: Move "widget" to "include" (chatelao) - resolved.
 - 0000012: Add: History- / Domain-Purge scripts (chatelao) - resolved.
 - 0000057: Fix: IP based login does not work (chatelao) - resolved.
-- 0000059: Add: Logout from (readonly) IP-User to login with user/pass or SocialID (chatelao) - resolved.
 - 0000054: Add: Guess birthday and anniversary (chatelao) - resolved.
 - 0000055: Chg: Lowercase username (chatelao) - resolved.
 
