@@ -5,6 +5,7 @@
   //  * Used to provide "mailto:" links in contacts
   //
   // $webmail_provider = "gmail.com";
+  // $webmail_provider = "yahoo.com";
 
   //
   // Incoming Mailbox to parse and add mails:
