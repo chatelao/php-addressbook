@@ -4,8 +4,8 @@
 -- * You may add table prefixes, if the "$table_prefix"
 --   parameter is set in "config.php".
 --
--- $LastChangedDate: 2010-08-15 22:29:55 +0200 (So, 15 Aug 2010) $
--- $Rev: 390 $
+-- $LastChangedDate$
+-- $Rev$
 -- 
 --
 
