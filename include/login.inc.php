@@ -518,7 +518,9 @@ class AuthHybrid extends AuthLoginDb {
 		  		case 7 : $error = "User not connected to the provider."; 
 		  			     $adapter->logout(); 
 		  			     break;
-		  	} }
+		  	}
+		  	echo $error; 
+		}
     }
 
     $this->finishConstruct();
