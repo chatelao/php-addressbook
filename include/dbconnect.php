@@ -142,11 +142,11 @@ if(!isset($mail_as_image)) $mail_as_image  = false;
 if(!isset($use_ajax)) $use_ajax  = true;
 
 // Enable "doodle" mode, if keys are availabe
-$use_sso = (isset($sso_facebook_id) && $sso_facebook_id != ""))
-        || (isset($sso_google_id)   && $sso_google_id != ""))
-        || (isset($sso_yahoo_id)    && $sso_yahoo_id != ""))
-        || (isset($sso_hotmail_id)  && $sso_hotmail_id != ""))
-        || (isset($sso_twitter_id)  && $sso_twitter_id != ""))
+$use_sso = (isset($sso_facebook_id) && $sso_facebook_id != "")
+        || (isset($sso_google_id)   && $sso_google_id != ""  )
+        || (isset($sso_yahoo_id)    && $sso_yahoo_id != ""   )
+        || (isset($sso_hotmail_id)  && $sso_hotmail_id != "" )
+        || (isset($sso_twitter_id)  && $sso_twitter_id != "" );
 
 // Enable "doodle" mode, if keys are availabe
 $use_doodle = isset($doodle['key']) && isset($doodle['secret']);

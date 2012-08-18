@@ -17,8 +17,21 @@
                            .DIRECTORY_SEPARATOR."config"
                            .DIRECTORY_SEPARATOR."cfg.sso.php");
 
-//  $result["base_url"]   = $sso_protocol.'://'.$_SERVER['HTTP_HOST'].'/'.$sso_endpoint;  
-  $result["base_url"]   = 'https://swiss-addressbook/auth';
+  // ****************************************************************
+  // DEFAULT VALUES
+  $result = array();
+  $result["providers"] = array ( 
+			"Facebook" => array ( 
+				"scope"   => "email", 
+  			"display" => "" 
+			),
+			"Google" => array ( 
+				"scope"   => ""
+			)
+	  );
+
+  $result["base_url"]   = $sso_protocol.'://'.$_SERVER['HTTP_HOST'].'/'.$sso_endpoint;  
+
   $result["debug_mode"] = $sso_log_enabled;
   $result["debug_file"] = $sso_log_file;
 
@@ -34,20 +47,6 @@
   $result["providers"]["Live"]["keys"]["id"]          = $sso_hotmail_id;
   $result["providers"]["Live"]["keys"]["secret"]      = $sso_hotmail_secret;
 
-
-  // ****************************************************************
-  // DEFAULT VALUES
-  $result = array();
-  $result["providers"] = array ( 
-			"Facebook" => array ( 
-				"scope"   => "email", 
-  			"display" => "" 
-			),
-			"Google" => array ( 
-				"scope"   => ""
-			)
-	  );
-
-	return $result;
+  return $result;
 	
 ?>

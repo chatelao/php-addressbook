@@ -11,7 +11,7 @@
  * - $Rev$
  */
 
-  $sso_ptotocol = 'https';
+  $sso_protocol = 'https';
   $sso_endpoint = 'addressbook/hybridauth';
   
   // https://developers.facebook.com/apps
