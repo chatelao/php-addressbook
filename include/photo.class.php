@@ -22,7 +22,7 @@
 
 function extractImg($photo_b64) {
 
-   $base64 = explode(";", $photo);
+   $base64 = explode(";", $photo_b64);
    if(count($base64) >= 3) {
      $base64 = $base64[2];
      $base64 = explode(":", $base64);
@@ -65,6 +65,14 @@ class Photo {
    	   $this->resizeToHeight($max_side);
    	 }
    }
+
+   /*
+   function setBase64($data) {
+   	 $filename = "";
+     $this->image_type = IMAGETYPE_JPEG;     
+     $this->image = fread(fopen($filename, "r"), filesize($filename));
+   }
+   */
 
    function getBase64() {
    	 $filename = $this->filename;

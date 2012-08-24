@@ -1,5 +1,6 @@
 <?php
 	include ("include/dbconnect.php");
+	include ("include/photo.class.php");
 	
 if ($id) {
 
@@ -11,4 +12,8 @@ if ($id) {
 }
 
 $encoded = $r['photo'];
-?><img src="data:image/jpg;base64,<?php echo $r['photo']; ?>">
+
+header('Content-Type: image/jpeg');
+echo binaryImg($encoded);
+
+?>

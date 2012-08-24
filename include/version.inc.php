@@ -8,5 +8,5 @@
 
 $revision = '$Rev$';
 $revision = str_replace('$', '', str_replace(' ', '', str_replace('Rev: ', '', $revision)));
-$version = '8.1.11'.' - r'.$revision;
+$version = '8.1.12'.' - r'.$revision;
 ?>

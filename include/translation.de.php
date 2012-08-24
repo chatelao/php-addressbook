@@ -108,6 +108,7 @@ $messages['MEMBER_OF']['de'] = "Mitglied"; // member of
 $messages['SECONDARY']['de'] = "Zweitadresse"; // Secondary
 $messages['CREATE_ACCOUNT']['de'] = "Konto erstellen"; // Create account
 $messages['FORGOT_PASSWORD']['de'] = "Passwort vergessen"; // Forgot password
+$messages['SIGN_IN_WITH']['de'] = "Einloggen mit"; // Sign in with	
 $messages['H:']['de'] = "P:"; // H:
 $messages['M:']['de'] = "M:"; // M:
 $messages['W:']['de'] = "G:"; // W:

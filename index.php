@@ -158,7 +158,14 @@ function addRow($row) {
         echo "<td>$lastname $firstname</td>";
         break;
       case "photo":
-        echo "<td>".embeddedImg($photo)."</td>";
+//        echo "<td>".embeddedImg($photo)."</td>";
+///*
+        if($photo != "") {
+          echo "<td><img width=75 src='photo.php?id=".$id."'></td>";
+        } else {
+          echo "<td></td>";
+        }
+//*/        
         break;
       case "email":
       case "email2":
