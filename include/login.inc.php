@@ -88,7 +88,7 @@ class AuthLoginFactory {
     if((!isset($login) || !$login->hasRoles()) && isset($usertable)) {
       $login = new AuthLoginDb($db, $usertable);
     }
-    if(($use_sso && !isset($login) || !$login->hasRoles()) && is_dir('hybridauth')
+    if($use_sso && (!isset($login) || !$login->hasRoles()) && is_dir('hybridauth')
        && !(isset($_POST['logout']) && $_POST['logout'] == "yes")) {
       $login = new AuthHybrid($db, $usertable);
     }
