@@ -475,4 +475,4 @@ filterResults(document.getElementsByName("searchstring")[0]);
 //-->
 </script>
 <?php include("include/footer.inc.php"); ?>
-<script type="text/javascript" src="jstablesort/tablesort.min.js"></script>
+<script type="text/javascript" src="js/tablesort.min.js"></script>
