@@ -20,18 +20,31 @@
 *
 */
 
-function embeddedImg($photo) {
-	
+function extractImg($photo_b64) {
+
    $base64 = explode(";", $photo);
    if(count($base64) >= 3) {
      $base64 = $base64[2];
      $base64 = explode(":", $base64);
      if(count($base64) >= 2) {
-       $base64 = str_replace(" ", "", $base64[1]);
-       return ($photo != "" ? '<img alt="Embedded Image" width=75 src="data:image/jpg;base64,'.$base64.'"/><br>' : "");
+       return str_replace(" ", "", $base64[1]);
      }
    }
-   return "";
+   return "";		
+
+}
+
+function embeddedImg($photo_b64) {
+	
+   $base64 = extractImg($photo_b64);
+   return ($base64 != "" ? '<img alt="Embedded Image" width=75 src="data:image/jpg;base64,'.$base64.'"/><br>' : "");
+
+}
+
+function binaryImg($photo_b64) {
+	
+   return base64_decode(extractImg($photo_b64));
+
 }
 
 class Photo {
@@ -106,6 +119,7 @@ class Photo {
          imagepng($this->image);
       }
    }
+
    function getWidth() {
  
       return imagesx($this->image);
