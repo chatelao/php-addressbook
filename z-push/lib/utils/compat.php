@@ -56,13 +56,14 @@ if (!function_exists("quoted_printable_encode")) {
     }
 }
 
+/*
 if (!function_exists("apache_request_headers")) {
-    /**
-      * When using other webservers or using php as cgi in apache
-      * the function apache_request_headers() is not available.
-      * This function parses the environment variables to extract
-      * the necessary headers for Z-Push
-      */
+    // 
+    // When using other webservers or using php as cgi in apache
+    // the function apache_request_headers() is not available.
+    // This function parses the environment variables to extract
+    // the necessary headers for Z-Push
+    // 
     function apache_request_headers() {
         $headers = array();
         foreach ($_SERVER as $key => $value)
@@ -72,6 +73,51 @@ if (!function_exists("apache_request_headers")) {
         return $headers;
     }
 }
+*/
+if (!function_exists("apache_request_headers")) {
+    // 
+    // When using other webservers or using php as cgi in apache
+    // the function apache_request_headers() is not available.
+    // This function parses the environment variables to extract
+    // the necessary headers for Z-Push
+    // 
+    function apache_request_headers() {
+        $header = array();
+        
+        if(isset($_SERVER['HTTP_MS_ASPROTOCOLVERSION'])) {
+          $header['Ms-Asprotocolversion'] = $_SERVER['HTTP_MS_ASPROTOCOLVERSION'];
+        }
+        if(isset($_SERVER['REDIRECT_HTTP_MS_ASPROTOCOLVERSION'])) {
+          $header['Ms-Asprotocolversion'] = $_SERVER['REDIRECT_HTTP_MS_ASPROTOCOLVERSION'];
+        }
+        
+        if(isset($_SERVER['HTTP_X_MS_POLICYKEY'])) {
+          $header['X-Ms-Policykey']       = $_SERVER['HTTP_X_MS_POLICYKEY'];
+        }
+        if(isset($_SERVER['REDIRECT_HTTP_X_MS_POLICYKEY'])) {
+          $header['X-Ms-Policykey']       = $_SERVER['REDIRECT_HTTP_X_MS_POLICYKEY'];
+        }
+
+        $header['User-Agent']           = $_SERVER['HTTP_USER_AGENT'];
+
+        return $header;
+    }
+    
+    /*
+    $header = apache_request_headers();
+    if(isset($header['Authorization'])) {
+    	list($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']) = explode(':' , base64_decode(substr($header['Authorization'], 6)));
+    }
+    /*/
+    if(isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+    	list($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']) = explode(':' , base64_decode(substr($_SERVER['REDIRECT_HTTP_AUTHORIZATION'], 6)));
+    }
+    if(isset($_SERVER['HTTP_AUTHORIZATION'])) {
+      list($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']) = explode(':' , base64_decode(substr($_SERVER['HTTP_AUTHORIZATION'], 6)));
+    }
+    //*/
+}
+
 
 if (!function_exists("hex2bin")) {
     /**
