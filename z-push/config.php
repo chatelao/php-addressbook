@@ -58,25 +58,35 @@
 
 
 /**********************************************************************************
+ *  Include the php-addressbook config.php
+ */
+    include(dirname(__FILE__).DIRECTORY_SEPARATOR.".."
+                             .DIRECTORY_SEPARATOR."config"
+                             .DIRECTORY_SEPARATOR."config.php");
+    include(dirname(__FILE__).DIRECTORY_SEPARATOR.".."
+                             .DIRECTORY_SEPARATOR."config"
+                             .DIRECTORY_SEPARATOR."cfg.zpush.php");
+
+/**********************************************************************************
  *  Default FileStateMachine settings
  */
-    define('STATE_DIR', '/var/lib/z-push/');
+    define('STATE_DIR', $zpush_states_dir);
 
 
 /**********************************************************************************
  *  Logging settings
  */
-    define('LOGFILEDIR', '/var/log/z-push/');
+    define('LOGFILEDIR', $zpush_logs_dir);
     define('LOGFILE', LOGFILEDIR . 'z-push.log');
     define('LOGERRORFILE', LOGFILEDIR . 'z-push-error.log');
-    define('LOGLEVEL', LOGLEVEL_INFO);
+    define('LOGLEVEL', $zpush_logs_level);
     define('LOGAUTHFAIL', false);
 
 
     // To save e.g. WBXML data only for selected users, add the usernames to the array
     // The data will be saved into a dedicated file per user in the LOGFILEDIR
-    define('LOGUSERLEVEL', LOGLEVEL_DEVICEID);
-    $specialLogUsers = array();
+    define('LOGUSERLEVEL', $zpush_log_users_level);
+    $specialLogUsers = $zpush_log_users;
 
 
 /**********************************************************************************
@@ -113,57 +123,103 @@
     // a higher value if you have a high load on the server.
     define('PING_INTERVAL', 30);
 
-    // Interval in seconds to force a re-check of potentially missed notifications when
-    // using a changes sink. Default are 300 seconds (every 5 min).
-    // This can also be disabled by setting it to false
-    define('SINK_FORCERECHECK', 300);
 
 /**********************************************************************************
  *  Backend settings
  */
     // The data providers that we are using (see configuration below)
-    define('BACKEND_PROVIDER', "BackendZarafa");
+    define('BACKEND_PROVIDER', "BackendPhpaddressbook");
+//    define('BACKEND_PROVIDER', "BackendVCardDir");
+//    define('BACKEND_PROVIDER', "BackendZarafa");
+//
+//
+//    // ************************
+//    //  BackendZarafa settings
+//    // ************************
+//    // Defines the server to which we want to connect
+//    define('MAPI_SERVER', 'file:///var/run/zarafa');
+//
+//
+//    // ************************
+//    //  BackendIMAP settings
+//    // ************************
+//    // Defines the server to which we want to connect
+//    define('IMAP_SERVER', 'localhost');
+//    // connecting to default port (143)
+//    define('IMAP_PORT', 143);
+//    // best cross-platform compatibility (see http://php.net/imap_open for options)
+//    define('IMAP_OPTIONS', '/notls/norsh');
+//    // overwrite the "from" header if it isn't set when sending emails
+//    // options: 'username'    - the username will be set (usefull if your login is equal to your emailaddress)
+//    //        'domain'    - the value of the "domain" field is used
+//    //        '@mydomain.com' - the username is used and the given string will be appended
+//    define('IMAP_DEFAULTFROM', '');
+//    // copy outgoing mail to this folder. If not set z-push will try the default folders
+//    define('IMAP_SENTFOLDER', '');
+//    // forward messages inline (default false - as attachment)
+//    define('IMAP_INLINE_FORWARD', false);
+//    // use imap_mail() to send emails (default) - if false mail() is used
+//    define('IMAP_USE_IMAPMAIL', true);
+//
+//
+//    // ************************
+//    //  BackendMaildir settings
+//    // ************************
+//    define('MAILDIR_BASE', '/tmp');
+//    define('MAILDIR_SUBDIR', 'Maildir');
+//
+//    // **********************
+//    //  BackendVCardDir settings
+//    // **********************
+//    define('VCARDDIR_DIR', '/home/www/z-push_vcards');
 
-
-    // ************************
-    //  BackendZarafa settings
-    // ************************
-    // Defines the server to which we want to connect
-    define('MAPI_SERVER', 'file:///var/run/zarafa');
-
-
-    // ************************
-    //  BackendIMAP settings
-    // ************************
-    // Defines the server to which we want to connect
-    define('IMAP_SERVER', 'localhost');
-    // connecting to default port (143)
-    define('IMAP_PORT', 143);
-    // best cross-platform compatibility (see http://php.net/imap_open for options)
-    define('IMAP_OPTIONS', '/notls/norsh');
-    // overwrite the "from" header if it isn't set when sending emails
-    // options: 'username'    - the username will be set (usefull if your login is equal to your emailaddress)
-    //        'domain'    - the value of the "domain" field is used
-    //        '@mydomain.com' - the username is used and the given string will be appended
-    define('IMAP_DEFAULTFROM', '');
-    // copy outgoing mail to this folder. If not set z-push will try the default folders
-    define('IMAP_SENTFOLDER', '');
-    // forward messages inline (default false - as attachment)
-    define('IMAP_INLINE_FORWARD', false);
-    // use imap_mail() to send emails (default) - if false mail() is used
-    define('IMAP_USE_IMAPMAIL', true);
-
-
-    // ************************
-    //  BackendMaildir settings
-    // ************************
-    define('MAILDIR_BASE', '/tmp');
-    define('MAILDIR_SUBDIR', 'Maildir');
 
     // **********************
-    //  BackendVCardDir settings
+    //  BackendPhpaddressbook settings
     // **********************
-    define('VCARDDIR_DIR', '/home/%u/.kde/share/apps/kabc/stdvcf');
+    include(dirname(__FILE__).DIRECTORY_SEPARATOR.".."
+                     .DIRECTORY_SEPARATOR."config"
+               	 	         .DIRECTORY_SEPARATOR."config.php");
+
+    //
+    // Define the tablenames,
+    // if not defined in "config.php"
+    if(!isset($table))         $table         = "addressbook";
+    if(!isset($month_lookup))  $month_lookup  = "month_lookup";
+    if(!isset($table_groups))  $table_groups  = "group_list";
+    if(!isset($table_grp_adr)) $table_grp_adr = "address_in_groups";
+
+// Apply the table prefix, if available
+$table         = $table_prefix.$table;
+$month_lookup  = $table_prefix.$month_lookup;
+$table_groups  = $table_prefix.$table_groups;
+$table_grp_adr = $table_prefix.$table_grp_adr;
+
+// Assemble the statements
+if(true || $group_name == "") {
+    $base_select = " * ";
+    $base_from  = $table;
+ } else {
+
+    if($group_name == "[none]" || $group_name == "[no group]") {
+      $base_select = " * ";
+      $base_from   = "$table";
+      $base_where  .= "AND $table.id not in (select distinct id from $table_grp_adr)";
+    } elseif(isset($_REQUEST['nosubgroups']) ) {
+      $base_select = " * ";
+      $base_from  = "$table_grp_adr, $table_groups, $table";
+      $base_where .= "AND $table.id = $table_grp_adr.id "
+                   ."AND $table_grp_adr.group_id  = $table_groups.group_id "
+                   ."AND $table_groups.group_name = '$group_name'";
+    } else {
+      $base_select = "DISTINCT $table.*";
+      $base_from   = "$table_grp_adr, $sql_from, $table";
+      $base_where  .= "AND $table.id = $table_grp_adr.id "
+                    ."AND $table_grp_adr.group_id  = g0.group_id "
+                    ."AND ($sql_where)";
+    }
+ }
+$domain_id = 0;
 
 
 /**********************************************************************************
