@@ -80,7 +80,7 @@ class AuthLoginFactory {
 
 	static function getBestLogin($required_roles = array()) {
 
-		global $iplist, $blacklist, $userlist, $db, $usertable;
+    global $iplist, $blacklist, $userlist, $db, $usertable, $use_sso;
 
     if((!isset($login) || !$login->hasRoles()) && isset($userlist)) {
       $login = new AuthLoginUserList($userlist);

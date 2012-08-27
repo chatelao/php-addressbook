@@ -83,7 +83,7 @@ if( $results ) {
 	$uin = md5($username.$encrypted_pw.$ip_date);
   setcookie("uin", $uin, 0, "/");
 ?>  
-  <meta http-equiv="refresh" content="0;url=../books/index.php">
+  <meta http-equiv="refresh" content="0;url=../index.php">
 <?php
 /*
 	include "header.html";

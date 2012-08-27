@@ -24,9 +24,7 @@ if($_SERVER['HTTPS']) {
   $db            = $dbname;
   $db_username   = $dbuser;
   $db_password   = $dbpass;
-      
-  // $usertable = "addr_user"; 
-  
+  $usertable     = $table_prefix.$usertable;
 
 //**OPTIONS___________________________________________________________________________________________________________________________
 

@@ -57,18 +57,21 @@
 <form>
   <label>vCards for Outlook:</label>
   <input type="hidden" name="type"   value="vCard-zip">
-  <input type="submit" name="submit" value="Download"><br>
+  <input type="submit" name="submit" value="Download">
 </form>
+<br>
 <form>
   <label>All in one vCard:</label>
   <input type="hidden" name="type"   value="vCard-one">
-  <input type="submit" name="submit" value="Download"><br>
+  <input type="submit" name="submit" value="Download">
 </form>
+<br>
 <form method="get" action="csv<?php echo $page_ext; ?>">
   <label>CSV for Excel: </label>
   <input type="hidden" name="group"  value="<?php echo $group; ?>">
-  <input type="submit" name="submit" value="Download"><br>
+  <input type="submit" name="submit" value="Download">
 </form>
+<br>
 <form>
   <label>CSV for Nokia:</label>
   <input type="hidden" name="type"   value="xls-Nokia">

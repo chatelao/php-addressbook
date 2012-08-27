@@ -123,5 +123,8 @@ CREATE TABLE `user` (
   `pass_reset_code` char(128) DEFAULT NULL,
   `status` char(128) NOT NULL DEFAULT 'NEW' COMMENT 'New, Ready, Blocked',
   `trials` int(11) NOT NULL DEFAULT '0',
+   created datetime default NULL,
+   modified datetime default NULL,
+   deprecated datetime default NULL,
   PRIMARY KEY (`user_id`)
 ) DEFAULT CHARSET=utf8;

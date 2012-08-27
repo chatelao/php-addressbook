@@ -11,6 +11,27 @@
   // Page access configuration
   $page_ext   = ".php";
 
+  //
+  // Select the columns displayed in "index.php":
+  $disp_cols
+    = array( "select"
+           , "photo"
+           // , "lastname"
+           // , "firstname"
+           , "last_first"
+           , "address"
+           , "all_emails"
+           // , "email"
+           , "all_phones"
+           // , "telephone"
+           // , "home"
+           // , "mobile"
+           // , "work"
+           // , "fax"
+           , "edit"
+           , "details"
+           );
+
   // Enable quick adding of unstructured addresses
   $quickadd = true;
 
@@ -28,27 +49,6 @@
 
   // Enable beta fetures, not recommended for production.
   $beta_features = false;
-
-  //
-  // Select the columns displayed in "index.php":
-  $disp_cols
-    = array( "select"
-           // , "last_first"
-           , "photo"
-           , "lastname"
-           , "firstname"
-           // , "address"
-           // , "all_emails"
-           , "email"
-           // , "all_phones"
-           , "telephone"
-           // , "home"
-           // , "mobile"
-           // , "work"
-           // , "fax"
-           , "edit"
-           , "details"
-           );
 
   // View e-mail addresses as images
   $mail_as_image = false;
