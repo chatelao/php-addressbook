@@ -69,6 +69,7 @@ $messages['NAME_PREFIX']['en'] = "prefix"; // prefix
 $messages['FIRSTNAME']['en'] = "first name"; // first name
 $messages['MIDDLENAME']['en'] = "middle name/inital(s)"; // middle name/inital(s)
 $messages['LASTNAME']['en'] = "last name"; // last name
+$messages['LAST_FIRST']['en'] = "name"; // name
 $messages['NAME_SUFFIX']['en'] = "suffix"; // suffix
 $messages['NICKNAME']['en'] = "nickname"; // nickname
 $messages['PHOTO']['en'] = "photo"; // photo
