@@ -13,4 +13,4 @@ Set source = objShell.NameSpace(InputFolder).Items
 objShell.NameSpace(ZipFile).CopyHere(source)
 
 'Required!
-wScript.Sleep 2000
+wScript.Sleep 10000
