@@ -8,7 +8,7 @@ CreateObject("Scripting.FileSystemObject").CreateTextFile(ZipFile, True).Write "
 
 Set objShell = CreateObject("Shell.Application")
 
-Set source = objShell.NameSpace(InputFolder).Items
+Set source = objShell.NameSpace(InputFolder)
 
 objShell.NameSpace(ZipFile).CopyHere(source)
 
