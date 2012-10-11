@@ -338,8 +338,13 @@ if($group_name == "") {
     }
  }
  
-$base_from_where  = "$base_from WHERE $base_where ";
-$month_from_where = "$base_from LEFT OUTER JOIN $month_lookup ON $table.bmonth = $month_lookup.bmonth WHERE $base_where ";
+$base_from_where  = "$base_from 
+                          WHERE $base_where ";
+$month_from_where = "$base_from LEFT OUTER JOIN $month_lookup
+                                   b_month_lookup ON $table.bmonth = b_month_lookup.bmonth
+                                LEFT OUTER JOIN (SELECT bmonth AS amonth, bmonth_short AS amonth_short, bmonth_num AS amonth_num FROM $month_lookup) AS 
+                                   a_month_lookup ON $table.amonth = a_month_lookup.amonth
+                          WHERE $base_where ";
 
 $groups_from_where = "$table_groups WHERE domain_id = '$domain_id' ";
 $group_from_where  = $groups_from_where."group_name = '$group_name' ";
