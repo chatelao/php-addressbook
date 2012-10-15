@@ -79,7 +79,7 @@
   //
   // Load into memory
   //
-  if(preg_match( "/^dn: /", $file_lines[0] ))       { // Is a LDIF-File
+  if(preg_match( "/^dn:/", $file_lines[0] ))       { // Is a LDIF-File
   	$import_type = "LDIF";
 	  include_once ("import.ldif.php");
 	  
