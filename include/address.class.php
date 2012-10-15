@@ -327,11 +327,7 @@ class Addresses {
 
      	$sql = "SELECT DISTINCT $table.* FROM $base_from_where";
 
-      if(preg_match("/^([0-9])+$/",$searchstring)) {
-
-	 	    $sql .= " AND $table.id='$searchstring'";
-
-      } elseif ($searchstring) {
+      if ($searchstring) {
 
           $searchwords = explode(" ", $searchstring);
 
@@ -365,7 +361,7 @@ class Addresses {
       } else {
         	$sql .= "ORDER BY firstname, lastname ASC";
       }
-      
+
       //* Paging
       $page = 1;
       $pagesize = 2200;
