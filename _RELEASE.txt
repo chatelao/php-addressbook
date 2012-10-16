@@ -1,4 +1,26 @@
-PHP Addressbook - Change Log
+PHP Addressbook - 8.1.19
+========================
+- 0000103: Add: Translations for new columns in "index.php" (chatelao) - resolved.
+- 0000102: Fix: Import LDIF if it starts with "dn::" instead of "dn:" (chatelao) - resolved.
+- 0000101: Fix: Search for (phone) numbers without ajax (chatelao) - resolved.
+- 0000100: Fix: vCard empty "amonth" in anniversary date - closed.
+- 0000099: Fix: Set correct relativ z-push path to logs + states - closed.
+- 0000058: Chg: Upgrade z-push from v2.0.3 to v2.0.4 (chatelao) - closed.
+
+PHP Addressbook - 8.1.14
+========================
+
+Fixes only
+
+- 0000098: Fix: "$use_sso" issue (chatelao) - closed.
+
+PHP Addressbook - 8.1.13
+========================
+
+Fixes, upgrade z-push to v2.0.2
+
+- 0000093: Fix: Disable hybridauth if not configured (chatelao) - closed.
+- 0000092: Fix: Upgrade z-push to v2.0.2 - closed.
 
 PHP Addressbook - 8.1.9
 =======================
