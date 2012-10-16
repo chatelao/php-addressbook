@@ -31,6 +31,8 @@ del %abs_zips%\index.json.php
 del %abs_zips%\doodle.php
 del %abs_zips%\preferencs.php
 
+echo ^<?php $version = '%version%'; ?^> >> %abs_zips%\include\version.inc.php
+
 del %abs_zips%v%verson%.zip
 cscript simple_build_zip.vbs %abs_zips% %abs_zips%v%version%.zip
 
