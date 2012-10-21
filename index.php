@@ -125,11 +125,8 @@ function addRow($row) {
     foreach($myrow as $mycol => $mycolval) {
        ${$mycol} = $mycolval;
     }
-		$email     = $addr->firstEMail();
-
-		$emails = $myrow['email'].(   $myrow['email']  != ""
-		                           && $myrow['email2'] != "" ? getMailerDelim() : "").$myrow['email2'];
-
+    
+	$email     = $addr->firstEMail();
     if($email != "" && $email != $myrow['email2']) {
     	$email2 = $myrow['email2'];
     } else {
@@ -149,6 +146,7 @@ function addRow($row) {
     
     switch ($row) {
       case "select":
+        $emails = implode(getMailerDelim(), $addr->getEMails());
         echo "<td class='center'><input type='checkbox' id='$id' name='selected[]' value='$id' title='Select ($firstname $lastname)' alt='Select ($firstname $lastname)' accept='$emails' /></td>";
         break;
       case "first_last":
