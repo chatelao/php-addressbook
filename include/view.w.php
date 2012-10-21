@@ -186,8 +186,7 @@ function showOneEntry($r, $only_phone = false) {
 	   	   echo "<br /><i>".ucfmsg('MEMBER_OF').": ";
 	   	 else
 			echo ", ";
-			echo "<a href='./?group=".urlencode($g['group_name'])."'>".$g['group_name']."</a>";
-
+      echo "<a href='./index${page_ext_qry}group=".urlencode($g['group_name'])."'>".$g['group_name']."</a>";
 	   	 $first = false;
 	   }
 	   if($first != true)
