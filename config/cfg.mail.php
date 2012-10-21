@@ -4,8 +4,9 @@
   // Default webprovider (mailto:, gmail.com, yahoo.com)
   //  * Used to provide "mailto:" links in contacts
   //
-  // $webmail_provider = "gmail.com";
-  // $webmail_provider = "yahoo.com";
+  // $webmail_provider = "gmail";
+  // $webmail_provider = "yahoo";
+  // $webmail_provider = "hotmail";
 
   //
   // Incoming Mailbox to parse and add mails:
