@@ -35,7 +35,15 @@
   
   }
 	
-	$sql = "SELECT $table.*, $month_lookup.bmonth_num FROM $month_from_where ORDER BY lastname, firstname ASC";
+	$sql = "SELECT $table.*, b_month_lookup.bmonth_num FROM $month_from_where ORDER BY lastname, firstname ASC";
+/*
+	echo $sql;
+SELECT addr_addressbook.*, b_month_lookup .bmonth_num, amonth_num amonth_num FROM addr_addressbook LEFT OUTER JOIN addr_month_lookup
+                                   b_month_lookup ON addr_addressbook.bmonth = b_month_lookup.bmonth
+                                LEFT OUTER JOIN (SELECT bmonth AS amonth, bmonth_short AS amonth_short, bmonth_num AS amonth_num FROM addr_month_lookup) AS 
+                                   a_month_lookup ON addr_addressbook.amonth = a_month_lookup.amonth
+                          WHERE addr_addressbook.domain_id = 0 AND addr_addressbook.deprecated is null   ORDER BY lastname, firstname ASC
+*/	
 
 	$result = mysql_query($sql);
 	$resultsnumber = mysql_numrows($result);	
