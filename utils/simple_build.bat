@@ -1,5 +1,4 @@
 
-
 set abs_zips=C:\Users\BLACKY\Desktop\all-in-one\addressbook
 
 set /P version="Enter the version: "
