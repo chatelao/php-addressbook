@@ -5,16 +5,22 @@ http://usercake.com
 */
 require_once("db-settings.php"); //Require DB connection
 
-// Set Settings
-$emailActivation             = true;
-$mail_templates_dir          = 'models/mail-templates/';
-$websiteName                 = $_SERVER['HTTP_HOST'];
-$websiteUrl                  = $_SERVER['HTTP_HOST'].'/register';
-$emailAddress                = 'noreply@ILoveUserCake.com';
-$resend_activation_threshold = 0;
-$emailDate                   = date('dmy');
-$language                    = 'models/languages/en.php';
-$template                    = 'models/site-templates/default.css';
+$use_only_md5    = true;
+$use_db_settings = false
+
+if($use_db_settings) {
+
+} else {
+  $emailActivation             = true;
+  $mail_templates_dir          = 'models/mail-templates/';
+  $websiteName                 = $_SERVER['HTTP_HOST'];
+  $websiteUrl                  = $_SERVER['HTTP_HOST'].'/register';
+  $emailAddress                = 'noreply@ILoveUserCake.com';
+  $resend_activation_threshold = 0;
+  $emailDate                   = date('dmy');
+  $language                    = 'models/languages/en.php';
+  $template                    = 'models/site-templates/default.css';
+}
 
 $pass_min_len = 0;
 $pass_max_len = 50;

@@ -4,12 +4,19 @@ UserCake Version: 2.0.1
 http://usercake.com
 */
 
-//Database Information
-$db_host = "localhost"; //Host address (most likely localhost)
-$db_name = ""; //Name of Database
-$db_user = ""; //Name of database user
-$db_pass = ""; //Password for database user
-$db_table_prefix = "uc_";
+include(dirname(__FILE__).DIRECTORY_SEPARATOR.".."
+                         .DIRECTORY_SEPARATOR.".."
+                         .DIRECTORY_SEPARATOR."config"
+                         .DIRECTORY_SEPARATOR."cfg.db.php");
+
+// Database connection
+$db_host         = $dbserver; // Host address (most likely localhost)
+$db_name         = $dbname;   // Name of Database
+$db_user         = $dbuser;   // Name of database user
+$db_pass         = $dbpass;   // Password for database user
+
+// Database table mapping
+$db_table_prefix = $table_prefix;
 
 GLOBAL $errors;
 GLOBAL $successes;

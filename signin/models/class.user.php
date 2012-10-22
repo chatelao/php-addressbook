@@ -18,7 +18,7 @@ class loggedInUser {
 			SET
 			last_sign_in_stamp = ?
 			WHERE
-			id = ?");
+			user_id = ?");
 		$stmt->bind_param("ii", $time, $this->user_id);
 		$stmt->execute();
 		$stmt->close();	
@@ -31,7 +31,7 @@ class loggedInUser {
 		
 		$stmt = $mysqli->prepare("SELECT sign_up_stamp
 			FROM ".$db_table_prefix."users
-			WHERE id = ?");
+			WHERE user_id = ?");
 		$stmt->bind_param("i", $this->user_id);
 		$stmt->execute();
 		$stmt->bind_result($timestamp);
@@ -48,9 +48,9 @@ class loggedInUser {
 		$this->hash_pw = $secure_pass;
 		$stmt = $mysqli->prepare("UPDATE ".$db_table_prefix."users
 			SET
-			password = ? 
+			md5_pass = ? 
 			WHERE
-			id = ?");
+			user_id = ?");
 		$stmt->bind_param("si", $secure_pass, $this->user_id);
 		$stmt->execute();
 		$stmt->close();	
@@ -65,7 +65,7 @@ class loggedInUser {
 			SET 
 			email = ?
 			WHERE
-			id = ?");
+			user_id = ?");
 		$stmt->bind_param("si", $email, $this->user_id);
 		$stmt->execute();
 		$stmt->close();	

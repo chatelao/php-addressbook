@@ -69,16 +69,22 @@ function generateActivationToken($gen = null)
 //@ Thanks to - http://phpsec.org
 function generateHash($plainText, $salt = null)
 {
-	if ($salt === null)
-	{
-		$salt = substr(md5(uniqid(rand(), true)), 0, 25);
+  global $use_only_md5;
+
+	if($use_only_md5) {
+		return md5($plainText);
+	} else {
+	  if ($salt === null)
+	  {
+	  	$salt = substr(md5(uniqid(rand(), true)), 0, 25);
+	  }
+	  else
+	  {
+	  	$salt = substr($salt, 0, 25);
+	  }
+	  
+	  return $salt . sha1($salt . $plainText);
 	}
-	else
-	{
-		$salt = substr($salt, 0, 25);
-	}
-	
-	return $salt . sha1($salt . $plainText);
 }
 
 //Checks if an email is valid
@@ -179,7 +185,7 @@ function deleteUsers($users) {
 	global $mysqli,$db_table_prefix; 
 	$i = 0;
 	$stmt = $mysqli->prepare("DELETE FROM ".$db_table_prefix."users 
-		WHERE id = ?");
+		WHERE user_id = ?");
 	$stmt2 = $mysqli->prepare("DELETE FROM ".$db_table_prefix."user_permission_matches 
 		WHERE user_id = ?");
 	foreach($users as $id){
@@ -246,7 +252,7 @@ function emailUsernameLinked($email,$username)
 	global $mysqli,$db_table_prefix;
 	$stmt = $mysqli->prepare("SELECT active
 		FROM ".$db_table_prefix."users
-		WHERE user_name = ?
+		WHERE username = ?
 		AND
 		email = ?
 		LIMIT 1
@@ -270,10 +276,10 @@ function fetchAllUsers()
 {
 	global $mysqli,$db_table_prefix; 
 	$stmt = $mysqli->prepare("SELECT 
-		id,
-		user_name,
+		user_id id,
+		username user_name,
 		display_name,
-		password,
+		md5_pass password,
 		email,
 		activation_token,
 		last_activation_request,
@@ -300,10 +306,10 @@ function fetchUserDetails($username=NULL,$token=NULL, $id=NULL)
 	if($username!=NULL) 
 	{  
 		$stmt = $mysqli->prepare("SELECT 
-			id,
-			user_name,
+			user_id  id,
+			username user_name,
 			display_name,
-			password,
+			md5_pass password,
 			email,
 			activation_token,
 			last_activation_request,
@@ -314,17 +320,17 @@ function fetchUserDetails($username=NULL,$token=NULL, $id=NULL)
 			last_sign_in_stamp
 			FROM ".$db_table_prefix."users
 			WHERE
-			user_name = ?
+			username = ?
 			LIMIT 1");
 		$stmt->bind_param("s", $username);
 	}
 	elseif($id!=NULL)
 	{
 		$stmt = $mysqli->prepare("SELECT 
-			id,
-			user_name,
+			user_id  id,
+			username user_name,
 			display_name,
-			password,
+			md5_pass password,
 			email,
 			activation_token,
 			last_activation_request,
@@ -335,17 +341,17 @@ function fetchUserDetails($username=NULL,$token=NULL, $id=NULL)
 			last_sign_in_stamp
 			FROM ".$db_table_prefix."users
 			WHERE
-			id = ?
+			user_id = ?
 			LIMIT 1");
 		$stmt->bind_param("i", $id);
 	}
 	else
 	{
 		$stmt = $mysqli->prepare("SELECT 
-			id,
-			user_name,
+			user_id id,
+			username user_name,
 			display_name,
-			password,
+			md5_pass password,
 			email,
 			activation_token,
 			last_activation_request,
@@ -376,7 +382,7 @@ function flagLostPasswordRequest($username,$value)
 	$stmt = $mysqli->prepare("UPDATE ".$db_table_prefix."users
 		SET lost_password_request = ?
 		WHERE
-		user_name = ?
+		username = ?
 		LIMIT 1
 		");
 	$stmt->bind_param("ss", $value, $username);
@@ -389,13 +395,13 @@ function isUserLoggedIn()
 {
 	global $loggedInUser,$mysqli,$db_table_prefix;
 	$stmt = $mysqli->prepare("SELECT 
-		id,
-		password
+		user_id  id,
+		mf5_pass password
 		FROM ".$db_table_prefix."users
 		WHERE
-		id = ?
+		user_id = ?
 		AND 
-		password = ? 
+		md5_pass = ? 
 		AND
 		active = 1
 		LIMIT 1");
@@ -442,7 +448,7 @@ function updateDisplayName($id, $display)
 	$stmt = $mysqli->prepare("UPDATE ".$db_table_prefix."users
 		SET display_name = ?
 		WHERE
-		id = ?
+		user_id = ?
 		LIMIT 1");
 	$stmt->bind_param("si", $display, $id);
 	return $stmt->execute();
@@ -457,7 +463,7 @@ function updateEmail($id, $email)
 		SET 
 		email = ?
 		WHERE
-		id = ?");
+		user_id = ?");
 	$stmt->bind_param("si", $email, $id);
 	return $stmt->execute();
 	$stmt->close();	
@@ -472,7 +478,7 @@ function updateLastActivationRequest($new_activation_token,$username,$email)
 		last_activation_request = ?
 		WHERE email = ?
 		AND
-		user_name = ?");
+		username = ?");
 	$stmt->bind_param("ssss", $new_activation_token, time(), $email, $username);
 	return $stmt->execute();
 	$stmt->close();	
@@ -484,7 +490,7 @@ function updatePasswordFromToken($pass,$token)
 	global $mysqli,$db_table_prefix;
 	$new_activation_token = generateActivationToken();
 	$stmt = $mysqli->prepare("UPDATE ".$db_table_prefix."users
-		SET password = ?,
+		SET md5_pass = ?,
 		activation_token = ?
 		WHERE
 		activation_token = ?");
@@ -501,7 +507,7 @@ function updateTitle($id, $title)
 		SET 
 		title = ?
 		WHERE
-		id = ?");
+		user_id = ?");
 	$stmt->bind_param("si", $title, $id);
 	return $stmt->execute();
 	$stmt->close();	
@@ -514,7 +520,7 @@ function userIdExists($id)
 	$stmt = $mysqli->prepare("SELECT active
 		FROM ".$db_table_prefix."users
 		WHERE
-		id = ?
+		user_id = ?
 		LIMIT 1");
 	$stmt->bind_param("i", $id);	
 	$stmt->execute();
@@ -537,7 +543,7 @@ function usernameExists($username)
 	$stmt = $mysqli->prepare("SELECT active
 		FROM ".$db_table_prefix."users
 		WHERE
-		user_name = ?
+		username = ?
 		LIMIT 1");
 	$stmt->bind_param("s", $username);	
 	$stmt->execute();

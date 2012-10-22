@@ -111,9 +111,9 @@ class User
 			{
 				//Insert the user into the database providing no errors have been found.
 				$stmt = $mysqli->prepare("INSERT INTO ".$db_table_prefix."users (
-					user_name,
+					username,
 					display_name,
-					password,
+					md5_pass,
 					email,
 					activation_token,
 					last_activation_request,
