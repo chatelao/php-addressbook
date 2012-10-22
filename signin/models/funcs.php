@@ -396,7 +396,7 @@ function isUserLoggedIn()
 	global $loggedInUser,$mysqli,$db_table_prefix;
 	$stmt = $mysqli->prepare("SELECT 
 		user_id  id,
-		mf5_pass password
+		md5_pass password
 		FROM ".$db_table_prefix."users
 		WHERE
 		user_id = ?

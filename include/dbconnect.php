@@ -109,7 +109,7 @@ if(!isset($table_groups))  $table_groups  = "group_list";
 if(!isset($table_grp_adr)) $table_grp_adr = "address_in_groups";
 
 // (optional) user from database
-if(!isset($usertable)) $usertable         = "user";
+if(!isset($usertable)) $usertable         = "users";
 
 // the domain
 if(!isset($domain_id)) $domain_id  = 0;

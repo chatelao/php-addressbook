@@ -6,7 +6,7 @@ http://usercake.com
 require_once("db-settings.php"); //Require DB connection
 
 $use_only_md5    = true;
-$use_db_settings = false
+$use_db_settings = false;
 
 if($use_db_settings) {
 
@@ -14,7 +14,7 @@ if($use_db_settings) {
   $emailActivation             = true;
   $mail_templates_dir          = 'models/mail-templates/';
   $websiteName                 = $_SERVER['HTTP_HOST'];
-  $websiteUrl                  = $_SERVER['HTTP_HOST'].'/register';
+  $websiteUrl                  = '';
   $emailAddress                = 'noreply@ILoveUserCake.com';
   $resend_activation_threshold = 0;
   $emailDate                   = date('dmy');
