@@ -98,7 +98,7 @@ INSERT INTO `month_lookup` VALUES ('October', 'Oct', 10);
 INSERT INTO `month_lookup` VALUES ('November', 'Nov', 11);
 INSERT INTO `month_lookup` VALUES ('December', 'Dec', 12);
 
-CREATE TABLE `user` (
+CREATE TABLE users (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `domain_id` int(9) unsigned NOT NULL DEFAULT '0',
   `username` char(128) NOT NULL,
