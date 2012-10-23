@@ -38,7 +38,11 @@ if($read_only) {
 // --- Connect to DB, retry 5 times ---
 for ($i = 0; $i < 5; $i++) {
 	
+    $level = error_reporting();
+    error_reporting(E_ERROR);
     $db = mysql_connect("$dbserver", "$dbuser", "$dbpass");
+    error_reporting($level);
+    
     $errno = mysql_errno();
     if ($errno == 1040 || $errno == 1226 || $errno == 1203) {
         sleep(1);
@@ -46,15 +50,6 @@ for ($i = 0; $i < 5; $i++) {
         break;
     }
 }
-mysql_select_db("$dbname", $db);
-
-//
-// Setup the UTF-8 parameters:
-// * http://www.phpforum.de/forum/showthread.php?t=217877#PHP
-//
-// header('Content-type: text/html; charset=utf-8');
-mysql_query('set character set utf8;');
-mysql_query("SET NAMES `utf8`");
 
 $get_vars = array( 'id' );
 
@@ -169,13 +164,6 @@ if(isset($default_languages)) {
 	$default_languages = explode(",", $default_languages);
 }
 
-// Apply the table prefix, if available
-$table         = $table_prefix.$table;
-$month_lookup  = $table_prefix.$month_lookup;
-$table_groups  = $table_prefix.$table_groups;
-$table_grp_adr = $table_prefix.$table_grp_adr;
-$usertable     = $table_prefix.$usertable;
-
 //
 // --- Set default values to parameters, if need
 //
@@ -209,8 +197,28 @@ if(!$is_fix_group and $group_name)
 include("prefs.inc.php");
 include("translations.inc.php");
 include("mailer.inc.php");
+if(!$db) {
+	include "include/install.php";
+}
+mysql_select_db("$dbname", $db);  
+//
+// Setup the UTF-8 parameters:
+// * http://www.phpforum.de/forum/showthread.php?t=217877#PHP
+//
+// header('Content-type: text/html; charset=utf-8');
+mysql_query('set character set utf8;');
+mysql_query("SET NAMES `utf8`");
+
 include("login.inc.php");
 include("version.inc.php");
+
+
+// Apply the table prefix, if available
+$table         = $table_prefix.$table;
+$month_lookup  = $table_prefix.$month_lookup;
+$table_groups  = $table_prefix.$table_groups;
+$table_grp_adr = $table_prefix.$table_grp_adr;
+$usertable     = $table_prefix.$usertable;
 
 $login = AuthLoginFactory::getBestLogin();
 	
