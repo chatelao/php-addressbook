@@ -21,11 +21,9 @@ REM zip and remove advanced featuers
 REM 
 cscript simple_build_zip.vbs %abs_zips%\hybridauth %abs_zips%\hybridauth.zip
 cscript simple_build_zip.vbs %abs_zips%\z-push     %abs_zips%\z-push.zip
-cscript simple_build_zip.vbs %abs_zips%\signin     %abs_zips%\signin.zip
 
 rmdir %abs_zips%\hybridauth /s /q
-rmdir %abs_zips%\z-push     /s /q
-rmdir %abs_zips%\signin     /s /q
+rmdir %abs_zips%\z-push /s /q
 
 REM
 REM remove all development folders
