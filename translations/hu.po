@@ -1,0 +1,493 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+#:
+msgid "LANGUAGE"
+msgstr "nyelv"
+
+#:
+msgid "auto"
+msgstr "Bowser beállítások (automata)"
+
+#:
+msgid "USER"
+msgstr "Felhasználó"
+
+#:
+msgid "PASSWORD"
+msgstr "Jelszó"
+
+#:
+msgid "LOGIN"
+msgstr "Bejelentkezés"
+
+#:
+msgid "LOGOUT"
+msgstr "Kijelentkezés"
+
+#:
+msgid "JANUARY"
+msgstr "Január"
+
+#:
+msgid "FEBRUARY"
+msgstr "Február"
+
+#:
+msgid "MARCH"
+msgstr "Március"
+
+#:
+msgid "APRIL"
+msgstr "Április"
+
+#:
+msgid "MAY"
+msgstr "Május"
+
+#:
+msgid "JUNE"
+msgstr "Június"
+
+#:
+msgid "JULY"
+msgstr "Július"
+
+#:
+msgid "AUGUST"
+msgstr "Augusztus"
+
+#:
+msgid "SEPTEMBER"
+msgstr "Szeptember"
+
+#:
+msgid "OCTOBER"
+msgstr "Október"
+
+#:
+msgid "NOVEMBER"
+msgstr "November"
+
+#:
+msgid "DECEMBER"
+msgstr "December"
+
+#:
+msgid "ADDRESS_BOOK"
+msgstr "Címjegyzék"
+
+#:
+msgid "FOR"
+msgstr "miatt"
+
+#:
+msgid "SEARCH"
+msgstr "Keresés"
+
+#:
+msgid "HOME"
+msgstr "Kezdőlap"
+
+#:
+msgid "NEXT_BIRTHDAYS"
+msgstr "Születésnapok"
+
+#:
+msgid "ADD_NEW"
+msgstr "Új"
+
+#:
+msgid "PRINT_ALL"
+msgstr "Nyomtatás"
+
+#:
+msgid "PRINT_PHONES"
+msgstr "Telefonszámok"
+
+#:
+msgid "EXPORT_CSV"
+msgstr "csv export"
+
+#:
+msgid "EXPORT"
+msgstr "Export"
+
+#:
+msgid "IMPORT"
+msgstr "Import"
+
+#:
+msgid "GROUP"
+msgstr "csoporthoz"
+
+#:
+msgid "GROUPS"
+msgstr "Csoportok"
+
+#:
+msgid "MANAGE_GROUPS"
+msgstr "Csoportok"
+
+#:
+msgid "NEW_GROUP"
+msgstr "új csoport"
+
+#:
+msgid "DELETE_GROUPS"
+msgstr "csoport (ok) törlése"
+
+#:
+msgid "EDIT_GROUP"
+msgstr "Csoport szerkesztése"
+
+#:
+msgid "GROUP_NAME"
+msgstr "csoport neve"
+
+#:
+msgid "GROUP_HEADER"
+msgstr "Group header (Logo)"
+
+#:
+msgid "GROUP_FOOTER"
+msgstr "Group footer (Comment)"
+
+#:
+msgid "GROUP_PARENT"
+msgstr "Szülő csoport"
+
+#:
+msgid "SEARCH_FOR_ANY_TEXT"
+msgstr "Keresés minden szövegben"
+
+#:
+msgid "NUMBER_OF_RESULTS"
+msgstr "Találatok száma"
+
+#:
+msgid "ALL"
+msgstr "mind"
+
+#:
+msgid "NONE"
+msgstr "semmi"
+
+#:
+msgid "SELECT_ALL"
+msgstr "select all"
+
+#:
+msgid "REMOVE_FROM"
+msgstr "elszállítani"
+
+#:
+msgid "MAIL_CLIENT"
+msgstr "e-mail kliens"
+
+#:
+msgid "SEND_EMAIL"
+msgstr "Küldj e-mail"
+
+#:
+msgid "ADD_TO"
+msgstr "hozzáadni"
+
+#:
+msgid "DETAILS"
+msgstr "adatokat"
+
+#:
+msgid "EDIT"
+msgstr "Szerkeszt"
+
+#:
+msgid "MODIFY"
+msgstr "módosítás"
+
+#:
+msgid "PRINT"
+msgstr "Nyomtatás"
+
+#:
+msgid "EDIT_ADD_ENTRY"
+msgstr "Szerkesztés / add címjegyzékbejegyzést"
+
+#:
+msgid "GUESSED_HOMEPAGE"
+msgstr "Honlap (következtetés)"
+
+#:
+msgid "PREFERENCES"
+msgstr "preferenciákat"
+
+#:
+msgid "FIRSTNAME"
+msgstr "keresztnév"
+
+#:
+msgid "LASTNAME"
+msgstr "vezetéknév"
+
+#:
+msgid "COMPANY"
+msgstr "társaság"
+
+#:
+msgid "ADDRESS"
+msgstr "cím"
+
+#:
+msgid "TELEPHONE"
+msgstr "telefon"
+
+#:
+msgid "PHONE_HOME"
+msgstr "otthoni"
+
+#:
+msgid "PHONE_MOBILE"
+msgstr "mobil"
+
+#:
+msgid "PHONE_WORK"
+msgstr "munkahelyi"
+
+#:
+msgid "FAX"
+msgstr "fax"
+
+#:
+msgid "EMAIL"
+msgstr "e-mail"
+
+#:
+msgid "HOMEPAGE"
+msgstr "Honlap"
+
+#:
+msgid "ZIP"
+msgstr "irányítószám"
+
+#:
+msgid "CITY"
+msgstr "város"
+
+#:
+msgid "E_MAIL_HOME"
+msgstr "e-mail otthoni"
+
+#:
+msgid "E_MAIL_OFFICE"
+msgstr "e-mail iroda"
+
+#:
+msgid "2ND_ADDRESS"
+msgstr "a második cím"
+
+#:
+msgid "2ND_PHONE"
+msgstr "második telefonvonal"
+
+#:
+msgid "NOTES"
+msgstr "Megjegyzés"
+
+#:
+msgid "BIRTHDAY"
+msgstr "születésnap"
+
+#:
+msgid "CREATED"
+msgstr "készített"
+
+#:
+msgid "MODIFIED"
+msgstr "módosítás"
+
+#:
+msgid "UPDATE"
+msgstr "frissítés"
+
+#:
+msgid "DELETE"
+msgstr "Törlés"
+
+#:
+msgid "INVALID"
+msgstr "érvénytelenek"
+
+#:
+msgid "ENTER"
+msgstr "lépnie"
+
+#:
+msgid "MEMBER_OF"
+msgstr "tagját"
+
+#:
+msgid "SECONDARY"
+msgstr "Secondary"
+
+#:
+msgid "H:"
+msgstr "H: a"
+
+#:
+msgid "M:"
+msgstr "M:"
+
+#:
+msgid "W:"
+msgstr "W:"
+
+#:
+msgid "F:"
+msgstr "F:"
+
+#:
+msgid "ar"
+msgstr "Arab"
+
+#:
+msgid "bg"
+msgstr "Bolgár"
+
+#:
+msgid "ca"
+msgstr "Kataloniai"
+
+#:
+msgid "cs"
+msgstr "Cseh"
+
+#:
+msgid "da"
+msgstr "Dán"
+
+#:
+msgid "de"
+msgstr "Német"
+
+#:
+msgid "el"
+msgstr "Görög"
+
+#:
+msgid "en"
+msgstr "Angol"
+
+#:
+msgid "es"
+msgstr "Spanyol"
+
+#:
+msgid "fa"
+msgstr "Perzsa"
+
+#:
+msgid "fi"
+msgstr "Finn"
+
+#:
+msgid "fr"
+msgstr "Francia"
+
+#:
+msgid "he"
+msgstr "Héber"
+
+#:
+msgid "hi"
+msgstr "Hindi"
+
+#:
+msgid "hu"
+msgstr "Magyar"
+
+#:
+msgid "it"
+msgstr "Olasz"
+
+#:
+msgid "ja"
+msgstr "Japán"
+
+#:
+msgid "ko"
+msgstr "Koreai"
+
+#:
+msgid "nl"
+msgstr "Holland"
+
+#:
+msgid "pl"
+msgstr "Lengyel"
+
+#:
+msgid "pt"
+msgstr "Portugál"
+
+#:
+msgid "rm"
+msgstr "Réto-román"
+
+#:
+msgid "ru"
+msgstr "Orosz"
+
+#:
+msgid "sl"
+msgstr "Szlovén"
+
+#:
+msgid "sr"
+msgstr "Szerb"
+
+#:
+msgid "sv"
+msgstr "Svéd"
+
+#:
+msgid "th"
+msgstr "Thaiföldi"
+
+#:
+msgid "tr"
+msgstr "Török"
+
+#:
+msgid "vi"
+msgstr "Vietnámi"
+
+#:
+msgid "zh"
+msgstr "Kínai"
+
+#:
+msgid "DIR"
+msgstr ""
+
+#:
+msgid "UPDATED"
+msgstr "Frissítés"
+
+#:
+msgid "TRANSLATOR"
+msgstr ""
+

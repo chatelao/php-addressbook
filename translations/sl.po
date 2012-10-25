@@ -1,0 +1,493 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+#:
+msgid "LANGUAGE"
+msgstr "Jezik"
+
+#:
+msgid "auto"
+msgstr "Nastavitve brskalnika (avtomatsko)"
+
+#:
+msgid "USER"
+msgstr "Uporabnik"
+
+#:
+msgid "PASSWORD"
+msgstr "Geslo"
+
+#:
+msgid "LOGIN"
+msgstr "Prijava"
+
+#:
+msgid "LOGOUT"
+msgstr "Odjava"
+
+#:
+msgid "JANUARY"
+msgstr "Januar"
+
+#:
+msgid "FEBRUARY"
+msgstr "Februar"
+
+#:
+msgid "MARCH"
+msgstr "Marec"
+
+#:
+msgid "APRIL"
+msgstr "April"
+
+#:
+msgid "MAY"
+msgstr "Maj"
+
+#:
+msgid "JUNE"
+msgstr "Junij"
+
+#:
+msgid "JULY"
+msgstr "Julij"
+
+#:
+msgid "AUGUST"
+msgstr "Avgust"
+
+#:
+msgid "SEPTEMBER"
+msgstr "September"
+
+#:
+msgid "OCTOBER"
+msgstr "Oktober"
+
+#:
+msgid "NOVEMBER"
+msgstr "November"
+
+#:
+msgid "DECEMBER"
+msgstr "December"
+
+#:
+msgid "ADDRESS_BOOK"
+msgstr "Imenik"
+
+#:
+msgid "FOR"
+msgstr "za"
+
+#:
+msgid "SEARCH"
+msgstr "iskanje"
+
+#:
+msgid "HOME"
+msgstr "Domov"
+
+#:
+msgid "NEXT_BIRTHDAYS"
+msgstr "Rojstni dan"
+
+#:
+msgid "ADD_NEW"
+msgstr "Nov vnos"
+
+#:
+msgid "PRINT_ALL"
+msgstr "Natisni vse"
+
+#:
+msgid "PRINT_PHONES"
+msgstr "Natisni telefone"
+
+#:
+msgid "EXPORT_CSV"
+msgstr "CSV-izvoz"
+
+#:
+msgid "EXPORT"
+msgstr "export"
+
+#:
+msgid "IMPORT"
+msgstr "import"
+
+#:
+msgid "GROUP"
+msgstr "Skupina"
+
+#:
+msgid "GROUPS"
+msgstr "Skupine"
+
+#:
+msgid "MANAGE_GROUPS"
+msgstr "Uredi skupine"
+
+#:
+msgid "NEW_GROUP"
+msgstr "Dodaj skupino"
+
+#:
+msgid "DELETE_GROUPS"
+msgstr "Briši skupino(e)"
+
+#:
+msgid "EDIT_GROUP"
+msgstr "Uredi skupino"
+
+#:
+msgid "GROUP_NAME"
+msgstr "Ime skupine"
+
+#:
+msgid "GROUP_HEADER"
+msgstr "Glava skupine (slika)"
+
+#:
+msgid "GROUP_FOOTER"
+msgstr "Noga skupine (komentar)"
+
+#:
+msgid "GROUP_PARENT"
+msgstr "Materská skupina"
+
+#:
+msgid "SEARCH_FOR_ANY_TEXT"
+msgstr "Poišči besedilo"
+
+#:
+msgid "NUMBER_OF_RESULTS"
+msgstr "Število zadetkov"
+
+#:
+msgid "ALL"
+msgstr "Vse"
+
+#:
+msgid "NONE"
+msgstr "- brez -"
+
+#:
+msgid "SELECT_ALL"
+msgstr "Izberi vse"
+
+#:
+msgid "REMOVE_FROM"
+msgstr "Izbriši iz"
+
+#:
+msgid "MAIL_CLIENT"
+msgstr "Poštni program"
+
+#:
+msgid "SEND_EMAIL"
+msgstr "Pošlji E-Mail"
+
+#:
+msgid "ADD_TO"
+msgstr "Dodaj izbrane v skupino"
+
+#:
+msgid "DETAILS"
+msgstr "Podrobno"
+
+#:
+msgid "EDIT"
+msgstr "uredi"
+
+#:
+msgid "MODIFY"
+msgstr "spremeni"
+
+#:
+msgid "PRINT"
+msgstr "natisni"
+
+#:
+msgid "EDIT_ADD_ENTRY"
+msgstr "Uredi / dodaj v imenik"
+
+#:
+msgid "GUESSED_HOMEPAGE"
+msgstr "Možna spletna stran"
+
+#:
+msgid "PREFERENCES"
+msgstr "Nastavitve"
+
+#:
+msgid "FIRSTNAME"
+msgstr "ime"
+
+#:
+msgid "LASTNAME"
+msgstr "priimek"
+
+#:
+msgid "COMPANY"
+msgstr "podjetje"
+
+#:
+msgid "ADDRESS"
+msgstr "naslov"
+
+#:
+msgid "TELEPHONE"
+msgstr "Telefon"
+
+#:
+msgid "PHONE_HOME"
+msgstr "doma"
+
+#:
+msgid "PHONE_MOBILE"
+msgstr "mobilni"
+
+#:
+msgid "PHONE_WORK"
+msgstr "službeni"
+
+#:
+msgid "FAX"
+msgstr "fax"
+
+#:
+msgid "EMAIL"
+msgstr "e-mail"
+
+#:
+msgid "HOMEPAGE"
+msgstr "spletna stran"
+
+#:
+msgid "ZIP"
+msgstr "poštna št."
+
+#:
+msgid "CITY"
+msgstr "mesto"
+
+#:
+msgid "E_MAIL_HOME"
+msgstr "privatni e-mail"
+
+#:
+msgid "E_MAIL_OFFICE"
+msgstr "Službeni e-mail"
+
+#:
+msgid "2ND_ADDRESS"
+msgstr "drugi naslov"
+
+#:
+msgid "2ND_PHONE"
+msgstr "drugi telefon"
+
+#:
+msgid "NOTES"
+msgstr "zaznamek"
+
+#:
+msgid "BIRTHDAY"
+msgstr "rojstni dan"
+
+#:
+msgid "CREATED"
+msgstr "ustvarjen"
+
+#:
+msgid "MODIFIED"
+msgstr "spremenjen"
+
+#:
+msgid "UPDATE"
+msgstr "posodobi"
+
+#:
+msgid "DELETE"
+msgstr "izbriši"
+
+#:
+msgid "INVALID"
+msgstr "neveljavno"
+
+#:
+msgid "ENTER"
+msgstr "Nov vnos"
+
+#:
+msgid "MEMBER_OF"
+msgstr "član"
+
+#:
+msgid "SECONDARY"
+msgstr "Drugi naslov"
+
+#:
+msgid "H:"
+msgstr "P:"
+
+#:
+msgid "M:"
+msgstr "M:"
+
+#:
+msgid "W:"
+msgstr "Telefon:"
+
+#:
+msgid "F:"
+msgstr "Fax:"
+
+#:
+msgid "ar"
+msgstr "Arabski"
+
+#:
+msgid "bg"
+msgstr "Bolgarski"
+
+#:
+msgid "ca"
+msgstr "Katalonski"
+
+#:
+msgid "cs"
+msgstr "Češko"
+
+#:
+msgid "da"
+msgstr "Danski"
+
+#:
+msgid "de"
+msgstr "Nemško"
+
+#:
+msgid "el"
+msgstr "Grški"
+
+#:
+msgid "en"
+msgstr "Angleško"
+
+#:
+msgid "es"
+msgstr "Španski"
+
+#:
+msgid "fa"
+msgstr "Perzština"
+
+#:
+msgid "fi"
+msgstr "Finski"
+
+#:
+msgid "fr"
+msgstr "Francoski"
+
+#:
+msgid "he"
+msgstr "Hebrejski"
+
+#:
+msgid "hi"
+msgstr "Indijski / Hindi"
+
+#:
+msgid "hu"
+msgstr "Maďarský"
+
+#:
+msgid "it"
+msgstr "Italijanski"
+
+#:
+msgid "ja"
+msgstr "Japonski"
+
+#:
+msgid "ko"
+msgstr "Korejski"
+
+#:
+msgid "nl"
+msgstr "Nizozemski"
+
+#:
+msgid "pl"
+msgstr "Poljsko"
+
+#:
+msgid "pt"
+msgstr "Portuglski"
+
+#:
+msgid "rm"
+msgstr "Retoromanski"
+
+#:
+msgid "ru"
+msgstr "Ruski"
+
+#:
+msgid "sl"
+msgstr "Slovenski"
+
+#:
+msgid "sr"
+msgstr "Srbský"
+
+#:
+msgid "sv"
+msgstr "Švedski"
+
+#:
+msgid "th"
+msgstr "Tajski"
+
+#:
+msgid "tr"
+msgstr "Turški"
+
+#:
+msgid "vi"
+msgstr "Vietnamski"
+
+#:
+msgid "zh"
+msgstr "Kitajski"
+
+#:
+msgid "DIR"
+msgstr ""
+
+#:
+msgid "UPDATED"
+msgstr ""
+
+#:
+msgid "TRANSLATOR"
+msgstr ""
+

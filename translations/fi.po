@@ -1,0 +1,493 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+#:
+msgid "LANGUAGE"
+msgstr "kieli"
+
+#:
+msgid "auto"
+msgstr "bowser asetukset (automaattinen)"
+
+#:
+msgid "USER"
+msgstr "Käyttäjä"
+
+#:
+msgid "PASSWORD"
+msgstr "Salasana"
+
+#:
+msgid "LOGIN"
+msgstr "Kirjaudu sisään"
+
+#:
+msgid "LOGOUT"
+msgstr "Kirjaudu ulos"
+
+#:
+msgid "JANUARY"
+msgstr "Tammikuu"
+
+#:
+msgid "FEBRUARY"
+msgstr "Helmikuu"
+
+#:
+msgid "MARCH"
+msgstr "Maaliskuu"
+
+#:
+msgid "APRIL"
+msgstr "Huhtikuu"
+
+#:
+msgid "MAY"
+msgstr "Toukokuu"
+
+#:
+msgid "JUNE"
+msgstr "Kesäkuu"
+
+#:
+msgid "JULY"
+msgstr "Heinäkuu"
+
+#:
+msgid "AUGUST"
+msgstr "Elokuu"
+
+#:
+msgid "SEPTEMBER"
+msgstr "Syyskuu"
+
+#:
+msgid "OCTOBER"
+msgstr "Lokakuu"
+
+#:
+msgid "NOVEMBER"
+msgstr "Marraskuu"
+
+#:
+msgid "DECEMBER"
+msgstr "Joulukuu"
+
+#:
+msgid "ADDRESS_BOOK"
+msgstr "osoitekirja"
+
+#:
+msgid "FOR"
+msgstr "varten"
+
+#:
+msgid "SEARCH"
+msgstr "haku"
+
+#:
+msgid "HOME"
+msgstr "koti"
+
+#:
+msgid "NEXT_BIRTHDAYS"
+msgstr "Seuraavan syntymäpäivät"
+
+#:
+msgid "ADD_NEW"
+msgstr "lisätä uusia"
+
+#:
+msgid "PRINT_ALL"
+msgstr "Tulosta kaikki"
+
+#:
+msgid "PRINT_PHONES"
+msgstr "Tulostettava puhelimet"
+
+#:
+msgid "EXPORT_CSV"
+msgstr "vienti csv"
+
+#:
+msgid "EXPORT"
+msgstr "vienti"
+
+#:
+msgid "IMPORT"
+msgstr "tuonti"
+
+#:
+msgid "GROUP"
+msgstr "ryhmä"
+
+#:
+msgid "GROUPS"
+msgstr "ryhmät"
+
+#:
+msgid "MANAGE_GROUPS"
+msgstr "Ryhmien hallinta"
+
+#:
+msgid "NEW_GROUP"
+msgstr "uusi ryhmä"
+
+#:
+msgid "DELETE_GROUPS"
+msgstr "poistaa (t)"
+
+#:
+msgid "EDIT_GROUP"
+msgstr "muokata ryhmän"
+
+#:
+msgid "GROUP_NAME"
+msgstr "ryhmän nimi"
+
+#:
+msgid "GROUP_HEADER"
+msgstr "Ryhmän otsikko (Logo)"
+
+#:
+msgid "GROUP_FOOTER"
+msgstr "Ryhmän alatunnisteen (Comment)"
+
+#:
+msgid "GROUP_PARENT"
+msgstr "Parent ryhmä"
+
+#:
+msgid "SEARCH_FOR_ANY_TEXT"
+msgstr "etsi teksti"
+
+#:
+msgid "NUMBER_OF_RESULTS"
+msgstr "Tulosten määrä"
+
+#:
+msgid "ALL"
+msgstr "kaikki"
+
+#:
+msgid "NONE"
+msgstr "ei mitään"
+
+#:
+msgid "SELECT_ALL"
+msgstr "Valitse kaikki"
+
+#:
+msgid "REMOVE_FROM"
+msgstr "poistaa"
+
+#:
+msgid "MAIL_CLIENT"
+msgstr "sähköpostiohjelma"
+
+#:
+msgid "SEND_EMAIL"
+msgstr "Lähetä e-Mail"
+
+#:
+msgid "ADD_TO"
+msgstr "lisätä"
+
+#:
+msgid "DETAILS"
+msgstr "yksityiskohdat"
+
+#:
+msgid "EDIT"
+msgstr "muokata"
+
+#:
+msgid "MODIFY"
+msgstr "muuttaa"
+
+#:
+msgid "PRINT"
+msgstr "tulostaa"
+
+#:
+msgid "EDIT_ADD_ENTRY"
+msgstr "Muokata / lisätä osoite kirjaus"
+
+#:
+msgid "GUESSED_HOMEPAGE"
+msgstr "Arvata etusivu"
+
+#:
+msgid "PREFERENCES"
+msgstr "mieltymykset"
+
+#:
+msgid "FIRSTNAME"
+msgstr "etunimi"
+
+#:
+msgid "LASTNAME"
+msgstr "sukunimi"
+
+#:
+msgid "COMPANY"
+msgstr "yhtiö"
+
+#:
+msgid "ADDRESS"
+msgstr "osoite"
+
+#:
+msgid "TELEPHONE"
+msgstr "puhelin"
+
+#:
+msgid "PHONE_HOME"
+msgstr "koti"
+
+#:
+msgid "PHONE_MOBILE"
+msgstr "mobiili"
+
+#:
+msgid "PHONE_WORK"
+msgstr "työ"
+
+#:
+msgid "FAX"
+msgstr "faksi"
+
+#:
+msgid "EMAIL"
+msgstr "e-mail"
+
+#:
+msgid "HOMEPAGE"
+msgstr "Kotisivu"
+
+#:
+msgid "ZIP"
+msgstr "ZIP"
+
+#:
+msgid "CITY"
+msgstr "kaupunki"
+
+#:
+msgid "E_MAIL_HOME"
+msgstr "e-mail kotiin"
+
+#:
+msgid "E_MAIL_OFFICE"
+msgstr "e-mail toimisto"
+
+#:
+msgid "2ND_ADDRESS"
+msgstr "toinen osoite"
+
+#:
+msgid "2ND_PHONE"
+msgstr "toinen puhelin"
+
+#:
+msgid "NOTES"
+msgstr "toteaa"
+
+#:
+msgid "BIRTHDAY"
+msgstr "syntymäpäivä"
+
+#:
+msgid "CREATED"
+msgstr "luonut"
+
+#:
+msgid "MODIFIED"
+msgstr "muutettu"
+
+#:
+msgid "UPDATE"
+msgstr "päivittää"
+
+#:
+msgid "DELETE"
+msgstr "poistaa"
+
+#:
+msgid "INVALID"
+msgstr "kelpaa"
+
+#:
+msgid "ENTER"
+msgstr "Anna"
+
+#:
+msgid "MEMBER_OF"
+msgstr "jäsen"
+
+#:
+msgid "SECONDARY"
+msgstr "Toissijainen"
+
+#:
+msgid "H:"
+msgstr "H:"
+
+#:
+msgid "M:"
+msgstr "M:"
+
+#:
+msgid "W:"
+msgstr "W:"
+
+#:
+msgid "F:"
+msgstr "F:"
+
+#:
+msgid "ar"
+msgstr "Arabia"
+
+#:
+msgid "bg"
+msgstr "Bulgaria"
+
+#:
+msgid "ca"
+msgstr "Katalonian"
+
+#:
+msgid "cs"
+msgstr "Tšekki"
+
+#:
+msgid "da"
+msgstr "Tanska"
+
+#:
+msgid "de"
+msgstr "Saksa"
+
+#:
+msgid "el"
+msgstr "Kreikka"
+
+#:
+msgid "en"
+msgstr "Englanti"
+
+#:
+msgid "es"
+msgstr "Espanja"
+
+#:
+msgid "fa"
+msgstr "Persia"
+
+#:
+msgid "fi"
+msgstr "Suomi"
+
+#:
+msgid "fr"
+msgstr "Ranska"
+
+#:
+msgid "he"
+msgstr "Heprea"
+
+#:
+msgid "hi"
+msgstr "Hindi"
+
+#:
+msgid "hu"
+msgstr "Unkari"
+
+#:
+msgid "it"
+msgstr "Italia"
+
+#:
+msgid "ja"
+msgstr "Japani"
+
+#:
+msgid "ko"
+msgstr "Korea"
+
+#:
+msgid "nl"
+msgstr "Hollanti"
+
+#:
+msgid "pl"
+msgstr "Puola"
+
+#:
+msgid "pt"
+msgstr "Portugali"
+
+#:
+msgid "rm"
+msgstr "Retoromaani"
+
+#:
+msgid "ru"
+msgstr "Venäjä"
+
+#:
+msgid "sl"
+msgstr "Slovenian"
+
+#:
+msgid "sr"
+msgstr "Serbialainen"
+
+#:
+msgid "sv"
+msgstr "Ruotsi"
+
+#:
+msgid "th"
+msgstr "Thai"
+
+#:
+msgid "tr"
+msgstr "Turkki"
+
+#:
+msgid "vi"
+msgstr "Vietnam"
+
+#:
+msgid "zh"
+msgstr "Kiina"
+
+#:
+msgid "DIR"
+msgstr ""
+
+#:
+msgid "UPDATED"
+msgstr ""
+
+#:
+msgid "TRANSLATOR"
+msgstr ""
+

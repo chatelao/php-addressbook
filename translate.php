@@ -87,6 +87,63 @@ $supported_langs[] = '<?php echo $_REQUEST['target_language']?>';<br />
 if($trans_mode == ".php.inc") { ?>
 ?&gt;<br />
 <?php	}
+
+} elseif(isset($_GET['lang']) && isset($_GET['po'])) {
+
+function extractLang($lang, $is_pot) {
+	
+	global $messages;
+	
+$str = '# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+';  
+  foreach($messages as $key => $message) {
+    
+    if(isset($message[$lang]) || $is_pot) {
+      $str .= "#:\n";
+      $str .= 'msgid "'.$key.'"'."\n";
+      if(isset($_GET['pot'])) {
+        $str .= '""'."\n";
+      } else {
+        $str .= 'msgstr "'.$message[$lang].'"'."\n";
+      }
+      $str .= "\n";
+    }
+  }
+  return $str;
+}
+
+/* 
+if(false){ 
+/*/ 
+if(true){
+// */
+  echo extractLang($_GET['lang'], $_GET['pot']);
+} else {
+  $trans = extractLang("en", true);
+  file_put_contents ( "translations/php-addressbook.pot", $trans);
+	foreach($supported_langs as $lang) {
+    $trans = extractLang($lang, false);
+		$res = file_put_contents ( "translations/".$lang.".po", $trans);
+		echo "Wrote $lang: $res<br>";
+	}
+}
+
 //
 // Form:
 // - Translatete texts

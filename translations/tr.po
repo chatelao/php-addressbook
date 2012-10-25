@@ -1,0 +1,493 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+#:
+msgid "LANGUAGE"
+msgstr "dil"
+
+#:
+msgid "auto"
+msgstr "tarayıcı ayarları (otomatik)"
+
+#:
+msgid "USER"
+msgstr "Kullanıcı"
+
+#:
+msgid "PASSWORD"
+msgstr "Şifre"
+
+#:
+msgid "LOGIN"
+msgstr "Giriş"
+
+#:
+msgid "LOGOUT"
+msgstr "Çıkış"
+
+#:
+msgid "JANUARY"
+msgstr "Ocak"
+
+#:
+msgid "FEBRUARY"
+msgstr "Şubat"
+
+#:
+msgid "MARCH"
+msgstr "Mart"
+
+#:
+msgid "APRIL"
+msgstr "Nisan"
+
+#:
+msgid "MAY"
+msgstr "Mayıs"
+
+#:
+msgid "JUNE"
+msgstr "Haziran"
+
+#:
+msgid "JULY"
+msgstr "Temmuz"
+
+#:
+msgid "AUGUST"
+msgstr "Ağustos"
+
+#:
+msgid "SEPTEMBER"
+msgstr "Eylül"
+
+#:
+msgid "OCTOBER"
+msgstr "Ekim"
+
+#:
+msgid "NOVEMBER"
+msgstr "Kasım"
+
+#:
+msgid "DECEMBER"
+msgstr "Aralık"
+
+#:
+msgid "ADDRESS_BOOK"
+msgstr "adres rehberi"
+
+#:
+msgid "FOR"
+msgstr "için"
+
+#:
+msgid "SEARCH"
+msgstr "aramak"
+
+#:
+msgid "HOME"
+msgstr "Anasayfa"
+
+#:
+msgid "NEXT_BIRTHDAYS"
+msgstr "En yakın doğum günleri"
+
+#:
+msgid "ADD_NEW"
+msgstr "Yeni Kayıt"
+
+#:
+msgid "PRINT_ALL"
+msgstr "Tümünü yazdır"
+
+#:
+msgid "PRINT_PHONES"
+msgstr "Telefonları yazdır"
+
+#:
+msgid "EXPORT_CSV"
+msgstr "csv aktar"
+
+#:
+msgid "EXPORT"
+msgstr "ihracat"
+
+#:
+msgid "IMPORT"
+msgstr "ithalat"
+
+#:
+msgid "GROUP"
+msgstr "grup"
+
+#:
+msgid "GROUPS"
+msgstr "Gruplar"
+
+#:
+msgid "MANAGE_GROUPS"
+msgstr "Grupları yönet"
+
+#:
+msgid "NEW_GROUP"
+msgstr "yeni grup"
+
+#:
+msgid "DELETE_GROUPS"
+msgstr "Grubu sil"
+
+#:
+msgid "EDIT_GROUP"
+msgstr "grubu düzenle"
+
+#:
+msgid "GROUP_NAME"
+msgstr "grup adı"
+
+#:
+msgid "GROUP_HEADER"
+msgstr "grup başlığı (Logo)"
+
+#:
+msgid "GROUP_FOOTER"
+msgstr "Grup altlığı (yorum)"
+
+#:
+msgid "GROUP_PARENT"
+msgstr "Ana grup"
+
+#:
+msgid "SEARCH_FOR_ANY_TEXT"
+msgstr "Metin arama"
+
+#:
+msgid "NUMBER_OF_RESULTS"
+msgstr "Bulunan sonuç sayısı"
+
+#:
+msgid "ALL"
+msgstr "tümü"
+
+#:
+msgid "NONE"
+msgstr "hiçbiri"
+
+#:
+msgid "SELECT_ALL"
+msgstr "tümünü seç"
+
+#:
+msgid "REMOVE_FROM"
+msgstr "gruptan çıkart"
+
+#:
+msgid "MAIL_CLIENT"
+msgstr "posta hesabı"
+
+#:
+msgid "SEND_EMAIL"
+msgstr "e-posta gönder"
+
+#:
+msgid "ADD_TO"
+msgstr "gruba ekle"
+
+#:
+msgid "DETAILS"
+msgstr "detaylar"
+
+#:
+msgid "EDIT"
+msgstr "düzenle"
+
+#:
+msgid "MODIFY"
+msgstr "düzenle"
+
+#:
+msgid "PRINT"
+msgstr "yazdır"
+
+#:
+msgid "EDIT_ADD_ENTRY"
+msgstr "yeni kayıt ekle / düzenle"
+
+#:
+msgid "GUESSED_HOMEPAGE"
+msgstr "web sitesi"
+
+#:
+msgid "PREFERENCES"
+msgstr "tercihler"
+
+#:
+msgid "FIRSTNAME"
+msgstr "adı"
+
+#:
+msgid "LASTNAME"
+msgstr "soyadı"
+
+#:
+msgid "COMPANY"
+msgstr "Şirket"
+
+#:
+msgid "ADDRESS"
+msgstr "adres"
+
+#:
+msgid "TELEPHONE"
+msgstr "telefon"
+
+#:
+msgid "PHONE_HOME"
+msgstr "ev"
+
+#:
+msgid "PHONE_MOBILE"
+msgstr "GSM"
+
+#:
+msgid "PHONE_WORK"
+msgstr "iş"
+
+#:
+msgid "FAX"
+msgstr "fax"
+
+#:
+msgid "EMAIL"
+msgstr "e-posta"
+
+#:
+msgid "HOMEPAGE"
+msgstr "web sayfası"
+
+#:
+msgid "ZIP"
+msgstr "posta kodu"
+
+#:
+msgid "CITY"
+msgstr "şehir"
+
+#:
+msgid "E_MAIL_HOME"
+msgstr "e-posta ev"
+
+#:
+msgid "E_MAIL_OFFICE"
+msgstr "e-posta iş"
+
+#:
+msgid "2ND_ADDRESS"
+msgstr "ikinci adres"
+
+#:
+msgid "2ND_PHONE"
+msgstr "ikinci telefon"
+
+#:
+msgid "NOTES"
+msgstr "notlar"
+
+#:
+msgid "BIRTHDAY"
+msgstr "doğum günü"
+
+#:
+msgid "CREATED"
+msgstr "hazırlandı"
+
+#:
+msgid "MODIFIED"
+msgstr "olarak"
+
+#:
+msgid "UPDATE"
+msgstr "güncelleştir"
+
+#:
+msgid "DELETE"
+msgstr "sil"
+
+#:
+msgid "INVALID"
+msgstr "geçersiz"
+
+#:
+msgid "ENTER"
+msgstr "kaydet"
+
+#:
+msgid "MEMBER_OF"
+msgstr "Grup"
+
+#:
+msgid "SECONDARY"
+msgstr "alternatif;"
+
+#:
+msgid "H:"
+msgstr "Ev:"
+
+#:
+msgid "M:"
+msgstr "Cep:"
+
+#:
+msgid "W:"
+msgstr "İş:"
+
+#:
+msgid "F:"
+msgstr "Fax:"
+
+#:
+msgid "ar"
+msgstr "Arapça"
+
+#:
+msgid "bg"
+msgstr "Bulgarca"
+
+#:
+msgid "ca"
+msgstr "Catalonyaca"
+
+#:
+msgid "cs"
+msgstr "Çek"
+
+#:
+msgid "da"
+msgstr "Danimarkalı"
+
+#:
+msgid "de"
+msgstr "Almanca"
+
+#:
+msgid "el"
+msgstr "Yunanca"
+
+#:
+msgid "en"
+msgstr "İngilizce"
+
+#:
+msgid "es"
+msgstr "İspanyolca"
+
+#:
+msgid "fa"
+msgstr "Farsça"
+
+#:
+msgid "fi"
+msgstr "Fince"
+
+#:
+msgid "fr"
+msgstr "Fransızca"
+
+#:
+msgid "he"
+msgstr "Hebrew"
+
+#:
+msgid "hi"
+msgstr "Hintçe"
+
+#:
+msgid "hu"
+msgstr "Macar"
+
+#:
+msgid "it"
+msgstr "İtalyanca"
+
+#:
+msgid "ja"
+msgstr "Japonca"
+
+#:
+msgid "ko"
+msgstr "Korece"
+
+#:
+msgid "nl"
+msgstr "Almanca"
+
+#:
+msgid "pl"
+msgstr "Alman parlatmak"
+
+#:
+msgid "pt"
+msgstr "Portekizce"
+
+#:
+msgid "rm"
+msgstr "Romanca"
+
+#:
+msgid "ru"
+msgstr "Rusca"
+
+#:
+msgid "sl"
+msgstr "Sloven"
+
+#:
+msgid "sr"
+msgstr "Sırp"
+
+#:
+msgid "sv"
+msgstr "İsveçce"
+
+#:
+msgid "th"
+msgstr "Thaice"
+
+#:
+msgid "tr"
+msgstr "Türk"
+
+#:
+msgid "vi"
+msgstr "Vietnamca"
+
+#:
+msgid "zh"
+msgstr "Çince"
+
+#:
+msgid "DIR"
+msgstr ""
+
+#:
+msgid "UPDATED"
+msgstr ""
+
+#:
+msgid "TRANSLATOR"
+msgstr ""
+

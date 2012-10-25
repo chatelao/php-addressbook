@@ -1,0 +1,493 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+#:
+msgid "LANGUAGE"
+msgstr "भाषा"
+
+#:
+msgid "auto"
+msgstr "bowser सेटिंग्स () स्वत:"
+
+#:
+msgid "USER"
+msgstr "उपयोगकर्ता"
+
+#:
+msgid "PASSWORD"
+msgstr "पासवर्ड"
+
+#:
+msgid "LOGIN"
+msgstr "लॉग इन"
+
+#:
+msgid "LOGOUT"
+msgstr "लॉगआउट"
+
+#:
+msgid "JANUARY"
+msgstr "जनवरी"
+
+#:
+msgid "FEBRUARY"
+msgstr "फ़रवरी"
+
+#:
+msgid "MARCH"
+msgstr "मार्च"
+
+#:
+msgid "APRIL"
+msgstr "अप्रैल"
+
+#:
+msgid "MAY"
+msgstr "मई"
+
+#:
+msgid "JUNE"
+msgstr "जून"
+
+#:
+msgid "JULY"
+msgstr "जुलाई"
+
+#:
+msgid "AUGUST"
+msgstr "अगस्त"
+
+#:
+msgid "SEPTEMBER"
+msgstr "सितम्बर"
+
+#:
+msgid "OCTOBER"
+msgstr "अक्टूबर"
+
+#:
+msgid "NOVEMBER"
+msgstr "नवम्बर"
+
+#:
+msgid "DECEMBER"
+msgstr "दिसम्बर"
+
+#:
+msgid "ADDRESS_BOOK"
+msgstr "पता पुस्तिका"
+
+#:
+msgid "FOR"
+msgstr "के लिए"
+
+#:
+msgid "SEARCH"
+msgstr "खोज"
+
+#:
+msgid "HOME"
+msgstr "घर"
+
+#:
+msgid "NEXT_BIRTHDAYS"
+msgstr "अगले जन्मदिन"
+
+#:
+msgid "ADD_NEW"
+msgstr "जोड़ नया"
+
+#:
+msgid "PRINT_ALL"
+msgstr "सभी मुद्रित"
+
+#:
+msgid "PRINT_PHONES"
+msgstr "प्रिंट फोन"
+
+#:
+msgid "EXPORT_CSV"
+msgstr "निर्यात csv"
+
+#:
+msgid "EXPORT"
+msgstr "निर्यात"
+
+#:
+msgid "IMPORT"
+msgstr "आयात"
+
+#:
+msgid "GROUP"
+msgstr "समूह"
+
+#:
+msgid "GROUPS"
+msgstr "समूह"
+
+#:
+msgid "MANAGE_GROUPS"
+msgstr "समूह का प्रबंधन"
+
+#:
+msgid "NEW_GROUP"
+msgstr "नया समूह"
+
+#:
+msgid "DELETE_GROUPS"
+msgstr "(s) समूह नष्ट"
+
+#:
+msgid "EDIT_GROUP"
+msgstr "समूह संपादित करें"
+
+#:
+msgid "GROUP_NAME"
+msgstr "समूह नाम"
+
+#:
+msgid "GROUP_HEADER"
+msgstr "समूह शीर्षक (लोगो)"
+
+#:
+msgid "GROUP_FOOTER"
+msgstr "समूह पाद लेख (टिप्पणी)"
+
+#:
+msgid "GROUP_PARENT"
+msgstr "माता पिता के समूह"
+
+#:
+msgid "SEARCH_FOR_ANY_TEXT"
+msgstr "किसी भी पाठ के लिए खोज"
+
+#:
+msgid "NUMBER_OF_RESULTS"
+msgstr "परिणामों की संख्या"
+
+#:
+msgid "ALL"
+msgstr "सब"
+
+#:
+msgid "NONE"
+msgstr "कोई नहीं"
+
+#:
+msgid "SELECT_ALL"
+msgstr "सभी का चयन करें"
+
+#:
+msgid "REMOVE_FROM"
+msgstr "से निकालें"
+
+#:
+msgid "MAIL_CLIENT"
+msgstr "मेल क्लाइंट"
+
+#:
+msgid "SEND_EMAIL"
+msgstr "ई भेजें-Mail"
+
+#:
+msgid "ADD_TO"
+msgstr "में जोड़ें"
+
+#:
+msgid "DETAILS"
+msgstr "विवरण"
+
+#:
+msgid "EDIT"
+msgstr "संपादित करें"
+
+#:
+msgid "MODIFY"
+msgstr "संशोधित"
+
+#:
+msgid "PRINT"
+msgstr "प्रिंट"
+
+#:
+msgid "EDIT_ADD_ENTRY"
+msgstr "संपादित करें / पता पुस्तिका प्रविष्टि जोड़ना"
+
+#:
+msgid "GUESSED_HOMEPAGE"
+msgstr "अनुमान मुखपृष्ठ"
+
+#:
+msgid "PREFERENCES"
+msgstr "वरीयताएँ"
+
+#:
+msgid "FIRSTNAME"
+msgstr "प्रथम नाम"
+
+#:
+msgid "LASTNAME"
+msgstr "अंतिम नाम"
+
+#:
+msgid "COMPANY"
+msgstr "कंपनी"
+
+#:
+msgid "ADDRESS"
+msgstr "पता"
+
+#:
+msgid "TELEPHONE"
+msgstr "टेलीफोन"
+
+#:
+msgid "PHONE_HOME"
+msgstr "घर"
+
+#:
+msgid "PHONE_MOBILE"
+msgstr "मोबाइल"
+
+#:
+msgid "PHONE_WORK"
+msgstr "काम"
+
+#:
+msgid "FAX"
+msgstr "फैक्स"
+
+#:
+msgid "EMAIL"
+msgstr "ईमेल"
+
+#:
+msgid "HOMEPAGE"
+msgstr "मुखपृष्ठ"
+
+#:
+msgid "ZIP"
+msgstr "ज़िप"
+
+#:
+msgid "CITY"
+msgstr "नगर"
+
+#:
+msgid "E_MAIL_HOME"
+msgstr "ईमेल घर"
+
+#:
+msgid "E_MAIL_OFFICE"
+msgstr "ईमेल कार्यालय"
+
+#:
+msgid "2ND_ADDRESS"
+msgstr "दूसरा पता"
+
+#:
+msgid "2ND_PHONE"
+msgstr "दूसरे फोन"
+
+#:
+msgid "NOTES"
+msgstr "नोट"
+
+#:
+msgid "BIRTHDAY"
+msgstr "जन्मदिन"
+
+#:
+msgid "CREATED"
+msgstr "निर्मित"
+
+#:
+msgid "MODIFIED"
+msgstr "संशोधित"
+
+#:
+msgid "UPDATE"
+msgstr "अद्यतन करना"
+
+#:
+msgid "DELETE"
+msgstr "मिटाना"
+
+#:
+msgid "INVALID"
+msgstr "अवैध"
+
+#:
+msgid "ENTER"
+msgstr "दर्ज करें"
+
+#:
+msgid "MEMBER_OF"
+msgstr "सदस्य का"
+
+#:
+msgid "SECONDARY"
+msgstr "माध्यमिक"
+
+#:
+msgid "H:"
+msgstr "एच:"
+
+#:
+msgid "M:"
+msgstr "एम:"
+
+#:
+msgid "W:"
+msgstr "डब्ल्यू:"
+
+#:
+msgid "F:"
+msgstr "एफ:"
+
+#:
+msgid "ar"
+msgstr "अरबी"
+
+#:
+msgid "bg"
+msgstr "बल्गेरियन्"
+
+#:
+msgid "ca"
+msgstr "Catalonian"
+
+#:
+msgid "cs"
+msgstr "चेक़"
+
+#:
+msgid "da"
+msgstr "डैनीश"
+
+#:
+msgid "de"
+msgstr "जर्मन"
+
+#:
+msgid "el"
+msgstr "ग्रीक"
+
+#:
+msgid "en"
+msgstr "अंग्रेज़ी"
+
+#:
+msgid "es"
+msgstr "स्पैनिश"
+
+#:
+msgid "fa"
+msgstr "फारसी"
+
+#:
+msgid "fi"
+msgstr "फिनिश"
+
+#:
+msgid "fr"
+msgstr "फ़्रेंच"
+
+#:
+msgid "he"
+msgstr "हिब्रू"
+
+#:
+msgid "hi"
+msgstr "हिन्दी"
+
+#:
+msgid "hu"
+msgstr "हंगरी"
+
+#:
+msgid "it"
+msgstr "इतालवी"
+
+#:
+msgid "ja"
+msgstr "जापानी"
+
+#:
+msgid "ko"
+msgstr "कोरियाई"
+
+#:
+msgid "nl"
+msgstr "डच्"
+
+#:
+msgid "pl"
+msgstr "पोलिश"
+
+#:
+msgid "pt"
+msgstr "पुर्तगाली"
+
+#:
+msgid "rm"
+msgstr "Rhaeto-रोमांस"
+
+#:
+msgid "ru"
+msgstr "रूसी"
+
+#:
+msgid "sl"
+msgstr "स्लोवेनियाई"
+
+#:
+msgid "sr"
+msgstr "सर्बियाई"
+
+#:
+msgid "sv"
+msgstr "स्विडिश"
+
+#:
+msgid "th"
+msgstr "थाई"
+
+#:
+msgid "tr"
+msgstr "तुर्की"
+
+#:
+msgid "vi"
+msgstr "वियेतनामी"
+
+#:
+msgid "zh"
+msgstr "चीनी"
+
+#:
+msgid "DIR"
+msgstr ""
+
+#:
+msgid "UPDATED"
+msgstr ""
+
+#:
+msgid "TRANSLATOR"
+msgstr ""
+

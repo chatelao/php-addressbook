@@ -1,0 +1,493 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+#:
+msgid "LANGUAGE"
+msgstr "γλώσσα"
+
+#:
+msgid "auto"
+msgstr "bowser ρυθμίσεων (αυτόματο)"
+
+#:
+msgid "USER"
+msgstr "Χρήστη"
+
+#:
+msgid "PASSWORD"
+msgstr "Κωδικός πρόσβασης"
+
+#:
+msgid "LOGIN"
+msgstr "Σύνδεση"
+
+#:
+msgid "LOGOUT"
+msgstr "Αποσύνδεση"
+
+#:
+msgid "JANUARY"
+msgstr "Ιανουάριος"
+
+#:
+msgid "FEBRUARY"
+msgstr "Φεβρουάριος"
+
+#:
+msgid "MARCH"
+msgstr "Μάρτης"
+
+#:
+msgid "APRIL"
+msgstr "Απρίλιος"
+
+#:
+msgid "MAY"
+msgstr "Μάιος"
+
+#:
+msgid "JUNE"
+msgstr "Ιούνιος"
+
+#:
+msgid "JULY"
+msgstr "Ιούλιος"
+
+#:
+msgid "AUGUST"
+msgstr "Αύγουστος"
+
+#:
+msgid "SEPTEMBER"
+msgstr "Σεπτέμβριος"
+
+#:
+msgid "OCTOBER"
+msgstr "Οκτώβριος"
+
+#:
+msgid "NOVEMBER"
+msgstr "Νοέμβριος"
+
+#:
+msgid "DECEMBER"
+msgstr "Δεκέμβριος"
+
+#:
+msgid "ADDRESS_BOOK"
+msgstr "Βιβλίο Διευθύνσεων"
+
+#:
+msgid "FOR"
+msgstr "για"
+
+#:
+msgid "SEARCH"
+msgstr "αναζήτηση"
+
+#:
+msgid "HOME"
+msgstr "Αρχική"
+
+#:
+msgid "NEXT_BIRTHDAYS"
+msgstr "Επόμενα γενέθλια"
+
+#:
+msgid "ADD_NEW"
+msgstr "Προσθήκη νέου"
+
+#:
+msgid "PRINT_ALL"
+msgstr "Εκτύπωση όλων"
+
+#:
+msgid "PRINT_PHONES"
+msgstr "Εκτύπωση τηλεφώνων"
+
+#:
+msgid "EXPORT_CSV"
+msgstr "Εξαγωγή csv"
+
+#:
+msgid "EXPORT"
+msgstr "εξαγωγή"
+
+#:
+msgid "IMPORT"
+msgstr "εισαγωγή"
+
+#:
+msgid "GROUP"
+msgstr "ομάδα"
+
+#:
+msgid "GROUPS"
+msgstr "Ομάδες"
+
+#:
+msgid "MANAGE_GROUPS"
+msgstr "Διαχείριση ομάδων"
+
+#:
+msgid "NEW_GROUP"
+msgstr "Νέα ομάδα"
+
+#:
+msgid "DELETE_GROUPS"
+msgstr "Διαγραφή ομάδας (s)"
+
+#:
+msgid "EDIT_GROUP"
+msgstr "επεξεργασία ομάδας"
+
+#:
+msgid "GROUP_NAME"
+msgstr "Όνομα ομάδας"
+
+#:
+msgid "GROUP_HEADER"
+msgstr "Ομάδα header (Logo)"
+
+#:
+msgid "GROUP_FOOTER"
+msgstr "Ομάδα υποσέλιδο (Σχόλιο)"
+
+#:
+msgid "GROUP_PARENT"
+msgstr "Μητρική της ομάδας"
+
+#:
+msgid "SEARCH_FOR_ANY_TEXT"
+msgstr "Αναζήτηση για κάθε κείμενο"
+
+#:
+msgid "NUMBER_OF_RESULTS"
+msgstr "Αριθμός αποτελεσμάτων"
+
+#:
+msgid "ALL"
+msgstr "Όλα"
+
+#:
+msgid "NONE"
+msgstr "Κανένα"
+
+#:
+msgid "SELECT_ALL"
+msgstr "Επιλέξτε όλα"
+
+#:
+msgid "REMOVE_FROM"
+msgstr "Αφαίρεση από"
+
+#:
+msgid "MAIL_CLIENT"
+msgstr "mail client"
+
+#:
+msgid "SEND_EMAIL"
+msgstr "Αποστολή e-mail"
+
+#:
+msgid "ADD_TO"
+msgstr "Προσθήκη σε"
+
+#:
+msgid "DETAILS"
+msgstr "λεπτομέρειες"
+
+#:
+msgid "EDIT"
+msgstr "επεξεργαστείτε"
+
+#:
+msgid "MODIFY"
+msgstr "τροποποιήσετε"
+
+#:
+msgid "PRINT"
+msgstr "εκτύπωση"
+
+#:
+msgid "EDIT_ADD_ENTRY"
+msgstr "Επεξεργασία / Προσθήκη εγγραφής"
+
+#:
+msgid "GUESSED_HOMEPAGE"
+msgstr "Μάντεψε αρχική σελίδα"
+
+#:
+msgid "PREFERENCES"
+msgstr "Ρυθμίσεις"
+
+#:
+msgid "FIRSTNAME"
+msgstr "όνομα"
+
+#:
+msgid "LASTNAME"
+msgstr "επώνυμο"
+
+#:
+msgid "COMPANY"
+msgstr "εταιρεία"
+
+#:
+msgid "ADDRESS"
+msgstr "διεύθυνση"
+
+#:
+msgid "TELEPHONE"
+msgstr "τηλέφωνο"
+
+#:
+msgid "PHONE_HOME"
+msgstr "σπίτι"
+
+#:
+msgid "PHONE_MOBILE"
+msgstr "κινητό"
+
+#:
+msgid "PHONE_WORK"
+msgstr "εργασία"
+
+#:
+msgid "FAX"
+msgstr "Φαξ"
+
+#:
+msgid "EMAIL"
+msgstr "e-mail"
+
+#:
+msgid "HOMEPAGE"
+msgstr "Ιστοσελίδα"
+
+#:
+msgid "ZIP"
+msgstr "ΤΚ"
+
+#:
+msgid "CITY"
+msgstr "πόλη"
+
+#:
+msgid "E_MAIL_HOME"
+msgstr "προσωπικό e-mail"
+
+#:
+msgid "E_MAIL_OFFICE"
+msgstr "e-mail γραφείου"
+
+#:
+msgid "2ND_ADDRESS"
+msgstr "δεύτερη διεύθυνση"
+
+#:
+msgid "2ND_PHONE"
+msgstr "δεύτερη τηλεφωνική"
+
+#:
+msgid "NOTES"
+msgstr "Σημειώσεις"
+
+#:
+msgid "BIRTHDAY"
+msgstr "γενέθλια"
+
+#:
+msgid "CREATED"
+msgstr "Δημιουργία"
+
+#:
+msgid "MODIFIED"
+msgstr "Τροποποιημένα"
+
+#:
+msgid "UPDATE"
+msgstr "ενημέρωση"
+
+#:
+msgid "DELETE"
+msgstr "διαγράφω"
+
+#:
+msgid "INVALID"
+msgstr "άκυρο"
+
+#:
+msgid "ENTER"
+msgstr "εισέλθει"
+
+#:
+msgid "MEMBER_OF"
+msgstr "μέλος του"
+
+#:
+msgid "SECONDARY"
+msgstr "Δευτεροβάθμια"
+
+#:
+msgid "H:"
+msgstr "H:"
+
+#:
+msgid "M:"
+msgstr "M:"
+
+#:
+msgid "W:"
+msgstr "W:"
+
+#:
+msgid "F:"
+msgstr "F:"
+
+#:
+msgid "ar"
+msgstr "Αραβικά"
+
+#:
+msgid "bg"
+msgstr "Βουλγαρικά"
+
+#:
+msgid "ca"
+msgstr "Καταλονίας"
+
+#:
+msgid "cs"
+msgstr "Τσέχικα"
+
+#:
+msgid "da"
+msgstr "Δανική"
+
+#:
+msgid "de"
+msgstr "Γερμανικά"
+
+#:
+msgid "el"
+msgstr "Ελληνικά"
+
+#:
+msgid "en"
+msgstr "Αγγλικά"
+
+#:
+msgid "es"
+msgstr "Ισπανικά"
+
+#:
+msgid "fa"
+msgstr "Περσικά"
+
+#:
+msgid "fi"
+msgstr "Φινλανδική"
+
+#:
+msgid "fr"
+msgstr "Γαλλικά"
+
+#:
+msgid "he"
+msgstr "Εβραϊκά"
+
+#:
+msgid "hi"
+msgstr "Ινδικά"
+
+#:
+msgid "hu"
+msgstr "Ουγγρικός"
+
+#:
+msgid "it"
+msgstr "Ιταλικά"
+
+#:
+msgid "ja"
+msgstr "Ιαπωνικά"
+
+#:
+msgid "ko"
+msgstr "Κορεάτικα"
+
+#:
+msgid "nl"
+msgstr "Ολλανδικά"
+
+#:
+msgid "pl"
+msgstr "Πολωνικά"
+
+#:
+msgid "pt"
+msgstr "Πορτογαλικά"
+
+#:
+msgid "rm"
+msgstr "Rhaeto-Romance"
+
+#:
+msgid "ru"
+msgstr "Ρωσικά"
+
+#:
+msgid "sl"
+msgstr "Σλοβενική"
+
+#:
+msgid "sr"
+msgstr "Σέρβος"
+
+#:
+msgid "sv"
+msgstr "Σουηδικά"
+
+#:
+msgid "th"
+msgstr "Ταϊλανδικά"
+
+#:
+msgid "tr"
+msgstr "Τουρκικά"
+
+#:
+msgid "vi"
+msgstr "Βιετνάμ"
+
+#:
+msgid "zh"
+msgstr "Κινεζικά"
+
+#:
+msgid "DIR"
+msgstr ""
+
+#:
+msgid "UPDATED"
+msgstr ""
+
+#:
+msgid "TRANSLATOR"
+msgstr ""
+

@@ -1,0 +1,493 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+#:
+msgid "LANGUAGE"
+msgstr "idioma"
+
+#:
+msgid "auto"
+msgstr "configuració navegador (automàtic)"
+
+#:
+msgid "USER"
+msgstr "Usuari"
+
+#:
+msgid "PASSWORD"
+msgstr "Contrasenya"
+
+#:
+msgid "LOGIN"
+msgstr "Login"
+
+#:
+msgid "LOGOUT"
+msgstr "Desconnectar"
+
+#:
+msgid "JANUARY"
+msgstr "gener"
+
+#:
+msgid "FEBRUARY"
+msgstr "febrer"
+
+#:
+msgid "MARCH"
+msgstr "març"
+
+#:
+msgid "APRIL"
+msgstr "abril"
+
+#:
+msgid "MAY"
+msgstr "maig"
+
+#:
+msgid "JUNE"
+msgstr "juny"
+
+#:
+msgid "JULY"
+msgstr "juliol"
+
+#:
+msgid "AUGUST"
+msgstr "agost"
+
+#:
+msgid "SEPTEMBER"
+msgstr "setembre"
+
+#:
+msgid "OCTOBER"
+msgstr "octubre"
+
+#:
+msgid "NOVEMBER"
+msgstr "novembre"
+
+#:
+msgid "DECEMBER"
+msgstr "desembre"
+
+#:
+msgid "ADDRESS_BOOK"
+msgstr "llibreta d'adreces"
+
+#:
+msgid "FOR"
+msgstr "per"
+
+#:
+msgid "SEARCH"
+msgstr "cerca"
+
+#:
+msgid "HOME"
+msgstr "inici"
+
+#:
+msgid "NEXT_BIRTHDAYS"
+msgstr "pròxim aniversari"
+
+#:
+msgid "ADD_NEW"
+msgstr "afegir-ne nou"
+
+#:
+msgid "PRINT_ALL"
+msgstr "imprimir-los tots"
+
+#:
+msgid "PRINT_PHONES"
+msgstr "imprimir telèfons"
+
+#:
+msgid "EXPORT_CSV"
+msgstr "exportar CSV"
+
+#:
+msgid "EXPORT"
+msgstr "exportació"
+
+#:
+msgid "IMPORT"
+msgstr "importació"
+
+#:
+msgid "GROUP"
+msgstr "grup"
+
+#:
+msgid "GROUPS"
+msgstr "grups"
+
+#:
+msgid "MANAGE_GROUPS"
+msgstr "grups"
+
+#:
+msgid "NEW_GROUP"
+msgstr "grup nou"
+
+#:
+msgid "DELETE_GROUPS"
+msgstr "esborrar grups"
+
+#:
+msgid "EDIT_GROUP"
+msgstr "editar grup"
+
+#:
+msgid "GROUP_NAME"
+msgstr "nom del grup"
+
+#:
+msgid "GROUP_HEADER"
+msgstr "Capçalera de grup (Logo)"
+
+#:
+msgid "GROUP_FOOTER"
+msgstr "Peu de grup (Comentari)"
+
+#:
+msgid "GROUP_PARENT"
+msgstr "grup de Pares"
+
+#:
+msgid "SEARCH_FOR_ANY_TEXT"
+msgstr "cercar qualsevol text"
+
+#:
+msgid "NUMBER_OF_RESULTS"
+msgstr "Nombre de resultats"
+
+#:
+msgid "ALL"
+msgstr "tots"
+
+#:
+msgid "NONE"
+msgstr "cap"
+
+#:
+msgid "SELECT_ALL"
+msgstr "seleccionar-los tots"
+
+#:
+msgid "REMOVE_FROM"
+msgstr "eliminar"
+
+#:
+msgid "MAIL_CLIENT"
+msgstr "client de correu"
+
+#:
+msgid "SEND_EMAIL"
+msgstr "Enviar correu"
+
+#:
+msgid "ADD_TO"
+msgstr "afegir a"
+
+#:
+msgid "DETAILS"
+msgstr "detalls"
+
+#:
+msgid "EDIT"
+msgstr "editar"
+
+#:
+msgid "MODIFY"
+msgstr "modificar"
+
+#:
+msgid "PRINT"
+msgstr "imprimir"
+
+#:
+msgid "EDIT_ADD_ENTRY"
+msgstr "Editar o afegir entrades a llibreta d'adreces"
+
+#:
+msgid "GUESSED_HOMEPAGE"
+msgstr "Pàgina principal possible"
+
+#:
+msgid "PREFERENCES"
+msgstr "preferències"
+
+#:
+msgid "FIRSTNAME"
+msgstr "nom"
+
+#:
+msgid "LASTNAME"
+msgstr "cognoms"
+
+#:
+msgid "COMPANY"
+msgstr "empresa"
+
+#:
+msgid "ADDRESS"
+msgstr "adreça"
+
+#:
+msgid "TELEPHONE"
+msgstr "telèfon"
+
+#:
+msgid "PHONE_HOME"
+msgstr "inici"
+
+#:
+msgid "PHONE_MOBILE"
+msgstr "mòbil"
+
+#:
+msgid "PHONE_WORK"
+msgstr "feina"
+
+#:
+msgid "FAX"
+msgstr "fax"
+
+#:
+msgid "EMAIL"
+msgstr "correu"
+
+#:
+msgid "HOMEPAGE"
+msgstr "Pàgina principal"
+
+#:
+msgid "ZIP"
+msgstr "codi postal"
+
+#:
+msgid "CITY"
+msgstr "ciutat"
+
+#:
+msgid "E_MAIL_HOME"
+msgstr "correu casa"
+
+#:
+msgid "E_MAIL_OFFICE"
+msgstr "correu oficina"
+
+#:
+msgid "2ND_ADDRESS"
+msgstr "segona adreça"
+
+#:
+msgid "2ND_PHONE"
+msgstr "segon telèfon"
+
+#:
+msgid "NOTES"
+msgstr "notes"
+
+#:
+msgid "BIRTHDAY"
+msgstr "aniversari"
+
+#:
+msgid "CREATED"
+msgstr "creat"
+
+#:
+msgid "MODIFIED"
+msgstr "modificació"
+
+#:
+msgid "UPDATE"
+msgstr "actualitzar"
+
+#:
+msgid "DELETE"
+msgstr "eliminar"
+
+#:
+msgid "INVALID"
+msgstr "no vàlid"
+
+#:
+msgid "ENTER"
+msgstr "entrar"
+
+#:
+msgid "MEMBER_OF"
+msgstr "membre de"
+
+#:
+msgid "SECONDARY"
+msgstr "Secundària"
+
+#:
+msgid "H:"
+msgstr "H:"
+
+#:
+msgid "M:"
+msgstr "M:"
+
+#:
+msgid "W:"
+msgstr "F:"
+
+#:
+msgid "F:"
+msgstr "F:"
+
+#:
+msgid "ar"
+msgstr "àrab"
+
+#:
+msgid "bg"
+msgstr "búlgar"
+
+#:
+msgid "ca"
+msgstr "català"
+
+#:
+msgid "cs"
+msgstr "txec"
+
+#:
+msgid "da"
+msgstr "danès"
+
+#:
+msgid "de"
+msgstr "alemany"
+
+#:
+msgid "el"
+msgstr "grec"
+
+#:
+msgid "en"
+msgstr "anglès"
+
+#:
+msgid "es"
+msgstr "castellà"
+
+#:
+msgid "fa"
+msgstr "Persa"
+
+#:
+msgid "fi"
+msgstr "finès"
+
+#:
+msgid "fr"
+msgstr "francès"
+
+#:
+msgid "he"
+msgstr "hebreu"
+
+#:
+msgid "hi"
+msgstr "hindi"
+
+#:
+msgid "hu"
+msgstr "Hongarès"
+
+#:
+msgid "it"
+msgstr "italià"
+
+#:
+msgid "ja"
+msgstr "japonès"
+
+#:
+msgid "ko"
+msgstr "coreà"
+
+#:
+msgid "nl"
+msgstr "neerlandès"
+
+#:
+msgid "pl"
+msgstr "polonès"
+
+#:
+msgid "pt"
+msgstr "portuguès"
+
+#:
+msgid "rm"
+msgstr "retoromànic"
+
+#:
+msgid "ru"
+msgstr "rus"
+
+#:
+msgid "sl"
+msgstr "Eslovè"
+
+#:
+msgid "sr"
+msgstr "Serbi"
+
+#:
+msgid "sv"
+msgstr "suec"
+
+#:
+msgid "th"
+msgstr "tailandès"
+
+#:
+msgid "tr"
+msgstr "turc"
+
+#:
+msgid "vi"
+msgstr "vietnamita"
+
+#:
+msgid "zh"
+msgstr "xinès"
+
+#:
+msgid "DIR"
+msgstr ""
+
+#:
+msgid "UPDATED"
+msgstr ""
+
+#:
+msgid "TRANSLATOR"
+msgstr ""
+
