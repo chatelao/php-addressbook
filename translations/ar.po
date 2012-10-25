@@ -1,0 +1,605 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+#:
+msgid "LANGUAGE"
+msgstr "لغة"
+
+#:
+msgid "auto"
+msgstr "مزودة بمضخة إعدادات (التلقائي)"
+
+#:
+msgid "USER"
+msgstr "مستخدم"
+
+#:
+msgid "PASSWORD"
+msgstr "كلمة السر"
+
+#:
+msgid "LOGIN"
+msgstr "تسجيل الدخول"
+
+#:
+msgid "LOGOUT"
+msgstr "خروج"
+
+#:
+msgid "JANUARY"
+msgstr "يناير"
+
+#:
+msgid "FEBRUARY"
+msgstr "فبراير"
+
+#:
+msgid "MARCH"
+msgstr "مارس"
+
+#:
+msgid "APRIL"
+msgstr "أبريل"
+
+#:
+msgid "MAY"
+msgstr "مايو"
+
+#:
+msgid "JUNE"
+msgstr "يونيو"
+
+#:
+msgid "JULY"
+msgstr "يوليو"
+
+#:
+msgid "AUGUST"
+msgstr "أغسطس"
+
+#:
+msgid "SEPTEMBER"
+msgstr "سبتمبر"
+
+#:
+msgid "OCTOBER"
+msgstr "أكتوبر"
+
+#:
+msgid "NOVEMBER"
+msgstr "نوفمبر"
+
+#:
+msgid "DECEMBER"
+msgstr "ديسمبر"
+
+#:
+msgid "ADDRESS_BOOK"
+msgstr "book دفتر العناوين"
+
+#:
+msgid "FOR"
+msgstr "لأجل"
+
+#:
+msgid "SEARCH"
+msgstr "بحث"
+
+#:
+msgid "HOME"
+msgstr "منزل"
+
+#:
+msgid "NEXT_BIRTHDAYS"
+msgstr "أعياد الميلاد القادمة"
+
+#:
+msgid "ADD_NEW"
+msgstr "إضافة جديدة"
+
+#:
+msgid "PRINT_ALL"
+msgstr "طباعة جميع"
+
+#:
+msgid "PRINT_PHONES"
+msgstr "طباعة هواتف"
+
+#:
+msgid "EXPORT_CSV"
+msgstr "تصدير csv"
+
+#:
+msgid "EXPORT"
+msgstr "تصدير"
+
+#:
+msgid "IMPORT"
+msgstr "استيراد"
+
+#:
+msgid "MAP"
+msgstr "خريطة"
+
+#:
+msgid "MORE"
+msgstr "أكثر"
+
+#:
+msgid "GROUP"
+msgstr "المجموعة"
+
+#:
+msgid "GROUPS"
+msgstr "مجموعات"
+
+#:
+msgid "MANAGE_GROUPS"
+msgstr "إدارة المجموعات"
+
+#:
+msgid "NEW_GROUP"
+msgstr "مجموعة جديدة"
+
+#:
+msgid "DELETE_GROUPS"
+msgstr "حذف مجموعة (ق)"
+
+#:
+msgid "EDIT_GROUP"
+msgstr "تحرير مجموعة"
+
+#:
+msgid "GROUP_NAME"
+msgstr "اسم المجموعة"
+
+#:
+msgid "GROUP_HEADER"
+msgstr "مجموعة رأسية (الشعار)"
+
+#:
+msgid "GROUP_FOOTER"
+msgstr "مجموعة الذيل (التعليق)"
+
+#:
+msgid "GROUP_PARENT"
+msgstr "المجموعة الأم"
+
+#:
+msgid "SEARCH_FOR_ANY_TEXT"
+msgstr "البحث عن أي نص"
+
+#:
+msgid "NUMBER_OF_RESULTS"
+msgstr "عدد من النتائج"
+
+#:
+msgid "ALL"
+msgstr "الكل"
+
+#:
+msgid "NONE"
+msgstr "بلا"
+
+#:
+msgid "SELECT_ALL"
+msgstr "اختيار كل"
+
+#:
+msgid "REMOVE_FROM"
+msgstr "إزالة من"
+
+#:
+msgid "MAIL_CLIENT"
+msgstr "البريد العملاء"
+
+#:
+msgid "SEND_EMAIL"
+msgstr "إرسال البريد الإلكتروني"
+
+#:
+msgid "ADD_TO"
+msgstr "إضافة إلى"
+
+#:
+msgid "DETAILS"
+msgstr "تفاصيل"
+
+#:
+msgid "EDIT"
+msgstr "تحرير"
+
+#:
+msgid "MODIFY"
+msgstr "تعديل"
+
+#:
+msgid "PRINT"
+msgstr "طباعة"
+
+#:
+msgid "EDIT_ADD_ENTRY"
+msgstr "تحرير / إضافة دفتر العناوين الدخول"
+
+#:
+msgid "GUESSED_HOMEPAGE"
+msgstr "خمنت الصفحة الرئيسية"
+
+#:
+msgid "PREFERENCES"
+msgstr "أفضليات"
+
+#:
+msgid "NAME_PREFIX"
+msgstr "بادئة"
+
+#:
+msgid "FIRSTNAME"
+msgstr "الإسم"
+
+#:
+msgid "MIDDLENAME"
+msgstr "الاسم الأول الثاني / inital (ق)"
+
+#:
+msgid "LASTNAME"
+msgstr "اللقب"
+
+#:
+msgid "NAME_SUFFIX"
+msgstr "لاحقة"
+
+#:
+msgid "NICKNAME"
+msgstr "كنية"
+
+#:
+msgid "COMPANY"
+msgstr "شركة"
+
+#:
+msgid "DEPT"
+msgstr "قسم"
+
+#:
+msgid "OCCUPATION"
+msgstr "مهنة"
+
+#:
+msgid "TITLES"
+msgstr "لقب"
+
+#:
+msgid "ADDRESS"
+msgstr "عنوان"
+
+#:
+msgid "POB"
+msgstr "عدد"
+
+#:
+msgid "APT"
+msgstr "شقة"
+
+#:
+msgid "STREET"
+msgstr "عنوان"
+
+#:
+msgid "STATE"
+msgstr "دولة"
+
+#:
+msgid "COUNTRY"
+msgstr "بلد"
+
+#:
+msgid "TELEPHONE"
+msgstr "الهاتف"
+
+#:
+msgid "PHONE_HOME"
+msgstr "منزل"
+
+#:
+msgid "PHONE_MOBILE"
+msgstr "متنقل"
+
+#:
+msgid "PHONE_WORK"
+msgstr "عمل"
+
+#:
+msgid "FAX"
+msgstr "الفاكس"
+
+#:
+msgid "PAGER"
+msgstr "بيجر"
+
+#:
+msgid "EMAIL"
+msgstr "البريد الإلكتروني"
+
+#:
+msgid "HOMEPAGE"
+msgstr "الصفحة الرئيسية"
+
+#:
+msgid "ZIP"
+msgstr "الرمز البريدي"
+
+#:
+msgid "CITY"
+msgstr "مدينة"
+
+#:
+msgid "E_MAIL_HOME"
+msgstr "البريد الإلكتروني الصفحة الرئيسية"
+
+#:
+msgid "E_MAIL_OFFICE"
+msgstr "مكتب البريد الإلكتروني"
+
+#:
+msgid "2ND_ADDRESS"
+msgstr "الثانية معالجة"
+
+#:
+msgid "2ND_PHONE"
+msgstr "الهاتف الثاني"
+
+#:
+msgid "NOTES"
+msgstr "تلاحظ"
+
+#:
+msgid "BIRTHDAY"
+msgstr "عيد ميلاد"
+
+#:
+msgid "ANNIVERSARY"
+msgstr "الذكرى"
+
+#:
+msgid "CREATED"
+msgstr "خلق"
+
+#:
+msgid "MODIFIED"
+msgstr "تعديل"
+
+#:
+msgid "UPDATE"
+msgstr "تحديث"
+
+#:
+msgid "DELETE"
+msgstr "حذف"
+
+#:
+msgid "INVALID"
+msgstr "باطل"
+
+#:
+msgid "ENTER"
+msgstr "إدخال"
+
+#:
+msgid "MEMBER_OF"
+msgstr "عضو"
+
+#:
+msgid "SECONDARY"
+msgstr "الثانوي"
+
+#:
+msgid "CREATE_ACCOUNT"
+msgstr "إنشاء حساب"
+
+#:
+msgid "FORGOT_PASSWORD"
+msgstr "نسيت كلمة المرور"
+
+#:
+msgid "H:"
+msgstr ":حاء"
+
+#:
+msgid "M:"
+msgstr ":م"
+
+#:
+msgid "W:"
+msgstr ":دبليو"
+
+#:
+msgid "F:"
+msgstr "واو :"
+
+#:
+msgid "ar"
+msgstr "العربية"
+
+#:
+msgid "bg"
+msgstr "البلغارية"
+
+#:
+msgid "ca"
+msgstr "كاتالونيا"
+
+#:
+msgid "cs"
+msgstr "التشيكية"
+
+#:
+msgid "da"
+msgstr "الدانماركية"
+
+#:
+msgid "de"
+msgstr "الألمانية"
+
+#:
+msgid "el"
+msgstr "اليونانية"
+
+#:
+msgid "en"
+msgstr "الانجليزية"
+
+#:
+msgid "es"
+msgstr "الأسبانية"
+
+#:
+msgid "fa"
+msgstr "الفارسية"
+
+#:
+msgid "fi"
+msgstr "الفنلندية"
+
+#:
+msgid "fr"
+msgstr "الفرنسية"
+
+#:
+msgid "he"
+msgstr "العبرية"
+
+#:
+msgid "hi"
+msgstr "الهندية"
+
+#:
+msgid "hu"
+msgstr "الهنغارية"
+
+#:
+msgid "it"
+msgstr "الايطالية"
+
+#:
+msgid "ja"
+msgstr "اليابانية"
+
+#:
+msgid "ko"
+msgstr "الكورية"
+
+#:
+msgid "nl"
+msgstr "الهولندية"
+
+#:
+msgid "pl"
+msgstr "البولندية"
+
+#:
+msgid "pt"
+msgstr "البرتغالية"
+
+#:
+msgid "rm"
+msgstr "Rhaeto - الرومانسية"
+
+#:
+msgid "ru"
+msgstr "الروسية"
+
+#:
+msgid "sl"
+msgstr "السلوفينية"
+
+#:
+msgid "sr"
+msgstr "صربي"
+
+#:
+msgid "sv"
+msgstr "السويدية"
+
+#:
+msgid "th"
+msgstr "التايلاندية"
+
+#:
+msgid "tr"
+msgstr "التركية"
+
+#:
+msgid "vi"
+msgstr "الفيتنامية"
+
+#:
+msgid "zh"
+msgstr "الصينية"
+
+#:
+msgid "DIR"
+msgstr "rl"
+
+#:
+msgid "UPDATED"
+msgstr "تحديث"
+
+#:
+msgid "TRANSLATOR"
+msgstr ""
+
+#:
+msgid "TITLE"
+msgstr "لقب"
+
+#:
+msgid "MOBILE"
+msgstr "متنقل"
+
+#:
+msgid "WORK"
+msgstr "عمل"
+
+#:
+msgid "FIRST_LAST"
+msgstr "الأول واسم العائلة"
+
+#:
+msgid "NEXT"
+msgstr "أكثر"
+
+#:
+msgid "PHOTO"
+msgstr "صور"
+
+#:
+msgid "ALL_PHONES"
+msgstr "جميع إلزامية."
+
+#:
+msgid "ALL_EMAILS"
+msgstr ""
+
+#:
+msgid "SIGN_IN_WITH"
+msgstr "الدخول مع"
+
+#:
+msgid "ua"
+msgstr "الأوكراني"
+

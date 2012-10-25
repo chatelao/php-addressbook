@@ -1,0 +1,561 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+#:
+msgid "LANGUAGE"
+msgstr "taal"
+
+#:
+msgid "auto"
+msgstr "browser instellingen (automatische)"
+
+#:
+msgid "USER"
+msgstr "Gebruiker"
+
+#:
+msgid "PASSWORD"
+msgstr "Wachtwoord"
+
+#:
+msgid "LOGIN"
+msgstr "Login"
+
+#:
+msgid "LOGOUT"
+msgstr "Afmelden"
+
+#:
+msgid "JANUARY"
+msgstr "Januari"
+
+#:
+msgid "FEBRUARY"
+msgstr "Februari"
+
+#:
+msgid "MARCH"
+msgstr "Maart"
+
+#:
+msgid "APRIL"
+msgstr "April"
+
+#:
+msgid "MAY"
+msgstr "Mei"
+
+#:
+msgid "JUNE"
+msgstr "Juni"
+
+#:
+msgid "JULY"
+msgstr "Juli"
+
+#:
+msgid "AUGUST"
+msgstr "Augustus"
+
+#:
+msgid "SEPTEMBER"
+msgstr "September"
+
+#:
+msgid "OCTOBER"
+msgstr "Oktober"
+
+#:
+msgid "NOVEMBER"
+msgstr "November"
+
+#:
+msgid "DECEMBER"
+msgstr "December"
+
+#:
+msgid "ADDRESS_BOOK"
+msgstr "adressenlijst"
+
+#:
+msgid "FOR"
+msgstr "voor"
+
+#:
+msgid "SEARCH"
+msgstr "zoeken"
+
+#:
+msgid "HOME"
+msgstr "thuis"
+
+#:
+msgid "NEXT_BIRTHDAYS"
+msgstr "verjaardagen"
+
+#:
+msgid "ADD_NEW"
+msgstr "nieuwe"
+
+#:
+msgid "PRINT_ALL"
+msgstr "adressen afdrukken"
+
+#:
+msgid "PRINT_PHONES"
+msgstr "telefoonnummers afdrukken"
+
+#:
+msgid "EXPORT_CSV"
+msgstr "csv export"
+
+#:
+msgid "EXPORT"
+msgstr "exporteer"
+
+#:
+msgid "IMPORT"
+msgstr "importeer"
+
+#:
+msgid "MAP"
+msgstr "kaart"
+
+#:
+msgid "MORE"
+msgstr "meer"
+
+#:
+msgid "GROUP"
+msgstr "groep"
+
+#:
+msgid "GROUPS"
+msgstr "groepen"
+
+#:
+msgid "MANAGE_GROUPS"
+msgstr "groepen beheren"
+
+#:
+msgid "NEW_GROUP"
+msgstr "nieuwe groep"
+
+#:
+msgid "DELETE_GROUPS"
+msgstr "verwijder groep(en)"
+
+#:
+msgid "EDIT_GROUP"
+msgstr "bewerk groep"
+
+#:
+msgid "GROUP_NAME"
+msgstr "de naam van de groep"
+
+#:
+msgid "GROUP_HEADER"
+msgstr "Groep header (Logo)"
+
+#:
+msgid "GROUP_FOOTER"
+msgstr "Groep footer (Commentaar)"
+
+#:
+msgid "GROUP_PARENT"
+msgstr "Hoofdgroep"
+
+#:
+msgid "SEARCH_FOR_ANY_TEXT"
+msgstr "zoek naar tekst"
+
+#:
+msgid "NUMBER_OF_RESULTS"
+msgstr "Aantal resultaten"
+
+#:
+msgid "ALL"
+msgstr "alle"
+
+#:
+msgid "NONE"
+msgstr "geen"
+
+#:
+msgid "SELECT_ALL"
+msgstr "alles selecteren"
+
+#:
+msgid "REMOVE_FROM"
+msgstr "verwijderen uit"
+
+#:
+msgid "MAIL_CLIENT"
+msgstr "e-mailclient"
+
+#:
+msgid "SEND_EMAIL"
+msgstr "Stuur een e-mail"
+
+#:
+msgid "ADD_TO"
+msgstr "voeg toe aan"
+
+#:
+msgid "DETAILS"
+msgstr "details"
+
+#:
+msgid "EDIT"
+msgstr "bewerk"
+
+#:
+msgid "MODIFY"
+msgstr "wijzigen"
+
+#:
+msgid "PRINT"
+msgstr "print"
+
+#:
+msgid "EDIT_ADD_ENTRY"
+msgstr "Edit / add adresboek entry"
+
+#:
+msgid "GUESSED_HOMEPAGE"
+msgstr "Geraden homepage"
+
+#:
+msgid "PREFERENCES"
+msgstr "voorkeuren"
+
+#:
+msgid "NAME_PREFIX"
+msgstr "voorvoegsel"
+
+#:
+msgid "FIRSTNAME"
+msgstr "voornaam"
+
+#:
+msgid "MIDDLENAME"
+msgstr "tussenvoegsel"
+
+#:
+msgid "LASTNAME"
+msgstr "achternaam"
+
+#:
+msgid "NAME_SUFFIX"
+msgstr "achtervoegsel"
+
+#:
+msgid "NICKNAME"
+msgstr "bijnaam"
+
+#:
+msgid "COMPANY"
+msgstr "vennootschap"
+
+#:
+msgid "DEPT"
+msgstr "Dept"
+
+#:
+msgid "OCCUPATION"
+msgstr "functie"
+
+#:
+msgid "TITLES"
+msgstr "titels"
+
+#:
+msgid "ADDRESS"
+msgstr "adres"
+
+#:
+msgid "POB"
+msgstr "postbus"
+
+#:
+msgid "APT"
+msgstr "afdeling"
+
+#:
+msgid "STREET"
+msgstr "straat en huisnummer"
+
+#:
+msgid "STATE"
+msgstr "staat"
+
+#:
+msgid "COUNTRY"
+msgstr "land"
+
+#:
+msgid "TELEPHONE"
+msgstr "telefoon"
+
+#:
+msgid "PHONE_HOME"
+msgstr "thuis"
+
+#:
+msgid "PHONE_MOBILE"
+msgstr "mobiel"
+
+#:
+msgid "PHONE_WORK"
+msgstr "werk"
+
+#:
+msgid "FAX"
+msgstr "fax"
+
+#:
+msgid "PAGER"
+msgstr "pieper"
+
+#:
+msgid "EMAIL"
+msgstr "e-mail"
+
+#:
+msgid "HOMEPAGE"
+msgstr "Homepage"
+
+#:
+msgid "ZIP"
+msgstr "ZIP"
+
+#:
+msgid "CITY"
+msgstr "stad"
+
+#:
+msgid "E_MAIL_HOME"
+msgstr "e-mail home"
+
+#:
+msgid "E_MAIL_OFFICE"
+msgstr "e-mail kantoor"
+
+#:
+msgid "2ND_ADDRESS"
+msgstr "tweede adres"
+
+#:
+msgid "2ND_PHONE"
+msgstr "tweede telefoon"
+
+#:
+msgid "NOTES"
+msgstr "opmerking"
+
+#:
+msgid "MISC"
+msgstr "misc"
+
+#:
+msgid "BIRTHDAY"
+msgstr "geboortedatum"
+
+#:
+msgid "ANNIVERSARY"
+msgstr "verjaardag"
+
+#:
+msgid "CREATED"
+msgstr "gemaakt"
+
+#:
+msgid "MODIFIED"
+msgstr "bewerkt"
+
+#:
+msgid "UPDATE"
+msgstr "update"
+
+#:
+msgid "DELETE"
+msgstr "wissen"
+
+#:
+msgid "INVALID"
+msgstr "ongeldig"
+
+#:
+msgid "ENTER"
+msgstr "invoeren"
+
+#:
+msgid "MEMBER_OF"
+msgstr "lid van"
+
+#:
+msgid "SECONDARY"
+msgstr "Secundaire"
+
+#:
+msgid "CREATE_ACCOUNT"
+msgstr "Maak een account"
+
+#:
+msgid "FORGOT_PASSWORD"
+msgstr "wachtwoord vergeten"
+
+#:
+msgid "H:"
+msgstr "H:"
+
+#:
+msgid "M:"
+msgstr "M:"
+
+#:
+msgid "W:"
+msgstr "W:"
+
+#:
+msgid "F:"
+msgstr "F:"
+
+#:
+msgid "P:"
+msgstr "P:"
+
+#:
+msgid "ar"
+msgstr "Arabisch"
+
+#:
+msgid "bg"
+msgstr "Bulgaarse"
+
+#:
+msgid "ca"
+msgstr "Catalaans"
+
+#:
+msgid "cs"
+msgstr "Tsjechisch"
+
+#:
+msgid "da"
+msgstr "Deens"
+
+#:
+msgid "de"
+msgstr "Duits"
+
+#:
+msgid "el"
+msgstr "Grieks"
+
+#:
+msgid "en"
+msgstr "Engels"
+
+#:
+msgid "es"
+msgstr "Spaans"
+
+#:
+msgid "fa"
+msgstr "Perzisch"
+
+#:
+msgid "fi"
+msgstr "Fins"
+
+#:
+msgid "fr"
+msgstr "Frans"
+
+#:
+msgid "he"
+msgstr "Hebreeuws"
+
+#:
+msgid "hi"
+msgstr "Hindi"
+
+#:
+msgid "hu"
+msgstr "Hongaars"
+
+#:
+msgid "it"
+msgstr "Italiaans"
+
+#:
+msgid "ja"
+msgstr "Japans"
+
+#:
+msgid "ko"
+msgstr "Koreaans"
+
+#:
+msgid "nl"
+msgstr "Nederlands"
+
+#:
+msgid "pl"
+msgstr "Pools"
+
+#:
+msgid "pt"
+msgstr "Portugees"
+
+#:
+msgid "rm"
+msgstr "Retoromaans"
+
+#:
+msgid "ru"
+msgstr "Russisch"
+
+#:
+msgid "sl"
+msgstr "Sloveens"
+
+#:
+msgid "sr"
+msgstr "Servisch"
+
+#:
+msgid "sv"
+msgstr "Zweeds"
+
+#:
+msgid "th"
+msgstr "Thai"
+
+#:
+msgid "tr"
+msgstr "Turks"
+
+#:
+msgid "vi"
+msgstr "Vietnamees"
+
+#:
+msgid "zh"
+msgstr "Chinees"
+

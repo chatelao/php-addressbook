@@ -1,0 +1,617 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+#:
+msgid "LANGUAGE"
+msgstr "language"
+
+#:
+msgid "auto"
+msgstr "bowser settings (automatic)"
+
+#:
+msgid "USER"
+msgstr "User"
+
+#:
+msgid "PASSWORD"
+msgstr "Password"
+
+#:
+msgid "LOGIN"
+msgstr "Login"
+
+#:
+msgid "LOGOUT"
+msgstr "Logout"
+
+#:
+msgid "JANUARY"
+msgstr "January"
+
+#:
+msgid "FEBRUARY"
+msgstr "February"
+
+#:
+msgid "MARCH"
+msgstr "March"
+
+#:
+msgid "APRIL"
+msgstr "April"
+
+#:
+msgid "MAY"
+msgstr "May"
+
+#:
+msgid "JUNE"
+msgstr "June"
+
+#:
+msgid "JULY"
+msgstr "July"
+
+#:
+msgid "AUGUST"
+msgstr "August"
+
+#:
+msgid "SEPTEMBER"
+msgstr "September"
+
+#:
+msgid "OCTOBER"
+msgstr "October"
+
+#:
+msgid "NOVEMBER"
+msgstr "November"
+
+#:
+msgid "DECEMBER"
+msgstr "December"
+
+#:
+msgid "ADDRESS_BOOK"
+msgstr "address book"
+
+#:
+msgid "FOR"
+msgstr "for"
+
+#:
+msgid "SEARCH"
+msgstr "search"
+
+#:
+msgid "HOME"
+msgstr "home"
+
+#:
+msgid "NEXT_BIRTHDAYS"
+msgstr "next birthdays"
+
+#:
+msgid "ADD_NEW"
+msgstr "add new"
+
+#:
+msgid "PRINT_ALL"
+msgstr "print all"
+
+#:
+msgid "PRINT_PHONES"
+msgstr "print phones"
+
+#:
+msgid "EXPORT_CSV"
+msgstr "export csv"
+
+#:
+msgid "EXPORT"
+msgstr "export"
+
+#:
+msgid "IMPORT"
+msgstr "import"
+
+#:
+msgid "MAP"
+msgstr "map"
+
+#:
+msgid "MORE"
+msgstr "more"
+
+#:
+msgid "GROUP"
+msgstr "group"
+
+#:
+msgid "GROUPS"
+msgstr "groups"
+
+#:
+msgid "MANAGE_GROUPS"
+msgstr "groups"
+
+#:
+msgid "NEW_GROUP"
+msgstr "new group"
+
+#:
+msgid "DELETE_GROUPS"
+msgstr "delete group(s)"
+
+#:
+msgid "EDIT_GROUP"
+msgstr "edit group"
+
+#:
+msgid "GROUP_NAME"
+msgstr "group name"
+
+#:
+msgid "GROUP_HEADER"
+msgstr "Group header (Logo)"
+
+#:
+msgid "GROUP_FOOTER"
+msgstr "Group footer (Comment)"
+
+#:
+msgid "GROUP_PARENT"
+msgstr "Parent group"
+
+#:
+msgid "SEARCH_FOR_ANY_TEXT"
+msgstr "search for any text"
+
+#:
+msgid "NUMBER_OF_RESULTS"
+msgstr "Number of results"
+
+#:
+msgid "ALL"
+msgstr "all"
+
+#:
+msgid "NONE"
+msgstr "none"
+
+#:
+msgid "SELECT_ALL"
+msgstr "select all"
+
+#:
+msgid "REMOVE_FROM"
+msgstr "remove from"
+
+#:
+msgid "MAIL_CLIENT"
+msgstr "mail client"
+
+#:
+msgid "SEND_EMAIL"
+msgstr "Send e-Mail"
+
+#:
+msgid "ADD_TO"
+msgstr "add to"
+
+#:
+msgid "DETAILS"
+msgstr "details"
+
+#:
+msgid "EDIT"
+msgstr "edit"
+
+#:
+msgid "MODIFY"
+msgstr "modify"
+
+#:
+msgid "PRINT"
+msgstr "print"
+
+#:
+msgid "EDIT_ADD_ENTRY"
+msgstr "Edit / add address book entry"
+
+#:
+msgid "GUESSED_HOMEPAGE"
+msgstr "Guessed homepage"
+
+#:
+msgid "PREFERENCES"
+msgstr "preferences"
+
+#:
+msgid "NAME_PREFIX"
+msgstr "prefix"
+
+#:
+msgid "FIRSTNAME"
+msgstr "first name"
+
+#:
+msgid "MIDDLENAME"
+msgstr "middle name/inital(s)"
+
+#:
+msgid "LASTNAME"
+msgstr "last name"
+
+#:
+msgid "NAME_SUFFIX"
+msgstr "suffix"
+
+#:
+msgid "NICKNAME"
+msgstr "nickname"
+
+#:
+msgid "COMPANY"
+msgstr "company"
+
+#:
+msgid "DEPT"
+msgstr "Dept."
+
+#:
+msgid "OCCUPATION"
+msgstr "job title"
+
+#:
+msgid "TITLES"
+msgstr "titles"
+
+#:
+msgid "ADDRESS"
+msgstr "address"
+
+#:
+msgid "POB"
+msgstr "box or number"
+
+#:
+msgid "APT"
+msgstr "apartment or stop"
+
+#:
+msgid "STREET"
+msgstr "street Address"
+
+#:
+msgid "STATE"
+msgstr "state"
+
+#:
+msgid "COUNTRY"
+msgstr "country"
+
+#:
+msgid "TELEPHONE"
+msgstr "telephone"
+
+#:
+msgid "PHONE_HOME"
+msgstr "home"
+
+#:
+msgid "PHONE_MOBILE"
+msgstr "mobile"
+
+#:
+msgid "PHONE_WORK"
+msgstr "work"
+
+#:
+msgid "FAX"
+msgstr "fax"
+
+#:
+msgid "PAGER"
+msgstr "pager"
+
+#:
+msgid "EMAIL"
+msgstr "e-mail"
+
+#:
+msgid "HOMEPAGE"
+msgstr "Homepage"
+
+#:
+msgid "ZIP"
+msgstr "ZIP"
+
+#:
+msgid "CITY"
+msgstr "city"
+
+#:
+msgid "E_MAIL_HOME"
+msgstr "e-mail home"
+
+#:
+msgid "E_MAIL_OFFICE"
+msgstr "e-mail office"
+
+#:
+msgid "2ND_ADDRESS"
+msgstr "second address"
+
+#:
+msgid "2ND_PHONE"
+msgstr "second phone"
+
+#:
+msgid "NOTES"
+msgstr "notes"
+
+#:
+msgid "MISC"
+msgstr "Misc"
+
+#:
+msgid "BIRTHDAY"
+msgstr "birthday"
+
+#:
+msgid "ANNIVERSARY"
+msgstr "anniversary"
+
+#:
+msgid "CREATED"
+msgstr "created"
+
+#:
+msgid "MODIFIED"
+msgstr "modified"
+
+#:
+msgid "UPDATE"
+msgstr "update"
+
+#:
+msgid "DELETE"
+msgstr "delete"
+
+#:
+msgid "INVALID"
+msgstr "invalid"
+
+#:
+msgid "ENTER"
+msgstr "enter"
+
+#:
+msgid "MEMBER_OF"
+msgstr "member of"
+
+#:
+msgid "SECONDARY"
+msgstr "Secondary"
+
+#:
+msgid "CREATE_ACCOUNT"
+msgstr "Create account"
+
+#:
+msgid "FORGOT_PASSWORD"
+msgstr "Forgot password"
+
+#:
+msgid "H:"
+msgstr "H:"
+
+#:
+msgid "M:"
+msgstr "M:"
+
+#:
+msgid "W:"
+msgstr "W:"
+
+#:
+msgid "F:"
+msgstr "F:"
+
+#:
+msgid "P:"
+msgstr "P:"
+
+#:
+msgid "ar"
+msgstr "Arabic"
+
+#:
+msgid "bg"
+msgstr "Bulgarian"
+
+#:
+msgid "ca"
+msgstr "Catalonian"
+
+#:
+msgid "cs"
+msgstr "Czech"
+
+#:
+msgid "da"
+msgstr "Danish"
+
+#:
+msgid "de"
+msgstr "German"
+
+#:
+msgid "el"
+msgstr "Greek"
+
+#:
+msgid "en"
+msgstr "English"
+
+#:
+msgid "es"
+msgstr "Spanish"
+
+#:
+msgid "fa"
+msgstr "Farsi"
+
+#:
+msgid "fi"
+msgstr "Finnish"
+
+#:
+msgid "fr"
+msgstr "French"
+
+#:
+msgid "he"
+msgstr "Hebrew"
+
+#:
+msgid "hi"
+msgstr "Hindi"
+
+#:
+msgid "hu"
+msgstr "Hungarian"
+
+#:
+msgid "it"
+msgstr "Italian"
+
+#:
+msgid "ja"
+msgstr "Japanese"
+
+#:
+msgid "ko"
+msgstr "Korean"
+
+#:
+msgid "nl"
+msgstr "Dutch"
+
+#:
+msgid "pl"
+msgstr "Polish"
+
+#:
+msgid "pt"
+msgstr "Portugese"
+
+#:
+msgid "rm"
+msgstr "Rhaeto-Romance"
+
+#:
+msgid "ru"
+msgstr "Russian"
+
+#:
+msgid "sl"
+msgstr "Slovenian"
+
+#:
+msgid "sr"
+msgstr "Serbian"
+
+#:
+msgid "sv"
+msgstr "Swedish"
+
+#:
+msgid "th"
+msgstr "Thai"
+
+#:
+msgid "tr"
+msgstr "Turkish"
+
+#:
+msgid "vi"
+msgstr "Vietnamese"
+
+#:
+msgid "zh"
+msgstr "Chinese"
+
+#:
+msgid "DIR"
+msgstr ""
+
+#:
+msgid "UPDATED"
+msgstr "updated"
+
+#:
+msgid "TRANSLATOR"
+msgstr ""
+
+#:
+msgid "TITLE"
+msgstr "title"
+
+#:
+msgid "MOBILE"
+msgstr "mobile"
+
+#:
+msgid "WORK"
+msgstr "work"
+
+#:
+msgid "FIRST_LAST"
+msgstr ""
+
+#:
+msgid "NEXT"
+msgstr "next"
+
+#:
+msgid "PHOTO"
+msgstr "photo"
+
+#:
+msgid "ALL_PHONES"
+msgstr "all phones"
+
+#:
+msgid "ALL_EMAILS"
+msgstr "all e-mail"
+
+#:
+msgid "SIGN_IN_WITH"
+msgstr "Sign in with"
+
+#:
+msgid "ua"
+msgstr "Ukrainian"
+
+#:
+msgid "LAST_FIRST"
+msgstr "name"
+

@@ -1,0 +1,329 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+#:
+msgid "LANGUAGE"
+msgstr "jazyk"
+
+#:
+msgid "auto"
+msgstr "nastavení prohlížeče(automaticky)"
+
+#:
+msgid "JANUARY"
+msgstr "Leden"
+
+#:
+msgid "FEBRUARY"
+msgstr "Únor"
+
+#:
+msgid "MARCH"
+msgstr "Březen"
+
+#:
+msgid "APRIL"
+msgstr "Duben"
+
+#:
+msgid "MAY"
+msgstr "Květen"
+
+#:
+msgid "JUNE"
+msgstr "Červenec"
+
+#:
+msgid "JULY"
+msgstr "Červen"
+
+#:
+msgid "AUGUST"
+msgstr "Srpen"
+
+#:
+msgid "SEPTEMBER"
+msgstr "Září"
+
+#:
+msgid "OCTOBER"
+msgstr "Říjen"
+
+#:
+msgid "NOVEMBER"
+msgstr "Listopad"
+
+#:
+msgid "DECEMBER"
+msgstr "Prosinec"
+
+#:
+msgid "ADDRESS_BOOK"
+msgstr "Adresář"
+
+#:
+msgid "FOR"
+msgstr "pro"
+
+#:
+msgid "SEARCH"
+msgstr "hledat"
+
+#:
+msgid "HOME"
+msgstr "domů"
+
+#:
+msgid "NEXT_BIRTHDAYS"
+msgstr "příští narozeniny"
+
+#:
+msgid "ADD_NEW"
+msgstr "přidat nový"
+
+#:
+msgid "PRINT_ALL"
+msgstr "tisknout všechny"
+
+#:
+msgid "PRINT_PHONES"
+msgstr "tisknout telefony"
+
+#:
+msgid "EXPORT_CSV"
+msgstr "export do csv"
+
+#:
+msgid "GROUPS"
+msgstr "skupiny"
+
+#:
+msgid "MANAGE_GROUPS"
+msgstr "spravovat skupiny"
+
+#:
+msgid "NEW_GROUP"
+msgstr "nová skupina"
+
+#:
+msgid "DELETE_GROUPS"
+msgstr "smazat skupinu"
+
+#:
+msgid "EDIT_GROUP"
+msgstr "upravit skupinu"
+
+#:
+msgid "GROUP_NAME"
+msgstr "jméno skupiny"
+
+#:
+msgid "GROUP_HEADER"
+msgstr "Skupinová hlavička (Logo)"
+
+#:
+msgid "GROUP_FOOTER"
+msgstr "Skupinová patička (Komentář)"
+
+#:
+msgid "SEARCH_FOR_ANY_TEXT"
+msgstr "hledat jakýkoliv text"
+
+#:
+msgid "NUMBER_OF_RESULTS"
+msgstr "Počet výsledků"
+
+#:
+msgid "ALL"
+msgstr "Všichni"
+
+#:
+msgid "NONE"
+msgstr "Žádný"
+
+#:
+msgid "SELECT_ALL"
+msgstr "vybrat všechny"
+
+#:
+msgid "REMOVE_FROM"
+msgstr "odstranit z"
+
+#:
+msgid "MAIL_CLIENT"
+msgstr "emailový program"
+
+#:
+msgid "SEND_EMAIL"
+msgstr "Poslat e-mail"
+
+#:
+msgid "ADD_TO"
+msgstr "přidat k"
+
+#:
+msgid "DETAILS"
+msgstr "detaily"
+
+#:
+msgid "EDIT"
+msgstr "upravit"
+
+#:
+msgid "MODIFY"
+msgstr "změnit"
+
+#:
+msgid "PRINT"
+msgstr "tisknout"
+
+#:
+msgid "EDIT_ADD_ENTRY"
+msgstr "Upravit / přidat položku adresáře"
+
+#:
+msgid "GUESSED_HOMEPAGE"
+msgstr "Možná domovská stránka"
+
+#:
+msgid "PREFERENCES"
+msgstr "předvolby"
+
+#:
+msgid "FIRSTNAME"
+msgstr "jméno"
+
+#:
+msgid "LASTNAME"
+msgstr "příjmení"
+
+#:
+msgid "ADDRESS"
+msgstr "adresa"
+
+#:
+msgid "TELEPHONE"
+msgstr "telefon"
+
+#:
+msgid "PHONE_HOME"
+msgstr "soukromá"
+
+#:
+msgid "PHONE_MOBILE"
+msgstr "mobil"
+
+#:
+msgid "PHONE_WORK"
+msgstr "práce"
+
+#:
+msgid "EMAIL"
+msgstr "e-mail"
+
+#:
+msgid "ZIP"
+msgstr "PSČ"
+
+#:
+msgid "CITY"
+msgstr "město"
+
+#:
+msgid "E_MAIL_HOME"
+msgstr "e-mail soukromý"
+
+#:
+msgid "E_MAIL_OFFICE"
+msgstr "e-mail pracovní"
+
+#:
+msgid "2ND_ADDRESS"
+msgstr "druhá adresa"
+
+#:
+msgid "2ND_PHONE"
+msgstr "druhý telefon"
+
+#:
+msgid "BIRTHDAY"
+msgstr "narozeniny"
+
+#:
+msgid "UPDATE"
+msgstr "upravit"
+
+#:
+msgid "DELETE"
+msgstr "smazat"
+
+#:
+msgid "INVALID"
+msgstr "neplatný"
+
+#:
+msgid "ENTER"
+msgstr "vložit"
+
+#:
+msgid "MEMBER_OF"
+msgstr "clen"
+
+#:
+msgid "SECONDARY"
+msgstr "Další"
+
+#:
+msgid "H:"
+msgstr "D:"
+
+#:
+msgid "M:"
+msgstr "M:"
+
+#:
+msgid "W:"
+msgstr "P:"
+
+#:
+msgid "ar"
+msgstr ""
+
+#:
+msgid "cs"
+msgstr "Česky"
+
+#:
+msgid "de"
+msgstr "Německy"
+
+#:
+msgid "en"
+msgstr "Anglický"
+
+#:
+msgid "he"
+msgstr ""
+
+#:
+msgid "hi"
+msgstr ""
+
+#:
+msgid "pl"
+msgstr "czeski"
+

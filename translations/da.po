@@ -1,0 +1,397 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+#:
+msgid "LANGUAGE"
+msgstr "sprog"
+
+#:
+msgid "auto"
+msgstr "bowser indstillinger (automatisk)"
+
+#:
+msgid "JANUARY"
+msgstr "Januar"
+
+#:
+msgid "FEBRUARY"
+msgstr "Februar"
+
+#:
+msgid "MARCH"
+msgstr "Marts"
+
+#:
+msgid "APRIL"
+msgstr "April"
+
+#:
+msgid "MAY"
+msgstr "Mai"
+
+#:
+msgid "JUNE"
+msgstr "Juni"
+
+#:
+msgid "JULY"
+msgstr "Juli"
+
+#:
+msgid "AUGUST"
+msgstr "August"
+
+#:
+msgid "SEPTEMBER"
+msgstr "September"
+
+#:
+msgid "OCTOBER"
+msgstr "Oktober"
+
+#:
+msgid "NOVEMBER"
+msgstr "November"
+
+#:
+msgid "DECEMBER"
+msgstr "December"
+
+#:
+msgid "ADDRESS_BOOK"
+msgstr "adressebog"
+
+#:
+msgid "FOR"
+msgstr "for"
+
+#:
+msgid "SEARCH"
+msgstr "søgning"
+
+#:
+msgid "HOME"
+msgstr "hjem"
+
+#:
+msgid "NEXT_BIRTHDAYS"
+msgstr "næste fødselsdage"
+
+#:
+msgid "ADD_NEW"
+msgstr "tilføje nye"
+
+#:
+msgid "PRINT_ALL"
+msgstr "Udskriv alle"
+
+#:
+msgid "PRINT_PHONES"
+msgstr "print-telefoner"
+
+#:
+msgid "EXPORT_CSV"
+msgstr "eksportere csv"
+
+#:
+msgid "GROUPS"
+msgstr "grupper"
+
+#:
+msgid "MANAGE_GROUPS"
+msgstr "forvalte grupper"
+
+#:
+msgid "NEW_GROUP"
+msgstr "ny gruppe"
+
+#:
+msgid "DELETE_GROUPS"
+msgstr "Slet gruppe (r)"
+
+#:
+msgid "EDIT_GROUP"
+msgstr "Rediger gruppe"
+
+#:
+msgid "GROUP_NAME"
+msgstr "gruppens navn"
+
+#:
+msgid "GROUP_HEADER"
+msgstr "Gruppen header (Logo)"
+
+#:
+msgid "GROUP_FOOTER"
+msgstr "Gruppen footer (Kommentar)"
+
+#:
+msgid "SEARCH_FOR_ANY_TEXT"
+msgstr "søge efter en hvilken som helst tekst"
+
+#:
+msgid "NUMBER_OF_RESULTS"
+msgstr "Antal resultater"
+
+#:
+msgid "ALL"
+msgstr "alle"
+
+#:
+msgid "NONE"
+msgstr "ingen"
+
+#:
+msgid "SELECT_ALL"
+msgstr "Vælg alle"
+
+#:
+msgid "REMOVE_FROM"
+msgstr "fjerne fra"
+
+#:
+msgid "MAIL_CLIENT"
+msgstr "e-mail-klient"
+
+#:
+msgid "SEND_EMAIL"
+msgstr "Send e-mail"
+
+#:
+msgid "ADD_TO"
+msgstr "Tilføj til"
+
+#:
+msgid "DETAILS"
+msgstr "Oversigt"
+
+#:
+msgid "EDIT"
+msgstr "redigere"
+
+#:
+msgid "MODIFY"
+msgstr "modificere"
+
+#:
+msgid "PRINT"
+msgstr "print"
+
+#:
+msgid "EDIT_ADD_ENTRY"
+msgstr "Rediger / add-adresse dematerialiserede"
+
+#:
+msgid "GUESSED_HOMEPAGE"
+msgstr "Gættet hjemmeside"
+
+#:
+msgid "PREFERENCES"
+msgstr "præferencer"
+
+#:
+msgid "FIRSTNAME"
+msgstr "fornavn"
+
+#:
+msgid "LASTNAME"
+msgstr "efternavn"
+
+#:
+msgid "ADDRESS"
+msgstr "adresse"
+
+#:
+msgid "TELEPHONE"
+msgstr "telefon"
+
+#:
+msgid "PHONE_HOME"
+msgstr "hjem"
+
+#:
+msgid "PHONE_MOBILE"
+msgstr "mobil"
+
+#:
+msgid "PHONE_WORK"
+msgstr "arbejde"
+
+#:
+msgid "EMAIL"
+msgstr "e-mail"
+
+#:
+msgid "ZIP"
+msgstr "ZIP"
+
+#:
+msgid "CITY"
+msgstr "by"
+
+#:
+msgid "E_MAIL_HOME"
+msgstr "e-mail home"
+
+#:
+msgid "E_MAIL_OFFICE"
+msgstr "e-mail-kontor"
+
+#:
+msgid "2ND_ADDRESS"
+msgstr "anden adresse"
+
+#:
+msgid "2ND_PHONE"
+msgstr "anden telefon"
+
+#:
+msgid "BIRTHDAY"
+msgstr "fødselsdag"
+
+#:
+msgid "UPDATE"
+msgstr "opdatering"
+
+#:
+msgid "DELETE"
+msgstr "slet"
+
+#:
+msgid "INVALID"
+msgstr "ugyldig"
+
+#:
+msgid "ENTER"
+msgstr "indtaste"
+
+#:
+msgid "MEMBER_OF"
+msgstr "medlem af"
+
+#:
+msgid "SECONDARY"
+msgstr "Sekundære"
+
+#:
+msgid "H:"
+msgstr "H:"
+
+#:
+msgid "M:"
+msgstr "M:"
+
+#:
+msgid "W:"
+msgstr "W:"
+
+#:
+msgid "ar"
+msgstr "Arabisk"
+
+#:
+msgid "bg"
+msgstr "Bulgarsk"
+
+#:
+msgid "ca"
+msgstr "Katalonien"
+
+#:
+msgid "cs"
+msgstr "Tjekkisk"
+
+#:
+msgid "de"
+msgstr "Tysk"
+
+#:
+msgid "el"
+msgstr "Græsk"
+
+#:
+msgid "en"
+msgstr "Engelsk"
+
+#:
+msgid "es"
+msgstr "Spansk"
+
+#:
+msgid "fr"
+msgstr "Fransk"
+
+#:
+msgid "he"
+msgstr "Hebræisk"
+
+#:
+msgid "hi"
+msgstr "Hindu"
+
+#:
+msgid "it"
+msgstr "Italiensk"
+
+#:
+msgid "ja"
+msgstr "Japansk"
+
+#:
+msgid "ko"
+msgstr "Koreansk"
+
+#:
+msgid "nl"
+msgstr "Hollandsk"
+
+#:
+msgid "pl"
+msgstr "Polsk"
+
+#:
+msgid "pt"
+msgstr "Portugisisk"
+
+#:
+msgid "rm"
+msgstr "Rætoromansk"
+
+#:
+msgid "ru"
+msgstr "Russisk"
+
+#:
+msgid "sv"
+msgstr "Svensk"
+
+#:
+msgid "th"
+msgstr "Thailandsk"
+
+#:
+msgid "tr"
+msgstr "Tyrkisk"
+
+#:
+msgid "vi"
+msgstr "Vietnamesisk"
+
+#:
+msgid "zh"
+msgstr "Kinesisk"
+
