@@ -1,8 +1,8 @@
 <?php
   
   // Database access definition
-  $dbname       = "test";      // your database name
   $dbserver     = "localhost"; // your database hostname
+  $dbname       = "test";      // your database name
   $dbuser       = "root";      // your database username     
   $dbpass       = "";          // your database password     
 

@@ -7,9 +7,14 @@ echo %version%
 rmdir %abs_zips% /s /q
 
 REM
-REM get the newest sources from subversion
+REM Get the newest sources from subversion
 REM 
 svn export http://svn.github.com/chatelao/php-addressbook.git %abs_zips%
+
+REM
+REM Add the newest mobile configuration sample
+REM 
+copy .htaccess_mobile_sample %abs_zips%
 
 REM
 REM zip and remove advanced featuers
