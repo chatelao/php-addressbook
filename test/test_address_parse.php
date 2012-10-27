@@ -253,7 +253,7 @@ class TestOfAddressParse extends UnitTestCase {
 	
 	 function testAddressParsing() {
 	 	
-	 	global $address_parse;
+	 global $address_parse;
      
      // print_r($address_parse);
 
