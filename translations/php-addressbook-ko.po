@@ -3,491 +3,469 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-10-27 11:46+0000\n"
+"Last-Translator: chatelao <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-#:
+"X-Launchpad-Export-Date: 2012-10-27 11:56+0000\n"
+"X-Generator: Launchpad (build 16194)\n"
+
 msgid "LANGUAGE"
 msgstr "언어"
 
-#:
 msgid "auto"
 msgstr "bowser 설정을 자동으로"
 
-#:
 msgid "USER"
 msgstr "사용자"
 
-#:
 msgid "PASSWORD"
 msgstr "암호"
 
-#:
 msgid "LOGIN"
 msgstr "로그인"
 
-#:
 msgid "LOGOUT"
 msgstr "로그아웃"
 
-#:
 msgid "JANUARY"
 msgstr "1 월"
 
-#:
 msgid "FEBRUARY"
 msgstr "2 월"
 
-#:
 msgid "MARCH"
 msgstr "3 월"
 
-#:
 msgid "APRIL"
 msgstr "4 월"
 
-#:
 msgid "MAY"
 msgstr "5 월"
 
-#:
 msgid "JUNE"
 msgstr "6 월"
 
-#:
 msgid "JULY"
 msgstr "7 월"
 
-#:
 msgid "AUGUST"
 msgstr "8 월"
 
-#:
 msgid "SEPTEMBER"
 msgstr "9 월"
 
-#:
 msgid "OCTOBER"
 msgstr "10 월"
 
-#:
 msgid "NOVEMBER"
 msgstr "11 월"
 
-#:
 msgid "DECEMBER"
 msgstr "12 월"
 
-#:
 msgid "ADDRESS_BOOK"
 msgstr "주소록"
 
-#:
 msgid "FOR"
 msgstr "을 위해"
 
-#:
 msgid "SEARCH"
 msgstr "검색"
 
-#:
 msgid "HOME"
 msgstr "홈"
 
-#:
 msgid "NEXT_BIRTHDAYS"
 msgstr "다음 생일"
 
-#:
 msgid "ADD_NEW"
 msgstr "새로 추가"
 
-#:
 msgid "PRINT_ALL"
 msgstr "전체 인쇄"
 
-#:
 msgid "PRINT_PHONES"
 msgstr "전화번호 인쇄"
 
-#:
 msgid "EXPORT_CSV"
 msgstr "파일 변환"
 
-#:
 msgid "EXPORT"
 msgstr "수출"
 
-#:
 msgid "IMPORT"
 msgstr "수입"
 
-#:
+msgid "MAP"
+msgstr ""
+
+msgid "MORE"
+msgstr ""
+
 msgid "GROUP"
 msgstr "그룹"
 
-#:
 msgid "GROUPS"
 msgstr "그룹"
 
-#:
 msgid "MANAGE_GROUPS"
 msgstr "그룹 관리"
 
-#:
 msgid "NEW_GROUP"
 msgstr "새 그룹"
 
-#:
 msgid "DELETE_GROUPS"
 msgstr "그룹 삭제"
 
-#:
 msgid "EDIT_GROUP"
 msgstr "그룹 편집"
 
-#:
 msgid "GROUP_NAME"
 msgstr "그룹 이름"
 
-#:
 msgid "GROUP_HEADER"
 msgstr "그룹 머리글 (로고)"
 
-#:
 msgid "GROUP_FOOTER"
 msgstr "그룹 꼬리말 (댓글)"
 
-#:
 msgid "GROUP_PARENT"
 msgstr "상위 그룹"
 
-#:
 msgid "SEARCH_FOR_ANY_TEXT"
 msgstr "모든 텍스트 검색"
 
-#:
 msgid "NUMBER_OF_RESULTS"
 msgstr "항목수"
 
-#:
 msgid "ALL"
 msgstr "전체"
 
-#:
 msgid "NONE"
 msgstr "없음"
 
-#:
 msgid "SELECT_ALL"
 msgstr "전체 선택"
 
-#:
 msgid "REMOVE_FROM"
 msgstr "삭제"
 
-#:
 msgid "MAIL_CLIENT"
 msgstr "메일 클라이언트"
 
-#:
 msgid "SEND_EMAIL"
 msgstr "이메일 보내기"
 
-#:
 msgid "ADD_TO"
 msgstr "그룹에 추가하기"
 
-#:
 msgid "DETAILS"
 msgstr "세부 정보"
 
-#:
 msgid "EDIT"
 msgstr "편집"
 
-#:
 msgid "MODIFY"
 msgstr "수정"
 
-#:
 msgid "PRINT"
 msgstr "인쇄"
 
-#:
 msgid "EDIT_ADD_ENTRY"
 msgstr "편집 / 주소록 항목 추가"
 
-#:
 msgid "GUESSED_HOMEPAGE"
 msgstr "추정 홈페이지"
 
-#:
 msgid "PREFERENCES"
 msgstr "환경 설정"
 
-#:
+msgid "NAME_PREFIX"
+msgstr ""
+
 msgid "FIRSTNAME"
 msgstr "이름"
 
-#:
+msgid "MIDDLENAME"
+msgstr ""
+
 msgid "LASTNAME"
 msgstr "성"
 
-#:
+msgid "NAME_SUFFIX"
+msgstr ""
+
+msgid "NICKNAME"
+msgstr ""
+
 msgid "COMPANY"
 msgstr "회사"
 
-#:
+msgid "DEPT"
+msgstr ""
+
+msgid "OCCUPATION"
+msgstr ""
+
+msgid "TITLES"
+msgstr ""
+
 msgid "ADDRESS"
 msgstr "주소"
 
-#:
+msgid "POB"
+msgstr ""
+
+msgid "APT"
+msgstr ""
+
+msgid "STREET"
+msgstr ""
+
+msgid "STATE"
+msgstr ""
+
+msgid "COUNTRY"
+msgstr ""
+
 msgid "TELEPHONE"
 msgstr "전화"
 
-#:
 msgid "PHONE_HOME"
 msgstr "집"
 
-#:
 msgid "PHONE_MOBILE"
 msgstr "모바일"
 
-#:
 msgid "PHONE_WORK"
 msgstr "직장"
 
-#:
 msgid "FAX"
 msgstr "팩스"
 
-#:
+msgid "PAGER"
+msgstr ""
+
 msgid "EMAIL"
 msgstr "이메일"
 
-#:
 msgid "HOMEPAGE"
 msgstr "홈페이지"
 
-#:
 msgid "ZIP"
 msgstr "우편번호"
 
-#:
 msgid "CITY"
 msgstr "도시"
 
-#:
 msgid "E_MAIL_HOME"
 msgstr "개인 이메일"
 
-#:
 msgid "E_MAIL_OFFICE"
 msgstr "직장 이메일"
 
-#:
 msgid "2ND_ADDRESS"
 msgstr "두 번째 주소"
 
-#:
 msgid "2ND_PHONE"
 msgstr "두 번째 전화"
 
-#:
 msgid "NOTES"
 msgstr "노트"
 
-#:
+msgid "MISC"
+msgstr ""
+
 msgid "BIRTHDAY"
 msgstr "생일"
 
-#:
+msgid "ANNIVERSARY"
+msgstr ""
+
 msgid "CREATED"
 msgstr "생성"
 
-#:
 msgid "MODIFIED"
 msgstr "수정"
 
-#:
 msgid "UPDATE"
 msgstr "업데이트"
 
-#:
 msgid "DELETE"
 msgstr "삭제"
 
-#:
 msgid "INVALID"
 msgstr "오류"
 
-#:
 msgid "ENTER"
 msgstr "입력"
 
-#:
 msgid "MEMBER_OF"
 msgstr "회원"
 
-#:
 msgid "SECONDARY"
 msgstr "기타정보"
 
-#:
+msgid "CREATE_ACCOUNT"
+msgstr ""
+
+msgid "FORGOT_PASSWORD"
+msgstr ""
+
 msgid "H:"
 msgstr "집전화 :"
 
-#:
 msgid "M:"
 msgstr "모바일 :"
 
-#:
 msgid "W:"
 msgstr "직장 :"
 
-#:
 msgid "F:"
 msgstr "F :"
 
-#:
+msgid "P:"
+msgstr ""
+
 msgid "ar"
 msgstr "아라비아어"
 
-#:
 msgid "bg"
 msgstr "불가 리아어"
 
-#:
 msgid "ca"
 msgstr "카탈로니아"
 
-#:
 msgid "cs"
 msgstr "체코어"
 
-#:
 msgid "da"
 msgstr "덴마크어"
 
-#:
 msgid "de"
 msgstr "독일어"
 
-#:
 msgid "el"
 msgstr "그리스어"
 
-#:
 msgid "en"
 msgstr "영어"
 
-#:
 msgid "es"
 msgstr "스페인어"
 
-#:
 msgid "fa"
 msgstr "이 란어"
 
-#:
 msgid "fi"
 msgstr "핀란드어"
 
-#:
 msgid "fr"
 msgstr "프랑스어"
 
-#:
 msgid "he"
 msgstr "히브리어"
 
-#:
 msgid "hi"
 msgstr "힌디어"
 
-#:
 msgid "hu"
 msgstr "헝가리의"
 
-#:
 msgid "it"
 msgstr "이탈리아어"
 
-#:
 msgid "ja"
 msgstr "일본어"
 
-#:
 msgid "ko"
 msgstr "한국어"
 
-#:
 msgid "nl"
 msgstr "네덜란드"
 
-#:
 msgid "pl"
 msgstr "폴란드어"
 
-#:
 msgid "pt"
 msgstr "포르투갈어"
 
-#:
 msgid "rm"
 msgstr "레토로만어"
 
-#:
 msgid "ru"
 msgstr "러시아어"
 
-#:
 msgid "sl"
 msgstr "슬로베니아"
 
-#:
 msgid "sr"
 msgstr "세르비아의"
 
-#:
 msgid "sv"
 msgstr "스웨덴어"
 
-#:
 msgid "th"
 msgstr "타이어"
 
-#:
 msgid "tr"
 msgstr "터키어"
 
-#:
 msgid "vi"
 msgstr "베트남어"
 
-#:
 msgid "zh"
 msgstr "중국어"
 
-#:
 msgid "DIR"
 msgstr ""
 
-#:
 msgid "UPDATED"
 msgstr ""
 
-#:
 msgid "TRANSLATOR"
 msgstr ""
 
+msgid "TITLE"
+msgstr ""
+
+msgid "MOBILE"
+msgstr ""
+
+msgid "WORK"
+msgstr ""
+
+msgid "FIRST_LAST"
+msgstr ""
+
+msgid "NEXT"
+msgstr ""
+
+msgid "PHOTO"
+msgstr ""
+
+msgid "ALL_PHONES"
+msgstr ""
+
+msgid "ALL_EMAILS"
+msgstr ""
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
+msgid "ua"
+msgstr ""
+
+msgid "LAST_FIRST"
+msgstr ""
+
+msgid "GRP_NAME"
+msgstr ""

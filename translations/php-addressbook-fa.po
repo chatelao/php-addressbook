@@ -3,487 +3,469 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-10-27 11:48+0000\n"
+"Last-Translator: chatelao <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-#:
+"X-Launchpad-Export-Date: 2012-10-27 11:56+0000\n"
+"X-Generator: Launchpad (build 16194)\n"
+
 msgid "LANGUAGE"
 msgstr "زبان"
 
-#:
 msgid "auto"
 msgstr "تنظیمات مرورگر (خودکار)"
 
-#:
 msgid "USER"
 msgstr "کاربر"
 
-#:
 msgid "PASSWORD"
 msgstr "رمز عبور"
 
-#:
 msgid "LOGIN"
 msgstr "ورود به سیستم"
 
-#:
 msgid "LOGOUT"
 msgstr "خروج"
 
-#:
 msgid "JANUARY"
 msgstr "ژانویه"
 
-#:
 msgid "FEBRUARY"
 msgstr "فوریه"
 
-#:
 msgid "MARCH"
 msgstr "مارچ"
 
-#:
 msgid "APRIL"
 msgstr "آپریل"
 
-#:
 msgid "MAY"
 msgstr "می"
 
-#:
 msgid "JUNE"
 msgstr "جون"
 
-#:
 msgid "JULY"
 msgstr "جولای"
 
-#:
 msgid "AUGUST"
 msgstr "آگوست"
 
-#:
 msgid "SEPTEMBER"
 msgstr "سپتامبر"
 
-#:
 msgid "OCTOBER"
 msgstr "اوکتبر"
 
-#:
 msgid "NOVEMBER"
 msgstr "نوامبر"
 
-#:
 msgid "DECEMBER"
 msgstr "دسامبر"
 
-#:
 msgid "ADDRESS_BOOK"
 msgstr "دفتر تلفن"
 
-#:
 msgid "FOR"
 msgstr "برای"
 
-#:
 msgid "SEARCH"
 msgstr "جستجو"
 
-#:
 msgid "HOME"
 msgstr "خانه"
 
-#:
 msgid "NEXT_BIRTHDAYS"
 msgstr "روز تولد بعدی"
 
-#:
 msgid "ADD_NEW"
 msgstr "مورد جدید"
 
-#:
 msgid "PRINT_ALL"
 msgstr "چاپ همه مقادیر"
 
-#:
 msgid "PRINT_PHONES"
 msgstr "فقط چاپ شماره‌ها"
 
-#:
 msgid "EXPORT_CSV"
 msgstr "خروجی سی اس وی"
 
-#:
 msgid "EXPORT"
 msgstr "صادرات"
 
-#:
 msgid "IMPORT"
 msgstr "واردات"
 
-#:
+msgid "MAP"
+msgstr ""
+
+msgid "MORE"
+msgstr ""
+
 msgid "GROUP"
 msgstr "گروه"
 
-#:
 msgid "GROUPS"
 msgstr "گروه‌ها"
 
-#:
 msgid "MANAGE_GROUPS"
 msgstr "مدیریت گروه‌ها"
 
-#:
 msgid "NEW_GROUP"
 msgstr "گروه جدید"
 
-#:
 msgid "DELETE_GROUPS"
 msgstr "حذف گروه(ها)"
 
-#:
 msgid "EDIT_GROUP"
 msgstr "ویرایش گروه"
 
-#:
 msgid "GROUP_NAME"
 msgstr "اسم گروه"
 
-#:
 msgid "GROUP_HEADER"
 msgstr "عنوان گروه"
 
-#:
 msgid "GROUP_FOOTER"
 msgstr "مقادیر گروه (توضیحات)"
 
-#:
 msgid "GROUP_PARENT"
 msgstr "گروه مرجع"
 
-#:
 msgid "SEARCH_FOR_ANY_TEXT"
 msgstr "جستجو برای هر مقدار"
 
-#:
 msgid "NUMBER_OF_RESULTS"
 msgstr "تعداد موارد"
 
-#:
 msgid "ALL"
 msgstr "همه"
 
-#:
 msgid "NONE"
 msgstr "هیچکدام"
 
-#:
 msgid "SELECT_ALL"
 msgstr "جستجوی همه موارد"
 
-#:
 msgid "REMOVE_FROM"
 msgstr "حذف از"
 
-#:
 msgid "MAIL_CLIENT"
 msgstr "برنامه E-mail"
 
-#:
 msgid "SEND_EMAIL"
 msgstr "ارسال E-mail"
 
-#:
 msgid "ADD_TO"
 msgstr "اضافه کردن به"
 
-#:
 msgid "DETAILS"
 msgstr "جزئیات"
 
-#:
 msgid "EDIT"
 msgstr "ویرایش"
 
-#:
 msgid "MODIFY"
 msgstr "تغییر"
 
-#:
 msgid "PRINT"
 msgstr "چاپ"
 
-#:
 msgid "EDIT_ADD_ENTRY"
 msgstr "ویرایش / ایجاد شماره جدید"
 
-#:
 msgid "GUESSED_HOMEPAGE"
 msgstr "خانه انتخابی"
 
-#:
 msgid "PREFERENCES"
 msgstr "تنظیمات شخصی"
 
-#:
+msgid "NAME_PREFIX"
+msgstr ""
+
 msgid "FIRSTNAME"
 msgstr "نام"
 
-#:
+msgid "MIDDLENAME"
+msgstr ""
+
 msgid "LASTNAME"
 msgstr "نام خانوادگی"
 
-#:
+msgid "NAME_SUFFIX"
+msgstr ""
+
+msgid "NICKNAME"
+msgstr ""
+
 msgid "COMPANY"
 msgstr "شرکت"
 
-#:
+msgid "DEPT"
+msgstr ""
+
+msgid "OCCUPATION"
+msgstr ""
+
+msgid "TITLES"
+msgstr ""
+
 msgid "ADDRESS"
 msgstr "آدرس"
 
-#:
+msgid "POB"
+msgstr ""
+
+msgid "APT"
+msgstr ""
+
+msgid "STREET"
+msgstr ""
+
+msgid "STATE"
+msgstr ""
+
+msgid "COUNTRY"
+msgstr ""
+
 msgid "TELEPHONE"
 msgstr "شماره تلفن"
 
-#:
 msgid "PHONE_HOME"
 msgstr "منزل"
 
-#:
 msgid "PHONE_MOBILE"
 msgstr "مبایل"
 
-#:
 msgid "PHONE_WORK"
 msgstr "شرکت"
 
-#:
 msgid "FAX"
 msgstr "فکس"
 
-#:
+msgid "PAGER"
+msgstr ""
+
 msgid "EMAIL"
 msgstr "پست الکترونیک"
 
-#:
 msgid "HOMEPAGE"
 msgstr "صفحه آغازه"
 
-#:
 msgid "ZIP"
 msgstr "کد پستی"
 
-#:
 msgid "CITY"
 msgstr "شهر"
 
-#:
 msgid "E_MAIL_HOME"
 msgstr "پست الکترونیک خانه"
 
-#:
 msgid "E_MAIL_OFFICE"
 msgstr "پست الکترونیک شرکت"
 
-#:
 msgid "2ND_ADDRESS"
 msgstr "آدرس دوم"
 
-#:
 msgid "2ND_PHONE"
 msgstr "شماره تلفن دوم"
 
-#:
 msgid "NOTES"
 msgstr "یادداشت ها"
 
-#:
+msgid "MISC"
+msgstr ""
+
 msgid "BIRTHDAY"
 msgstr "تاریخ تولد"
 
-#:
+msgid "ANNIVERSARY"
+msgstr ""
+
 msgid "CREATED"
 msgstr "ساخته"
 
-#:
 msgid "MODIFIED"
 msgstr "بار"
 
-#:
 msgid "UPDATE"
 msgstr "بروز رسانی"
 
-#:
 msgid "DELETE"
 msgstr "حذف"
 
-#:
 msgid "INVALID"
 msgstr "اشتباه"
 
-#:
 msgid "ENTER"
 msgstr "ورود"
 
-#:
 msgid "MEMBER_OF"
 msgstr "عضو"
 
-#:
 msgid "SECONDARY"
 msgstr "ثانوی"
 
-#:
+msgid "CREATE_ACCOUNT"
+msgstr ""
+
+msgid "FORGOT_PASSWORD"
+msgstr ""
+
 msgid "H:"
 msgstr "خ:"
 
-#:
 msgid "M:"
 msgstr "م:"
 
-#:
 msgid "W:"
 msgstr "ش:"
 
-#:
 msgid "F:"
 msgstr "ف :"
 
-#:
+msgid "P:"
+msgstr ""
+
 msgid "ar"
 msgstr "عربی"
 
-#:
 msgid "bg"
 msgstr "بلغاری"
 
-#:
+msgid "ca"
+msgstr ""
+
 msgid "cs"
 msgstr "چک"
 
-#:
 msgid "da"
 msgstr "دانمارکی"
 
-#:
 msgid "de"
 msgstr "آلمانی"
 
-#:
 msgid "el"
 msgstr "یونانی"
 
-#:
 msgid "en"
 msgstr "انگلیسی"
 
-#:
 msgid "es"
 msgstr "اسپانیایی"
 
-#:
 msgid "fa"
 msgstr "فارسی"
 
-#:
 msgid "fi"
 msgstr "فنلاندی"
 
-#:
 msgid "fr"
 msgstr "فرانسوی"
 
-#:
 msgid "he"
 msgstr "ابری"
 
-#:
 msgid "hi"
 msgstr "هندی"
 
-#:
 msgid "hu"
 msgstr "مجارستانی"
 
-#:
 msgid "it"
 msgstr "ایتالیایی"
 
-#:
 msgid "ja"
 msgstr "ژاپنی"
 
-#:
 msgid "ko"
 msgstr "کره‌ای"
 
-#:
 msgid "nl"
 msgstr "هلندی"
 
-#:
 msgid "pl"
 msgstr "هلندی"
 
-#:
 msgid "pt"
 msgstr "پرتقالی"
 
-#:
 msgid "rm"
 msgstr "رتو - رمانتیک"
 
-#:
 msgid "ru"
 msgstr "روسی"
 
-#:
 msgid "sl"
 msgstr "اسلوونیایی"
 
-#:
 msgid "sr"
 msgstr "صرب"
 
-#:
 msgid "sv"
 msgstr "سؤدی"
 
-#:
 msgid "th"
 msgstr "تای"
 
-#:
 msgid "tr"
 msgstr "ترکی"
 
-#:
 msgid "vi"
 msgstr "ویتنامی"
 
-#:
 msgid "zh"
 msgstr "چینی"
 
-#:
 msgid "DIR"
 msgstr "rl"
 
-#:
 msgid "UPDATED"
 msgstr ""
 
-#:
 msgid "TRANSLATOR"
 msgstr ""
 
+msgid "TITLE"
+msgstr ""
+
+msgid "MOBILE"
+msgstr ""
+
+msgid "WORK"
+msgstr ""
+
+msgid "FIRST_LAST"
+msgstr ""
+
+msgid "NEXT"
+msgstr ""
+
+msgid "PHOTO"
+msgstr ""
+
+msgid "ALL_PHONES"
+msgstr ""
+
+msgid "ALL_EMAILS"
+msgstr ""
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
+msgid "ua"
+msgstr ""
+
+msgid "LAST_FIRST"
+msgstr ""
+
+msgid "GRP_NAME"
+msgstr ""

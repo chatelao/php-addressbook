@@ -3,327 +3,469 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-10-27 11:48+0000\n"
+"Last-Translator: chatelao <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-#:
+"X-Launchpad-Export-Date: 2012-10-27 11:56+0000\n"
+"X-Generator: Launchpad (build 16194)\n"
+
 msgid "LANGUAGE"
 msgstr "jazyk"
 
-#:
 msgid "auto"
 msgstr "nastavení prohlížeče(automaticky)"
 
-#:
+msgid "USER"
+msgstr ""
+
+msgid "PASSWORD"
+msgstr ""
+
+msgid "LOGIN"
+msgstr ""
+
+msgid "LOGOUT"
+msgstr ""
+
 msgid "JANUARY"
 msgstr "Leden"
 
-#:
 msgid "FEBRUARY"
 msgstr "Únor"
 
-#:
 msgid "MARCH"
 msgstr "Březen"
 
-#:
 msgid "APRIL"
 msgstr "Duben"
 
-#:
 msgid "MAY"
 msgstr "Květen"
 
-#:
 msgid "JUNE"
 msgstr "Červenec"
 
-#:
 msgid "JULY"
 msgstr "Červen"
 
-#:
 msgid "AUGUST"
 msgstr "Srpen"
 
-#:
 msgid "SEPTEMBER"
 msgstr "Září"
 
-#:
 msgid "OCTOBER"
 msgstr "Říjen"
 
-#:
 msgid "NOVEMBER"
 msgstr "Listopad"
 
-#:
 msgid "DECEMBER"
 msgstr "Prosinec"
 
-#:
 msgid "ADDRESS_BOOK"
 msgstr "Adresář"
 
-#:
 msgid "FOR"
 msgstr "pro"
 
-#:
 msgid "SEARCH"
 msgstr "hledat"
 
-#:
 msgid "HOME"
 msgstr "domů"
 
-#:
 msgid "NEXT_BIRTHDAYS"
 msgstr "příští narozeniny"
 
-#:
 msgid "ADD_NEW"
 msgstr "přidat nový"
 
-#:
 msgid "PRINT_ALL"
 msgstr "tisknout všechny"
 
-#:
 msgid "PRINT_PHONES"
 msgstr "tisknout telefony"
 
-#:
 msgid "EXPORT_CSV"
 msgstr "export do csv"
 
-#:
+msgid "EXPORT"
+msgstr ""
+
+msgid "IMPORT"
+msgstr ""
+
+msgid "MAP"
+msgstr ""
+
+msgid "MORE"
+msgstr ""
+
+msgid "GROUP"
+msgstr ""
+
 msgid "GROUPS"
 msgstr "skupiny"
 
-#:
 msgid "MANAGE_GROUPS"
 msgstr "spravovat skupiny"
 
-#:
 msgid "NEW_GROUP"
 msgstr "nová skupina"
 
-#:
 msgid "DELETE_GROUPS"
 msgstr "smazat skupinu"
 
-#:
 msgid "EDIT_GROUP"
 msgstr "upravit skupinu"
 
-#:
 msgid "GROUP_NAME"
 msgstr "jméno skupiny"
 
-#:
 msgid "GROUP_HEADER"
 msgstr "Skupinová hlavička (Logo)"
 
-#:
 msgid "GROUP_FOOTER"
 msgstr "Skupinová patička (Komentář)"
 
-#:
+msgid "GROUP_PARENT"
+msgstr ""
+
 msgid "SEARCH_FOR_ANY_TEXT"
 msgstr "hledat jakýkoliv text"
 
-#:
 msgid "NUMBER_OF_RESULTS"
 msgstr "Počet výsledků"
 
-#:
 msgid "ALL"
 msgstr "Všichni"
 
-#:
 msgid "NONE"
 msgstr "Žádný"
 
-#:
 msgid "SELECT_ALL"
 msgstr "vybrat všechny"
 
-#:
 msgid "REMOVE_FROM"
 msgstr "odstranit z"
 
-#:
 msgid "MAIL_CLIENT"
 msgstr "emailový program"
 
-#:
 msgid "SEND_EMAIL"
 msgstr "Poslat e-mail"
 
-#:
 msgid "ADD_TO"
 msgstr "přidat k"
 
-#:
 msgid "DETAILS"
 msgstr "detaily"
 
-#:
 msgid "EDIT"
 msgstr "upravit"
 
-#:
 msgid "MODIFY"
 msgstr "změnit"
 
-#:
 msgid "PRINT"
 msgstr "tisknout"
 
-#:
 msgid "EDIT_ADD_ENTRY"
 msgstr "Upravit / přidat položku adresáře"
 
-#:
 msgid "GUESSED_HOMEPAGE"
 msgstr "Možná domovská stránka"
 
-#:
 msgid "PREFERENCES"
 msgstr "předvolby"
 
-#:
+msgid "NAME_PREFIX"
+msgstr ""
+
 msgid "FIRSTNAME"
 msgstr "jméno"
 
-#:
+msgid "MIDDLENAME"
+msgstr ""
+
 msgid "LASTNAME"
 msgstr "příjmení"
 
-#:
+msgid "NAME_SUFFIX"
+msgstr ""
+
+msgid "NICKNAME"
+msgstr ""
+
+msgid "COMPANY"
+msgstr ""
+
+msgid "DEPT"
+msgstr ""
+
+msgid "OCCUPATION"
+msgstr ""
+
+msgid "TITLES"
+msgstr ""
+
 msgid "ADDRESS"
 msgstr "adresa"
 
-#:
+msgid "POB"
+msgstr ""
+
+msgid "APT"
+msgstr ""
+
+msgid "STREET"
+msgstr ""
+
+msgid "STATE"
+msgstr ""
+
+msgid "COUNTRY"
+msgstr ""
+
 msgid "TELEPHONE"
 msgstr "telefon"
 
-#:
 msgid "PHONE_HOME"
 msgstr "soukromá"
 
-#:
 msgid "PHONE_MOBILE"
 msgstr "mobil"
 
-#:
 msgid "PHONE_WORK"
 msgstr "práce"
 
-#:
+msgid "FAX"
+msgstr ""
+
+msgid "PAGER"
+msgstr ""
+
 msgid "EMAIL"
 msgstr "e-mail"
 
-#:
+msgid "HOMEPAGE"
+msgstr ""
+
 msgid "ZIP"
 msgstr "PSČ"
 
-#:
 msgid "CITY"
 msgstr "město"
 
-#:
 msgid "E_MAIL_HOME"
 msgstr "e-mail soukromý"
 
-#:
 msgid "E_MAIL_OFFICE"
 msgstr "e-mail pracovní"
 
-#:
 msgid "2ND_ADDRESS"
 msgstr "druhá adresa"
 
-#:
 msgid "2ND_PHONE"
 msgstr "druhý telefon"
 
-#:
+msgid "NOTES"
+msgstr ""
+
+msgid "MISC"
+msgstr ""
+
 msgid "BIRTHDAY"
 msgstr "narozeniny"
 
-#:
+msgid "ANNIVERSARY"
+msgstr ""
+
+msgid "CREATED"
+msgstr ""
+
+msgid "MODIFIED"
+msgstr ""
+
 msgid "UPDATE"
 msgstr "upravit"
 
-#:
 msgid "DELETE"
 msgstr "smazat"
 
-#:
 msgid "INVALID"
 msgstr "neplatný"
 
-#:
 msgid "ENTER"
 msgstr "vložit"
 
-#:
 msgid "MEMBER_OF"
 msgstr "clen"
 
-#:
 msgid "SECONDARY"
 msgstr "Další"
 
-#:
+msgid "CREATE_ACCOUNT"
+msgstr ""
+
+msgid "FORGOT_PASSWORD"
+msgstr ""
+
 msgid "H:"
 msgstr "D:"
 
-#:
 msgid "M:"
 msgstr "M:"
 
-#:
 msgid "W:"
 msgstr "P:"
 
-#:
+msgid "F:"
+msgstr ""
+
+msgid "P:"
+msgstr ""
+
 msgid "ar"
 msgstr ""
 
-#:
+msgid "bg"
+msgstr ""
+
+msgid "ca"
+msgstr ""
+
 msgid "cs"
 msgstr "Česky"
 
-#:
+msgid "da"
+msgstr ""
+
 msgid "de"
 msgstr "Německy"
 
-#:
+msgid "el"
+msgstr ""
+
 msgid "en"
 msgstr "Anglický"
 
-#:
+msgid "es"
+msgstr ""
+
+msgid "fa"
+msgstr ""
+
+msgid "fi"
+msgstr ""
+
+msgid "fr"
+msgstr ""
+
 msgid "he"
 msgstr ""
 
-#:
 msgid "hi"
 msgstr ""
 
-#:
+msgid "hu"
+msgstr ""
+
+msgid "it"
+msgstr ""
+
+msgid "ja"
+msgstr ""
+
+msgid "ko"
+msgstr ""
+
+msgid "nl"
+msgstr ""
+
 msgid "pl"
 msgstr "czeski"
 
+msgid "pt"
+msgstr ""
+
+msgid "rm"
+msgstr ""
+
+msgid "ru"
+msgstr ""
+
+msgid "sl"
+msgstr ""
+
+msgid "sr"
+msgstr ""
+
+msgid "sv"
+msgstr ""
+
+msgid "th"
+msgstr ""
+
+msgid "tr"
+msgstr ""
+
+msgid "vi"
+msgstr ""
+
+msgid "zh"
+msgstr ""
+
+msgid "DIR"
+msgstr ""
+
+msgid "UPDATED"
+msgstr ""
+
+msgid "TRANSLATOR"
+msgstr ""
+
+msgid "TITLE"
+msgstr ""
+
+msgid "MOBILE"
+msgstr ""
+
+msgid "WORK"
+msgstr ""
+
+msgid "FIRST_LAST"
+msgstr ""
+
+msgid "NEXT"
+msgstr ""
+
+msgid "PHOTO"
+msgstr ""
+
+msgid "ALL_PHONES"
+msgstr ""
+
+msgid "ALL_EMAILS"
+msgstr ""
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
+msgid "ua"
+msgstr ""
+
+msgid "LAST_FIRST"
+msgstr ""
+
+msgid "GRP_NAME"
+msgstr ""

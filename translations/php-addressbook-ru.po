@@ -3,511 +3,469 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-10-27 11:47+0000\n"
+"Last-Translator: chatelao <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-#:
+"X-Launchpad-Export-Date: 2012-10-27 11:56+0000\n"
+"X-Generator: Launchpad (build 16194)\n"
+
 msgid "LANGUAGE"
 msgstr "язык"
 
-#:
 msgid "auto"
 msgstr "параметры браузера  (автоматически)"
 
-#:
 msgid "USER"
 msgstr "Пользователь"
 
-#:
 msgid "PASSWORD"
 msgstr "Пароль"
 
-#:
 msgid "LOGIN"
 msgstr "Войти"
 
-#:
 msgid "LOGOUT"
 msgstr "Выйти"
 
-#:
 msgid "JANUARY"
 msgstr "Январь"
 
-#:
 msgid "FEBRUARY"
 msgstr "Февраль"
 
-#:
 msgid "MARCH"
 msgstr "Март"
 
-#:
 msgid "APRIL"
 msgstr "Апрель"
 
-#:
 msgid "MAY"
 msgstr "Май"
 
-#:
 msgid "JUNE"
 msgstr "Июнь"
 
-#:
 msgid "JULY"
 msgstr "Июль"
 
-#:
 msgid "AUGUST"
 msgstr "Август"
 
-#:
 msgid "SEPTEMBER"
 msgstr "Сентябрь"
 
-#:
 msgid "OCTOBER"
 msgstr "Октябрь"
 
-#:
 msgid "NOVEMBER"
 msgstr "Ноябрь"
 
-#:
 msgid "DECEMBER"
 msgstr "Декабрь"
 
-#:
 msgid "ADDRESS_BOOK"
 msgstr "Адресная книга"
 
-#:
 msgid "FOR"
 msgstr "для"
 
-#:
 msgid "SEARCH"
 msgstr "Поиск"
 
-#:
 msgid "HOME"
 msgstr "Главная"
 
-#:
 msgid "NEXT_BIRTHDAYS"
 msgstr "Дни рождения"
 
-#:
 msgid "ADD_NEW"
 msgstr "Добавить контакт"
 
-#:
 msgid "PRINT_ALL"
 msgstr "Распечатать всё"
 
-#:
 msgid "PRINT_PHONES"
 msgstr "Распечатать номера телефонов"
 
-#:
 msgid "EXPORT_CSV"
 msgstr "CSV экспорт"
 
-#:
 msgid "EXPORT"
 msgstr "Экспорт"
 
-#:
 msgid "IMPORT"
 msgstr "Импорт"
 
-#:
+msgid "MAP"
+msgstr ""
+
+msgid "MORE"
+msgstr ""
+
 msgid "GROUP"
 msgstr "группа"
 
-#:
 msgid "GROUPS"
 msgstr "Группы"
 
-#:
 msgid "MANAGE_GROUPS"
 msgstr "Управление группами"
 
-#:
 msgid "NEW_GROUP"
 msgstr "Новая группа"
 
-#:
 msgid "DELETE_GROUPS"
 msgstr "Удалить группу (ы)"
 
-#:
 msgid "EDIT_GROUP"
 msgstr "Изменить группу"
 
-#:
 msgid "GROUP_NAME"
 msgstr "Имя группы"
 
-#:
 msgid "GROUP_HEADER"
 msgstr "Название группы (шапка)"
 
-#:
 msgid "GROUP_FOOTER"
 msgstr "Подпись группы (комментарий)"
 
-#:
 msgid "GROUP_PARENT"
 msgstr "Родительская группа"
 
-#:
 msgid "SEARCH_FOR_ANY_TEXT"
 msgstr "Поиск по тексту"
 
-#:
 msgid "NUMBER_OF_RESULTS"
 msgstr "Количество результатов"
 
-#:
 msgid "ALL"
 msgstr "все"
 
-#:
 msgid "NONE"
 msgstr "не выбрано"
 
-#:
 msgid "SELECT_ALL"
 msgstr "Выбрать все"
 
-#:
 msgid "REMOVE_FROM"
 msgstr "Удалить из"
 
-#:
 msgid "MAIL_CLIENT"
 msgstr "Почтовый клиент"
 
-#:
 msgid "SEND_EMAIL"
 msgstr "Отправить электронное письмо"
 
-#:
 msgid "ADD_TO"
-msgstr "Скопировать в "
+msgstr "Скопировать в"
 
-#:
 msgid "DETAILS"
 msgstr "Детально..."
 
-#:
 msgid "EDIT"
 msgstr "Изменить"
 
-#:
 msgid "MODIFY"
 msgstr "Изменить"
 
-#:
 msgid "PRINT"
 msgstr "Версия для печати"
 
-#:
 msgid "EDIT_ADD_ENTRY"
 msgstr "Изменить / добавить запись адресной книги"
 
-#:
 msgid "GUESSED_HOMEPAGE"
 msgstr "Предположительный сайт"
 
-#:
 msgid "PREFERENCES"
 msgstr "Предпочтения"
 
-#:
+msgid "NAME_PREFIX"
+msgstr ""
+
 msgid "FIRSTNAME"
 msgstr "Имя"
 
-#:
+msgid "MIDDLENAME"
+msgstr ""
+
 msgid "LASTNAME"
 msgstr "Фамилия"
 
-#:
+msgid "NAME_SUFFIX"
+msgstr ""
+
 msgid "NICKNAME"
 msgstr "Прозвище"
 
-#:
 msgid "COMPANY"
 msgstr "компания"
 
-#:
+msgid "DEPT"
+msgstr ""
+
+msgid "OCCUPATION"
+msgstr ""
+
+msgid "TITLES"
+msgstr ""
+
 msgid "ADDRESS"
 msgstr "Адрес"
 
-#:
+msgid "POB"
+msgstr ""
+
+msgid "APT"
+msgstr ""
+
+msgid "STREET"
+msgstr ""
+
+msgid "STATE"
+msgstr ""
+
+msgid "COUNTRY"
+msgstr ""
+
 msgid "TELEPHONE"
 msgstr "Домашний тел."
 
-#:
 msgid "PHONE_HOME"
 msgstr "домашний тел."
 
-#:
 msgid "PHONE_MOBILE"
 msgstr "мобильный тел."
 
-#:
 msgid "PHONE_WORK"
 msgstr "рабочий тел."
 
-#:
 msgid "FAX"
 msgstr "Факс"
 
-#:
-msgid "EMAIL"
-msgstr "e-mail "
+msgid "PAGER"
+msgstr ""
 
-#:
+msgid "EMAIL"
+msgstr "e-mail"
+
 msgid "HOMEPAGE"
 msgstr "Сайт"
 
-#:
 msgid "ZIP"
 msgstr "индекс"
 
-#:
 msgid "CITY"
 msgstr "город"
 
-#:
 msgid "E_MAIL_HOME"
 msgstr "электронный адрес (домашний)"
 
-#:
 msgid "E_MAIL_OFFICE"
 msgstr "электронный адрес (офисный)"
 
-#:
 msgid "2ND_ADDRESS"
 msgstr "второй адрес"
 
-#:
 msgid "2ND_PHONE"
 msgstr "второй телефон"
 
-#:
 msgid "NOTES"
 msgstr "Примечание"
 
-#:
+msgid "MISC"
+msgstr ""
+
 msgid "BIRTHDAY"
 msgstr "день рождения"
 
-#:
 msgid "ANNIVERSARY"
 msgstr "Годовщина"
 
-#:
 msgid "CREATED"
 msgstr "создано"
 
-#:
 msgid "MODIFIED"
 msgstr "Изменения"
 
-#:
 msgid "UPDATE"
 msgstr "обновить"
 
-#:
 msgid "DELETE"
 msgstr "удалить"
 
-#:
 msgid "INVALID"
 msgstr "недействительный"
 
-#:
 msgid "ENTER"
 msgstr "Сохранить"
 
-#:
 msgid "MEMBER_OF"
 msgstr "Состоит в группах"
 
-#:
 msgid "SECONDARY"
 msgstr "Дополнительная информация"
 
-#:
+msgid "CREATE_ACCOUNT"
+msgstr ""
+
+msgid "FORGOT_PASSWORD"
+msgstr ""
+
 msgid "H:"
 msgstr "Домашний телефон:"
 
-#:
 msgid "M:"
 msgstr "Мобильный телефон:"
 
-#:
 msgid "W:"
 msgstr "Рабочий телефон:"
 
-#:
 msgid "F:"
 msgstr "Факс:"
 
-#:
+msgid "P:"
+msgstr ""
+
 msgid "ar"
 msgstr "Арабский"
 
-#:
 msgid "bg"
 msgstr "Болгарский"
 
-#:
 msgid "ca"
 msgstr "Каталонии"
 
-#:
 msgid "cs"
 msgstr "Чешский"
 
-#:
 msgid "da"
 msgstr "Датский"
 
-#:
 msgid "de"
 msgstr "Немецкий"
 
-#:
 msgid "el"
 msgstr "Греческая"
 
-#:
 msgid "en"
 msgstr "Английский"
 
-#:
 msgid "es"
 msgstr "Испанский"
 
-#:
 msgid "fa"
 msgstr "Персидский"
 
-#:
 msgid "fi"
 msgstr "Финский"
 
-#:
 msgid "fr"
 msgstr "Французский"
 
-#:
 msgid "he"
 msgstr "Иврит"
 
-#:
 msgid "hi"
 msgstr "Хинди"
 
-#:
 msgid "hu"
 msgstr "Венгерский"
 
-#:
 msgid "it"
 msgstr "Итальянский"
 
-#:
 msgid "ja"
 msgstr "Японский"
 
-#:
 msgid "ko"
 msgstr "Корейский"
 
-#:
 msgid "nl"
 msgstr "Голландский"
 
-#:
 msgid "pl"
 msgstr "Польский"
 
-#:
 msgid "pt"
 msgstr "Португальский"
 
-#:
 msgid "rm"
 msgstr "Ретороманский"
 
-#:
 msgid "ru"
 msgstr "Русский"
 
-#:
 msgid "sl"
 msgstr "Словенский"
 
-#:
 msgid "sr"
 msgstr "Сербский"
 
-#:
 msgid "sv"
 msgstr "Шведский"
 
-#:
 msgid "th"
 msgstr "Тайский"
 
-#:
 msgid "tr"
 msgstr "Турецкий"
 
-#:
 msgid "vi"
 msgstr "Вьетнамский"
 
-#:
 msgid "zh"
 msgstr "Китайский"
 
-#:
 msgid "DIR"
 msgstr ""
 
-#:
 msgid "UPDATED"
 msgstr "Обновлено"
 
-#:
 msgid "TRANSLATOR"
 msgstr "Переводчик"
 
-#:
 msgid "TITLE"
 msgstr "Должность"
 
-#:
+msgid "MOBILE"
+msgstr ""
+
+msgid "WORK"
+msgstr ""
+
+msgid "FIRST_LAST"
+msgstr ""
+
+msgid "NEXT"
+msgstr ""
+
+msgid "PHOTO"
+msgstr ""
+
+msgid "ALL_PHONES"
+msgstr ""
+
+msgid "ALL_EMAILS"
+msgstr ""
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
 msgid "ua"
 msgstr "Украинский"
 
-#:
+msgid "LAST_FIRST"
+msgstr ""
+
 msgid "GRP_NAME"
 msgstr "Название группы"
-

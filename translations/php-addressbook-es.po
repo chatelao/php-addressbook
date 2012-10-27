@@ -3,491 +3,469 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-10-27 11:48+0000\n"
+"Last-Translator: chatelao <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-#:
+"X-Launchpad-Export-Date: 2012-10-27 11:56+0000\n"
+"X-Generator: Launchpad (build 16194)\n"
+
 msgid "LANGUAGE"
 msgstr "idioma"
 
-#:
 msgid "auto"
 msgstr "Ajustar navegador (automatico)"
 
-#:
 msgid "USER"
 msgstr "Usuario"
 
-#:
 msgid "PASSWORD"
 msgstr "Contraseña"
 
-#:
 msgid "LOGIN"
 msgstr "Inicio de sesión"
 
-#:
 msgid "LOGOUT"
 msgstr "Cerrar sesión"
 
-#:
 msgid "JANUARY"
 msgstr "Enero"
 
-#:
 msgid "FEBRUARY"
 msgstr "Febrero"
 
-#:
 msgid "MARCH"
 msgstr "Marzo"
 
-#:
 msgid "APRIL"
 msgstr "Abril"
 
-#:
 msgid "MAY"
 msgstr "Mayo"
 
-#:
 msgid "JUNE"
 msgstr "Junio"
 
-#:
 msgid "JULY"
 msgstr "Julio"
 
-#:
 msgid "AUGUST"
 msgstr "Agosto"
 
-#:
 msgid "SEPTEMBER"
 msgstr "Septiembre"
 
-#:
 msgid "OCTOBER"
 msgstr "Octubre"
 
-#:
 msgid "NOVEMBER"
 msgstr "Noviembre"
 
-#:
 msgid "DECEMBER"
 msgstr "Diciembre"
 
-#:
 msgid "ADDRESS_BOOK"
 msgstr "libreta de direcciones"
 
-#:
 msgid "FOR"
 msgstr "para"
 
-#:
 msgid "SEARCH"
 msgstr "búsqueda"
 
-#:
 msgid "HOME"
 msgstr "inicio"
 
-#:
 msgid "NEXT_BIRTHDAYS"
 msgstr "cumpleaños"
 
-#:
 msgid "ADD_NEW"
 msgstr "añadir"
 
-#:
 msgid "PRINT_ALL"
 msgstr "imprimir"
 
-#:
 msgid "PRINT_PHONES"
 msgstr "teléfonos"
 
-#:
 msgid "EXPORT_CSV"
 msgstr "exportar en CSV"
 
-#:
 msgid "EXPORT"
 msgstr "exportación"
 
-#:
 msgid "IMPORT"
 msgstr "importación"
 
-#:
+msgid "MAP"
+msgstr ""
+
+msgid "MORE"
+msgstr ""
+
 msgid "GROUP"
 msgstr "grupo"
 
-#:
 msgid "GROUPS"
 msgstr "grupos"
 
-#:
 msgid "MANAGE_GROUPS"
 msgstr "grupos"
 
-#:
 msgid "NEW_GROUP"
 msgstr "Añadir grupo"
 
-#:
 msgid "DELETE_GROUPS"
 msgstr "Borrar grupo(s)"
 
-#:
 msgid "EDIT_GROUP"
 msgstr "editar grupo"
 
-#:
 msgid "GROUP_NAME"
 msgstr "nombre del grupo"
 
-#:
 msgid "GROUP_HEADER"
 msgstr "Encabezado de grupo (Logo)"
 
-#:
 msgid "GROUP_FOOTER"
 msgstr "Pie de página de grupo (Comentarios)"
 
-#:
 msgid "GROUP_PARENT"
 msgstr "grupo de Padres"
 
-#:
 msgid "SEARCH_FOR_ANY_TEXT"
 msgstr "búsqueda de cualquier texto"
 
-#:
 msgid "NUMBER_OF_RESULTS"
 msgstr "Número de resultados"
 
-#:
 msgid "ALL"
 msgstr "todo"
 
-#:
 msgid "NONE"
 msgstr "ninguno"
 
-#:
 msgid "SELECT_ALL"
 msgstr "seleccionar todos"
 
-#:
 msgid "REMOVE_FROM"
 msgstr "eliminar de"
 
-#:
 msgid "MAIL_CLIENT"
 msgstr "cliente de correo"
 
-#:
 msgid "SEND_EMAIL"
 msgstr "Enviar correo electrónico"
 
-#:
 msgid "ADD_TO"
 msgstr "Añadir a"
 
-#:
 msgid "DETAILS"
 msgstr "detalles"
 
-#:
 msgid "EDIT"
 msgstr "editar"
 
-#:
 msgid "MODIFY"
 msgstr "modificar"
 
-#:
 msgid "PRINT"
 msgstr "Imprimir"
 
-#:
 msgid "EDIT_ADD_ENTRY"
 msgstr "Editar o añadir entrada en la libreta de direcciones"
 
-#:
 msgid "GUESSED_HOMEPAGE"
 msgstr "Página principal adivinada"
 
-#:
 msgid "PREFERENCES"
 msgstr "preferencias"
 
-#:
+msgid "NAME_PREFIX"
+msgstr ""
+
 msgid "FIRSTNAME"
 msgstr "Nombre"
 
-#:
+msgid "MIDDLENAME"
+msgstr ""
+
 msgid "LASTNAME"
 msgstr "apellido"
 
-#:
+msgid "NAME_SUFFIX"
+msgstr ""
+
+msgid "NICKNAME"
+msgstr ""
+
 msgid "COMPANY"
 msgstr "compañía"
 
-#:
+msgid "DEPT"
+msgstr ""
+
+msgid "OCCUPATION"
+msgstr ""
+
+msgid "TITLES"
+msgstr ""
+
 msgid "ADDRESS"
 msgstr "dirección"
 
-#:
+msgid "POB"
+msgstr ""
+
+msgid "APT"
+msgstr ""
+
+msgid "STREET"
+msgstr ""
+
+msgid "STATE"
+msgstr ""
+
+msgid "COUNTRY"
+msgstr ""
+
 msgid "TELEPHONE"
 msgstr "teléfono"
 
-#:
 msgid "PHONE_HOME"
 msgstr "casa"
 
-#:
 msgid "PHONE_MOBILE"
 msgstr "celular"
 
-#:
 msgid "PHONE_WORK"
 msgstr "trabajo"
 
-#:
 msgid "FAX"
 msgstr "Fax"
 
-#:
+msgid "PAGER"
+msgstr ""
+
 msgid "EMAIL"
 msgstr "Correo electrónico"
 
-#:
 msgid "HOMEPAGE"
 msgstr "Página Web"
 
-#:
 msgid "ZIP"
 msgstr "Código Postal"
 
-#:
 msgid "CITY"
 msgstr "ciudad"
 
-#:
 msgid "E_MAIL_HOME"
 msgstr "e-mail personal"
 
-#:
 msgid "E_MAIL_OFFICE"
 msgstr "e-mail de oficina"
 
-#:
 msgid "2ND_ADDRESS"
 msgstr "segunda dirección"
 
-#:
 msgid "2ND_PHONE"
 msgstr "segundo teléfono"
 
-#:
 msgid "NOTES"
 msgstr "notas"
 
-#:
+msgid "MISC"
+msgstr ""
+
 msgid "BIRTHDAY"
 msgstr "cumpleaños"
 
-#:
+msgid "ANNIVERSARY"
+msgstr ""
+
 msgid "CREATED"
 msgstr "creado"
 
-#:
 msgid "MODIFIED"
 msgstr "modificado"
 
-#:
 msgid "UPDATE"
 msgstr "actualizar"
 
-#:
 msgid "DELETE"
 msgstr "borrar"
 
-#:
 msgid "INVALID"
 msgstr "inválido"
 
-#:
 msgid "ENTER"
 msgstr "guardar"
 
-#:
 msgid "MEMBER_OF"
 msgstr "miembro de"
 
-#:
 msgid "SECONDARY"
 msgstr "Contacto Secundario"
 
-#:
+msgid "CREATE_ACCOUNT"
+msgstr ""
+
+msgid "FORGOT_PASSWORD"
+msgstr ""
+
 msgid "H:"
 msgstr "Casa:"
 
-#:
 msgid "M:"
 msgstr "Cel:"
 
-#:
 msgid "W:"
 msgstr "Oficina:"
 
-#:
 msgid "F:"
 msgstr "F:"
 
-#:
+msgid "P:"
+msgstr ""
+
 msgid "ar"
 msgstr "Árabe"
 
-#:
 msgid "bg"
 msgstr "Búlgaro"
 
-#:
 msgid "ca"
 msgstr "Cataluña"
 
-#:
 msgid "cs"
 msgstr "Checo"
 
-#:
 msgid "da"
 msgstr "Danés"
 
-#:
 msgid "de"
 msgstr "Alemán"
 
-#:
 msgid "el"
 msgstr "Griego"
 
-#:
 msgid "en"
 msgstr "Inglés"
 
-#:
 msgid "es"
 msgstr "Español"
 
-#:
 msgid "fa"
 msgstr "Persa"
 
-#:
 msgid "fi"
 msgstr "Finlandés"
 
-#:
 msgid "fr"
 msgstr "Francés"
 
-#:
 msgid "he"
 msgstr "Hebreo"
 
-#:
 msgid "hi"
 msgstr "Hindi"
 
-#:
 msgid "hu"
 msgstr "Húngaro"
 
-#:
 msgid "it"
 msgstr "Italiano"
 
-#:
 msgid "ja"
 msgstr "Japonés"
 
-#:
 msgid "ko"
 msgstr "Coreano"
 
-#:
 msgid "nl"
 msgstr "Holandés"
 
-#:
 msgid "pl"
 msgstr "Polaco"
 
-#:
 msgid "pt"
 msgstr "Portugués"
 
-#:
 msgid "rm"
 msgstr "Retorrománico"
 
-#:
 msgid "ru"
 msgstr "Ruso"
 
-#:
 msgid "sl"
 msgstr "Esloveno"
 
-#:
 msgid "sr"
 msgstr "Serbio"
 
-#:
 msgid "sv"
 msgstr "Sueco"
 
-#:
 msgid "th"
 msgstr "Tailandés"
 
-#:
 msgid "tr"
 msgstr "Turco"
 
-#:
 msgid "vi"
 msgstr "Vietnamita"
 
-#:
 msgid "zh"
 msgstr "Chino"
 
-#:
 msgid "DIR"
 msgstr ""
 
-#:
 msgid "UPDATED"
 msgstr "Actualizado"
 
-#:
 msgid "TRANSLATOR"
 msgstr ""
 
+msgid "TITLE"
+msgstr ""
+
+msgid "MOBILE"
+msgstr ""
+
+msgid "WORK"
+msgstr ""
+
+msgid "FIRST_LAST"
+msgstr ""
+
+msgid "NEXT"
+msgstr ""
+
+msgid "PHOTO"
+msgstr ""
+
+msgid "ALL_PHONES"
+msgstr ""
+
+msgid "ALL_EMAILS"
+msgstr ""
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
+msgid "ua"
+msgstr ""
+
+msgid "LAST_FIRST"
+msgstr ""
+
+msgid "GRP_NAME"
+msgstr ""

@@ -3,491 +3,469 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-10-27 11:47+0000\n"
+"Last-Translator: chatelao <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-#:
+"X-Launchpad-Export-Date: 2012-10-27 11:56+0000\n"
+"X-Generator: Launchpad (build 16194)\n"
+
 msgid "LANGUAGE"
 msgstr "jezik"
 
-#:
 msgid "auto"
 msgstr "podešavanja browsera (automatsko)"
 
-#:
 msgid "USER"
 msgstr "Korisničko ime"
 
-#:
 msgid "PASSWORD"
 msgstr "Lozinka"
 
-#:
 msgid "LOGIN"
 msgstr "Prijava"
 
-#:
 msgid "LOGOUT"
 msgstr "Odjava"
 
-#:
 msgid "JANUARY"
 msgstr "Januar"
 
-#:
 msgid "FEBRUARY"
 msgstr "Februar"
 
-#:
 msgid "MARCH"
 msgstr "Mart"
 
-#:
 msgid "APRIL"
 msgstr "April"
 
-#:
 msgid "MAY"
 msgstr "Maj"
 
-#:
 msgid "JUNE"
 msgstr "Jun"
 
-#:
 msgid "JULY"
 msgstr "Jul"
 
-#:
 msgid "AUGUST"
 msgstr "Avgust"
 
-#:
 msgid "SEPTEMBER"
 msgstr "Septembar"
 
-#:
 msgid "OCTOBER"
 msgstr "Oktobar"
 
-#:
 msgid "NOVEMBER"
 msgstr "Novembar"
 
-#:
 msgid "DECEMBER"
 msgstr "Decembar"
 
-#:
 msgid "ADDRESS_BOOK"
 msgstr "adresar"
 
-#:
 msgid "FOR"
 msgstr "za"
 
-#:
 msgid "SEARCH"
 msgstr "pretraga"
 
-#:
 msgid "HOME"
 msgstr "Početak"
 
-#:
 msgid "NEXT_BIRTHDAYS"
 msgstr "Predstojeći rođendani"
 
-#:
 msgid "ADD_NEW"
 msgstr "Dodaj stavku"
 
-#:
 msgid "PRINT_ALL"
 msgstr "Štampaj sve"
 
-#:
 msgid "PRINT_PHONES"
 msgstr "Štampaj telefone"
 
-#:
 msgid "EXPORT_CSV"
 msgstr "Eksportuj csv"
 
-#:
 msgid "EXPORT"
 msgstr "izvoz"
 
-#:
 msgid "IMPORT"
 msgstr "uvoz"
 
-#:
+msgid "MAP"
+msgstr ""
+
+msgid "MORE"
+msgstr ""
+
 msgid "GROUP"
 msgstr "grupa"
 
-#:
 msgid "GROUPS"
 msgstr "Grupe"
 
-#:
 msgid "MANAGE_GROUPS"
 msgstr "uredi grupe"
 
-#:
 msgid "NEW_GROUP"
 msgstr "nova grupa"
 
-#:
 msgid "DELETE_GROUPS"
 msgstr "briši grup(u/e)"
 
-#:
 msgid "EDIT_GROUP"
 msgstr "izmeni grupu"
 
-#:
 msgid "GROUP_NAME"
 msgstr "ime grupe"
 
-#:
 msgid "GROUP_HEADER"
 msgstr "Zaglavlje grupe (Logo)"
 
-#:
 msgid "GROUP_FOOTER"
 msgstr "Fusnota grupe (Komentar)"
 
-#:
 msgid "GROUP_PARENT"
 msgstr "Roditelj grupa"
 
-#:
 msgid "SEARCH_FOR_ANY_TEXT"
 msgstr "traži bilo koji tekst"
 
-#:
 msgid "NUMBER_OF_RESULTS"
 msgstr "Broj rezultata"
 
-#:
 msgid "ALL"
 msgstr "sve"
 
-#:
 msgid "NONE"
 msgstr "nijedna"
 
-#:
 msgid "SELECT_ALL"
 msgstr "izaberi sve"
 
-#:
 msgid "REMOVE_FROM"
 msgstr "ukloni iz"
 
-#:
 msgid "MAIL_CLIENT"
 msgstr "mail klijent"
 
-#:
 msgid "SEND_EMAIL"
 msgstr "Pošalji e-mail"
 
-#:
 msgid "ADD_TO"
 msgstr "dodaj u"
 
-#:
 msgid "DETAILS"
 msgstr "detalji"
 
-#:
 msgid "EDIT"
 msgstr "izmeni"
 
-#:
 msgid "MODIFY"
 msgstr "modifikuj"
 
-#:
 msgid "PRINT"
 msgstr "štampaj"
 
-#:
 msgid "EDIT_ADD_ENTRY"
 msgstr "Izmeni / dodaj stavku u adresar"
 
-#:
 msgid "GUESSED_HOMEPAGE"
 msgstr "Pretpostavljena web stranica"
 
-#:
 msgid "PREFERENCES"
 msgstr "lična podešavanja"
 
-#:
+msgid "NAME_PREFIX"
+msgstr ""
+
 msgid "FIRSTNAME"
 msgstr "ime"
 
-#:
+msgid "MIDDLENAME"
+msgstr ""
+
 msgid "LASTNAME"
 msgstr "prezime"
 
-#:
+msgid "NAME_SUFFIX"
+msgstr ""
+
+msgid "NICKNAME"
+msgstr ""
+
 msgid "COMPANY"
 msgstr "firma"
 
-#:
+msgid "DEPT"
+msgstr ""
+
+msgid "OCCUPATION"
+msgstr ""
+
+msgid "TITLES"
+msgstr ""
+
 msgid "ADDRESS"
 msgstr "adresa"
 
-#:
+msgid "POB"
+msgstr ""
+
+msgid "APT"
+msgstr ""
+
+msgid "STREET"
+msgstr ""
+
+msgid "STATE"
+msgstr ""
+
+msgid "COUNTRY"
+msgstr ""
+
 msgid "TELEPHONE"
 msgstr "telefon"
 
-#:
 msgid "PHONE_HOME"
 msgstr "kućni telefon"
 
-#:
 msgid "PHONE_MOBILE"
 msgstr "Mobilni"
 
-#:
 msgid "PHONE_WORK"
 msgstr "na poslu"
 
-#:
 msgid "FAX"
 msgstr "faks"
 
-#:
+msgid "PAGER"
+msgstr ""
+
 msgid "EMAIL"
 msgstr "e-mail"
 
-#:
 msgid "HOMEPAGE"
 msgstr "Web stranica"
 
-#:
 msgid "ZIP"
 msgstr "Poštanski broj"
 
-#:
 msgid "CITY"
 msgstr "mesto"
 
-#:
 msgid "E_MAIL_HOME"
 msgstr "e-mail privatni"
 
-#:
 msgid "E_MAIL_OFFICE"
 msgstr "e-mail službeni"
 
-#:
 msgid "2ND_ADDRESS"
 msgstr "druga adresa"
 
-#:
 msgid "2ND_PHONE"
 msgstr "drugi telefon"
 
-#:
 msgid "NOTES"
 msgstr "napomene"
 
-#:
+msgid "MISC"
+msgstr ""
+
 msgid "BIRTHDAY"
 msgstr "rođendan"
 
-#:
+msgid "ANNIVERSARY"
+msgstr ""
+
 msgid "CREATED"
 msgstr "kreirano"
 
-#:
 msgid "MODIFIED"
 msgstr "modifikovano"
 
-#:
 msgid "UPDATE"
 msgstr "ažuriraj"
 
-#:
 msgid "DELETE"
 msgstr "briši"
 
-#:
 msgid "INVALID"
 msgstr "nevažeće"
 
-#:
 msgid "ENTER"
 msgstr "unesi"
 
-#:
 msgid "MEMBER_OF"
 msgstr "član grupe"
 
-#:
 msgid "SECONDARY"
 msgstr "Sekundarni podaci"
 
-#:
+msgid "CREATE_ACCOUNT"
+msgstr ""
+
+msgid "FORGOT_PASSWORD"
+msgstr ""
+
 msgid "H:"
 msgstr "K:"
 
-#:
 msgid "M:"
 msgstr "M:"
 
-#:
 msgid "W:"
 msgstr "P:"
 
-#:
 msgid "F:"
 msgstr "F:"
 
-#:
+msgid "P:"
+msgstr ""
+
 msgid "ar"
 msgstr "Arapski"
 
-#:
 msgid "bg"
 msgstr "Bugarski"
 
-#:
 msgid "ca"
 msgstr "Katalonski"
 
-#:
 msgid "cs"
 msgstr "Češki"
 
-#:
 msgid "da"
 msgstr "Danski"
 
-#:
 msgid "de"
 msgstr "Nemački"
 
-#:
 msgid "el"
 msgstr "Grčki"
 
-#:
 msgid "en"
 msgstr "Engleski"
 
-#:
 msgid "es"
 msgstr "Španski"
 
-#:
 msgid "fa"
 msgstr "PersiJski"
 
-#:
 msgid "fi"
 msgstr "Finski"
 
-#:
 msgid "fr"
 msgstr "Francuski"
 
-#:
 msgid "he"
 msgstr "Hebrejski"
 
-#:
 msgid "hi"
 msgstr "Hindu"
 
-#:
 msgid "hu"
 msgstr "Mađarski"
 
-#:
 msgid "it"
 msgstr "Italijanski"
 
-#:
 msgid "ja"
 msgstr "Japanski"
 
-#:
 msgid "ko"
 msgstr "Korejski"
 
-#:
 msgid "nl"
 msgstr "Holandski"
 
-#:
 msgid "pl"
 msgstr "Poljski"
 
-#:
 msgid "pt"
 msgstr "Portugalski"
 
-#:
 msgid "rm"
 msgstr "Rhaeto-Romance"
 
-#:
 msgid "ru"
 msgstr "Ruski"
 
-#:
 msgid "sl"
 msgstr "Slovenački"
 
-#:
 msgid "sr"
 msgstr "Srpski"
 
-#:
 msgid "sv"
 msgstr "Švedski"
 
-#:
 msgid "th"
 msgstr "Tai"
 
-#:
 msgid "tr"
 msgstr "Turski"
 
-#:
 msgid "vi"
 msgstr "Vijetnamski"
 
-#:
 msgid "zh"
 msgstr "Kineski"
 
-#:
 msgid "DIR"
 msgstr ""
 
-#:
 msgid "UPDATED"
 msgstr ""
 
-#:
 msgid "TRANSLATOR"
 msgstr ""
 
+msgid "TITLE"
+msgstr ""
+
+msgid "MOBILE"
+msgstr ""
+
+msgid "WORK"
+msgstr ""
+
+msgid "FIRST_LAST"
+msgstr ""
+
+msgid "NEXT"
+msgstr ""
+
+msgid "PHOTO"
+msgstr ""
+
+msgid "ALL_PHONES"
+msgstr ""
+
+msgid "ALL_EMAILS"
+msgstr ""
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
+msgid "ua"
+msgstr ""
+
+msgid "LAST_FIRST"
+msgstr ""
+
+msgid "GRP_NAME"
+msgstr ""

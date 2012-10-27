@@ -3,491 +3,469 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-10-27 11:46+0000\n"
+"Last-Translator: chatelao <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-#:
+"X-Launchpad-Export-Date: 2012-10-27 11:56+0000\n"
+"X-Generator: Launchpad (build 16194)\n"
+
 msgid "LANGUAGE"
 msgstr "言語"
 
-#:
 msgid "auto"
 msgstr "ブラウザー設定 (自動)"
 
-#:
 msgid "USER"
 msgstr "ユーザー"
 
-#:
 msgid "PASSWORD"
 msgstr "パスワード"
 
-#:
 msgid "LOGIN"
 msgstr "ログイン"
 
-#:
 msgid "LOGOUT"
 msgstr "ログアウト"
 
-#:
 msgid "JANUARY"
 msgstr "1 月"
 
-#:
 msgid "FEBRUARY"
 msgstr "2 月"
 
-#:
 msgid "MARCH"
 msgstr "3 月"
 
-#:
 msgid "APRIL"
 msgstr "4 月"
 
-#:
 msgid "MAY"
 msgstr "5 月"
 
-#:
 msgid "JUNE"
 msgstr "6 月"
 
-#:
 msgid "JULY"
 msgstr "7 月"
 
-#:
 msgid "AUGUST"
 msgstr "8 月"
 
-#:
 msgid "SEPTEMBER"
 msgstr "9 月"
 
-#:
 msgid "OCTOBER"
 msgstr "10 月"
 
-#:
 msgid "NOVEMBER"
 msgstr "11 月"
 
-#:
 msgid "DECEMBER"
 msgstr "12 月"
 
-#:
 msgid "ADDRESS_BOOK"
 msgstr "アドレス帳"
 
-#:
 msgid "FOR"
 msgstr "for"
 
-#:
 msgid "SEARCH"
 msgstr "検索"
 
-#:
 msgid "HOME"
 msgstr "ホーム"
 
-#:
 msgid "NEXT_BIRTHDAYS"
 msgstr "次の誕生日"
 
-#:
 msgid "ADD_NEW"
 msgstr "新規追加"
 
-#:
 msgid "PRINT_ALL"
 msgstr "すべて印刷"
 
-#:
 msgid "PRINT_PHONES"
 msgstr "電話番号の印刷"
 
-#:
 msgid "EXPORT_CSV"
 msgstr "CSV のエクスポート"
 
-#:
 msgid "EXPORT"
 msgstr "輸出"
 
-#:
 msgid "IMPORT"
 msgstr "インポート"
 
-#:
+msgid "MAP"
+msgstr ""
+
+msgid "MORE"
+msgstr ""
+
 msgid "GROUP"
 msgstr "グループ"
 
-#:
 msgid "GROUPS"
 msgstr "グループ"
 
-#:
 msgid "MANAGE_GROUPS"
 msgstr "グループ"
 
-#:
 msgid "NEW_GROUP"
 msgstr "新規グループ"
 
-#:
 msgid "DELETE_GROUPS"
 msgstr "グループの削除"
 
-#:
 msgid "EDIT_GROUP"
 msgstr "グループの編集"
 
-#:
 msgid "GROUP_NAME"
 msgstr "グループ名"
 
-#:
 msgid "GROUP_HEADER"
 msgstr "グループ ヘッダー (ロゴ)"
 
-#:
 msgid "GROUP_FOOTER"
 msgstr "グループ フッター (コメント)"
 
-#:
 msgid "GROUP_PARENT"
 msgstr "親グループ"
 
-#:
 msgid "SEARCH_FOR_ANY_TEXT"
 msgstr "テキスト検索"
 
-#:
 msgid "NUMBER_OF_RESULTS"
 msgstr "検索の結果"
 
-#:
 msgid "ALL"
 msgstr "すべて"
 
-#:
 msgid "NONE"
 msgstr "なし"
 
-#:
 msgid "SELECT_ALL"
 msgstr "すべて選択"
 
-#:
 msgid "REMOVE_FROM"
 msgstr "remove from"
 
-#:
 msgid "MAIL_CLIENT"
 msgstr "メール クライアント"
 
-#:
 msgid "SEND_EMAIL"
 msgstr "電子メールの送信"
 
-#:
 msgid "ADD_TO"
 msgstr "add to"
 
-#:
 msgid "DETAILS"
 msgstr "詳細"
 
-#:
 msgid "EDIT"
 msgstr "編集"
 
-#:
 msgid "MODIFY"
 msgstr "修正"
 
-#:
 msgid "PRINT"
 msgstr "印刷"
 
-#:
 msgid "EDIT_ADD_ENTRY"
 msgstr "アドレス帳のエントリー 追加 / 編集"
 
-#:
 msgid "GUESSED_HOMEPAGE"
 msgstr "Guessed homepage"
 
-#:
 msgid "PREFERENCES"
 msgstr "ぷリファレンス"
 
-#:
+msgid "NAME_PREFIX"
+msgstr ""
+
 msgid "FIRSTNAME"
 msgstr "名前"
 
-#:
+msgid "MIDDLENAME"
+msgstr ""
+
 msgid "LASTNAME"
 msgstr "苗字"
 
-#:
+msgid "NAME_SUFFIX"
+msgstr ""
+
+msgid "NICKNAME"
+msgstr ""
+
 msgid "COMPANY"
 msgstr "企業名"
 
-#:
+msgid "DEPT"
+msgstr ""
+
+msgid "OCCUPATION"
+msgstr ""
+
+msgid "TITLES"
+msgstr ""
+
 msgid "ADDRESS"
 msgstr "住所"
 
-#:
+msgid "POB"
+msgstr ""
+
+msgid "APT"
+msgstr ""
+
+msgid "STREET"
+msgstr ""
+
+msgid "STATE"
+msgstr ""
+
+msgid "COUNTRY"
+msgstr ""
+
 msgid "TELEPHONE"
 msgstr "電話番号"
 
-#:
 msgid "PHONE_HOME"
 msgstr "自宅"
 
-#:
 msgid "PHONE_MOBILE"
 msgstr "モバイル"
 
-#:
 msgid "PHONE_WORK"
 msgstr "仕事"
 
-#:
 msgid "FAX"
 msgstr "fax"
 
-#:
+msgid "PAGER"
+msgstr ""
+
 msgid "EMAIL"
 msgstr "電子メール"
 
-#:
 msgid "HOMEPAGE"
 msgstr "ホームページ"
 
-#:
 msgid "ZIP"
 msgstr "ZIP"
 
-#:
 msgid "CITY"
 msgstr "都市"
 
-#:
 msgid "E_MAIL_HOME"
 msgstr "自宅の電子メール"
 
-#:
 msgid "E_MAIL_OFFICE"
 msgstr "オフィスの電子メール"
 
-#:
 msgid "2ND_ADDRESS"
 msgstr "2 つ目の住所"
 
-#:
 msgid "2ND_PHONE"
 msgstr "2 つ目の電話"
 
-#:
 msgid "NOTES"
 msgstr "注釈"
 
-#:
+msgid "MISC"
+msgstr ""
+
 msgid "BIRTHDAY"
 msgstr "誕生日"
 
-#:
+msgid "ANNIVERSARY"
+msgstr ""
+
 msgid "CREATED"
 msgstr "created"
 
-#:
 msgid "MODIFIED"
 msgstr "modified"
 
-#:
 msgid "UPDATE"
 msgstr "更新"
 
-#:
 msgid "DELETE"
 msgstr "削除"
 
-#:
 msgid "INVALID"
 msgstr "無効"
 
-#:
 msgid "ENTER"
 msgstr "enter"
 
-#:
 msgid "MEMBER_OF"
 msgstr "member of"
 
-#:
 msgid "SECONDARY"
 msgstr "Secondary"
 
-#:
+msgid "CREATE_ACCOUNT"
+msgstr ""
+
+msgid "FORGOT_PASSWORD"
+msgstr ""
+
 msgid "H:"
 msgstr "H:"
 
-#:
 msgid "M:"
 msgstr "M:"
 
-#:
 msgid "W:"
 msgstr "W:"
 
-#:
 msgid "F:"
 msgstr "F:"
 
-#:
+msgid "P:"
+msgstr ""
+
 msgid "ar"
 msgstr "アラビア語"
 
-#:
 msgid "bg"
 msgstr "ブルガリア語"
 
-#:
 msgid "ca"
 msgstr "カタロニア語"
 
-#:
 msgid "cs"
 msgstr "チェコ語"
 
-#:
 msgid "da"
 msgstr "デンマーク語"
 
-#:
 msgid "de"
 msgstr "ドイツ語"
 
-#:
 msgid "el"
 msgstr "ギリシャ語"
 
-#:
 msgid "en"
 msgstr "英語"
 
-#:
 msgid "es"
 msgstr "スペイン語"
 
-#:
 msgid "fa"
 msgstr "ペルシア語"
 
-#:
 msgid "fi"
 msgstr "フィンランド語"
 
-#:
 msgid "fr"
 msgstr "フランス語"
 
-#:
 msgid "he"
 msgstr "ヘブライ語"
 
-#:
 msgid "hi"
 msgstr "ヒンディー語"
 
-#:
 msgid "hu"
 msgstr "ハンガリー語"
 
-#:
 msgid "it"
 msgstr "イタリア語"
 
-#:
 msgid "ja"
 msgstr "日本語"
 
-#:
 msgid "ko"
 msgstr "韓国語"
 
-#:
 msgid "nl"
 msgstr "オランダ語"
 
-#:
 msgid "pl"
 msgstr "ポーランド語"
 
-#:
 msgid "pt"
 msgstr "ポルトガル語"
 
-#:
 msgid "rm"
 msgstr "レトロマン語"
 
-#:
 msgid "ru"
 msgstr "ロシア語"
 
-#:
 msgid "sl"
 msgstr "スロベニア"
 
-#:
 msgid "sr"
 msgstr "セルビア語"
 
-#:
 msgid "sv"
 msgstr "スウェーデン語"
 
-#:
 msgid "th"
 msgstr "タイ語"
 
-#:
 msgid "tr"
 msgstr "トルコ語"
 
-#:
 msgid "vi"
 msgstr "ベトナム人"
 
-#:
 msgid "zh"
 msgstr "中国語"
 
-#:
 msgid "DIR"
 msgstr ""
 
-#:
 msgid "UPDATED"
 msgstr ""
 
-#:
 msgid "TRANSLATOR"
-msgstr "Tadashi Jokagi "
+msgstr "Tadashi Jokagi"
 
+msgid "TITLE"
+msgstr ""
+
+msgid "MOBILE"
+msgstr ""
+
+msgid "WORK"
+msgstr ""
+
+msgid "FIRST_LAST"
+msgstr ""
+
+msgid "NEXT"
+msgstr ""
+
+msgid "PHOTO"
+msgstr ""
+
+msgid "ALL_PHONES"
+msgstr ""
+
+msgid "ALL_EMAILS"
+msgstr ""
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
+msgid "ua"
+msgstr ""
+
+msgid "LAST_FIRST"
+msgstr ""
+
+msgid "GRP_NAME"
+msgstr ""
