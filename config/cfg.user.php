@@ -24,7 +24,7 @@
   //
   // == User table in database ==
   // - Excludes the table_prefix!
-  $usertable = "user";
+  $usertable = "users";
 
   // == List of IP-Users ==
   //

@@ -26,7 +26,7 @@
   $has_620 = false;
   $single_address = false;
 
-  $addresses = new Addresses($searchstring, $alphabet);
+  $addresses = Addresses::withSearchString($searchstring, $alphabet);
   $result = $addresses->getResults();
 
   //  foreach($addresses as $address) {

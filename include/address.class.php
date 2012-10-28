@@ -118,7 +118,7 @@ function updateAddress($addr, $keep_photo = true) {
 
   global $keep_history, $domain_id, $base_from_where, $table, $table_grp_adr, $table_groups;
 
-	$addresses = new Addresses($addr['id']);
+	$addresses = Addresses::withID($addr['id']);
 	$resultsnumber = $addresses->count();
 
 	$homepage = str_replace('http://', '', $addr['homepage']);
@@ -321,13 +321,17 @@ class Addresses {
      	return $replace." LIKE CONCAT('%',".$like.",'%')";    	
     }
 
-    function __construct($searchstring, $alphabet = "") {
+    protected function loadBy($load_type, $searchstring, $alphabet = "") {
 
 	    global $base_from_where, $table;
 
      	$sql = "SELECT DISTINCT $table.* FROM $base_from_where";
 
-      if ($searchstring) {
+      if($load_type == 'id') {
+
+	 	    $sql .= " AND $table.id='$searchstring'";
+
+      } elseif ($searchstring) {
 
           $searchwords = explode(" ", $searchstring);
 
@@ -370,6 +374,18 @@ class Addresses {
       }
       //*/
       $this->result = mysql_query($sql);
+    }
+
+    public static function withSearchString($searchstring, $alphabet = "") {
+    	$instance = new self();
+    	$instance->loadBy($searchstring, $alphabet);
+    	return $instance;
+    }
+
+    public static function withID( $id ) {
+    	$instance = new self();
+    	$instance->loadBy('id', $id );
+    	return $instance;
     }
 
     public function nextAddress() {
