@@ -2,23 +2,25 @@
   	<body>
   		<div id="container">
   			<div id="top"></div>
-        <div id="header"><a href="."><img width="340" height="75" src="title_x2.png" title="%ADDRESS_BOOK%" alt="%ADDRESS_BOOK%" /></a></div>
+        <div id="header"><a href="."><img width="340" height="75" src="title_x2.png" title="<?= ucfmsg('ADDRESS_BOOK') ?>" alt="<?= ucfmsg('ADDRESS_BOOK') ?>" /></a></div>
   			<div id="nav"></div>
   			<div id="content">
   	      <form accept-charset="utf-8" id="LoginForm" name="LoginForm" method="post">
-  	         <label>%USER%:</label><input name="user" tabindex="0"/><br/>
-  	         <label>%PASSWORD%:</label><input name="pass" type="password"/><br/>
-  	         <input type=submit value="%LOGIN%"/><br><br>
+  	         <label><?= ucfmsg('USER'); ?>:</echo></label><input name="user" tabindex="0"/><br/>
+  	         <label><?= ucfmsg('PASSWORD'); ?>:</label><input name="pass" type="password"/><br/>
+  	         <input type=submit value="<?= ucfmsg('LOGIN'); ?>"/><br><br>
           </form>
   <script type="text/javascript">
     document.LoginForm.user.focus();
   </script>
-  	         <a href="register">%CREATE_ACCOUNT%</a>
-  	       | <a href="register/email_password.php">%FORGOT_PASSWORD%</a>  	         
+  	         <a href="register"><?= ucfmsg('CREATE_ACCOUNT'); ?></a>
+  	       | <a href="register/email_password.php"><?= ucfmsg('CREATE_ACCOUNT'); ?></a>
+
 
   	         <br><br>
   	         <br>
   	         <hr>
+<?php if($use_sso) { ?>  	         
   	         <br><br>
 
   	      <form accept-charset="utf-8" id="hLoginForm" name="hLoginForm" method="post">
@@ -26,12 +28,13 @@
   	         <input name="pass" type="hidden"/>
           </form>
 
-  	         <label>%SIGN_IN_WITH%:</label>
+  	         <label><?= ucfmsg('SIGN_IN_WITH'); ?></label>
   	         <a href="javascript:hLoginForm.user.value='Facebook';hLoginForm.submit();"><img src="icons/facebook.png"></a>
   	         <a href="javascript:hLoginForm.user.value='Google';hLoginForm.submit();"><img src="icons/google.png"></a>
   	         <a href="javascript:hLoginForm.user.value='Yahoo';hLoginForm.submit();"><img src="icons/yahoo.png"></a>
   	         <a href="javascript:hLoginForm.user.value='Live';hLoginForm.submit();"><img src="icons/microsoft.png"></a>
   	         <br><br><br>
+<?php } ?>
 
   	         <b>New features</b>
   	         	<ul>- Connect your iPhone using <a href="http://simultaneouspancakes.com/Lessons/2010/06/24/connecting-an-iphone-4-to-exchange/">Exchange suppport</a></ul>

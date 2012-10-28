@@ -1,6 +1,7 @@
 <?php
 
-$default_lang   = 'en';
+$default_lang = 'en';
+$lang = 'de';
 
 //
 // New translations are welcome:
@@ -77,9 +78,16 @@ if( array_search($lang, $supported_langs) === FALSE ) {
 }
 
 //
-// Include only the selected language
+// Read all translations from gettext
 //
-include("translation.".$lang.".php");
+$directory = ".".DIRECTORY_SEPARATOR."translations".DIRECTORY_SEPARATOR."LOCALES";
+$domain    = 'php-addressbook';
+
+putenv("LANG=".$lang);
+setlocale(LC_ALL, $lang);
+bindtextdomain($domain, $directory);
+textdomain($domain);
+bind_textdomain_codeset($domain, 'UTF-8');
 
 //
 // Return the country flag for a language
@@ -114,12 +122,8 @@ function is_right_to_left($language) {
 function msg($value)
 {
 	global $lang, $messages;
-		
-	if(isset($messages[$value][$lang])) {
-	  return $messages[$value][$lang];
-	} else {
-	  return $value;
-	}
+	
+	return gettext($value);
 }
 
 //

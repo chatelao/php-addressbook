@@ -227,7 +227,7 @@ if(!isset($required_roles)) { $required_roles = array(); }
 if(!$login->hasRoles($required_roles) ) {
   	include ("include/format.inc.php");	
   	echo "<title>".ucfmsg("ADDRESS_BOOK")."</title>";
-    echo translateTags(file_get_contents("include/login.inc.html"));
+    include "include/login.inc.html";
     die;
 } else {
 
@@ -247,7 +247,7 @@ if(!$login->hasRoles($required_roles) ) {
   };
 }
 
-if(isset($domain) && isset($domain[$domain_id])) {
+if(isset($domain) && isset($domain[$domain_id]) && isset($domain[$domain_id]['skin'])) {
   $skin_color = $domain[$domain_id]['skin'];
 }
 
