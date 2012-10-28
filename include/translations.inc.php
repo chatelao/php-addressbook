@@ -83,27 +83,14 @@ $directory = realpath('./') .'/translations/LOCALES';
 $domain    = 'php-addressbook';
 $locale = $lang;
 
-//
-// Prepare "native gettext"
-//
-putenv("LANG=".$locale);
-setlocale(LC_ALL, $locale);
-bindtextdomain($domain, $directory);
-textdomain($domain);
-if(function_exists('bind_textdomain_codeset')) {
-  bind_textdomain_codeset($domain, 'UTF-8');
-}
-textdomain($domain);
-
-
-//
 // Prepare "php-gettext"
-//
 require_once('gettext/gettext.inc');
 
-define('PROJECT_DIR', realpath('./'));
-define('LOCALE_DIR',  $directory);
-define('DEFAULT_LOCALE', $default_lang);
+// Prepare "native gettext" setup
+T_setlocale(LC_ALL, $locale);
+T_bindtextdomain($domain, $directory);
+T_textdomain($domain);
+T_bind_textdomain_codeset($domain, 'UTF-8');
 
 //
 // Return the country flag for a language
@@ -138,8 +125,8 @@ function is_right_to_left($language) {
 function msg($value)
 {
 	global $lang, $messages;
-	
-	return gettext($value);
+
+	return T_gettext($value);
 }
 
 //
