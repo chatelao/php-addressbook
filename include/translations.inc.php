@@ -1,7 +1,6 @@
 <?php
 
 $default_lang = 'en';
-$lang = 'de';
 
 //
 // New translations are welcome:
@@ -78,16 +77,33 @@ if( array_search($lang, $supported_langs) === FALSE ) {
 }
 
 //
-// Read all translations from gettext
+// Define location and domain of translations
 //
-$directory = ".".DIRECTORY_SEPARATOR."translations".DIRECTORY_SEPARATOR."LOCALES";
+$directory = realpath('./') .'/translations/LOCALES';
 $domain    = 'php-addressbook';
+$locale = $lang;
 
-putenv("LANG=".$lang);
-setlocale(LC_ALL, $lang);
+//
+// Prepare "native gettext"
+//
+putenv("LANG=".$locale);
+setlocale(LC_ALL, $locale);
 bindtextdomain($domain, $directory);
 textdomain($domain);
-bind_textdomain_codeset($domain, 'UTF-8');
+if(function_exists('bind_textdomain_codeset')) {
+  bind_textdomain_codeset($domain, 'UTF-8');
+}
+textdomain($domain);
+
+
+//
+// Prepare "php-gettext"
+//
+require_once('gettext/gettext.inc');
+
+define('PROJECT_DIR', realpath('./'));
+define('LOCALE_DIR',  $directory);
+define('DEFAULT_LOCALE', $default_lang);
 
 //
 // Return the country flag for a language
