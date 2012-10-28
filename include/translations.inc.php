@@ -17,7 +17,7 @@ $supported_langs = array("ar","bg","ca","cs","da"
                         ,"de","el","en","es","fa"
                         ,"fi","fr","he","hi","hu"
                         ,"it","ja","ko","nl","no"
-                        ,"pl","pt","ru","on","sr"
+                        ,"pl","pt","ru","sr"
                         ,"sv","sl","th","tr","ua"
                         ,"vi","zh");
 //
