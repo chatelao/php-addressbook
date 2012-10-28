@@ -17,9 +17,12 @@ $supported_langs = array("ar","bg","ca","cs","da"
                         ,"de","el","en","es","fa"
                         ,"fi","fr","he","hi","hu"
                         ,"it","ja","ko","nl","no"
-                        ,"pl","pt","ru","sr"
-                        ,"sv","sl","th","tr","ua"
-                        ,"vi","zh");
+                        ,"pl","pt","ru","sr","sv"
+                        ,"sl","th","tr","ua","vi"
+                        ,"zh");
+
+$right_to_left_languages = array('ar', 'fa', 'he');
+
 //
 // Handle language choice
 //
@@ -114,12 +117,9 @@ function get_flag($language) {
 //
 function is_right_to_left($language) {
 	
-	global $messages;
+	global $right_to_left_languages;
 	
-	if(isset($messages['DIR'][$language]) && $messages['DIR'][$language] == "rl" )
-	  return true;
-	else
-	  return false;
+	return in_array($language, $right_to_left_languages);
 }
 
 function msg($value)
