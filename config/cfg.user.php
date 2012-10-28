@@ -7,6 +7,13 @@
   $userlist['admin']['pass'] = "secret";
   $userlist['admin']['role'] = "root"; // used to call "/diag.php"
 
+  //*  
+  // -- Setup readonly-user for regression tests (yourdomain.com/addressbook/test/
+  $userlist['simpletest']['pass']   = "simple";
+  $userlist['simpletest']['role']   = "readonly";  
+  $userlist['simpletest']['domain'] = 9999;
+  //*/
+
   /*  
   // Setup a "readonly" user
   $userlist['view']['pass']  = "apassword";
