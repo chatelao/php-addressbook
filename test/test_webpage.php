@@ -9,7 +9,8 @@ class TestReadWebpage extends WebTestCase {
 		
     function setUp() {
 		  $this->book_root_url = 
-		     (strlen($_SERVER['HTTPS']) > 0 ? "https" : "http")
+		     (    isset($_SERVER['HTTPS']) 
+		      && strlen($_SERVER['HTTPS']) > 0 ? "https" : "http")
 		    . "://"
 		    . $_SERVER['SERVER_NAME']
 			  . dirname($_SERVER['REQUEST_URI']);

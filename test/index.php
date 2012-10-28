@@ -4,9 +4,9 @@
   // http://www.simpletest.org/en/start-testing.html
   //
   
-  set_include_path(get_include_path() . PATH_SEPARATOR . "/home/apps/"
-                                      . PATH_SEPARATOR . "/home/apps/books-git"
-                                      . PATH_SEPARATOR . "/home/apps/books-git/test");
+  set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname(dirname(__FILE__)))
+                                      . PATH_SEPARATOR . dirname(dirname(__FILE__))
+                                      . PATH_SEPARATOR . dirname(__FILE__));
                                       
 require_once(dirname(__FILE__)."/simpletest/autorun.php");
 require_once(dirname(__FILE__)."/simpletest/web_tester.php");
