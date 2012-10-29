@@ -146,7 +146,7 @@ $mail_text = ob_get_clean();
 
 
 //------------------ Sending the e-Mail
-$subject = "vCard for: ".$addr['firstname']." ".$addr['lastname'].(isset($addr['company']) ? " (".$addr['company'].")":"");
+$subject = "vCard for: ".$addr['firstname'].(isset($addr['middlename']) ? " ".$addr['middlename']:"")." ".$addr['lastname'].(isset($addr['company']) ? " (".$addr['company'].")":"");
 $boundary = md5(date('r', time())); 
 
 // Define Headers we want passed:

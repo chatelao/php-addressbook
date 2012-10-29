@@ -28,6 +28,27 @@ $address_parse[] = $new_address;
 
 
 $new_address['text'] =
+"Jan de Vries
+
+Oranjelaan 1
+1234 AB Amsterdam
+Tel.: +31 (0)20-1234567
+Fax.: +31 (0)20-7654321
+jan.devries@somewhere.nl ";
+
+$new_address['addr'] = array(
+  "firstname" => "Jan"
+, "middlename" => "de"
+, "lastname"  => "Vries"
+, "address"   => "Oranjelaan 1\n1234 AB Amsterdam"
+, "email"     => "jan.devries@somewhere.nl"
+, "work"      => "+31 (0)20-1234567"
+, "fax"       => "+31 (0)20-7654321"
+);
+$address_parse[] = $new_address;
+
+
+$new_address['text'] =
 "HOTEL & RESORT FÜNFJAHRESZEITEN
 Auf dem Köpfle 1-6
 D-79682 Todtmoos im Schwarzwald

@@ -107,35 +107,36 @@ function header2vcard($links) {
 
 function address2vcard($links) {
 	
-   $firstname  = utf8_to_latin1($links["firstname"]);
-   $lastname   = utf8_to_latin1($links["lastname"]);
-   $title      = utf8_to_latin1($links["title"]);
-   $company    = utf8_to_latin1($links["company"]);
-   $address    = utf8_to_latin1($links["address"]);
-   $home       = utf8_to_latin1($links["home"]);
-   $mobile     = utf8_to_latin1($links["mobile"]);
-   $work       = utf8_to_latin1($links["work"]);
-   $fax        = utf8_to_latin1($links["fax"]);
-   $email      = utf8_to_latin1($links["email"]);
-   $email2     = utf8_to_latin1($links["email2"]);
-   $email3     = utf8_to_latin1($links["email3"]);
-   $homepage   = utf8_to_latin1($links["homepage"]);
- 
-   $bday       = utf8_to_latin1($links["bday"]);
-   $bmonth_num = utf8_to_latin1($links["bmonth_num"]);
-   $byear      = utf8_to_latin1($links["byear"]);
-
-   $aday       = utf8_to_latin1($links["aday"]);
-   $amonth_num = utf8_to_latin1($links["amonth_num"]);
-   $ayear      = utf8_to_latin1($links["ayear"]);
-
-   $phone2     = utf8_to_latin1($links["phone2"]);
-   $address2   = utf8_to_latin1($links["address2"]);
+   $firstname   = utf8_to_latin1($links["firstname"]);
+   $middlename  = utf8_to_latin1($links["middlename"]);
+   $lastname    = utf8_to_latin1($links["lastname"]);
+   $title       = utf8_to_latin1($links["title"]);
+   $company     = utf8_to_latin1($links["company"]);
+   $address     = utf8_to_latin1($links["address"]);
+   $home        = utf8_to_latin1($links["home"]);
+   $mobile      = utf8_to_latin1($links["mobile"]);
+   $work        = utf8_to_latin1($links["work"]);
+   $fax         = utf8_to_latin1($links["fax"]);
+   $email       = utf8_to_latin1($links["email"]);
+   $email2      = utf8_to_latin1($links["email2"]);
+   $email3      = utf8_to_latin1($links["email3"]);
+   $homepage    = utf8_to_latin1($links["homepage"]);
+                
+   $bday        = utf8_to_latin1($links["bday"]);
+   $bmonth_num  = utf8_to_latin1($links["bmonth_num"]);
+   $byear       = utf8_to_latin1($links["byear"]);
+                
+   $aday        = utf8_to_latin1($links["aday"]);
+   $amonth_num  = utf8_to_latin1($links["amonth_num"]);
+   $ayear       = utf8_to_latin1($links["ayear"]);
+                
+   $phone2      = utf8_to_latin1($links["phone2"]);
+   $address2    = utf8_to_latin1($links["address2"]);
 
 	 $result  = "BEGIN:VCARD\n";
 	 $result .= "VERSION:2.1\n";
-	 $result .= "N:$lastname;$firstname;;;;\n";
-	 $result .= "FN:$firstname $lastname\n";
+	 $result .= "N:" . (!empty($middlename) ? "$middlename " : "") . "$lastname;$firstname;;;;\n";
+	 $result .= "FN:$firstname" . (!empty($middlename) ? " $middlename" : "") . " $lastname\n";
 	 $result .= "ORG:$company\n";
 	 $result .= "TITLE:$title\n";
 	 $adr = label2adr($address);

@@ -50,6 +50,7 @@ if(!$submit) {
   	
     saveAddress($addressbook, $file_group_name);
     echo "- <b><i>".getIfSet($addressbook,'firstname')
+        .trim(" ".getIfSet($addressbook,'middlename'))
         .", ".getIfSet($addressbook,'lastname')
         ."</i></b>, ".getIfSet($addressbook,'email')
         .", ".getIfSet($addressbook,'email2')

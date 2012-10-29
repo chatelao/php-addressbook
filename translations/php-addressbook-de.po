@@ -194,7 +194,7 @@ msgid "FIRSTNAME"
 msgstr "Vorname"
 
 msgid "MIDDLENAME"
-msgstr "zweiter Vorname / inital (s)"
+msgstr "Zweiter Vorname"
 
 msgid "LASTNAME"
 msgstr "Nachname"

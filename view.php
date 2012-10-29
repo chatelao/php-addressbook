@@ -19,7 +19,7 @@ if( ($resultsnumber == 0 && !isset($all)) || (!$id && !isset($all))) {
    if(!$id) {
      ?><title>Address book <?php echo ($group_name != "" ? "($group_name)":""); ?></title><?php
    } else {
-     ?><title><?php echo $r["firstname"]." ".$r["lastname"]." ".($group_name != "" ? "($group_name)":"")."\n"; ?></title><?php
+     ?><title><?php echo $r["firstname"].(isset($r["middlename"]) ? " ".$r["middlename"] : "")." ".$r["lastname"]." ".($group_name != "" ? "($group_name)":"")."\n"; ?></title><?php
    }
    if( !isset($_GET["print"]))
    {

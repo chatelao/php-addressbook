@@ -13,6 +13,7 @@ CREATE TABLE addressbook (
   domain_id int(9) unsigned NOT NULL default 0,
   id int(9) unsigned NOT NULL,
   firstname varchar(255) NOT NULL,
+  middlename varchar(255) NOT NULL,
   lastname varchar(255) NOT NULL,
   nickname varchar(255) NOT NULL,
   company varchar(255) NOT NULL,

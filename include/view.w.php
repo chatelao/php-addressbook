@@ -111,7 +111,7 @@ function showOneEntry($r, $only_phone = false) {
 	 global $db, $table, $table_grp_adr, $table_groups, $print, $is_fix_group, $mail_as_image;
 
 	 $view = "";
-   $view .= add("<b>".$r['firstname']." ".$r['lastname']."</b>");
+   $view .= add("<b>".$r['firstname'].(!empty($r['middlename']) ? " ".$r['middlename'] : "")." ".$r['lastname']."</b>");
    $view .= add($r['nickname']);
 
    $b64 = explode(";", $r['photo']);

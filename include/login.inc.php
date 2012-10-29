@@ -261,7 +261,12 @@ abstract class AuthLoginUserPass extends AuthLoginImpl {
 
 		parent::__construct();
 
-    $this->ip_date  = $_SERVER['HTTP_USER_AGENT'].date('Y-m');
+    if(isset($_SERVER['HTTP_USER_AGENT'])) {
+      $this->ip_date  = $_SERVER['HTTP_USER_AGENT'].date('Y-m');
+    } else {
+    	// SimpleText does not send any default user agent
+      $this->ip_date  = $_SERVER['REMOTE_ADDR'].date('Y-m');
+    }
     $this->uin      = (isset($_COOKIE['uin']) ? $_COOKIE['uin'] : "");
 
 	  //

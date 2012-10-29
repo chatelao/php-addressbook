@@ -38,7 +38,7 @@ if($use_ics) {
 
   function Birthday2vCal($date, $age) {
 
-  	global $id, $firstname, $lastname, $email, $email2, $home, $mobile, $work, $byear;
+  	global $id, $firstname, $middlename, $lastname, $email, $email2, $home, $mobile, $work, $byear;
 
     echo "BEGIN:VEVENT\r\n";
     echo "UID:".date('Y', $date).$id."@php-addressbook.sourceforge.net\r\n";
@@ -50,10 +50,11 @@ if($use_ics) {
     echo "LAST-MODIFIED:".date("Ymd\THi00\Z")."\r\n";
     echo "LOCATION:\r\n";
     echo "STATUS:CONFIRMED\r\n";
-    echo "SUMMARY:".ucfmsg("BIRTHDAY")." ".$firstname." ".$lastname
-                   ." ".$age."\r\n";
+    echo "SUMMARY:".ucfmsg("BIRTHDAY")." ".trim($firstname.(isset($middlename) ? " ".$middlename:"")." ".$lastname)
+                    ." ".$age."\r\n";
     echo "DESCRIPTION:Mail:\\n- ".$email
                          ."\\n- ".$email2
+                         ."\\n- ".$email3
                          ."\\n\\n".ucfmsg("TELEPHONE")
                          .($home   != "" ? "\\n- ".$home   : "")
                          .($mobile != "" ? "\\n- ".$mobile : "")
@@ -84,9 +85,10 @@ ORDER BY prio ASC;";
 
 	while ($myrow = mysql_fetch_array($result))
 	{
-		$firstname = $myrow["firstname"];
-		$id = $myrow["id"];
-		$lastname = $myrow["lastname"];
+		$firstname  = $myrow["firstname"];
+		$id         = $myrow["id"];
+		$lastname   = $myrow["lastname"];
+		$middlename = $myrow["middlename"];
 
 		$email  = ($myrow["email"] != "" ? $myrow["email"] : ($myrow["email2"] != "" ? $myrow["email2"] : ""));
 		$email2 = $myrow["email2"];
@@ -161,7 +163,11 @@ ORDER BY prio ASC;";
 
 		  echo "<tr class='$color'>";
 		  echo "<td align=right>$bday.</td>";
-		  echo "<td>$lastname</td>";
+      if (!empty($middlename)) {
+        echo "<td>$middlename $lastname</td>";
+      } else {
+        echo "<td>$lastname</td>";
+      }
 		  echo "<td>$firstname</td>";
 		  echo "<td align='right'><i>$age</i></td>";
 		  echo "<td><a href='".getMailer()."$email'>$email</a></td>";

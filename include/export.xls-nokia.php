@@ -116,12 +116,13 @@ $headers = array( 0 => "Name"
 	{
 		$rec = array();
 
-		# Name + Geburtstag
-		 // $rec[3] = $myrow["lastname"]." ".$myrow["firstname"];
+		# name + birthday
+		// $rec[3] = $myrow["lastname"]." ".$myrow["firstname"];
 		$rec[3] = $myrow["lastname"];
 		$rec[1] = $myrow["firstname"];
+    $rec[0] = $myrow["firstname"].(!empty($myrow["middlename"]) ? " ".$myrow["middlename"] : "")." ".$myrow["lastname"];
 
-		# Telefonnummern
+		# phone numbers
 		$rec[13] = $myrow["home"];
 		$rec[14] = $myrow["mobile"];
 		$rec[28] = $myrow["email"];

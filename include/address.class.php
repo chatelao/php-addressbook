@@ -70,33 +70,34 @@ function saveAddress($addr_array, $group_name = "") {
     	$src_tbl = $table;
     }
 
-    $sql = "INSERT INTO $table ( domain_id, id, firstname, lastname, nickname, company, title, address, home, mobile, work, fax, email, email2, email3, homepage, aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, created, modified)
-                        SELECT   $domain_id                                       domain_id
-                               , ".$set_id."                                      id
-                               , '".getIfSetFromAddr($addr_array, 'firstname')."' firstname
-                               , '".getIfSetFromAddr($addr_array, 'lastname')."'  lastname
-                               , '".getIfSetFromAddr($addr_array, 'nickname')."'  nickname
-                               , '".getIfSetFromAddr($addr_array, 'company')."'   company
-                               , '".getIfSetFromAddr($addr_array, 'title')."'     title
-                               , '".getIfSetFromAddr($addr_array, 'address')."'   address
-                               , '".getIfSetFromAddr($addr_array, 'home')."'      home
-                               , '".getIfSetFromAddr($addr_array, 'mobile')."'    mobile
-                               , '".getIfSetFromAddr($addr_array, 'work')."'      work
-                               , '".getIfSetFromAddr($addr_array, 'fax')."'       fax
-                               , '".getIfSetFromAddr($addr_array, 'email')."'     email
-                               , '".getIfSetFromAddr($addr_array, 'email2')."'    email2
-                               , '".getIfSetFromAddr($addr_array, 'email3')."'    email3
-                               , '".getIfSetFromAddr($addr_array, 'homepage')."'  homepage
-                               , '".getIfSetFromAddr($addr_array, 'aday')."'      aday
-                               , '".getIfSetFromAddr($addr_array, 'amonth')."'    amonth
-                               , '".getIfSetFromAddr($addr_array, 'ayear')."'     ayear
-                               , '".getIfSetFromAddr($addr_array, 'bday')."'      bday
-                               , '".getIfSetFromAddr($addr_array, 'bmonth')."'    bmonth
-                               , '".getIfSetFromAddr($addr_array, 'byear')."'     byear
-                               , '".getIfSetFromAddr($addr_array, 'address2')."'  address2
-                               , '".getIfSetFromAddr($addr_array, 'phone2')."'    phone2
-                               , '".getIfSetFromAddr($addr_array, 'photo')."'     photo
-                               , '".getIfSetFromAddr($addr_array, 'notes')."'     notes
+    $sql = "INSERT INTO $table ( domain_id, id, firstname, middlename, lastname, nickname, company, title, address, home, mobile, work, fax, email, email2, email3, homepage, aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, created, modified)
+                        SELECT   $domain_id                                        domain_id
+                               , ".$set_id."                                       id
+                               , '".getIfSetFromAddr($addr_array, 'firstname')."'  firstname
+                               , '".getIfSetFromAddr($addr_array, 'middlename')."' lastname
+                               , '".getIfSetFromAddr($addr_array, 'lastname')."'   lastname
+                               , '".getIfSetFromAddr($addr_array, 'nickname')."'   nickname
+                               , '".getIfSetFromAddr($addr_array, 'company')."'    company
+                               , '".getIfSetFromAddr($addr_array, 'title')."'      title
+                               , '".getIfSetFromAddr($addr_array, 'address')."'    address
+                               , '".getIfSetFromAddr($addr_array, 'home')."'       home
+                               , '".getIfSetFromAddr($addr_array, 'mobile')."'     mobile
+                               , '".getIfSetFromAddr($addr_array, 'work')."'       work
+                               , '".getIfSetFromAddr($addr_array, 'fax')."'        fax
+                               , '".getIfSetFromAddr($addr_array, 'email')."'      email
+                               , '".getIfSetFromAddr($addr_array, 'email2')."'     email2
+                               , '".getIfSetFromAddr($addr_array, 'email3')."'     email3
+                               , '".getIfSetFromAddr($addr_array, 'homepage')."'   homepage
+                               , '".getIfSetFromAddr($addr_array, 'aday')."'       aday
+                               , '".getIfSetFromAddr($addr_array, 'amonth')."'     amonth
+                               , '".getIfSetFromAddr($addr_array, 'ayear')."'      ayear
+                               , '".getIfSetFromAddr($addr_array, 'bday')."'       bday
+                               , '".getIfSetFromAddr($addr_array, 'bmonth')."'     bmonth
+                               , '".getIfSetFromAddr($addr_array, 'byear')."'      byear
+                               , '".getIfSetFromAddr($addr_array, 'address2')."'   address2
+                               , '".getIfSetFromAddr($addr_array, 'phone2')."'     phone2
+                               , '".getIfSetFromAddr($addr_array, 'photo')."'      photo
+                               , '".getIfSetFromAddr($addr_array, 'notes')."'      notes
                                , now(), now()
                             FROM ".$src_tbl;
     $result = mysql_query($sql);
@@ -150,6 +151,7 @@ function updateAddress($addr, $keep_photo = true) {
 		} else {
 	    $sql = "UPDATE $table SET firstname = '".$addr['firstname']."'
 	                            , lastname  = '".$addr['lastname']."'
+	                            , middlename  = '".$addr['middlename']."'
 	                            , nickname  = '".$addr['nickname']."'
 	                            , company   = '".$addr['company']."'
 	                            , title     = '".$addr['title']."'
@@ -340,27 +342,29 @@ class Addresses {
           $searchwords = explode(" ", $searchstring);
 
           foreach($searchwords as $searchword) {
-          	$sql .= "AND (   lastname  LIKE '%$searchword%'
-                          OR firstname LIKE '%$searchword%'
-                          OR nickname  LIKE '%$searchword%'
-                          OR company   LIKE '%$searchword%'
-                          OR address   LIKE '%$searchword%'
+          	$sql .= "AND (   lastname   LIKE '%$searchword%'
+                          OR middlename LIKE '%$searchword%'
+                          OR firstname  LIKE '%$searchword%'
+                          OR nickname   LIKE '%$searchword%'
+                          OR company    LIKE '%$searchword%'
+                          OR address    LIKE '%$searchword%'
                           OR ".$this->likePhone('home',   $searchword)."
                           OR ".$this->likePhone('work',   $searchword)."
                           OR ".$this->likePhone('mobile', $searchword)."
                           OR ".$this->likePhone('fax',    $searchword)."
-                          OR email     LIKE '%$searchword%'
-                          OR email2    LIKE '%$searchword%'
-                          OR email3    LIKE '%$searchword%'
-                          OR address2  LIKE '%$searchword%'
-                          OR notes     LIKE '%$searchword%'
+                          OR email      LIKE '%$searchword%'
+                          OR email2     LIKE '%$searchword%'
+                          OR email3     LIKE '%$searchword%'
+                          OR address2   LIKE '%$searchword%'
+                          OR notes      LIKE '%$searchword%'
                           )";
           }
       }
       if($alphabet) {
-      	$sql .= "AND (   lastname  LIKE '$alphabet%'
-                      OR nickname  LIKE '$alphabet%'
-                      OR firstname LIKE '$alphabet%'
+      	$sql .= "AND (   lastname  LIKE  '$alphabet%'
+                      OR middlename LIKE '$alphabet%'
+                      OR nickname  LIKE  '$alphabet%'
+                      OR firstname LIKE  '$alphabet%'
                       )";
       }
 

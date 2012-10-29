@@ -28,12 +28,13 @@
 
   $addresses = Addresses::withSearchString($searchstring, $alphabet);
   $result = $addresses->getResults();
+  $coords = array();
 
   //  foreach($addresses as $address) {
   while($myrow = mysql_fetch_array($result)) {
 
     $coord['addr']   = trim(str_replace("\n", ", ", trim($myrow['address'])),",");
-    $coord['html']    = "<b>".$myrow['firstname']." ".$myrow['lastname']."</b><br>";
+    $coord['html']    = "<b>".$myrow['firstname'].(isset($myrow['middlename']) ? " ".$myrow['middlename'] : "")." ".$myrow['lastname']."</b><br>";
     $coord['html']   .= ($myrow['company'] != "" ? "<i>".$myrow['company']."</i><br>" : "");
     $coord['html']   .= str_replace("\n","",str_replace("\r","",nl2br($myrow['address'])));
     $coord['id']     = $myrow['id'];

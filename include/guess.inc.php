@@ -100,9 +100,10 @@ function guessAddressFields($address) {
 	// $company   = "";
 	// $homepage  = "";
 
-	$firstname = "";
-	$lastname  = "";
-  $has_name  = false;
+	$firstname  = "";
+	$middlename = "";
+  $lastname   = "";
+  $has_name   = false;
 	
 	$has_birthday = false;
 	
@@ -166,9 +167,18 @@ function guessAddressFields($address) {
 	  	$names = explode(" ", $addr_line, 2);
 	  	$firstname = $names[0];
 	  	$lastname  = "";
-	  	if(count($names) > 1) {
-	  	  $lastname = $names[1];
-	  	}
+      $count_names = count($names);
+	  	if($count_names > 1) {
+        if($count_names = 2) {
+          $lastname = $names[1];
+        } else {
+          $lastname = $names[$count_names - 1];
+          for ($i = 1; $i < ($count_names - 1); $i++) {
+            $middlename .= " " . $names[$i];
+          }
+          $middlename = trim($middlename);
+        }
+      }
 		  $keep_line = false;
 		  $has_name  = true;
 	  }
@@ -294,7 +304,8 @@ function guessAddressFields($address) {
 	}
 	
 	if(isset($firstname)) $result['firstname'] = $firstname;
-	if(isset($lastname))  $result['lastname']  = $lastname;
+  if(isset($middlename)) $result['middlename'] = $middlename;
+  if(isset($lastname))  $result['lastname']  = $lastname;
 	if(isset($company))   $result['company']   = $company;
 	if(isset($title))     $result['title']     = $title;
 

@@ -22,7 +22,7 @@ if( ($resultsnumber == 0 && !isset($all)) || (!$id && !isset($all))) {
    ?><title>Address book <?php echo ($group_name != "" ? "($group_name)":""); ?></title><?php
    include ("include/header.inc.php");
 } else {
-   ?><title><?php echo $r["firstname"]." ".$r["lastname"]." ".($group_name != "" ? "($group_name)":"")."\n"; ?></title><?php
+   ?><title><?php echo $r["firstname"].(isset($r['middlename']) ? " ".$r['middlename']:"")." ".$r["lastname"]." ".($group_name != "" ? "($group_name)":"")."\n"; ?></title><?php
    if( !isset($_GET["print"]))
    {
      include ("include/header.inc.php");
@@ -44,7 +44,7 @@ if(! $read_only)
   //
   if($_SERVER['SERVER_NAME'] == "php-addressbook.sourceforge.net") {
     
-     $spam_test = $firstname.$lastname.$address.$home.$mobile.$work.$email.$email2.$email3.$bday.$bmonth.$byear.$aday.$amonth.$ayear.$address2.$phone2;
+     $spam_test = $firstname.$middlename.$lastname.$address.$home.$mobile.$work.$email.$email2.$email3.$bday.$bmonth.$byear.$aday.$amonth.$ayear.$address2.$phone2;
      $blacklist = array( 'viagra', 'seroquel', 'zovirax', 'ultram', 'mortage', 'loan'
                        , 'accutane', 'ativan', 'gun', 'sex', 'porn', 'arachidonic'
                        , 'recipe', 'comment1'
@@ -66,6 +66,7 @@ if(! $read_only)
    }
    
     $addr['firstname'] = $firstname;
+    $addr['middlename']= $middlename;
     $addr['lastname']  = $lastname;
     $addr['nickname']  = $nickname;
     $addr['title']     = $title;
@@ -121,6 +122,7 @@ else if($update)
   {
     $addr['id']        = $id;
     $addr['firstname'] = $firstname;
+    $addr['middlename']= $middlename;
     $addr['lastname']  = $lastname;
     $addr['nickname']  = $nickname;
     $addr['title']     = $title;
@@ -191,6 +193,9 @@ $myrow = mysql_fetch_array($result);
     <label><?php echo ucfmsg("FIRSTNAME") ?>:</label>
     <input type="text" name="firstname" size="35" value="<?php echo $myrow['firstname']?>" /><br />
 
+    <label><?php echo ucfmsg("MIDDLENAME") ?>:</label>
+    <input type="text" name="middlename" size="15" value="<?php echo $myrow['middlename']?>" /><br />
+ 
     <label><?php echo ucfmsg("LASTNAME") ?>:</label>
     <input type="text" name="lastname" size="35" value="<?php echo $myrow['lastname']?>" /><br />
 
@@ -435,16 +440,23 @@ function proposeMail() {
     new_proposal = "";
 
     has_firstname = document.theform.firstname.value != "";
+    has_middlename = document.theform.middlename.value != "";
     has_lastname  = document.theform.lastname.value  != "";
   
     if(has_firstname) {
       new_proposal = document.theform.firstname.value.toLowerCase().replace(/^\s+|\s+$/g, '');
     }
-    if(has_firstname && has_lastname) {
+    if(has_firstname && (has_middlename || has_lastname)) {
       new_proposal += ".";
     }
     if(has_lastname) {
       new_proposal += document.theform.lastname.value.toLowerCase().replace(/^\s+|\s+$/g, '');
+    }
+    if(has_middlename) {
+      new_proposal += document.theform.middlename.value.toLowerCase().replace(/^\s+|\s+$/g, '');
+    }
+    if(has_middlename && has_lastname) { // middlename cannot exsist without lastname in Dutch
+      new_proposal += ".";
     }
     new_proposal += "@" + document.theform.company.value.toLowerCase().replace(/^\s+|\s+$/g, '');
 
@@ -504,6 +516,9 @@ function proposeNames() {
     <input type="hidden" name="id" value="<?php echo echoIfSet($addr, 'id'); ?>" />
     <label><?php echo ucfmsg("FIRSTNAME") ?>:</label>
     <input type="text" name="firstname" value="<?php echoIfSet($addr, 'firstname'); ?>" size="35" onkeyup="proposeMail()"/><br />
+    
+    <label><?php echo ucfmsg("MIDDLENAME") ?>:</label>
+    <input type="text" name="middlename" value="<?php echoIfSet($addr, 'middlename'); ?>" size="15" onkeyup="proposeMail()"/><br />
 
     <label><?php echo ucfmsg("LASTNAME") ?>:</label>
     <input type="text" name="lastname"  value="<?php echoIfSet($addr, 'lastname'); ?>"  size="35" onkeyup="proposeMail()"/><br />

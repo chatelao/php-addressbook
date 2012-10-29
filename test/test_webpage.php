@@ -53,6 +53,12 @@ class TestReadWebpage extends WebTestCase {
 			$this->assertText('select a valid entry');
 		}
 
+		function testMap() {
+			$this->get( $this->book_root_url
+			          . "/map.php" );
+      $this->checkErrors();
+		}
+
 		function testBirthdays() {
 			$this->get( $this->book_root_url
 			          . "/birthdays.php" );

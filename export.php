@@ -20,8 +20,9 @@
 	     $sql .= " AND ".$part_sql;
 	   }
 	   $result = mysql_query($sql);
-     while($address = mysql_fetch_array($result)) {	
-     	 $vcfname = $address['firstname']."_".$address['lastname']."-".$address['id'].".vcf";
+     while($address = mysql_fetch_array($result)) {
+     	 $vcfname = $address['firstname'].(isset($address['middlename']) ? "_".$address['middlename']:"")."_".$address['lastname']."-".$address['id'].".vcf";
+       $vcfname = str_replace(" ","_",$vcfname);  // middlename may contain spaces, for example "van der" in Dutch
      	 setlocale(LC_ALL, 'en_US.UTF8');
      	 $vcfname = str_replace( "?", "", iconv('UTF-8', 'ASCII//TRANSLIT', $vcfname));
        $zip->addFromString($vcfname, address2vcard($address));

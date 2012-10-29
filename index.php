@@ -150,10 +150,10 @@ function addRow($row) {
         echo "<td class='center'><input type='checkbox' id='$id' name='selected[]' value='$id' title='Select ($firstname $lastname)' alt='Select ($firstname $lastname)' accept='$emails' /></td>";
         break;
       case "first_last":
-        echo "<td>$firstname $lastname</td>";
+        echo "<td>$firstname ".(!empty($middlename) ? $middlename." " : "")."$lastname</td>";
         break;
       case "last_first":
-        echo "<td>$lastname $firstname</td>";
+        echo "<td>".(!empty($middlename) ? $middlename." " : "")."$lastname $firstname</td>";
         break;
       case "photo":
 //        echo "<td>".embeddedImg($photo)."</td>";
