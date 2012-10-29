@@ -3,8 +3,6 @@
 # This file is distributed under the same license as the php-addressbook package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
-msgid ""
-msgstr ""
 "Project-Id-Version: php-addressbook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
