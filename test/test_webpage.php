@@ -7,6 +7,12 @@ class TestReadWebpage extends WebTestCase {
 		
 		private $book_root_url;
 		
+    function checkErrors() {
+    	foreach(array("Warning: ", "Notice: ", "Error: ") as $error_str) {
+			  $this->assertNoText($error_str);
+		  }
+    }
+
     function setUp() {
 		  $this->book_root_url = 
 		     (    isset($_SERVER['HTTPS']) 
@@ -23,6 +29,7 @@ class TestReadWebpage extends WebTestCase {
     }
 
     function testLogin() {
+    	  $this->checkErrors();
         $this->assertCookie('uin');
     }
 
@@ -30,7 +37,8 @@ class TestReadWebpage extends WebTestCase {
 			
 			$this->get( $this->book_root_url
 			          . "/index.php" );
-
+      $this->checkErrors();
+      
       // Check the english title
 		  $this->assertTitle("Address book");
 
@@ -41,13 +49,21 @@ class TestReadWebpage extends WebTestCase {
 		function testView() {
 			$this->get( $this->book_root_url
 			          . "/view.php" );
+      $this->checkErrors();
 			$this->assertText('select a valid entry');
+		}
+
+		function testBirthdays() {
+			$this->get( $this->book_root_url
+			          . "/birthdays.php" );
+      $this->checkErrors();
+			$this->assertText('birthday');
 		}
 
 		function testAdd() {
 			$this->get( $this->book_root_url
 			          . "/edit.php" );
-			
+      $this->checkErrors();
 			// Check for label
 			$this->assertText('Address:');
 			
@@ -58,18 +74,21 @@ class TestReadWebpage extends WebTestCase {
 		function testExportCsv() {
 			$this->get( $this->book_root_url
 			          . "/csv.php?group=&submit=Download" );
+      $this->checkErrors();
 			$this->assertHeader('Content-Type', 'application/vnd.ms-excel');
 		}
 
 		function testExportVCard() {
 			$this->get( $this->book_root_url
 			          . "/export.php?type=vCard-one&submit=Download" );
-			$this->assertHeader('Content-Type', 'text/x-vcard');
+      $this->checkErrors();
+			$this->assertHeader('Content-Type', 'text/x-vCard');
 		}
 		
 		function testZPush() {
 			$this->get( $this->book_root_url
 			          . "/z-push" );
+      $this->checkErrors();
       $this->assertResponse(401);
 		  $this->assertAuthentication('Basic');
       $this->assertRealm('ZPush');
@@ -77,8 +96,9 @@ class TestReadWebpage extends WebTestCase {
 
 		function testZPushLogin() {
 			$this->get($this->book_root_url."/z-push");
-        $this->authenticate('simpletest', 'simple');
-        $this->assertText('GET not supported');
+      $this->checkErrors();
+      $this->authenticate('simpletest', 'simple');
+      $this->assertText('GET not supported');
     }
 }
 ?>
