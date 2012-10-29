@@ -126,7 +126,11 @@ function msg($value)
 {
 	global $lang, $messages;
 
-	return T_gettext($value);
+  if($value == "") {
+  	return "";
+  } else {
+	  return T_gettext($value);
+	}
 }
 
 //
@@ -139,7 +143,7 @@ $ucf_messages = array();
 
 function ucfmsg($value) {
 	
-	global $has_mb_strtoupper,$ucf_messages;
+	global $has_mb_strtoupper, $ucf_messages;
 	
 	$msg = msg($value);
 
