@@ -100,6 +100,10 @@ function saveAddress($addr_array, $group_name = "") {
                                , now(), now()
                             FROM ".$src_tbl;
     $result = mysql_query($sql);
+    
+    if(mysql_errno() > 0) {
+      echo "MySQL: ".mysql_errno().": ".mysql_error();
+    }
 
     $sql = "SELECT max(id) max_id from $table";
     $result = mysql_query($sql);

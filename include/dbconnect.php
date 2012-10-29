@@ -9,7 +9,7 @@
 include("config/config.php");
 
 // Check for any mistakes (Debugging)
-// error_reporting(E_ALL);
+error_reporting(E_NOTICE);
 // http://www.php.net/ini.core
 // * short_open_tag  	"0"
 // * register_globals  	"0"
@@ -206,8 +206,12 @@ mysql_select_db("$dbname", $db);
 // * http://www.phpforum.de/forum/showthread.php?t=217877#PHP
 //
 // header('Content-type: text/html; charset=utf-8');
-mysql_query('set character set utf8;');
+mysql_query("set character set utf8;");
 mysql_query("SET NAMES `utf8`");
+
+// Bug: #139 - Strict mode problem
+mysql_query("SET SQL_MODE = 'STRICT_TRANS_TABLES';");
+mysql_query("SET SQL_MODE = 'MYSQL40';");
 
 include("login.inc.php");
 include("version.inc.php");
