@@ -67,10 +67,26 @@ $MC = imap_check($connection);
 $messageNumber = $MC->Nmsgs;
 if($messageNumber == 0) die;
 
+//
+// Check last mail
+//
 $hds = imap_headerinfo($connection, $messageNumber);
-
 echo nl2br(print_r($hds, true));
 
+// Check if mail is authorized
+$to  = $hds->from[0]->mailbox."@".$hds->from[0]->host;
+if(count($mail_accept) > 0 && !in_array($to, $mail_accept) {
+	
+	// delete without warning
+	imap_delete ($connection, "$messageNumber");
+	
+	// process next mail
+	die;
+}
+
+//
+// Process last mail
+//
 $structure = imap_fetchstructure($connection, $messageNumber);
 
 if(isset($structure->parts)) {
@@ -100,37 +116,37 @@ foreach($flattenedParts as $partNumber => $part) {
 
             if($part->subtype == "HTML") {
               $message = br2nl($message);
+              // ToDo: strip "<style>" section
+              // ToDo: strip "<javascript>" section
               $message = strip_tags($message);
               $message = html_entity_decode($message, ENT_COMPAT, "UTF-8");
             }
               
         break;
-        case 1:
-            // multi-part headers, can ignore
+        case 1: # multi-part headers,       ignore
+        case 2: # attached message headers, ignore
+        case 3: # application,              ignore
+        case 4: # audio
+        case 5: # image
+        case 6: # video
         break;
-        case 2:
-            // attached message headers, can ignore
-        break;
-        case 3: // application
-        case 4: // audio
-        case 5: // image
-        case 6: // video
-        case 7: // other
+        case 7: # other
             // $filename = getFilenameFromPart($part);
             $filename = "";
-            if($filename) {
-                // it's an attachment
+            if($filename) { # it's an attachment
+                
                 $attachment = getPart($connection, $messageNumber, $partNumber, $part->encoding);
                 // now do something with the attachment, e.g. save it somewhere
+                
+                # It's a vcard
+                // ...
             }
-            else {
-                // don't know what it is
+            else { # don't know what it is, ignore it!
             }
         break;
     }
 }
 
-$to    = $hds->from[0]->mailbox."@".$hds->from[0]->host;
 $addr  = guessAddressFields($message);
 
 // saveAddress($addr);
