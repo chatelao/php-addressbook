@@ -4,7 +4,6 @@
   include dirname(__FILE__).DIRECTORY_SEPARATOR."cfg.user.php";   
 
   include dirname(__FILE__).DIRECTORY_SEPARATOR."cfg.sso.php";
-  include dirname(__FILE__).DIRECTORY_SEPARATOR."cfg.map.php";   
   include dirname(__FILE__).DIRECTORY_SEPARATOR."cfg.mail.php";   
   include dirname(__FILE__).DIRECTORY_SEPARATOR."cfg.guess.php";   
   

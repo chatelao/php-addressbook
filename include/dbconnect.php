@@ -136,6 +136,9 @@ if(!isset($mail_as_image)) $mail_as_image  = false;
 // Define default ajax mode
 if(!isset($use_ajax)) $use_ajax  = true;
 
+// Define default (empty) map key
+if(!isset($google_maps_keys)) $google_maps_keys[''] = "";
+
 // Enable "use_sso" mode, if keys are availabe
 $use_sso = (isset($sso_facebook_id) && $sso_facebook_id != "")
         || (isset($sso_google_id)   && $sso_google_id   != "")
