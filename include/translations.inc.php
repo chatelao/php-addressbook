@@ -87,7 +87,7 @@ $domain    = 'php-addressbook';
 $locale = $lang;
 
 // Prepare "php-gettext"
-require_once('gettext/gettext.inc');
+require_once('lib/gettext/gettext.inc');
 
 // Prepare "native gettext" setup
 T_setlocale(LC_ALL, $locale);
