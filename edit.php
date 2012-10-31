@@ -194,7 +194,7 @@ $myrow = mysql_fetch_array($result);
     <input type="text" name="firstname" size="35" value="<?php echo $myrow['firstname']?>" /><br />
 
     <label><?php echo ucfmsg("MIDDLENAME") ?>:</label>
-    <input type="text" name="middlename" size="15" value="<?php echo $myrow['middlename']?>" /><br />
+    <input type="text" name="middlename" size="15" value="<?php echo $myrow['middlename']?>" /><br /><br />
  
     <label><?php echo ucfmsg("LASTNAME") ?>:</label>
     <input type="text" name="lastname" size="35" value="<?php echo $myrow['lastname']?>" /><br />
@@ -518,7 +518,7 @@ function proposeNames() {
     <input type="text" name="firstname" value="<?php echoIfSet($addr, 'firstname'); ?>" size="35" onkeyup="proposeMail()"/><br />
     
     <label><?php echo ucfmsg("MIDDLENAME") ?>:</label>
-    <input type="text" name="middlename" value="<?php echoIfSet($addr, 'middlename'); ?>" size="15" onkeyup="proposeMail()"/><br />
+    <input type="text" name="middlename" value="<?php echoIfSet($addr, 'middlename'); ?>" size="15" onkeyup="proposeMail()"/><br /><br />
 
     <label><?php echo ucfmsg("LASTNAME") ?>:</label>
     <input type="text" name="lastname"  value="<?php echoIfSet($addr, 'lastname'); ?>"  size="35" onkeyup="proposeMail()"/><br />
