@@ -13,4 +13,8 @@ select 'Nr of purgable records', count(*) from addr_addressbook where domain_id 
 --
 -- 3. Execute the deletion if you are REALLY sure 
 --
-delete from addr_addressbook where deprecated is not null and domain_id = 0;
+delete 
+  from addr_addressbook 
+ where deprecated is not null 
+   and deprecated > 0
+   and domain_id = 0;
