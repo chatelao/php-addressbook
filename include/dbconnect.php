@@ -133,6 +133,9 @@ if(!isset($map_guess)) $map_guess  = true;
 // Use images for e-mail addresses
 if(!isset($mail_as_image)) $mail_as_image  = false;
 
+// Use images for e-mail addresses
+if(!isset($mail_accept)) $mail_accept = array();
+
 // Define default ajax mode
 if(!isset($use_ajax)) $use_ajax  = true;
 
