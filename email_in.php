@@ -1,4 +1,4 @@
-<?php
+<?phpko
 
 include "include/dbconnect.php";
 include "include/export.vcard.php";

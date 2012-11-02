@@ -41,7 +41,7 @@ msgid "FEBRUARY"
 msgstr "Februar"
 
 msgid "MARCH"
-msgstr "März"
+msgstr "MÃ¤rz"
 
 msgid "APRIL"
 msgstr "April"
@@ -74,7 +74,7 @@ msgid "ADDRESS_BOOK"
 msgstr "Addressbuch"
 
 msgid "FOR"
-msgstr "für"
+msgstr "fÃ¼r"
 
 msgid "SEARCH"
 msgstr "suchen"
@@ -119,10 +119,10 @@ msgid "MANAGE_GROUPS"
 msgstr "Gruppen"
 
 msgid "NEW_GROUP"
-msgstr "Gruppe hinzufügen"
+msgstr "Gruppe hinzufÃ¼gen"
 
 msgid "DELETE_GROUPS"
-msgstr "Gruppe(n) löschen"
+msgstr "Gruppe(n) lÃ¶schen"
 
 msgid "EDIT_GROUP"
 msgstr "Gruppe anpassen"
@@ -137,7 +137,7 @@ msgid "GROUP_FOOTER"
 msgstr "Fusszeile (Kommentar)"
 
 msgid "GROUP_PARENT"
-msgstr "Übergerdnete Gruppe"
+msgstr "Ãœbergerdnete Gruppe"
 
 msgid "SEARCH_FOR_ANY_TEXT"
 msgstr "Freitextsuche"
@@ -164,13 +164,13 @@ msgid "SEND_EMAIL"
 msgstr "E-Mail senden"
 
 msgid "ADD_TO"
-msgstr "Hinzufügen zu"
+msgstr "HinzufÃ¼gen zu"
 
 msgid "DETAILS"
 msgstr "Details"
 
 msgid "EDIT"
-msgstr "ändern"
+msgstr "Ã¤ndern"
 
 msgid "MODIFY"
 msgstr "anpassen"
@@ -179,16 +179,16 @@ msgid "PRINT"
 msgstr "drucken"
 
 msgid "EDIT_ADD_ENTRY"
-msgstr "Eintrag erstellen / ändern"
+msgstr "Eintrag erstellen / Ã¤ndern"
 
 msgid "GUESSED_HOMEPAGE"
-msgstr "Mögliche Homepage"
+msgstr "MÃ¶gliche Homepage"
 
 msgid "PREFERENCES"
 msgstr "Einstellungen"
 
 msgid "NAME_PREFIX"
-msgstr "Präfix"
+msgstr "PrÃ¤fix"
 
 msgid "FIRSTNAME"
 msgstr "Vorname"
@@ -241,14 +241,29 @@ msgstr "Telefonnr."
 msgid "PHONE_HOME"
 msgstr "Privat"
 
+msgid "HOME_SHORT"
+msgstr "P"
+
 msgid "PHONE_MOBILE"
 msgstr "Mobil"
 
+msgid "MOBILE_SHORT"
+msgstr "M"
+
 msgid "PHONE_WORK"
-msgstr "Geschäft"
+msgstr "GeschÃ¤ft"
+
+msgid "WORK_SHORT"
+msgstr "G"
 
 msgid "FAX"
 msgstr "Fax"
+
+msgid "FAX_SHORT"
+msgstr "F"
+
+msgid "PHONE2_SHORT"
+msgstr "P"
 
 msgid "PAGER"
 msgstr "Pager"
@@ -269,7 +284,7 @@ msgid "E_MAIL_HOME"
 msgstr "E-Mail Privat"
 
 msgid "E_MAIL_OFFICE"
-msgstr "E-Mail Büro"
+msgstr "E-Mail BÃ¼ro"
 
 msgid "2ND_ADDRESS"
 msgstr "Zweitadresse"
@@ -293,16 +308,16 @@ msgid "CREATED"
 msgstr "erstellt"
 
 msgid "MODIFIED"
-msgstr "geändert"
+msgstr "geÃ¤ndert"
 
 msgid "UPDATE"
 msgstr "aktualisieren"
 
 msgid "DELETE"
-msgstr "löschen"
+msgstr "lÃ¶schen"
 
 msgid "INVALID"
-msgstr "ungültige"
+msgstr "ungÃ¼ltige"
 
 msgid "ENTER"
 msgstr "speichern"
@@ -319,21 +334,6 @@ msgstr "Konto erstellen"
 msgid "FORGOT_PASSWORD"
 msgstr "Passwort vergessen"
 
-msgid "H:"
-msgstr "P:"
-
-msgid "M:"
-msgstr "M:"
-
-msgid "W:"
-msgstr "G:"
-
-msgid "F:"
-msgstr "F:"
-
-msgid "P:"
-msgstr "P:"
-
 msgid "ar"
 msgstr "Arabisch"
 
@@ -347,7 +347,7 @@ msgid "cs"
 msgstr "Tschechisch"
 
 msgid "da"
-msgstr "Dänisch"
+msgstr "DÃ¤nisch"
 
 msgid "de"
 msgstr "Deutsch"
@@ -368,10 +368,10 @@ msgid "fi"
 msgstr "Finnisch"
 
 msgid "fr"
-msgstr "Französisch"
+msgstr "FranzÃ¶sisch"
 
 msgid "he"
-msgstr "Hebräisch"
+msgstr "HebrÃ¤isch"
 
 msgid "hi"
 msgstr "Hindi"
@@ -389,7 +389,7 @@ msgid "ko"
 msgstr "Koreanisch"
 
 msgid "nl"
-msgstr "Holländisch"
+msgstr "HollÃ¤ndisch"
 
 msgid "pl"
 msgstr "Polnisch"
@@ -398,7 +398,7 @@ msgid "pt"
 msgstr "Portugiesisch"
 
 msgid "rm"
-msgstr "Rätoromanisch"
+msgstr "RÃ¤toromanisch"
 
 msgid "ru"
 msgstr "Russisch"
@@ -416,7 +416,7 @@ msgid "th"
 msgstr "Thai"
 
 msgid "tr"
-msgstr "Türkisch"
+msgstr "TÃ¼rkisch"
 
 msgid "vi"
 msgstr "Vietnamesisch"
