@@ -240,13 +240,28 @@ msgstr ""
 msgid "PHONE_HOME"
 msgstr ""
 
+msgid "HOME_SHORT"
+msgstr ""
+
 msgid "PHONE_MOBILE"
+msgstr ""
+
+msgid "MOBILE_SHORT"
 msgstr ""
 
 msgid "PHONE_WORK"
 msgstr ""
 
+msgid "WORK_SHORT"
+msgstr ""
+
 msgid "FAX"
+msgstr ""
+
+msgid "FAX_SHORT"
+msgstr ""
+
+msgid "PHONE2_SHORT"
 msgstr ""
 
 msgid "PAGER"
@@ -316,21 +331,6 @@ msgid "CREATE_ACCOUNT"
 msgstr ""
 
 msgid "FORGOT_PASSWORD"
-msgstr ""
-
-msgid "H:"
-msgstr ""
-
-msgid "M:"
-msgstr ""
-
-msgid "W:"
-msgstr ""
-
-msgid "F:"
-msgstr ""
-
-msgid "P:"
 msgstr ""
 
 msgid "ar"

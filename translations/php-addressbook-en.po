@@ -241,14 +241,29 @@ msgstr "telephone"
 msgid "PHONE_HOME"
 msgstr "home"
 
+msgid "HOME_SHORT"
+msgstr "H"
+
 msgid "PHONE_MOBILE"
 msgstr "mobile"
+
+msgid "MOBILE_SHORT"
+msgstr "M"
 
 msgid "PHONE_WORK"
 msgstr "work"
 
+msgid "WORK_SHORT"
+msgstr "W"
+
 msgid "FAX"
 msgstr "fax"
+
+msgid "FAX_SHORT"
+msgstr "F"
+
+msgid "PHONE2_SHORT"
+msgstr "P"
 
 msgid "PAGER"
 msgstr "pager"
@@ -318,21 +333,6 @@ msgstr "Create account"
 
 msgid "FORGOT_PASSWORD"
 msgstr "Forgot password"
-
-msgid "H:"
-msgstr "H:"
-
-msgid "M:"
-msgstr "M:"
-
-msgid "W:"
-msgstr "W:"
-
-msgid "F:"
-msgstr "F:"
-
-msgid "P:"
-msgstr "P:"
 
 msgid "ar"
 msgstr "Arabic"
