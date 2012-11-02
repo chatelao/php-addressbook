@@ -17,7 +17,8 @@ class AllTests extends TestSuite {
         $this->TestSuite('All tests');
         $this->addFile('test_export.vcard.php');
 //        $this->addFile('test_translation.php');
-        $this->addFile('test_webpage.php');
+        # $this->addFile('test_webpage.php');
+        $this->addFile('test_translation.php');
 /*        
         $this->addFile('test_phones.php');
 	      $this->addFile('test_birthday.php');
