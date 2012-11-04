@@ -1,3 +1,5 @@
+<?php
+/*
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -8,18 +10,103 @@
 	<title>Translate</title>
 </head>
 <body>
-<?php
-include("include/translations.inc.php");
-$supported_langs = array("ar","bg","ca","cs","da"
-                        ,"de","el","en","es","fa"
-                        ,"fi","fr","he","hi","hu"
-                        ,"it","ja","ko","nl","no"
-                        ,"pl","pt","ru","sr"
-                        ,"sv","sl","th","tr","vi","zh");
+*/
 
-foreach($supported_langs as $lang) {
- include_once("include/translation.".$lang.".php");
+$lang = "en";
+include("include/translations.inc.php");
+// echo implode(", ", $trans->getSupportedLangs())."<br><br>";
+
+//
+// grep "msgid" from "*.pot" in translations, could be done nicer ...
+//
+$msgids = array
+( "2ND_ADDRESS", "2ND_PHONE", "ADDRESS", "ADDRESS_BOOK", "ADD_NEW", "ADD_TO", "ALL", "ALL_EMAILS", "ALL_PHONES"
+, "ANNIVERSARY", "APRIL", "APT", "AUGUST", "BIRTHDAY", "CITY", "COMPANY", "COUNTRY", "CREATED", "CREATE_ACCOUNT"
+, "DECEMBER", "DELETE", "DELETE_GROUPS", "DEPT", "DETAILS", "DIR", "EDIT", "EDIT_ADD_ENTRY", "EDIT_GROUP"
+, "EMAIL", "ENTER", "EXPORT", "EXPORT_CSV", "E_MAIL_HOME", "E_MAIL_OFFICE", "FAX", "FAX_SHORT", "FEBRUARY"
+, "FIRSTNAME", "FIRST_LAST", "FOR", "FORGOT_PASSWORD", "GROUP", "GROUPS", "GROUP_FOOTER", "GROUP_HEADER"
+, "GROUP_NAME", "GROUP_PARENT", "GRP_NAME", "GUESSED_HOMEPAGE", "HOME", "HOMEPAGE", "HOME_SHORT", "IMPORT"
+, "INVALID", "JANUARY", "JULY", "JUNE", "LANGUAGE", "LASTNAME", "LAST_FIRST", "LOGIN", "LOGOUT", "MAIL_CLIENT"
+, "MANAGE_GROUPS", "MAP", "MARCH", "MAY", "MEMBER_OF", "MIDDLENAME", "MISC", "MOBILE", "MOBILE_SHORT", "MODIFIED"
+, "MODIFY", "MORE", "NAME_PREFIX", "NAME_SUFFIX", "NEW_GROUP", "NEXT", "NEXT_BIRTHDAYS", "NICKNAME", "NONE"
+, "NOTES", "NOVEMBER", "NUMBER_OF_RESULTS", "OCCUPATION", "OCTOBER", "PAGER", "PASSWORD", "PHONE2_SHORT"
+, "PHONE_HOME", "PHONE_MOBILE", "PHONE_WORK", "PHOTO", "POB", "PREFERENCES", "PRINT", "PRINT_ALL"
+, "PRINT_PHONES", "REMOVE_FROM", "SEARCH", "SEARCH_FOR_ANY_TEXT", "SECONDARY", "SELECT_ALL", "SEND_EMAIL"
+, "SEPTEMBER", "SIGN_IN_WITH", "STATE", "STREET", "TELEPHONE", "TITLE", "TITLES", "TRANSLATOR", "UPDATE"
+, "UPDATED", "USER", "WORK", "WORK_SHORT", "ZIP", "ar", "auto", "bg", "ca", "cs", "da", "de", "el", "en"
+, "es", "fa", "fi", "fr", "he", "hi", "hu", "it", "ja", "ko", "nl", "pl", "pt", "rm", "ru", "sl", "sr", "sv"
+, "th", "tr", "ua", "vi", "zh"
+);
+
+// include "include/csv.class.php";
+
+$supp_langs = $trans->getSupportedLangs();
+
+//
+// Print headers with all languages.
+//
+$values   = array();
+$values[] = ".";
+foreach($supp_langs as $lang) {
+  $values[] = $lang;
 }
+
+$use_utf_16LE = function_exists('mb_convert_encoding');
+
+function utf8_to_utf16le($line) {
+
+  	global $use_utf_16LE;
+  	
+  	/*
+  	// Remove whitespaces, Replace newlines and escape ["] character
+  	$res = trim($value);
+  	$res = str_replace("\r", "", $res);
+  	$res = str_replace("\n", ", ", $res);
+  	$res = str_replace('"', '""',  $res);
+    */
+  
+  	// Add to result
+  	if($use_utf_16LE) {  		
+  	  $res = '"'.implode('"'."\t".'"', $line).'"'."\n";
+      return mb_convert_encoding( $res, 'UTF-16LE', 'UTF-8');
+      
+    } else { // Fallback to ISO-8859-1
+  	  $res = '"'.implode('"'.";".'"', $line).'"'."\r\n";
+      return utf8_decode($res);
+    }	
+
+}
+
+// Header("Content-Type: application/vnd.ms-excel; charset=UTF-8");
+Header("Content-Type: application/vnd.ms-excel");
+Header("Content-disposition: attachement; filename=translate.csv");
+Header("Content-Transfer-Encoding: 8bit");  
+
+// Magic-Word
+if($use_utf_16LE)
+  print chr(255).chr(254);
+
+
+
+$values = array(".");
+foreach($supp_langs as $lang) {
+	$values[] = $lang;
+}
+echo utf8_to_utf16le($values);
+
+//
+// Print one msgid on each line
+//
+foreach($msgids as $msgid) {
+	$values = array($msgid);
+  foreach($supp_langs as $lang) {
+  	$value = $trans->msg($msgid, $lang);
+	  $values[] = ($value == $msgid ? "" : $value);
+  }
+  echo utf8_to_utf16le($values);
+}
+
+die;
 
 //
 // Result:
