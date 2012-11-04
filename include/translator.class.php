@@ -53,7 +53,7 @@ abstract class Translator {
 	function getBestAcceptLang($accepted_languages) {
 		
     // Extract all available locales
-		$accept_languages = explode(',', $accepted_languages);		
+		$accept_languages = explode(',', strtolower($accepted_languages));
 		$accepted_languages = array();
 
     // Extract foreach locale the "affection"
