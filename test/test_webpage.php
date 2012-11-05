@@ -22,7 +22,7 @@ class TestReadWebpage extends WebTestCase {
 			  . dirname($_SERVER['REQUEST_URI']);
 
 			  $this->get( $this->book_root_url
-			            . "/index.php" );
+			            . "/index.php?lang=en" );
         $this->setField('user', 'simpletest');
         $this->setField('pass', 'simple');
         $this->click('Login');
@@ -88,7 +88,7 @@ class TestReadWebpage extends WebTestCase {
 			$this->get( $this->book_root_url
 			          . "/export.php?type=vCard-one&submit=Download" );
       $this->checkErrors();
-			$this->assertHeader('Content-Type', 'text/x-vCard');
+			$this->assertHeader('Content-Type', 'text/x-vcard');
 		}
 		
 		function testZPush() {
