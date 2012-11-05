@@ -12,10 +12,7 @@
 require_once("translator.class.php");
 $trans = new GetTextTranslator();
 
-$trans->setDefaultLang('en');
-
 $default_lang    = $trans->getDefaultLang();
-// Register translated languages
 $supported_langs = $trans->getSupportedLangs();
 $right_to_left_languages = array('ar', 'fa', 'he');
 
@@ -23,42 +20,16 @@ $right_to_left_languages = array('ar', 'fa', 'he');
 // Handle language choice
 //
 $choose_lang = false;
-if($lang == 'choose') {
-  $choose_lang = true;
-  $lang = 'auto';
-}
-
-if($choose_lang && getPref('lang') != NULL ) {
-	$lang = getPref('lang');
-}
-  
-if(!isset($lang)) {
-   $lang == 'auto';
-}
-
-//
-// Auto-Detect best possible language
-//
-if($lang == 'auto') {
-
+if(getPref('lang') != NULL) {
+  	$lang = getPref('lang');
+} else {
   if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
     $lang = $trans->getBestAcceptLang($_SERVER['HTTP_ACCEPT_LANGUAGE']);
-  	$trans->setDefaultLang($lang);
   } else {
-  	$lang = $trans->getDefaultLang();
+  	$lang = $trans->getBestAcceptLang(array());
   }
 }
-/*
-function get_flag($language) {
-	
-	global $use_flag;
-	
-	if(isset($use_flag[$language]))
-	  return $use_flag[$language];
-	else
-	  return $language;
-}
-*/
+$trans->setDefaultLang($lang);
 
 //
 // Return if a language is writte from 
