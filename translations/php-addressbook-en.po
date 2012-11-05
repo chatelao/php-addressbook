@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
-# This file is distributed under BSD and AGPL
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: 2012-10-27 11:47+0000\n"
+"PO-Revision-Date: 2012-10-27 11:48+0000\n"
 "Last-Translator: chatelao <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-27 11:56+0000\n"
-"X-Generator: Launchpad (build 16194)\n"
-
+"X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
+"X-Generator: Launchpad (build 16232)\n"
 
 msgid "LANGUAGE"
 msgstr "language"
@@ -194,7 +195,7 @@ msgid "FIRSTNAME"
 msgstr "first name"
 
 msgid "MIDDLENAME"
-msgstr "middle name/initals"
+msgstr "middle name/inital(s)"
 
 msgid "LASTNAME"
 msgstr "last name"
@@ -242,28 +243,28 @@ msgid "PHONE_HOME"
 msgstr "home"
 
 msgid "HOME_SHORT"
-msgstr "H"
+msgstr ""
 
 msgid "PHONE_MOBILE"
 msgstr "mobile"
 
 msgid "MOBILE_SHORT"
-msgstr "M"
+msgstr ""
 
 msgid "PHONE_WORK"
 msgstr "work"
 
 msgid "WORK_SHORT"
-msgstr "W"
+msgstr ""
 
 msgid "FAX"
 msgstr "fax"
 
 msgid "FAX_SHORT"
-msgstr "F"
+msgstr ""
 
 msgid "PHONE2_SHORT"
-msgstr "P"
+msgstr ""
 
 msgid "PAGER"
 msgstr "pager"

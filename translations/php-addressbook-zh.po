@@ -3,586 +3,484 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-11-05 07:27+0000\n"
+"Last-Translator: chatelao <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-#:
+"X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
+"X-Generator: Launchpad (build 16232)\n"
+
 msgid "LANGUAGE"
 msgstr "語言"
 
-#:
 msgid "auto"
 msgstr "瀏覽器設定（自動）"
 
-#:
 msgid "USER"
 msgstr "用户"
 
-#:
 msgid "PASSWORD"
 msgstr "密码"
 
-#:
 msgid "LOGIN"
 msgstr "注册"
 
-#:
 msgid "LOGOUT"
 msgstr "注销"
 
-#:
 msgid "JANUARY"
 msgstr "一月"
 
-#:
 msgid "FEBRUARY"
 msgstr "二月"
 
-#:
 msgid "MARCH"
 msgstr "三月"
 
-#:
 msgid "APRIL"
 msgstr "四月"
 
-#:
 msgid "MAY"
 msgstr "五月"
 
-#:
 msgid "JUNE"
 msgstr "六月"
 
-#:
 msgid "JULY"
 msgstr "七月"
 
-#:
 msgid "AUGUST"
 msgstr "八月"
 
-#:
 msgid "SEPTEMBER"
 msgstr "九月"
 
-#:
 msgid "OCTOBER"
 msgstr "十月"
 
-#:
 msgid "NOVEMBER"
 msgstr "十一月"
 
-#:
 msgid "DECEMBER"
 msgstr "十二月"
 
-#:
 msgid "ADDRESS_BOOK"
 msgstr "地址簿"
 
-#:
 msgid "FOR"
 msgstr "為了"
 
-#:
 msgid "SEARCH"
 msgstr "搜索"
 
-#:
 msgid "HOME"
 msgstr "首頁"
 
-#:
 msgid "NEXT_BIRTHDAYS"
 msgstr "下次生日"
 
-#:
 msgid "ADD_NEW"
 msgstr "新增"
 
-#:
 msgid "PRINT_ALL"
 msgstr "全部打印"
 
-#:
 msgid "PRINT_PHONES"
 msgstr "打印"
 
-#:
 msgid "EXPORT_CSV"
 msgstr "匯出"
 
-#:
 msgid "EXPORT"
 msgstr "出口"
 
-#:
 msgid "IMPORT"
 msgstr "进口"
 
-#:
 msgid "MAP"
 msgstr "地圖"
 
-#:
 msgid "MORE"
 msgstr "更多"
 
-#:
 msgid "GROUP"
 msgstr "組"
 
-#:
 msgid "GROUPS"
 msgstr "組別"
 
-#:
 msgid "MANAGE_GROUPS"
 msgstr "組別管理"
 
-#:
 msgid "NEW_GROUP"
 msgstr "新組別"
 
-#:
 msgid "DELETE_GROUPS"
 msgstr "刪除組別"
 
-#:
 msgid "EDIT_GROUP"
 msgstr "組別編輯"
 
-#:
 msgid "GROUP_NAME"
 msgstr "組別名稱"
 
-#:
 msgid "GROUP_HEADER"
 msgstr "組別標題"
 
-#:
 msgid "GROUP_FOOTER"
 msgstr "組別附注"
 
-#:
 msgid "GROUP_PARENT"
 msgstr "家长组"
 
-#:
 msgid "SEARCH_FOR_ANY_TEXT"
 msgstr "搜索 任何文字"
 
-#:
 msgid "NUMBER_OF_RESULTS"
 msgstr "搜索結果 數量"
 
-#:
 msgid "ALL"
 msgstr "全部"
 
-#:
 msgid "NONE"
 msgstr "無"
 
-#:
 msgid "SELECT_ALL"
 msgstr "全選"
 
-#:
 msgid "REMOVE_FROM"
 msgstr "刪除"
 
-#:
 msgid "MAIL_CLIENT"
 msgstr "郵件客戶端"
 
-#:
 msgid "SEND_EMAIL"
 msgstr "發送電郵"
 
-#:
 msgid "ADD_TO"
 msgstr "增加"
 
-#:
 msgid "DETAILS"
 msgstr "詳細"
 
-#:
 msgid "EDIT"
 msgstr "編輯"
 
-#:
 msgid "MODIFY"
 msgstr "修改"
 
-#:
 msgid "PRINT"
 msgstr "打印"
 
-#:
 msgid "EDIT_ADD_ENTRY"
 msgstr "編輯/添加"
 
-#:
 msgid "GUESSED_HOMEPAGE"
 msgstr "猜到首頁"
 
-#:
 msgid "PREFERENCES"
 msgstr "設定"
 
-#:
 msgid "NAME_PREFIX"
 msgstr "字首"
 
-#:
 msgid "FIRSTNAME"
 msgstr "名"
 
-#:
 msgid "MIDDLENAME"
 msgstr "中間名/頭文字（S）"
 
-#:
 msgid "LASTNAME"
 msgstr "姓氏"
 
-#:
 msgid "NAME_SUFFIX"
 msgstr "後綴"
 
-#:
 msgid "NICKNAME"
 msgstr "暱稱"
 
-#:
 msgid "COMPANY"
 msgstr "公司"
 
-#:
 msgid "DEPT"
 msgstr "部"
 
-#:
 msgid "OCCUPATION"
 msgstr "職稱"
 
-#:
 msgid "TITLES"
 msgstr "標題"
 
-#:
 msgid "ADDRESS"
 msgstr "地址"
 
-#:
 msgid "POB"
 msgstr "框或數字"
 
-#:
 msgid "APT"
 msgstr "公寓或停止"
 
-#:
 msgid "STREET"
 msgstr "街道地址"
 
-#:
 msgid "STATE"
 msgstr "州"
 
-#:
 msgid "COUNTRY"
 msgstr "國家"
 
-#:
 msgid "TELEPHONE"
 msgstr "電話"
 
-#:
 msgid "PHONE_HOME"
 msgstr "住家電話"
 
-#:
+msgid "HOME_SHORT"
+msgstr ""
+
 msgid "PHONE_MOBILE"
 msgstr "移動電話"
 
-#:
+msgid "MOBILE_SHORT"
+msgstr ""
+
 msgid "PHONE_WORK"
 msgstr "辦公電話"
 
-#:
+msgid "WORK_SHORT"
+msgstr ""
+
 msgid "FAX"
 msgstr "傳真"
 
-#:
+msgid "FAX_SHORT"
+msgstr ""
+
+msgid "PHONE2_SHORT"
+msgstr ""
+
 msgid "PAGER"
 msgstr "呼叫器"
 
-#:
 msgid "EMAIL"
 msgstr "電子郵件"
 
-#:
 msgid "HOMEPAGE"
 msgstr "首頁"
 
-#:
 msgid "ZIP"
 msgstr "郵編"
 
-#:
 msgid "CITY"
 msgstr "城市"
 
-#:
 msgid "E_MAIL_HOME"
 msgstr "住家電郵"
 
-#:
 msgid "E_MAIL_OFFICE"
 msgstr "辦公電郵"
 
-#:
 msgid "2ND_ADDRESS"
 msgstr "地址 2"
 
-#:
 msgid "2ND_PHONE"
 msgstr "電話 2"
 
-#:
 msgid "NOTES"
 msgstr "附注"
 
-#:
 msgid "MISC"
 msgstr "雜項"
 
-#:
 msgid "BIRTHDAY"
 msgstr "生日"
 
-#:
 msgid "ANNIVERSARY"
 msgstr "週年"
 
-#:
 msgid "CREATED"
 msgstr "創建"
 
-#:
 msgid "MODIFIED"
 msgstr "修改"
 
-#:
 msgid "UPDATE"
 msgstr "更新"
 
-#:
 msgid "DELETE"
 msgstr "刪除"
 
-#:
 msgid "INVALID"
 msgstr "無效"
 
-#:
 msgid "ENTER"
 msgstr "進入"
 
-#:
 msgid "MEMBER_OF"
 msgstr "成員"
 
-#:
 msgid "SECONDARY"
 msgstr "次檔"
 
-#:
 msgid "CREATE_ACCOUNT"
 msgstr "創建賬戶"
 
-#:
 msgid "FORGOT_PASSWORD"
 msgstr "忘記密碼"
 
-#:
-msgid "H:"
-msgstr "住家電話："
-
-#:
-msgid "M:"
-msgstr "移動電話："
-
-#:
-msgid "W:"
-msgstr "辦公電話："
-
-#:
-msgid "F:"
-msgstr "傳真："
-
-#:
-msgid "P:"
-msgstr "病人："
-
-#:
 msgid "ar"
 msgstr "阿拉伯語"
 
-#:
 msgid "bg"
 msgstr "保加利亞文"
 
-#:
 msgid "ca"
 msgstr "加泰隆"
 
-#:
 msgid "cs"
 msgstr "捷克語"
 
-#:
 msgid "da"
 msgstr "丹麥文"
 
-#:
 msgid "de"
 msgstr "德語"
 
-#:
 msgid "el"
 msgstr "希臘語"
 
-#:
 msgid "en"
 msgstr "英語"
 
-#:
 msgid "es"
 msgstr "西班牙語"
 
-#:
 msgid "fa"
 msgstr "波斯语"
 
-#:
 msgid "fi"
 msgstr "芬蘭文"
 
-#:
 msgid "fr"
 msgstr "法語"
 
-#:
 msgid "he"
 msgstr "希伯來語"
 
-#:
 msgid "hi"
 msgstr "北印度語"
 
-#:
 msgid "hu"
 msgstr "匈牙利"
 
-#:
 msgid "it"
 msgstr "意大利語"
 
-#:
 msgid "ja"
 msgstr "日語"
 
-#:
 msgid "ko"
 msgstr "韓文"
 
-#:
 msgid "nl"
 msgstr "荷蘭文"
 
-#:
 msgid "pl"
 msgstr "波蘭語"
 
-#:
 msgid "pt"
 msgstr "葡萄牙語"
 
-#:
 msgid "rm"
 msgstr "托羅曼斯文"
 
-#:
 msgid "ru"
 msgstr "俄語"
 
-#:
 msgid "sl"
 msgstr "斯洛文尼亚"
 
-#:
 msgid "sr"
 msgstr "塞尔维亚"
 
-#:
 msgid "sv"
 msgstr "瑞典文"
 
-#:
 msgid "th"
 msgstr "泰國"
 
-#:
 msgid "tr"
 msgstr "土耳其文"
 
-#:
 msgid "vi"
 msgstr "越南文"
 
-#:
 msgid "zh"
 msgstr "中國"
 
-#:
 msgid "DIR"
 msgstr ""
 
-#:
 msgid "UPDATED"
 msgstr ""
 
-#:
 msgid "TRANSLATOR"
 msgstr ""
 
-#:
 msgid "TITLE"
 msgstr ""
 
-#:
 msgid "MOBILE"
 msgstr ""
 
-#:
 msgid "WORK"
 msgstr ""
 
-#:
 msgid "FIRST_LAST"
 msgstr ""
+
+msgid "NEXT"
+msgstr ""
+
+msgid "PHOTO"
+msgstr ""
+
+msgid "ALL_PHONES"
+msgstr ""
+
+msgid "ALL_EMAILS"
+msgstr ""
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
+msgid "ua"
+msgstr ""
+
+msgid "LAST_FIRST"
+msgstr ""
+
+msgid "GRP_NAME"
+msgstr ""
+
+#~ msgid "H:"
+#~ msgstr "住家電話："
+
+#~ msgid "M:"
+#~ msgstr "移動電話："
+
+#~ msgid "W:"
+#~ msgstr "辦公電話："
+
+#~ msgid "F:"
+#~ msgstr "傳真："
+
+#~ msgid "P:"
+#~ msgstr "病人："

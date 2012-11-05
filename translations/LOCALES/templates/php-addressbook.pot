@@ -4,14 +4,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-10-27 11:47+0000\n"
+"Last-Translator: chatelao <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-27 13:12+0000\n"
-"X-Generator: Launchpad (build 16194)\n"
+"X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
+"X-Generator: Launchpad (build 16232)\n"
 
 msgid "LANGUAGE"
 msgstr ""
@@ -238,13 +238,28 @@ msgstr ""
 msgid "PHONE_HOME"
 msgstr ""
 
+msgid "HOME_SHORT"
+msgstr ""
+
 msgid "PHONE_MOBILE"
+msgstr ""
+
+msgid "MOBILE_SHORT"
 msgstr ""
 
 msgid "PHONE_WORK"
 msgstr ""
 
+msgid "WORK_SHORT"
+msgstr ""
+
 msgid "FAX"
+msgstr ""
+
+msgid "FAX_SHORT"
+msgstr ""
+
+msgid "PHONE2_SHORT"
 msgstr ""
 
 msgid "PAGER"
@@ -314,21 +329,6 @@ msgid "CREATE_ACCOUNT"
 msgstr ""
 
 msgid "FORGOT_PASSWORD"
-msgstr ""
-
-msgid "H:"
-msgstr ""
-
-msgid "M:"
-msgstr ""
-
-msgid "W:"
-msgstr ""
-
-msgid "F:"
-msgstr ""
-
-msgid "P:"
 msgstr ""
 
 msgid "ar"

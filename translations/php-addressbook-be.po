@@ -16,91 +16,91 @@ msgstr ""
 "X-Generator: Launchpad (build 16232)\n"
 
 msgid "LANGUAGE"
-msgstr "språk"
+msgstr "език"
 
 msgid "auto"
-msgstr "Bowser inställningar (automatiska)"
+msgstr "настройки на браузера (автоматични)"
 
 msgid "USER"
-msgstr "Användare"
+msgstr "Потребител"
 
 msgid "PASSWORD"
-msgstr "Lösenord"
+msgstr "Парола"
 
 msgid "LOGIN"
-msgstr "Inloggning"
+msgstr "Вход"
 
 msgid "LOGOUT"
-msgstr "Logga ut"
+msgstr "Изход"
 
 msgid "JANUARY"
-msgstr "Januari"
+msgstr "Януари"
 
 msgid "FEBRUARY"
-msgstr "Februari"
+msgstr "Февруари"
 
 msgid "MARCH"
-msgstr "Mars"
+msgstr "Март"
 
 msgid "APRIL"
-msgstr "April"
+msgstr "Април"
 
 msgid "MAY"
-msgstr "Maj"
+msgstr "Май"
 
 msgid "JUNE"
-msgstr "Juni"
+msgstr "Юни"
 
 msgid "JULY"
-msgstr "Juli"
+msgstr "Юли"
 
 msgid "AUGUST"
-msgstr "Aug"
+msgstr "Август"
 
 msgid "SEPTEMBER"
-msgstr "September"
+msgstr "Септември"
 
 msgid "OCTOBER"
-msgstr "Oktober"
+msgstr "Октомври"
 
 msgid "NOVEMBER"
-msgstr "November"
+msgstr "Ноември"
 
 msgid "DECEMBER"
-msgstr "December"
+msgstr "Декември"
 
 msgid "ADDRESS_BOOK"
-msgstr "Adressbok"
+msgstr "адресна книга"
 
 msgid "FOR"
-msgstr "för"
+msgstr "за"
 
 msgid "SEARCH"
-msgstr "söka"
+msgstr "търсене"
 
 msgid "HOME"
-msgstr "hem"
+msgstr "начало"
 
 msgid "NEXT_BIRTHDAYS"
-msgstr "kommande födelsedagar"
+msgstr "следващ рожден ден"
 
 msgid "ADD_NEW"
-msgstr "lägga till nya"
+msgstr "добави нов"
 
 msgid "PRINT_ALL"
-msgstr "Skriv ut alla"
+msgstr "печат всички"
 
 msgid "PRINT_PHONES"
-msgstr "Skriv ut telefoner"
+msgstr "печат телефони"
 
 msgid "EXPORT_CSV"
-msgstr "Exportera CSV"
+msgstr "експорт в csv"
 
 msgid "EXPORT"
-msgstr "export"
+msgstr "износ"
 
 msgid "IMPORT"
-msgstr "import"
+msgstr "внос"
 
 msgid "MAP"
 msgstr ""
@@ -109,94 +109,94 @@ msgid "MORE"
 msgstr ""
 
 msgid "GROUP"
-msgstr "grupp"
+msgstr "група"
 
 msgid "GROUPS"
-msgstr "grupper"
+msgstr "групи"
 
 msgid "MANAGE_GROUPS"
-msgstr "hantera grupper"
+msgstr "управление на групи"
 
 msgid "NEW_GROUP"
-msgstr "ny grupp"
+msgstr "нова група"
 
 msgid "DELETE_GROUPS"
-msgstr "Radera grupp (er)"
+msgstr "изтриване на група(и)"
 
 msgid "EDIT_GROUP"
-msgstr "Redigera grupp"
+msgstr "редакция на група"
 
 msgid "GROUP_NAME"
-msgstr "Gruppens namn"
+msgstr "име на група"
 
 msgid "GROUP_HEADER"
-msgstr "Grupp huvudet (Logo)"
+msgstr "Лого на група"
 
 msgid "GROUP_FOOTER"
-msgstr "Grupp sidfot (Kommentera)"
+msgstr "Коментар на група"
 
 msgid "GROUP_PARENT"
-msgstr "Föräldragrupp"
+msgstr "Родителите група"
 
 msgid "SEARCH_FOR_ANY_TEXT"
-msgstr "söka efter text"
+msgstr "търси който и да е текст"
 
 msgid "NUMBER_OF_RESULTS"
-msgstr "Antal resultat"
+msgstr "Брой резултати"
 
 msgid "ALL"
-msgstr "alla"
+msgstr "всичко"
 
 msgid "NONE"
-msgstr "ingen"
+msgstr "нищо"
 
 msgid "SELECT_ALL"
-msgstr "Välj alla"
+msgstr "избери всички"
 
 msgid "REMOVE_FROM"
-msgstr "Ta bort från"
+msgstr "премахни от"
 
 msgid "MAIL_CLIENT"
-msgstr "e-postklient"
+msgstr "клиент за поща"
 
 msgid "SEND_EMAIL"
-msgstr "Skicka e-post"
+msgstr "Изпрати Е-поща"
 
 msgid "ADD_TO"
-msgstr "Lägg till"
+msgstr "добави в"
 
 msgid "DETAILS"
-msgstr "information"
+msgstr "детайли"
 
 msgid "EDIT"
-msgstr "Redigera"
+msgstr "редакция"
 
 msgid "MODIFY"
-msgstr "ändra"
+msgstr "промяна"
 
 msgid "PRINT"
-msgstr "Skriv ut"
+msgstr "печат"
 
 msgid "EDIT_ADD_ENTRY"
-msgstr "Ändra / lägg till adressbok post"
+msgstr "Рeдакция / добяване на нов контакт"
 
 msgid "GUESSED_HOMEPAGE"
-msgstr "Gissade hemsida"
+msgstr "Предполагаема интернет страница"
 
 msgid "PREFERENCES"
-msgstr "preferenser"
+msgstr "настройки"
 
 msgid "NAME_PREFIX"
 msgstr ""
 
 msgid "FIRSTNAME"
-msgstr "förnamn"
+msgstr "Име"
 
 msgid "MIDDLENAME"
 msgstr ""
 
 msgid "LASTNAME"
-msgstr "efternamn"
+msgstr "Фамилия"
 
 msgid "NAME_SUFFIX"
 msgstr ""
@@ -205,7 +205,7 @@ msgid "NICKNAME"
 msgstr ""
 
 msgid "COMPANY"
-msgstr "företag"
+msgstr "дружество"
 
 msgid "DEPT"
 msgstr ""
@@ -217,7 +217,7 @@ msgid "TITLES"
 msgstr ""
 
 msgid "ADDRESS"
-msgstr "adress"
+msgstr "адрес"
 
 msgid "POB"
 msgstr ""
@@ -235,28 +235,28 @@ msgid "COUNTRY"
 msgstr ""
 
 msgid "TELEPHONE"
-msgstr "telefon"
+msgstr "телефон"
 
 msgid "PHONE_HOME"
-msgstr "hem"
+msgstr "домашен"
 
 msgid "HOME_SHORT"
 msgstr ""
 
 msgid "PHONE_MOBILE"
-msgstr "mobil"
+msgstr "мобилен"
 
 msgid "MOBILE_SHORT"
 msgstr ""
 
 msgid "PHONE_WORK"
-msgstr "arbete"
+msgstr "служебен"
 
 msgid "WORK_SHORT"
 msgstr ""
 
 msgid "FAX"
-msgstr "fax"
+msgstr "факс"
 
 msgid "FAX_SHORT"
 msgstr ""
@@ -268,64 +268,64 @@ msgid "PAGER"
 msgstr ""
 
 msgid "EMAIL"
-msgstr "e-post"
+msgstr "е-поща"
 
 msgid "HOMEPAGE"
-msgstr "Hemsida"
+msgstr "Начало"
 
 msgid "ZIP"
-msgstr "ZIP"
+msgstr "пощенски код"
 
 msgid "CITY"
-msgstr "stad"
+msgstr "град"
 
 msgid "E_MAIL_HOME"
-msgstr "e-post hem"
+msgstr "домашена е-поща"
 
 msgid "E_MAIL_OFFICE"
-msgstr "e-post kontor"
+msgstr "служебна е-поща"
 
 msgid "2ND_ADDRESS"
-msgstr "andra adress"
+msgstr "друг адрес"
 
 msgid "2ND_PHONE"
-msgstr "andra telefonen"
+msgstr "друг телефон"
 
 msgid "NOTES"
-msgstr "anteckningar"
+msgstr "бележки"
 
 msgid "MISC"
 msgstr ""
 
 msgid "BIRTHDAY"
-msgstr "födelsedag"
+msgstr "рожден ден"
 
 msgid "ANNIVERSARY"
 msgstr ""
 
 msgid "CREATED"
-msgstr "skapade"
+msgstr "е създаден"
 
 msgid "MODIFIED"
-msgstr "modifierade"
+msgstr "промяна"
 
 msgid "UPDATE"
-msgstr "uppdatera"
+msgstr "промени"
 
 msgid "DELETE"
-msgstr "ta bort"
+msgstr "изтрии"
 
 msgid "INVALID"
-msgstr "ogiltig"
+msgstr "невалиден"
 
 msgid "ENTER"
-msgstr "Ange"
+msgstr "въведи"
 
 msgid "MEMBER_OF"
-msgstr "medlem av"
+msgstr "член на"
 
 msgid "SECONDARY"
-msgstr "Sekundära"
+msgstr "Втори адрес"
 
 msgid "CREATE_ACCOUNT"
 msgstr ""
@@ -334,94 +334,94 @@ msgid "FORGOT_PASSWORD"
 msgstr ""
 
 msgid "ar"
-msgstr "Arabiska"
+msgstr "Арабски"
 
 msgid "bg"
-msgstr "Bulgariska"
+msgstr "Български"
 
 msgid "ca"
-msgstr "Katalanska"
+msgstr "Каталонски"
 
 msgid "cs"
-msgstr "Tjeckiska"
+msgstr "Чешки"
 
 msgid "da"
-msgstr "Danska"
+msgstr "Датски"
 
 msgid "de"
-msgstr "Tyska"
+msgstr "Немски"
 
 msgid "el"
-msgstr "Grekiska"
+msgstr "Гръзки"
 
 msgid "en"
-msgstr "Engelska"
+msgstr "Английски"
 
 msgid "es"
-msgstr "Spanska"
+msgstr "Испански"
 
 msgid "fa"
-msgstr "Persiska"
+msgstr "Персийски"
 
 msgid "fi"
-msgstr "Finska"
+msgstr "Фински"
 
 msgid "fr"
-msgstr "Franska"
+msgstr "Френски"
 
 msgid "he"
-msgstr "Hebreiska"
+msgstr "Hebrew"
 
 msgid "hi"
-msgstr "Hindi"
+msgstr "Индиски"
 
 msgid "hu"
-msgstr "Ungerska"
+msgstr "Унгарски"
 
 msgid "it"
-msgstr "Italienska"
+msgstr "Италиански"
 
 msgid "ja"
-msgstr "Japanska"
+msgstr "Японски"
 
 msgid "ko"
-msgstr "Koreanska"
+msgstr "Корейски"
 
 msgid "nl"
-msgstr "Holländska"
+msgstr "Холандски"
 
 msgid "pl"
-msgstr "Polska"
+msgstr "Полски"
 
 msgid "pt"
-msgstr "Portugisiska"
+msgstr "Португалски"
 
 msgid "rm"
-msgstr "Rätoromanska"
+msgstr "Реторомански"
 
 msgid "ru"
-msgstr "Ryska"
+msgstr "Руски"
 
 msgid "sl"
-msgstr "Slovenian"
+msgstr "Словенски"
 
 msgid "sr"
-msgstr "Serbiska"
+msgstr "Сръбски"
 
 msgid "sv"
-msgstr "Svenska"
+msgstr "Шведски"
 
 msgid "th"
 msgstr "Thai"
 
 msgid "tr"
-msgstr "Turkiska"
+msgstr "Турски"
 
 msgid "vi"
-msgstr "Vietnamesiska"
+msgstr "Виетнамски"
 
 msgid "zh"
-msgstr "Kinesiska"
+msgstr "Китайски"
 
 msgid "DIR"
 msgstr ""

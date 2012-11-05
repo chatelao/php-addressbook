@@ -1,0 +1,471 @@
+# Slovak translation for php-addressbook
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the php-addressbook package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: php-addressbook\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: 2012-10-28 22:31+0000\n"
+"Last-Translator: DodoG <gaal@centrum.sk>\n"
+"Language-Team: Slovak <sk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
+"X-Generator: Launchpad (build 16232)\n"
+
+msgid "LANGUAGE"
+msgstr "Jazyk"
+
+msgid "auto"
+msgstr "automaticky"
+
+msgid "USER"
+msgstr "Používateľ"
+
+msgid "PASSWORD"
+msgstr "Heslo"
+
+msgid "LOGIN"
+msgstr "Prihlásenie"
+
+msgid "LOGOUT"
+msgstr "ODHLÁSENIE"
+
+msgid "JANUARY"
+msgstr "Január"
+
+msgid "FEBRUARY"
+msgstr "Február"
+
+msgid "MARCH"
+msgstr "Marec"
+
+msgid "APRIL"
+msgstr "Apríl"
+
+msgid "MAY"
+msgstr "Máj"
+
+msgid "JUNE"
+msgstr "Jún"
+
+msgid "JULY"
+msgstr "Júl"
+
+msgid "AUGUST"
+msgstr "August"
+
+msgid "SEPTEMBER"
+msgstr "September"
+
+msgid "OCTOBER"
+msgstr "Október"
+
+msgid "NOVEMBER"
+msgstr "November"
+
+msgid "DECEMBER"
+msgstr "December"
+
+msgid "ADDRESS_BOOK"
+msgstr "Adresár"
+
+msgid "FOR"
+msgstr "pre"
+
+msgid "SEARCH"
+msgstr "Hľadať"
+
+msgid "HOME"
+msgstr "Domov"
+
+msgid "NEXT_BIRTHDAYS"
+msgstr "Nasledujúce narodeniny"
+
+msgid "ADD_NEW"
+msgstr "Pridať novú"
+
+msgid "PRINT_ALL"
+msgstr "Vytlačiť všetko"
+
+msgid "PRINT_PHONES"
+msgstr "Vytlačit tel. čísla"
+
+msgid "EXPORT_CSV"
+msgstr "Exportovať CSV"
+
+msgid "EXPORT"
+msgstr "Exportovať"
+
+msgid "IMPORT"
+msgstr "Importovať"
+
+msgid "MAP"
+msgstr "Mapa"
+
+msgid "MORE"
+msgstr "Viac"
+
+msgid "GROUP"
+msgstr "Skupina"
+
+msgid "GROUPS"
+msgstr "Skupiny"
+
+msgid "MANAGE_GROUPS"
+msgstr "Spravovať skupiny"
+
+msgid "NEW_GROUP"
+msgstr "Nová skupina"
+
+msgid "DELETE_GROUPS"
+msgstr "Vymazať skupiny"
+
+msgid "EDIT_GROUP"
+msgstr "Upraviť skupinu"
+
+msgid "GROUP_NAME"
+msgstr "Názov skupiny"
+
+msgid "GROUP_HEADER"
+msgstr "Hlavička skupiny"
+
+msgid "GROUP_FOOTER"
+msgstr "Päta skupiny (poznámka)"
+
+msgid "GROUP_PARENT"
+msgstr "Nadradená skupina"
+
+msgid "SEARCH_FOR_ANY_TEXT"
+msgstr "Hľadať všade"
+
+msgid "NUMBER_OF_RESULTS"
+msgstr "Počet výsledkov"
+
+msgid "ALL"
+msgstr "Všetko"
+
+msgid "NONE"
+msgstr "žiadne"
+
+msgid "SELECT_ALL"
+msgstr "Vybrať všetko"
+
+msgid "REMOVE_FROM"
+msgstr "Odstrániť z"
+
+msgid "MAIL_CLIENT"
+msgstr "Emailový klient"
+
+msgid "SEND_EMAIL"
+msgstr "Poslať email"
+
+msgid "ADD_TO"
+msgstr "Pridať do"
+
+msgid "DETAILS"
+msgstr "Podrobnosti"
+
+msgid "EDIT"
+msgstr "Upraviť"
+
+msgid "MODIFY"
+msgstr "Zmeniť"
+
+msgid "PRINT"
+msgstr "Vytlačiť"
+
+msgid "EDIT_ADD_ENTRY"
+msgstr "Upraviť alebo pridať položku"
+
+msgid "GUESSED_HOMEPAGE"
+msgstr "Odhadovaná webstránka"
+
+msgid "PREFERENCES"
+msgstr "Prevoľby"
+
+msgid "NAME_PREFIX"
+msgstr "Predpona"
+
+msgid "FIRSTNAME"
+msgstr "Krstné meno"
+
+msgid "MIDDLENAME"
+msgstr "Stredné meno"
+
+msgid "LASTNAME"
+msgstr "Priezvisko"
+
+msgid "NAME_SUFFIX"
+msgstr "Prípona"
+
+msgid "NICKNAME"
+msgstr "Prezývka"
+
+msgid "COMPANY"
+msgstr "Spoločnosť"
+
+msgid "DEPT"
+msgstr "Oddelenie"
+
+msgid "OCCUPATION"
+msgstr "Zamestnanie"
+
+msgid "TITLES"
+msgstr "Tituly"
+
+msgid "ADDRESS"
+msgstr "Adresa"
+
+msgid "POB"
+msgstr "Číslo"
+
+msgid "APT"
+msgstr "Apartmán"
+
+msgid "STREET"
+msgstr "Ulica"
+
+msgid "STATE"
+msgstr "Stav"
+
+msgid "COUNTRY"
+msgstr "Krajina"
+
+msgid "TELEPHONE"
+msgstr "Telefón"
+
+msgid "PHONE_HOME"
+msgstr "Telefón domov"
+
+msgid "HOME_SHORT"
+msgstr ""
+
+msgid "PHONE_MOBILE"
+msgstr "Mobil"
+
+msgid "MOBILE_SHORT"
+msgstr ""
+
+msgid "PHONE_WORK"
+msgstr "Telefón práca"
+
+msgid "WORK_SHORT"
+msgstr ""
+
+msgid "FAX"
+msgstr "Fax"
+
+msgid "FAX_SHORT"
+msgstr ""
+
+msgid "PHONE2_SHORT"
+msgstr ""
+
+msgid "PAGER"
+msgstr "Pager"
+
+msgid "EMAIL"
+msgstr "Email"
+
+msgid "HOMEPAGE"
+msgstr "Webstránka"
+
+msgid "ZIP"
+msgstr "PSČ"
+
+msgid "CITY"
+msgstr "Mesto"
+
+msgid "E_MAIL_HOME"
+msgstr "Email domov"
+
+msgid "E_MAIL_OFFICE"
+msgstr "Email práca"
+
+msgid "2ND_ADDRESS"
+msgstr "Druhá adresa"
+
+msgid "2ND_PHONE"
+msgstr "Druhý telefón"
+
+msgid "NOTES"
+msgstr "Poznámky"
+
+msgid "MISC"
+msgstr "Rôzne"
+
+msgid "BIRTHDAY"
+msgstr "Narodeniny"
+
+msgid "ANNIVERSARY"
+msgstr "Výročie"
+
+msgid "CREATED"
+msgstr "Vytvorené"
+
+msgid "MODIFIED"
+msgstr "Upravené"
+
+msgid "UPDATE"
+msgstr "Aktualizovať"
+
+msgid "DELETE"
+msgstr "Vymazať"
+
+msgid "INVALID"
+msgstr "Neplatné"
+
+msgid "ENTER"
+msgstr "Vložiť"
+
+msgid "MEMBER_OF"
+msgstr "Člen skupiny"
+
+msgid "SECONDARY"
+msgstr "Sekundárne"
+
+msgid "CREATE_ACCOUNT"
+msgstr "Vytvoriť konto"
+
+msgid "FORGOT_PASSWORD"
+msgstr "Zabudnuté heslo"
+
+msgid "ar"
+msgstr "Arabský"
+
+msgid "bg"
+msgstr "Bulharský"
+
+msgid "ca"
+msgstr "Katalánsky"
+
+msgid "cs"
+msgstr "Český"
+
+msgid "da"
+msgstr "Dánsky"
+
+msgid "de"
+msgstr "Nemecký"
+
+msgid "el"
+msgstr "Grécky"
+
+msgid "en"
+msgstr "Anglický"
+
+msgid "es"
+msgstr "Španielsky"
+
+msgid "fa"
+msgstr "Perzský (Farsi)"
+
+msgid "fi"
+msgstr "Fínsky"
+
+msgid "fr"
+msgstr "Francúzsky"
+
+msgid "he"
+msgstr "Hebrejský"
+
+msgid "hi"
+msgstr "Hindský"
+
+msgid "hu"
+msgstr "Maďarský"
+
+msgid "it"
+msgstr "Taliansky"
+
+msgid "ja"
+msgstr "Japonský"
+
+msgid "ko"
+msgstr "Kórejský"
+
+msgid "nl"
+msgstr "Holandský"
+
+msgid "pl"
+msgstr "Poľský"
+
+msgid "pt"
+msgstr "Portugalský"
+
+msgid "rm"
+msgstr "Rétorománsky"
+
+msgid "ru"
+msgstr "Ruský"
+
+msgid "sl"
+msgstr "Slovinský"
+
+msgid "sr"
+msgstr "Srbský"
+
+msgid "sv"
+msgstr "Švédsky"
+
+msgid "th"
+msgstr "Thajský"
+
+msgid "tr"
+msgstr "Turecký"
+
+msgid "vi"
+msgstr "Vietnamský"
+
+msgid "zh"
+msgstr "Čínsky"
+
+msgid "DIR"
+msgstr "Adresár"
+
+msgid "UPDATED"
+msgstr "Aktualizované"
+
+msgid "TRANSLATOR"
+msgstr "Prekladateľ"
+
+msgid "TITLE"
+msgstr "Titul"
+
+msgid "MOBILE"
+msgstr "Mobil"
+
+msgid "WORK"
+msgstr "Práca"
+
+msgid "FIRST_LAST"
+msgstr "FIRST_LAST"
+
+msgid "NEXT"
+msgstr "Ďalší"
+
+msgid "PHOTO"
+msgstr "Fotografia"
+
+msgid "ALL_PHONES"
+msgstr "Všetky tel. čísla"
+
+msgid "ALL_EMAILS"
+msgstr "Všetky tel. čísla"
+
+msgid "SIGN_IN_WITH"
+msgstr "Prihlásiť sa cez"
+
+msgid "ua"
+msgstr "Ukrajinský"
+
+msgid "LAST_FIRST"
+msgstr "LAST_FIRST"
+
+msgid "GRP_NAME"
+msgstr "Názov skupiny"

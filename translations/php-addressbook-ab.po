@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: 2012-11-04 20:33+0000\n"
+"PO-Revision-Date: 2012-11-04 20:31+0000\n"
 "Last-Translator: chatelao <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -130,10 +130,10 @@ msgid "GROUP_NAME"
 msgstr "ชื่อกลุ่ม"
 
 msgid "GROUP_HEADER"
-msgstr ""
+msgstr "Tên nhóm"
 
 msgid "GROUP_FOOTER"
-msgstr ""
+msgstr "Nhóm đầu (Logo)"
 
 msgid "GROUP_PARENT"
 msgstr "กลุ่มผู้ปกครอง"
@@ -157,7 +157,7 @@ msgid "REMOVE_FROM"
 msgstr "ลบ"
 
 msgid "MAIL_CLIENT"
-msgstr ""
+msgstr "từ bỏ"
 
 msgid "SEND_EMAIL"
 msgstr "ส่งจดหมาย จดหมายอิเล็กทรอนิกส์"
@@ -340,10 +340,10 @@ msgid "bg"
 msgstr "บัลแกเรีย"
 
 msgid "ca"
-msgstr ""
+msgstr "Catalonian"
 
 msgid "cs"
-msgstr ""
+msgstr "Tiếng Anh"
 
 msgid "da"
 msgstr "ภาษาเดนมาร์ก"
@@ -361,7 +361,7 @@ msgid "es"
 msgstr "สเปน"
 
 msgid "fa"
-msgstr ""
+msgstr "Tiếng Farsi"
 
 msgid "fi"
 msgstr "ฟินแลนด์"
@@ -376,7 +376,7 @@ msgid "hi"
 msgstr "ภาษาฮินดี"
 
 msgid "hu"
-msgstr ""
+msgstr "Hungary"
 
 msgid "it"
 msgstr "ภาษาอิตาลี"
@@ -391,7 +391,7 @@ msgid "nl"
 msgstr "ดัตช์"
 
 msgid "pl"
-msgstr ""
+msgstr "Tiếng Đức"
 
 msgid "pt"
 msgstr "ภาษาโปรตุเกส"
