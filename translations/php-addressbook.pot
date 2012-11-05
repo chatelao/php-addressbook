@@ -331,7 +331,55 @@ msgstr ""
 msgid "FORGOT_PASSWORD"
 msgstr ""
 
+msgid "UPDATED"
+msgstr ""
+
+msgid "TRANSLATOR"
+msgstr ""
+
+msgid "TITLE"
+msgstr ""
+
+msgid "MOBILE"
+msgstr ""
+
+msgid "WORK"
+msgstr ""
+
+msgid "FIRST_LAST"
+msgstr ""
+
+msgid "NEXT"
+msgstr ""
+
+msgid "PHOTO"
+msgstr ""
+
+msgid "ALL_PHONES"
+msgstr ""
+
+msgid "ALL_EMAILS"
+msgstr ""
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
+msgid "ua"
+msgstr ""
+
+msgid "LAST_FIRST"
+msgstr ""
+
+msgid "GRP_NAME"
+msgstr ""
+
+msgid "ab"
+msgstr ""
+
 msgid "ar"
+msgstr ""
+
+msgid "be"
 msgstr ""
 
 msgid "bg"
@@ -388,6 +436,9 @@ msgstr ""
 msgid "nl"
 msgstr ""
 
+msgid "no"
+msgstr ""
+
 msgid "pl"
 msgstr ""
 
@@ -398,6 +449,9 @@ msgid "rm"
 msgstr ""
 
 msgid "ru"
+msgstr ""
+
+msgid "sk"
 msgstr ""
 
 msgid "sl"
@@ -415,53 +469,11 @@ msgstr ""
 msgid "tr"
 msgstr ""
 
+msgid "ua"
+msgstr ""
+
 msgid "vi"
 msgstr ""
 
 msgid "zh"
-msgstr ""
-
-msgid "DIR"
-msgstr ""
-
-msgid "UPDATED"
-msgstr ""
-
-msgid "TRANSLATOR"
-msgstr ""
-
-msgid "TITLE"
-msgstr ""
-
-msgid "MOBILE"
-msgstr ""
-
-msgid "WORK"
-msgstr ""
-
-msgid "FIRST_LAST"
-msgstr ""
-
-msgid "NEXT"
-msgstr ""
-
-msgid "PHOTO"
-msgstr ""
-
-msgid "ALL_PHONES"
-msgstr ""
-
-msgid "ALL_EMAILS"
-msgstr ""
-
-msgid "SIGN_IN_WITH"
-msgstr ""
-
-msgid "ua"
-msgstr ""
-
-msgid "LAST_FIRST"
-msgstr ""
-
-msgid "GRP_NAME"
 msgstr ""

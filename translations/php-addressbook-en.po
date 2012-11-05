@@ -243,28 +243,28 @@ msgid "PHONE_HOME"
 msgstr "home"
 
 msgid "HOME_SHORT"
-msgstr ""
+msgstr "H"
 
 msgid "PHONE_MOBILE"
 msgstr "mobile"
 
 msgid "MOBILE_SHORT"
-msgstr ""
+msgstr "M"
 
 msgid "PHONE_WORK"
 msgstr "work"
 
 msgid "WORK_SHORT"
-msgstr ""
+msgstr "W"
 
 msgid "FAX"
 msgstr "fax"
 
 msgid "FAX_SHORT"
-msgstr ""
+msgstr "F"
 
 msgid "PHONE2_SHORT"
-msgstr ""
+msgstr "P"
 
 msgid "PAGER"
 msgstr "pager"
