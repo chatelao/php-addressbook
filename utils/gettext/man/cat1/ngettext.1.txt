@@ -1,0 +1,77 @@
+NGETTEXT(1)                   GNU                   NGETTEXT(1)
+
+
+
+
+
+NAME
+       ngettext - translate message and choose plural form
+
+SYNOPSIS
+       ngettext [OPTION] [TEXTDOMAIN] MSGID MSGID-PLURAL COUNT
+
+DESCRIPTION
+       The  ngettext program translates a natural language mes-
+       sage into the user's language, by looking up the  trans-
+       lation in a message catalog, and chooses the appropriate
+       plural form, which depends on the number COUNT  and  the
+       language  of  the  message catalog where the translation
+       was found.
+
+       Display native language translation of a textual message
+       whose grammatical form depends on a number.
+
+       -d, --domain=TEXTDOMAIN
+              retrieve translated message from TEXTDOMAIN
+
+       -e     enable expansion of some escape sequences
+
+       -E     (ignored for compatibility)
+
+       -h, --help
+              display this help and exit
+
+       -V, --version
+              display version information and exit
+
+       [TEXTDOMAIN]
+              retrieve translated message from TEXTDOMAIN
+
+       MSGID MSGID-PLURAL
+              translate  MSGID  (singular) / MSGID-PLURAL (plu-
+              ral)
+
+       COUNT  choose singular/plural form based on this value
+
+       If the TEXTDOMAIN parameter is not given, the domain  is
+       determined from the environment variable TEXTDOMAIN.  If
+       the message catalog is not found in the  regular  direc-
+       tory,  another  location can be specified with the envi-
+       ronment variable TEXTDOMAINDIR.  Standard search  direc-
+       tory: c:/progra~1/Gettext/share/locale
+
+AUTHOR
+       Written by Ulrich Drepper.
+
+REPORTING BUGS
+       Report bugs to <bug-gnu-gettext@gnu.org>.
+
+COPYRIGHT
+       Copyright (C) 1995-1997, 2000-2005 Free Software Founda-
+       tion, Inc.
+       This is free software; see the source for copying condi-
+       tions.  There is NO warranty; not even for MERCHANTABIL-
+       ITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+SEE ALSO
+       The full documentation for ngettext is maintained  as  a
+       Texinfo  manual.   If the info and ngettext programs are
+       properly installed at your site, the command
+
+              info ngettext
+
+       should give you access to the complete manual.
+
+
+
+GNU gettext-runtime 0.14.3 April 2005               NGETTEXT(1)

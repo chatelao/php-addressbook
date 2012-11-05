@@ -1,0 +1,76 @@
+GETTEXT(1)                    GNU                    GETTEXT(1)
+
+
+
+
+
+NAME
+       gettext - translate message
+
+SYNOPSIS
+       gettext [OPTION] [[TEXTDOMAIN] MSGID]
+       gettext [OPTION] -s [MSGID]...
+
+DESCRIPTION
+       The  gettext  program translates a natural language mes-
+       sage into the user's language, by looking up the  trans-
+       lation in a message catalog.
+
+       Display  native  language  translation of a textual mes-
+       sage.
+
+       -d, --domain=TEXTDOMAIN
+              retrieve translated messages from TEXTDOMAIN
+
+       -e     enable expansion of some escape sequences
+
+       -E     (ignored for compatibility)
+
+       -h, --help
+              display this help and exit
+
+       -n     suppress trailing newline
+
+       -V, --version
+              display version information and exit
+
+       [TEXTDOMAIN] MSGID
+              retrieve  translated  message  corresponding   to
+              MSGID from TEXTDOMAIN
+
+       If  the TEXTDOMAIN parameter is not given, the domain is
+       determined from the environment variable TEXTDOMAIN.  If
+       the  message  catalog is not found in the regular direc-
+       tory, another location can be specified with  the  envi-
+       ronment  variable  TEXTDOMAINDIR.  When used with the -s
+       option the program behaves like the `echo' command.  But
+       it  does  not  simply  copy  its  arguments  to  stdout.
+       Instead those messages found in the selected catalog are
+       translated.  Standard search directory: c:/progra~1/Get-
+       text/share/locale
+
+AUTHOR
+       Written by Ulrich Drepper.
+
+REPORTING BUGS
+       Report bugs to <bug-gnu-gettext@gnu.org>.
+
+COPYRIGHT
+       Copyright (C) 1995-1997, 2000-2005 Free Software Founda-
+       tion, Inc.
+       This is free software; see the source for copying condi-
+       tions.  There is NO warranty; not even for MERCHANTABIL-
+       ITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+SEE ALSO
+       The  full  documentation  for gettext is maintained as a
+       Texinfo manual.  If the info and  gettext  programs  are
+       properly installed at your site, the command
+
+              info gettext
+
+       should give you access to the complete manual.
+
+
+
+GNU gettext-runtime 0.14.3 April 2005                GETTEXT(1)

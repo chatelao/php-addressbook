@@ -1,0 +1,72 @@
+BIND_TEXTDOMAIN_CODESET(3)           BIND_TEXTDOMAIN_CODESET(3)
+
+
+
+
+
+NAME
+       bind_textdomain_codeset - set encoding of message trans-
+       lations
+
+SYNOPSIS
+       #include <libintl.h>
+
+       char * bind_textdomain_codeset (const char * domainname,
+                                       const char * codeset);
+
+DESCRIPTION
+       The bind_textdomain_codeset  function  sets  the  output
+       codeset for message catalogs for domain domainname.
+
+       A  message  domain  is  a set of translatable msgid mes-
+       sages. Usually, every software package has its own  mes-
+       sage domain.
+
+       By  default,  the  gettext  family  of functions returns
+       translated messages in the locale's character  encoding,
+       which can be retrieved as nl_langinfo(CODESET). The need
+       for calling bind_textdomain_codeset arises for  programs
+       which  store  strings  in a locale independent way (e.g.
+       UTF-8) and want to avoid an extra character set  conver-
+       sion on the returned translated messages.
+
+       domainname must be a non-empty string.
+
+       If codeset is not NULL, it must be a valid encoding name
+       which can be  used  for  the  iconv_open  function.  The
+       bind_textdomain_codeset function sets the output codeset
+       for message catalogs belonging to domain  domainname  to
+       codeset.  The  function  makes  copies  of  the argument
+       strings as needed.
+
+       If codeset is NULL, the function returns the  previously
+       set  codeset for domain domainname. The default is NULL,
+       denoting the locale's character encoding.
+
+RETURN VALUE
+       If  successful,  the  bind_textdomain_codeset   function
+       returns the current codeset for domain domainname, after
+       possibly changing it.  The  resulting  string  is  valid
+       until the next bind_textdomain_codeset call for the same
+       domainname and must not be modified or freed. If a  mem-
+       ory  allocation  failure occurs, it sets errno to ENOMEM
+       and returns NULL. If no codeset has been set for  domain
+       domainname, it returns NULL.
+
+ERRORS
+       The following error can occur, among others:
+
+       ENOMEM Not enough memory available.
+
+BUGS
+       The  return type ought to be const char *, but is char *
+       to avoid warnings in C code predating ANSI C.
+
+SEE ALSO
+       gettext(3),  dgettext(3),   dcgettext(3),   ngettext(3),
+       dngettext(3),   dcngettext(3),  textdomain(3),  nl_lang-
+       info(3), iconv_open(3)
+
+
+
+GNU gettext 0.14.4          May 2001 BIND_TEXTDOMAIN_CODESET(3)
