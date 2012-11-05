@@ -1,0 +1,422 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+msgid "LANGUAGE"
+msgstr "språk"
+
+msgid "auto"
+msgstr "nettleser instillinger (automatisk)"
+
+msgid "JANUARY"
+msgstr "Januar"
+
+msgid "FEBRUARY"
+msgstr "Februar"
+
+msgid "MARCH"
+msgstr "Mars"
+
+msgid "APRIL"
+msgstr "April"
+
+msgid "MAY"
+msgstr "Mai"
+
+msgid "JUNE"
+msgstr "Juni"
+
+msgid "JULY"
+msgstr "Juli"
+
+msgid "AUGUST"
+msgstr "August"
+
+msgid "SEPTEMBER"
+msgstr "September"
+
+msgid "OCTOBER"
+msgstr "Oktober"
+
+msgid "NOVEMBER"
+msgstr "November"
+
+msgid "DECEMBER"
+msgstr "Desember"
+
+msgid "ADDRESS_BOOK"
+msgstr "adressebok"
+
+msgid "FOR"
+msgstr "for"
+
+msgid "SEARCH"
+msgstr "søk"
+
+msgid "HOME"
+msgstr "hjem"
+
+msgid "NEXT_BIRTHDAYS"
+msgstr "neste bursdager"
+
+msgid "ADD_NEW"
+msgstr "legg til"
+
+msgid "PRINT_ALL"
+msgstr "skriv ut alle"
+
+msgid "PRINT_PHONES"
+msgstr "skriv ut telefoner"
+
+msgid "EXPORT_CSV"
+msgstr "eksporter csv"
+
+msgid "GROUPS"
+msgstr "grupper"
+
+msgid "MANAGE_GROUPS"
+msgstr "grupper"
+
+msgid "NEW_GROUP"
+msgstr "ny gruppe"
+
+msgid "DELETE_GROUPS"
+msgstr "slett gruppe(r)"
+
+msgid "EDIT_GROUP"
+msgstr "editer gruppe"
+
+msgid "GROUP_NAME"
+msgstr "gruppenavn"
+
+msgid "GROUP_HEADER"
+msgstr "Gruppe topptekst (Logo)"
+
+msgid "GROUP_FOOTER"
+msgstr "Gruppe bunntekst (Kommentar)"
+
+msgid "SEARCH_FOR_ANY_TEXT"
+msgstr "søk etter tekst"
+
+msgid "NUMBER_OF_RESULTS"
+msgstr "Antall resultater"
+
+msgid "ALL"
+msgstr "alle"
+
+msgid "NONE"
+msgstr "ingen"
+
+msgid "SELECT_ALL"
+msgstr "merk alle"
+
+msgid "REMOVE_FROM"
+msgstr "fjern fra"
+
+msgid "MAIL_CLIENT"
+msgstr "mail klient"
+
+msgid "SEND_EMAIL"
+msgstr "Send e-Pail"
+
+msgid "ADD_TO"
+msgstr "legg til"
+
+msgid "DETAILS"
+msgstr "detaljer"
+
+msgid "EDIT"
+msgstr "editer"
+
+msgid "MODIFY"
+msgstr "modifiser"
+
+msgid "PRINT"
+msgstr "skriv ut"
+
+msgid "EDIT_ADD_ENTRY"
+msgstr "Editer / legg til adressebokoppføring"
+
+msgid "GUESSED_HOMEPAGE"
+msgstr "Guessed homepage"
+
+msgid "PREFERENCES"
+msgstr "preferanser"
+
+msgid "FIRSTNAME"
+msgstr "fornavn"
+
+msgid "LASTNAME"
+msgstr "etternavn"
+
+msgid "ADDRESS"
+msgstr "addresse"
+
+msgid "TELEPHONE"
+msgstr "telefon"
+
+msgid "PHONE_HOME"
+msgstr "hjem"
+
+msgid "PHONE_MOBILE"
+msgstr "mobil"
+
+msgid "PHONE_WORK"
+msgstr "arbeid"
+
+msgid "EMAIL"
+msgstr "e-post"
+
+msgid "NICKNAME"
+msgstr "kallenavn"
+
+msgid "ZIP"
+msgstr "Postnr."
+
+msgid "CITY"
+msgstr "by"
+
+msgid "E_MAIL_HOME"
+msgstr "e-post home"
+
+msgid "E_MAIL_OFFICE"
+msgstr "e-post kontor"
+
+msgid "2ND_ADDRESS"
+msgstr "Annen addresse"
+
+msgid "2ND_PHONE"
+msgstr "Annen telefon"
+
+msgid "BIRTHDAY"
+msgstr "bursdag"
+
+msgid "UPDATE"
+msgstr "updater"
+
+msgid "DELETE"
+msgstr "slett"
+
+msgid "INVALID"
+msgstr "ugyldig"
+
+msgid "ENTER"
+msgstr "skriv inn"
+
+msgid "MEMBER_OF"
+msgstr "medlem av"
+
+msgid "SECONDARY"
+msgstr "Sekundær"
+
+msgid "GROUP"
+msgstr "gruppe"
+
+msgid "COMPANY"
+msgstr "firma"
+
+msgid "FAX"
+msgstr "fax"
+
+msgid "F:"
+msgstr "F:"
+
+msgid "HOMEPAGE"
+msgstr "Hjemmeside"
+
+msgid "NOTES"
+msgstr "notater"
+
+msgid "CREATED"
+msgstr "opprettet"
+
+msgid "MODIFIED"
+msgstr "modifisert"
+
+msgid "USER"
+msgstr "Bruker"
+
+msgid "PASSWORD"
+msgstr "Passord"
+
+msgid "LOGIN"
+msgstr "Logg inn"
+
+msgid "LOGOUT"
+msgstr "Logg ut"
+
+msgid "EXPORT"
+msgstr "eksporter"
+
+msgid "IMPORT"
+msgstr "importer"
+
+msgid "GROUP_PARENT"
+msgstr "Foreldergruppe"
+
+msgid "H:"
+msgstr "H:"
+
+msgid "M:"
+msgstr "M:"
+
+msgid "W:"
+msgstr "W:"
+
+msgid "en"
+msgstr "English"
+
+msgid "cs"
+msgstr "Tjekkisk"
+
+msgid "de"
+msgstr "Tysk"
+
+msgid "pl"
+msgstr "Polsk"
+
+msgid "ar"
+msgstr "Arabisk"
+
+msgid "el"
+msgstr "Gresk"
+
+msgid "es"
+msgstr "Spansk"
+
+msgid "fr"
+msgstr "Fransk"
+
+msgid "zh"
+msgstr "Kinesisk"
+
+msgid "he"
+msgstr "Hebrew"
+
+msgid "hi"
+msgstr "Hindi"
+
+msgid "ko"
+msgstr "Koreansk"
+
+msgid "pt"
+msgstr "Portugesisk"
+
+msgid "ja"
+msgstr "Japansk"
+
+msgid "th"
+msgstr "Thai"
+
+msgid "vi"
+msgstr "Vietnamesisk"
+
+msgid "ca"
+msgstr "Catalonian"
+
+msgid "it"
+msgstr "Italiensk"
+
+msgid "nl"
+msgstr "Nederlandsk"
+
+msgid "sv"
+msgstr "Svensk"
+
+msgid "bg"
+msgstr "Bulgarsk"
+
+msgid "rm"
+msgstr "Rhaeto-Romance"
+
+msgid "tr"
+msgstr "Tyrkisk"
+
+msgid "da"
+msgstr "Dansk"
+
+msgid "fi"
+msgstr "Finnsk"
+
+msgid "sr"
+msgstr "Serbisk"
+
+msgid "sl"
+msgstr "Slovensk"
+
+msgid "fa"
+msgstr "Farsi"
+
+msgid "hu"
+msgstr "Ungarsk"
+
+msgid "MAP"
+msgstr "kart"
+
+msgid "MORE"
+msgstr "mer"
+
+msgid "NAME_PREFIX"
+msgstr "prefiks"
+
+msgid "MIDDLENAME"
+msgstr "mellomnavn/inital(er)"
+
+msgid "NAME_SUFFIX"
+msgstr "suffiks"
+
+msgid "DEPT"
+msgstr "Avd."
+
+msgid "OCCUPATION"
+msgstr "arbeidstitel"
+
+msgid "TITLES"
+msgstr "titler"
+
+msgid "POB"
+msgstr "box eller number"
+
+msgid "APT"
+msgstr "leilighet"
+
+msgid "STREET"
+msgstr "gateadresse"
+
+msgid "STATE"
+msgstr "fylke"
+
+msgid "COUNTRY"
+msgstr "land"
+
+msgid "PAGER"
+msgstr "personsøker"
+
+msgid "MISC"
+msgstr "Div"
+
+msgid "CREATE_ACCOUNT"
+msgstr "Opprett konto"
+
+msgid "FORGOT_PASSWORD"
+msgstr "Glemt passord"
+
+msgid "P:"
+msgstr "P:"
+
+msgid "ru"
+msgstr "Russisk"
+

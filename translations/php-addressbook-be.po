@@ -1,0 +1,469 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
+# This file is distributed under BSD and AGPL
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: 2012-11-04 20:36+0000\n"
+"Last-Translator: chatelao <Unknown>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
+"X-Generator: Launchpad (build 16232)\n"
+
+msgid "LANGUAGE"
+msgstr "език"
+
+msgid "auto"
+msgstr "настройки на браузера (автоматични)"
+
+msgid "USER"
+msgstr "Потребител"
+
+msgid "PASSWORD"
+msgstr "Парола"
+
+msgid "LOGIN"
+msgstr "Вход"
+
+msgid "LOGOUT"
+msgstr "Изход"
+
+msgid "JANUARY"
+msgstr "Януари"
+
+msgid "FEBRUARY"
+msgstr "Февруари"
+
+msgid "MARCH"
+msgstr "Март"
+
+msgid "APRIL"
+msgstr "Април"
+
+msgid "MAY"
+msgstr "Май"
+
+msgid "JUNE"
+msgstr "Юни"
+
+msgid "JULY"
+msgstr "Юли"
+
+msgid "AUGUST"
+msgstr "Август"
+
+msgid "SEPTEMBER"
+msgstr "Септември"
+
+msgid "OCTOBER"
+msgstr "Октомври"
+
+msgid "NOVEMBER"
+msgstr "Ноември"
+
+msgid "DECEMBER"
+msgstr "Декември"
+
+msgid "ADDRESS_BOOK"
+msgstr "адресна книга"
+
+msgid "FOR"
+msgstr "за"
+
+msgid "SEARCH"
+msgstr "търсене"
+
+msgid "HOME"
+msgstr "начало"
+
+msgid "NEXT_BIRTHDAYS"
+msgstr "следващ рожден ден"
+
+msgid "ADD_NEW"
+msgstr "добави нов"
+
+msgid "PRINT_ALL"
+msgstr "печат всички"
+
+msgid "PRINT_PHONES"
+msgstr "печат телефони"
+
+msgid "EXPORT_CSV"
+msgstr "експорт в csv"
+
+msgid "EXPORT"
+msgstr "износ"
+
+msgid "IMPORT"
+msgstr "внос"
+
+msgid "MAP"
+msgstr ""
+
+msgid "MORE"
+msgstr ""
+
+msgid "GROUP"
+msgstr "група"
+
+msgid "GROUPS"
+msgstr "групи"
+
+msgid "MANAGE_GROUPS"
+msgstr "управление на групи"
+
+msgid "NEW_GROUP"
+msgstr "нова група"
+
+msgid "DELETE_GROUPS"
+msgstr "изтриване на група(и)"
+
+msgid "EDIT_GROUP"
+msgstr "редакция на група"
+
+msgid "GROUP_NAME"
+msgstr "име на група"
+
+msgid "GROUP_HEADER"
+msgstr "Лого на група"
+
+msgid "GROUP_FOOTER"
+msgstr "Коментар на група"
+
+msgid "GROUP_PARENT"
+msgstr "Родителите група"
+
+msgid "SEARCH_FOR_ANY_TEXT"
+msgstr "търси който и да е текст"
+
+msgid "NUMBER_OF_RESULTS"
+msgstr "Брой резултати"
+
+msgid "ALL"
+msgstr "всичко"
+
+msgid "NONE"
+msgstr "нищо"
+
+msgid "SELECT_ALL"
+msgstr "избери всички"
+
+msgid "REMOVE_FROM"
+msgstr "премахни от"
+
+msgid "MAIL_CLIENT"
+msgstr "клиент за поща"
+
+msgid "SEND_EMAIL"
+msgstr "Изпрати Е-поща"
+
+msgid "ADD_TO"
+msgstr "добави в"
+
+msgid "DETAILS"
+msgstr "детайли"
+
+msgid "EDIT"
+msgstr "редакция"
+
+msgid "MODIFY"
+msgstr "промяна"
+
+msgid "PRINT"
+msgstr "печат"
+
+msgid "EDIT_ADD_ENTRY"
+msgstr "Рeдакция / добяване на нов контакт"
+
+msgid "GUESSED_HOMEPAGE"
+msgstr "Предполагаема интернет страница"
+
+msgid "PREFERENCES"
+msgstr "настройки"
+
+msgid "NAME_PREFIX"
+msgstr ""
+
+msgid "FIRSTNAME"
+msgstr "Име"
+
+msgid "MIDDLENAME"
+msgstr ""
+
+msgid "LASTNAME"
+msgstr "Фамилия"
+
+msgid "NAME_SUFFIX"
+msgstr ""
+
+msgid "NICKNAME"
+msgstr ""
+
+msgid "COMPANY"
+msgstr "дружество"
+
+msgid "DEPT"
+msgstr ""
+
+msgid "OCCUPATION"
+msgstr ""
+
+msgid "TITLES"
+msgstr ""
+
+msgid "ADDRESS"
+msgstr "адрес"
+
+msgid "POB"
+msgstr ""
+
+msgid "APT"
+msgstr ""
+
+msgid "STREET"
+msgstr ""
+
+msgid "STATE"
+msgstr ""
+
+msgid "COUNTRY"
+msgstr ""
+
+msgid "TELEPHONE"
+msgstr "телефон"
+
+msgid "PHONE_HOME"
+msgstr "домашен"
+
+msgid "HOME_SHORT"
+msgstr ""
+
+msgid "PHONE_MOBILE"
+msgstr "мобилен"
+
+msgid "MOBILE_SHORT"
+msgstr ""
+
+msgid "PHONE_WORK"
+msgstr "служебен"
+
+msgid "WORK_SHORT"
+msgstr ""
+
+msgid "FAX"
+msgstr "факс"
+
+msgid "FAX_SHORT"
+msgstr ""
+
+msgid "PHONE2_SHORT"
+msgstr ""
+
+msgid "PAGER"
+msgstr ""
+
+msgid "EMAIL"
+msgstr "е-поща"
+
+msgid "HOMEPAGE"
+msgstr "Начало"
+
+msgid "ZIP"
+msgstr "пощенски код"
+
+msgid "CITY"
+msgstr "град"
+
+msgid "E_MAIL_HOME"
+msgstr "домашена е-поща"
+
+msgid "E_MAIL_OFFICE"
+msgstr "служебна е-поща"
+
+msgid "2ND_ADDRESS"
+msgstr "друг адрес"
+
+msgid "2ND_PHONE"
+msgstr "друг телефон"
+
+msgid "NOTES"
+msgstr "бележки"
+
+msgid "MISC"
+msgstr ""
+
+msgid "BIRTHDAY"
+msgstr "рожден ден"
+
+msgid "ANNIVERSARY"
+msgstr ""
+
+msgid "CREATED"
+msgstr "е създаден"
+
+msgid "MODIFIED"
+msgstr "промяна"
+
+msgid "UPDATE"
+msgstr "промени"
+
+msgid "DELETE"
+msgstr "изтрии"
+
+msgid "INVALID"
+msgstr "невалиден"
+
+msgid "ENTER"
+msgstr "въведи"
+
+msgid "MEMBER_OF"
+msgstr "член на"
+
+msgid "SECONDARY"
+msgstr "Втори адрес"
+
+msgid "CREATE_ACCOUNT"
+msgstr ""
+
+msgid "FORGOT_PASSWORD"
+msgstr ""
+
+msgid "ar"
+msgstr "Арабски"
+
+msgid "bg"
+msgstr "Български"
+
+msgid "ca"
+msgstr "Каталонски"
+
+msgid "cs"
+msgstr "Чешки"
+
+msgid "da"
+msgstr "Датски"
+
+msgid "de"
+msgstr "Немски"
+
+msgid "el"
+msgstr "Гръзки"
+
+msgid "en"
+msgstr "Английски"
+
+msgid "es"
+msgstr "Испански"
+
+msgid "fa"
+msgstr "Персийски"
+
+msgid "fi"
+msgstr "Фински"
+
+msgid "fr"
+msgstr "Френски"
+
+msgid "he"
+msgstr "Hebrew"
+
+msgid "hi"
+msgstr "Индиски"
+
+msgid "hu"
+msgstr "Унгарски"
+
+msgid "it"
+msgstr "Италиански"
+
+msgid "ja"
+msgstr "Японски"
+
+msgid "ko"
+msgstr "Корейски"
+
+msgid "nl"
+msgstr "Холандски"
+
+msgid "pl"
+msgstr "Полски"
+
+msgid "pt"
+msgstr "Португалски"
+
+msgid "rm"
+msgstr "Реторомански"
+
+msgid "ru"
+msgstr "Руски"
+
+msgid "sl"
+msgstr "Словенски"
+
+msgid "sr"
+msgstr "Сръбски"
+
+msgid "sv"
+msgstr "Шведски"
+
+msgid "th"
+msgstr "Thai"
+
+msgid "tr"
+msgstr "Турски"
+
+msgid "vi"
+msgstr "Виетнамски"
+
+msgid "zh"
+msgstr "Китайски"
+
+msgid "DIR"
+msgstr ""
+
+msgid "UPDATED"
+msgstr ""
+
+msgid "TRANSLATOR"
+msgstr ""
+
+msgid "TITLE"
+msgstr ""
+
+msgid "MOBILE"
+msgstr ""
+
+msgid "WORK"
+msgstr ""
+
+msgid "FIRST_LAST"
+msgstr ""
+
+msgid "NEXT"
+msgstr ""
+
+msgid "PHOTO"
+msgstr ""
+
+msgid "ALL_PHONES"
+msgstr ""
+
+msgid "ALL_EMAILS"
+msgstr ""
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
+msgid "ua"
+msgstr ""
+
+msgid "LAST_FIRST"
+msgstr ""
+
+msgid "GRP_NAME"
+msgstr ""

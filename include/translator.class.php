@@ -168,22 +168,24 @@ require_once('lib/gettext/gettext.inc');
 
 class GetTextTranslator extends Translator {
 	
-	  protected $directory;
-	  protected $domain    = 'php-addressbook';
-
-	  protected $supported_langs
-                 = array("ar","bg","ca","cs","da"
-                        ,"de","el","en","es","fa"
-                        ,"fi","fr","he","hi","hu"
-                        ,"it","ja","ko","nl","no"
-                        ,"pl","pt","ru","sr","sv"
-                        ,"sl","th","tr","ua","vi"
-                        ,"zh");
+	protected $directory;
+	protected $domain    = 'php-addressbook';
 
 	function __construct() {
 		parent::__construct(); 
 		
 		$this->directory = dirname(__FILE__).'/../translations/LOCALES';		
+
+    //
+    // Read all supported languages from the directory
+    //
+		$d = dir($this->directory);		
+    while (false !== ($entry = $d->read())) {
+       if(strlen($entry) == 2 && $entry != "..") {
+       	 $this->supported_langs[] = $entry;
+       }
+    }
+    $d->close();
   }
 
 

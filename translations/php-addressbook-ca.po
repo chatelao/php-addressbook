@@ -1,0 +1,471 @@
+# Catalan translation for php-addressbook
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the php-addressbook package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: php-addressbook\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: 2012-10-27 11:44+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Catalan <ca@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
+"X-Generator: Launchpad (build 16232)\n"
+
+msgid "LANGUAGE"
+msgstr ""
+
+msgid "auto"
+msgstr ""
+
+msgid "USER"
+msgstr ""
+
+msgid "PASSWORD"
+msgstr ""
+
+msgid "LOGIN"
+msgstr ""
+
+msgid "LOGOUT"
+msgstr ""
+
+msgid "JANUARY"
+msgstr ""
+
+msgid "FEBRUARY"
+msgstr ""
+
+msgid "MARCH"
+msgstr ""
+
+msgid "APRIL"
+msgstr ""
+
+msgid "MAY"
+msgstr ""
+
+msgid "JUNE"
+msgstr ""
+
+msgid "JULY"
+msgstr ""
+
+msgid "AUGUST"
+msgstr ""
+
+msgid "SEPTEMBER"
+msgstr ""
+
+msgid "OCTOBER"
+msgstr ""
+
+msgid "NOVEMBER"
+msgstr ""
+
+msgid "DECEMBER"
+msgstr ""
+
+msgid "ADDRESS_BOOK"
+msgstr ""
+
+msgid "FOR"
+msgstr ""
+
+msgid "SEARCH"
+msgstr ""
+
+msgid "HOME"
+msgstr ""
+
+msgid "NEXT_BIRTHDAYS"
+msgstr ""
+
+msgid "ADD_NEW"
+msgstr ""
+
+msgid "PRINT_ALL"
+msgstr ""
+
+msgid "PRINT_PHONES"
+msgstr ""
+
+msgid "EXPORT_CSV"
+msgstr ""
+
+msgid "EXPORT"
+msgstr ""
+
+msgid "IMPORT"
+msgstr ""
+
+msgid "MAP"
+msgstr ""
+
+msgid "MORE"
+msgstr ""
+
+msgid "GROUP"
+msgstr ""
+
+msgid "GROUPS"
+msgstr ""
+
+msgid "MANAGE_GROUPS"
+msgstr ""
+
+msgid "NEW_GROUP"
+msgstr ""
+
+msgid "DELETE_GROUPS"
+msgstr ""
+
+msgid "EDIT_GROUP"
+msgstr ""
+
+msgid "GROUP_NAME"
+msgstr ""
+
+msgid "GROUP_HEADER"
+msgstr ""
+
+msgid "GROUP_FOOTER"
+msgstr ""
+
+msgid "GROUP_PARENT"
+msgstr ""
+
+msgid "SEARCH_FOR_ANY_TEXT"
+msgstr ""
+
+msgid "NUMBER_OF_RESULTS"
+msgstr ""
+
+msgid "ALL"
+msgstr ""
+
+msgid "NONE"
+msgstr ""
+
+msgid "SELECT_ALL"
+msgstr ""
+
+msgid "REMOVE_FROM"
+msgstr ""
+
+msgid "MAIL_CLIENT"
+msgstr ""
+
+msgid "SEND_EMAIL"
+msgstr ""
+
+msgid "ADD_TO"
+msgstr ""
+
+msgid "DETAILS"
+msgstr ""
+
+msgid "EDIT"
+msgstr ""
+
+msgid "MODIFY"
+msgstr ""
+
+msgid "PRINT"
+msgstr ""
+
+msgid "EDIT_ADD_ENTRY"
+msgstr ""
+
+msgid "GUESSED_HOMEPAGE"
+msgstr ""
+
+msgid "PREFERENCES"
+msgstr ""
+
+msgid "NAME_PREFIX"
+msgstr ""
+
+msgid "FIRSTNAME"
+msgstr ""
+
+msgid "MIDDLENAME"
+msgstr ""
+
+msgid "LASTNAME"
+msgstr ""
+
+msgid "NAME_SUFFIX"
+msgstr ""
+
+msgid "NICKNAME"
+msgstr ""
+
+msgid "COMPANY"
+msgstr ""
+
+msgid "DEPT"
+msgstr ""
+
+msgid "OCCUPATION"
+msgstr ""
+
+msgid "TITLES"
+msgstr ""
+
+msgid "ADDRESS"
+msgstr ""
+
+msgid "POB"
+msgstr ""
+
+msgid "APT"
+msgstr ""
+
+msgid "STREET"
+msgstr ""
+
+msgid "STATE"
+msgstr ""
+
+msgid "COUNTRY"
+msgstr ""
+
+msgid "TELEPHONE"
+msgstr ""
+
+msgid "PHONE_HOME"
+msgstr ""
+
+msgid "HOME_SHORT"
+msgstr ""
+
+msgid "PHONE_MOBILE"
+msgstr ""
+
+msgid "MOBILE_SHORT"
+msgstr ""
+
+msgid "PHONE_WORK"
+msgstr ""
+
+msgid "WORK_SHORT"
+msgstr ""
+
+msgid "FAX"
+msgstr ""
+
+msgid "FAX_SHORT"
+msgstr ""
+
+msgid "PHONE2_SHORT"
+msgstr ""
+
+msgid "PAGER"
+msgstr ""
+
+msgid "EMAIL"
+msgstr ""
+
+msgid "HOMEPAGE"
+msgstr ""
+
+msgid "ZIP"
+msgstr ""
+
+msgid "CITY"
+msgstr ""
+
+msgid "E_MAIL_HOME"
+msgstr ""
+
+msgid "E_MAIL_OFFICE"
+msgstr ""
+
+msgid "2ND_ADDRESS"
+msgstr ""
+
+msgid "2ND_PHONE"
+msgstr ""
+
+msgid "NOTES"
+msgstr ""
+
+msgid "MISC"
+msgstr ""
+
+msgid "BIRTHDAY"
+msgstr ""
+
+msgid "ANNIVERSARY"
+msgstr ""
+
+msgid "CREATED"
+msgstr ""
+
+msgid "MODIFIED"
+msgstr ""
+
+msgid "UPDATE"
+msgstr ""
+
+msgid "DELETE"
+msgstr ""
+
+msgid "INVALID"
+msgstr ""
+
+msgid "ENTER"
+msgstr ""
+
+msgid "MEMBER_OF"
+msgstr ""
+
+msgid "SECONDARY"
+msgstr ""
+
+msgid "CREATE_ACCOUNT"
+msgstr ""
+
+msgid "FORGOT_PASSWORD"
+msgstr ""
+
+msgid "ar"
+msgstr ""
+
+msgid "bg"
+msgstr ""
+
+msgid "ca"
+msgstr ""
+
+msgid "cs"
+msgstr ""
+
+msgid "da"
+msgstr ""
+
+msgid "de"
+msgstr ""
+
+msgid "el"
+msgstr ""
+
+msgid "en"
+msgstr ""
+
+msgid "es"
+msgstr ""
+
+msgid "fa"
+msgstr ""
+
+msgid "fi"
+msgstr ""
+
+msgid "fr"
+msgstr ""
+
+msgid "he"
+msgstr ""
+
+msgid "hi"
+msgstr ""
+
+msgid "hu"
+msgstr ""
+
+msgid "it"
+msgstr ""
+
+msgid "ja"
+msgstr ""
+
+msgid "ko"
+msgstr ""
+
+msgid "nl"
+msgstr ""
+
+msgid "pl"
+msgstr ""
+
+msgid "pt"
+msgstr ""
+
+msgid "rm"
+msgstr ""
+
+msgid "ru"
+msgstr ""
+
+msgid "sl"
+msgstr ""
+
+msgid "sr"
+msgstr ""
+
+msgid "sv"
+msgstr ""
+
+msgid "th"
+msgstr ""
+
+msgid "tr"
+msgstr ""
+
+msgid "vi"
+msgstr ""
+
+msgid "zh"
+msgstr ""
+
+msgid "DIR"
+msgstr ""
+
+msgid "UPDATED"
+msgstr ""
+
+msgid "TRANSLATOR"
+msgstr ""
+
+msgid "TITLE"
+msgstr ""
+
+msgid "MOBILE"
+msgstr ""
+
+msgid "WORK"
+msgstr ""
+
+msgid "FIRST_LAST"
+msgstr ""
+
+msgid "NEXT"
+msgstr ""
+
+msgid "PHOTO"
+msgstr ""
+
+msgid "ALL_PHONES"
+msgstr ""
+
+msgid "ALL_EMAILS"
+msgstr ""
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
+msgid "ua"
+msgstr ""
+
+msgid "LAST_FIRST"
+msgstr ""
+
+msgid "GRP_NAME"
+msgstr ""

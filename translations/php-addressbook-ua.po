@@ -1,0 +1,398 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="Description" content="PHP-Addressbook" />
+	<meta name="Keywords" content="" />
+	<link rel="icon" type="image/png" href="<br />
+<b>Notice</b>:  Undefined variable: url_images in <b>C:\xampp\htdocs\php-addressbook\translate_inc_to_po.php</b> on line <b>7</b><br />
+icons/font.png" />
+	<title>Translate</title>
+</head>
+<body>
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-25 14:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+msgid "DIR"
+msgstr ""
+
+msgid "LANGUAGE"
+msgstr "мова"
+
+msgid "auto"
+msgstr "параметри браузера  (автоматично)"
+
+msgid "JANUARY"
+msgstr "Січень"
+
+msgid "FEBRUARY"
+msgstr "Лютий"
+
+msgid "MARCH"
+msgstr "Березень"
+
+msgid "APRIL"
+msgstr "Квітень"
+
+msgid "MAY"
+msgstr "Травень"
+
+msgid "JUNE"
+msgstr "Червень"
+
+msgid "JULY"
+msgstr "Липень"
+
+msgid "AUGUST"
+msgstr "Серпень"
+
+msgid "SEPTEMBER"
+msgstr "Вересень"
+
+msgid "OCTOBER"
+msgstr "Жовтень"
+
+msgid "NOVEMBER"
+msgstr "Листопад"
+
+msgid "DECEMBER"
+msgstr "Грудень"
+
+msgid "ADDRESS_BOOK"
+msgstr "Адресна книга"
+
+msgid "FOR"
+msgstr "для"
+
+msgid "SEARCH"
+msgstr "Пошук"
+
+msgid "HOME"
+msgstr "Головна"
+
+msgid "NEXT_BIRTHDAYS"
+msgstr "Дні народження"
+
+msgid "ADD_NEW"
+msgstr "Додати контакт"
+
+msgid "PRINT_ALL"
+msgstr "Роздрукувати все"
+
+msgid "PRINT_PHONES"
+msgstr "Роздрукувати номера телефонів"
+
+msgid "EXPORT_CSV"
+msgstr "CSV експорт"
+
+msgid "GROUPS"
+msgstr "Групи"
+
+msgid "MANAGE_GROUPS"
+msgstr "Керування групами"
+
+msgid "NEW_GROUP"
+msgstr "Нова група"
+
+msgid "DELETE_GROUPS"
+msgstr "Видалити групу (и)"
+
+msgid "EDIT_GROUP"
+msgstr "Редагувати групу"
+
+msgid "GROUP_NAME"
+msgstr "Назва групи"
+
+msgid "GROUP_HEADER"
+msgstr "Назва групи (шапка)"
+
+msgid "GROUP_FOOTER"
+msgstr "Підпис групи (коментар)"
+
+msgid "SEARCH_FOR_ANY_TEXT"
+msgstr "Пошук по тексту"
+
+msgid "NUMBER_OF_RESULTS"
+msgstr "Кількість результатів"
+
+msgid "ALL"
+msgstr "все"
+
+msgid "NONE"
+msgstr "не вибрано"
+
+msgid "SELECT_ALL"
+msgstr "Вибрати все"
+
+msgid "REMOVE_FROM"
+msgstr "Видалити з"
+
+msgid "MAIL_CLIENT"
+msgstr "Поштовий клієнт"
+
+msgid "SEND_EMAIL"
+msgstr "Надіслати електронний лист"
+
+msgid "ADD_TO"
+msgstr "Скопіювати у "
+
+msgid "DETAILS"
+msgstr "Детально..."
+
+msgid "EDIT"
+msgstr "Редагувати"
+
+msgid "MODIFY"
+msgstr "Змінити"
+
+msgid "PRINT"
+msgstr "Версія для друку"
+
+msgid "EDIT_ADD_ENTRY"
+msgstr "Змінити / додати запис адресної книги"
+
+msgid "GUESSED_HOMEPAGE"
+msgstr "Гаданий сайт"
+
+msgid "PREFERENCES"
+msgstr "Вподобання"
+
+msgid "FIRSTNAME"
+msgstr "Ім'я"
+
+msgid "LASTNAME"
+msgstr "Прізвище"
+
+msgid "ADDRESS"
+msgstr "Адреса"
+
+msgid "TELEPHONE"
+msgstr "Домашній тел."
+
+msgid "PHONE_HOME"
+msgstr "домашній тел."
+
+msgid "PHONE_MOBILE"
+msgstr "мобільний тел."
+
+msgid "PHONE_WORK"
+msgstr "робочий тел."
+
+msgid "EMAIL"
+msgstr "e-mail "
+
+msgid "NICKNAME"
+msgstr "Прізвисько"
+
+msgid "TITLE"
+msgstr "Посада"
+
+msgid "ANNIVERSARY"
+msgstr "Річниця"
+
+msgid "ZIP"
+msgstr "індекс"
+
+msgid "CITY"
+msgstr "місто"
+
+msgid "E_MAIL_HOME"
+msgstr "електронна адреса (домашня)"
+
+msgid "E_MAIL_OFFICE"
+msgstr "електронна адреса (офісна)"
+
+msgid "2ND_ADDRESS"
+msgstr "друга адреса"
+
+msgid "2ND_PHONE"
+msgstr "другий телефон"
+
+msgid "BIRTHDAY"
+msgstr "день народження"
+
+msgid "UPDATE"
+msgstr "оновити"
+
+msgid "DELETE"
+msgstr "видалити"
+
+msgid "INVALID"
+msgstr "недійсний"
+
+msgid "ENTER"
+msgstr "Зберегти"
+
+msgid "MEMBER_OF"
+msgstr "Перебуває у групах"
+
+msgid "SECONDARY"
+msgstr "Додаткова інформація"
+
+msgid "GRP_NAME"
+msgstr "Назва групи"
+
+msgid "GROUP"
+msgstr "група"
+
+msgid "COMPANY"
+msgstr "компанія"
+
+msgid "FAX"
+msgstr "Факс"
+
+msgid "F:"
+msgstr "Факс:"
+
+msgid "HOMEPAGE"
+msgstr "Сайт"
+
+msgid "NOTES"
+msgstr "Примітка"
+
+msgid "CREATED"
+msgstr "створено"
+
+msgid "MODIFIED"
+msgstr "Змінено"
+
+msgid "USER"
+msgstr "Користувач"
+
+msgid "PASSWORD"
+msgstr "Пароль"
+
+msgid "LOGIN"
+msgstr "Увійти"
+
+msgid "LOGOUT"
+msgstr "Вийти"
+
+msgid "UPDATED"
+msgstr "Оновлено"
+
+msgid "EXPORT"
+msgstr "Експорт"
+
+msgid "IMPORT"
+msgstr "Імпорт"
+
+msgid "GROUP_PARENT"
+msgstr "Батьківська група"
+
+msgid "TRANSLATOR"
+msgstr "Перекладач"
+
+msgid "H:"
+msgstr "Домашній телефон:"
+
+msgid "M:"
+msgstr "Мобільний телефон:"
+
+msgid "W:"
+msgstr "Робочий телефон:"
+
+msgid "en"
+msgstr "Англійська"
+
+msgid "cs"
+msgstr "Чешська"
+
+msgid "de"
+msgstr "Німецька"
+
+msgid "pl"
+msgstr "Польська"
+
+msgid "ar"
+msgstr "Арабська"
+
+msgid "el"
+msgstr "Грецька"
+
+msgid "es"
+msgstr "Іспанська"
+
+msgid "fr"
+msgstr "Французька"
+
+msgid "zh"
+msgstr "Китайська"
+
+msgid "he"
+msgstr "Іврит"
+
+msgid "hi"
+msgstr "Хінді"
+
+msgid "ko"
+msgstr "Корейська"
+
+msgid "pt"
+msgstr "Португальська"
+
+msgid "ua"
+msgstr "Українська"
+
+msgid "ja"
+msgstr "Японська"
+
+msgid "th"
+msgstr "Тайська"
+
+msgid "vi"
+msgstr "В'єтнамська"
+
+msgid "ca"
+msgstr "Каталонська"
+
+msgid "it"
+msgstr "Італійська"
+
+msgid "nl"
+msgstr "Нідерландська"
+
+msgid "sv"
+msgstr "Шведська"
+
+msgid "bg"
+msgstr "Болгарська"
+
+msgid "rm"
+msgstr "Ретороманська"
+
+msgid "tr"
+msgstr "Турецька"
+
+msgid "da"
+msgstr "Датська"
+
+msgid "fi"
+msgstr "Фінська"
+
+msgid "sr"
+msgstr "Сербська"
+
+msgid "sl"
+msgstr "Словенська"
+
+msgid "fa"
+msgstr "Персидська"
+
+msgid "hu"
+msgstr "Венгерська"

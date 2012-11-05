@@ -35,6 +35,8 @@ rmdir %abs_zips%\identicons /s /q
 del %abs_zips%\index.json.php
 del %abs_zips%\doodle.php
 del %abs_zips%\preferencs.php
+del %abs_zips%\translate.php
+del %abs_zips%\translate_inc_to_po.php
 
 echo ^<?php $version = '%version%'; ?^> >> %abs_zips%\include\version.inc.php
 

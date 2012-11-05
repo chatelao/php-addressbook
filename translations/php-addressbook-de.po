@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE COPYRIGHT HOLDER
-# This file is distributed under BSD and AGPL
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: 2012-10-27 11:47+0000\n"
-"Last-Translator: chatelao <Unknown>\n"
+"PO-Revision-Date: 2012-10-30 18:18+0000\n"
+"Last-Translator: Dennis Baudys <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-27 11:56+0000\n"
-"X-Generator: Launchpad (build 16194)\n"
-
+"X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
+"X-Generator: Launchpad (build 16232)\n"
 
 msgid "LANGUAGE"
 msgstr "Sprache"
@@ -41,7 +42,7 @@ msgid "FEBRUARY"
 msgstr "Februar"
 
 msgid "MARCH"
-msgstr "MÃ¤rz"
+msgstr "März"
 
 msgid "APRIL"
 msgstr "April"
@@ -74,7 +75,7 @@ msgid "ADDRESS_BOOK"
 msgstr "Addressbuch"
 
 msgid "FOR"
-msgstr "fÃ¼r"
+msgstr "für"
 
 msgid "SEARCH"
 msgstr "suchen"
@@ -119,10 +120,10 @@ msgid "MANAGE_GROUPS"
 msgstr "Gruppen"
 
 msgid "NEW_GROUP"
-msgstr "Gruppe hinzufÃ¼gen"
+msgstr "Gruppe hinzufügen"
 
 msgid "DELETE_GROUPS"
-msgstr "Gruppe(n) lÃ¶schen"
+msgstr "Gruppe(n) löschen"
 
 msgid "EDIT_GROUP"
 msgstr "Gruppe anpassen"
@@ -137,7 +138,7 @@ msgid "GROUP_FOOTER"
 msgstr "Fusszeile (Kommentar)"
 
 msgid "GROUP_PARENT"
-msgstr "Ãœbergerdnete Gruppe"
+msgstr "Übergerdnete Gruppe"
 
 msgid "SEARCH_FOR_ANY_TEXT"
 msgstr "Freitextsuche"
@@ -164,13 +165,13 @@ msgid "SEND_EMAIL"
 msgstr "E-Mail senden"
 
 msgid "ADD_TO"
-msgstr "HinzufÃ¼gen zu"
+msgstr "Hinzufügen zu"
 
 msgid "DETAILS"
 msgstr "Details"
 
 msgid "EDIT"
-msgstr "Ã¤ndern"
+msgstr "ändern"
 
 msgid "MODIFY"
 msgstr "anpassen"
@@ -179,22 +180,22 @@ msgid "PRINT"
 msgstr "drucken"
 
 msgid "EDIT_ADD_ENTRY"
-msgstr "Eintrag erstellen / Ã¤ndern"
+msgstr "Eintrag erstellen / ändern"
 
 msgid "GUESSED_HOMEPAGE"
-msgstr "MÃ¶gliche Homepage"
+msgstr "Mögliche Homepage"
 
 msgid "PREFERENCES"
 msgstr "Einstellungen"
 
 msgid "NAME_PREFIX"
-msgstr "PrÃ¤fix"
+msgstr "Präfix"
 
 msgid "FIRSTNAME"
 msgstr "Vorname"
 
 msgid "MIDDLENAME"
-msgstr "Zweiter Vorname"
+msgstr "zweiter Vorname / inital (s)"
 
 msgid "LASTNAME"
 msgstr "Nachname"
@@ -242,28 +243,28 @@ msgid "PHONE_HOME"
 msgstr "Privat"
 
 msgid "HOME_SHORT"
-msgstr "P"
+msgstr ""
 
 msgid "PHONE_MOBILE"
 msgstr "Mobil"
 
 msgid "MOBILE_SHORT"
-msgstr "M"
+msgstr ""
 
 msgid "PHONE_WORK"
-msgstr "GeschÃ¤ft"
+msgstr "Geschäft"
 
 msgid "WORK_SHORT"
-msgstr "G"
+msgstr ""
 
 msgid "FAX"
 msgstr "Fax"
 
 msgid "FAX_SHORT"
-msgstr "F"
+msgstr ""
 
 msgid "PHONE2_SHORT"
-msgstr "P"
+msgstr ""
 
 msgid "PAGER"
 msgstr "Pager"
@@ -284,7 +285,7 @@ msgid "E_MAIL_HOME"
 msgstr "E-Mail Privat"
 
 msgid "E_MAIL_OFFICE"
-msgstr "E-Mail BÃ¼ro"
+msgstr "E-Mail Büro"
 
 msgid "2ND_ADDRESS"
 msgstr "Zweitadresse"
@@ -308,16 +309,16 @@ msgid "CREATED"
 msgstr "erstellt"
 
 msgid "MODIFIED"
-msgstr "geÃ¤ndert"
+msgstr "geändert"
 
 msgid "UPDATE"
 msgstr "aktualisieren"
 
 msgid "DELETE"
-msgstr "lÃ¶schen"
+msgstr "löschen"
 
 msgid "INVALID"
-msgstr "ungÃ¼ltige"
+msgstr "ungültige"
 
 msgid "ENTER"
 msgstr "speichern"
@@ -347,7 +348,7 @@ msgid "cs"
 msgstr "Tschechisch"
 
 msgid "da"
-msgstr "DÃ¤nisch"
+msgstr "Dänisch"
 
 msgid "de"
 msgstr "Deutsch"
@@ -368,10 +369,10 @@ msgid "fi"
 msgstr "Finnisch"
 
 msgid "fr"
-msgstr "FranzÃ¶sisch"
+msgstr "Französisch"
 
 msgid "he"
-msgstr "HebrÃ¤isch"
+msgstr "Hebräisch"
 
 msgid "hi"
 msgstr "Hindi"
@@ -389,7 +390,7 @@ msgid "ko"
 msgstr "Koreanisch"
 
 msgid "nl"
-msgstr "HollÃ¤ndisch"
+msgstr "Holländisch"
 
 msgid "pl"
 msgstr "Polnisch"
@@ -398,7 +399,7 @@ msgid "pt"
 msgstr "Portugiesisch"
 
 msgid "rm"
-msgstr "RÃ¤toromanisch"
+msgstr "Rätoromanisch"
 
 msgid "ru"
 msgstr "Russisch"
@@ -416,7 +417,7 @@ msgid "th"
 msgstr "Thai"
 
 msgid "tr"
-msgstr "TÃ¼rkisch"
+msgstr "Türkisch"
 
 msgid "vi"
 msgstr "Vietnamesisch"
@@ -425,13 +426,13 @@ msgid "zh"
 msgstr "Chinesisch"
 
 msgid "DIR"
-msgstr ""
+msgstr "VERZEICHNIS"
 
 msgid "UPDATED"
 msgstr "Aktualisiert"
 
 msgid "TRANSLATOR"
-msgstr ""
+msgstr "ÜBERSETZER"
 
 msgid "TITLE"
 msgstr "Titel"
