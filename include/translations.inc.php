@@ -9,7 +9,9 @@
 // * http://www.famfamfam.com/lab/icons/flags
 //
 
+require_once("prefs.inc.php");
 require_once("translator.class.php");
+
 $trans = new GetTextTranslator();
 
 $default_lang    = $trans->getDefaultLang();

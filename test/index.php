@@ -16,9 +16,13 @@ class AllTests extends TestSuite {
 	
     function AllTests() {
         $this->TestSuite('All tests');
-        $this->addFile('test_translation.php');
-        // $this->addFile('test_export.vcard.php');
+
+        // end-to-end http-/html-tests
         $this->addFile('test_webpage.php');
+
+        // class & function tests
+        $this->addFile('test_translation.php');
+        $this->addFile('test_export.vcard.php');
 /*        
         $this->addFile('test_phones.php');
 	      $this->addFile('test_birthday.php');
@@ -27,7 +31,7 @@ class AllTests extends TestSuite {
         $this->addFile('test_import.vcard.php');
         $this->addFile('test_get.mainpages.php');
 */        
-        $this->run(new ReporterShowingPasses());
+        // $this->run(new ReporterShowingPasses());
     }
 }
 ?>

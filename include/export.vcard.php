@@ -92,7 +92,7 @@ function label2adr($address) {
 }
 
 function headers2vcard($links) {
-   $result[] = "Content-Type: text/x-vCard";
+   $result[] = "Content-Type: text/x-vcard";
    $filename = utf8_to_latin1($links['firstname'].'_'.$links['lastname']."-".date("Y_m_d-Hi"));
    $result[] = 'Content-Disposition: attachment; filename="'.$filename.'.vcf"';
    
@@ -100,7 +100,7 @@ function headers2vcard($links) {
 }
 
 function header2vcard($links) {
-   Header("Content-Type: text/x-vCard");
+   Header("Content-Type: text/x-vcard");
    $filename = utf8_to_latin1($links['firstname'].'_'.$links['lastname']."-".date("Y_m_d-Hi"));
    Header('Content-Disposition: attachment; filename="'.$filename.'.vcf"');	
 }

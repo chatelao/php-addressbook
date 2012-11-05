@@ -1,5 +1,6 @@
 <?php
 
+require_once "translations.inc.php";
 include "phone.intl_prefixes.php";
 include "birthday.class.php";
       
