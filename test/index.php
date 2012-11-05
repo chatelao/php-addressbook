@@ -10,15 +10,15 @@
                                       
 require_once(dirname(__FILE__)."/simpletest/autorun.php");
 require_once(dirname(__FILE__)."/simpletest/web_tester.php");
+require_once(dirname(__FILE__)."/reporter_showing_passes.class.php");
 
 class AllTests extends TestSuite {
 	
     function AllTests() {
         $this->TestSuite('All tests');
+        $this->addFile('test_translation.php');
         // $this->addFile('test_export.vcard.php');
-//        $this->addFile('test_translation.php');
         $this->addFile('test_webpage.php');
-        // $this->addFile('test_translation.php');
 /*        
         $this->addFile('test_phones.php');
 	      $this->addFile('test_birthday.php');
@@ -27,6 +27,7 @@ class AllTests extends TestSuite {
         $this->addFile('test_import.vcard.php');
         $this->addFile('test_get.mainpages.php');
 */        
+        $this->run(new ReporterShowingPasses());
     }
 }
 ?>

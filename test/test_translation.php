@@ -51,5 +51,6 @@ class TestTranslation extends UnitTestCase {
 	 function testBestAcceptedLang() {
 	    $accepted_languages = "de-DE,de;q=0.8,en-US;q=0.6,en;q=0.4";	    
       $this->assertEqual($this->trans->getBestAcceptLang($accepted_languages), "de");
+      $this->assertEqual($this->trans->getBestAcceptLang(""), "de");
    }	    
 }
