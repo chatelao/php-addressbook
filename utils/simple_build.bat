@@ -1,4 +1,5 @@
 
+set php=C:\xampp\php\php.exe 
 set abs_zips=C:\Users\BLACKY\Desktop\all-in-one\addressbook
 
 set /P version="Enter the version: "
@@ -40,7 +41,13 @@ del %abs_zips%\translate_inc_to_po.php
 
 echo ^<?php $version = '%version%'; ?^> >> %abs_zips%\include\version.inc.php
 
-del %abs_zips%v%verson%.zip
-cscript simple_build_zip.vbs %abs_zips% %abs_zips%v%version%.zip
+del %abs_zips%.zip
+cscript zip.vbs %abs_zips%.zip %abs_zips%
+
+del %abs_zips%_install.php
+%php% create_selfextractor.php %abs_zips%.zip %abs_zips%_install.php
+
+del %abs_zips%v%version%.zip
+cscript zip.vbs %abs_zips%v%version%.zip %abs_zips%.zip %abs_zips%_install.php %~dp0install.txt
 
 pause

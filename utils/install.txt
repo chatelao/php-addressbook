@@ -1,0 +1,15 @@
+A) Quick install
+================
+- Extract "addressbook_install.php"
+- Upload "addressbook_install.php" to your server
+- Call "yourdoman.com/addressbook_install.php"
+- Call "yourdoman.com/addressbook/index.php"
+
+
+B) Manual install (recommended for upgrades)
+============================================
+- Extract "addressbook.zip"
+- Extract all files from "addressbook.zip"
+- Upload all files to "yourdomain.com"
+- Rename directories where required
+- Copy your old config/ or call "index.php"
