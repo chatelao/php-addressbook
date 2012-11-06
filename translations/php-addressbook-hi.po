@@ -210,28 +210,28 @@ msgid "COMPANY"
 msgstr "कंपनी"
 
 msgid "DEPT"
-msgstr ""
+msgstr "विभाग"
 
 msgid "OCCUPATION"
-msgstr ""
+msgstr "नौकरी शीर्षक"
 
 msgid "TITLES"
-msgstr ""
+msgstr "शीर्षक"
 
 msgid "ADDRESS"
 msgstr "पता"
 
 msgid "POB"
-msgstr ""
+msgstr "बॉक्स या संख्या" 
 
 msgid "APT"
-msgstr ""
+msgstr "अपार्टमेंट या बंद"
 
 msgid "STREET"
-msgstr ""
+msgstr "सड़क पत"
 
 msgid "STATE"
-msgstr ""
+msgstr "राज"
 
 msgid "COUNTRY"
 msgstr ""
@@ -243,31 +243,31 @@ msgid "PHONE_HOME"
 msgstr "घर"
 
 msgid "HOME_SHORT"
-msgstr ""
+msgstr "एच"
 
 msgid "PHONE_MOBILE"
 msgstr "मोबाइल"
 
 msgid "MOBILE_SHORT"
-msgstr ""
+msgstr "एम"
 
 msgid "PHONE_WORK"
 msgstr "काम"
 
 msgid "WORK_SHORT"
-msgstr ""
+msgstr "काम"
 
 msgid "FAX"
 msgstr "फैक्स"
 
 msgid "FAX_SHORT"
-msgstr ""
+msgstr "एफ"
 
 msgid "PHONE2_SHORT"
-msgstr ""
+msgstr "पी"
 
 msgid "PAGER"
-msgstr ""
+msgstr "पेजर"
 
 msgid "EMAIL"
 msgstr "ईमेल"
@@ -297,7 +297,7 @@ msgid "NOTES"
 msgstr "नोट"
 
 msgid "MISC"
-msgstr ""
+msgstr "विविध"
 
 msgid "BIRTHDAY"
 msgstr "जन्मदिन"
@@ -330,10 +330,10 @@ msgid "SECONDARY"
 msgstr "माध्यमिक"
 
 msgid "CREATE_ACCOUNT"
-msgstr ""
+msgstr "खाता बनाएँ"
 
 msgid "FORGOT_PASSWORD"
-msgstr ""
+msgstr "पासवर्ड भूल"
 
 msgid "ar"
 msgstr "अरबी"
@@ -429,43 +429,43 @@ msgid "DIR"
 msgstr ""
 
 msgid "UPDATED"
-msgstr ""
+msgstr "अद्यतन"
 
 msgid "TRANSLATOR"
 msgstr ""
 
 msgid "TITLE"
-msgstr ""
+msgstr "शीर्षक"
 
 msgid "MOBILE"
-msgstr ""
+msgstr "मोबाइल"
 
 msgid "WORK"
-msgstr ""
+msgstr "काम"
 
 msgid "FIRST_LAST"
 msgstr ""
 
 msgid "NEXT"
-msgstr ""
+msgstr "अगले"
 
 msgid "PHOTO"
-msgstr ""
+msgstr "तस्वीर"
 
 msgid "ALL_PHONES"
-msgstr ""
+msgstr "सभी फोन"
 
 msgid "ALL_EMAILS"
-msgstr ""
+msgstr "सभी ई - मेल"
 
 msgid "SIGN_IN_WITH"
-msgstr ""
+msgstr "साथ में साइन इन"
 
 msgid "ua"
-msgstr ""
+msgstr "यूक्रेनी"
 
 msgid "LAST_FIRST"
-msgstr ""
+msgstr "नाम"
 
 msgid "GRP_NAME"
 msgstr ""
