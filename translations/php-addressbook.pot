@@ -364,9 +364,6 @@ msgstr ""
 msgid "SIGN_IN_WITH"
 msgstr ""
 
-msgid "ua"
-msgstr ""
-
 msgid "LAST_FIRST"
 msgstr ""
 
