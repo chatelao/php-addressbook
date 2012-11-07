@@ -13,7 +13,9 @@ error_reporting(E_NOTICE);
 // http://www.php.net/ini.core
 // * short_open_tag  	"0"
 // * register_globals  	"0"
-// * memory_limit  	"8M"
+
+// Increase memory to upload bigger photos
+ini_set("memory_limit", "128M");
 
 // Suppress caching, force refresh on every reload.
 header("Cache-Control: no-cache, must-revalidate");

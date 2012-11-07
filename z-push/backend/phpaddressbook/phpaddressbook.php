@@ -12,6 +12,7 @@
 * Consult LICENSE file for details
 ************************************************/
 include_once('lib/default/diffbackend/diffbackend.php');
+ini_set("memory_limit", "128M");
 
 //
 // FROM: export.vcard.php
