@@ -219,7 +219,7 @@ msgid "TITLES"
 msgstr "titres"
 
 msgid "ADDRESS"
-msgstr "Adresse"
+msgstr "adresse"
 
 msgid "POB"
 msgstr "boîte ou plusieurs"
@@ -243,28 +243,28 @@ msgid "PHONE_HOME"
 msgstr "Domicile"
 
 msgid "HOME_SHORT"
-msgstr ""
+msgstr "T"
 
 msgid "PHONE_MOBILE"
 msgstr "Mobile"
 
 msgid "MOBILE_SHORT"
-msgstr ""
+msgstr "M"
 
 msgid "PHONE_WORK"
 msgstr "Professionel"
 
 msgid "WORK_SHORT"
-msgstr ""
+msgstr "B"
 
 msgid "FAX"
 msgstr "Fax"
 
 msgid "FAX_SHORT"
-msgstr ""
+msgstr "F"
 
 msgid "PHONE2_SHORT"
-msgstr ""
+msgstr "T"
 
 msgid "PAGER"
 msgstr "pager"
@@ -392,6 +392,9 @@ msgstr "Coréen"
 msgid "nl"
 msgstr "Néerlandais"
 
+msgid "no"
+msgstr "norv覩en"
+
 msgid "pl"
 msgstr "Polonais"
 
@@ -403,6 +406,9 @@ msgstr "Rhèto-roman"
 
 msgid "ru"
 msgstr "Russe"
+
+msgid "sk"
+msgstr "slovaque"
 
 msgid "sl"
 msgstr "Slovène"
@@ -419,20 +425,20 @@ msgstr "Thai"
 msgid "tr"
 msgstr "Turc"
 
+msgid "ua"
+msgstr "ukrainien"
+
 msgid "vi"
 msgstr "Vietnamien"
 
 msgid "zh"
 msgstr "Chinois"
 
-msgid "DIR"
-msgstr ""
-
 msgid "UPDATED"
 msgstr "mis à jour"
 
 msgid "TRANSLATOR"
-msgstr ""
+msgstr "traducteur"
 
 msgid "TITLE"
 msgstr "titre"
@@ -444,28 +450,28 @@ msgid "WORK"
 msgstr "travail"
 
 msgid "FIRST_LAST"
-msgstr ""
+msgstr "prénom et nom"
 
 msgid "NEXT"
-msgstr ""
+msgstr "prochain"
 
 msgid "PHOTO"
-msgstr ""
+msgstr "photo"
 
 msgid "ALL_PHONES"
-msgstr ""
+msgstr "Tous téléphones"
 
 msgid "ALL_EMAILS"
-msgstr ""
+msgstr "Toutes e-mail"
 
 msgid "SIGN_IN_WITH"
 msgstr ""
 
 msgid "ua"
-msgstr ""
+msgstr "ukrainien"
 
 msgid "LAST_FIRST"
-msgstr ""
+msgstr "nom et prénom"
 
 msgid "GRP_NAME"
-msgstr ""
+msgstr "nom du group"

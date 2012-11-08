@@ -3,26 +3,37 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-11-07 16:51+0000\n"
+"Last-Translator: chatelao <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-msgid "DIR"
-msgstr ""
+"X-Launchpad-Export-Date: 2012-11-08 09:00+0000\n"
+"X-Generator: Launchpad (build 16232)\n"
 
 msgid "LANGUAGE"
 msgstr "мова"
 
 msgid "auto"
 msgstr "параметри браузера  (автоматично)"
+
+msgid "USER"
+msgstr "Користувач"
+
+msgid "PASSWORD"
+msgstr "Пароль"
+
+msgid "LOGIN"
+msgstr "Увійти"
+
+msgid "LOGOUT"
+msgstr "Вийти"
 
 msgid "JANUARY"
 msgstr "Січень"
@@ -87,6 +98,21 @@ msgstr "Роздрукувати номера телефонів"
 msgid "EXPORT_CSV"
 msgstr "CSV експорт"
 
+msgid "EXPORT"
+msgstr "Експорт"
+
+msgid "IMPORT"
+msgstr "Імпорт"
+
+msgid "MAP"
+msgstr ""
+
+msgid "MORE"
+msgstr ""
+
+msgid "GROUP"
+msgstr "група"
+
 msgid "GROUPS"
 msgstr "Групи"
 
@@ -110,6 +136,9 @@ msgstr "Назва групи (шапка)"
 
 msgid "GROUP_FOOTER"
 msgstr "Підпис групи (коментар)"
+
+msgid "GROUP_PARENT"
+msgstr "Батьківська група"
 
 msgid "SEARCH_FOR_ANY_TEXT"
 msgstr "Пошук по тексту"
@@ -136,7 +165,7 @@ msgid "SEND_EMAIL"
 msgstr "Надіслати електронний лист"
 
 msgid "ADD_TO"
-msgstr "Скопіювати у "
+msgstr "Скопіювати у"
 
 msgid "DETAILS"
 msgstr "Детально..."
@@ -159,14 +188,53 @@ msgstr "Гаданий сайт"
 msgid "PREFERENCES"
 msgstr "Вподобання"
 
+msgid "NAME_PREFIX"
+msgstr ""
+
 msgid "FIRSTNAME"
 msgstr "Ім'я"
+
+msgid "MIDDLENAME"
+msgstr ""
 
 msgid "LASTNAME"
 msgstr "Прізвище"
 
+msgid "NAME_SUFFIX"
+msgstr ""
+
+msgid "NICKNAME"
+msgstr "Прізвисько"
+
+msgid "COMPANY"
+msgstr "компанія"
+
+msgid "DEPT"
+msgstr ""
+
+msgid "OCCUPATION"
+msgstr ""
+
+msgid "TITLES"
+msgstr ""
+
 msgid "ADDRESS"
 msgstr "Адреса"
+
+msgid "POB"
+msgstr ""
+
+msgid "APT"
+msgstr ""
+
+msgid "STREET"
+msgstr ""
+
+msgid "STATE"
+msgstr ""
+
+msgid "COUNTRY"
+msgstr ""
 
 msgid "TELEPHONE"
 msgstr "Домашній тел."
@@ -174,23 +242,38 @@ msgstr "Домашній тел."
 msgid "PHONE_HOME"
 msgstr "домашній тел."
 
+msgid "HOME_SHORT"
+msgstr ""
+
 msgid "PHONE_MOBILE"
 msgstr "мобільний тел."
+
+msgid "MOBILE_SHORT"
+msgstr ""
 
 msgid "PHONE_WORK"
 msgstr "робочий тел."
 
+msgid "WORK_SHORT"
+msgstr ""
+
+msgid "FAX"
+msgstr "Факс"
+
+msgid "FAX_SHORT"
+msgstr ""
+
+msgid "PHONE2_SHORT"
+msgstr ""
+
+msgid "PAGER"
+msgstr ""
+
 msgid "EMAIL"
-msgstr "e-mail "
+msgstr "e-mail"
 
-msgid "NICKNAME"
-msgstr "Прізвисько"
-
-msgid "TITLE"
-msgstr "Посада"
-
-msgid "ANNIVERSARY"
-msgstr "Річниця"
+msgid "HOMEPAGE"
+msgstr "Сайт"
 
 msgid "ZIP"
 msgstr "індекс"
@@ -210,8 +293,23 @@ msgstr "друга адреса"
 msgid "2ND_PHONE"
 msgstr "другий телефон"
 
+msgid "NOTES"
+msgstr "Примітка"
+
+msgid "MISC"
+msgstr ""
+
 msgid "BIRTHDAY"
 msgstr "день народження"
+
+msgid "ANNIVERSARY"
+msgstr "Річниця"
+
+msgid "CREATED"
+msgstr "створено"
+
+msgid "MODIFIED"
+msgstr "Змінено"
 
 msgid "UPDATE"
 msgstr "оновити"
@@ -231,95 +329,92 @@ msgstr "Перебуває у групах"
 msgid "SECONDARY"
 msgstr "Додаткова інформація"
 
-msgid "GRP_NAME"
-msgstr "Назва групи"
+msgid "CREATE_ACCOUNT"
+msgstr ""
 
-msgid "GROUP"
-msgstr "група"
-
-msgid "COMPANY"
-msgstr "компанія"
-
-msgid "FAX"
-msgstr "Факс"
-
-msgid "F:"
-msgstr "Факс:"
-
-msgid "HOMEPAGE"
-msgstr "Сайт"
-
-msgid "NOTES"
-msgstr "Примітка"
-
-msgid "CREATED"
-msgstr "створено"
-
-msgid "MODIFIED"
-msgstr "Змінено"
-
-msgid "USER"
-msgstr "Користувач"
-
-msgid "PASSWORD"
-msgstr "Пароль"
-
-msgid "LOGIN"
-msgstr "Увійти"
-
-msgid "LOGOUT"
-msgstr "Вийти"
+msgid "FORGOT_PASSWORD"
+msgstr ""
 
 msgid "UPDATED"
 msgstr "Оновлено"
 
-msgid "EXPORT"
-msgstr "Експорт"
-
-msgid "IMPORT"
-msgstr "Імпорт"
-
-msgid "GROUP_PARENT"
-msgstr "Батьківська група"
-
 msgid "TRANSLATOR"
 msgstr "Перекладач"
 
-msgid "H:"
-msgstr "Домашній телефон:"
+msgid "TITLE"
+msgstr "Посада"
 
-msgid "M:"
-msgstr "Мобільний телефон:"
+msgid "MOBILE"
+msgstr ""
 
-msgid "W:"
-msgstr "Робочий телефон:"
+msgid "WORK"
+msgstr ""
 
-msgid "en"
-msgstr "Англійська"
+msgid "FIRST_LAST"
+msgstr ""
 
-msgid "cs"
-msgstr "Чешська"
+msgid "NEXT"
+msgstr ""
 
-msgid "de"
-msgstr "Німецька"
+msgid "PHOTO"
+msgstr ""
 
-msgid "pl"
-msgstr "Польська"
+msgid "ALL_PHONES"
+msgstr ""
+
+msgid "ALL_EMAILS"
+msgstr ""
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
+msgid "LAST_FIRST"
+msgstr ""
+
+msgid "GRP_NAME"
+msgstr "Назва групи"
+
+msgid "ab"
+msgstr ""
 
 msgid "ar"
 msgstr "Арабська"
 
+msgid "be"
+msgstr ""
+
+msgid "bg"
+msgstr "Болгарська"
+
+msgid "ca"
+msgstr "Каталонська"
+
+msgid "cs"
+msgstr "Чешська"
+
+msgid "da"
+msgstr "Датська"
+
+msgid "de"
+msgstr "Німецька"
+
 msgid "el"
 msgstr "Грецька"
+
+msgid "en"
+msgstr "Англійська"
 
 msgid "es"
 msgstr "Іспанська"
 
+msgid "fa"
+msgstr "Персидська"
+
+msgid "fi"
+msgstr "Фінська"
+
 msgid "fr"
 msgstr "Французька"
-
-msgid "zh"
-msgstr "Китайська"
 
 msgid "he"
 msgstr "Іврит"
@@ -327,59 +422,59 @@ msgstr "Іврит"
 msgid "hi"
 msgstr "Хінді"
 
-msgid "ko"
-msgstr "Корейська"
-
-msgid "pt"
-msgstr "Португальська"
-
-msgid "ua"
-msgstr "Українська"
-
-msgid "ja"
-msgstr "Японська"
-
-msgid "th"
-msgstr "Тайська"
-
-msgid "vi"
-msgstr "В'єтнамська"
-
-msgid "ca"
-msgstr "Каталонська"
+msgid "hu"
+msgstr "Венгерська"
 
 msgid "it"
 msgstr "Італійська"
 
+msgid "ja"
+msgstr "Японська"
+
+msgid "ko"
+msgstr "Корейська"
+
 msgid "nl"
 msgstr "Нідерландська"
 
-msgid "sv"
-msgstr "Шведська"
+msgid "no"
+msgstr ""
 
-msgid "bg"
-msgstr "Болгарська"
+msgid "pl"
+msgstr "Польська"
+
+msgid "pt"
+msgstr "Португальська"
 
 msgid "rm"
 msgstr "Ретороманська"
 
-msgid "tr"
-msgstr "Турецька"
+msgid "ru"
+msgstr ""
 
-msgid "da"
-msgstr "Датська"
-
-msgid "fi"
-msgstr "Фінська"
-
-msgid "sr"
-msgstr "Сербська"
+msgid "sk"
+msgstr ""
 
 msgid "sl"
 msgstr "Словенська"
 
-msgid "fa"
-msgstr "Персидська"
+msgid "sr"
+msgstr "Сербська"
 
-msgid "hu"
-msgstr "Венгерська"
+msgid "sv"
+msgstr "Шведська"
+
+msgid "th"
+msgstr "Тайська"
+
+msgid "tr"
+msgstr "Турецька"
+
+msgid "ua"
+msgstr "Українська"
+
+msgid "vi"
+msgstr "В'єтнамська"
+
+msgid "zh"
+msgstr "Китайська"

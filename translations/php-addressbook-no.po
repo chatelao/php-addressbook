@@ -3,23 +3,37 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-11-06 23:32+0000\n"
+"Last-Translator: chatelao <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-11-08 09:00+0000\n"
+"X-Generator: Launchpad (build 16232)\n"
+
 msgid "LANGUAGE"
 msgstr "språk"
 
 msgid "auto"
 msgstr "nettleser instillinger (automatisk)"
+
+msgid "USER"
+msgstr "Bruker"
+
+msgid "PASSWORD"
+msgstr "Passord"
+
+msgid "LOGIN"
+msgstr "Logg inn"
+
+msgid "LOGOUT"
+msgstr "Logg ut"
 
 msgid "JANUARY"
 msgstr "Januar"
@@ -84,6 +98,21 @@ msgstr "skriv ut telefoner"
 msgid "EXPORT_CSV"
 msgstr "eksporter csv"
 
+msgid "EXPORT"
+msgstr "eksporter"
+
+msgid "IMPORT"
+msgstr "importer"
+
+msgid "MAP"
+msgstr "kart"
+
+msgid "MORE"
+msgstr "mer"
+
+msgid "GROUP"
+msgstr "gruppe"
+
 msgid "GROUPS"
 msgstr "grupper"
 
@@ -107,6 +136,9 @@ msgstr "Gruppe topptekst (Logo)"
 
 msgid "GROUP_FOOTER"
 msgstr "Gruppe bunntekst (Kommentar)"
+
+msgid "GROUP_PARENT"
+msgstr "Foreldergruppe"
 
 msgid "SEARCH_FOR_ANY_TEXT"
 msgstr "søk etter tekst"
@@ -156,14 +188,53 @@ msgstr "Guessed homepage"
 msgid "PREFERENCES"
 msgstr "preferanser"
 
+msgid "NAME_PREFIX"
+msgstr "prefiks"
+
 msgid "FIRSTNAME"
 msgstr "fornavn"
+
+msgid "MIDDLENAME"
+msgstr "mellomnavn/inital(er)"
 
 msgid "LASTNAME"
 msgstr "etternavn"
 
+msgid "NAME_SUFFIX"
+msgstr "suffiks"
+
+msgid "NICKNAME"
+msgstr "kallenavn"
+
+msgid "COMPANY"
+msgstr "firma"
+
+msgid "DEPT"
+msgstr "Avd."
+
+msgid "OCCUPATION"
+msgstr "arbeidstitel"
+
+msgid "TITLES"
+msgstr "titler"
+
 msgid "ADDRESS"
 msgstr "addresse"
+
+msgid "POB"
+msgstr "box eller number"
+
+msgid "APT"
+msgstr "leilighet"
+
+msgid "STREET"
+msgstr "gateadresse"
+
+msgid "STATE"
+msgstr "fylke"
+
+msgid "COUNTRY"
+msgstr "land"
 
 msgid "TELEPHONE"
 msgstr "telefon"
@@ -171,17 +242,38 @@ msgstr "telefon"
 msgid "PHONE_HOME"
 msgstr "hjem"
 
+msgid "HOME_SHORT"
+msgstr ""
+
 msgid "PHONE_MOBILE"
 msgstr "mobil"
+
+msgid "MOBILE_SHORT"
+msgstr ""
 
 msgid "PHONE_WORK"
 msgstr "arbeid"
 
+msgid "WORK_SHORT"
+msgstr ""
+
+msgid "FAX"
+msgstr "fax"
+
+msgid "FAX_SHORT"
+msgstr ""
+
+msgid "PHONE2_SHORT"
+msgstr ""
+
+msgid "PAGER"
+msgstr "personsøker"
+
 msgid "EMAIL"
 msgstr "e-post"
 
-msgid "NICKNAME"
-msgstr "kallenavn"
+msgid "HOMEPAGE"
+msgstr "Hjemmeside"
 
 msgid "ZIP"
 msgstr "Postnr."
@@ -201,8 +293,23 @@ msgstr "Annen addresse"
 msgid "2ND_PHONE"
 msgstr "Annen telefon"
 
+msgid "NOTES"
+msgstr "notater"
+
+msgid "MISC"
+msgstr "Div"
+
 msgid "BIRTHDAY"
 msgstr "bursdag"
+
+msgid "ANNIVERSARY"
+msgstr ""
+
+msgid "CREATED"
+msgstr "opprettet"
+
+msgid "MODIFIED"
+msgstr "modifisert"
 
 msgid "UPDATE"
 msgstr "updater"
@@ -222,86 +329,92 @@ msgstr "medlem av"
 msgid "SECONDARY"
 msgstr "Sekundær"
 
-msgid "GROUP"
-msgstr "gruppe"
+msgid "CREATE_ACCOUNT"
+msgstr "Opprett konto"
 
-msgid "COMPANY"
-msgstr "firma"
+msgid "FORGOT_PASSWORD"
+msgstr "Glemt passord"
 
-msgid "FAX"
-msgstr "fax"
+msgid "UPDATED"
+msgstr ""
 
-msgid "F:"
-msgstr "F:"
+msgid "TRANSLATOR"
+msgstr ""
 
-msgid "HOMEPAGE"
-msgstr "Hjemmeside"
+msgid "TITLE"
+msgstr ""
 
-msgid "NOTES"
-msgstr "notater"
+msgid "MOBILE"
+msgstr ""
 
-msgid "CREATED"
-msgstr "opprettet"
+msgid "WORK"
+msgstr ""
 
-msgid "MODIFIED"
-msgstr "modifisert"
+msgid "FIRST_LAST"
+msgstr ""
 
-msgid "USER"
-msgstr "Bruker"
+msgid "NEXT"
+msgstr ""
 
-msgid "PASSWORD"
-msgstr "Passord"
+msgid "PHOTO"
+msgstr ""
 
-msgid "LOGIN"
-msgstr "Logg inn"
+msgid "ALL_PHONES"
+msgstr ""
 
-msgid "LOGOUT"
-msgstr "Logg ut"
+msgid "ALL_EMAILS"
+msgstr ""
 
-msgid "EXPORT"
-msgstr "eksporter"
+msgid "SIGN_IN_WITH"
+msgstr ""
 
-msgid "IMPORT"
-msgstr "importer"
+msgid "LAST_FIRST"
+msgstr ""
 
-msgid "GROUP_PARENT"
-msgstr "Foreldergruppe"
+msgid "GRP_NAME"
+msgstr ""
 
-msgid "H:"
-msgstr "H:"
-
-msgid "M:"
-msgstr "M:"
-
-msgid "W:"
-msgstr "W:"
-
-msgid "en"
-msgstr "English"
-
-msgid "cs"
-msgstr "Tjekkisk"
-
-msgid "de"
-msgstr "Tysk"
-
-msgid "pl"
-msgstr "Polsk"
+msgid "ab"
+msgstr ""
 
 msgid "ar"
 msgstr "Arabisk"
 
+msgid "be"
+msgstr ""
+
+msgid "bg"
+msgstr "Bulgarsk"
+
+msgid "ca"
+msgstr "Catalonian"
+
+msgid "cs"
+msgstr "Tjekkisk"
+
+msgid "da"
+msgstr "Dansk"
+
+msgid "de"
+msgstr "Tysk"
+
 msgid "el"
 msgstr "Gresk"
+
+msgid "en"
+msgstr "English"
 
 msgid "es"
 msgstr "Spansk"
 
+msgid "fa"
+msgstr "Farsi"
+
+msgid "fi"
+msgstr "Finnsk"
+
 msgid "fr"
 msgstr "Fransk"
-
-msgid "zh"
-msgstr "Kinesisk"
 
 msgid "he"
 msgstr "Hebrew"
@@ -309,114 +422,59 @@ msgstr "Hebrew"
 msgid "hi"
 msgstr "Hindi"
 
-msgid "ko"
-msgstr "Koreansk"
-
-msgid "pt"
-msgstr "Portugesisk"
-
-msgid "ja"
-msgstr "Japansk"
-
-msgid "th"
-msgstr "Thai"
-
-msgid "vi"
-msgstr "Vietnamesisk"
-
-msgid "ca"
-msgstr "Catalonian"
+msgid "hu"
+msgstr "Ungarsk"
 
 msgid "it"
 msgstr "Italiensk"
 
+msgid "ja"
+msgstr "Japansk"
+
+msgid "ko"
+msgstr "Koreansk"
+
 msgid "nl"
 msgstr "Nederlandsk"
 
-msgid "sv"
-msgstr "Svensk"
+msgid "no"
+msgstr ""
 
-msgid "bg"
-msgstr "Bulgarsk"
+msgid "pl"
+msgstr "Polsk"
+
+msgid "pt"
+msgstr "Portugesisk"
 
 msgid "rm"
 msgstr "Rhaeto-Romance"
 
-msgid "tr"
-msgstr "Tyrkisk"
+msgid "ru"
+msgstr "Russisk"
 
-msgid "da"
-msgstr "Dansk"
-
-msgid "fi"
-msgstr "Finnsk"
-
-msgid "sr"
-msgstr "Serbisk"
+msgid "sk"
+msgstr ""
 
 msgid "sl"
 msgstr "Slovensk"
 
-msgid "fa"
-msgstr "Farsi"
+msgid "sr"
+msgstr "Serbisk"
 
-msgid "hu"
-msgstr "Ungarsk"
+msgid "sv"
+msgstr "Svensk"
 
-msgid "MAP"
-msgstr "kart"
+msgid "th"
+msgstr "Thai"
 
-msgid "MORE"
-msgstr "mer"
+msgid "tr"
+msgstr "Tyrkisk"
 
-msgid "NAME_PREFIX"
-msgstr "prefiks"
+msgid "ua"
+msgstr ""
 
-msgid "MIDDLENAME"
-msgstr "mellomnavn/inital(er)"
+msgid "vi"
+msgstr "Vietnamesisk"
 
-msgid "NAME_SUFFIX"
-msgstr "suffiks"
-
-msgid "DEPT"
-msgstr "Avd."
-
-msgid "OCCUPATION"
-msgstr "arbeidstitel"
-
-msgid "TITLES"
-msgstr "titler"
-
-msgid "POB"
-msgstr "box eller number"
-
-msgid "APT"
-msgstr "leilighet"
-
-msgid "STREET"
-msgstr "gateadresse"
-
-msgid "STATE"
-msgstr "fylke"
-
-msgid "COUNTRY"
-msgstr "land"
-
-msgid "PAGER"
-msgstr "personsøker"
-
-msgid "MISC"
-msgstr "Div"
-
-msgid "CREATE_ACCOUNT"
-msgstr "Opprett konto"
-
-msgid "FORGOT_PASSWORD"
-msgstr "Glemt passord"
-
-msgid "P:"
-msgstr "P:"
-
-msgid "ru"
-msgstr "Russisk"
-
+msgid "zh"
+msgstr "Kinesisk"
