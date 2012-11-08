@@ -542,7 +542,9 @@ class BackendPhpaddressbook extends BackendDiff {
 
         $message->body = $addr['notes'];
 
-        $message->picture = $addr['photo'];
+        if(isset($addr['photo']) && count($addr['photo']) > 10) {
+          $message->picture = preg_replace( '/\s+/', '', implode("\n\t", explode(':',$addr['photo'], 1)));
+        }
         
         if(   isset($addr['bday'])   && $addr['bday']   != ""
            && isset($addr['bmonth']) && $addr['bmonth'] != ""
