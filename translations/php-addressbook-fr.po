@@ -467,9 +467,6 @@ msgstr "Toutes e-mail"
 msgid "SIGN_IN_WITH"
 msgstr ""
 
-msgid "ua"
-msgstr "ukrainien"
-
 msgid "LAST_FIRST"
 msgstr "nom et prénom"
 
