@@ -21,10 +21,9 @@ REM
 REM zip and remove advanced featuers
 REM 
 cscript simple_build_zip.vbs %abs_zips%\hybridauth %abs_zips%\hybridauth.zip
-cscript simple_build_zip.vbs %abs_zips%\z-push     %abs_zips%\z-push.zip
-
 rmdir %abs_zips%\hybridauth /s /q
-rmdir %abs_zips%\z-push /s /q
+REM cscript simple_build_zip.vbs %abs_zips%\z-push     %abs_zips%\z-push.zip
+REM rmdir %abs_zips%\z-push /s /q
 
 REM
 REM remove all development folders
@@ -41,12 +40,22 @@ del %abs_zips%\translate_inc_to_po.php
 
 echo ^<?php $version = '%version%'; ?^> >> %abs_zips%\include\version.inc.php
 
+REM
+REM Zip all files
+REM
 del %abs_zips%.zip
 cscript zip.vbs %abs_zips%.zip %abs_zips%
 
-del %abs_zips%_install.php
-%php% create_selfextractor.php %abs_zips%.zip %abs_zips%_install.php
+REM
+REM Create selfextracting installer
+REM
+del                          %abs_zips%_install.php
+copy selfextractor.php       %abs_zips%_install.php
+base64.exe %abs_zips%.zip >> %abs_zips%_install.php
 
+REM
+REM Create the final .zip package
+REM
 del %abs_zips%v%version%.zip
 cscript zip.vbs %abs_zips%v%version%.zip %abs_zips%.zip %abs_zips%_install.php %~dp0install.txt
 

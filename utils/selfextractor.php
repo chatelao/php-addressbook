@@ -1,93 +1,4 @@
 <?php
-/*SELFEXTRACTOR CREATOR
-Copyright (C) 2011 Smart In Media GmbH & Co. KG
-http://www.smartinmedia.com
-
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Affero General Public License as
-    published by the Free Software Foundation, either version 3 of the
-    License, or any later version.
-
-1. YOU MUST NOT CHANGE THE LICENSE FOR THE SOFTWARE OR ANY PARTS HEREOF! IT MUST REMAIN AGPL.
-2. YOU MUST NOT REMOVE THIS COPYRIGHT NOTES FROM ANY PARTS OF THIS SOFTWARE!
-3. NOTE THAT THIS SOFTWARE CONTAINS THIRD-PARTY-SOLUTIONS THAT MAY EVENTUALLY NOT FALL UNDER (A)GPL!
-4. PLEASE READ THE LICENSE OF THE CUNITY SOFTWARE CAREFULLY!
-
-	You should have received a copy of the GNU Affero General Public License
-    along with this program (under the folder LICENSE).
-	If not, see <http://www.gnu.org/licenses/>.
-
-   If your software can interact with users remotely through a computer network,
-   you have to make sure that it provides a way for users to get its source.
-   For example, if your program is a web application, its interface could display
-   a "Source" link that leads users to an archive of the code. There are many ways
-   you could offer source, and different solutions will be better for different programs;
-   see section 13 of the GNU Affero General Public License for the specific requirements. */
-
-
-
-
-//Now, this first part creates the self-extracting archive by reading everything from the first HALT-COMPILER command into a PHP-file and then adding the archive <name>.zip. Everything is put into the file <installer>.php.
-/*
-if ($_GET['start']!='1') {
-		echo '<h2>To get this creator running you have to start it with this link: <a href="create_selfextractor.php?start=1">Click me</a></h2>';
-		die();
-		}
-
-require ('config.php');
-*/
-
-//
-// Get Source (.zip file) and Target (.php file) from command-line
-//
-$arch1     = $argv[1];
-$installer = $argv[2];
-// $arch1     = "c:/Users/BLACKY/Desktop/all-in-one/addressbook.zip";
-// $installer = "c:/Users/BLACKY/Desktop/all-in-one/addressbook_install.php";
-
-echo "Creating  '".$installer."' from '".$arch1."'.";
-
-if (!file_exists($arch1)) {die('File: '.$arch1.' does not exist. Please check the command line!');}
-
-
-//
-// Encode the .zip file with base64 (alphabet characters only).
-//
-$base64_output = 'zip-base64.txt';                          // THIS IS A TEMPORARY OUTPUT FILE, ALREADY BASE64-ENCODED
-$base64_temp   = file_get_contents($arch1);                 // THIS READS THE ARCHIVE INTO THE MEMORY
-$base64_string = chunk_split(base64_encode ($base64_temp)); // THE STRING IS ENCODED TO BASE64 AND THEN SPLIT INTO SHORT LINES
-file_put_contents($base64_output, $base64_string);          // THE BASE 64 STRING IS WRITTEN TO THE TEMP FILE
-
-//
-// build the installer:
-// 1. Copy php-bootstrap-code after "__HALT_COMPILER"
-//
-$f_write = fopen ($installer, 'w'); //HERE, THE INSTALLER IS BUILT
-$f_this  = fopen (__FILE__, 'r');
-fseek ($f_this, __COMPILER_HALT_OFFSET__);
-while ($get = fgets ($f_this)) {
-	fwrite ($f_write, $get);
-}
-fclose ($f_this);
-
-//
-// 2. Copy the base64 coded .zip archive
-//
-$f_archive = fopen ($base64_output, 'r');
-while ($get = fread ($f_archive,5000)) {
-  fwrite ($f_write, $get);
-}
-fclose ($f_archive);
-
-//
-// 3. Flush all to the disk!
-//
-fclose ($f_write);
-
-echo "<h2>DONE!!!</h2>";
-
-__HALT_COMPILER();<?php
 //THIS IS PCLZip - it is required for servers that do not provide the regular PHP ZIP-library
 // --------------------------------------------------------------------------------
 // PhpConcept Library - Zip Module 2.8.2
@@ -5881,40 +5792,42 @@ if ($_REQUEST['start']==1)        //THIS HAPPENS, WHEN THE EXTRACTION LINK HAS B
         fclose ($f_this);
         fclose ($f_save);
 
-		$base64_string = file_get_contents($base64temp); //THIS READS THE BASE64-FILE INTO A STRING
-		$zip_string = base64_decode($base64_string); //THE STRING IS DECODED TO A STRING
-		file_put_contents($archive, $zip_string);  //THE ZIP-STRING IS WRITTEN TO THE OUTPUT FILE
-
+		$base64_string = file_get_contents($base64temp); // THIS READS THE BASE64-FILE INTO A STRING
+		$zip_string = base64_decode($base64_string);     // THE STRING IS DECODED TO A STRING
+		file_put_contents($archive, $zip_string);        // THE ZIP-STRING IS WRITTEN TO THE OUTPUT FILE
 
 		if (class_exists('ZipArchive'))
 		{
 
-				$zip = new ZipArchive();
+			$zip = new ZipArchive();
 
-				if ($zip->open($archive) === TRUE)
-					{
-					$zip->extractTo('.');
-					$zip->close();
-					//echo 'OK: Installation-file extracted. Now install.php can be run from <a href="./installer/install.php">this link!</a>';
-				} else die('Error- The ZIP-Archive could not be extracted from the installer ');
-
+			if ($zip->open($archive) === TRUE)
+				{
+				$zip->extractTo('.');
+				$zip->close();
+				//echo 'OK: Installation-file extracted. Now install.php can be run from <a href="./installer/install.php">this link!</a>';
+			} else die('Error- The ZIP-Archive could not be extracted from the installer ');
 		}
 
 		else {
-
-		$archive = new PclZip($archive);
-		$archive->extract();
+		  $archive = new PclZip($archive);
+		  $archive->extract();
 		}
 
-	$temp_lang=$_SESSION["language"];
-	session_unset(); // End session
-	$_SESSION=array(); // Other method to end session
-        unlink ($archive);
-        unlink ($base64temp);
-        echo "EXTRACTION PROCESS COMPLETED";
-
-    }
-    ?>
+	  $temp_lang=$_SESSION["language"];
+	  session_unset(); // End session
+	  $_SESSION=array(); // Other method to end session
+    unlink ($archive);
+    unlink ($base64temp);
+?>    
+Extraction process completed.
+Start setup: <a href="addressbook/index.php">addressbook/index.php</a><br><br>
+First login (change in "cfg.user.php"):<br>
+- User: admin<br>
+- Pass: secret<br>
+<?php    
+}
+?>
 
 
     </body>
