@@ -12,7 +12,6 @@
 * Consult LICENSE file for details
 ************************************************/
 include_once('lib/default/diffbackend/diffbackend.php');
-ini_set("memory_limit", "128M");
 
 //
 // FROM: export.vcard.php
@@ -542,12 +541,7 @@ class BackendPhpaddressbook extends BackendDiff {
 
         $message->body = $addr['notes'];
 
-        if(isset($addr['photo']) && strlen($addr['photo']) > 10) {
-        	$flat = str_replace("\n\t", "", $addr['photo']);
-        	$flat = str_replace(" ", "", $flat);
-        	$flat = explode(':', $flat, 2);
-          $message->picture = $flat[1];
-        } 
+        $message->picture = $addr['photo'];
         
         if(   isset($addr['bday'])   && $addr['bday']   != ""
            && isset($addr['bmonth']) && $addr['bmonth'] != ""
