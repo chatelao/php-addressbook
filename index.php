@@ -118,7 +118,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 
 function addRow($row) {
 
-    global $addr, $page_ext_qry, $url_images, $read_only, $map_guess, $full_phone, $homepage_guess;
+    global $addr, $page_ext_qry, $url_images, $read_only, $map_guess, $full_phone, $homepage_guess, $asterisk_integration;
 	
     $myrow = $addr->getData();
     
@@ -171,7 +171,29 @@ function addRow($row) {
         break;
       case "all_phones":
         $phones = $addr->shortPhones();
-    	  echo "<td>".implode("<br>", $phones)."</td>";
+    	  
+    	  echo "<td>";
+    	  
+    	  if(is_array($phones)) {
+    	      foreach($phones as $key => $value) {
+    	            
+    	            echo $value;
+    	            
+    	            if ($asterisk_integration) {
+    	            
+          	            //inline background request - click to call
+          	            echo " <a href=\"#\" onClick=\"javascript: var xmlHttp = null; xmlHttp = new XMLHttpRequest();  xmlHttp.open( 'GET', 'asterisk_c2c.php?b_number=$value', false ); xmlHttp.send( null ); return false;\" >";    
+          	            
+          	            echo "<img src=\"icons/phonecall.png\" >";
+          	            echo "</a>";
+          	            
+    	            }
+    	            
+    	            echo "<br />";
+    	      }
+    	  }
+    	  echo "</td>";
+        
         break;
       case "all_emails":
         $emails = $addr->getEMails();
