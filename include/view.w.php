@@ -107,8 +107,8 @@ function addGroup($r, $members, $title = "") {
 }
 
 function showOneEntry($r, $only_phone = false) {
-
-	 global $db, $table, $table_grp_adr, $table_groups, $print, $is_fix_group, $mail_as_image;
+	
+	 global $db, $table, $table_grp_adr, $table_groups, $print, $is_fix_group, $mail_as_image, $page_ext_qry;
 
 	 $view = "";
    $view .= add("<b>".$r['firstname'].(!empty($r['middlename']) ? " ".$r['middlename'] : "")." ".$r['lastname']."</b>");
