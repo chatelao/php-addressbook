@@ -240,7 +240,7 @@ msgid "TELEPHONE"
 msgstr "Домашний тел."
 
 msgid "PHONE_HOME"
-msgstr "домашний тел."
+msgstr "Домашний тел."
 
 msgid "HOME_SHORT"
 msgstr ""
@@ -453,7 +453,7 @@ msgid "PHOTO"
 msgstr ""
 
 msgid "ALL_PHONES"
-msgstr ""
+msgstr "ВСЕ_ТЕЛЕФОНЫ"
 
 msgid "ALL_EMAILS"
 msgstr ""
