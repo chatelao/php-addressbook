@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: 2012-10-27 11:46+0000\n"
-"Last-Translator: chatelao <Unknown>\n"
+"PO-Revision-Date: 2014-01-28 02:27+0000\n"
+"Last-Translator: taka <taka619@yahoo.co.jp>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
-"X-Generator: Launchpad (build 16232)\n"
+"X-Launchpad-Export-Date: 2015-01-04 20:36+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 
 msgid "LANGUAGE"
 msgstr "言語"
@@ -84,7 +84,7 @@ msgid "HOME"
 msgstr "ホーム"
 
 msgid "NEXT_BIRTHDAYS"
-msgstr "次の誕生日"
+msgstr "誕生日が近いユーザー"
 
 msgid "ADD_NEW"
 msgstr "新規追加"
@@ -99,7 +99,7 @@ msgid "EXPORT_CSV"
 msgstr "CSV のエクスポート"
 
 msgid "EXPORT"
-msgstr "輸出"
+msgstr "エクスポート"
 
 msgid "IMPORT"
 msgstr "インポート"
@@ -108,7 +108,7 @@ msgid "MAP"
 msgstr ""
 
 msgid "MORE"
-msgstr ""
+msgstr "もっと見る"
 
 msgid "GROUP"
 msgstr "グループ"
@@ -117,7 +117,7 @@ msgid "GROUPS"
 msgstr "グループ"
 
 msgid "MANAGE_GROUPS"
-msgstr "グループ"
+msgstr "グループ管理"
 
 msgid "NEW_GROUP"
 msgstr "新規グループ"
@@ -186,55 +186,55 @@ msgid "GUESSED_HOMEPAGE"
 msgstr "Guessed homepage"
 
 msgid "PREFERENCES"
-msgstr "ぷリファレンス"
+msgstr "プリファレンス"
 
 msgid "NAME_PREFIX"
-msgstr ""
+msgstr "敬称（後）"
 
 msgid "FIRSTNAME"
 msgstr "名前"
 
 msgid "MIDDLENAME"
-msgstr ""
+msgstr "ミドルネーム"
 
 msgid "LASTNAME"
 msgstr "苗字"
 
 msgid "NAME_SUFFIX"
-msgstr ""
+msgstr "敬称（前）"
 
 msgid "NICKNAME"
-msgstr ""
+msgstr "ニックネーム"
 
 msgid "COMPANY"
 msgstr "企業名"
 
 msgid "DEPT"
-msgstr ""
+msgstr "部署"
 
 msgid "OCCUPATION"
-msgstr ""
+msgstr "職種"
 
 msgid "TITLES"
-msgstr ""
+msgstr "タイトル"
 
 msgid "ADDRESS"
 msgstr "住所"
 
 msgid "POB"
-msgstr ""
+msgstr "私書箱"
 
 msgid "APT"
-msgstr ""
+msgstr "アパート名"
 
 msgid "STREET"
-msgstr ""
+msgstr "市区町村以下"
 
 msgid "STATE"
-msgstr ""
+msgstr "市区町村名"
 
 msgid "COUNTRY"
-msgstr ""
+msgstr "国"
 
 msgid "TELEPHONE"
 msgstr "電話番号"
@@ -246,13 +246,13 @@ msgid "HOME_SHORT"
 msgstr ""
 
 msgid "PHONE_MOBILE"
-msgstr "モバイル"
+msgstr "携帯電話番号"
 
 msgid "MOBILE_SHORT"
 msgstr ""
 
 msgid "PHONE_WORK"
-msgstr "仕事"
+msgstr "職場電話番号"
 
 msgid "WORK_SHORT"
 msgstr ""
@@ -264,10 +264,10 @@ msgid "FAX_SHORT"
 msgstr ""
 
 msgid "PHONE2_SHORT"
-msgstr ""
+msgstr "電話番号２"
 
 msgid "PAGER"
-msgstr ""
+msgstr "ページャー"
 
 msgid "EMAIL"
 msgstr "電子メール"
@@ -276,7 +276,7 @@ msgid "HOMEPAGE"
 msgstr "ホームページ"
 
 msgid "ZIP"
-msgstr "ZIP"
+msgstr "郵便番号"
 
 msgid "CITY"
 msgstr "都市"
@@ -297,13 +297,13 @@ msgid "NOTES"
 msgstr "注釈"
 
 msgid "MISC"
-msgstr ""
+msgstr "その他"
 
 msgid "BIRTHDAY"
 msgstr "誕生日"
 
 msgid "ANNIVERSARY"
-msgstr ""
+msgstr "記念日"
 
 msgid "CREATED"
 msgstr "created"
@@ -321,22 +321,67 @@ msgid "INVALID"
 msgstr "無効"
 
 msgid "ENTER"
-msgstr "enter"
+msgstr "入力"
 
 msgid "MEMBER_OF"
-msgstr "member of"
+msgstr "所属"
 
 msgid "SECONDARY"
-msgstr "Secondary"
+msgstr "セカンダリ"
 
 msgid "CREATE_ACCOUNT"
-msgstr ""
+msgstr "アカウントの作成"
 
 msgid "FORGOT_PASSWORD"
+msgstr "パスワードを忘れた"
+
+msgid "UPDATED"
 msgstr ""
+
+msgid "TRANSLATOR"
+msgstr "SmartScape"
+
+msgid "TITLE"
+msgstr "役職"
+
+msgid "MOBILE"
+msgstr "モバイル"
+
+msgid "WORK"
+msgstr "職場"
+
+msgid "FIRST_LAST"
+msgstr "名前(名,性)"
+
+msgid "NEXT"
+msgstr "次へ"
+
+msgid "PHOTO"
+msgstr "写真"
+
+msgid "ALL_PHONES"
+msgstr "全ての電話番号"
+
+msgid "ALL_EMAILS"
+msgstr "全てのメールアドレス"
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
+msgid "LAST_FIRST"
+msgstr "名前(性,名)"
+
+msgid "GRP_NAME"
+msgstr "グループ名"
+
+msgid "ab"
+msgstr "アブハジア語"
 
 msgid "ar"
 msgstr "アラビア語"
+
+msgid "be"
+msgstr "ベルギー語"
 
 msgid "bg"
 msgstr "ブルガリア語"
@@ -392,6 +437,9 @@ msgstr "韓国語"
 msgid "nl"
 msgstr "オランダ語"
 
+msgid "no"
+msgstr "いいえ"
+
 msgid "pl"
 msgstr "ポーランド語"
 
@@ -404,8 +452,11 @@ msgstr "レトロマン語"
 msgid "ru"
 msgstr "ロシア語"
 
+msgid "sk"
+msgstr ""
+
 msgid "sl"
-msgstr "スロベニア"
+msgstr "スロヴェニア語"
 
 msgid "sr"
 msgstr "セルビア語"
@@ -419,53 +470,11 @@ msgstr "タイ語"
 msgid "tr"
 msgstr "トルコ語"
 
+msgid "ua"
+msgstr ""
+
 msgid "vi"
 msgstr "ベトナム人"
 
 msgid "zh"
 msgstr "中国語"
-
-msgid "DIR"
-msgstr ""
-
-msgid "UPDATED"
-msgstr ""
-
-msgid "TRANSLATOR"
-msgstr "Tadashi Jokagi"
-
-msgid "TITLE"
-msgstr ""
-
-msgid "MOBILE"
-msgstr ""
-
-msgid "WORK"
-msgstr ""
-
-msgid "FIRST_LAST"
-msgstr ""
-
-msgid "NEXT"
-msgstr ""
-
-msgid "PHOTO"
-msgstr ""
-
-msgid "ALL_PHONES"
-msgstr ""
-
-msgid "ALL_EMAILS"
-msgstr ""
-
-msgid "SIGN_IN_WITH"
-msgstr ""
-
-msgid "ua"
-msgstr ""
-
-msgid "LAST_FIRST"
-msgstr ""
-
-msgid "GRP_NAME"
-msgstr ""

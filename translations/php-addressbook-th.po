@@ -6,20 +6,47 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: 2012-11-04 20:33+0000\n"
-"Last-Translator: chatelao <Unknown>\n"
+"PO-Revision-Date: 2013-05-01 14:45+0000\n"
+"Last-Translator: Atawit Somsiri <atawits@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
-"X-Generator: Launchpad (build 16232)\n"
+"X-Launchpad-Export-Date: 2015-01-04 20:36+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
+
+msgid "ADDRESS_BOOK"
+msgstr "Address Book"
+
+msgid "ADD_NEW"
+msgstr "เพิ่มรายการใหม่"
+
+msgid "PRINT_ALL"
+msgstr "พิมพ์ทั้งหมด"
+
+msgid "PRINT_PHONES"
+msgstr "พิมพ์รายการโทรศัพท์"
+
+msgid "IMPORT"
+msgstr "นำเข้าข้อมูล"
+
+msgid "GROUPS"
+msgstr "กลุ่ม"
+
+msgid "MANAGE_GROUPS"
+msgstr "จัดการกลุ่ม"
+
+msgid "NEW_GROUP"
+msgstr "เพิ่มกลุ่มใหม่"
+
+msgid "DELETE_GROUPS"
+msgstr "ลบกลุ่มย่อย"
 
 msgid "LANGUAGE"
 msgstr "ภาษา"
 
 msgid "auto"
-msgstr "การตั้งตัว"
+msgstr "อัตโนมัติ"
 
 msgid "USER"
 msgstr "ผู้ใช้งาน"
@@ -69,14 +96,11 @@ msgstr "พฤศจิกายน"
 msgid "DECEMBER"
 msgstr "ธันวาคม"
 
-msgid "ADDRESS_BOOK"
-msgstr "โทร สมุด"
-
 msgid "FOR"
 msgstr "สำหรับ"
 
 msgid "SEARCH"
-msgstr "สืบ"
+msgstr "ค้นหา"
 
 msgid "HOME"
 msgstr "หน้าแรก"
@@ -84,26 +108,14 @@ msgstr "หน้าแรก"
 msgid "NEXT_BIRTHDAYS"
 msgstr "วันเกิด"
 
-msgid "ADD_NEW"
-msgstr "ใหม่ รายการ"
-
-msgid "PRINT_ALL"
-msgstr "ตีพิมพ์"
-
-msgid "PRINT_PHONES"
-msgstr "รายการ"
-
 msgid "EXPORT_CSV"
-msgstr "ส่งออก csv"
+msgstr "ส่งออกรูปแบบ CSV"
 
 msgid "EXPORT"
 msgstr "ส่งออก"
 
-msgid "IMPORT"
-msgstr "การนำเข้า"
-
 msgid "MAP"
-msgstr ""
+msgstr "แผนที่"
 
 msgid "MORE"
 msgstr ""
@@ -111,26 +123,14 @@ msgstr ""
 msgid "GROUP"
 msgstr "กลุ่ม"
 
-msgid "GROUPS"
-msgstr "ขันธ์"
-
-msgid "MANAGE_GROUPS"
-msgstr "กลุ่ม"
-
-msgid "NEW_GROUP"
-msgstr "กลุ่มใหม่"
-
-msgid "DELETE_GROUPS"
-msgstr "กลุ่มลบ (s)"
-
 msgid "EDIT_GROUP"
-msgstr "กลุ่มแก้ไข"
+msgstr "แก้ไขรายการกลุ่มย่อย"
 
 msgid "GROUP_NAME"
 msgstr "ชื่อกลุ่ม"
 
 msgid "GROUP_HEADER"
-msgstr ""
+msgstr "ชื่อกลุ่มหลัก"
 
 msgid "GROUP_FOOTER"
 msgstr ""
@@ -333,8 +333,53 @@ msgstr ""
 msgid "FORGOT_PASSWORD"
 msgstr ""
 
+msgid "UPDATED"
+msgstr ""
+
+msgid "TRANSLATOR"
+msgstr ""
+
+msgid "TITLE"
+msgstr ""
+
+msgid "MOBILE"
+msgstr ""
+
+msgid "WORK"
+msgstr ""
+
+msgid "FIRST_LAST"
+msgstr ""
+
+msgid "NEXT"
+msgstr ""
+
+msgid "PHOTO"
+msgstr ""
+
+msgid "ALL_PHONES"
+msgstr ""
+
+msgid "ALL_EMAILS"
+msgstr ""
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
+msgid "LAST_FIRST"
+msgstr ""
+
+msgid "GRP_NAME"
+msgstr ""
+
+msgid "ab"
+msgstr ""
+
 msgid "ar"
 msgstr "ภาษาอาหรับ"
+
+msgid "be"
+msgstr ""
 
 msgid "bg"
 msgstr "บัลแกเรีย"
@@ -390,6 +435,9 @@ msgstr "เกาหลี"
 msgid "nl"
 msgstr "ดัตช์"
 
+msgid "no"
+msgstr ""
+
 msgid "pl"
 msgstr ""
 
@@ -401,6 +449,9 @@ msgstr "เรโต - Romance"
 
 msgid "ru"
 msgstr "คนรัสเซีย"
+
+msgid "sk"
+msgstr ""
 
 msgid "sl"
 msgstr "ภาษาสโลเวเนีย"
@@ -417,53 +468,11 @@ msgstr "ภาษาไทย"
 msgid "tr"
 msgstr "ภาษาตุรกี"
 
+msgid "ua"
+msgstr ""
+
 msgid "vi"
 msgstr "เวียตนาม"
 
 msgid "zh"
 msgstr "ภาษาจีน"
-
-msgid "DIR"
-msgstr ""
-
-msgid "UPDATED"
-msgstr ""
-
-msgid "TRANSLATOR"
-msgstr ""
-
-msgid "TITLE"
-msgstr ""
-
-msgid "MOBILE"
-msgstr ""
-
-msgid "WORK"
-msgstr ""
-
-msgid "FIRST_LAST"
-msgstr ""
-
-msgid "NEXT"
-msgstr ""
-
-msgid "PHOTO"
-msgstr ""
-
-msgid "ALL_PHONES"
-msgstr ""
-
-msgid "ALL_EMAILS"
-msgstr ""
-
-msgid "SIGN_IN_WITH"
-msgstr ""
-
-msgid "ua"
-msgstr ""
-
-msgid "LAST_FIRST"
-msgstr ""
-
-msgid "GRP_NAME"
-msgstr ""

@@ -5,23 +5,25 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: PHP Address Book\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: 2012-10-27 11:46+0000\n"
-"Last-Translator: chatelao <Unknown>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2014-04-09 13:00+0000\n"
+"Last-Translator: Josh Kim <joshkkim@gmail.com>\n"
+"Language-Team: Josh Kim <joshkkim@gmail.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
-"X-Generator: Launchpad (build 16232)\n"
+"X-Launchpad-Export-Date: 2015-01-04 20:36+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
+"Language: ko\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 msgid "LANGUAGE"
 msgstr "언어"
 
 msgid "auto"
-msgstr "bowser 설정을 자동으로"
+msgstr "브라우저 설정(자동)"
 
 msgid "USER"
 msgstr "사용자"
@@ -36,40 +38,40 @@ msgid "LOGOUT"
 msgstr "로그아웃"
 
 msgid "JANUARY"
-msgstr "1 월"
+msgstr "1월"
 
 msgid "FEBRUARY"
-msgstr "2 월"
+msgstr "2월"
 
 msgid "MARCH"
-msgstr "3 월"
+msgstr "3월"
 
 msgid "APRIL"
-msgstr "4 월"
+msgstr "4월"
 
 msgid "MAY"
-msgstr "5 월"
+msgstr "5월"
 
 msgid "JUNE"
-msgstr "6 월"
+msgstr "6월"
 
 msgid "JULY"
-msgstr "7 월"
+msgstr "7월"
 
 msgid "AUGUST"
-msgstr "8 월"
+msgstr "8월"
 
 msgid "SEPTEMBER"
-msgstr "9 월"
+msgstr "9월"
 
 msgid "OCTOBER"
-msgstr "10 월"
+msgstr "10월"
 
 msgid "NOVEMBER"
-msgstr "11 월"
+msgstr "11월"
 
 msgid "DECEMBER"
-msgstr "12 월"
+msgstr "12월"
 
 msgid "ADDRESS_BOOK"
 msgstr "주소록"
@@ -90,25 +92,25 @@ msgid "ADD_NEW"
 msgstr "새로 추가"
 
 msgid "PRINT_ALL"
-msgstr "전체 인쇄"
+msgstr "모두 인쇄"
 
 msgid "PRINT_PHONES"
 msgstr "전화번호 인쇄"
 
 msgid "EXPORT_CSV"
-msgstr "파일 변환"
+msgstr "CSV 내보내기"
 
 msgid "EXPORT"
-msgstr "수출"
+msgstr "내보내기"
 
 msgid "IMPORT"
-msgstr "수입"
+msgstr "가져오기"
 
 msgid "MAP"
-msgstr ""
+msgstr "지도"
 
 msgid "MORE"
-msgstr ""
+msgstr "더보기"
 
 msgid "GROUP"
 msgstr "그룹"
@@ -132,10 +134,10 @@ msgid "GROUP_NAME"
 msgstr "그룹 이름"
 
 msgid "GROUP_HEADER"
-msgstr "그룹 머리글 (로고)"
+msgstr "그룹 머리글(로고)"
 
 msgid "GROUP_FOOTER"
-msgstr "그룹 꼬리말 (댓글)"
+msgstr "그룹 바닥글(댓글)"
 
 msgid "GROUP_PARENT"
 msgstr "상위 그룹"
@@ -144,19 +146,19 @@ msgid "SEARCH_FOR_ANY_TEXT"
 msgstr "모든 텍스트 검색"
 
 msgid "NUMBER_OF_RESULTS"
-msgstr "항목수"
+msgstr "결과 개수"
 
 msgid "ALL"
-msgstr "전체"
+msgstr "모두"
 
 msgid "NONE"
 msgstr "없음"
 
 msgid "SELECT_ALL"
-msgstr "전체 선택"
+msgstr "모두 선택"
 
 msgid "REMOVE_FROM"
-msgstr "삭제"
+msgstr "다음으로 부터 제거:"
 
 msgid "MAIL_CLIENT"
 msgstr "메일 클라이언트"
@@ -165,10 +167,10 @@ msgid "SEND_EMAIL"
 msgstr "이메일 보내기"
 
 msgid "ADD_TO"
-msgstr "그룹에 추가하기"
+msgstr "다음에 추가:"
 
 msgid "DETAILS"
-msgstr "세부 정보"
+msgstr "상세내용"
 
 msgid "EDIT"
 msgstr "편집"
@@ -180,40 +182,40 @@ msgid "PRINT"
 msgstr "인쇄"
 
 msgid "EDIT_ADD_ENTRY"
-msgstr "편집 / 주소록 항목 추가"
+msgstr "편집/주소록 입력 추가"
 
 msgid "GUESSED_HOMEPAGE"
 msgstr "추정 홈페이지"
 
 msgid "PREFERENCES"
-msgstr "환경 설정"
+msgstr "환경설정"
 
 msgid "NAME_PREFIX"
-msgstr ""
+msgstr "접두어"
 
 msgid "FIRSTNAME"
 msgstr "이름"
 
 msgid "MIDDLENAME"
-msgstr ""
+msgstr "중간이름"
 
 msgid "LASTNAME"
 msgstr "성"
 
 msgid "NAME_SUFFIX"
-msgstr ""
+msgstr "접미어"
 
 msgid "NICKNAME"
-msgstr ""
+msgstr "별칭"
 
 msgid "COMPANY"
 msgstr "회사"
 
 msgid "DEPT"
-msgstr ""
+msgstr "부서"
 
 msgid "OCCUPATION"
-msgstr ""
+msgstr "직책"
 
 msgid "TITLES"
 msgstr ""
@@ -225,16 +227,16 @@ msgid "POB"
 msgstr ""
 
 msgid "APT"
-msgstr ""
+msgstr "아파트"
 
 msgid "STREET"
-msgstr ""
+msgstr "나머지주소"
 
 msgid "STATE"
-msgstr ""
+msgstr "시/군/도"
 
 msgid "COUNTRY"
-msgstr ""
+msgstr "국가"
 
 msgid "TELEPHONE"
 msgstr "전화"
@@ -243,31 +245,31 @@ msgid "PHONE_HOME"
 msgstr "집"
 
 msgid "HOME_SHORT"
-msgstr ""
+msgstr "H"
 
 msgid "PHONE_MOBILE"
-msgstr "모바일"
+msgstr "휴대전화"
 
 msgid "MOBILE_SHORT"
-msgstr ""
+msgstr "M"
 
 msgid "PHONE_WORK"
 msgstr "직장"
 
 msgid "WORK_SHORT"
-msgstr ""
+msgstr "W"
 
 msgid "FAX"
 msgstr "팩스"
 
 msgid "FAX_SHORT"
-msgstr ""
+msgstr "F"
 
 msgid "PHONE2_SHORT"
-msgstr ""
+msgstr "P"
 
 msgid "PAGER"
-msgstr ""
+msgstr "호출기"
 
 msgid "EMAIL"
 msgstr "이메일"
@@ -279,10 +281,10 @@ msgid "ZIP"
 msgstr "우편번호"
 
 msgid "CITY"
-msgstr "도시"
+msgstr "시/군/구"
 
 msgid "E_MAIL_HOME"
-msgstr "개인 이메일"
+msgstr "자택 이메일"
 
 msgid "E_MAIL_OFFICE"
 msgstr "직장 이메일"
@@ -294,22 +296,22 @@ msgid "2ND_PHONE"
 msgstr "두 번째 전화"
 
 msgid "NOTES"
-msgstr "노트"
+msgstr "메모"
 
 msgid "MISC"
-msgstr ""
+msgstr "기타"
 
 msgid "BIRTHDAY"
 msgstr "생일"
 
 msgid "ANNIVERSARY"
-msgstr ""
+msgstr "기념일"
 
 msgid "CREATED"
-msgstr "생성"
+msgstr "생성됨"
 
 msgid "MODIFIED"
-msgstr "수정"
+msgstr "수정됨"
 
 msgid "UPDATE"
 msgstr "업데이트"
@@ -318,28 +320,73 @@ msgid "DELETE"
 msgstr "삭제"
 
 msgid "INVALID"
-msgstr "오류"
+msgstr "유효하지 않음"
 
 msgid "ENTER"
 msgstr "입력"
 
 msgid "MEMBER_OF"
-msgstr "회원"
+msgstr "다음의 구성원:"
 
 msgid "SECONDARY"
-msgstr "기타정보"
+msgstr "추가"
 
 msgid "CREATE_ACCOUNT"
-msgstr ""
+msgstr "계정 생성"
 
 msgid "FORGOT_PASSWORD"
+msgstr "암호를 잊음"
+
+msgid "UPDATED"
+msgstr "업데이트됨"
+
+msgid "TRANSLATOR"
+msgstr "번역자"
+
+msgid "TITLE"
+msgstr ""
+
+msgid "MOBILE"
+msgstr "휴대전화"
+
+msgid "WORK"
+msgstr "직장"
+
+msgid "FIRST_LAST"
+msgstr "이름 성"
+
+msgid "NEXT"
+msgstr "다음"
+
+msgid "PHOTO"
+msgstr "사진"
+
+msgid "ALL_PHONES"
+msgstr "모든 전화"
+
+msgid "ALL_EMAILS"
+msgstr "모든 이메일"
+
+msgid "SIGN_IN_WITH"
+msgstr "다음으로 로그인:"
+
+msgid "LAST_FIRST"
+msgstr "성 이름"
+
+msgid "GRP_NAME"
+msgstr "그룹명"
+
+msgid "ab"
 msgstr ""
 
 msgid "ar"
 msgstr "아라비아어"
 
+msgid "be"
+msgstr ""
+
 msgid "bg"
-msgstr "불가 리아어"
+msgstr "불가리아어"
 
 msgid "ca"
 msgstr "카탈로니아"
@@ -363,7 +410,7 @@ msgid "es"
 msgstr "스페인어"
 
 msgid "fa"
-msgstr "이 란어"
+msgstr "이란어"
 
 msgid "fi"
 msgstr "핀란드어"
@@ -392,6 +439,9 @@ msgstr "한국어"
 msgid "nl"
 msgstr "네덜란드"
 
+msgid "no"
+msgstr ""
+
 msgid "pl"
 msgstr "폴란드어"
 
@@ -403,6 +453,9 @@ msgstr "레토로만어"
 
 msgid "ru"
 msgstr "러시아어"
+
+msgid "sk"
+msgstr ""
 
 msgid "sl"
 msgstr "슬로베니아"
@@ -419,53 +472,11 @@ msgstr "타이어"
 msgid "tr"
 msgstr "터키어"
 
+msgid "ua"
+msgstr "우크라이나어"
+
 msgid "vi"
 msgstr "베트남어"
 
 msgid "zh"
 msgstr "중국어"
-
-msgid "DIR"
-msgstr ""
-
-msgid "UPDATED"
-msgstr ""
-
-msgid "TRANSLATOR"
-msgstr ""
-
-msgid "TITLE"
-msgstr ""
-
-msgid "MOBILE"
-msgstr ""
-
-msgid "WORK"
-msgstr ""
-
-msgid "FIRST_LAST"
-msgstr ""
-
-msgid "NEXT"
-msgstr ""
-
-msgid "PHOTO"
-msgstr ""
-
-msgid "ALL_PHONES"
-msgstr ""
-
-msgid "ALL_EMAILS"
-msgstr ""
-
-msgid "SIGN_IN_WITH"
-msgstr ""
-
-msgid "ua"
-msgstr ""
-
-msgid "LAST_FIRST"
-msgstr ""
-
-msgid "GRP_NAME"
-msgstr ""

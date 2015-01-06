@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: 2012-11-09 01:32+0000\n"
-"Last-Translator: chatelao <Unknown>\n"
+"PO-Revision-Date: 2013-03-15 06:58+0000\n"
+"Last-Translator: Daniel <cristian@drajna.ro>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -18,463 +18,463 @@ msgstr ""
 "X-Generator: Launchpad (build 17286)\n"
 
 msgid "LANGUAGE"
-msgstr "Langue"
+msgstr "Limba"
 
 msgid "auto"
-msgstr "Paramètres du navigateur (automatique)"
+msgstr "Browser (automatic)"
 
 msgid "USER"
-msgstr "Utilisateur"
+msgstr "Utilizator"
 
 msgid "PASSWORD"
-msgstr "Mot de passe"
+msgstr "Parola"
 
 msgid "LOGIN"
-msgstr "Connexion"
+msgstr "Login"
 
 msgid "LOGOUT"
-msgstr "Déconnexion"
+msgstr "Logout"
 
 msgid "JANUARY"
-msgstr "Janvier"
+msgstr "Ianuarie"
 
 msgid "FEBRUARY"
-msgstr "Février"
+msgstr "Februarie"
 
 msgid "MARCH"
-msgstr "Mars"
+msgstr "Martie"
 
 msgid "APRIL"
-msgstr "Avril"
+msgstr "Aprilie"
 
 msgid "MAY"
 msgstr "Mai"
 
 msgid "JUNE"
-msgstr "Juin"
+msgstr "Iunie"
 
 msgid "JULY"
-msgstr "Juillet"
+msgstr "Iulie"
 
 msgid "AUGUST"
-msgstr "Août"
+msgstr "August"
 
 msgid "SEPTEMBER"
-msgstr "Septembre"
+msgstr "Septembrie"
 
 msgid "OCTOBER"
-msgstr "Octobre"
+msgstr "Octombrie"
 
 msgid "NOVEMBER"
-msgstr "Novembre"
+msgstr "Noiembrie"
 
 msgid "DECEMBER"
-msgstr "Décembre"
+msgstr "Decembrie"
 
 msgid "ADDRESS_BOOK"
-msgstr "Carnet d'adresses"
+msgstr "Agenda telefonică"
 
 msgid "FOR"
-msgstr "Pour"
+msgstr "pentru"
 
 msgid "SEARCH"
-msgstr "Recherche"
+msgstr "Caută"
 
 msgid "HOME"
-msgstr "Accueil"
+msgstr "Acasă"
 
 msgid "NEXT_BIRTHDAYS"
-msgstr "Anniversaires"
+msgstr "dată naștere"
 
 msgid "ADD_NEW"
-msgstr "Ajouter une adresse"
+msgstr "Adaugă"
 
 msgid "PRINT_ALL"
-msgstr "Imprimer fiches"
+msgstr "Imprimă"
 
 msgid "PRINT_PHONES"
-msgstr "Imprimer répertoire"
+msgstr "Imprimă numere telefoane"
 
 msgid "EXPORT_CSV"
-msgstr "Exporter en csv"
+msgstr "exportă în CSV"
 
 msgid "EXPORT"
-msgstr "exportation"
+msgstr "Exportă"
 
 msgid "IMPORT"
-msgstr "importation"
+msgstr "Importă"
 
 msgid "MAP"
-msgstr "carte"
+msgstr "Hartă"
 
 msgid "MORE"
-msgstr "plus"
+msgstr "mai multe"
 
 msgid "GROUP"
-msgstr "Groupe"
+msgstr "Grup"
 
 msgid "GROUPS"
-msgstr "Groupes"
+msgstr "Grupuri"
 
 msgid "MANAGE_GROUPS"
-msgstr "Gérer des groupes"
+msgstr "Administrează grupuri"
 
 msgid "NEW_GROUP"
-msgstr "Nouveau groupe"
+msgstr "Adaugă grup"
 
 msgid "DELETE_GROUPS"
-msgstr "Supprimer le(s) groupe(s)"
+msgstr "Șterge grup"
 
 msgid "EDIT_GROUP"
-msgstr "Editer le groupe"
+msgstr "Editează grup"
 
 msgid "GROUP_NAME"
-msgstr "Nom du groupe"
+msgstr "Nume grup"
 
 msgid "GROUP_HEADER"
-msgstr "En-tête du groupe (Logo)"
+msgstr "Grup (Logo)"
 
 msgid "GROUP_FOOTER"
-msgstr "Pied de page du groupe (Commentaire)"
+msgstr "Footer (Comentarii)"
 
 msgid "GROUP_PARENT"
-msgstr "groupe de parents"
+msgstr "Group Parent"
 
 msgid "SEARCH_FOR_ANY_TEXT"
-msgstr "Rechercher texte"
+msgstr "Caută orice text"
 
 msgid "NUMBER_OF_RESULTS"
-msgstr "Nombre de résultats"
+msgstr "Număr de rezultate"
 
 msgid "ALL"
-msgstr "Tous"
+msgstr "tot"
 
 msgid "NONE"
-msgstr "Aucun"
+msgstr "nici unul"
 
 msgid "SELECT_ALL"
-msgstr "Tout sélectionner"
+msgstr "Selectează tot"
 
 msgid "REMOVE_FROM"
-msgstr "Retirer"
+msgstr "Șterge de la"
 
 msgid "MAIL_CLIENT"
-msgstr "Client de messagerie"
+msgstr "Client Email"
 
 msgid "SEND_EMAIL"
-msgstr "Envoyer un e-mail"
+msgstr "Trimite Email"
 
 msgid "ADD_TO"
-msgstr "Ajouter à"
+msgstr "Adaugă la"
 
 msgid "DETAILS"
-msgstr "Détails"
+msgstr "Detalii"
 
 msgid "EDIT"
-msgstr "Editer"
+msgstr "Editează"
 
 msgid "MODIFY"
-msgstr "Modifier"
+msgstr "Modifică"
 
 msgid "PRINT"
-msgstr "Imprimer"
+msgstr "Imprimă"
 
 msgid "EDIT_ADD_ENTRY"
-msgstr "Modifier / ajouter une entrée"
+msgstr "Editează sau adaugă număr de telefon în agendă"
 
 msgid "GUESSED_HOMEPAGE"
-msgstr "Deviner page d'accueil"
+msgstr "Pagina principală gasită"
 
 msgid "PREFERENCES"
-msgstr "Préférences"
+msgstr "Preferințe"
 
 msgid "NAME_PREFIX"
-msgstr "préfixe"
+msgstr "Nume_Prefix"
 
 msgid "FIRSTNAME"
-msgstr "Prénom"
+msgstr "Nume"
 
 msgid "MIDDLENAME"
-msgstr "prénom / inital (s)"
+msgstr "Nume Mijlociu"
 
 msgid "LASTNAME"
-msgstr "Nom"
+msgstr "Prenume"
 
 msgid "NAME_SUFFIX"
-msgstr "suffixe"
+msgstr "Nume_Suffix"
 
 msgid "NICKNAME"
-msgstr "surnom"
+msgstr "Nickname"
 
 msgid "COMPANY"
-msgstr "Entreprise"
+msgstr "Firmă"
 
 msgid "DEPT"
-msgstr "Département"
+msgstr "Dept"
 
 msgid "OCCUPATION"
-msgstr "titre d'emploi"
+msgstr "Ocupație"
 
 msgid "TITLES"
-msgstr "titres"
+msgstr "Titlu"
 
 msgid "ADDRESS"
-msgstr "adresse"
+msgstr "Adresă"
 
 msgid "POB"
-msgstr "boîte ou plusieurs"
+msgstr "Comuna"
 
 msgid "APT"
-msgstr "appartement ou d'arrêt"
+msgstr "Sat"
 
 msgid "STREET"
-msgstr "Adresse rue"
+msgstr "Strada"
 
 msgid "STATE"
-msgstr "état"
+msgstr "Județ"
 
 msgid "COUNTRY"
-msgstr "pays"
+msgstr "Țara"
 
 msgid "TELEPHONE"
-msgstr "Téléphone"
+msgstr "Telefon"
 
 msgid "PHONE_HOME"
-msgstr "Domicile"
+msgstr "Telefon fix"
 
 msgid "HOME_SHORT"
-msgstr "T"
+msgstr "Acasă_scurt"
 
 msgid "PHONE_MOBILE"
-msgstr "Mobile"
+msgstr "Telefon mobil"
 
 msgid "MOBILE_SHORT"
-msgstr "M"
+msgstr "Mobil_scurt"
 
 msgid "PHONE_WORK"
-msgstr "Professionel"
+msgstr "Telefon serviciu"
 
 msgid "WORK_SHORT"
-msgstr "B"
+msgstr "Serviciu_scurt"
 
 msgid "FAX"
 msgstr "Fax"
 
 msgid "FAX_SHORT"
-msgstr "F"
+msgstr "Fax_scurt"
 
 msgid "PHONE2_SHORT"
-msgstr "T"
+msgstr "Telefon2_scurt"
 
 msgid "PAGER"
-msgstr "pager"
+msgstr "Pager"
 
 msgid "EMAIL"
-msgstr "E-mail"
+msgstr "Email"
 
 msgid "HOMEPAGE"
-msgstr "Page personnelle"
+msgstr "Home"
 
 msgid "ZIP"
-msgstr "ZIP"
+msgstr "Cod poștal"
 
 msgid "CITY"
-msgstr "Ville"
+msgstr "Oraș"
 
 msgid "E_MAIL_HOME"
-msgstr "E-mail personnel"
+msgstr "E-mail personal"
 
 msgid "E_MAIL_OFFICE"
-msgstr "E-mail professionel"
+msgstr "E-mail serviciu"
 
 msgid "2ND_ADDRESS"
-msgstr "Seconde adresse"
+msgstr "A doua adresă"
 
 msgid "2ND_PHONE"
-msgstr "Second téléphone"
+msgstr "Alt telefon"
 
 msgid "NOTES"
-msgstr "Notes"
+msgstr "Notă"
 
 msgid "MISC"
-msgstr "Divers"
+msgstr "Misc"
 
 msgid "BIRTHDAY"
-msgstr "Anniversaire"
+msgstr "Zi de naștere"
 
 msgid "ANNIVERSARY"
-msgstr "anniversaire"
+msgstr "Aniversare"
 
 msgid "CREATED"
-msgstr "créé"
+msgstr "Creat"
 
 msgid "MODIFIED"
-msgstr "Mise à jour"
+msgstr "Modificat"
 
 msgid "UPDATE"
-msgstr "Mettre à jour"
+msgstr "Actualizare"
 
 msgid "DELETE"
-msgstr "Supprimer"
+msgstr "Șterge"
 
 msgid "INVALID"
-msgstr "Non valide"
+msgstr "Invalid"
 
 msgid "ENTER"
-msgstr "Entrer"
+msgstr "Adaugă"
 
 msgid "MEMBER_OF"
-msgstr "Membre de"
+msgstr "Membru de"
 
 msgid "SECONDARY"
-msgstr "Secondaire"
+msgstr "Al doilea"
 
 msgid "CREATE_ACCOUNT"
-msgstr "Créer un compte"
+msgstr "Crează cont"
 
 msgid "FORGOT_PASSWORD"
-msgstr "Mot de passe oublié"
+msgstr "Am uitat parola"
 
 msgid "UPDATED"
-msgstr "mis à jour"
+msgstr "Actualizat"
 
 msgid "TRANSLATOR"
-msgstr "traducteur"
+msgstr "Traducător"
 
 msgid "TITLE"
-msgstr "titre"
+msgstr "Titlu"
 
 msgid "MOBILE"
-msgstr "mobile"
+msgstr "Mobil"
 
 msgid "WORK"
-msgstr "travail"
+msgstr "Serviciu"
 
 msgid "FIRST_LAST"
-msgstr "prénom et nom"
+msgstr "Primul_Ultimul"
 
 msgid "NEXT"
-msgstr "prochain"
+msgstr "Următor"
 
 msgid "PHOTO"
-msgstr "photo"
+msgstr "Fotografie"
 
 msgid "ALL_PHONES"
-msgstr "Tous téléphones"
+msgstr "Toate telefoanele"
 
 msgid "ALL_EMAILS"
-msgstr "Toutes e-mail"
+msgstr "Toate adresele de email"
 
 msgid "SIGN_IN_WITH"
-msgstr ""
+msgstr "Acces site cu"
 
 msgid "LAST_FIRST"
-msgstr "nom et prénom"
+msgstr "Ultimul_Primul"
 
 msgid "GRP_NAME"
-msgstr "nom du group"
+msgstr "GRP Nume"
 
 msgid "ab"
 msgstr ""
 
 msgid "ar"
-msgstr "Arabe"
+msgstr "Arabă"
 
 msgid "be"
 msgstr ""
 
 msgid "bg"
-msgstr "Bulgare"
+msgstr "Bulgară"
 
 msgid "ca"
-msgstr "Catalogne"
+msgstr "Catalană"
 
 msgid "cs"
-msgstr "Tchèque"
+msgstr "Cehă"
 
 msgid "da"
-msgstr "Danois"
+msgstr "Daneză"
 
 msgid "de"
-msgstr "Allemand"
+msgstr "Germană"
 
 msgid "el"
-msgstr "Grec"
+msgstr "Greacă"
 
 msgid "en"
-msgstr "Anglais"
+msgstr "Engleză"
 
 msgid "es"
-msgstr "Espagnol"
+msgstr ""
 
 msgid "fa"
-msgstr "Persan"
+msgstr "Persană"
 
 msgid "fi"
-msgstr "Finnois"
+msgstr "Finlandeză"
 
 msgid "fr"
-msgstr "Français"
+msgstr "Franceză"
 
 msgid "he"
-msgstr "Hébreu"
+msgstr "Ebraică"
 
 msgid "hi"
-msgstr "Hindî"
+msgstr "Hindu"
 
 msgid "hu"
-msgstr "Hongroise"
+msgstr "Ungară"
 
 msgid "it"
-msgstr "Italien"
+msgstr "Italiană"
 
 msgid "ja"
-msgstr "Japonais"
+msgstr "Japoneză"
 
 msgid "ko"
-msgstr "Coréen"
+msgstr "Coreană"
 
 msgid "nl"
-msgstr "Néerlandais"
+msgstr "Olandeză"
 
 msgid "no"
-msgstr "norv覩en"
+msgstr ""
 
 msgid "pl"
-msgstr "Polonais"
+msgstr "Poloneză"
 
 msgid "pt"
-msgstr "Portugais"
+msgstr "Portugheză"
 
 msgid "rm"
-msgstr "Rhèto-roman"
+msgstr "Retorromanică"
 
 msgid "ru"
-msgstr "Russe"
+msgstr "Rusă"
 
 msgid "sk"
-msgstr "slovaque"
+msgstr ""
 
 msgid "sl"
-msgstr "Slovène"
+msgstr "Slovenă"
 
 msgid "sr"
-msgstr "Serbe"
+msgstr "Sârbă"
 
 msgid "sv"
-msgstr "Suédois"
+msgstr "Suedeză"
 
 msgid "th"
-msgstr "Thai"
+msgstr "Tailandeză"
 
 msgid "tr"
-msgstr "Turc"
+msgstr "Turcă"
 
 msgid "ua"
-msgstr "ukrainien"
+msgstr "ua"
 
 msgid "vi"
-msgstr "Vietnamien"
+msgstr "Vietnameză"
 
 msgid "zh"
-msgstr "Chinois"
+msgstr "Chineză"

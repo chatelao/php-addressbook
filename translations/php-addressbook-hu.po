@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
-"X-Generator: Launchpad (build 16232)\n"
+"X-Launchpad-Export-Date: 2015-01-04 20:36+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 
 msgid "LANGUAGE"
 msgstr "nyelv"
@@ -335,8 +335,53 @@ msgstr ""
 msgid "FORGOT_PASSWORD"
 msgstr ""
 
+msgid "UPDATED"
+msgstr "Frissítés"
+
+msgid "TRANSLATOR"
+msgstr ""
+
+msgid "TITLE"
+msgstr ""
+
+msgid "MOBILE"
+msgstr ""
+
+msgid "WORK"
+msgstr ""
+
+msgid "FIRST_LAST"
+msgstr ""
+
+msgid "NEXT"
+msgstr ""
+
+msgid "PHOTO"
+msgstr ""
+
+msgid "ALL_PHONES"
+msgstr ""
+
+msgid "ALL_EMAILS"
+msgstr ""
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
+msgid "LAST_FIRST"
+msgstr ""
+
+msgid "GRP_NAME"
+msgstr ""
+
+msgid "ab"
+msgstr ""
+
 msgid "ar"
 msgstr "Arab"
+
+msgid "be"
+msgstr ""
 
 msgid "bg"
 msgstr "Bolgár"
@@ -392,6 +437,9 @@ msgstr "Koreai"
 msgid "nl"
 msgstr "Holland"
 
+msgid "no"
+msgstr ""
+
 msgid "pl"
 msgstr "Lengyel"
 
@@ -403,6 +451,9 @@ msgstr "Réto-román"
 
 msgid "ru"
 msgstr "Orosz"
+
+msgid "sk"
+msgstr ""
 
 msgid "sl"
 msgstr "Szlovén"
@@ -419,53 +470,11 @@ msgstr "Thaiföldi"
 msgid "tr"
 msgstr "Török"
 
+msgid "ua"
+msgstr ""
+
 msgid "vi"
 msgstr "Vietnámi"
 
 msgid "zh"
 msgstr "Kínai"
-
-msgid "DIR"
-msgstr ""
-
-msgid "UPDATED"
-msgstr "Frissítés"
-
-msgid "TRANSLATOR"
-msgstr ""
-
-msgid "TITLE"
-msgstr ""
-
-msgid "MOBILE"
-msgstr ""
-
-msgid "WORK"
-msgstr ""
-
-msgid "FIRST_LAST"
-msgstr ""
-
-msgid "NEXT"
-msgstr ""
-
-msgid "PHOTO"
-msgstr ""
-
-msgid "ALL_PHONES"
-msgstr ""
-
-msgid "ALL_EMAILS"
-msgstr ""
-
-msgid "SIGN_IN_WITH"
-msgstr ""
-
-msgid "ua"
-msgstr ""
-
-msgid "LAST_FIRST"
-msgstr ""
-
-msgid "GRP_NAME"
-msgstr ""

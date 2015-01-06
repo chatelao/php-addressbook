@@ -8,20 +8,20 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: 2012-10-27 11:48+0000\n"
-"Last-Translator: chatelao <Unknown>\n"
+"PO-Revision-Date: 2013-01-16 06:46+0000\n"
+"Last-Translator: JIIHOO <hallajar@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
-"X-Generator: Launchpad (build 16232)\n"
+"X-Launchpad-Export-Date: 2015-01-04 20:36+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 
 msgid "LANGUAGE"
 msgstr "kieli"
 
 msgid "auto"
-msgstr "bowser asetukset (automaattinen)"
+msgstr "Selain asetukset (automaattinen)"
 
 msgid "USER"
 msgstr "Käyttäjä"
@@ -84,31 +84,31 @@ msgid "HOME"
 msgstr "koti"
 
 msgid "NEXT_BIRTHDAYS"
-msgstr "Seuraavan syntymäpäivät"
+msgstr "seuraavat syntymäpäivät"
 
 msgid "ADD_NEW"
-msgstr "lisätä uusia"
+msgstr "lisää uusi"
 
 msgid "PRINT_ALL"
-msgstr "Tulosta kaikki"
+msgstr "tulosta kaikki"
 
 msgid "PRINT_PHONES"
-msgstr "Tulostettava puhelimet"
+msgstr "tulosta puhelinnumerot"
 
 msgid "EXPORT_CSV"
-msgstr "vienti csv"
+msgstr "vie csv"
 
 msgid "EXPORT"
-msgstr "vienti"
+msgstr "vie"
 
 msgid "IMPORT"
-msgstr "tuonti"
+msgstr "tuo"
 
 msgid "MAP"
-msgstr ""
+msgstr "kartta"
 
 msgid "MORE"
-msgstr ""
+msgstr "lisää"
 
 msgid "GROUP"
 msgstr "ryhmä"
@@ -123,10 +123,10 @@ msgid "NEW_GROUP"
 msgstr "uusi ryhmä"
 
 msgid "DELETE_GROUPS"
-msgstr "poistaa (t)"
+msgstr "poista ryhm(i)ä"
 
 msgid "EDIT_GROUP"
-msgstr "muokata ryhmän"
+msgstr "muokkaa ryhmää"
 
 msgid "GROUP_NAME"
 msgstr "ryhmän nimi"
@@ -135,7 +135,7 @@ msgid "GROUP_HEADER"
 msgstr "Ryhmän otsikko (Logo)"
 
 msgid "GROUP_FOOTER"
-msgstr "Ryhmän alatunnisteen (Comment)"
+msgstr "Ryhmän alatunniste (kommentti)"
 
 msgid "GROUP_PARENT"
 msgstr "Parent ryhmä"
@@ -156,7 +156,7 @@ msgid "SELECT_ALL"
 msgstr "Valitse kaikki"
 
 msgid "REMOVE_FROM"
-msgstr "poistaa"
+msgstr "poista"
 
 msgid "MAIL_CLIENT"
 msgstr "sähköpostiohjelma"
@@ -165,55 +165,55 @@ msgid "SEND_EMAIL"
 msgstr "Lähetä e-Mail"
 
 msgid "ADD_TO"
-msgstr "lisätä"
+msgstr "lisää"
 
 msgid "DETAILS"
 msgstr "yksityiskohdat"
 
 msgid "EDIT"
-msgstr "muokata"
+msgstr "muokkaa"
 
 msgid "MODIFY"
-msgstr "muuttaa"
+msgstr "muuta"
 
 msgid "PRINT"
-msgstr "tulostaa"
+msgstr "tulosta"
 
 msgid "EDIT_ADD_ENTRY"
-msgstr "Muokata / lisätä osoite kirjaus"
+msgstr "muokkaa / lisää osoite"
 
 msgid "GUESSED_HOMEPAGE"
-msgstr "Arvata etusivu"
+msgstr "Arvattu kotisivu"
 
 msgid "PREFERENCES"
-msgstr "mieltymykset"
+msgstr "asetukset"
 
 msgid "NAME_PREFIX"
-msgstr ""
+msgstr "etuliite"
 
 msgid "FIRSTNAME"
 msgstr "etunimi"
 
 msgid "MIDDLENAME"
-msgstr ""
+msgstr "toinen nimi"
 
 msgid "LASTNAME"
 msgstr "sukunimi"
 
 msgid "NAME_SUFFIX"
-msgstr ""
+msgstr "jälkiliite"
 
 msgid "NICKNAME"
-msgstr ""
+msgstr "lempinimi"
 
 msgid "COMPANY"
 msgstr "yhtiö"
 
 msgid "DEPT"
-msgstr ""
+msgstr "osasto"
 
 msgid "OCCUPATION"
-msgstr ""
+msgstr "titteli"
 
 msgid "TITLES"
 msgstr ""
@@ -225,16 +225,16 @@ msgid "POB"
 msgstr ""
 
 msgid "APT"
-msgstr ""
+msgstr "osasto"
 
 msgid "STREET"
-msgstr ""
+msgstr "katuosoite"
 
 msgid "STATE"
 msgstr ""
 
 msgid "COUNTRY"
-msgstr ""
+msgstr "maa"
 
 msgid "TELEPHONE"
 msgstr "puhelin"
@@ -243,31 +243,31 @@ msgid "PHONE_HOME"
 msgstr "koti"
 
 msgid "HOME_SHORT"
-msgstr ""
+msgstr "K"
 
 msgid "PHONE_MOBILE"
 msgstr "mobiili"
 
 msgid "MOBILE_SHORT"
-msgstr ""
+msgstr "M"
 
 msgid "PHONE_WORK"
 msgstr "työ"
 
 msgid "WORK_SHORT"
-msgstr ""
+msgstr "T"
 
 msgid "FAX"
 msgstr "faksi"
 
 msgid "FAX_SHORT"
-msgstr ""
+msgstr "F"
 
 msgid "PHONE2_SHORT"
 msgstr ""
 
 msgid "PAGER"
-msgstr ""
+msgstr "hakulaite"
 
 msgid "EMAIL"
 msgstr "e-mail"
@@ -276,13 +276,13 @@ msgid "HOMEPAGE"
 msgstr "Kotisivu"
 
 msgid "ZIP"
-msgstr "ZIP"
+msgstr "Postinumero"
 
 msgid "CITY"
 msgstr "kaupunki"
 
 msgid "E_MAIL_HOME"
-msgstr "e-mail kotiin"
+msgstr "e-mail koti"
 
 msgid "E_MAIL_OFFICE"
 msgstr "e-mail toimisto"
@@ -294,16 +294,16 @@ msgid "2ND_PHONE"
 msgstr "toinen puhelin"
 
 msgid "NOTES"
-msgstr "toteaa"
+msgstr "merkinnät"
 
 msgid "MISC"
-msgstr ""
+msgstr "yleinen"
 
 msgid "BIRTHDAY"
 msgstr "syntymäpäivä"
 
 msgid "ANNIVERSARY"
-msgstr ""
+msgstr "vuosipäivä"
 
 msgid "CREATED"
 msgstr "luonut"
@@ -312,16 +312,16 @@ msgid "MODIFIED"
 msgstr "muutettu"
 
 msgid "UPDATE"
-msgstr "päivittää"
+msgstr "päivitä"
 
 msgid "DELETE"
-msgstr "poistaa"
+msgstr "poista"
 
 msgid "INVALID"
-msgstr "kelpaa"
+msgstr "virheellinen"
 
 msgid "ENTER"
-msgstr "Anna"
+msgstr "Tallenna"
 
 msgid "MEMBER_OF"
 msgstr "jäsen"
@@ -330,13 +330,58 @@ msgid "SECONDARY"
 msgstr "Toissijainen"
 
 msgid "CREATE_ACCOUNT"
-msgstr ""
+msgstr "Luo tili"
 
 msgid "FORGOT_PASSWORD"
+msgstr "Salasana unohtunut"
+
+msgid "UPDATED"
+msgstr "päivitetty"
+
+msgid "TRANSLATOR"
+msgstr ""
+
+msgid "TITLE"
+msgstr "nimike"
+
+msgid "MOBILE"
+msgstr "mobiili"
+
+msgid "WORK"
+msgstr "työ"
+
+msgid "FIRST_LAST"
+msgstr "nimi"
+
+msgid "NEXT"
+msgstr "seuraava"
+
+msgid "PHOTO"
+msgstr "kuva"
+
+msgid "ALL_PHONES"
+msgstr "kaikki puhnrot"
+
+msgid "ALL_EMAILS"
+msgstr "kaikki e-mailit"
+
+msgid "SIGN_IN_WITH"
+msgstr "Kirjaudu käyttäen"
+
+msgid "LAST_FIRST"
+msgstr "Nimi"
+
+msgid "GRP_NAME"
+msgstr ""
+
+msgid "ab"
 msgstr ""
 
 msgid "ar"
 msgstr "Arabia"
+
+msgid "be"
+msgstr ""
 
 msgid "bg"
 msgstr "Bulgaria"
@@ -392,6 +437,9 @@ msgstr "Korea"
 msgid "nl"
 msgstr "Hollanti"
 
+msgid "no"
+msgstr ""
+
 msgid "pl"
 msgstr "Puola"
 
@@ -403,6 +451,9 @@ msgstr "Retoromaani"
 
 msgid "ru"
 msgstr "Venäjä"
+
+msgid "sk"
+msgstr ""
 
 msgid "sl"
 msgstr "Slovenian"
@@ -419,53 +470,11 @@ msgstr "Thai"
 msgid "tr"
 msgstr "Turkki"
 
+msgid "ua"
+msgstr ""
+
 msgid "vi"
 msgstr "Vietnam"
 
 msgid "zh"
 msgstr "Kiina"
-
-msgid "DIR"
-msgstr ""
-
-msgid "UPDATED"
-msgstr ""
-
-msgid "TRANSLATOR"
-msgstr ""
-
-msgid "TITLE"
-msgstr ""
-
-msgid "MOBILE"
-msgstr ""
-
-msgid "WORK"
-msgstr ""
-
-msgid "FIRST_LAST"
-msgstr ""
-
-msgid "NEXT"
-msgstr ""
-
-msgid "PHOTO"
-msgstr ""
-
-msgid "ALL_PHONES"
-msgstr ""
-
-msgid "ALL_EMAILS"
-msgstr ""
-
-msgid "SIGN_IN_WITH"
-msgstr ""
-
-msgid "ua"
-msgstr ""
-
-msgid "LAST_FIRST"
-msgstr ""
-
-msgid "GRP_NAME"
-msgstr ""

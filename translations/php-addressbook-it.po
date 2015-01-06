@@ -8,20 +8,20 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: 2012-10-27 11:46+0000\n"
-"Last-Translator: chatelao <Unknown>\n"
+"PO-Revision-Date: 2013-07-12 10:02+0000\n"
+"Last-Translator: Roberto <eikaff@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
-"X-Generator: Launchpad (build 16232)\n"
+"X-Launchpad-Export-Date: 2015-01-04 20:36+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 
 msgid "LANGUAGE"
 msgstr "lingua"
 
 msgid "auto"
-msgstr "bowser impostazioni (automatico)"
+msgstr "browser impostazioni (automatico)"
 
 msgid "USER"
 msgstr "Utente"
@@ -81,7 +81,7 @@ msgid "SEARCH"
 msgstr "ricerca"
 
 msgid "HOME"
-msgstr "homepage"
+msgstr "HOME"
 
 msgid "NEXT_BIRTHDAYS"
 msgstr "compleanni"
@@ -105,10 +105,10 @@ msgid "IMPORT"
 msgstr "importazione"
 
 msgid "MAP"
-msgstr ""
+msgstr "Mappa"
 
 msgid "MORE"
-msgstr ""
+msgstr "Altro"
 
 msgid "GROUP"
 msgstr "gruppo"
@@ -132,10 +132,10 @@ msgid "GROUP_NAME"
 msgstr "nome del gruppo"
 
 msgid "GROUP_HEADER"
-msgstr "Intestazione gruppo (logo)"
+msgstr "Intestazione gruppo"
 
 msgid "GROUP_FOOTER"
-msgstr "Pi? di pagina gruppo (Commenti)"
+msgstr "Pi&eacute; di pagina gruppo (Commenti)"
 
 msgid "GROUP_PARENT"
 msgstr "Capogruppo"
@@ -189,52 +189,52 @@ msgid "PREFERENCES"
 msgstr "preferenze"
 
 msgid "NAME_PREFIX"
-msgstr ""
+msgstr "Prefisso Nome"
 
 msgid "FIRSTNAME"
-msgstr "nome"
+msgstr "nome / Settore"
 
 msgid "MIDDLENAME"
-msgstr ""
+msgstr "Sottosettore"
 
 msgid "LASTNAME"
-msgstr "cognome"
+msgstr "cognome / Ufficio"
 
 msgid "NAME_SUFFIX"
-msgstr ""
+msgstr "Suffisso Nome"
 
 msgid "NICKNAME"
-msgstr ""
+msgstr "Riferimento"
 
 msgid "COMPANY"
-msgstr "societ?"
+msgstr "Societ&agrave;"
 
 msgid "DEPT"
-msgstr ""
+msgstr "Dipartimento"
 
 msgid "OCCUPATION"
-msgstr ""
+msgstr "Professione"
 
 msgid "TITLES"
-msgstr ""
+msgstr "Titoli"
 
 msgid "ADDRESS"
 msgstr "indirizzo"
 
 msgid "POB"
-msgstr ""
+msgstr "Luogo di nascita"
 
 msgid "APT"
-msgstr ""
+msgstr "Appartamento"
 
 msgid "STREET"
-msgstr ""
+msgstr "Strada"
 
 msgid "STATE"
-msgstr ""
+msgstr "Stato"
 
 msgid "COUNTRY"
-msgstr ""
+msgstr "Regione"
 
 msgid "TELEPHONE"
 msgstr "telefono"
@@ -255,7 +255,7 @@ msgid "PHONE_WORK"
 msgstr "lavoro"
 
 msgid "WORK_SHORT"
-msgstr ""
+msgstr "numero breve lavoro"
 
 msgid "FAX"
 msgstr "fax"
@@ -279,7 +279,7 @@ msgid "ZIP"
 msgstr "CAP"
 
 msgid "CITY"
-msgstr "citt?"
+msgstr "citt&agrave;"
 
 msgid "E_MAIL_HOME"
 msgstr "e-mail casa"
@@ -297,13 +297,13 @@ msgid "NOTES"
 msgstr "Note"
 
 msgid "MISC"
-msgstr ""
+msgstr "Miscellanea"
 
 msgid "BIRTHDAY"
 msgstr "compleanno"
 
 msgid "ANNIVERSARY"
-msgstr ""
+msgstr "Onomastico"
 
 msgid "CREATED"
 msgstr "creato"
@@ -330,13 +330,58 @@ msgid "SECONDARY"
 msgstr "Secondaria"
 
 msgid "CREATE_ACCOUNT"
-msgstr ""
+msgstr "Crea Account"
 
 msgid "FORGOT_PASSWORD"
+msgstr "Password DImenticata"
+
+msgid "UPDATED"
+msgstr "Aggiornato"
+
+msgid "TRANSLATOR"
+msgstr "Traduttore"
+
+msgid "TITLE"
+msgstr "TITOLO"
+
+msgid "MOBILE"
+msgstr "Cellulare"
+
+msgid "WORK"
+msgstr "Lavoro"
+
+msgid "FIRST_LAST"
+msgstr "Nome Cognome / Settore Ufficio"
+
+msgid "NEXT"
+msgstr "Avanti"
+
+msgid "PHOTO"
+msgstr "Foto"
+
+msgid "ALL_PHONES"
+msgstr "Tutti i Numeri"
+
+msgid "ALL_EMAILS"
+msgstr "Tutte le e-mail"
+
+msgid "SIGN_IN_WITH"
+msgstr "Accedi Con"
+
+msgid "LAST_FIRST"
+msgstr "Cognome Nome"
+
+msgid "GRP_NAME"
+msgstr ""
+
+msgid "ab"
 msgstr ""
 
 msgid "ar"
 msgstr "Arabo"
+
+msgid "be"
+msgstr ""
 
 msgid "bg"
 msgstr "Bulgaro"
@@ -392,6 +437,9 @@ msgstr "Coreano"
 msgid "nl"
 msgstr "Olandese"
 
+msgid "no"
+msgstr "Norvegese"
+
 msgid "pl"
 msgstr "Polacco"
 
@@ -403,6 +451,9 @@ msgstr "Retoromanzo"
 
 msgid "ru"
 msgstr "Russo"
+
+msgid "sk"
+msgstr "Slovacco"
 
 msgid "sl"
 msgstr "Sloveno"
@@ -419,53 +470,11 @@ msgstr "Tailandese"
 msgid "tr"
 msgstr "Turco"
 
+msgid "ua"
+msgstr ""
+
 msgid "vi"
 msgstr "Vietnamita"
 
 msgid "zh"
 msgstr "Cinese"
-
-msgid "DIR"
-msgstr ""
-
-msgid "UPDATED"
-msgstr ""
-
-msgid "TRANSLATOR"
-msgstr ""
-
-msgid "TITLE"
-msgstr ""
-
-msgid "MOBILE"
-msgstr ""
-
-msgid "WORK"
-msgstr ""
-
-msgid "FIRST_LAST"
-msgstr ""
-
-msgid "NEXT"
-msgstr ""
-
-msgid "PHOTO"
-msgstr ""
-
-msgid "ALL_PHONES"
-msgstr ""
-
-msgid "ALL_EMAILS"
-msgstr ""
-
-msgid "SIGN_IN_WITH"
-msgstr ""
-
-msgid "ua"
-msgstr ""
-
-msgid "LAST_FIRST"
-msgstr ""
-
-msgid "GRP_NAME"
-msgstr ""

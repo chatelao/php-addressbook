@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: 2012-10-27 11:48+0000\n"
-"Last-Translator: chatelao <Unknown>\n"
+"PO-Revision-Date: 2012-11-15 12:38+0000\n"
+"Last-Translator: Vladislav Nikolaev <vladislav_vs@abv.bg>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
-"X-Generator: Launchpad (build 16232)\n"
+"X-Launchpad-Export-Date: 2015-01-04 20:36+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 
 msgid "LANGUAGE"
 msgstr "език"
@@ -99,16 +99,16 @@ msgid "EXPORT_CSV"
 msgstr "експорт в csv"
 
 msgid "EXPORT"
-msgstr "износ"
+msgstr "експорт"
 
 msgid "IMPORT"
-msgstr "внос"
+msgstr "импорт"
 
 msgid "MAP"
-msgstr ""
+msgstr "карта"
 
 msgid "MORE"
-msgstr ""
+msgstr "още"
 
 msgid "GROUP"
 msgstr "група"
@@ -138,7 +138,7 @@ msgid "GROUP_FOOTER"
 msgstr "Коментар на група"
 
 msgid "GROUP_PARENT"
-msgstr "Родителите група"
+msgstr "Предходна група"
 
 msgid "SEARCH_FOR_ANY_TEXT"
 msgstr "търси който и да е текст"
@@ -189,85 +189,85 @@ msgid "PREFERENCES"
 msgstr "настройки"
 
 msgid "NAME_PREFIX"
-msgstr ""
+msgstr "обръщение"
 
 msgid "FIRSTNAME"
 msgstr "Име"
 
 msgid "MIDDLENAME"
-msgstr ""
+msgstr "Презиме"
 
 msgid "LASTNAME"
 msgstr "Фамилия"
 
 msgid "NAME_SUFFIX"
-msgstr ""
+msgstr "суфикс име"
 
 msgid "NICKNAME"
-msgstr ""
+msgstr "прякор"
 
 msgid "COMPANY"
 msgstr "дружество"
 
 msgid "DEPT"
-msgstr ""
+msgstr "отдел"
 
 msgid "OCCUPATION"
-msgstr ""
+msgstr "длъжност"
 
 msgid "TITLES"
-msgstr ""
+msgstr "титла"
 
 msgid "ADDRESS"
 msgstr "адрес"
 
 msgid "POB"
-msgstr ""
+msgstr "пощенска кутия (Post office box)"
 
 msgid "APT"
-msgstr ""
+msgstr "апартамент (apartment)"
 
 msgid "STREET"
-msgstr ""
+msgstr "улица"
 
 msgid "STATE"
-msgstr ""
+msgstr "Щат"
 
 msgid "COUNTRY"
-msgstr ""
+msgstr "държава"
 
 msgid "TELEPHONE"
 msgstr "телефон"
 
 msgid "PHONE_HOME"
-msgstr "домашен"
+msgstr "домашен телефон"
 
 msgid "HOME_SHORT"
-msgstr ""
+msgstr "кратък домашен телефон"
 
 msgid "PHONE_MOBILE"
 msgstr "мобилен"
 
 msgid "MOBILE_SHORT"
-msgstr ""
+msgstr "кратък мобилен номер"
 
 msgid "PHONE_WORK"
-msgstr "служебен"
+msgstr "служебен телефон"
 
 msgid "WORK_SHORT"
-msgstr ""
+msgstr "кратък служебен телефон"
 
 msgid "FAX"
 msgstr "факс"
 
 msgid "FAX_SHORT"
-msgstr ""
+msgstr "кратък факс номер"
 
 msgid "PHONE2_SHORT"
-msgstr ""
+msgstr "телефон 2"
 
 msgid "PAGER"
-msgstr ""
+msgstr "пейджър"
 
 msgid "EMAIL"
 msgstr "е-поща"
@@ -297,13 +297,13 @@ msgid "NOTES"
 msgstr "бележки"
 
 msgid "MISC"
-msgstr ""
+msgstr "други"
 
 msgid "BIRTHDAY"
 msgstr "рожден ден"
 
 msgid "ANNIVERSARY"
-msgstr ""
+msgstr "Годишнина"
 
 msgid "CREATED"
 msgstr "е създаден"
@@ -315,7 +315,7 @@ msgid "UPDATE"
 msgstr "промени"
 
 msgid "DELETE"
-msgstr "изтрии"
+msgstr "изтрий"
 
 msgid "INVALID"
 msgstr "невалиден"
@@ -330,13 +330,58 @@ msgid "SECONDARY"
 msgstr "Втори адрес"
 
 msgid "CREATE_ACCOUNT"
-msgstr ""
+msgstr "създай регистрация"
 
 msgid "FORGOT_PASSWORD"
-msgstr ""
+msgstr "забравена парола"
+
+msgid "UPDATED"
+msgstr "обновен"
+
+msgid "TRANSLATOR"
+msgstr "преводач"
+
+msgid "TITLE"
+msgstr "ЗАГЛАВИЕ"
+
+msgid "MOBILE"
+msgstr "мобилен"
+
+msgid "WORK"
+msgstr "служебен"
+
+msgid "FIRST_LAST"
+msgstr "име, фамилия"
+
+msgid "NEXT"
+msgstr "следващ"
+
+msgid "PHOTO"
+msgstr "снимка"
+
+msgid "ALL_PHONES"
+msgstr "всички телефони"
+
+msgid "ALL_EMAILS"
+msgstr "всички е-майли"
+
+msgid "SIGN_IN_WITH"
+msgstr "влезте с"
+
+msgid "LAST_FIRST"
+msgstr "фамилия, име"
+
+msgid "GRP_NAME"
+msgstr "група"
+
+msgid "ab"
+msgstr "Абкхазки"
 
 msgid "ar"
 msgstr "Арабски"
+
+msgid "be"
+msgstr "Белгийски"
 
 msgid "bg"
 msgstr "Български"
@@ -366,16 +411,16 @@ msgid "fa"
 msgstr "Персийски"
 
 msgid "fi"
-msgstr "Фински"
+msgstr "Финландски"
 
 msgid "fr"
 msgstr "Френски"
 
 msgid "he"
-msgstr "Hebrew"
+msgstr "Еврейски"
 
 msgid "hi"
-msgstr "Индиски"
+msgstr "Хинди"
 
 msgid "hu"
 msgstr "Унгарски"
@@ -392,6 +437,9 @@ msgstr "Корейски"
 msgid "nl"
 msgstr "Холандски"
 
+msgid "no"
+msgstr "Норвежки"
+
 msgid "pl"
 msgstr "Полски"
 
@@ -404,6 +452,9 @@ msgstr "Реторомански"
 msgid "ru"
 msgstr "Руски"
 
+msgid "sk"
+msgstr "Словашки"
+
 msgid "sl"
 msgstr "Словенски"
 
@@ -414,58 +465,16 @@ msgid "sv"
 msgstr "Шведски"
 
 msgid "th"
-msgstr "Thai"
+msgstr "Тайлански"
 
 msgid "tr"
 msgstr "Турски"
+
+msgid "ua"
+msgstr "Украйнски"
 
 msgid "vi"
 msgstr "Виетнамски"
 
 msgid "zh"
 msgstr "Китайски"
-
-msgid "DIR"
-msgstr ""
-
-msgid "UPDATED"
-msgstr ""
-
-msgid "TRANSLATOR"
-msgstr ""
-
-msgid "TITLE"
-msgstr ""
-
-msgid "MOBILE"
-msgstr ""
-
-msgid "WORK"
-msgstr ""
-
-msgid "FIRST_LAST"
-msgstr ""
-
-msgid "NEXT"
-msgstr ""
-
-msgid "PHOTO"
-msgstr ""
-
-msgid "ALL_PHONES"
-msgstr ""
-
-msgid "ALL_EMAILS"
-msgstr ""
-
-msgid "SIGN_IN_WITH"
-msgstr ""
-
-msgid "ua"
-msgstr ""
-
-msgid "LAST_FIRST"
-msgstr ""
-
-msgid "GRP_NAME"
-msgstr ""

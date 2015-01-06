@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: 2012-11-08 20:01+0000\n"
+"PO-Revision-Date: 2012-11-08 17:46+0000\n"
 "Last-Translator: chatelao <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-08 09:00+0000\n"
-"X-Generator: Launchpad (build 16232)\n"
+"X-Launchpad-Export-Date: 2015-01-04 20:36+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 
 msgid "LANGUAGE"
 msgstr "język"
@@ -105,10 +105,10 @@ msgid "IMPORT"
 msgstr "import"
 
 msgid "MAP"
-msgstr ""
+msgstr "carte"
 
 msgid "MORE"
-msgstr ""
+msgstr "plus"
 
 msgid "GROUP"
 msgstr "grupa"
@@ -189,52 +189,52 @@ msgid "PREFERENCES"
 msgstr "właściwości"
 
 msgid "NAME_PREFIX"
-msgstr ""
+msgstr "préfixe"
 
 msgid "FIRSTNAME"
 msgstr "imię"
 
 msgid "MIDDLENAME"
-msgstr ""
+msgstr "prénom / inital (s)"
 
 msgid "LASTNAME"
 msgstr "nazwisko"
 
 msgid "NAME_SUFFIX"
-msgstr ""
+msgstr "suffixe"
 
 msgid "NICKNAME"
-msgstr ""
+msgstr "surnom"
 
 msgid "COMPANY"
 msgstr "Firma"
 
 msgid "DEPT"
-msgstr ""
+msgstr "Département"
 
 msgid "OCCUPATION"
-msgstr ""
+msgstr "titre d'emploi"
 
 msgid "TITLES"
-msgstr ""
+msgstr "titres"
 
 msgid "ADDRESS"
 msgstr "adres"
 
 msgid "POB"
-msgstr ""
+msgstr "boîte ou plusieurs"
 
 msgid "APT"
-msgstr ""
+msgstr "appartement ou d'arrêt"
 
 msgid "STREET"
-msgstr ""
+msgstr "Adresse rue"
 
 msgid "STATE"
-msgstr ""
+msgstr "état"
 
 msgid "COUNTRY"
-msgstr ""
+msgstr "pays"
 
 msgid "TELEPHONE"
 msgstr "telefon"
@@ -267,7 +267,7 @@ msgid "PHONE2_SHORT"
 msgstr ""
 
 msgid "PAGER"
-msgstr ""
+msgstr "pager"
 
 msgid "EMAIL"
 msgstr "e-Mail"
@@ -297,13 +297,13 @@ msgid "NOTES"
 msgstr "uwagi"
 
 msgid "MISC"
-msgstr ""
+msgstr "Divers"
 
 msgid "BIRTHDAY"
 msgstr "urodziny"
 
 msgid "ANNIVERSARY"
-msgstr ""
+msgstr "anniversaire"
 
 msgid "CREATED"
 msgstr "stworzony"
@@ -330,13 +330,58 @@ msgid "SECONDARY"
 msgstr "drugi adres"
 
 msgid "CREATE_ACCOUNT"
-msgstr ""
+msgstr "Créer un compte"
 
 msgid "FORGOT_PASSWORD"
+msgstr "Mot de passe oublié"
+
+msgid "UPDATED"
+msgstr "mis à jour"
+
+msgid "TRANSLATOR"
+msgstr ""
+
+msgid "TITLE"
+msgstr "titre"
+
+msgid "MOBILE"
+msgstr "komórkowy"
+
+msgid "WORK"
+msgstr "praca"
+
+msgid "FIRST_LAST"
+msgstr "Imię, Nazwisko"
+
+msgid "NEXT"
+msgstr ""
+
+msgid "PHOTO"
+msgstr ""
+
+msgid "ALL_PHONES"
+msgstr ""
+
+msgid "ALL_EMAILS"
+msgstr ""
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
+msgid "LAST_FIRST"
+msgstr ""
+
+msgid "GRP_NAME"
+msgstr ""
+
+msgid "ab"
 msgstr ""
 
 msgid "ar"
 msgstr "Arabski"
+
+msgid "be"
+msgstr ""
 
 msgid "bg"
 msgstr "Bułgarski"
@@ -378,7 +423,7 @@ msgid "hi"
 msgstr "Hindi"
 
 msgid "hu"
-msgstr ""
+msgstr "Hongroise"
 
 msgid "it"
 msgstr "Włoski"
@@ -392,6 +437,9 @@ msgstr "Koreańczyk"
 msgid "nl"
 msgstr "Holenderski"
 
+msgid "no"
+msgstr ""
+
 msgid "pl"
 msgstr "polski"
 
@@ -403,6 +451,9 @@ msgstr "Retoromański"
 
 msgid "ru"
 msgstr "Rosyjski"
+
+msgid "sk"
+msgstr ""
 
 msgid "sl"
 msgstr "Słoweński"
@@ -419,53 +470,11 @@ msgstr "Tajski"
 msgid "tr"
 msgstr "Turecki"
 
+msgid "ua"
+msgstr ""
+
 msgid "vi"
 msgstr "Wietnamski"
 
 msgid "zh"
 msgstr "Chiński"
-
-msgid "DIR"
-msgstr ""
-
-msgid "UPDATED"
-msgstr ""
-
-msgid "TRANSLATOR"
-msgstr ""
-
-msgid "TITLE"
-msgstr ""
-
-msgid "MOBILE"
-msgstr "komórkowy"
-
-msgid "WORK"
-msgstr "praca"
-
-msgid "FIRST_LAST"
-msgstr "Imię, Nazwisko"
-
-msgid "NEXT"
-msgstr ""
-
-msgid "PHOTO"
-msgstr ""
-
-msgid "ALL_PHONES"
-msgstr ""
-
-msgid "ALL_EMAILS"
-msgstr ""
-
-msgid "SIGN_IN_WITH"
-msgstr ""
-
-msgid "ua"
-msgstr ""
-
-msgid "LAST_FIRST"
-msgstr ""
-
-msgid "GRP_NAME"
-msgstr ""

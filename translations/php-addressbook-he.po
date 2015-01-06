@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: 2012-10-27 11:46+0000\n"
+"PO-Revision-Date: 2012-11-09 01:32+0000\n"
 "Last-Translator: chatelao <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
-"X-Generator: Launchpad (build 16232)\n"
+"X-Launchpad-Export-Date: 2015-01-04 20:36+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 
 msgid "LANGUAGE"
 msgstr "שפה"
@@ -335,8 +335,53 @@ msgstr ""
 msgid "FORGOT_PASSWORD"
 msgstr ""
 
+msgid "UPDATED"
+msgstr ""
+
+msgid "TRANSLATOR"
+msgstr ""
+
+msgid "TITLE"
+msgstr ""
+
+msgid "MOBILE"
+msgstr ""
+
+msgid "WORK"
+msgstr ""
+
+msgid "FIRST_LAST"
+msgstr ""
+
+msgid "NEXT"
+msgstr ""
+
+msgid "PHOTO"
+msgstr ""
+
+msgid "ALL_PHONES"
+msgstr ""
+
+msgid "ALL_EMAILS"
+msgstr ""
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
+msgid "LAST_FIRST"
+msgstr ""
+
+msgid "GRP_NAME"
+msgstr ""
+
+msgid "ab"
+msgstr ""
+
 msgid "ar"
 msgstr "ערבית"
+
+msgid "be"
+msgstr ""
 
 msgid "bg"
 msgstr "בולגרית"
@@ -392,6 +437,9 @@ msgstr "קוריאנית"
 msgid "nl"
 msgstr "הולנדית"
 
+msgid "no"
+msgstr ""
+
 msgid "pl"
 msgstr "niemiecki"
 
@@ -403,6 +451,9 @@ msgstr ""
 
 msgid "ru"
 msgstr "רוסית"
+
+msgid "sk"
+msgstr ""
 
 msgid "sl"
 msgstr "סלובנית"
@@ -419,53 +470,11 @@ msgstr "תאילנדית"
 msgid "tr"
 msgstr "טורקית"
 
+msgid "ua"
+msgstr ""
+
 msgid "vi"
 msgstr "ויאטנמית"
 
 msgid "zh"
 msgstr "סינית"
-
-msgid "DIR"
-msgstr "rl"
-
-msgid "UPDATED"
-msgstr ""
-
-msgid "TRANSLATOR"
-msgstr ""
-
-msgid "TITLE"
-msgstr ""
-
-msgid "MOBILE"
-msgstr ""
-
-msgid "WORK"
-msgstr ""
-
-msgid "FIRST_LAST"
-msgstr ""
-
-msgid "NEXT"
-msgstr ""
-
-msgid "PHOTO"
-msgstr ""
-
-msgid "ALL_PHONES"
-msgstr ""
-
-msgid "ALL_EMAILS"
-msgstr ""
-
-msgid "SIGN_IN_WITH"
-msgstr ""
-
-msgid "ua"
-msgstr ""
-
-msgid "LAST_FIRST"
-msgstr ""
-
-msgid "GRP_NAME"
-msgstr ""

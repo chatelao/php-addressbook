@@ -6,257 +6,257 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: 2012-11-04 20:36+0000\n"
-"Last-Translator: chatelao <Unknown>\n"
+"PO-Revision-Date: 2013-11-20 09:20+0000\n"
+"Last-Translator: Vu Huy Phuong <phuongcuba@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
-"X-Generator: Launchpad (build 16232)\n"
+"X-Launchpad-Export-Date: 2015-01-04 20:36+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 
 msgid "LANGUAGE"
-msgstr ""
+msgstr "NGÔN NGỮ"
 
 msgid "auto"
-msgstr "ngôn ngữ"
+msgstr "tự động"
 
 msgid "USER"
-msgstr "Người sử dụng"
+msgstr "NGƯỜI DÙNG"
 
 msgid "PASSWORD"
-msgstr "Mật khẩu"
+msgstr "MẬT KHẨU"
 
 msgid "LOGIN"
-msgstr "Đăng nhập"
+msgstr "ĐĂNG NHẬP"
 
 msgid "LOGOUT"
-msgstr "Thoát"
+msgstr "ĐĂNG XUẤT"
 
 msgid "JANUARY"
-msgstr "Ba Lan"
+msgstr "THÁNG MỘT"
 
 msgid "FEBRUARY"
-msgstr "Tháng một"
+msgstr "THÁNG HAI"
 
 msgid "MARCH"
-msgstr "Tháng hai"
+msgstr "THÁNG BA"
 
 msgid "APRIL"
-msgstr "Tháng ba"
+msgstr "THÁNG TƯ"
 
 msgid "MAY"
-msgstr "Tháng tư"
+msgstr "THÁNG NĂM"
 
 msgid "JUNE"
-msgstr "Tháng năm"
+msgstr "THÁNG SÁU"
 
 msgid "JULY"
-msgstr "Tháng sáu"
+msgstr "THÁNG BẢY"
 
 msgid "AUGUST"
-msgstr "Tháng bảy"
+msgstr "THÁNG TÁM"
 
 msgid "SEPTEMBER"
-msgstr "Tháng tám"
+msgstr "THÁNG CHÍN"
 
 msgid "OCTOBER"
-msgstr "Tháng chín"
+msgstr "THÁNG MƯỜI"
 
 msgid "NOVEMBER"
-msgstr "Tháng mười"
+msgstr "THÁNG MƯỜI MỘT"
 
 msgid "DECEMBER"
-msgstr "Tháng mười một"
+msgstr "THÁNG MƯỜI HAI"
 
 msgid "ADDRESS_BOOK"
-msgstr "Tháng mười hai"
+msgstr "SỔ ĐỊA CHỈ"
 
 msgid "FOR"
-msgstr "sổ địa chỉ"
+msgstr "ĐỂ"
 
 msgid "SEARCH"
-msgstr "vì"
+msgstr "TÌM KIẾM"
 
 msgid "HOME"
-msgstr "tìm kiếm"
+msgstr "TRANG CHỦ"
 
 msgid "NEXT_BIRTHDAYS"
-msgstr "gia đình"
+msgstr "NGÀY SINH NHẬT KẾ TIẾP"
 
 msgid "ADD_NEW"
-msgstr "sau ngày sinh nhật"
+msgstr "THÊM MỚI"
 
 msgid "PRINT_ALL"
-msgstr "thêm mới"
+msgstr "IN TẤT CẢ"
 
 msgid "PRINT_PHONES"
-msgstr "in tất cả các"
+msgstr "IN SỐ ĐIỆN THOẠI"
 
 msgid "EXPORT_CSV"
-msgstr "in điện thoại"
+msgstr "XUẤT CSV"
 
 msgid "EXPORT"
-msgstr "xuất khẩu"
+msgstr "XUẤT"
 
 msgid "IMPORT"
-msgstr "nhập khẩu"
+msgstr "NHẬP"
 
 msgid "MAP"
-msgstr ""
+msgstr "BẢN ĐỒ"
 
 msgid "MORE"
-msgstr ""
+msgstr "THÊM"
 
 msgid "GROUP"
-msgstr "nhóm"
+msgstr "NHÓM"
 
 msgid "GROUPS"
-msgstr "csv xuất khẩu"
+msgstr "NHÓM"
 
 msgid "MANAGE_GROUPS"
-msgstr "nhóm"
+msgstr "QUẢN LÝ NHÓM"
 
 msgid "NEW_GROUP"
-msgstr "quản lý nhóm"
+msgstr "TẠO NHÓM MỚI"
 
 msgid "DELETE_GROUPS"
-msgstr "nhóm mới"
+msgstr "XÓA NHÓM"
 
 msgid "EDIT_GROUP"
-msgstr "xoá (các) nhóm"
+msgstr "SỬA NHÓM"
 
 msgid "GROUP_NAME"
-msgstr "chỉnh sửa nhóm"
+msgstr "TÊN NHÓM"
 
 msgid "GROUP_HEADER"
-msgstr "Tên nhóm"
+msgstr "HEADER NHÓM"
 
 msgid "GROUP_FOOTER"
-msgstr "Nhóm đầu (Logo)"
+msgstr "FOOTER NHÓM"
 
 msgid "GROUP_PARENT"
-msgstr "Nhóm phụ huynh"
+msgstr "NHÓM CHA"
 
 msgid "SEARCH_FOR_ANY_TEXT"
-msgstr "Nhóm chân (Thảo luận)"
+msgstr "TÌM BẤT KỲ"
 
 msgid "NUMBER_OF_RESULTS"
-msgstr "tìm kiếm cho bất kỳ văn bản"
+msgstr "SỐ KẾT QUẢ"
 
 msgid "ALL"
-msgstr "Số kết quả"
+msgstr "TẤT CẢ"
 
 msgid "NONE"
-msgstr "tất cả"
+msgstr "KHÔNG"
 
 msgid "SELECT_ALL"
-msgstr "không cái nào"
+msgstr "CHỌN TẤT CẢ"
 
 msgid "REMOVE_FROM"
-msgstr "chọn tất cả các"
+msgstr "XÓA KHỎI"
 
 msgid "MAIL_CLIENT"
-msgstr "từ bỏ"
+msgstr "TRÌNH EMAIL"
 
 msgid "SEND_EMAIL"
-msgstr "mail khách hàng"
+msgstr "GỬI EMAIL"
 
 msgid "ADD_TO"
-msgstr "Gửi e-Mail"
+msgstr "THÊM VÀO"
 
 msgid "DETAILS"
-msgstr "thêm vào"
+msgstr "CHI TIẾT"
 
 msgid "EDIT"
-msgstr "Chi tiết"
+msgstr "SỬA"
 
 msgid "MODIFY"
-msgstr "chỉnh sửa"
+msgstr "SỬA"
 
 msgid "PRINT"
-msgstr "sửa đổi"
+msgstr "IN"
 
 msgid "EDIT_ADD_ENTRY"
-msgstr "in"
+msgstr "SỬA MỤC THÊM"
 
 msgid "GUESSED_HOMEPAGE"
-msgstr "Chỉnh sửa / thêm địa chỉ đặt mục nhập"
+msgstr "WEBSITE"
 
 msgid "PREFERENCES"
-msgstr "Đoán trang chủ"
+msgstr "THIẾT LẬP"
 
 msgid "NAME_PREFIX"
-msgstr ""
+msgstr "DANH XƯNG"
 
 msgid "FIRSTNAME"
-msgstr "sở thích"
+msgstr "TÊN"
 
 msgid "MIDDLENAME"
-msgstr ""
+msgstr "ĐỆM"
 
 msgid "LASTNAME"
-msgstr "tên"
+msgstr "HỌ"
 
 msgid "NAME_SUFFIX"
-msgstr ""
+msgstr "TÊN HẬU"
 
 msgid "NICKNAME"
-msgstr ""
+msgstr "TÊN THƯỜNG GỌI"
 
 msgid "COMPANY"
-msgstr "công ty"
+msgstr "ĐƠN VỊ"
 
 msgid "DEPT"
-msgstr ""
+msgstr "PHÒNG BAN"
 
 msgid "OCCUPATION"
-msgstr ""
+msgstr "NGHỀ NGHIỆP"
 
 msgid "TITLES"
-msgstr ""
+msgstr "CHỨC DANH"
 
 msgid "ADDRESS"
-msgstr "họ"
+msgstr "ĐỊA CHỈ"
 
 msgid "POB"
-msgstr ""
+msgstr "ĐỊA CHỈ HỘP THƯ"
 
 msgid "APT"
-msgstr ""
+msgstr "APT"
 
 msgid "STREET"
-msgstr ""
+msgstr "ĐƯỜNG"
 
 msgid "STATE"
-msgstr ""
+msgstr "TỈNH"
 
 msgid "COUNTRY"
-msgstr ""
+msgstr "QUỐC GIA"
 
 msgid "TELEPHONE"
-msgstr "địa chỉ"
+msgstr "ĐIỆN THOẠI"
 
 msgid "PHONE_HOME"
-msgstr "Điện thoại"
+msgstr "SỐ NHÀ"
 
 msgid "HOME_SHORT"
 msgstr ""
 
 msgid "PHONE_MOBILE"
-msgstr "gia đình"
+msgstr "SỐ DI ĐỘNG"
 
 msgid "MOBILE_SHORT"
 msgstr ""
 
 msgid "PHONE_WORK"
-msgstr "điện thoại di động"
+msgstr "SỐ CƠ QUAN"
 
 msgid "WORK_SHORT"
 msgstr ""
 
 msgid "FAX"
-msgstr "fax"
+msgstr "FAX"
 
 msgid "FAX_SHORT"
 msgstr ""
@@ -268,22 +268,22 @@ msgid "PAGER"
 msgstr ""
 
 msgid "EMAIL"
-msgstr "công việc"
+msgstr "EMAIL"
 
 msgid "HOMEPAGE"
-msgstr "Trang chủ"
+msgstr "TRANG CHỦ"
 
 msgid "ZIP"
-msgstr "e-mail"
+msgstr "MÃ VÙNG"
 
 msgid "CITY"
-msgstr "Bưu điện"
+msgstr "THÀNH PHỐ"
 
 msgid "E_MAIL_HOME"
-msgstr "thành phố"
+msgstr "EMAIL CÁ NHÂN"
 
 msgid "E_MAIL_OFFICE"
-msgstr "e-mail nhà"
+msgstr "EMAIL CƠ QUAN"
 
 msgid "2ND_ADDRESS"
 msgstr "e-mail văn phòng"
@@ -292,55 +292,100 @@ msgid "2ND_PHONE"
 msgstr "Địa chỉ thứ hai"
 
 msgid "NOTES"
-msgstr "ghi chú"
+msgstr "GHI CHÚ"
 
 msgid "MISC"
-msgstr ""
+msgstr "KHÁC"
 
 msgid "BIRTHDAY"
-msgstr "thứ hai điện thoại"
+msgstr "SINH NHẬT"
 
 msgid "ANNIVERSARY"
 msgstr ""
 
 msgid "CREATED"
-msgstr "tạo ra"
+msgstr "ĐƯỢC TẠO"
 
 msgid "MODIFIED"
-msgstr "đổi lần"
+msgstr "ĐÃ SỬA"
 
 msgid "UPDATE"
-msgstr "sinh nhật"
+msgstr "CẬP NHẬT"
 
 msgid "DELETE"
-msgstr "cập nhật"
+msgstr "XÓA"
 
 msgid "INVALID"
-msgstr "xoá"
+msgstr "KHÔNG HỢP LỆ"
 
 msgid "ENTER"
-msgstr "không hợp lệ"
+msgstr "NHẬP"
 
 msgid "MEMBER_OF"
-msgstr "nhập"
+msgstr "THÀNH VIÊN CỦA"
 
 msgid "SECONDARY"
-msgstr "thành viên của"
+msgstr "THÔNG TIN PHỤ"
 
 msgid "CREATE_ACCOUNT"
-msgstr ""
+msgstr "TẠO TÀI KHOẢN"
 
 msgid "FORGOT_PASSWORD"
+msgstr "QUÊN MẬT KHẨU"
+
+msgid "UPDATED"
+msgstr "ĐÃ CẬP NHẬT"
+
+msgid "TRANSLATOR"
+msgstr "NGƯỜI DỊCH"
+
+msgid "TITLE"
+msgstr "CHỨC DANH"
+
+msgid "MOBILE"
+msgstr "DI DỘNG"
+
+msgid "WORK"
+msgstr "Số cơ quan"
+
+msgid "FIRST_LAST"
+msgstr "Tên họ"
+
+msgid "NEXT"
+msgstr "Kê tiếp"
+
+msgid "PHOTO"
+msgstr "Ảnh"
+
+msgid "ALL_PHONES"
+msgstr "Điện thoại"
+
+msgid "ALL_EMAILS"
+msgstr "Email"
+
+msgid "SIGN_IN_WITH"
+msgstr "Đăng nhập với"
+
+msgid "LAST_FIRST"
+msgstr "Họ tên"
+
+msgid "GRP_NAME"
+msgstr "Tên nhóm"
+
+msgid "ab"
 msgstr ""
 
 msgid "ar"
-msgstr "W:"
+msgstr "Argentina"
+
+msgid "be"
+msgstr "Bỉ"
 
 msgid "bg"
 msgstr "Bungari"
 
 msgid "ca"
-msgstr "Catalonian"
+msgstr "Canada"
 
 msgid "cs"
 msgstr "Tiếng Anh"
@@ -349,16 +394,16 @@ msgid "da"
 msgstr "Đan Mạch"
 
 msgid "de"
-msgstr "Czech"
+msgstr "Đức"
 
 msgid "el"
 msgstr "Tiếng Bồ Đào Nha"
 
 msgid "en"
-msgstr "bowser cài đặt (tự động)"
+msgstr "tiếng Anh"
 
 msgid "es"
-msgstr "Tiếng Hin-ddi"
+msgstr "Tây Ban Nha"
 
 msgid "fa"
 msgstr "Tiếng Farsi"
@@ -367,13 +412,13 @@ msgid "fi"
 msgstr "Phần Lan"
 
 msgid "fr"
-msgstr "Tiếng Tây Ban Nha"
+msgstr "Pháp"
 
 msgid "he"
-msgstr "Ả-rập"
+msgstr "Do Thái"
 
 msgid "hi"
-msgstr "Vietnamese"
+msgstr "Hindi"
 
 msgid "hu"
 msgstr "Hungary"
@@ -385,25 +430,31 @@ msgid "ja"
 msgstr "Nhật Bản"
 
 msgid "ko"
-msgstr "Nga"
+msgstr "Hàn Quốc"
 
 msgid "nl"
 msgstr "Hà Lan"
 
+msgid "no"
+msgstr "không"
+
 msgid "pl"
-msgstr "Tiếng Đức"
+msgstr "Ba Lan"
 
 msgid "pt"
-msgstr "Hàn Quốc"
+msgstr "Bồ Đào Nha"
 
 msgid "rm"
 msgstr "Rhaeto-Romance"
 
 msgid "ru"
-msgstr "Trung Quốc"
+msgstr "Nga"
+
+msgid "sk"
+msgstr "Slovakia"
 
 msgid "sl"
-msgstr "Tiếng Slovenia"
+msgstr "Slovenia"
 
 msgid "sr"
 msgstr "Serbia"
@@ -417,53 +468,11 @@ msgstr "Thái"
 msgid "tr"
 msgstr "Thổ Nhĩ Kỳ"
 
+msgid "ua"
+msgstr ""
+
 msgid "vi"
 msgstr "Việt"
 
 msgid "zh"
 msgstr "Tiếng Pháp"
-
-msgid "DIR"
-msgstr ""
-
-msgid "UPDATED"
-msgstr ""
-
-msgid "TRANSLATOR"
-msgstr ""
-
-msgid "TITLE"
-msgstr ""
-
-msgid "MOBILE"
-msgstr ""
-
-msgid "WORK"
-msgstr ""
-
-msgid "FIRST_LAST"
-msgstr ""
-
-msgid "NEXT"
-msgstr ""
-
-msgid "PHOTO"
-msgstr ""
-
-msgid "ALL_PHONES"
-msgstr ""
-
-msgid "ALL_EMAILS"
-msgstr ""
-
-msgid "SIGN_IN_WITH"
-msgstr ""
-
-msgid "ua"
-msgstr ""
-
-msgid "LAST_FIRST"
-msgstr ""
-
-msgid "GRP_NAME"
-msgstr ""

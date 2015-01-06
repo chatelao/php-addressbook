@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: 2012-10-27 11:46+0000\n"
+"PO-Revision-Date: 2012-11-07 17:04+0000\n"
 "Last-Translator: chatelao <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
-"X-Generator: Launchpad (build 16232)\n"
+"X-Launchpad-Export-Date: 2015-01-04 20:36+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 
 msgid "LANGUAGE"
 msgstr "भाषा"
@@ -222,7 +222,7 @@ msgid "ADDRESS"
 msgstr "पता"
 
 msgid "POB"
-msgstr "बॉक्स या संख्या" 
+msgstr "बॉक्स या संख्या"
 
 msgid "APT"
 msgstr "अपार्टमेंट या बंद"
@@ -303,7 +303,7 @@ msgid "BIRTHDAY"
 msgstr "जन्मदिन"
 
 msgid "ANNIVERSARY"
-msgstr ""
+msgstr "वर्षगांठ"
 
 msgid "CREATED"
 msgstr "निर्मित"
@@ -335,8 +335,53 @@ msgstr "खाता बनाएँ"
 msgid "FORGOT_PASSWORD"
 msgstr "पासवर्ड भूल"
 
+msgid "UPDATED"
+msgstr "अद्यतन"
+
+msgid "TRANSLATOR"
+msgstr ""
+
+msgid "TITLE"
+msgstr "शीर्षक"
+
+msgid "MOBILE"
+msgstr "मोबाइल"
+
+msgid "WORK"
+msgstr "काम"
+
+msgid "FIRST_LAST"
+msgstr ""
+
+msgid "NEXT"
+msgstr "अगले"
+
+msgid "PHOTO"
+msgstr "तस्वीर"
+
+msgid "ALL_PHONES"
+msgstr "सभी फोन"
+
+msgid "ALL_EMAILS"
+msgstr "सभी ई - मेल"
+
+msgid "SIGN_IN_WITH"
+msgstr "साथ में साइन इन"
+
+msgid "LAST_FIRST"
+msgstr "नाम"
+
+msgid "GRP_NAME"
+msgstr ""
+
+msgid "ab"
+msgstr "अबखाजियन"
+
 msgid "ar"
 msgstr "अरबी"
+
+msgid "be"
+msgstr "बेलारूस"
 
 msgid "bg"
 msgstr "बल्गेरियन्"
@@ -392,6 +437,9 @@ msgstr "कोरियाई"
 msgid "nl"
 msgstr "डच्"
 
+msgid "no"
+msgstr "नार्वेजियाई"
+
 msgid "pl"
 msgstr "पोलिश"
 
@@ -403,6 +451,9 @@ msgstr "Rhaeto-रोमांस"
 
 msgid "ru"
 msgstr "रूसी"
+
+msgid "sk"
+msgstr "स्लोवेकिया"
 
 msgid "sl"
 msgstr "स्लोवेनियाई"
@@ -419,53 +470,11 @@ msgstr "थाई"
 msgid "tr"
 msgstr "तुर्की"
 
+msgid "ua"
+msgstr "यूक्रेनी"
+
 msgid "vi"
 msgstr "वियेतनामी"
 
 msgid "zh"
 msgstr "चीनी"
-
-msgid "DIR"
-msgstr ""
-
-msgid "UPDATED"
-msgstr "अद्यतन"
-
-msgid "TRANSLATOR"
-msgstr ""
-
-msgid "TITLE"
-msgstr "शीर्षक"
-
-msgid "MOBILE"
-msgstr "मोबाइल"
-
-msgid "WORK"
-msgstr "काम"
-
-msgid "FIRST_LAST"
-msgstr ""
-
-msgid "NEXT"
-msgstr "अगले"
-
-msgid "PHOTO"
-msgstr "तस्वीर"
-
-msgid "ALL_PHONES"
-msgstr "सभी फोन"
-
-msgid "ALL_EMAILS"
-msgstr "सभी ई - मेल"
-
-msgid "SIGN_IN_WITH"
-msgstr "साथ में साइन इन"
-
-msgid "ua"
-msgstr "यूक्रेनी"
-
-msgid "LAST_FIRST"
-msgstr "नाम"
-
-msgid "GRP_NAME"
-msgstr ""
