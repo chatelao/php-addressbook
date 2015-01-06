@@ -1,6 +1,6 @@
 
 set php=C:\xampp\php\php.exe 
-set abs_zips=C:\Users\BLACKY\Desktop\all-in-one\addressbook
+set abs_zips=C:\Users\Olivier\Desktop\padr_build\php-addressbook
 
 set /P version="Enter the version: "
 echo %version%
@@ -9,8 +9,10 @@ rmdir %abs_zips% /s /q
 
 REM
 REM Get the newest sources from subversion
+REM - See: http://stackoverflow.com/questions/1625406/using-tortoisesvn-via-the-command-line
+REM - See: https://github.com/blog/966-improved-subversion-client-support
 REM 
-svn export http://svn.github.com/chatelao/php-addressbook.git %abs_zips%
+svn export https://github.com/chatelao/php-addressbook/trunk %abs_zips%
 
 REM
 REM Add the newest mobile configuration sample
@@ -38,7 +40,7 @@ del %abs_zips%\preferencs.php
 del %abs_zips%\translate.php
 del %abs_zips%\translate_inc_to_po.php
 
-echo ^<?php $version = '%version%'; ?^> >> %abs_zips%\include\version.inc.php
+echo ^<?php $version = '%version%'; ?^>>> %abs_zips%\include\version.inc.php
 
 REM
 REM Zip all files
