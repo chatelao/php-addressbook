@@ -38,7 +38,7 @@ if($use_ics) {
 
   function Birthday2vCal($date, $age) {
 
-  	global $id, $firstname, $middlename, $lastname, $email, $email2, $home, $mobile, $work, $byear;
+  	global $id, $firstname, $middlename, $lastname, $email, $email2, $email3, $home, $mobile, $work, $byear;
 
     echo "BEGIN:VEVENT\r\n";
     echo "UID:".date('Y', $date).$id."@php-addressbook.sourceforge.net\r\n";
@@ -46,10 +46,15 @@ if($use_ics) {
     echo "DTEND;VALUE=DATE:".date("Ymd", $date+(24*3600))."\r\n";
     echo "DTSTAMP:".date("Ymd\THi00\Z")."\r\n";
     echo "CREATED:".date("Ymd\THi00\Z")."\r\n";
-    echo "DESCRIPTION:\r\n";
     echo "LAST-MODIFIED:".date("Ymd\THi00\Z")."\r\n";
     echo "LOCATION:\r\n";
     echo "STATUS:CONFIRMED\r\n";
+
+    if($age == -1) {
+    	$age = "";
+    } else {
+      $age = "(".$age.")";
+    }    
     echo "SUMMARY:".ucfmsg("BIRTHDAY")." ".trim($firstname.(isset($middlename) ? " ".$middlename:"")." ".$lastname)
                     ." ".$age."\r\n";
     echo "DESCRIPTION:Mail:\\n- ".$email
@@ -60,6 +65,7 @@ if($use_ics) {
                          .($mobile != "" ? "\\n- ".$mobile : "")
                          .($work   != "" ? "\\n- ".$work   : "")
                          ."\r\n";
+    echo "CLASS:PRIVATE\r\n";
     echo "END:VEVENT\r\n";
   }
 
@@ -117,27 +123,21 @@ ORDER BY prio ASC;";
 	  // Current year
 
     $addr = new Address($myrow);
-    if($addr->getBirthday()->getAge() != -1) {
-      $age = "(".$addr->getBirthday()->getAge().")";
-    } else {
-    	$age = "";
-    }    
     
   	if($use_ics) {
 
       // Last year
-      /* -- commented to reduce traffic
+      //* -- commented to reduce traffic
       $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y')-1,0);
-      Birthday2vCal($date);
-      */
+      Birthday2vCal($date, $addr->getBirthday()->getAge());
+      //*/
 
       $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y'),0);
-      Birthday2vCal($date, $age);
+      Birthday2vCal($date, $addr->getBirthday()->getAge(1));
 
       // Next year
       $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y')+1);
-      $age = ($byear != "" ? " (".(date('Y', $date)-$byear).")" : "");
-      Birthday2vCal($date, $age);
+      Birthday2vCal($date, $addr->getBirthday()->getAge(2));
 
 	  } else {
 

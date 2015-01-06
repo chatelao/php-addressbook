@@ -178,13 +178,13 @@ class Birthday {
 
     }
     
-    function getAge() {
+    function getAge($future_offset = 0) {
 
       $age =  date("Y", $this->today)  - $this->year;
       if(    (date("m", $this->today) <  $this->month)
           ||((date("m", $this->today) == $this->month) && (date("d", $this->today) < $this->day)))
       {
-      	$age--;
+        $age += ($future_offset - 1);
       }
 
       return ($age < 150 ? $age : -1);

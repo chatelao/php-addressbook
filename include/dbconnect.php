@@ -224,7 +224,6 @@ mysql_query("SET SQL_MODE = 'MYSQL40';");
 include("login.inc.php");
 include("version.inc.php");
 
-
 // Apply the table prefix, if available
 $table         = $table_prefix.$table;
 $month_lookup  = $table_prefix.$month_lookup;

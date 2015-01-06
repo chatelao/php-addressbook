@@ -122,7 +122,7 @@ function saveAddress($addr_array, $group_name = "") {
 
 function updateAddress($addr, $keep_photo = true) {
 
-  global $keep_history, $domain_id, $base_from_where, $table, $table_grp_adr, $table_groups;
+  global $keep_history, $domain_id, $base_from_where, $table, $table_grp_adr, $table_groups, $only_phone;
 
 	$addresses = Addresses::withID($addr['id']);
 	$resultsnumber = $addresses->count();
@@ -308,6 +308,18 @@ class Address {
 
     public function shortPhones() {
     	return $this->unifyPhones($this->getPhones());
+    }
+
+    public function getPhoto($only_phone = false) {
+    	 $b64 = explode(";", $this->address["photo"]);
+       if(count($b64) >= 3 && ! $only_phone) {
+         $b64 = $b64[2];
+         $b64 = explode(":", $b64);
+         if(count($b64) >= 2) {
+           $b64 = str_replace(" ", "", $b64[1]);
+           return ($this->address["photo"] != "" ? '<img alt="Embedded Image" width=75 src="data:image/jpg;base64,'.$b64.'"/><br>' : "");
+         }
+       }
     }
 }
 

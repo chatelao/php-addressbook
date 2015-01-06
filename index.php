@@ -157,13 +157,16 @@ function addRow($row) {
         break;
       case "photo":
 //        echo "<td>".embeddedImg($photo)."</td>";
-///*
+/*
         if($photo != "") {
           echo "<td><img width=75 src='photo.php?id=".$id."'></td>";
         } else {
           echo "<td></td>";
         }
 //*/        
+   echo "<td>";
+   echo $addr->getPhoto();
+   echo "</td>";
         break;
       case "email":
       case "email2":
