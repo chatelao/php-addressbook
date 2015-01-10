@@ -169,6 +169,7 @@ ORDER BY prio ASC;";
         echo "<td>$lastname</td>";
       }
 		  echo "<td>$firstname</td>";
+		  $age = $addr->getBirthday()->getAge(1);
 		  echo "<td align='right'><i>$age</i></td>";
 		  echo "<td><a href='".getMailer()."$email'>$email</a></td>";
 		  echo "<td>$phone</td>";
