@@ -1,7 +1,7 @@
 PHP Address Book
 ================
 
-Read "_USER_GUIDE.pdf" for further informations about:
+in folder _howto, read find the "_USER_GUIDE.pdf" for further informations about:
 * Installations
 * Upgrades
 * User setup
@@ -13,4 +13,4 @@ Read "_USER_GUIDE.pdf" for further informations about:
 ENJOY !!
 
 
-(c)AGPL by chatelao 2007-2012
+(c)AGPL by chatelao 2007-2015
