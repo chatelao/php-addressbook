@@ -27,7 +27,7 @@ if(   isset($_POST['db_host'])
    	 // Write valid values to "cfg.db.php"
      file_put_contents("config/cfg.db.php", $cfg);
    } else {
-   	 contine;
+   	 continue;
    }
    mysql_select_db($_POST['db_name'], $db);  
 

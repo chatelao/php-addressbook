@@ -1,3 +1,9 @@
+PHP Addressbook - 8.2.5.3
+========================
+- updated manual
+- updated release notes
+- bugfix install.php
+
 PHP Addressbook - 8.1.19
 ========================
 - 0000103: Add: Translations for new columns in "index.php" (chatelao) - resolved.
