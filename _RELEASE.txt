@@ -3,6 +3,8 @@ PHP Addressbook - 8.2.5.3
 - updated manual
 - updated release notes
 - bugfix install.php
+- cfg.db.php, received information and the read-only user 
+
 
 PHP Addressbook - 8.1.19
 ========================

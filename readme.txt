@@ -1,11 +1,11 @@
 PHP Address Book
 ================
 
-in folder _howto, read find the "_USER_GUIDE.pdf" for further informations about:
+in the folder _howto, find the "_USER_GUIDE.pdf" for further information about:
 * Installations
 * Upgrades
 * User setup
-* Smart Phone integration
+* Smartphone integration
 * Export / Import
 * Language support
 * ... and much more
