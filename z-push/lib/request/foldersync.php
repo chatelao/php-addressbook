@@ -6,7 +6,7 @@
 *
 * Created   :   16.02.2012
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -52,9 +52,6 @@ class FolderSync extends RequestProcessor {
      * @return boolean
      */
     public function Handle ($commandCode) {
-        // Maps serverid -> clientid for items that are received from the PIM
-        $map = array();
-
         // Parse input
         if(!self::$decoder->getElementStartTag(SYNC_FOLDERHIERARCHY_FOLDERSYNC))
             return false;
@@ -66,6 +63,13 @@ class FolderSync extends RequestProcessor {
 
         if(!self::$decoder->getElementEndTag())
             return false;
+
+        // every FolderSync with SyncKey 0 should return the supported AS version & command headers
+        if($synckey == "0") {
+            self::$specialHeaders = array();
+            self::$specialHeaders[] = ZPush::GetSupportedProtocolVersions();
+            self::$specialHeaders[] = ZPush::GetSupportedCommands();
+        }
 
         $status = SYNC_FSSTATUS_SUCCESS;
         $newsynckey = $synckey;
@@ -130,10 +134,6 @@ class FolderSync extends RequestProcessor {
                                 $serverid = $changesMem->ImportFolderDeletion($folder);
                                 break;
                         }
-
-                        // TODO what does $map??
-                        if($serverid)
-                            $map[$serverid] = $folder->clientid;
                     }
                     else {
                         ZLog::Write(LOGLEVEL_WARN, sprintf("Request->HandleFolderSync(): ignoring incoming folderchange for folder '%s' as status indicates problem.", $folder->displayname));
@@ -181,7 +181,36 @@ class FolderSync extends RequestProcessor {
                     $exporter->InitializeExporter($changesMem);
 
                     // Stream all changes to the ImportExportChangesMem
-                    while(is_array($exporter->Synchronize()));
+                    $maxExporttime = Request::GetExpectedConnectionTimeout();
+                    $totalChanges = $exporter->GetChangeCount();
+                    $started = time();
+                    $exported = 0;
+                    $partial = false;
+                    while(is_array($exporter->Synchronize())) {
+                        $exported++;
+
+                        if (time() % 4 ) {
+                            self::$topCollector->AnnounceInformation(sprintf("Exported %d from %d folders", $exported, $totalChanges));
+                        }
+
+                        // if partial sync is allowed, stop if this takes too long
+                        if (USE_PARTIAL_FOLDERSYNC && (time() - $started) > $maxExporttime) {
+                            ZLog::Write(LOGLEVEL_WARN, sprintf("Request->HandleFolderSync(): Exporting folders is too slow. In %d seconds only %d from %d changes were processed.",(time() - $started), $exported, $totalChanges));
+                            self::$topCollector->AnnounceInformation(sprintf("Partial export of %d out of %d folders", $exported, $totalChanges), true);
+                            self::$deviceManager->SetFolderSyncComplete(false);
+                            $partial = true;
+                            break;
+                        }
+                    }
+
+                    // update the foldersync complete flag
+                    if (USE_PARTIAL_FOLDERSYNC && $partial == false && self::$deviceManager->GetFolderSyncComplete() === false) {
+                        // say that we are done with partial synching
+                        self::$deviceManager->SetFolderSyncComplete(true);
+                        // reset the loop data to prevent any loop detection to kick in now
+                        self::$deviceManager->ClearLoopDetectionData(Request::GetAuthUser(), Request::GetDeviceID());
+                        ZLog::Write(LOGLEVEL_INFO, "Request->HandleFolderSync(): Chunked exporting of folders completed successfully");
+                    }
 
                     // get the new state from the backend
                     $newsyncstate = (isset($exporter))?$exporter->GetState():"";
@@ -220,8 +249,12 @@ class FolderSync extends RequestProcessor {
                 self::$topCollector->AnnounceInformation(sprintf("Outgoing %d folders",$changeCount), true);
 
                 // everything fine, save the sync state for the next time
-                if ($synckey == $newsynckey)
+                if ($synckey == $newsynckey) {
                     self::$deviceManager->GetStateManager()->SetSyncState($newsynckey, $newsyncstate);
+
+                    // invalidate all pingable flags
+                    SyncCollections::InvalidatePingableFlags();
+                }
             }
         }
         self::$encoder->endTag();

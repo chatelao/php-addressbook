@@ -10,7 +10,7 @@
 *
 * Created   :   05.09.2011
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -57,7 +57,9 @@ class SyncTaskRecurrence extends SyncObject {
     public $dayofmonth;
     public $weekofmonth;
     public $monthofyear;
+    public $regenerate;
     public $deadoccur;
+    public $calendartype;
 
     function SyncTaskRecurrence() {
         $mapping = array (
@@ -88,6 +90,7 @@ class SyncTaskRecurrence extends SyncObject {
 
                     //TODO: check iOS5 sends deadoccur inside of the recurrence
                     SYNC_POOMTASKS_DEADOCCUR                            => array (  self::STREAMER_VAR      => "deadoccur"),
+                    SYNC_POOMTASKS_REGENERATE                           => array (  self::STREAMER_VAR      => "regenerate"),
 
                     // DayOfWeek values
                     //   1 = Sunday
@@ -100,7 +103,8 @@ class SyncTaskRecurrence extends SyncObject {
                     //  64 = Saturday
                     // 127 = The last day of the month. Value valid only in monthly or yearly recurrences.
                     SYNC_POOMTASKS_DAYOFWEEK                            => array (  self::STREAMER_VAR      => "dayofweek",
-                                                                                    self::STREAMER_CHECKS   => array(   self::STREAMER_CHECK_ONEVALUEOF => array(1,2,4,8,16,32,62,64,127) )),
+                                                                                    self::STREAMER_CHECKS   => array(   self::STREAMER_CHECK_CMPHIGHER  => 0,
+                                                                                                                        self::STREAMER_CHECK_CMPLOWER   => 128 )),
 
                     // DayOfMonth values
                     // 1-31 representing the day
@@ -118,8 +122,12 @@ class SyncTaskRecurrence extends SyncObject {
                     // 1-12 representing the month
                     SYNC_POOMTASKS_MONTHOFYEAR                          => array (  self::STREAMER_VAR      => "monthofyear",
                                                                                     self::STREAMER_CHECKS   => array(   self::STREAMER_CHECK_ONEVALUEOF => array(1,2,3,4,5,6,7,8,9,10,11,12) )),
-
                 );
+
+        if(Request::GetProtocolVersion() >= 14.0) {
+            $mapping[SYNC_POOMTASKS_CALENDARTYPE]                       = array (   self::STREAMER_VAR      => "calendartype");
+        }
+
         parent::SyncObject($mapping);
     }
 

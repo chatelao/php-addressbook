@@ -6,7 +6,7 @@
 *
 * Created   :   16.02.2012
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -102,6 +102,12 @@ class MoveItems extends RequestProcessor {
                 $importer = self::$backend->GetImporter($move["srcfldid"]);
                 if ($importer === false)
                     throw new StatusException(sprintf("HandleMoveItems() could not get an importer for folder id '%s'", $move["srcfldid"]), SYNC_MOVEITEMSSTATUS_INVALIDSOURCEID);
+
+                // get saved SyncParameters for this folder
+                $spa = self::$deviceManager->GetStateManager()->GetSynchedFolderState($move["srcfldid"]);
+                if (!$spa->HasSyncKey())
+                    throw new StatusException(sprintf("MoveItems(): Source folder id '%s' is not fully synchronized. Unable to perform operation.", $move["srcfldid"]), SYNC_MOVEITEMSSTATUS_INVALIDSOURCEID);
+                $importer->ConfigContentParameters($spa->GetCPO());
 
                 $result = $importer->ImportMessageMove($move["srcmsgid"], $move["dstfldid"]);
                 // We discard the importer state for now.

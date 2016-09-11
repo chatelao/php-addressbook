@@ -6,7 +6,7 @@
 *
 * Created   :   23.12.2011
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -99,9 +99,37 @@ class ZPushAdmin {
             $device->StripData();
 
             try {
-                $lastsync = SyncCollections::GetLastSyncTimeOfDevice($device);
-                if ($lastsync)
-                    $device->SetLastSyncTime($lastsync);
+                // we need a StateManager for this operation
+                $stateManager = new StateManager();
+                $stateManager->SetDevice($device);
+
+                $sc = new SyncCollections();
+                $sc->SetStateManager($stateManager);
+
+                // load all collections of device without loading states or checking permissions
+                $sc->LoadAllCollections(true, false, false);
+
+                if ($sc->GetLastSyncTime())
+                    $device->SetLastSyncTime($sc->GetLastSyncTime());
+
+                // get information about the folder synchronization status from SyncCollections
+                $folders = $device->GetAllFolderIds();
+
+                foreach ($folders as $folderid) {
+                    $fstatus = $device->GetFolderSyncStatus($folderid);
+
+                    if ($fstatus !== false && isset($fstatus[ASDevice::FOLDERSYNCSTATUS])) {
+                        $spa = $sc->GetCollection($folderid);
+                        $total = $spa->GetFolderSyncTotal();
+                        $todo = $spa->GetFolderSyncRemaining();
+                        $fstatus['status'] = ($fstatus[ASDevice::FOLDERSYNCSTATUS] == 1)?'Initialized':'Synchronizing';
+                        $fstatus['total'] = $total;
+                        $fstatus['done'] = $total - $todo;
+                        $fstatus['todo'] = $todo;
+
+                        $device->SetFolderSyncStatus($folderid, $fstatus);
+                    }
+                }
             }
             catch (StateInvalidException $sive) {
                 ZLog::Write(LOGLEVEL_WARN, sprintf("ZPushAdmin::GetDeviceDetails(): device '%s' of user '%s' has invalid states. Please sync to solve this issue.", $devid, $user));
@@ -237,6 +265,8 @@ class ZPushAdmin {
             try {
                 $devicedata = ZPush::GetStateMachine()->GetState($devid, IStateMachine::DEVICEDATA);
                 $device->SetData($devicedata, false);
+                if (!isset($devicedata->devices))
+                    throw new StateInvalidException("No devicedata stored in ASDevice");
                 $devices = $devicedata->devices;
             }
             catch (StateNotFoundException $e) {
@@ -252,7 +282,7 @@ class ZPushAdmin {
             StateManager::UnLinkState($device, false);
 
             // remove backend storage permanent data
-            ZPush::GetStateMachine()->CleanStates($device->GetDeviceId(), IStateMachine::BACKENDSTORAGE, false, 99999999999);
+            ZPush::GetStateMachine()->CleanStates($device->GetDeviceId(), IStateMachine::BACKENDSTORAGE, false, $device->GetFirstSyncTime());
 
             // remove devicedata and unlink user from device
             unset($devices[$user]);
@@ -279,7 +309,7 @@ class ZPushAdmin {
      *
      * @param string    $user           user of the device
      * @param string    $devid          device id which should be wiped
-     * @param string    $folderid       if not set, hierarchy state is linked
+     * @param mixed     $folderid       a single folder id or an array of folder ids
      *
      * @return boolean
      * @access public
@@ -295,16 +325,35 @@ class ZPushAdmin {
                 return false;
             }
 
-            // remove folder state
-            StateManager::UnLinkState($device, $folderid);
+            if (!$folderid || (is_array($folderid) && empty($folderid))) {
+                ZLog::Write(LOGLEVEL_ERROR, sprintf("ZPushAdmin::ResyncFolder(): no folders synchronized for user '%s' on device '%s'. Aborting.",$user, $devid));
+                return false;
+            }
 
+            // remove folder state
+            if (is_array($folderid)) {
+                foreach ($folderid as $fid) {
+                    StateManager::UnLinkState($device, $fid);
+                    ZLog::Write(LOGLEVEL_DEBUG, sprintf("ZPushAdmin::ResyncFolder(): folder '%s' on device '%s' of user '%s' marked to be re-synchronized.", $fid, $devid, $user));
+                }
+            }
+            else {
+                StateManager::UnLinkState($device, $folderid);
+                ZLog::Write(LOGLEVEL_DEBUG, sprintf("ZPushAdmin::ResyncFolder(): folder '%s' on device '%s' of user '%s' marked to be re-synchronized.", $folderid, $devid, $user));
+            }
+
+            if ($device->GetData() === false) {
+                ZLog::Write(LOGLEVEL_DEBUG, sprintf("ZPushAdmin::ResyncFolder(): nothing changed for device '%s' of user '%s'", $devid, $user));
+                return false;
+            }
             ZPush::GetStateMachine()->SetState($device->GetData(), $devid, IStateMachine::DEVICEDATA);
-            ZLog::Write(LOGLEVEL_DEBUG, sprintf("ZPushAdmin::ResyncFolder(): folder '%s' on device '%s' of user '%s' marked to be re-synchronized.", $devid, $user));
+            ZLog::Write(LOGLEVEL_DEBUG, sprintf("ZPushAdmin::ResyncFolder(): saved updated device data of device '%s' of user '%s'", $devid, $user));
         }
         catch (StateNotFoundException $e) {
             ZLog::Write(LOGLEVEL_ERROR, sprintf("ZPushAdmin::ResyncFolder(): state for device '%s' of user '%s' can not be found or saved", $devid, $user));
             return false;
         }
+        return true;
     }
 
 
@@ -385,6 +434,38 @@ class ZPushAdmin {
     }
 
     /**
+     * Removes the hierarchydata of a device of a user so it will be re-synchronizated.
+     *
+     * @param string    $user           user of the device
+     * @param string    $devid          device id which should be wiped
+     *
+     * @return boolean
+     * @access public
+     */
+    static public function ResyncHierarchy($user, $devid) {
+        // load device data
+        $device = new ASDevice($devid, ASDevice::UNDEFINED, $user, ASDevice::UNDEFINED);
+        try {
+            $device->SetData(ZPush::GetStateMachine()->GetState($devid, IStateMachine::DEVICEDATA), false);
+
+            if ($device->IsNewDevice()) {
+                ZLog::Write(LOGLEVEL_ERROR, sprintf("ZPushAdmin::ResyncHierarchy(): data of user '%s' not synchronized on device '%s'. Aborting.",$user, $devid));
+                return false;
+            }
+
+            // remove hierarchcache, but don't update the device, as the folder states are invalidated
+            StateManager::UnLinkState($device, false, false);
+
+            ZLog::Write(LOGLEVEL_DEBUG, sprintf("ZPushAdmin::ResyncHierarchy(): deleted hierarchy states of device '%s' of user '%s'", $devid, $user));
+        }
+        catch (StateNotFoundException $e) {
+            ZLog::Write(LOGLEVEL_ERROR, sprintf("ZPushAdmin::ResyncHierarchy(): state for device '%s' of user '%s' can not be found or saved", $devid, $user));
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * Clears loop detection data
      *
      * @param string    $user           (opt) user which data should be removed - user may not be specified without device id
@@ -412,6 +493,165 @@ class ZPushAdmin {
         return $loopdetection->GetCachedData($user, $devid);
     }
 
+    /**
+     * Fixes states with usernames in different cases
+     *
+     * @return boolean
+     * @access public
+     */
+    static public function FixStatesDifferentUsernameCases() {
+        $processed = 0;
+        $dropedUsers = 0;
+        $fixedUsers = 0;
+
+        $devices = ZPush::GetStateMachine()->GetAllDevices(false);
+        foreach ($devices as $devid) {
+            $users = self::ListUsers($devid);
+            $obsoleteUsers = array();
+
+            // find obsolete uppercase users
+            foreach ($users as $username) {
+                $processed++;
+                $lowUsername = strtolower($username);
+                if ($lowUsername === $username)
+                    continue; // default case
+
+                $obsoleteUsers[] = $username;
+            }
+
+            // remove or transform obsolete users
+            if (!empty($obsoleteUsers)) {
+                // load the device data
+                try {
+                    $devData = ZPush::GetStateMachine()->GetState($devid, IStateMachine::DEVICEDATA);
+
+                    $devices = $devData->devices;
+                    $knownUsers = array_keys($devData->devices);
+                    ZLog::Write(LOGLEVEL_DEBUG, print_r($devData,1),false);
+
+                    foreach ($obsoleteUsers as $ouser) {
+                        $lowerOUser = strtolower($ouser);
+                        // there is a lowercase user, drop the uppercase one
+                        if (in_array($lowerOUser, $knownUsers)) {
+                            unset($devices[$ouser]);
+                            $dropedUsers++;
+                            ZLog::Write(LOGLEVEL_DEBUG, print_r(array_keys($devices),1));
+
+                            ZLog::Write(LOGLEVEL_DEBUG, sprintf("ZPushAdmin::FixStatesDifferentUsernameCases(): user '%s' of device '%s' is obsolete as a lowercase username is known", $ouser, $devid));
+                        }
+                        // there is only an uppercase user, save it as lowercase
+                        else {
+                            $devices[$lowerOUser] = $devices[$ouser];
+                            unset($devices[$ouser]);
+                            $fixedUsers++;
+
+                            ZLog::Write(LOGLEVEL_DEBUG, sprintf("ZPushAdmin::FixStatesDifferentUsernameCases(): user '%s' of device '%s' was saved as '%s'", $ouser, $devid, $lowerOUser));
+                        }
+                    }
+
+                    unset($devData->device);
+                    // save the devicedata
+                    $devData->devices = $devices;
+                    ZPush::GetStateMachine()->SetState($devData, $devid, IStateMachine::DEVICEDATA);
+
+                    ZLog::Write(LOGLEVEL_DEBUG, sprintf("ZPushAdmin::FixStatesDifferentUsernameCases(): updated device '%s' and user(s) %s were dropped or converted", $devid, implode(", ", $obsoleteUsers)));
+                }
+                catch (StateNotFoundException $e) {
+                    ZLog::Write(LOGLEVEL_ERROR, sprintf("ZPushAdmin::FixStatesDifferentUsernameCases(): state for device '%s' can not be found", $devid));
+                }
+            }
+        }
+
+        return array($processed, $fixedUsers, $dropedUsers);
+    }
+
+    /**
+     * Fixes states of available device data to the user linking
+     *
+     * @return int
+     * @access public
+     */
+    static public function FixStatesDeviceToUserLinking() {
+        $seen = 0;
+        $fixed = 0;
+        $devices = ZPush::GetStateMachine()->GetAllDevices(false);
+        ZLog::Write(LOGLEVEL_DEBUG, sprintf("ZPushAdmin::FixStatesDeviceToUserLinking(): found %d devices", count($devices)));
+
+        foreach ($devices as $devid) {
+            $users = self::ListUsers($devid);
+            foreach ($users as $username) {
+                $seen++;
+                ZLog::Write(LOGLEVEL_DEBUG, sprintf("ZPushAdmin::FixStatesDeviceToUserLinking(): linking user '%s' to device '%s'", $username, $devid));
+
+                if (ZPush::GetStateMachine()->LinkUserDevice($username, $devid))
+                    $fixed++;
+            }
+        }
+        return array($seen, $fixed);
+    }
+
+    /**
+     * Fixes states of the user linking to the states
+     * and removes all obsolete states
+     *
+     * @return boolean
+     * @access public
+     */
+    static public function FixStatesUserToStatesLinking() {
+        $processed = 0;
+        $deleted = 0;
+        $devices = ZPush::GetStateMachine()->GetAllDevices(false);
+        ZLog::Write(LOGLEVEL_DEBUG, sprintf("ZPushAdmin::FixStatesUserToStatesLinking(): found %d devices", count($devices)));
+
+        foreach ($devices as $devid) {
+            try {
+                // we work on device level
+                $devicedata = ZPush::GetStateMachine()->GetState($devid, IStateMachine::DEVICEDATA);
+                $knownUuids = array();
+
+                // get all known UUIDs for this device
+                foreach (self::ListUsers($devid) as $username) {
+                    $device = new ASDevice($devid, ASDevice::UNDEFINED, $username, ASDevice::UNDEFINED);
+                    $device->SetData($devicedata, false);
+
+                    // get all known uuids of this device
+                    $folders = $device->GetAllFolderIds();
+
+                    // add a "false" folder id so the hierarchy UUID is retrieved
+                    $folders[] = false;
+
+                    foreach ($folders as $folderid) {
+                        $uuid = $device->GetFolderUUID($folderid);
+                        if ($uuid)
+                            $knownUuids[] = $uuid;
+                    }
+
+                }
+            }
+            catch (StateNotFoundException $e) {}
+
+            // get all uuids for deviceid from statemachine
+            $existingStates = ZPush::GetStateMachine()->GetAllStatesForDevice($devid);
+            $processed = count($existingStates);
+
+            ZLog::Write(LOGLEVEL_DEBUG, sprintf("ZPushAdmin::FixStatesUserToStatesLinking(): found %d valid uuids and %d states for device device '%s'", count($knownUuids), $processed, $devid));
+
+            // remove states for all unknown uuids
+            foreach ($existingStates as $obsoleteState) {
+                if ($obsoleteState['type'] === IStateMachine::DEVICEDATA)
+                    continue;
+
+                if (!in_array($obsoleteState['uuid'], $knownUuids)) {
+                    if (is_numeric($obsoleteState['counter']))
+                        $obsoleteState['counter']++;
+
+                    ZPush::GetStateMachine()->CleanStates($devid, $obsoleteState['type'], $obsoleteState['uuid'], $obsoleteState['counter']);
+                    $deleted++;
+                }
+            }
+        }
+        return array($processed, $deleted);
+    }
 
 }
 

@@ -1,12 +1,12 @@
 <?php
 /***********************************************
-* File      :   paddingfilter.php
+* File      :   validatecert.php
 * Project   :   Z-Push
-* Descr     :   Our own filter for stream padding with zero strings.
+* Descr     :   Provides the ValidateCert command
 *
-* Created   :   18.07.2012
+* Created   :   15.10.2012
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -41,61 +41,50 @@
 * Consult LICENSE file for details
 ************************************************/
 
-/* Define our filter class
- *
- * Usage: stream_filter_append($stream, 'padding.X');
- * where X is a number a stream will be padded to be
- * multiple of (e.g. padding.3 will pad the stream
- * to be multiple of 3 which is useful in base64
- * encoding).
- *
- * */
-class padding_filter extends php_user_filter {
-    private $padding = 4; // default padding
+class ValidateCert extends RequestProcessor {
 
     /**
-     * This method is called whenever data is read from or written to the attached stream
+     * Handles the ValidateCert command
      *
-     * @see php_user_filter::filter()
-     *
-     * @param resource      $in
-     * @param resource      $out
-     * @param int           $consumed
-     * @param boolean       $closing
-     *
-     * @access public
-     * @return int
-     *
-     */
-    function filter($in, $out, &$consumed, $closing) {
-        while ($bucket = stream_bucket_make_writeable($in)) {
-            if ($this->padding != 0 && $bucket->datalen < 8192) {
-                $bucket->data .= str_pad($bucket->data, $this->padding, 0x0);
-            }
-            $consumed += ($this->padding != 0 && $bucket->datalen < 8192) ? ($bucket->datalen + $this->padding) : $bucket->datalen;
-            stream_bucket_append($out, $bucket);
-        }
-        return PSFS_PASS_ON;
-    }
-
-    /**
-     * Called when creating the filter
-     *
-     * @see php_user_filter::onCreate()
+     * @param int       $commandCode
      *
      * @access public
      * @return boolean
      */
-    function onCreate() {
-        $delim = strrpos($this->filtername, '.');
-        if ($delim !== false) {
-            $padding = substr($this->filtername, $delim + 1);
-            if (is_numeric($padding))
-                $this->padding = $padding;
-        }
+    public function Handle($commandCode) {
+        // Parse input
+        if(!self::$decoder->getElementStartTag(SYNC_VALIDATECERT_VALIDATECERT))
+            return false;
+
+        $validateCert = new SyncValidateCert();
+        $validateCert->Decode(self::$decoder);
+        $cert_der = base64_decode($validateCert->certificates[0]);
+        $cert_pem = "-----BEGIN CERTIFICATE-----\n".chunk_split(base64_encode($cert_der), 64, "\n")."-----END CERTIFICATE-----\n";
+
+        $checkpurpose = (defined('CAINFO') && CAINFO) ? openssl_x509_checkpurpose($cert_pem, X509_PURPOSE_SMIME_SIGN, array(CAINFO)) : openssl_x509_checkpurpose($cert_pem, X509_PURPOSE_SMIME_SIGN);
+        if ($checkpurpose === true)
+            $status = SYNC_VALIDATECERTSTATUS_SUCCESS;
+        else
+            $status = SYNC_VALIDATECERTSTATUS_CANTVALIDATESIG;
+
+        if(!self::$decoder->getElementEndTag())
+                return false; // SYNC_VALIDATECERT_VALIDATECERT
+
+        self::$encoder->startWBXML();
+        self::$encoder->startTag(SYNC_VALIDATECERT_VALIDATECERT);
+
+            self::$encoder->startTag(SYNC_VALIDATECERT_STATUS);
+            self::$encoder->content($status);
+            self::$encoder->endTag(); // SYNC_VALIDATECERT_STATUS
+
+            self::$encoder->startTag(SYNC_VALIDATECERT_CERTIFICATE);
+                self::$encoder->startTag(SYNC_VALIDATECERT_STATUS);
+                self::$encoder->content($status);
+                self::$encoder->endTag(); // SYNC_VALIDATECERT_STATUS
+            self::$encoder->endTag(); // SYNC_VALIDATECERT_CERTIFICATE
+
+        self::$encoder->endTag(); // SYNC_VALIDATECERT_VALIDATECERT
         return true;
     }
 }
-
-stream_filter_register("padding.*", "padding_filter");
 ?>

@@ -10,7 +10,7 @@
 *
 * Created   :   11.04.2011
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -50,6 +50,10 @@ class DeviceManager {
     const MSG_BROKEN_UNKNOWN = 1;
     const MSG_BROKEN_CAUSINGLOOP = 2;
     const MSG_BROKEN_SEMANTICERR = 4;
+
+    const FLD_SYNC_INITIALIZED = 1;
+    const FLD_SYNC_INPROGRESS = 2;
+    const FLD_SYNC_COMPLETED = 4;
 
     private $device;
     private $deviceHash;
@@ -330,6 +334,18 @@ class DeviceManager {
     }
 
     /**
+     * Returns the ActiveSync folder type for a FolderID
+     *
+     * @param string    $folderid
+     *
+     * @access public
+     * @return int/boolean        boolean if no type is found
+     */
+    public function GetFolderTypeFromCacheById($folderid) {
+        return $this->device->GetFolderType($folderid);
+    }
+
+    /**
      * Returns a FolderID of default classes
      * this is for AS 1.0 compatibility:
      *      this information was made available during GetHierarchy()
@@ -458,13 +474,7 @@ class DeviceManager {
         if (isset($this->windowSize[$folderid]))
             $items = $this->windowSize[$folderid];
         else
-            $items = (defined("SYNC_MAX_ITEMS")) ? SYNC_MAX_ITEMS : 100;
-
-        if (defined("SYNC_MAX_ITEMS") && SYNC_MAX_ITEMS < $items) {
-            if ($queuedmessages > SYNC_MAX_ITEMS)
-                ZLog::Write(LOGLEVEL_DEBUG, sprintf("DeviceManager->GetWindowSize() overwriting max itmes requested of %d by %d forced in configuration.", $items, SYNC_MAX_ITEMS));
-            $items = SYNC_MAX_ITEMS;
-        }
+            $items = WINDOW_SIZE_MAX; // 512 by default
 
         $this->setLatestFolder($folderid);
 
@@ -547,12 +557,12 @@ class DeviceManager {
     public function ForceFullResync() {
         ZLog::Write(LOGLEVEL_INFO, "Full device resync requested");
 
-        // delete hierarchy states
-        StateManager::UnLinkState($this->device, false);
-
         // delete all other uuids
         foreach ($this->device->GetAllFolderIds() as $folderid)
             $uuid = StateManager::UnLinkState($this->device, $folderid);
+
+        // delete hierarchy states
+        StateManager::UnLinkState($this->device, false);
 
         return true;
     }
@@ -579,6 +589,11 @@ class DeviceManager {
      * @return boolean
      */
     public function IsHierarchyFullResyncRequired() {
+        // do not check for loop detection, if the foldersync is not yet complete
+        if ($this->GetFolderSyncComplete() === false) {
+            ZLog::Write(LOGLEVEL_INFO, "DeviceManager->IsHierarchyFullResyncRequired(): aborted, as exporting of folders has not yet completed");
+            return false;
+        }
         // check for potential process loops like described in ZP-5
         return $this->loopdetection->ProcessLoopDetectionIsHierarchyResyncRequired();
     }
@@ -607,7 +622,20 @@ class DeviceManager {
     }
 
     /**
-     * Checks if the given counter for a certain uuid+folderid was exported before.
+     * Announces that the current process is a push connection to the process loop
+     * detection and to the Top collector
+     *
+     * @access public
+     * @return boolean
+     */
+    public function AnnounceProcessAsPush() {
+        ZLog::Write(LOGLEVEL_DEBUG, "Announce process as PUSH connection");
+
+        return $this->loopdetection->ProcessLoopDetectionSetAsPush() && ZPush::GetTopCollector()->SetAsPushConnection();
+    }
+
+    /**
+     * Checks if the given counter for a certain uuid+folderid was already exported or modified.
      * This is called when a heartbeat request found changes to make sure that the same
      * changes are not exported twice, as during the heartbeat there could have been a normal
      * sync request.
@@ -624,6 +652,88 @@ class DeviceManager {
     }
 
     /**
+     * Marks a syncstate as obsolete for Heartbeat, as e.g. an import was started using it.
+     *
+     * @param string $folderid          folder id
+     * @param string $uuid              synkkey
+     * @param string $counter           synckey counter
+     *
+     * @access public
+     * @return
+     */
+    public function SetHeartbeatStateIntegrity($folderid, $uuid, $counter) {
+        return $this->loopdetection->SetSyncStateUsage($folderid, $uuid, $counter);
+    }
+
+    /**
+     * Sets the current status of the folder
+     *
+     * @param string     $folderid          folder id
+     * @param int        $statusflag        current status: DeviceManager::FLD_SYNC_INITIALIZED, DeviceManager::FLD_SYNC_INPROGRESS, DeviceManager::FLD_SYNC_COMPLETED
+     *
+     * @access public
+     * @return
+     */
+    public function SetFolderSyncStatus($folderid, $statusflag) {
+        $currentStatus = $this->device->GetFolderSyncStatus($folderid);
+
+        // status available or just initialized
+        if (isset($currentStatus[ASDevice::FOLDERSYNCSTATUS]) || $statusflag == self::FLD_SYNC_INITIALIZED) {
+            // only update if there is a change
+            if ($statusflag !== $currentStatus[ASDevice::FOLDERSYNCSTATUS] && $statusflag != self::FLD_SYNC_COMPLETED) {
+                $this->device->SetFolderSyncStatus($folderid, array(ASDevice::FOLDERSYNCSTATUS => $statusflag));
+                ZLog::Write(LOGLEVEL_DEBUG, sprintf("SetFolderSyncStatus(): set %s for %s", $statusflag, $folderid));
+            }
+            // if completed, remove the status
+            else if ($statusflag == self::FLD_SYNC_COMPLETED) {
+                $this->device->SetFolderSyncStatus($folderid, false);
+                ZLog::Write(LOGLEVEL_DEBUG, sprintf("SetFolderSyncStatus(): completed for %s", $folderid));
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Returns the indicator if the FolderSync was completed successfully  (all folders synchronized)
+     *
+     * @access public
+     * @return boolean
+     */
+    public function GetFolderSyncComplete() {
+        return $this->device->GetFolderSyncComplete();
+    }
+
+    /**
+     * Sets if the FolderSync was completed successfully (all folders synchronized)
+     *
+     * @param boolean   $complete   indicating if all folders were sent
+     *
+     * @access public
+     * @return boolean
+     */
+    public function SetFolderSyncComplete($complete, $user = false, $devid = false) {
+        $this->device->SetFolderSyncComplete($complete);
+    }
+
+    /**
+     * Removes the Loop detection data for a user & device
+     *
+     * @param string    $user
+     * @param string    $devid
+     *
+     * @access public
+     * @return boolean
+     */
+    public function ClearLoopDetectionData($user, $devid) {
+        if ($user == false || $devid == false) {
+            return false;
+        }
+        ZLog::Write(LOGLEVEL_DEBUG, sprintf("DeviceManager->ClearLoopDetectionData(): clearing data for user '%s' and device '%s'", $user, $devid));
+        return $this->loopdetection->ClearData($user, $devid);
+    }
+
+    /**
      * Indicates if the device needs an AS version update
      *
      * @access public
@@ -635,6 +745,17 @@ class DeviceManager {
         $this->device->SetAnnouncedASversion($latest);
 
         return ($announced != $latest);
+    }
+
+    /**
+     * Returns the User Agent. This data is consolidated with data from Request::GetUserAgent()
+     * and the data saved in the ASDevice.
+     *
+     * @access public
+     * @return string
+     */
+    public function GetUserAgent() {
+        return $this->device->GetDeviceUserAgent();
     }
 
     /**----------------------------------------------------------------------------------------------------------

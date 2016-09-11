@@ -6,7 +6,7 @@
 *
 * Created   :   16.02.2012
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -111,6 +111,7 @@ class FolderChange extends RequestProcessor {
             }
         }
 
+        // endtag foldercreate, folderupdate, folderdelete
         if(!self::$decoder->getElementEndTag())
             return false;
 
@@ -198,7 +199,6 @@ class FolderChange extends RequestProcessor {
                     self::$encoder->content($serverid);
                     self::$encoder->endTag();
                 }
-                self::$encoder->endTag();
             }
             self::$encoder->endTag();
         }
@@ -215,8 +215,8 @@ class FolderChange extends RequestProcessor {
                     self::$encoder->content($newsynckey);
                     self::$encoder->endTag();
                 }
-                self::$encoder->endTag();
             }
+            self::$encoder->endTag();
         }
 
         elseif ($delete) {
@@ -231,17 +231,19 @@ class FolderChange extends RequestProcessor {
                     self::$encoder->content($newsynckey);
                     self::$encoder->endTag();
                 }
-                self::$encoder->endTag();
             }
+            self::$encoder->endTag();
         }
-
-        self::$encoder->endTag();
 
         self::$topCollector->AnnounceInformation(sprintf("Operation status %d", $status), true);
 
         // Save the sync state for the next time
-        if (isset($importer))
+        if (isset($importer)) {
             self::$deviceManager->GetStateManager()->SetSyncState($newsynckey, $importer->GetState());
+
+            // invalidate all pingable flags
+            SyncCollections::InvalidatePingableFlags();
+        }
 
         return true;
     }

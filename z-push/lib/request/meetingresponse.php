@@ -6,7 +6,7 @@
 *
 * Created   :   16.02.2012
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -59,28 +59,31 @@ class MeetingResponse extends RequestProcessor {
 
         while(self::$decoder->getElementStartTag(SYNC_MEETINGRESPONSE_REQUEST)) {
             $req = Array();
+            while(1) {
+                if(self::$decoder->getElementStartTag(SYNC_MEETINGRESPONSE_USERRESPONSE)) {
+                    $req["response"] = self::$decoder->getElementContent();
+                    if(!self::$decoder->getElementEndTag())
+                        return false;
+                }
 
-            if(self::$decoder->getElementStartTag(SYNC_MEETINGRESPONSE_USERRESPONSE)) {
-                $req["response"] = self::$decoder->getElementContent();
-                if(!self::$decoder->getElementEndTag())
-                    return false;
+                if(self::$decoder->getElementStartTag(SYNC_MEETINGRESPONSE_FOLDERID)) {
+                    $req["folderid"] = self::$decoder->getElementContent();
+                    if(!self::$decoder->getElementEndTag())
+                        return false;
+                }
+
+                if(self::$decoder->getElementStartTag(SYNC_MEETINGRESPONSE_REQUESTID)) {
+                    $req["requestid"] = self::$decoder->getElementContent();
+                    if(!self::$decoder->getElementEndTag())
+                        return false;
+                }
+
+                $e = self::$decoder->peek();
+                if($e[EN_TYPE] == EN_TYPE_ENDTAG) {
+                    self::$decoder->getElementEndTag();
+                    break;
+                }
             }
-
-            if(self::$decoder->getElementStartTag(SYNC_MEETINGRESPONSE_FOLDERID)) {
-                $req["folderid"] = self::$decoder->getElementContent();
-                if(!self::$decoder->getElementEndTag())
-                    return false;
-            }
-
-            if(self::$decoder->getElementStartTag(SYNC_MEETINGRESPONSE_REQUESTID)) {
-                $req["requestid"] = self::$decoder->getElementContent();
-                if(!self::$decoder->getElementEndTag())
-                    return false;
-            }
-
-            if(!self::$decoder->getElementEndTag())
-                return false;
-
             array_push($requests, $req);
         }
 

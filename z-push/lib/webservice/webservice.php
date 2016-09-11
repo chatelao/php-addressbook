@@ -7,7 +7,7 @@
 *
 * Created   :   29.12.2011
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -71,6 +71,21 @@ class Webservice {
             include_once('webservicedevice.php');
             $this->server->setClass("WebserviceDevice");
         }
+
+        // the webservice command is handled by its class
+        if ($commandCode == ZPush::COMMAND_WEBSERVICE_USERS) {
+            if (!defined("ALLOW_WEBSERVICE_USERS_ACCESS") || ALLOW_WEBSERVICE_USERS_ACCESS !== true)
+                throw new HTTPReturnCodeException("Access to the WebserviceUsers service is disabled in configuration. Enable setting ALLOW_WEBSERVICE_USERS_ACCESS", 403);
+
+            ZLog::Write(LOGLEVEL_DEBUG, sprintf("Webservice::HandleWebservice('%s'): executing WebserviceUsers service", $commandCode));
+
+            if(ZPush::GetBackend()->Setup("SYSTEM", true) == false)
+                throw new AuthenticationRequiredException(sprintf("User '%s' has no admin privileges", Request::GetAuthUser()));
+
+            include_once('webserviceusers.php');
+            $this->server->setClass("WebserviceUsers");
+        }
+
         $this->server->handle();
 
         ZLog::Write(LOGLEVEL_DEBUG, sprintf("Webservice::HandleWebservice('%s'): sucessfully sent %d bytes", $commandCode, ob_get_length()));

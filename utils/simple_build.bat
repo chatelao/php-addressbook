@@ -1,6 +1,7 @@
 
 set php=C:\xampp\php\php.exe 
-set abs_zips=C:\Users\Olivier\Desktop\padr_build\php-addressbook
+set abs_root=C:\Users\olivi\Dropbox\Privat\__github\phpaddr\release
+set abs_zips=%abs_root%\php-addressbook
 
 set /P version="Enter the version: "
 echo %version%
@@ -12,7 +13,9 @@ REM Get the newest sources from subversion
 REM - See: http://stackoverflow.com/questions/1625406/using-tortoisesvn-via-the-command-line
 REM - See: https://github.com/blog/966-improved-subversion-client-support
 REM 
-svn export https://github.com/chatelao/php-addressbook/trunk %abs_zips%
+pushd %abs_root%
+git clone https://github.com/chatelao/php-addressbook.git
+popd
 
 REM
 REM Add the newest mobile configuration sample

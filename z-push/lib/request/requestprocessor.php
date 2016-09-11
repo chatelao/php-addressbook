@@ -13,7 +13,7 @@
 *
 * Created   :   12.08.2011
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -55,6 +55,7 @@ abstract class RequestProcessor {
     static protected $decoder;
     static protected $encoder;
     static protected $userIsAuthenticated;
+    static protected $specialHeaders;
 
     /**
      * Authenticates the remote user
@@ -71,6 +72,10 @@ abstract class RequestProcessor {
      */
     static public function Authenticate() {
         self::$userIsAuthenticated = false;
+
+        // when a certificate is sent, allow authentication only as the certificate owner
+        if(defined("CERTIFICATE_OWNER_PARAMETER") && isset($_SERVER[CERTIFICATE_OWNER_PARAMETER]) && strtolower($_SERVER[CERTIFICATE_OWNER_PARAMETER]) != strtolower(Request::GetAuthUser()))
+            throw new AuthenticationRequiredException(sprintf("Access denied. Access is allowed only for the certificate owner '%s'", $_SERVER[CERTIFICATE_OWNER_PARAMETER]));
 
         $backend = ZPush::GetBackend();
         if($backend->Logon(Request::GetAuthUser(), Request::GetAuthDomain(), Request::GetAuthPassword()) == false)
@@ -122,8 +127,39 @@ abstract class RequestProcessor {
     static public function HandleRequest() {
         $handler = ZPush::GetRequestHandlerForCommand(Request::GetCommandCode());
 
-        // TODO handle WBXML exceptions here and print stack
-        return $handler->Handle(Request::GetCommandCode());
+        // if there is an error decoding wbxml, consume remaining data and include it in the WBXMLException
+        try {
+            if (!$handler->Handle(Request::GetCommandCode())) {
+                throw new WBXMLException(sprintf("Unknown error in %s->Handle()", get_class($handler)));
+            }
+        }
+        catch (Exception $ex) {
+            $wbxmlLog = "no decoder";
+            if (self::$decoder) {
+                self::$decoder->readRemainingData();
+                $wbxmlLog = self::$decoder->getWBXMLLog();
+            }
+            ZLog::Write(LOGLEVEL_FATAL, "WBXML debug data: " . $wbxmlLog, false);
+            throw $ex;
+        }
+
+        // also log WBXML in happy case
+        if (self::$decoder && @constant('WBXML_DEBUG') === true) {
+            ZLog::Write(LOGLEVEL_WBXML, "WBXML-IN : ". self::$decoder->getWBXMLLog(), false);
+        }
+    }
+
+    /**
+     * Returns any additional headers which should be sent to the mobile
+     *
+     * @access public
+     * @return array
+     */
+    static public function GetSpecialHeaders() {
+        if (!isset(self::$specialHeaders) || !is_array(self::$specialHeaders))
+            return array();
+
+        return self::$specialHeaders;
     }
 
     /**

@@ -6,7 +6,7 @@
 *
 * Created   :   16.02.2012
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -91,7 +91,7 @@ class GetItemEstimate extends RequestProcessor {
                 elseif(self::$decoder->getElementStartTag(SYNC_CONVERSATIONMODE)) {
                     $spa->SetConversationMode(true);
                     if(($conversationmode = self::$decoder->getElementContent()) !== false) {
-                        $spa->SetConversationMode((boolean)$conversationmode);
+                        $spa->SetConversationMode((bool)$conversationmode);
                         if(!self::$decoder->getElementEndTag())
                             return false;
                     }
@@ -266,6 +266,10 @@ class GetItemEstimate extends RequestProcessor {
 
                             if ($changes[$folderid] > 0)
                                 self::$topCollector->AnnounceInformation(sprintf("%s %d changes", $spa->GetContentClass(), $changes[$folderid]), true);
+
+                            // update the device data to mark folders as complete when synching with WM
+                            if ($changes[$folderid] == 0)
+                                self::$deviceManager->SetFolderSyncStatus($folderid, DeviceManager::FLD_SYNC_COMPLETED);
                         }
                     }
                     self::$encoder->endTag();

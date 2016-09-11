@@ -6,7 +6,7 @@
 *
 * Created   :   03.04.2008
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -75,35 +75,6 @@ class Utils {
             $user = substr($domainuser,$pos+1);
         }
         return array($user, $domain);
-    }
-
-    /**
-     * iPhone defines standard summer time information for current year only,
-     * starting with time change in February. Dates from the 1st January until
-     * the time change are undefined and the server uses GMT or its current time.
-     * The function parses the ical attachment and replaces DTSTART one year back
-     * in VTIMEZONE section if the event takes place in this undefined time.
-     * See also http://developer.berlios.de/mantis/view.php?id=311
-     *
-     * @param string    $ical               iCalendar data
-     *
-     * @access public
-     * @return string
-     */
-    static public function IcalTimezoneFix($ical) {
-        $eventDate = substr($ical, (strpos($ical, ":", strpos($ical, "DTSTART", strpos($ical, "BEGIN:VEVENT")))+1), 8);
-        $posStd = strpos($ical, "DTSTART:", strpos($ical, "BEGIN:STANDARD")) + strlen("DTSTART:");
-        $posDst = strpos($ical, "DTSTART:", strpos($ical, "BEGIN:DAYLIGHT")) + strlen("DTSTART:");
-        $beginStandard = substr($ical, $posStd , 8);
-        $beginDaylight = substr($ical, $posDst , 8);
-
-        if (($eventDate < $beginStandard) && ($eventDate < $beginDaylight) ) {
-            ZLog::Write(LOGLEVEL_DEBUG,"icalTimezoneFix for event on $eventDate, standard:$beginStandard, daylight:$beginDaylight");
-            $year = intval(date("Y")) - 1;
-            $ical = substr_replace($ical, $year, (($beginStandard < $beginDaylight) ? $posDst : $posStd), strlen($year));
-        }
-
-        return $ical;
     }
 
     /**
@@ -366,14 +337,10 @@ class Utils {
                 $back = 60 * 60 * 24 * 31 * 6;
                 break;
             default:
-                break;
+                return 0; // unlimited
         }
 
-        if(isset($back)) {
-            $date = time() - $back;
-            return $date;
-        } else
-            return 0; // unlimited
+        return time() - $back;
     }
 
     /**
@@ -470,18 +437,18 @@ class Utils {
         $len = strlen($string) - 1;
         while ($len > 0) {
             //look for '&-' sequence and replace it with '&'
-            if ($len > 0 && $string{($len-1)} == '&' && $string{$len} == '-') {
+            if ($len > 0 && $string[$len-1] == '&' && $string[$len] == '-') {
                 $string = substr_replace($string, '&', $len - 1, 2);
                 $len--; //decrease $len as this char has alreasy been processed
             }
             //search for '&' which weren't found in if clause above and
             //replace them with '+' as they mark an utf7-encoded char
-            if ($len > 0 && $string{($len-1)} == '&') {
+            if ($len > 0 && $string[($len-1)] == '&') {
                 $string = substr_replace($string, '+', $len - 1, 1);
                 $len--; //decrease $len as this char has alreasy been processed
             }
             //finally "escape" all remaining '+' chars
-            if ($len > 0 && $string{($len-1)} == '+') {
+            if ($len > 0 && $string[$len-1] == '+') {
                 $string = substr_replace($string, '+-', $len - 1, 1);
             }
             $len--;
@@ -508,18 +475,18 @@ class Utils {
         $len = strlen($string) - 1;
         while ($len > 0) {
             //look for '&-' sequence and replace it with '&'
-            if ($len > 0 && $string{($len-1)} == '+' && $string{$len} == '-') {
+            if ($len > 0 && $string[$len-1] == '+' && $string[$len] == '-') {
                 $string = substr_replace($string, '+', $len - 1, 2);
                 $len--; //decrease $len as this char has alreasy been processed
             }
             //search for '&' which weren't found in if clause above and
             //replace them with '+' as they mark an utf7-encoded char
-            if ($len > 0 && $string{($len-1)} == '+') {
+            if ($len > 0 && $string[$len-1] == '+') {
                 $string = substr_replace($string, '&', $len - 1, 1);
                 $len--; //decrease $len as this char has alreasy been processed
             }
             //finally "escape" all remaining '+' chars
-            if ($len > 0 && $string{($len-1)} == '&') {
+            if ($len > 0 && $string[$len-1] == '&') {
                 $string = substr_replace($string, '&-', $len - 1, 1);
             }
             $len--;
@@ -539,6 +506,9 @@ class Utils {
         if (function_exists("iconv")){
             return @iconv("UTF-7", "UTF-8", $string);
         }
+        else
+            ZLog::Write(LOGLEVEL_WARN, "Utils::Utf7_to_utf8() 'iconv' is not available. Charset conversion skipped.");
+
         return $string;
     }
 
@@ -554,6 +524,9 @@ class Utils {
         if (function_exists("iconv")){
             return @iconv("UTF-8", "UTF-7", $string);
         }
+        else
+            ZLog::Write(LOGLEVEL_WARN, "Utils::Utf8_to_utf7() 'iconv' is not available. Charset conversion skipped.");
+
         return $string;
     }
 
@@ -668,6 +641,7 @@ class Utils {
 
             // Webservice commands
             case ZPush::COMMAND_WEBSERVICE_DEVICE:    return 'WebserviceDevice';
+            case ZPush::COMMAND_WEBSERVICE_USERS:    return 'WebserviceUsers';
         }
         return false;
     }
@@ -711,6 +685,7 @@ class Utils {
 
             // Webservice commands
             case 'WebserviceDevice':     return ZPush::COMMAND_WEBSERVICE_DEVICE;
+            case 'WebserviceUsers':      return ZPush::COMMAND_WEBSERVICE_USERS;
         }
         return false;
     }
@@ -827,10 +802,179 @@ class Utils {
     public static function ConvertCodepageStringToUtf8($codepage, $string) {
         if (function_exists("iconv")) {
             $charset = self::GetCodepageCharset($codepage);
-
             return iconv($charset, "utf-8", $string);
         }
+        else
+            ZLog::Write(LOGLEVEL_WARN, "Utils::ConvertCodepageStringToUtf8() 'iconv' is not available. Charset conversion skipped.");
+
         return $string;
+    }
+
+    /**
+     * Converts a string to another charset.
+     *
+     * @param int $in
+     * @param int $out
+     * @param string $string
+     *
+     * @access public
+     * @return string
+     */
+    public static function ConvertCodepage($in, $out, $string) {
+        // do nothing if both charsets are the same
+        if ($in == $out)
+            return $string;
+
+        if (function_exists("iconv")) {
+            $inCharset = self::GetCodepageCharset($in);
+            $outCharset = self::GetCodepageCharset($out);
+            return iconv($inCharset, $outCharset, $string);
+        }
+        else
+            ZLog::Write(LOGLEVEL_WARN, "Utils::ConvertCodepage() 'iconv' is not available. Charset conversion skipped.");
+
+        return $string;
+    }
+
+    /**
+     * Returns the best match of preferred body preference types.
+     *
+     * @param array             $bpTypes
+     *
+     * @access public
+     * @return int
+     */
+    public static function GetBodyPreferenceBestMatch($bpTypes) {
+        // The best choice is RTF, then HTML and then MIME in order to save bandwidth
+        // because MIME is a complete message including the headers and attachments
+        if (in_array(SYNC_BODYPREFERENCE_RTF, $bpTypes))  return SYNC_BODYPREFERENCE_RTF;
+        if (in_array(SYNC_BODYPREFERENCE_HTML, $bpTypes)) return SYNC_BODYPREFERENCE_HTML;
+        if (in_array(SYNC_BODYPREFERENCE_MIME, $bpTypes)) return SYNC_BODYPREFERENCE_MIME;
+        return SYNC_BODYPREFERENCE_PLAIN;
+    }
+
+    /* BEGIN fmbiete's contribution r1516, ZP-318 */
+    /**
+     * Converts a html string into a plain text string
+     *
+     * @param string $html
+     *
+     * @access public
+     * @return string
+     */
+    public static function ConvertHtmlToText($html) {
+        // remove css-style tags
+        $plaintext = preg_replace("/<style.*?<\/style>/is", "", $html);
+        // remove all other html
+        $plaintext = strip_tags($plaintext);
+
+        return $plaintext;
+    }
+    /* END fmbiete's contribution r1516, ZP-318 */
+
+    /**
+     * Checks if a file has the same owner and group as the parent directory.
+     * If not, owner and group are fixed (being updated to the owner/group of the directory).
+     * Function code contributed by Robert Scheck aka rsc.
+     *
+     * @param string $file
+     *
+     * @access public
+     * @return boolean
+     */
+    public static function FixFileOwner($file) {
+        if(posix_getuid() == 0 && file_exists($file)) {
+            $dir = dirname($file);
+            $perm_dir = stat($dir);
+            $perm_file = stat($file);
+
+            if ($perm_file['uid'] == 0 && $perm_dir['uid'] == 0) {
+                unlink($file);
+                throw new FatalException("FixFileOwner: $dir must be owned by the nginx/apache/php user instead of root");
+            }
+
+            if($perm_dir['uid'] !== $perm_file['uid'] || $perm_dir['gid'] !== $perm_file['gid']) {
+                chown($file, $perm_dir['uid']);
+                chgrp($file, $perm_dir['gid']);
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Returns AS-style LastVerbExecuted value from the server value.
+     *
+     * @param int $verb
+     *
+     * @access public
+     * @return int
+     */
+    public static function GetLastVerbExecuted($verb) {
+        switch ($verb) {
+            case NOTEIVERB_REPLYTOSENDER:   return AS_REPLYTOSENDER;
+            case NOTEIVERB_REPLYTOALL:      return AS_REPLYTOALL;
+            case NOTEIVERB_FORWARD:         return AS_FORWARD;
+        }
+
+        return 0;
+    }
+
+    /**
+     * Returns the local part from email address.
+     *
+     * @param string $email
+     *
+     * @access public
+     * @return string
+     */
+    public static function GetLocalPartFromEmail($email) {
+        $pos = strpos($email, '@');
+        if ($pos === false) {
+            return $email;
+        }
+        return substr($email, 0, $pos);
+    }
+
+    /**
+     * Format bytes to a more human readable value.
+     * @param int $bytes
+     * @param int $precision
+     *
+     * @access public
+     * @return void|string
+     */
+    public static function FormatBytes($bytes, $precision = 2) {
+        if ($bytes <= 0) return '0 B';
+
+        $units = array('B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB');
+        $base = log ($bytes, 1024);
+        $fBase = floor($base);
+        $pow = pow(1024, $base - $fBase);
+        return sprintf ("%.{$precision}f %s", $pow, $units[$fBase]);
+    }
+
+    /**
+     * Safely write data to disk, using an unique tmp file (concurrent write),
+     * and using rename for atomicity. It also calls FixFileOwner to prevent
+     * ownership/rights problems when running as root
+     *
+     * If you use SafePutContents, you can safely use file_get_contents
+     * (you will always read a fully written file)
+     *
+     * @param string $filename
+     * @param string $data
+     * @return boolean|int
+     */
+    public static function SafePutContents($filename, $data) {
+        //put the 'tmp' as a prefix (and not suffix) so all glob call will not see temp files
+        $tmp = dirname($filename).DIRECTORY_SEPARATOR.'tmp-'.getmypid().'-'.basename($filename);
+        if (($res = file_put_contents($tmp, $data)) !== false) {
+            self::FixFileOwner($tmp);
+            if (rename($tmp, $filename) !== true)
+                $res = false;
+        }
+
+        return $res;
     }
 }
 

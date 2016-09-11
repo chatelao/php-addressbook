@@ -8,7 +8,7 @@
 *
 * Created   :   01.10.2007
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -52,6 +52,7 @@ include_once('lib/exceptions/exceptions.php');
 include_once('lib/utils/utils.php');
 include_once('lib/utils/compat.php');
 include_once('lib/utils/timezoneutil.php');
+include_once('lib/utils/stringstreamwrapper.php');
 include_once('lib/core/zpushdefs.php');
 include_once('lib/core/stateobject.php');
 include_once('lib/core/interprocessdata.php');
@@ -63,7 +64,6 @@ include_once('lib/core/statemanager.php');
 include_once('lib/core/devicemanager.php');
 include_once('lib/core/zpush.php');
 include_once('lib/core/zlog.php');
-include_once('lib/core/paddingfilter.php');
 include_once('lib/interface/ibackend.php');
 include_once('lib/interface/ichanges.php');
 include_once('lib/interface/iexportchanges.php');
@@ -107,12 +107,20 @@ include_once('lib/syncobjects/syncdevicepassword.php');
 include_once('lib/syncobjects/syncitemoperationsattachment.php');
 include_once('lib/syncobjects/syncsendmail.php');
 include_once('lib/syncobjects/syncsendmailsource.php');
+include_once('lib/syncobjects/syncvalidatecert.php');
+include_once('lib/syncobjects/syncresolverecipients.php');
+include_once('lib/syncobjects/syncresolverecipient.php');
+include_once('lib/syncobjects/syncresolverecipientsoptions.php');
+include_once('lib/syncobjects/syncresolverecipientsavailability.php');
+include_once('lib/syncobjects/syncresolverecipientscertificates.php');
+include_once('lib/syncobjects/syncresolverecipientspicture.php');
 include_once('lib/default/backend.php');
 include_once('lib/default/searchprovider.php');
 include_once('lib/request/request.php');
 include_once('lib/request/requestprocessor.php');
 
-include_once('config.php');
+if (!defined('ZPUSH_CONFIG')) define('ZPUSH_CONFIG', 'config.php');
+include_once(ZPUSH_CONFIG);
 include_once('version.php');
 
 
@@ -142,14 +150,14 @@ include_once('version.php');
         Request::ProcessHeaders();
 
         // Check required GET parameters
-        if(Request::IsMethodPOST() && (Request::GetCommandCode() === false || !Request::GetGETUser() || !Request::GetDeviceID() || !Request::GetDeviceType()))
+        if(Request::IsMethodPOST() && (Request::GetCommandCode() === false || !Request::GetDeviceID() || !Request::GetDeviceType()))
             throw new FatalException("Requested the Z-Push URL without the required GET parameters");
 
         // Load the backend
         $backend = ZPush::GetBackend();
 
         // always request the authorization header
-        if (! Request::AuthenticationInfo())
+        if (! Request::AuthenticationInfo() || !Request::GetGETUser())
             throw new AuthenticationRequiredException("Access denied. Please send authorisation information");
 
         // check the provisioning information
@@ -171,6 +179,10 @@ include_once('version.php');
         // Do the actual request
         header(ZPush::GetServerHeader());
 
+        if (RequestProcessor::isUserAuthenticated()) {
+            header("X-Z-Push-Version: ". @constant('ZPUSH_VERSION'));
+        }
+
         // announce the supported AS versions (if not already sent to device)
         if (ZPush::GetDeviceManager()->AnnounceASVersion()) {
             $versions = ZPush::GetSupportedProtocolVersions(true);
@@ -179,8 +191,11 @@ include_once('version.php');
         }
 
         RequestProcessor::Initialize();
-        if(!RequestProcessor::HandleRequest())
-            throw new WBXMLException(ZLog::GetWBXMLDebugInfo());
+        RequestProcessor::HandleRequest();
+
+        // eventually the RequestProcessor wants to send other headers to the mobile
+        foreach (RequestProcessor::GetSpecialHeaders() as $header)
+            header($header);
 
         // stream the data
         $len = ob_get_length();
@@ -202,7 +217,7 @@ include_once('version.php');
 
         // send vnd.ms-sync.wbxml content type header if there is no content
         // otherwise text/html content type is added which might break some devices
-        if ($len == 0)
+        if (!headers_sent() && $len == 0)
             header("Content-Type: application/vnd.ms-sync.wbxml");
 
         print $data;
@@ -254,7 +269,7 @@ include_once('version.php');
 
         // This could be a WBXML problem.. try to get the complete request
         else if ($ex instanceof WBXMLException) {
-            ZLog::Write(LOGLEVEL_FATAL, "Request could not be processed correctly due to a WBXMLException. Please report this.");
+            ZLog::Write(LOGLEVEL_FATAL, "Request could not be processed correctly due to a WBXMLException. Please report this including the 'WBXML debug data' logged. Be aware that the debug data could contain confidential information.");
         }
 
         // Try to output some kind of error information. This is only possible if
@@ -280,5 +295,5 @@ include_once('version.php');
         ZPush::GetDeviceManager()->Save();
 
     // end gracefully
-    ZLog::Write(LOGLEVEL_DEBUG, '-------- End');
+    ZLog::WriteEnd();
 ?>

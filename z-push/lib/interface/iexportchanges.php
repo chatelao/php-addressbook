@@ -8,7 +8,7 @@
 *
 * Created   :   02.01.2012
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -44,17 +44,6 @@
 ************************************************/
 
 interface IExportChanges extends IChanges {
-    /**
-     * Configures additional parameters used for content synchronization
-     *
-     * @param ContentParameters         $contentparameters
-     *
-     * @access public
-     * @return boolean
-     * @throws StatusException
-     */
-    public function ConfigContentParameters($contentparameters);
-
     /**
      * Sets the importer where the exporter will sent its changes to
      * This exporter should also be ready to accept calls after this

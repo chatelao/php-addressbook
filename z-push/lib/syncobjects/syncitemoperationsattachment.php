@@ -9,7 +9,7 @@
 *
 * Created   :   24.11.2011
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -52,7 +52,7 @@ class SyncItemOperationsAttachment extends SyncObject {
         $mapping = array(
             SYNC_AIRSYNCBASE_CONTENTTYPE                        => array (  self::STREAMER_VAR      => "contenttype"),
             SYNC_ITEMOPERATIONS_DATA                            => array (  self::STREAMER_VAR      => "data",
-                                                                            self::STREAMER_TYPE     => self::STREAMER_TYPE_STREAM,
+                                                                            self::STREAMER_TYPE     => self::STREAMER_TYPE_STREAM_ASBASE64,
                                                                             self::STREAMER_PROP     => self::STREAMER_TYPE_MULTIPART),
         );
 

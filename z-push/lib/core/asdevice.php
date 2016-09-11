@@ -7,7 +7,7 @@
 *
 * Created   :   11.04.2011
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -48,6 +48,7 @@ class ASDevice extends StateObject {
     const FOLDERUUID = 1;
     const FOLDERTYPE = 2;
     const FOLDERSUPPORTEDFIELDS = 3;
+    const FOLDERSYNCSTATUS = 4;
 
     // expected values for not set member variables
     protected $unsetdata = array(
@@ -66,6 +67,7 @@ class ASDevice extends StateObject {
                                     'asversion' => false,
                                     'ignoredmessages' => array(),
                                     'announcedASversion' => false,
+                                    'foldersynccomplete' => true,
                                 );
 
     static private $loadedData;
@@ -261,8 +263,12 @@ class ASDevice extends StateObject {
         if ($this->useragent != "") {
             // [] = changedate, previous user agent
             $a = $this->useragentHistory;
-            $a[] = array(time(), $this->useragent);
-            $this->useragentHistory = $a;
+
+            // only add if this agent was not seen before
+            if (! in_array(array(true, $this->useragent), $a)) {
+                $a[] = array(time(), $this->useragent);
+                $this->useragentHistory = $a;
+            }
         }
         $this->useragent = $useragent;
         return true;
@@ -536,7 +542,7 @@ class ASDevice extends StateObject {
         if ($folderid === false) {
             $this->hierarchyUuid = $uuid;
             // when unsetting the hierarchycache, also remove saved contentdata and ignoredmessages
-            if ($folderid === false) {
+            if ($folderid === false && $uuid === false) {
                 $this->contentData = array();
                 $this->ignoredMessageIds = array();
                 $this->ignoredMessages = array();
@@ -636,6 +642,50 @@ class ASDevice extends StateObject {
         $this->contentData = $contentData;
         return true;
     }
+
+    /**
+     * Gets the current sync status of a certain folder
+     *
+     * @param string    $folderid
+     *
+     * @access public
+     * @return mixed/boolean        false means the status is not available
+     */
+    public function GetFolderSyncStatus($folderid) {
+        if (isset($this->contentData) && isset($this->contentData[$folderid]) &&
+            isset($this->contentData[$folderid][self::FOLDERUUID]) && $this->contentData[$folderid][self::FOLDERUUID] !== false &&
+            isset($this->contentData[$folderid][self::FOLDERSYNCSTATUS]) )
+
+            return $this->contentData[$folderid][self::FOLDERSYNCSTATUS];
+
+        return false;
+    }
+
+    /**
+     * Sets the current sync status of a certain folder
+     *
+     * @param string    $folderid
+     * @param mixed     $status     if set to false the current status is deleted
+     *
+     * @access public
+     * @return boolean
+     */
+    public function SetFolderSyncStatus($folderid, $status) {
+        $contentData = $this->contentData;
+        if (!isset($contentData[$folderid]) || !is_array($contentData[$folderid]))
+            $contentData[$folderid] = array();
+
+        if ($status !== false) {
+            $contentData[$folderid][self::FOLDERSYNCSTATUS] = $status;
+        }
+        else if (isset($contentData[$folderid][self::FOLDERSYNCSTATUS])) {
+            unset($contentData[$folderid][self::FOLDERSYNCSTATUS]);
+        }
+
+        $this->contentData = $contentData;
+        return true;
+    }
+
 }
 
 ?>

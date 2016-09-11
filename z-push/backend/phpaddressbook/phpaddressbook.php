@@ -6,7 +6,7 @@
 *               http://php-addressbook.sourceforge.net
 *
 * Created   :   16.07.2010
-* Updated   :   10.03.2012
+* Updated   :   11.04.2016
 * chatelao/ät/users.sourceforge.net
 *
 * Consult LICENSE file for details
@@ -542,7 +542,12 @@ class BackendPhpaddressbook extends BackendDiff {
 
         $message->body = $addr['notes'];
 
-        $message->picture = $addr['photo'];
+        if(isset($addr['photo']) && strlen($addr['photo']) > 10) {
+        	$flat = str_replace("\n\t", "", $addr['photo']);
+        	$flat = str_replace(" ", "", $flat);
+        	$flat = explode(':', $flat, 2);
+          $message->picture = $flat[1];
+        } 
         
         if(   isset($addr['bday'])   && $addr['bday']   != ""
            && isset($addr['bmonth']) && $addr['bmonth'] != ""
@@ -660,12 +665,13 @@ class BackendPhpaddressbook extends BackendDiff {
      * @param string        $folderid       id of the folder
      * @param string        $id             id of the message
      * @param SyncXXX       $message        the SyncObject containing a message
+     * @param ContentParameters   $contentParameters
      *
      * @access public
      * @return array                        same return value as StatMessage()
      * @throws StatusException              could throw specific SYNC_STATUS_* exceptions
      */
-    public function ChangeMessage($folderid, $id, $message) {
+    public function ChangeMessage($folderid, $id, $message, $contentParameters) {
         ZLog::Write(LOGLEVEL_DEBUG, 'PhpAddr::ChangeMessage('.$folderid.', '.$id.', ..)');
 
         debugLog('PhpAddr::ChangeMessage(FolderID: '.$folderid.', ID: '.$id.', ..)'.json_encode($message));
@@ -823,29 +829,31 @@ class BackendPhpaddressbook extends BackendDiff {
     /**
      * Changes the 'read' flag of a message on disk
      *
-     * @param string        $folderid       id of the folder
-     * @param string        $id             id of the message
-     * @param int           $flags          read flag of the message
+     * @param string              $folderid            id of the folder
+     * @param string              $id                  id of the message
+     * @param int                 $flags               read flag of the message
+     * @param ContentParameters   $contentParameters
      *
      * @access public
      * @return boolean                      status of the operation
      * @throws StatusException              could throw specific SYNC_STATUS_* exceptions
      */
-    public function SetReadFlag($folderid, $id, $flags) {
+    public function SetReadFlag($folderid, $id, $flags, $contentParameters) {
         return false;
     }
 
     /**
      * Called when the user has requested to delete (really delete) a message
      *
-     * @param string        $folderid       id of the folder
-     * @param string        $id             id of the message
+     * @param string              $folderid             id of the folder
+     * @param string              $id                   id of the message
+     * @param ContentParameters   $contentParameters
      *
      * @access public
      * @return boolean                      status of the operation
      * @throws StatusException              could throw specific SYNC_STATUS_* exceptions
      */
-    public function DeleteMessage($folderid, $id) {
+    public function DeleteMessage($folderid, $id, $contentParameters) {
 
         debugLog('PhpAddr::DeleteMessage(FolderID: '.$folderid.', ID: '.$id.')');
 //2        $this->_phpaddr->connect();
@@ -859,15 +867,16 @@ class BackendPhpaddressbook extends BackendDiff {
      * Called when the user moves an item on the PDA from one folder to another
      * not implemented
      *
-     * @param string        $folderid       id of the source folder
-     * @param string        $id             id of the message
-     * @param string        $newfolderid    id of the destination folder
+     * @param string              $folderid            id of the source folder
+     * @param string              $id                  id of the message
+     * @param string              $newfolderid         id of the destination folder
+     * @param ContentParameters   $contentParameters
      *
      * @access public
      * @return boolean                      status of the operation
      * @throws StatusException              could throw specific SYNC_MOVEITEMSSTATUS_* exceptions
      */
-    public function MoveMessage($folderid, $id, $newfolderid) {
+    public function MoveMessage($folderid, $id, $newfolderid, $contentParameters) {
         return false;
     }
 

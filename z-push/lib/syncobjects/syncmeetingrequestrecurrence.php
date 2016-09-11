@@ -11,7 +11,7 @@
 *
 * Created   :   05.09.2011
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -56,6 +56,7 @@ class SyncMeetingRequestRecurrence extends SyncObject {
     public $dayofmonth;
     public $weekofmonth;
     public $monthofyear;
+    public $calendartype;
 
     function SyncMeetingRequestRecurrence() {
         $mapping = array (
@@ -113,6 +114,10 @@ class SyncMeetingRequestRecurrence extends SyncObject {
                     SYNC_POOMMAIL_MONTHOFYEAR                           => array (  self::STREAMER_VAR      => "monthofyear",
                                                                                     self::STREAMER_CHECKS   => array(   self::STREAMER_CHECK_ONEVALUEOF => array(1,2,3,4,5,6,7,8,9,10,11,12) )),
                 );
+
+        if(Request::GetProtocolVersion() >= 14.0) {
+            $mapping[SYNC_POOMMAIL2_CALENDARTYPE]                       = array (   self::STREAMER_VAR      => "calendartype");
+        }
 
         parent::SyncObject($mapping);
     }

@@ -6,7 +6,7 @@
 *
 * Created   :   01.10.2007
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -48,6 +48,8 @@ class ZLog {
     static private $pidstr;
     static private $wbxmlDebug = '';
     static private $lastLogs = array();
+    static private $userLog = false;
+    static private $unAuthCache = array();
 
     /**
      * Initializes the logging
@@ -65,10 +67,11 @@ class ZLog {
         if (!defined('LOGLEVEL'))
             define('LOGLEVEL', LOGLEVEL_OFF);
 
-        list($user,) = Utils::SplitDomainUser(Request::GetGETUser());
+        list($user,) = Utils::SplitDomainUser(strtolower(Request::GetGETUser()));
+        self::$userLog = in_array($user, $specialLogUsers);
         if (!defined('WBXML_DEBUG') && $user) {
             // define the WBXML_DEBUG mode on user basis depending on the configurations
-            if (LOGLEVEL >= LOGLEVEL_WBXML || (LOGUSERLEVEL >= LOGLEVEL_WBXML && in_array($user, $specialLogUsers)))
+            if (LOGLEVEL >= LOGLEVEL_WBXML || (LOGUSERLEVEL >= LOGLEVEL_WBXML && self::$userLog))
                 define('WBXML_DEBUG', true);
             else
                 define('WBXML_DEBUG', false);
@@ -80,7 +83,7 @@ class ZLog {
             self::$user = '';
 
         // log the device id if the global loglevel is set to log devid or the user is in  and has the right log level
-        if (Request::GetDeviceID() != "" && (LOGLEVEL >= LOGLEVEL_DEVICEID || (LOGUSERLEVEL >= LOGLEVEL_DEVICEID && in_array($user, $specialLogUsers))))
+        if (Request::GetDeviceID() != "" && (LOGLEVEL >= LOGLEVEL_DEVICEID || (LOGUSERLEVEL >= LOGLEVEL_DEVICEID && self::$userLog)))
             self::$devid = '['. Request::GetDeviceID() .'] ';
         else
             self::$devid = '';
@@ -93,11 +96,17 @@ class ZLog {
      *
      * @param int       $loglevel           one of the defined LOGLEVELS
      * @param string    $message
+     * @param boolean   $truncate           indicate if the message should be truncated, default true
      *
      * @access public
      * @return
      */
-    static public function Write($loglevel, $message) {
+    static public function Write($loglevel, $message, $truncate = true) {
+        // truncate messages longer than 10 KB
+        $messagesize = strlen($message);
+        if ($truncate && $messagesize > 10240)
+            $message = substr($message, 0, 10240) . sprintf(" <log message with %d bytes truncated>", $messagesize);
+
         self::$lastLogs[$loglevel] = $message;
         $data = self::buildLogString($loglevel) . $message . "\n";
 
@@ -105,11 +114,25 @@ class ZLog {
             @file_put_contents(LOGFILE, $data, FILE_APPEND);
         }
 
-        if ($loglevel <= LOGUSERLEVEL && self::logToUserFile()) {
+        // should we write this into the user log?
+        if ($loglevel <= LOGUSERLEVEL && self::$userLog) {
             // padd level for better reading
             $data = str_replace(self::getLogLevelString($loglevel), self::getLogLevelString($loglevel,true), $data);
-            // only use plain old a-z characters for the generic log file
-            @file_put_contents(LOGFILEDIR . self::logToUserFile() . ".log", $data, FILE_APPEND);
+
+            // is the user authenticated?
+            if (self::logToUserFile()) {
+                // something was logged before the user was authenticated, write this to the log
+                if (!empty(self::$unAuthCache)) {
+                    @file_put_contents(LOGFILEDIR . self::logToUserFile() . ".log", implode('', self::$unAuthCache), FILE_APPEND);
+                    self::$unAuthCache = array();
+                }
+                // only use plain old a-z characters for the generic log file
+                @file_put_contents(LOGFILEDIR . self::logToUserFile() . ".log", $data, FILE_APPEND);
+            }
+            // the user is not authenticated yet, we save the log into memory for now
+            else {
+                self::$unAuthCache[] = $data;
+            }
         }
 
         if (($loglevel & LOGLEVEL_FATAL) || ($loglevel & LOGLEVEL_ERROR)) {
@@ -141,6 +164,30 @@ class ZLog {
      */
     static public function GetLastMessage($loglevel) {
         return (isset(self::$lastLogs[$loglevel]))?self::$lastLogs[$loglevel]:false;
+    }
+
+
+    /**
+     * Writes info at the end of the request but only if the LOGLEVEL is DEBUG or more verbose
+     *
+     * @access public
+     * @return
+     */
+    static public function WriteEnd() {
+        if (LOGLEVEL_DEBUG <= LOGLEVEL || (LOGLEVEL_DEBUG <= LOGUSERLEVEL && self::$userLog)) {
+            if (version_compare(phpversion(), '5.4.0') < 0) {
+                $time_used = number_format(time() - $_SERVER["REQUEST_TIME"], 2);
+            }
+            else {
+                $time_used = number_format(microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"], 2);
+            }
+            $peakUsage = memory_get_peak_usage(false);
+            $truePeakUsage = memory_get_peak_usage(true);
+
+            ZLog::Write(LOGLEVEL_DEBUG, sprintf("Memory usage information: %s/%s (%s B/%s B) - Execution time: %ss - HTTP responde code: %s",
+                    Utils::FormatBytes($peakUsage), Utils::FormatBytes($truePeakUsage), $peakUsage, $truePeakUsage, $time_used, http_response_code()));
+            ZLog::Write(LOGLEVEL_DEBUG, "-------- End");
+        }
     }
 
     /**----------------------------------------------------------------------------------------------------------

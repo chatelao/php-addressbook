@@ -10,7 +10,7 @@
 *
 * Created   :   02.01.2012
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -279,6 +279,34 @@ interface IBackend {
      * @return SyncObject   $settings
      */
     public function Settings($settings);
+
+    /**
+     * Resolves recipients
+     *
+     * @param SyncObject        $resolveRecipients
+     *
+     * @access public
+     * @return SyncObject       $resolveRecipients
+     */
+    public function ResolveRecipients($resolveRecipients);
+
+    /**
+     * Returns the email address and the display name of the user. Used by autodiscover.
+     *
+     * @param string        $username           The username
+     *
+     * @access public
+     * @return Array
+     */
+    public function GetUserDetails($username);
+
+    /**
+     * Returns the username of the currently active user
+     *
+     * @access public
+     * @return Array
+     */
+    public function GetCurrentUsername();
 }
 
 ?>

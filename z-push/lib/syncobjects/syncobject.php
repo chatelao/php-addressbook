@@ -11,7 +11,7 @@
 *
 * Created   :   01.10.2007
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -80,8 +80,16 @@ abstract class SyncObject extends Streamer {
      * @return boolean
      */
     public function emptySupported($supportedFields) {
-        if ($supportedFields === false || !is_array($supportedFields))
-            return false;
+        // Some devices do not send supported tag. In such a case remove all not set properties.
+        if (($supportedFields === false || !is_array($supportedFields) || (empty($supportedFields)))) {
+            if (defined('UNSET_UNDEFINED_PROPERTIES') && UNSET_UNDEFINED_PROPERTIES && ($this instanceof SyncContact || $this instanceof SyncAppointment)) {
+                ZLog::Write(LOGLEVEL_INFO, sprintf("%s->emptySupported(): no supported list available, emptying all not set parameters", get_class($this)));
+                $supportedFields = array_keys($this->mapping);
+            }
+            else {
+                return false;
+            }
+        }
 
         foreach ($supportedFields as $field) {
             if (!isset($this->mapping[$field])) {
@@ -121,8 +129,13 @@ abstract class SyncObject extends Streamer {
             $val = $v[self::STREAMER_VAR];
             // array of values?
             if (isset($v[self::STREAMER_ARRAY])) {
-                // seek for differences in the arrays
-                if (is_array($this->$val) && is_array($odo->$val)) {
+                // if neither array is created then don't fail the comparison
+                if (!isset($this->$val) && !isset($odo->$val)) {
+                    ZLog::Write(LOGLEVEL_DEBUG, sprintf("SyncObject->equals() array '%s' is NOT SET in either object", $val));
+                    continue;
+                }
+                elseif (is_array($this->$val) && is_array($odo->$val)) {
+                    // if both arrays exist then seek for differences in the arrays
                     if (count(array_diff($this->$val, $odo->$val)) + count(array_diff($odo->$val, $this->$val)) > 0) {
                         ZLog::Write(LOGLEVEL_DEBUG, sprintf("SyncObject->equals() items in array '%s' differ", $val));
                         return false;

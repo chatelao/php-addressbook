@@ -8,7 +8,7 @@
 *
 * Created   :   03.08.2010
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -138,7 +138,7 @@ class BackendSearchLDAP implements ISearchProvider {
             $querycnt = $searchresult['count'];
             //do not return more results as requested in range
             $querylimit = (($rangeend + 1) < $querycnt) ? ($rangeend + 1) : $querycnt;
-            $items['range'] = $rangestart.'-'.($querycnt-1);
+            $items['range'] = $rangestart.'-'.($querylimit-1);
             $items['searchtotal'] = $querycnt;
 
             $rc = 0;

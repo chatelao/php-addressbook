@@ -7,7 +7,7 @@
 *
 * Created   :   29.11.2010
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -45,47 +45,6 @@
 class BackendCombinedConfig {
 
     // *************************
-    //  BackendZarafa settings
-    // *************************
-    public static $BackendZarafa_config = array('MAPI_SERVER' => MAPI_SERVER);
-
-    // *************************
-    //  BackendIMAP settings
-    // *************************
-    public static $BackendIMAP_config = array(
-        // Defines the server to which we want to connect
-        'IMAP_SERVER' => IMAP_SERVER,
-        // connecting to default port (143)
-        'IMAP_PORT' => IMAP_PORT,
-        // best cross-platform compatibility (see http://php.net/imap_open for options)
-        'IMAP_OPTIONS' => IMAP_OPTIONS,
-        // overwrite the "from" header if it isn't set when sending emails
-        // options: 'username'    - the username will be set (usefull if your login is equal to your emailaddress)
-        //        'domain'    - the value of the "domain" field is used
-        //        '@mydomain.com' - the username is used and the given string will be appended
-        'IMAP_DEFAULTFROM' => IMAP_DEFAULTFROM,
-        // copy outgoing mail to this folder. If not set z-push will try the default folders
-        'IMAP_SENTFOLDER' => IMAP_SENTFOLDER,
-        // forward messages inline (default false - as attachment)
-        'IMAP_INLINE_FORWARD' => IMAP_INLINE_FORWARD,
-        // use imap_mail() to send emails (default) - if false mail() is used
-        'IMAP_USE_IMAPMAIL' => IMAP_USE_IMAPMAIL,
-    );
-
-    // *************************
-    //  BackendMaildir settings
-    // *************************
-    public static $BackendMaildir_config = array(
-        'MAILDIR_BASE' => MAILDIR_BASE,
-        'MAILDIR_SUBDIR' => MAILDIR_SUBDIR,
-    );
-
-    // *************************
-    //  BackendVCardDir settings
-    // *************************
-    public static $BackendVCardDir_config = array('VCARDDIR_DIR' => VCARDDIR_DIR);
-
-    // *************************
     //  BackendCombined settings
     // *************************
     /**
@@ -105,19 +64,15 @@ class BackendCombinedConfig {
             'backends' => array(
                 'i' => array(
                     'name' => 'BackendIMAP',
-                    'config' => self::$BackendIMAP_config,
                 ),
                 'z' => array(
                     'name' => 'BackendZarafa',
-                    'config' => self::$BackendZarafa_config
                 ),
                 'm' => array(
                     'name' => 'BackendMaildir',
-                    'config' => self::$BackendMaildir_config,
                 ),
                 'v' => array(
                     'name' => 'BackendVCardDir',
-                    'config' => self::$BackendVCardDir_config,
                 ),
             ),
             'delimiter' => '/',

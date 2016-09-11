@@ -10,7 +10,7 @@
 *
 * Created   :   05.09.2011
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -62,6 +62,7 @@ class SyncMeetingRequest extends SyncObject {
     public $busystatus;
     public $timezone;
     public $globalobjid;
+    public $disallownewtimeproposal;
 
     function SyncMeetingRequest() {
         $mapping = array (
@@ -118,16 +119,23 @@ class SyncMeetingRequest extends SyncObject {
                     // 1 = Tentative
                     // 2 = Busy
                     // 3 = Out of office
+                    // 4 = Working Elsewhere
                     SYNC_POOMMAIL_BUSYSTATUS                            => array (  self::STREAMER_VAR      => "busystatus",
                                                                                     self::STREAMER_CHECKS   => array(   self::STREAMER_CHECK_REQUIRED   => self::STREAMER_CHECK_SETTWO,
-                                                                                                                        self::STREAMER_CHECK_ONEVALUEOF => array(0,1,2,3)  )),
+                                                                                                                        self::STREAMER_CHECK_ONEVALUEOF => array(0,1,2,3,4)  )),
 
                     SYNC_POOMMAIL_TIMEZONE                              => array (  self::STREAMER_VAR      => "timezone",
                                                                                     self::STREAMER_CHECKS   => array(   self::STREAMER_CHECK_REQUIRED   => base64_encode(pack("la64vvvvvvvv"."la64vvvvvvvv"."l",0,"",0,0,0,0,0,0,0,0,0,"",0,0,0,0,0,0,0,0,0)) )),
 
                     SYNC_POOMMAIL_GLOBALOBJID                           => array (  self::STREAMER_VAR      => "globalobjid"),
+
                 );
 
+                if (Request::GetProtocolVersion() >= 14.0) {
+                    $mapping[SYNC_POOMMAIL_DISALLOWNEWTIMEPROPOSAL]     =  array (  self::STREAMER_VAR      => "disallownewtimeproposal",
+                                                                                    self::STREAMER_CHECKS   => array(   self::STREAMER_CHECK_REQUIRED   => self::STREAMER_CHECK_SETZERO,
+                                                                                    self::STREAMER_CHECK_ONEVALUEOF => array(0,1)  ));
+                }
         parent::SyncObject($mapping);
     }
 }

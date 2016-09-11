@@ -6,7 +6,7 @@
 *
 * Created   :   12.04.2011
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2015 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -96,12 +96,21 @@ class ZPush {
 
     // Webservice commands
     const COMMAND_WEBSERVICE_DEVICE = -100;
+    const COMMAND_WEBSERVICE_USERS = -101;
 
+    // Latest supported State version
+    const STATE_VERSION = IStateMachine::STATEVERSION_02;
+
+    static private $autoloadBackendPreference = array(
+                    "BackendZarafa",
+                    "BackendCombined",
+                    "BackendIMAP",
+                    "BackendVCardDir",
+                    "BackendMaildir"
+                );
+
+    // Versions 1.0, 2.0, 2.1 and 2.5 are deprecated (ZP-604)
     static private $supportedASVersions = array(
-                    self::ASV_1,
-                    self::ASV_2,
-                    self::ASV_21,
-                    self::ASV_25,
                     self::ASV_12,
                     self::ASV_121,
                     self::ASV_14
@@ -125,8 +134,8 @@ class ZPush {
                     self::COMMAND_MOVEITEMS         => array(self::ASV_1,  self::REQUESTHANDLER => "MoveItems"),
                     self::COMMAND_GETITEMESTIMATE   => array(self::ASV_1,  self::REQUESTHANDLER => "GetItemEstimate"),
                     self::COMMAND_MEETINGRESPONSE   => array(self::ASV_1,  self::REQUESTHANDLER => "MeetingResponse"),
-                    self::COMMAND_RESOLVERECIPIENTS => array(self::ASV_1,  self::REQUESTHANDLER => false),
-                    self::COMMAND_VALIDATECERT      => array(self::ASV_1,  self::REQUESTHANDLER => false),
+                    self::COMMAND_RESOLVERECIPIENTS => array(self::ASV_1,  self::REQUESTHANDLER => "ResolveRecipients"),
+                    self::COMMAND_VALIDATECERT      => array(self::ASV_1,  self::REQUESTHANDLER => "ValidateCert"),
                     self::COMMAND_PROVISION         => array(self::ASV_25, self::REQUESTHANDLER => "Provisioning",  self::UNAUTHENTICATED, self::UNPROVISIONED),
                     self::COMMAND_SEARCH            => array(self::ASV_1,  self::REQUESTHANDLER => "Search"),
                     self::COMMAND_PING              => array(self::ASV_2,  self::REQUESTHANDLER => "Ping",          self::UNPROVISIONED),
@@ -135,7 +144,8 @@ class ZPush {
                     self::COMMAND_SETTINGS          => array(self::ASV_12, self::REQUESTHANDLER => "Settings"),
 
                     self::COMMAND_WEBSERVICE_DEVICE => array(self::REQUESTHANDLER => "Webservice", self::PLAININPUT, self::NOACTIVESYNCCOMMAND, self::WEBSERVICECOMMAND),
-                );
+                    self::COMMAND_WEBSERVICE_USERS  => array(self::REQUESTHANDLER => "Webservice", self::PLAININPUT, self::NOACTIVESYNCCOMMAND, self::WEBSERVICECOMMAND),
+            );
 
 
 
@@ -219,22 +229,24 @@ class ZPush {
         if (!file_exists(LOGFILEDIR))
             throw new FatalMisconfigurationException("The configured LOGFILEDIR does not exist or can not be accessed.");
 
-        if (!touch(LOGFILE))
+        if ((!file_exists(LOGFILE) && !touch(LOGFILE)) || !is_writable(LOGFILE))
             throw new FatalMisconfigurationException("The configured LOGFILE can not be modified.");
 
-        if (!touch(LOGERRORFILE))
-            throw new FatalMisconfigurationException("The configured LOGFILE can not be modified.");
+        if ((!file_exists(LOGERRORFILE) && !touch(LOGERRORFILE)) || !is_writable(LOGERRORFILE))
+            throw new FatalMisconfigurationException("The configured LOGERRORFILE can not be modified.");
+
+        // check ownership on the (eventually) just created files
+        Utils::FixFileOwner(LOGFILE);
+        Utils::FixFileOwner(LOGERRORFILE);
 
         // set time zone
-        // code contributed by Robert Scheck (rsc) - more information: https://developer.berlios.de/mantis/view.php?id=479
-        if(function_exists("date_default_timezone_set")) {
-            if(defined('TIMEZONE') ? constant('TIMEZONE') : false) {
-                if (! @date_default_timezone_set(TIMEZONE))
-                    throw new FatalMisconfigurationException(sprintf("The configured TIMEZONE '%s' is not valid. Please check supported timezones at http://www.php.net/manual/en/timezones.php", constant('TIMEZONE')));
-            }
-            else if(!ini_get('date.timezone')) {
-                date_default_timezone_set('Europe/Amsterdam');
-            }
+        // code contributed by Robert Scheck (rsc)
+        if(defined('TIMEZONE') ? constant('TIMEZONE') : false) {
+            if (! @date_default_timezone_set(TIMEZONE))
+                throw new FatalMisconfigurationException(sprintf("The configured TIMEZONE '%s' is not valid. Please check supported timezones at http://www.php.net/manual/en/timezones.php", constant('TIMEZONE')));
+        }
+        else if(!ini_get('date.timezone')) {
+            date_default_timezone_set('Europe/Amsterdam');
         }
 
         return true;
@@ -258,6 +270,16 @@ class ZPush {
         }
         else if (SINK_FORCERECHECK !== false && (!is_int(SINK_FORCERECHECK) || SINK_FORCERECHECK < 1))
             throw new FatalMisconfigurationException("The SINK_FORCERECHECK value must be 'false' or a number higher than 0.");
+
+        if (!defined('SYNC_CONTACTS_MAXPICTURESIZE')) {
+            define('SYNC_CONTACTS_MAXPICTURESIZE', 49152);
+        }
+        else if ((!is_int(SYNC_CONTACTS_MAXPICTURESIZE) || SYNC_CONTACTS_MAXPICTURESIZE < 1))
+            throw new FatalMisconfigurationException("The SYNC_CONTACTS_MAXPICTURESIZE value must be a number higher than 0.");
+
+        if (!defined('USE_PARTIAL_FOLDERSYNC')) {
+            define('USE_PARTIAL_FOLDERSYNC', false);
+        }
 
         // the check on additional folders will not throw hard errors, as this is probably changed on live systems
         if (isset($additionalFolders) && !is_array($additionalFolders))
@@ -307,8 +329,9 @@ class ZPush {
      * which has to be an IStateMachine implementation
      *
      * @access public
-     * @return object   implementation of IStateMachine
      * @throws FatalNotImplementedException
+     * @throws HTTPReturnCodeException
+     * @return object   implementation of IStateMachine
      */
     static public function GetStateMachine() {
         if (!isset(ZPush::$stateMachine)) {
@@ -328,8 +351,23 @@ class ZPush {
                 include_once('lib/default/filestatemachine.php');
                 ZPush::$stateMachine = new FileStateMachine();
             }
+
+            if (ZPush::$stateMachine->GetStateVersion() !== ZPush::GetLatestStateVersion()) {
+                if (class_exists("TopCollector")) self::GetTopCollector()->AnnounceInformation("Run migration script!", true);
+                throw new HTTPReturnCodeException(sprintf("The state version available to the %s is not the latest version - please run the state upgrade script. See release notes for more information.", get_class(ZPush::$stateMachine), 503));
+            }
         }
         return ZPush::$stateMachine;
+    }
+
+    /**
+     * Returns the latest version of supported states
+     *
+     * @access public
+     * @return int
+     */
+    static public function GetLatestStateVersion() {
+        return self::STATE_VERSION;
     }
 
     /**
@@ -439,7 +477,23 @@ class ZPush {
         if (!isset(ZPush::$backend)) {
             // Initialize our backend
             $ourBackend = @constant('BACKEND_PROVIDER');
-            self::IncludeBackend($ourBackend);
+
+            // if no backend provider is defined, try to include automatically
+            if ($ourBackend == false || $ourBackend == "") {
+                $loaded = false;
+                foreach (self::$autoloadBackendPreference as $autoloadBackend) {
+                    ZLog::Write(LOGLEVEL_DEBUG, sprintf("ZPush::GetBackend(): trying autoload backend '%s'", $autoloadBackend));
+                    $loaded = class_exists($autoloadBackend) || self::IncludeBackend($autoloadBackend);
+                    if ($loaded) {
+                        $ourBackend = $autoloadBackend;
+                        break;
+                    }
+                }
+                if (!$ourBackend || !$loaded)
+                    throw new FatalMisconfigurationException("No Backend provider can not be loaded. Check your installation and configuration!");
+            }
+            elseif (!class_exists($ourBackend))
+                self::IncludeBackend($ourBackend);
 
             if (class_exists($ourBackend))
                 ZPush::$backend = new $ourBackend();
@@ -562,9 +616,10 @@ class ZPush {
         $message $additionalMessage
         <br><br>
         More information about Z-Push can be found at:<br>
-        <a href="http://z-push.sf.net/">Z-Push homepage</a><br>
-        <a href="http://z-push.sf.net/download">Z-Push download page at BerliOS</a><br>
-        <a href="http://z-push.sf.net/tracker">Z-Push Bugtracker and Roadmap</a><br>
+        <a href="http://z-push.org/">Z-Push homepage</a><br>
+        <a href="http://z-push.org/download">Z-Push download page</a><br>
+        <a href="https://jira.z-hub.io/browse/ZP">Z-Push Bugtracker</a><br>
+        <a href="https://wiki.z-hub.io/display/ZP">Z-Push Wiki</a> and <a href="https://wiki.z-hub.io/display/ZP/Roadmap">Roadmap</a><br>
         <br>
         All modifications to this sourcecode must be published and returned to the community.<br>
         Please see <a href="http://www.gnu.org/licenses/agpl-3.0.html">AGPLv3 License</a> for details.<br>

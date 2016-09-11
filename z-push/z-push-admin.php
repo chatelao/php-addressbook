@@ -9,7 +9,7 @@
 *
 * Created   :   14.05.2010
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2015 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -92,7 +92,8 @@ include('lib/syncobjects/syncuserinformation.php');
 include('lib/syncobjects/syncdeviceinformation.php');
 include('lib/syncobjects/syncdevicepassword.php');
 include('lib/syncobjects/syncitemoperationsattachment.php');
-include('config.php');
+if (!defined('ZPUSH_CONFIG')) define('ZPUSH_CONFIG', 'config.php');
+include_once(ZPUSH_CONFIG);
 include('version.php');
 
 /**
@@ -112,7 +113,7 @@ include('version.php');
         if (! ZPushAdminCLI::SureWhatToDo()) {
             // show error message if available
             if (ZPushAdminCLI::GetErrorMessage())
-                echo "ERROR: ". ZPushAdminCLI::GetErrorMessage() . "\n";
+                fwrite(STDERR, ZPushAdminCLI::GetErrorMessage() . "\n");
 
             echo ZPushAdminCLI::UsageInstructions();
             exit(1);
@@ -137,10 +138,21 @@ class ZPushAdminCLI {
     const COMMAND_RESYNCDEVICE = 6;
     const COMMAND_CLEARLOOP = 7;
     const COMMAND_SHOWLASTSYNC = 8;
+    const COMMAND_RESYNCFOLDER = 9;
+    const COMMAND_FIXSTATES = 10;
+    const COMMAND_RESYNCHIERARCHY = 11;
+
+    const TYPE_OPTION_EMAIL = "email";
+    const TYPE_OPTION_CALENDAR = "calendar";
+    const TYPE_OPTION_CONTACT = "contact";
+    const TYPE_OPTION_TASK = "task";
+    const TYPE_OPTION_NOTE = "note";
+    const TYPE_OPTION_HIERARCHY = "hierarchy";
 
     static private $command;
     static private $user = false;
     static private $device = false;
+    static private $type = false;
     static private $errormessage;
 
     /**
@@ -150,22 +162,29 @@ class ZPushAdminCLI {
      * @access public
      */
     static public function UsageInstructions() {
+        $types = "'".self::TYPE_OPTION_EMAIL."', '".self::TYPE_OPTION_CALENDAR."', '".self::TYPE_OPTION_CONTACT."', '".self::TYPE_OPTION_TASK."' or '".self::TYPE_OPTION_NOTE."'";
         return  "Usage:\n\tz-push-admin.php -a ACTION [options]\n\n" .
                 "Parameters:\n\t-a list/wipe/remove/resync/clearloop\n\t[-u] username\n\t[-d] deviceid\n\n" .
                 "Actions:\n" .
-                "\tlist\t\t\t\t Lists all devices and synchronized users\n" .
-                "\tlist -u USER\t\t\t Lists all devices of user USER\n" .
-                "\tlist -d DEVICE\t\t\t Lists all users of device DEVICE\n" .
-                "\tlastsync\t\t\t Lists all devices and synchronized users and the last synchronization time\n" .
-                "\twipe -u USER\t\t\t Remote wipes all devices of user USER\n" .
-                "\twipe -d DEVICE\t\t\t Remote wipes device DEVICE\n" .
-                "\twipe -u USER -d DEVICE\t\t Remote wipes device DEVICE of user USER\n" .
-                "\tremove -u USER\t\t\t Removes all state data of all devices of user USER\n" .
-                "\tremove -d DEVICE\t\t Removes all state data of all users synchronized on device DEVICE\n" .
-                "\tremove -u USER -d DEVICE\t Removes all related state data of device DEVICE of user USER\n" .
-                "\tresync -u USER -d DEVICE\t Resynchronizes all data of device DEVICE of user USER\n" .
-                "\tclearloop\t\t\t Clears system wide loop detection data\n" .
-                "\tclearloop -d DEVICE -u USER\t Clears all loop detection data of a device DEVICE and an optional user USER\n" .
+                "\tlist\t\t\t\t\t Lists all devices and synchronized users\n" .
+                "\tlist -u USER\t\t\t\t Lists all devices of user USER\n" .
+                "\tlist -d DEVICE\t\t\t\t Lists all users of device DEVICE\n" .
+                "\tlastsync\t\t\t\t Lists all devices and synchronized users and the last synchronization time\n" .
+                "\twipe -u USER\t\t\t\t Remote wipes all devices of user USER\n" .
+                "\twipe -d DEVICE\t\t\t\t Remote wipes device DEVICE\n" .
+                "\twipe -u USER -d DEVICE\t\t\t Remote wipes device DEVICE of user USER\n" .
+                "\tremove -u USER\t\t\t\t Removes all state data of all devices of user USER\n" .
+                "\tremove -d DEVICE\t\t\t Removes all state data of all users synchronized on device DEVICE\n" .
+                "\tremove -u USER -d DEVICE\t\t Removes all related state data of device DEVICE of user USER\n" .
+                "\tresync -u USER -d DEVICE\t\t Resynchronizes all data of device DEVICE of user USER\n" .
+                "\tresync -t TYPE \t\t\t\t Resynchronizes all folders of type $types for all devices and users.\n" .
+                "\tresync -t TYPE -u USER \t\t\t Resynchronizes all folders of type $types for the user USER.\n" .
+                "\tresync -t TYPE -u USER -d DEVICE\t Resynchronizes all folders of type $types for a specified device and user.\n" .
+                "\tresync -t FOLDERID -u USER\t\t Resynchronize the specified folder id only. The USER should be specified for better performance.\n" .
+                "\tresync -t hierarchy -u USER -d DEVICE\t Resynchronize the folder hierarchy data for an optional USER and optional DEVICE.\n" .
+                "\tclearloop\t\t\t\t Clears system wide loop detection data\n" .
+                "\tclearloop -d DEVICE -u USER\t\t Clears all loop detection data of a device DEVICE and an optional user USER\n" .
+                "\tfixstates\t\t\t\t Checks the states for integrity and fixes potential issues\n" .
                 "\n";
     }
 
@@ -176,8 +195,8 @@ class ZPushAdminCLI {
      * @access public
      */
     static public function CheckEnv() {
-        if (!isset($_SERVER["TERM"]) || !isset($_SERVER["LOGNAME"]))
-            self::$errormessage = "This script should not be called in a browser.";
+        if (php_sapi_name() != "cli")
+            self::$errormessage = "This script can only be called from the CLI.";
 
         if (!function_exists("getopt"))
             self::$errormessage = "PHP Function getopt not found. Please check your PHP version and settings.";
@@ -193,7 +212,7 @@ class ZPushAdminCLI {
         if (self::$errormessage)
             return;
 
-        $options = getopt("u:d:a:");
+        $options = getopt("u:d:a:t:");
 
         // get 'user'
         if (isset($options['u']) && !empty($options['u']))
@@ -203,9 +222,9 @@ class ZPushAdminCLI {
 
         // get 'device'
         if (isset($options['d']) && !empty($options['d']))
-            self::$device = trim($options['d']);
+            self::$device = strtolower(trim($options['d']));
         else if (isset($options['device']) && !empty($options['device']))
-            self::$device = trim($options['device']);
+            self::$device = strtolower(trim($options['device']));
 
         // get 'action'
         $action = false;
@@ -213,6 +232,29 @@ class ZPushAdminCLI {
             $action = strtolower(trim($options['a']));
         elseif (isset($options['action']) && !empty($options['action']))
             $action = strtolower(trim($options['action']));
+
+        // get 'type'
+        if (isset($options['t']) && !empty($options['t']))
+            self::$type = strtolower(trim($options['t']));
+        elseif (isset($options['type']) && !empty($options['type']))
+            self::$type = strtolower(trim($options['type']));
+
+        // if type is set, it must be one of known types or a 44 or 48 byte long folder id
+        if (self::$type !== false) {
+            if (self::$type !== self::TYPE_OPTION_EMAIL &&
+                self::$type !== self::TYPE_OPTION_CALENDAR &&
+                self::$type !== self::TYPE_OPTION_CONTACT &&
+                self::$type !== self::TYPE_OPTION_TASK &&
+                self::$type !== self::TYPE_OPTION_NOTE &&
+                self::$type !== self::TYPE_OPTION_HIERARCHY &&
+                strlen(self::$type) !== 44 &&
+                strlen(self::$type) !== 48) {
+                    self::$errormessage = "Wrong 'type'. Possible values are: ".
+                        "'".self::TYPE_OPTION_EMAIL."', '".self::TYPE_OPTION_CALENDAR."', '".self::TYPE_OPTION_CONTACT."', '".self::TYPE_OPTION_TASK."', '".self::TYPE_OPTION_NOTE."', ".self::TYPE_OPTION_HIERARCHY."' ".
+                        "or a 44 or 48 byte long folder id (as hex).";
+                    return;
+                }
+        }
 
         // get a command for the requested action
         switch ($action) {
@@ -256,16 +298,31 @@ class ZPushAdminCLI {
             case "resynchronize":
             case "re-synchronize":
             case "synchronize":
-                if (self::$user === false || self::$device === false)
-                    self::$errormessage = "Not possible to resynchronize device. Device and user must be specified.";
-                else
-                    self::$command = self::COMMAND_RESYNCDEVICE;
+                // full resync
+                if (self::$type === false) {
+                    if (self::$user === false || self::$device === false)
+                        self::$errormessage = "Not possible to resynchronize device. Device and user must be specified.";
+                    else
+                        self::$command = self::COMMAND_RESYNCDEVICE;
+                }
+                else if (self::$type === self::TYPE_OPTION_HIERARCHY) {
+                    self::$command = self::COMMAND_RESYNCHIERARCHY;
+                }
+                else {
+                    self::$command = self::COMMAND_RESYNCFOLDER;
+                }
                 break;
 
             // clear loop detection data
             case "clearloop":
             case "clearloopdetection":
                 self::$command = self::COMMAND_CLEARLOOP;
+                break;
+
+            // clear loop detection data
+            case "fixstates":
+            case "fix":
+                self::$command = self::COMMAND_FIXSTATES;
                 break;
 
 
@@ -341,16 +398,46 @@ class ZPushAdminCLI {
                 if (self::$device == false) {
                     echo sprintf("Are you sure you want to re-synchronize all devices of user '%s' [y/N]: ", self::$user);
                     $confirm  =  strtolower(trim(fgets(STDIN)));
-                    if ( !($confirm === 'y' || $confirm === 'yes'))
+                    if ( !($confirm === 'y' || $confirm === 'yes')) {
                         echo "Aborted!\n";
                         exit(1);
+                    }
                 }
                 self::CommandResyncDevices();
                 break;
 
+                case self::COMMAND_RESYNCFOLDER:
+                    if (self::$device == false && self::$user == false) {
+                        echo "Are you sure you want to re-synchronize this folder type of all devices and users [y/N]: ";
+                        $confirm  =  strtolower(trim(fgets(STDIN)));
+                        if ( !($confirm === 'y' || $confirm === 'yes')) {
+                            echo "Aborted!\n";
+                            exit(1);
+                        }
+                    }
+                    self::CommandResyncFolder();
+                    break;
+
+                case self::COMMAND_RESYNCHIERARCHY:
+                    if (self::$device == false && self::$user == false) {
+                        echo "Are you sure you want to re-synchronize the hierarchy of all devices and users [y/N]: ";
+                        $confirm  =  strtolower(trim(fgets(STDIN)));
+                        if ( !($confirm === 'y' || $confirm === 'yes')) {
+                            echo "Aborted!\n";
+                            exit(1);
+                        }
+                    }
+                    self::CommandResyncHierarchy();
+                    break;
+
             case self::COMMAND_CLEARLOOP:
                 self::CommandClearLoopDetectionData();
                 break;
+
+            case self::COMMAND_FIXSTATES:
+                self::CommandFixStates();
+                break;
+
         }
         echo "\n";
     }
@@ -398,7 +485,7 @@ class ZPushAdminCLI {
             echo "\tno devices found\n";
         else {
             echo "All known devices and users and their last synchronization time\n\n";
-            echo str_pad("Device id", 36). str_pad("Synchronized user", 30)."Last sync time\n";
+            echo str_pad("Device id", 36). str_pad("Synchronized user", 31)."Last sync time\n";
             echo "-----------------------------------------------------------------------------------------------------\n";
         }
 
@@ -406,7 +493,7 @@ class ZPushAdminCLI {
             $users = ZPushAdmin::ListUsers($deviceId);
             foreach ($users as $user) {
                 $device = ZPushAdmin::GetDeviceDetails($deviceId, $user);
-                echo str_pad($deviceId, 36) . str_pad($user, 30). ($device->GetLastSyncTime() ? strftime("%Y-%m-%d %H:%M", $device->GetLastSyncTime()) : "never") . "\n";
+                echo str_pad($deviceId, 36) . str_pad($user, 30) . " " . ($device->GetLastSyncTime() ? strftime("%Y-%m-%d %H:%M", $device->GetLastSyncTime()) : "never") . "\n";
             }
         }
     }
@@ -421,10 +508,18 @@ class ZPushAdminCLI {
     static public function CommandDeviceUsers() {
         $users = ZPushAdmin::ListUsers(self::$device);
 
-        if (empty($users))
+        if (empty($users)) {
             echo "\tno user data synchronized to device\n";
+        }
+        // if a user is specified, we only want to see the devices of this one
+        else if (self::$user !== false && !in_array(self::$user, $users)) {
+            printf("\tuser '%s' not known in device data '%s'\n", self::$user, self::$device);
+        }
 
         foreach ($users as $user) {
+            if (self::$user !== false && strtolower($user) !== self::$user) {
+                continue;
+            }
             echo "Synchronized by user: ". $user. "\n";
             self::printDeviceData(self::$device, $user);
         }
@@ -483,6 +578,73 @@ class ZPushAdminCLI {
         echo sprintf("Resync of device '%s' of user '%s': %s", self::$device, self::$user, ($stat)?'Requested':ZLog::GetLastMessage(LOGLEVEL_ERROR)). "\n";
     }
 
+    /**
+     * Command "Resync folder(s)"
+     * Resyncs a folder type of a specific device/user or of all users
+     *
+     * @return
+     * @access public
+     */
+    static public function CommandResyncFolder() {
+        // if no device is specified, search for all devices of a user. If user is not set, all devices are returned.
+        if (self::$device === false) {
+            $devicelist = ZPushAdmin::ListDevices(self::$user);
+            if (empty($devicelist)) {
+                echo "\tno devices/users found\n";
+                return true;
+            }
+        }
+        else
+            $devicelist = array(self::$device);
+
+        foreach ($devicelist as $deviceId) {
+            $users = ZPushAdmin::ListUsers($deviceId);
+            foreach ($users as $user) {
+                if (self::$user && self::$user != $user)
+                    continue;
+                self::resyncFolder($deviceId, $user, self::$type);
+            }
+        }
+
+    }
+
+    /**
+     * Command "Resync hierarchy"
+     * Resyncs a folder type of a specific device/user or of all users
+     *
+     * @return
+     * @access public
+     */
+    static public function CommandResyncHierarchy() {
+        // if no device is specified, search for all devices of a user. If user is not set, all devices are returned.
+        if (self::$device === false) {
+            $devicelist = ZPushAdmin::ListDevices(self::$user);
+            if (empty($devicelist)) {
+                echo "\tno devices/users found\n";
+                return true;
+            }
+        }
+        else
+            $devicelist = array(self::$device);
+
+        foreach ($devicelist as $deviceId) {
+            $users = ZPushAdmin::ListUsers($deviceId);
+            foreach ($users as $user) {
+                if (self::$user && self::$user != $user)
+                    continue;
+                self::resyncHierarchy($deviceId, $user);
+            }
+        }
+
+    }
+
+    /**
+     * Command to clear the loop detection data
+     * Mobiles may enter loop detection (one-by-one synchring due to timeouts / erros).
+     *
+     * @return
+     * @access public
+     */
     static public function CommandClearLoopDetectionData() {
         $stat = false;
         $stat = ZPushAdmin::ClearLoopDetectionData(self::$user, self::$device);
@@ -497,9 +659,115 @@ class ZPushAdminCLI {
     }
 
     /**
+     * Resynchronizes a folder type of a device & user
+     *
+     * @param string    $deviceId       the id of the device
+     * @param string    $user           the user
+     * @param string    $type           the folder type
+     *
+     * @return
+     * @access private
+     */
+    static private function resyncFolder($deviceId, $user, $type) {
+        $device = ZPushAdmin::GetDeviceDetails($deviceId, $user);
+
+        if (! $device instanceof ASDevice) {
+            echo sprintf("Folder resync failed: %s\n", ZLog::GetLastMessage(LOGLEVEL_ERROR));
+            return false;
+        }
+
+        $folders = array();
+        foreach ($device->GetAllFolderIds() as $folderid) {
+            // if  submitting a folderid as type to resync a specific folder.
+            if ($folderid == $type) {
+                printf("Found and resynching requested folderid '%s' on device '%s' of user '%s'\n", $folderid, $deviceId, $user);
+                $folders[] = $folderid;
+                break;
+            }
+
+            if ($device->GetFolderUUID($folderid)) {
+                $foldertype = $device->GetFolderType($folderid);
+                switch($foldertype) {
+                    case SYNC_FOLDER_TYPE_APPOINTMENT:
+                    case SYNC_FOLDER_TYPE_USER_APPOINTMENT:
+                        if ($type == "calendar")
+                            $folders[] = $folderid;
+                        break;
+                    case SYNC_FOLDER_TYPE_CONTACT:
+                    case SYNC_FOLDER_TYPE_USER_CONTACT:
+                        if ($type == "contact")
+                            $folders[] = $folderid;
+                        break;
+                    case SYNC_FOLDER_TYPE_TASK:
+                    case SYNC_FOLDER_TYPE_USER_TASK:
+                        if ($type == "task")
+                            $folders[] = $folderid;
+                        break;
+                    case SYNC_FOLDER_TYPE_NOTE:
+                    case SYNC_FOLDER_TYPE_USER_NOTE:
+                        if ($type == "note")
+                            $folders[] = $folderid;
+                        break;
+                    default:
+                        if ($type == "email")
+                            $folders[] = $folderid;
+                        break;
+                }
+            }
+        }
+
+        $stat = ZPushAdmin::ResyncFolder($user, $deviceId, $folders);
+        echo sprintf("Resync of %d folders of type %s on device '%s' of user '%s': %s\n", count($folders), $type, $deviceId, $user, ($stat)?'Requested':ZLog::GetLastMessage(LOGLEVEL_ERROR));
+    }
+
+    /**
+     * Resynchronizes the hierarchy of a device & user
+     *
+     * @param string    $deviceId       the id of the device
+     * @param string    $user           the user
+     *
+     * @return
+     * @access private
+     */
+    static private function resyncHierarchy($deviceId, $user) {
+        $stat = ZPushAdmin::ResyncHierarchy($user, $deviceId);
+        echo sprintf("Removing hierarchy information for resync on device '%s' of user '%s': %s\n",  $deviceId, $user, ($stat)?'Requested':ZLog::GetLastMessage(LOGLEVEL_ERROR));
+    }
+
+    /**
+     * Fixes the states for potential issues
+     *
+     * @return
+     * @access private
+     */
+    static private function CommandFixStates() {
+        echo "Validating and fixing states (this can take some time):\n";
+
+        echo "\tChecking username casings: ";
+        if ($stat = ZPushAdmin::FixStatesDifferentUsernameCases())
+            printf("Processed: %d - Converted: %d - Removed: %d\n", $stat[0], $stat[1], $stat[2]);
+        else
+            echo ZLog::GetLastMessage(LOGLEVEL_ERROR) . "\n";
+
+        // fixes ZP-339
+        echo "\tChecking available devicedata & user linking: ";
+        if ($stat = ZPushAdmin::FixStatesDeviceToUserLinking())
+            printf("Processed: %d - Fixed: %d\n", $stat[0], $stat[1]);
+        else
+            echo ZLog::GetLastMessage(LOGLEVEL_ERROR) . "\n";
+
+        echo "\tChecking for unreferenced (obsolete) state files: ";
+        if (($stat = ZPushAdmin::FixStatesUserToStatesLinking()) !== false)
+            printf("Processed: %d - Deleted: %d\n",  $stat[0], $stat[1]);
+        else
+            echo ZLog::GetLastMessage(LOGLEVEL_ERROR) . "\n";
+    }
+
+    /**
      * Prints detailed informations about a device
      *
      * @param string    $deviceId       the id of the device
+     * @param string    $user           the user
      *
      * @return
      * @access private
@@ -507,13 +775,16 @@ class ZPushAdminCLI {
     static private function printDeviceData($deviceId, $user) {
         $device = ZPushAdmin::GetDeviceDetails($deviceId, $user);
 
-        if (! $device instanceof ASDevice)
+        if (! $device instanceof ASDevice) {
+            echo sprintf("Folder resync failed: %s\n", ZLog::GetLastMessage(LOGLEVEL_ERROR));
             return false;
+        }
 
         // Gather some statistics about synchronized folders
         $folders = $device->GetAllFolderIds();
         $synchedFolders = 0;
         $synchedFolderTypes = array();
+        $syncedFoldersInProgress = 0;
         foreach ($folders as $folderid) {
             if ($device->GetFolderUUID($folderid)) {
                 $synchedFolders++;
@@ -542,6 +813,15 @@ class ZPushAdminCLI {
                 if (!isset($synchedFolderTypes[$gentype]))
                     $synchedFolderTypes[$gentype] = 0;
                 $synchedFolderTypes[$gentype]++;
+
+                // set the folder name for all folders which are not fully synchronized yet
+                $fstatus = $device->GetFolderSyncStatus($folderid);
+                if ($fstatus !== false && is_array($fstatus)) {
+                    // TODO would be nice if we could see the real name of the folder, right now we use the folder type as name
+                    $fstatus['name'] = $gentype;
+                    $device->SetFolderSyncStatus($folderid, $fstatus);
+                    $syncedFoldersInProgress++;
+                }
             }
         }
         $folderinfo = "";
@@ -572,7 +852,7 @@ class ZPushAdminCLI {
         if ($device->GetDevicePhoneNumber())
             echo "Device Phone nr:\t". $device->GetDevicePhoneNumber(). "\n";
         if ($device->GetDeviceMobileOperator())
-            echo "Device Operator:\t\t". $device->GetDeviceMobileOperator(). "\n";
+            echo "Device Operator:\t". $device->GetDeviceMobileOperator(). "\n";
         if ($device->GetDeviceEnableOutboundSMS())
             echo "Device Outbound SMS:\t". $device->GetDeviceEnableOutboundSMS(). "\n";
 
@@ -580,8 +860,25 @@ class ZPushAdminCLI {
         echo "First sync:\t\t". strftime("%Y-%m-%d %H:%M", $device->GetFirstSyncTime()) ."\n";
         echo "Last sync:\t\t". ($device->GetLastSyncTime() ? strftime("%Y-%m-%d %H:%M", $device->GetLastSyncTime()) : "never")."\n";
         echo "Total folders:\t\t". count($folders). "\n";
-        echo "Synchronized folders:\t". $synchedFolders . "\n";
+        echo "Synchronized folders:\t". $synchedFolders;
+        if ($syncedFoldersInProgress > 0)
+            echo " (". $syncedFoldersInProgress. " in progress)";
+        echo "\n";
         echo "Synchronized data:\t$folderinfo\n";
+        if ($syncedFoldersInProgress > 0) {
+            echo "Synchronization progress:\n";
+            foreach ($folders as $folderid) {
+                $d = $device->GetFolderSyncStatus($folderid);
+                if ($d) {
+                    $status = "";
+                    if ($d['total'] > 0) {
+                        $percent = round($d['done']*100/$d['total']);
+                        $status = sprintf("Status: %s%d%% (%d/%d)", ($percent < 10)?" ":"", $percent, $d['done'], $d['total']);
+                    }
+                    printf("\tFolder: %s%s Sync: %s    %s\n", $d['name'], str_repeat(" ", 12-strlen($d['name'])), $d['status'], $status);
+                }
+            }
+        }
         echo "Status:\t\t\t";
         switch ($device->GetWipeStatus()) {
             case SYNC_PROVISION_RWSTATUS_OK:

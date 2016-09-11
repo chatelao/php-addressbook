@@ -7,7 +7,7 @@
 *
 * Created   :   01.10.2007
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -113,10 +113,14 @@ class Request {
             self::$command = self::filterEvilInput($_GET["Cmd"], self::LETTERS_ONLY);
 
         // getUser is unfiltered, as everything is allowed.. even "/", "\" or ".."
-        if(isset($_GET["User"]))
+        if(isset($_GET["User"])) {
             self::$getUser = strtolower($_GET["User"]);
+            if(defined('USE_FULLEMAIL_FOR_LOGIN') && ! USE_FULLEMAIL_FOR_LOGIN) {
+                self::$getUser = Utils::GetLocalPartFromEmail(self::$getUser);
+            }
+        }
         if(isset($_GET["DeviceId"]))
-            self::$devid = self::filterEvilInput($_GET["DeviceId"], self::WORDCHAR_ONLY);
+            self::$devid = strtolower(self::filterEvilInput($_GET["DeviceId"], self::WORDCHAR_ONLY));
         if(isset($_GET["DeviceType"]))
             self::$devtype = self::filterEvilInput($_GET["DeviceType"], self::LETTERS_ONLY);
         if (isset($_GET["AttachmentName"]))
@@ -140,11 +144,15 @@ class Request {
             if (!isset(self::$command) && isset($query['Command']))
                 self::$command = Utils::GetCommandFromCode($query['Command']);
 
-            if (!isset(self::$getUser) && isset($query[self::COMMANDPARAM_USER]))
+            if (!isset(self::$getUser) && isset($query[self::COMMANDPARAM_USER])) {
                 self::$getUser = strtolower($query[self::COMMANDPARAM_USER]);
+                if(defined('USE_FULLEMAIL_FOR_LOGIN') && ! USE_FULLEMAIL_FOR_LOGIN) {
+                    self::$getUser = Utils::GetLocalPartFromEmail(self::$getUser);
+                }
+            }
 
             if (!isset(self::$devid) && isset($query['DevID']))
-                self::$devid = self::filterEvilInput($query['DevID'], self::WORDCHAR_ONLY);
+                self::$devid = strtolower(self::filterEvilInput($query['DevID'], self::WORDCHAR_ONLY));
 
             if (!isset(self::$devtype) && isset($query['DevType']))
                 self::$devtype = self::filterEvilInput($query['DevType'], self::LETTERS_ONLY);
@@ -172,8 +180,12 @@ class Request {
         }
 
         // in base64 encoded query string user is not necessarily set
-        if (!isset(self::$getUser) && isset($_SERVER['PHP_AUTH_USER']))
+        if (!isset(self::$getUser) && isset($_SERVER['PHP_AUTH_USER'])) {
             list(self::$getUser,) = Utils::SplitDomainUser(strtolower($_SERVER['PHP_AUTH_USER']));
+            if(defined('USE_FULLEMAIL_FOR_LOGIN') && ! USE_FULLEMAIL_FOR_LOGIN) {
+                self::$getUser = Utils::GetLocalPartFromEmail(self::$getUser);
+            }
+        }
     }
 
     /**
@@ -211,6 +223,14 @@ class Request {
         }
 
         ZLog::Write(LOGLEVEL_DEBUG, sprintf("Request::ProcessHeaders() ASVersion: %s", self::$asProtocolVersion));
+
+        if (defined('USE_X_FORWARDED_FOR_HEADER') && USE_X_FORWARDED_FOR_HEADER == true && isset(self::$headers["x-forwarded-for"])) {
+            $forwardedIP = self::filterEvilInput(self::$headers["x-forwarded-for"], self::NUMBERSDOT_ONLY);
+            if ($forwardedIP) {
+                self::$remoteAddr = $forwardedIP;
+                ZLog::Write(LOGLEVEL_INFO, sprintf("'X-Forwarded-for' indicates remote IP: %s", self::$remoteAddr));
+            }
+        }
     }
 
     /**
@@ -224,6 +244,9 @@ class Request {
         if (isset($_SERVER['PHP_AUTH_USER'])) {
             list(self::$authUser, self::$authDomain) = Utils::SplitDomainUser($_SERVER['PHP_AUTH_USER']);
             self::$authPassword = (isset($_SERVER['PHP_AUTH_PW']))?$_SERVER['PHP_AUTH_PW'] : "";
+        }
+        if(defined('USE_FULLEMAIL_FOR_LOGIN') && ! USE_FULLEMAIL_FOR_LOGIN) {
+            self::$authUser = Utils::GetLocalPartFromEmail(self::$authUser);
         }
         // authUser & authPassword are unfiltered!
         return (self::$authUser != "" && self::$authPassword != "");
@@ -558,6 +581,32 @@ class Request {
         return (isset(self::$headers["content-length"]))? (int) self::$headers["content-length"] : 0;
     }
 
+    /**
+     * Returns the amount of seconds this request is able to be kept open without the client
+     * closing it. This depends on the vendor.
+     *
+     * @access public
+     * @return boolean
+     */
+    static public function GetExpectedConnectionTimeout() {
+        // Different vendors implement different connection timeouts.
+        // In order to optimize processing, we return a specific time for the major
+        // classes currently known (feedback welcome).
+        // The amount of time returned is somehow lower than the max timeout so we have
+        // time for processing.
+
+        // Apple and Windows Phone have higher timeouts (4min = 240sec)
+        if (in_array(self::GetDeviceType(), array("iPod", "iPad", "iPhone", "WP"))) {
+            return 200;
+        }
+        // Samsung devices have a intermediate timeout (90sec)
+        if (in_array(self::GetDeviceType(), array("SAMSUNGGTI"))) {
+            return 50;
+        }
+
+        // for all other devices, a timeout of 30 seconds is expected
+        return 20;
+    }
 
     /**----------------------------------------------------------------------------------------------------------
      * Private stuff

@@ -9,7 +9,7 @@
 *
 * Created   :   02.01.2012
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -62,6 +62,17 @@ interface IChanges {
      * @throws StatusException
      */
     public function Config($state, $flags = 0);
+
+    /**
+     * Configures additional parameters used for content synchronization
+     *
+     * @param ContentParameters         $contentparameters
+     *
+     * @access public
+     * @return boolean
+     * @throws StatusException
+     */
+    public function ConfigContentParameters($contentparameters);
 
     /**
      * Reads and returns the current state

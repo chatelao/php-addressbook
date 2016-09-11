@@ -1,13 +1,13 @@
 <?php
 /***********************************************
-* File      :   stringstreamwrapper.php
+* File      :   mapistreamwrapper.php
 * Project   :   Z-Push
-* Descr     :   Wraps a string as a standard php stream
+* Descr     :   Wraps a mapi stream as a standard php stream
 *               The used method names are predefined and can not be altered.
 *
 * Created   :   24.11.2011
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -42,16 +42,16 @@
 * Consult LICENSE file for details
 ************************************************/
 
-class StringStreamWrapper {
-    const PROTOCOL = "stringstream";
+class MAPIStreamWrapper {
+    const PROTOCOL = "mapistream";
 
-    private $stringstream;
+    private $mapistream;
     private $position;
-    private $stringlength;
+    private $streamlength;
 
     /**
      * Opens the stream
-     * The string to be streamed is passed over the context
+     * The mapistream reference is passed over the context
      *
      * @param string    $path           Specifies the URL that was passed to the original function
      * @param string    $mode           The mode used to open the file, as detailed for fopen()
@@ -64,16 +64,19 @@ class StringStreamWrapper {
      */
     public function stream_open($path, $mode, $options, &$opened_path) {
         $contextOptions = stream_context_get_options($this->context);
-        if (!isset($contextOptions[self::PROTOCOL]['string']))
+        if (!isset($contextOptions[self::PROTOCOL]['stream']))
             return false;
 
         $this->position = 0;
 
         // this is our stream!
-        $this->stringstream = $contextOptions[self::PROTOCOL]['string'];
+        $this->mapistream = $contextOptions[self::PROTOCOL]['stream'];
 
-        $this->stringlength = strlen($this->stringstream);
-        ZLog::Write(LOGLEVEL_DEBUG, sprintf("StringStreamWrapper::stream_open(): initialized stream length: %d", $this->stringlength));
+        // get the data length from mapi
+        $stat = mapi_stream_stat($this->mapistream);
+        $this->streamlength = $stat["cb"];
+
+        ZLog::Write(LOGLEVEL_DEBUG, sprintf("MAPIStreamWrapper::stream_open(): initialized mapistream: %s streamlength: %d", $this->mapistream, $this->streamlength));
 
         return true;
     }
@@ -87,9 +90,31 @@ class StringStreamWrapper {
      * @return string
      */
     public function stream_read($len) {
-        $data = substr($this->stringstream, $this->position, $len);
+        $len = ($this->position + $len > $this->streamlength) ? ($this->streamlength - $this->position) : $len;
+        $data = mapi_stream_read($this->mapistream, $len);
         $this->position += strlen($data);
         return $data;
+    }
+
+    /**
+     * Stream "seek" functionality.
+     *
+     * @param int $offset
+     * @param int $whence
+     * @return boolean
+     */
+    public function stream_seek($offset, $whence = SEEK_SET) {
+        switch($whence) {
+            case SEEK_SET:
+                $mapiWhence = STREAM_SEEK_SET;
+                break;
+            case SEEK_END:
+                $mapiWhence = STREAM_SEEK_END;
+                break;
+            default:
+                $mapiWhence = STREAM_SEEK_CUR;
+        }
+        return mapi_stream_seek($this->mapistream, $offset, $mapiWhence);
     }
 
     /**
@@ -109,36 +134,36 @@ class StringStreamWrapper {
      * @return boolean
      */
     public function stream_eof() {
-        return ($this->position >= $this->stringlength);
+        return ($this->position >= $this->streamlength);
     }
 
     /**
-    * Retrieves information about a stream
-    *
-    * @access public
-    * @return array
-    */
+     * Retrieves information about a stream
+     *
+     * @access public
+     * @return array
+     */
     public function stream_stat() {
         return array(
-            7               => $this->stringlength,
-            'size'          => $this->stringlength,
+            7               => $this->streamlength,
+            'size'          => $this->streamlength,
         );
     }
 
    /**
-     * Instantiates a StringStreamWrapper
+     * Instantiates a MAPIStreamWrapper
      *
-     * @param string    $string     The string to be wrapped
+     * @param mapistream    $mapistream     The stream to be wrapped
      *
      * @access public
-     * @return StringStreamWrapper
+     * @return MAPIStreamWrapper
      */
-     static public function Open($string) {
-        $context = stream_context_create(array(self::PROTOCOL => array('string' => &$string)));
+     static public function Open($mapistream) {
+        $context = stream_context_create(array(self::PROTOCOL => array('stream' => &$mapistream)));
         return fopen(self::PROTOCOL . "://",'r', false, $context);
     }
 }
 
-stream_wrapper_register(StringStreamWrapper::PROTOCOL, "StringStreamWrapper")
+stream_wrapper_register(MAPIStreamWrapper::PROTOCOL, "MAPIStreamWrapper")
 
 ?>

@@ -10,7 +10,7 @@
 *
 * Created   :   05.09.2011
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -174,7 +174,7 @@ class SyncContact extends SyncObject {
                     SYNC_POOMCONTACTS_YOMILASTNAME                      => array (  self::STREAMER_VAR      => "yomilastname"),
                     SYNC_POOMCONTACTS_RTF                               => array (  self::STREAMER_VAR      => "rtf"),
                     SYNC_POOMCONTACTS_PICTURE                           => array (  self::STREAMER_VAR      => "picture",
-                                                                                    self::STREAMER_CHECKS   => array(   self::STREAMER_CHECK_LENGTHMAX      => 49152 )),
+                                                                                    self::STREAMER_CHECKS   => array(   self::STREAMER_CHECK_LENGTHMAX      => SYNC_CONTACTS_MAXPICTURESIZE )),
 
                     SYNC_POOMCONTACTS_CATEGORIES                        => array (  self::STREAMER_VAR      => "categories",
                                                                                     self::STREAMER_ARRAY    => SYNC_POOMCONTACTS_CATEGORY ),

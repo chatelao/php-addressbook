@@ -6,7 +6,7 @@
 *
 * Created   :   18.08.2011
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -225,6 +225,12 @@ class ChangesMemoryWrapper extends HierarchyCache implements IImportChanges, IEx
                 $cacheFolder = $this->GetFolder($folder->serverid);
                 if ($folder->equals($this->GetFolder($folder->serverid))) {
                     ZLog::Write(LOGLEVEL_DEBUG, sprintf("ChangesMemoryWrapper->ImportFolderChange(): Change for folder '%s' will not be sent as modification is not relevant.", $folder->displayname));
+                    return false;
+                }
+
+                // check if the parent ID is known on the device
+                if (!isset($folder->parentid) || $folder->parentid != "0" &&  !$this->GetFolder($folder->parentid)) {
+                    ZLog::Write(LOGLEVEL_DEBUG, sprintf("ChangesMemoryWrapper->ImportFolderChange(): Change for folder '%s' will not be sent as parent folder is not set or not known on mobile.", $folder->displayname));
                     return false;
                 }
 

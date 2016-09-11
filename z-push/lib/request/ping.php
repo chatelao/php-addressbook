@@ -6,7 +6,7 @@
 *
 * Created   :   16.02.2012
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -60,20 +60,26 @@ class Ping extends RequestProcessor {
         // Contains all requested folders (containers)
         $sc = new SyncCollections();
 
+        // read from stream to see if the symc params are being sent
+        $params_present = self::$decoder->getElementStartTag(SYNC_PING_PING);
+
         // Load all collections - do load states and check permissions
         try {
             $sc->LoadAllCollections(true, true, true);
         }
-        catch (StateNotFoundException $snfex) {
-            $pingstatus = SYNC_PINGSTATUS_FOLDERHIERSYNCREQUIRED;
-            self::$topCollector->AnnounceInformation("StateNotFoundException: require HierarchySync", true);
-        }
-        catch (StateInvalidException $snfex) {
-            // we do not have a ping status for this, but SyncCollections should have generated fake changes for the folders which are broken
-            $fakechanges = $sc->GetChangedFolderIds();
-            $foundchanges = true;
+        catch (StateInvalidException $siex) {
+            // if no params are present, indicate to send params, else do hierarchy sync
+            if (!$params_present) {
+                $pingstatus = SYNC_PINGSTATUS_FAILINGPARAMS;
+                self::$topCollector->AnnounceInformation("StateInvalidException: require PingParameters", true);
+            }
+            else {
+                // we do not have a ping status for this, but SyncCollections should have generated fake changes for the folders which are broken
+                $fakechanges = $sc->GetChangedFolderIds();
+                $foundchanges = true;
 
-            self::$topCollector->AnnounceInformation("StateInvalidException: force sync", true);
+                self::$topCollector->AnnounceInformation("StateInvalidException: force sync", true);
+            }
         }
         catch (StatusException $stex) {
             $pingstatus = SYNC_PINGSTATUS_FOLDERHIERSYNCREQUIRED;
@@ -83,7 +89,7 @@ class Ping extends RequestProcessor {
         ZLog::Write(LOGLEVEL_DEBUG, sprintf("HandlePing(): reference PolicyKey for PING: %s", $sc->GetReferencePolicyKey()));
 
         // receive PING initialization data
-        if(self::$decoder->getElementStartTag(SYNC_PING_PING)) {
+        if($params_present) {
             self::$topCollector->AnnounceInformation("Processing PING data");
             ZLog::Write(LOGLEVEL_DEBUG, "HandlePing(): initialization data received");
 
@@ -93,9 +99,8 @@ class Ping extends RequestProcessor {
             }
 
             if(($el = self::$decoder->getElementStartTag(SYNC_PING_FOLDERS)) && $el[EN_FLAGS] & EN_FLAGS_CONTENT) {
-                // remove PingableFlag from all collections
-                foreach ($sc as $folderid => $spa)
-                    $spa->DelPingableFlag();
+                // cache requested (pingable) folderids
+                $pingable = array();
 
                 while(self::$decoder->getElementStartTag(SYNC_PING_FOLDER)) {
                     while(1) {
@@ -132,13 +137,24 @@ class Ping extends RequestProcessor {
                         $foundchanges = true;
                     }
                     else if ($class == $spa->GetContentClass()) {
-                        $spa->SetPingableFlag(true);
+                        $pingable[] = $folderid;
                         ZLog::Write(LOGLEVEL_DEBUG, sprintf("HandlePing(): using saved sync state for '%s' id '%s'", $spa->GetContentClass(), $folderid));
                     }
 
                 }
                 if(!self::$decoder->getElementEndTag())
                     return false;
+
+                // update pingable flags
+                foreach ($sc as $folderid => $spa) {
+                    // if the folderid is in $pingable, we should ping it, else remove the flag
+                    if (in_array($folderid, $pingable)) {
+                        $spa->SetPingableFlag(true);
+                    }
+                    else  {
+                        $spa->DelPingableFlag();
+                    }
+                }
             }
             if(!self::$decoder->getElementEndTag())
                 return false;
@@ -147,10 +163,18 @@ class Ping extends RequestProcessor {
             foreach ($sc as $folderid => $spa)
                 $sc->SaveCollection($spa);
         } // END SYNC_PING_PING
+        else {
+            // if no ping initialization data was sent, we check if we have pingable folders
+            // if not, we indicate that there is nothing to do.
+            if (! $sc->PingableFolders()) {
+                $pingstatus = SYNC_PINGSTATUS_FAILINGPARAMS;
+                ZLog::Write(LOGLEVEL_DEBUG, "HandlePing(): no pingable folders found and no initialization data sent. Returning SYNC_PINGSTATUS_FAILINGPARAMS.");
+            }
+        }
 
         // Check for changes on the default LifeTime, set interval and ONLY on pingable collections
         try {
-            if (empty($fakechanges)) {
+            if (!$pingstatus && empty($fakechanges)) {
                 $foundchanges = $sc->CheckForChanges($sc->GetLifetime(), $interval, true);
             }
         }
@@ -163,7 +187,12 @@ class Ping extends RequestProcessor {
                     $pingstatus = SYNC_PINGSTATUS_FOLDERHIERSYNCREQUIRED;
                     self::$deviceManager->AnnounceProcessStatus(false, $pingstatus);
                     break;
-
+                case SyncCollections::OBSOLETE_CONNECTION:
+                    $foundchanges = false;
+                    break;
+                case SyncCollections::HIERARCHY_CHANGED:
+                    $pingstatus = SYNC_PINGSTATUS_FOLDERHIERSYNCREQUIRED;
+                    break;
             }
         }
 

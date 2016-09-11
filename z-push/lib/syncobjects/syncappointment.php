@@ -10,7 +10,7 @@
 *
 * Created   :   05.09.2011
 *
-* Copyright 2007 - 2012 Zarafa Deutschland GmbH
+* Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -66,7 +66,7 @@ class SyncAppointment extends SyncObject {
     public $attendees;
     public $body;
     public $bodytruncated;
-    public $exception;
+    public $exceptions;
     public $deleted;
     public $exceptionstarttime;
     public $categories;
@@ -123,9 +123,10 @@ class SyncAppointment extends SyncObject {
                     // 1 = Tentative
                     // 2 = Busy
                     // 3 = Out of office
+                    // 4 = Working Elsewhere
                     SYNC_POOMCAL_BUSYSTATUS                             => array (  self::STREAMER_VAR      => "busystatus",
                                                                                     self::STREAMER_CHECKS   => array(   self::STREAMER_CHECK_REQUIRED   => self::STREAMER_CHECK_SETTWO,
-                                                                                                                        self::STREAMER_CHECK_ONEVALUEOF => array(0,1,2,3) )),
+                                                                                                                        self::STREAMER_CHECK_ONEVALUEOF => array(0,1,2,3,4) )),
 
                     SYNC_POOMCAL_ALLDAYEVENT                            => array (  self::STREAMER_VAR      => "alldayevent",
                                                                                     self::STREAMER_CHECKS   => array(   self::STREAMER_CHECK_ZEROORONE      => self::STREAMER_CHECK_SETZERO)),
@@ -209,8 +210,8 @@ class SyncAppointment extends SyncObject {
             }
         }
 
-        // do not sync a recurrent appointment without a timezone
-        if (isset($this->recurrence) && !isset($this->timezone)) {
+        // do not sync a recurrent appointment without a timezone (except all day events)
+        if (isset($this->recurrence) && !isset($this->timezone) && empty($this->alldayevent)) {
             ZLog::Write(LOGLEVEL_ERROR, "SyncAppointment->Check(): timezone for a recurring appointment is not set.");
             return false;
         }
