@@ -21,7 +21,7 @@ textarea {font-family:Arial,Helvetica,sans-serif;font-size:10pt}
 #footer {margin:45px 0 0;padding:20px 0;clear:both;}
 
 ul {list-style:none;}
-ul li {display:inline;}
+ul li {display:inline; text-transform: capitalize;}
 #footer ul li {display:block;}
 
 label {margin-right:0.5em;width:10em;float:left;text-align:left;display:block;}
