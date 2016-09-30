@@ -14,7 +14,10 @@ function add($value, $prefix = "") {
 
 function addPhone($phone, $prefix = "") {
 
-  global $default_provider, $providers;
+  global $default_provider, $providers, $asterisk_integration;
+  
+  //var to save the original phone before lookups
+  $inphone = $phone;
 
   if($phone != "" && !isset($_GET["print"]) && isset($providers)) {
 
@@ -34,6 +37,15 @@ function addPhone($phone, $prefix = "") {
   	if(count($links) > 1) {
   	  $phone .= " (".implode(", ", $links).")";
   	}
+  	
+  	
+  	if ($asterisk_integration) {
+        	//asterisk click to call integration - inline background request
+            $phone .= " <a href=\"#\" onClick=\"javascript: var xmlHttp = null; xmlHttp = new XMLHttpRequest();  xmlHttp.open( 'GET', 'asterisk_c2c.php?b_number=$inphone', false ); xmlHttp.send( null ); return false;\" >";    
+            $phone .= "<img src=\"icons/phonecall.png\" >";
+            $phone .= "</a>";
+  	}
+  	
   }
 	return add($phone, $prefix);
 }

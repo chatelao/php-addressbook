@@ -58,4 +58,7 @@
   // Disable HTTP-Compression with 0
   $compression_level = 2;
   
+  // Asterisk integration
+  $asterisk_integration = true;
+  
 ?>
