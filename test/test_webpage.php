@@ -14,12 +14,7 @@ class TestReadWebpage extends WebTestCase {
     }
 
     function setUp() {
-		  $this->book_root_url = 
-		     (    isset($_SERVER['HTTPS']) 
-		      && strlen($_SERVER['HTTPS']) > 0 ? "https" : "http")
-		    . "://"
-		    . $_SERVER['SERVER_NAME']
-			  . dirname($_SERVER['REQUEST_URI']);
+		  $this->book_root_url = "http://localhost";
 
 			  $this->get( $this->book_root_url
 			            . "/index.php?lang=en" );
