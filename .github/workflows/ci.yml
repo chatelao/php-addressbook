@@ -1,0 +1,41 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-versions: ['5.4', '5.5', '7.0']
+    services:
+      mysql:
+        image: mysql:5.5
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-versions }}
+
+    - name: Install MySQL client
+      run: sudo apt-get install -y mysql-client
+
+    - name: Setup database
+      run: |
+        mysql -h 127.0.0.1 -u root -proot -e "DROP DATABASE IF EXISTS addressbook;"
+        mysql -h 127.0.0.1 -u root -proot -e "CREATE DATABASE addressbook;"
+        mysql -h 127.0.0.1 -u root -proot addressbook < addressbook.sql
+
+    - name: Configure database
+      run: cp .github-offline/db.config.php config/cfg.db.php
+
+    - name: Run tests
+      run: php test/index.php
