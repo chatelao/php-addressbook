@@ -31,14 +31,21 @@ jobs:
         mysql database: 'test'
         mysql root password: 'root'
 
+    - name: Start PHP web server
+      run: php -S localhost:8000 -t . > php-server.log 2>&1 & echo $! > server.pid
+
     - name: Run tests
-      run: php test/index.php
+      run: php test/run_web_tests.php
       env:
         DB_HOST: 127.0.0.1
         DB_PORT: 3306
         DB_DATABASE: test
         DB_USERNAME: root
         DB_PASSWORD: root
+
+    - name: Stop PHP web server
+      if: always()
+      run: kill $(cat server.pid)
 
   package:
     runs-on: ubuntu-latest
