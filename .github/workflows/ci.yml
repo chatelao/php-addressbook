@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-versions: ['5.4', '5.5', '7.0', '8.0']
+        mysql-version: ['5.5', '5.6', '5.7']
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-versions }}
+
+    - name: Start MySQL
+      uses: mirromutth/mysql-action@v1.1
+      with:
+        mysql-version: ${{ matrix.mysql-version }}
+        mysql-database: 'test'
+        mysql-root-password: 'root'
+
+    - name: Run tests
+      run: php test/index.php
+      env:
+        DB_HOST: 127.0.0.1
+        DB_PORT: 3306
+        DB_DATABASE: test
+        DB_USERNAME: root
+        DB_PASSWORD: root
