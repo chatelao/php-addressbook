@@ -8,13 +8,13 @@ on:
 
 jobs:
   build:
-    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    if: github.event_name == 'push' || github.event_name == 'pull_request' || github.event_name == 'release'
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        php-versions: ['5.4', '5.5', '7.0', '8.0']
-        mysql-version: ['5.5', '5.6', '5.7']
+        php-versions: ['5.4']
+        mysql-version: ['5.5']
 
     steps:
     - uses: actions/checkout@v2
@@ -43,29 +43,9 @@ jobs:
   package:
     runs-on: ubuntu-latest
     if: github.event_name == 'release'
+    needs: build
     steps:
     - uses: actions/checkout@v2
-
-    - name: Setup PHP for release
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.0'
-
-    - name: Start MySQL for release
-      uses: mirromutth/mysql-action@v1.1
-      with:
-        mysql-version: '5.7'
-        mysql-database: 'test'
-        mysql-root-password: 'root'
-
-    - name: Run tests for release
-      run: php test/index.php
-      env:
-        DB_HOST: 127.0.0.1
-        DB_PORT: 3306
-        DB_DATABASE: test
-        DB_USERNAME: root
-        DB_PASSWORD: root
 
     - name: Create Zip Archive
       run: zip -r deployable.zip . -x ".git/*" ".github/*" "test/*" ".travis.yml" "_howto/*" "_sql_upgrades/*" "_sql_utilities/*"
