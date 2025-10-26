@@ -27,6 +27,9 @@ jobs:
       with:
         php-version: ${{ matrix.php-versions }}
 
+    - name: Fix broken dependencies
+      run: sudo apt-get install -f -y
+
     - name: Update apt-get
       run: sudo apt-get update
 
