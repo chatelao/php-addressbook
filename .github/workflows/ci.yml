@@ -45,5 +45,24 @@ jobs:
     - name: Configure database
       run: cp .github-offline/db.config.php config/cfg.db.php
 
+    - name: Start PHP web server
+      run: php -S localhost:8000 -t . &
+
     - name: Run tests
-      run: php test/index.php
+      run: |
+        sleep 3 # Give server time to start
+        # Fetch the test page, show output, and fail if "FAILURES!!!" is present.
+        curl -s --fail http://localhost:8000/test/index.php | tee /tmp/test_output.txt
+        if ! grep -q "Passes:" /tmp/test_output.txt; then
+          echo "::error::Test output did not contain 'Passes:'. The test runner likely failed."
+          exit 1
+        fi
+        if grep -q "FAILURES!!!" /tmp/test_output.txt; then
+          echo "::error::Test suite reported failures."
+          exit 1
+        fi
+        echo "All tests passed!"
+
+    - name: Stop PHP web server
+      if: always()
+      run: pkill -f "php -S localhost:8000" || true
