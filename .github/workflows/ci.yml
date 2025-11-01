@@ -1,0 +1,42 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-versions: ['5.4', '5.5', '7.0']
+
+    services:
+      mysql:
+        image: mysql:5.5
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-versions }}
+        extensions: mysqli
+
+    - name: Setup Database
+      run: |
+        mysql -h 127.0.0.1 -u root -proot -e "CREATE DATABASE addressbook;"
+        mysql -h 127.0.0.1 -u root -proot addressbook < addressbook.sql
+
+    - name: Run tests
+      run: |
+        cp .github-offline/db.config.php config/cfg.db.php
+        php -S localhost:8000 -t . &
+        sleep 5
+        export SERVER_NAME="localhost:8000"
+        export REQUEST_URI="/index.php"
+        php test/index.php
