@@ -86,10 +86,10 @@ FROM $month_lookup,
 $base_from_where AND $table.bmonth = $month_lookup.bmonth AND $table.bday > 0
 ORDER BY prio ASC;";
 
-	$result = mysql_query($sql);
-	$resultsnumber = mysql_num_rows($result);
+	$result = mysqli_query($db,$sql);
+	$resultsnumber = mysqli_num_rows($result);
 
-	while ($myrow = mysql_fetch_array($result))
+	while ($myrow = mysqli_fetch_array($result))
 	{
 		$firstname  = $myrow["firstname"];
 		$id         = $myrow["id"];
@@ -128,11 +128,11 @@ ORDER BY prio ASC;";
 
       // Last year
       //* -- commented to reduce traffic
-      $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y')-1,0);
+      $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y')-1);
       Birthday2vCal($date, $addr->getBirthday()->getAge());
       //*/
 
-      $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y'),0);
+      $date = gmmktime(0,0,0,$bmonth_num,$bday,date('Y'));
       Birthday2vCal($date, $addr->getBirthday()->getAge(1));
 
       // Next year

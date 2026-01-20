@@ -9,7 +9,7 @@
 *
 * Created   :   09.09.2011
 *
-* Copyright 2007 - 2013 Zarafa Deutschland GmbH
+* Copyright 2007 - 2011 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -54,7 +54,7 @@ class SyncBaseAttachment extends SyncObject {
     public $contentlocation;
     public $isinline;
 
-    function SyncBaseAttachment() {
+    function __construct() {
         $mapping = array(
                     SYNC_AIRSYNCBASE_DISPLAYNAME                        => array (self::STREAMER_VAR        => "displayname"),
                     SYNC_AIRSYNCBASE_FILEREFERENCE                      => array (self::STREAMER_VAR        => "filereference"),

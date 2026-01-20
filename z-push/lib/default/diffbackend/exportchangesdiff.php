@@ -7,7 +7,7 @@
 *
 * Created   :   02.01.2012
 *
-* Copyright 2007 - 2013 Zarafa Deutschland GmbH
+* Copyright 2007 - 2012 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -45,6 +45,8 @@
 class ExportChangesDiff extends DiffState implements IExportChanges{
     private $importer;
     private $folderid;
+    private $contentparameters;
+    private $cutoffdate;
     private $changes;
     private $step;
 
@@ -57,9 +59,23 @@ class ExportChangesDiff extends DiffState implements IExportChanges{
      * @access public
      * @throws StatusException
      */
-    public function ExportChangesDiff($backend, $folderid) {
+    public function __construct($backend, $folderid) {
         $this->backend = $backend;
         $this->folderid = $folderid;
+    }
+
+    /**
+     * Configures additional parameters used for content synchronization
+     *
+     * @param ContentParameters         $contentparameters
+     *
+     * @access public
+     * @return boolean
+     * @throws StatusException
+     */
+    public function ConfigContentParameters($contentparameters) {
+        $this->contentparameters = $contentparameters;
+        $this->cutoffdate = Utils::GetCutOffDate($contentparameters->GetFilterType());
     }
 
     /**
@@ -110,7 +126,7 @@ class ExportChangesDiff extends DiffState implements IExportChanges{
             $this->changes = $this->getDiffTo($folderlist);
         }
 
-        ZLog::Write(LOGLEVEL_INFO, sprintf("ExportChangesDiff->InitializeExporter(): Found '%d' changes for '%s'", count($this->changes), ($this->folderid)?$this->folderid : 'hierarchy' ));
+        ZLog::Write(LOGLEVEL_INFO, sprintf("ExportChangesDiff->InitializeExporter(): Found '%d' changes", count($this->changes) ));
     }
 
     /**

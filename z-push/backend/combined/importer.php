@@ -6,7 +6,7 @@
 *
 * Created   :   11.05.2010
 *
-* Copyright 2007 - 2013 Zarafa Deutschland GmbH
+* Copyright 2007 - 2011 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -55,7 +55,7 @@ class ImportChangesCombined implements IImportChanges {
      *
      * @access public
      */
-    public function ImportChangesCombined(&$backend, $folderid = false, $icc = false) {
+    public function __construct(&$backend, $folderid = false, $icc = false) {
         $this->backend = $backend;
         $this->folderid = $folderid;
         $this->icc = &$icc;
@@ -169,7 +169,7 @@ class ImportChangesCombined implements IImportChanges {
     public function ImportFolderChange($folder) {
         $id = $folder->serverid;
         $parent = $folder->parentid;
-        ZLog::Write(LOGLEVEL_DEBUG, sprintf("ImportChangesCombined->ImportFolderChange() id: '%s', parent: '%s'", $id, $parent));
+        ZLog::Write(LOGLEVEL_DEBUG, "ImportChangesCombined->ImportFolderChange() ".print_r($folder, 1));
         if($parent == '0') {
             if($id) {
                 $backendid = $this->backend->GetBackendId($id);
@@ -251,26 +251,6 @@ class ImportChangesCombined implements IImportChanges {
         ZLog::Write(LOGLEVEL_DEBUG, 'ImportChangesCombined->Config() success');
     }
 
-
-    /**
-     * Configures additional parameters used for content synchronization
-     *
-     * @param ContentParameters         $contentparameters
-     *
-     * @access public
-     * @return boolean
-     * @throws StatusException
-     */
-    public function ConfigContentParameters($contentparameters) {
-        ZLog::Write(LOGLEVEL_DEBUG, "ImportChangesCombined->ConfigContentParameters()");
-        if (!$this->icc) {
-            ZLog::Write(LOGLEVEL_ERROR, "ImportChangesCombined->ConfigContentParameters() icc not configured");
-            return false;
-        }
-        $this->icc->ConfigContentParameters($contentparameters);
-        ZLog::Write(LOGLEVEL_DEBUG, "ImportChangesCombined->ConfigContentParameters() success");
-    }
-
     /**
      * Reads and returns the current state
      *
@@ -306,7 +286,7 @@ class ImportHierarchyChangesCombinedWrap {
      *
      * @access public
      */
-    public function ImportHierarchyChangesCombinedWrap($backendid, &$backend, &$ihc) {
+    public function __construct($backendid, &$backend, &$ihc) {
         ZLog::Write(LOGLEVEL_DEBUG, "ImportHierarchyChangesCombinedWrap->ImportHierarchyChangesCombinedWrap('$backendid',...)");
         $this->backendid = $backendid;
         $this->backend =& $backend;

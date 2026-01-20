@@ -6,7 +6,7 @@
 *
 * Created   :   20.10.2011
 *
-* Copyright 2007 - 2013 Zarafa Deutschland GmbH
+* Copyright 2007 - 2011 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -48,7 +48,7 @@ class PingTracking extends InterProcessData {
      *
      * @access public
      */
-    public function PingTracking() {
+    public function __construct() {
         // initialize super parameters
         $this->allocate = 512000; // 500 KB
         $this->type = 2;

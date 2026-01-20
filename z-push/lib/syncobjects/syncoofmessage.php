@@ -10,7 +10,7 @@
 *
 * Created   :   08.11.2011
 *
-* Copyright 2007 - 2013 Zarafa Deutschland GmbH
+* Copyright 2007 - 2011 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -53,7 +53,7 @@ class SyncOOFMessage extends SyncObject {
     public $replymessage;
     public $bodytype;
 
-    public function SyncOOFMessage() {
+    public function __construct() {
         $mapping = array (
             //only one of the following 3 apply types will be available
             SYNC_SETTINGS_APPLIESTOINTERVAL             => array (  self::STREAMER_VAR      => "appliesToInternal",

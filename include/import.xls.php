@@ -7,7 +7,7 @@ class ImportXls extends ImportDel {
 
   protected $ab = array();
 
-  function ImportXls($filename) {
+  function __construct($filename) {
     
     //
     // Load the Excel data to array

@@ -10,7 +10,7 @@
 *
 * Created   :   16.01.2012
 *
-* Copyright 2007 - 2013 Zarafa Deutschland GmbH
+* Copyright 2007 - 2012 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -53,7 +53,7 @@ class SyncNote extends SyncObject {
     public $messageclass;
     public $subject;
 
-    function SyncNote() {
+    function __construct() {
         $mapping = array(
                     SYNC_AIRSYNCBASE_BODY                               => array (  self::STREAMER_VAR      => "asbody",
                                                                                     self::STREAMER_TYPE     => "SyncBaseBody"),

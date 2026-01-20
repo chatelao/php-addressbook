@@ -81,8 +81,9 @@ class AuthLoginFactory {
 	static function getBestLogin($required_roles = array()) {
 
     global $iplist, $blacklist, $userlist, $db, $usertable, $use_sso;
-
-    if((!isset($login) || !$login->hasRoles()) && isset($userlist)) {
+    
+//    if((!isset($login) || !$login->hasRoles()) && isset($userlist)) { // Workaround with PHP 7.1, cause (yet) unknown
+    if(!isset($login) && isset($userlist)) {
       $login = new AuthLoginUserList($userlist);
     }
     if((!isset($login) || !$login->hasRoles()) && isset($usertable)) {
@@ -408,11 +409,11 @@ class AuthLoginDb extends AuthLoginUserPass {
 	  	$uin = $this->getUIN();
 			$sql = "select * from ".$table
 			      ." where md5(concat(username,md5_pass,'".$this->getIpDate()."'))"
-			          ." = '".mysql_real_escape_string($uin)."'";
+			          ." = '".mysqli_real_escape_string($db_conn, $uin)."'";
 
-      $result = mysql_query($sql);
-      $rec = mysql_fetch_array($result);
-      $cnt = mysql_numrows($result);
+      $result = mysqli_query($db_conn,$sql);
+      $rec = mysqli_fetch_array($result);
+      $cnt = mysqli_num_rows($result);
 	  }
 	  	 
 	  //
@@ -425,13 +426,13 @@ class AuthLoginDb extends AuthLoginUserPass {
 			$md5_pass_lower = md5(strtolower($this->getPassWord()));
 
 			$sql = "select user_id, domain_id, username, md5_pass from ".$table
-			      ." where username in ('".mysql_real_escape_string($username)."','"
-			                              .mysql_real_escape_string($username_lower)."')"
+			      ." where username in ('".mysqli_real_escape_string($username)."','"
+			                              .mysqli_real_escape_string($username_lower)."')"
 			        ." and md5_pass in ('".$md5_pass."','".$md5_pass_lower."');";
 
-      $result = mysql_query($sql);
-      $rec = mysql_fetch_array($result);
-      $cnt = mysql_numrows($result);      
+      $result = mysqli_query($db,$sql);
+      $rec = mysqli_fetch_array($result);
+      $cnt = mysqli_num_rows($result);      
     }
 	  
     if($cnt == 1) {
@@ -498,9 +499,9 @@ class AuthHybrid extends AuthLoginDb {
            $sql = "select user_id, domain_id, username, md5_pass from ".$table
                 ." where sso_".strtolower($provider)."_uid = '".$provider_uid."';";
            
-           $result = mysql_query($sql);
-           $rec = mysql_fetch_array($result);
-           $cnt = mysql_numrows($result);      
+           $result = mysqli_query($db,$sql);
+           $rec = mysqli_fetch_array($result);
+           $cnt = mysqli_num_rows($result);      
 
         if($cnt == 1) {
     		  $this->user_id  = $rec['user_id'];

@@ -6,7 +6,7 @@
 *
 * Created   :   06.02.2012
 *
-* Copyright 2007 - 2013 Zarafa Deutschland GmbH
+* Copyright 2007 - 2012 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -48,15 +48,15 @@ class ZPushException extends Exception {
     protected $httpHeaders = array();
     protected $showLegal = true;
 
-    public function ZPushException($message = "", $code = 0, $previous = NULL, $logLevel = false) {
+    public function __construct($message = "", $code = 0, $previous = NULL, $logLevel = false) {
         if (! $message)
             $message = $this->httpReturnMessage;
 
         if (!$logLevel)
             $logLevel = $this->defaultLogLevel;
 
+        ZLog::Write($logLevel, get_class($this) .': '. $message . ' - code: '.$code);
         parent::__construct($message, (int) $code);
-        ZLog::Write($logLevel, get_class($this) .': '. $message . ' - code: '.$code. ' - file: '. $this->getFile().':'.$this->getLine(), false);
     }
 
     public function getHTTPCodeString() {

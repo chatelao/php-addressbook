@@ -9,7 +9,7 @@
 *
 * Created   :   09.09.2011
 *
-* Copyright 2007 - 2013 Zarafa Deutschland GmbH
+* Copyright 2007 - 2011 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -60,7 +60,7 @@ class SyncMailFlags extends SyncObject {
     public $subordinaldate;
 
 
-    function SyncMailFlags() {
+    function __construct() {
         $mapping = array(
                     SYNC_POOMTASKS_SUBJECT                              => array (  self::STREAMER_VAR      => "subject"),
                     SYNC_POOMMAIL_FLAGSTATUS                            => array (  self::STREAMER_VAR      => "flagstatus"),

@@ -8,7 +8,7 @@
 *
 * Created   :   03.08.2010
 *
-* Copyright 2007 - 2013 Zarafa Deutschland GmbH
+* Copyright 2007 - 2011 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -57,7 +57,7 @@ class BackendSearchLDAP implements ISearchProvider {
      * @return
      * @throws StatusException
      */
-    public function BackendSearchLDAP() {
+    public function __construct() {
         if (!function_exists("ldap_connect"))
             throw new StatusException("BackendSearchLDAP(): php-ldap is not installed. Search aborted.", SYNC_SEARCHSTATUS_STORE_SERVERERROR, null, LOGLEVEL_FATAL);
 
@@ -138,7 +138,7 @@ class BackendSearchLDAP implements ISearchProvider {
             $querycnt = $searchresult['count'];
             //do not return more results as requested in range
             $querylimit = (($rangeend + 1) < $querycnt) ? ($rangeend + 1) : $querycnt;
-            $items['range'] = $rangestart.'-'.($querylimit-1);
+            $items['range'] = $rangestart.'-'.($querycnt-1);
             $items['searchtotal'] = $querycnt;
 
             $rc = 0;

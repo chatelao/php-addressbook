@@ -7,7 +7,7 @@
 *
 * Created   :   02.01.2012
 *
-* Copyright 2007 - 2013 Zarafa Deutschland GmbH
+* Copyright 2007 - 2012 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -54,7 +54,7 @@ class ImportChangesDiff extends DiffState implements IImportChanges {
      * @access public
      * @throws StatusException
      */
-    public function ImportChangesDiff($backend, $folderid = false) {
+    public function __construct($backend, $folderid = false) {
         $this->backend = $backend;
         $this->folderid = $folderid;
     }
@@ -107,7 +107,7 @@ class ImportChangesDiff extends DiffState implements IImportChanges {
                 throw new StatusException(sprintf("ImportChangesDiff->ImportMessageChange('%s','%s'): Conflict detected. Data from PIM will be dropped! Server overwrites PIM. User is informed.", $id, get_class($message)), SYNC_STATUS_CONFLICTCLIENTSERVEROBJECT, null, LOGLEVEL_INFO);
         }
 
-        $stat = $this->backend->ChangeMessage($this->folderid, $id, $message, $this->contentparameters);
+        $stat = $this->backend->ChangeMessage($this->folderid, $id, $message);
 
         if(!is_array($stat))
             throw new StatusException(sprintf("ImportChangesDiff->ImportMessageChange('%s','%s'): unknown error in backend", $id, get_class($message)), SYNC_STATUS_SYNCCANNOTBECOMPLETED);
@@ -148,7 +148,7 @@ class ImportChangesDiff extends DiffState implements IImportChanges {
             return false;
         }
 
-        $stat = $this->backend->DeleteMessage($this->folderid, $id, $this->contentparameters);
+        $stat = $this->backend->DeleteMessage($this->folderid, $id);
         if(!$stat)
             throw new StatusException(sprintf("ImportChangesDiff->ImportMessageDeletion('%s'): Unknown error in backend", $id), SYNC_STATUS_OBJECTNOTFOUND);
 
@@ -177,7 +177,7 @@ class ImportChangesDiff extends DiffState implements IImportChanges {
         $change["flags"] = $flags;
         $this->updateState("flags", $change);
 
-        $stat = $this->backend->SetReadFlag($this->folderid, $id, $flags, $this->contentparameters);
+        $stat = $this->backend->SetReadFlag($this->folderid, $id, $flags);
         if (!$stat)
             throw new StatusException(sprintf("ImportChangesDiff->ImportMessageReadFlag('%s','%s'): Error, unable retrieve message from backend", $id, $flags), SYNC_STATUS_OBJECTNOTFOUND);
 
@@ -199,7 +199,7 @@ class ImportChangesDiff extends DiffState implements IImportChanges {
         if ($this->folderid == SYNC_FOLDER_TYPE_DUMMY || $newfolder == SYNC_FOLDER_TYPE_DUMMY)
             throw new StatusException(sprintf("ImportChangesDiff->ImportMessageMove('%s'): can not be done on a dummy folder", $id), SYNC_MOVEITEMSSTATUS_CANNOTMOVE);
 
-        return $this->backend->MoveMessage($this->folderid, $id, $newfolder, $this->contentparameters);
+        return $this->backend->MoveMessage($this->folderid, $id, $newfolder);
     }
 
 

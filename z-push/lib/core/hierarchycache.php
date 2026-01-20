@@ -6,7 +6,7 @@
 *
 * Created   :   18.08.2011
 *
-* Copyright 2007 - 2013 Zarafa Deutschland GmbH
+* Copyright 2007 - 2011 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -53,7 +53,7 @@ class HierarchyCache {
      * @access public
      * @return
      */
-    public function HierarchyCache() {
+    public function __construct() {
         $this->cacheById = array();
         $this->cacheByIdOld = $this->cacheById;
         $this->changed = true;

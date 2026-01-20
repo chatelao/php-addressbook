@@ -6,7 +6,7 @@
 *
 * Created   :   01.10.2007
 *
-* Copyright 2007 - 2013 Zarafa Deutschland GmbH
+* Copyright 2007 - 2011 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -56,7 +56,7 @@ class ImportChangesStream implements IImportChanges {
      *
      * @access public
      */
-    public function ImportChangesStream(&$encoder, $class) {
+    public function __construct(&$encoder, $class) {
         $this->encoder = &$encoder;
         $this->objclass = $class;
         $this->classAsString = (is_object($class))?get_class($class):'';
@@ -69,7 +69,6 @@ class ImportChangesStream implements IImportChanges {
      * Implement interface - never used
      */
     public function Config($state, $flags = 0) { return true; }
-    public function ConfigContentParameters($contentparameters) { return true; }
     public function GetState() { return false;}
     public function LoadConflicts($contentparameters, $state) { return true; }
 
@@ -111,23 +110,18 @@ class ImportChangesStream implements IImportChanges {
         if ($message->flags === false || $message->flags === SYNC_NEWMESSAGE)
             $this->encoder->startTag(SYNC_ADD);
         else {
-            // on update of an SyncEmail we only export the flags and categories
-            if($message instanceof SyncMail && ((isset($message->flag) && $message->flag instanceof SyncMailFlags) || isset($message->categories))) {
+            // on update of an SyncEmail we only export the flags
+            if($message instanceof SyncMail && isset($message->flag) && $message->flag instanceof SyncMailFlags) {
                 $newmessage = new SyncMail();
                 $newmessage->read = $message->read;
-                if (isset($message->flag))              $newmessage->flag = $message->flag;
-                if (isset($message->lastverbexectime))  $newmessage->lastverbexectime = $message->lastverbexectime;
-                if (isset($message->lastverbexecuted))  $newmessage->lastverbexecuted = $message->lastverbexecuted;
-                if (isset($message->categories))        $newmessage->categories = $message->categories;
+                $newmessage->flag = $message->flag;
                 $message = $newmessage;
                 unset($newmessage);
-                ZLog::Write(LOGLEVEL_DEBUG, sprintf("ImportChangesStream->ImportMessageChange('%s'): SyncMail message updated. Message content is striped, only flags/categories are streamed.", $id));
+                ZLog::Write(LOGLEVEL_DEBUG, sprintf("ImportChangesStream->ImportMessageChange('%s'): SyncMail message updated. Message content is striped, only flags are streamed.", $id));
             }
 
             $this->encoder->startTag(SYNC_MODIFY);
         }
-
-        // TAG: SYNC_ADD / SYNC_MODIFY
             $this->encoder->startTag(SYNC_SERVERENTRYID);
                 $this->encoder->content($id);
             $this->encoder->endTag();

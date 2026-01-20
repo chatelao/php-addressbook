@@ -10,7 +10,7 @@
 *
 * Created   :   08.11.2011
 *
-* Copyright 2007 - 2013 Zarafa Deutschland GmbH
+* Copyright 2007 - 2011 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -53,7 +53,7 @@ class SyncOOF extends SyncObject {
     public $bodytype;
     public $Status;
 
-    public function SyncOOF() {
+    public function __construct() {
         $mapping = array (
             SYNC_SETTINGS_OOFSTATE      => array (  self::STREAMER_VAR      => "oofstate",
                                                     self::STREAMER_CHECKS   => array(   array(   self::STREAMER_CHECK_ONEVALUEOF => array(0,1,2) ))),

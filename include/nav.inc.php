@@ -7,7 +7,8 @@
 <li>
 	<a href="./<?php echo ($group == "" || $group == "[none]" || $is_fix_group ? "" : "?group=".$group); ?>"><?php echo msg('HOME'); ?></a>
 </li>
-<?php if(! $read_only) { ?>
+<?php if(!$read_only && $public_group_edit && $table_groups != "" && !$is_fix_group) //if(!$read_only) 
+{ ?>
 <li class="all">
 	<a href="edit<?php echo $page_ext; ?>"><?php echo msg('ADD_NEW'); ?></a>
 </li>

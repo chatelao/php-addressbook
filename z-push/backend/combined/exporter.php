@@ -6,7 +6,7 @@
 *
 * Created   :   11.05.2010
 *
-* Copyright 2007 - 2013 Zarafa Deutschland GmbH
+* Copyright 2007 - 2011 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -53,7 +53,7 @@ class ExportChangesCombined implements IExportChanges {
     private $importer;
     private $importwraps;
 
-    public function ExportChangesCombined(&$backend) {
+    public function __construct(&$backend) {
         $this->backend =& $backend;
         $this->exporters = array();
         ZLog::Write(LOGLEVEL_DEBUG, "ExportChangesCombined constructed");
@@ -173,7 +173,7 @@ class ExportChangesCombined implements IExportChanges {
     public function InitializeExporter(&$importer) {
         ZLog::Write(LOGLEVEL_DEBUG, "ExportChangesCombined->InitializeExporter(...)");
         foreach ($this->exporters as $i => $e) {
-            if(!isset($this->importwraps[$i])){
+            if(!isset($this->_importwraps[$i])){
                 $this->importwraps[$i] = new ImportHierarchyChangesCombinedWrap($i, $this->backend, $importer);
             }
             $e->InitializeExporter($this->importwraps[$i]);

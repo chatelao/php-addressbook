@@ -20,7 +20,7 @@
 *
 * Created   :   01.10.2007
 *
-* Copyright 2007 - 2013 Zarafa Deutschland GmbH
+* Copyright 2007 - 2011 Zarafa Deutschland GmbH
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License, version 3,
@@ -64,7 +64,7 @@ abstract class Backend implements IBackend {
      *
      * @access public
      */
-    public function Backend() {
+    public function __construct() {
     }
 
     /**
@@ -91,14 +91,14 @@ abstract class Backend implements IBackend {
 
     /**
      * Indicates which AS version is supported by the backend.
-     * By default AS version 1.4 (ASV_14) is returned (Z-Push 1 standard).
+     * By default AS version 2.5 (ASV_25) is returned (Z-Push 1 standard).
      * Subclasses can overwrite this method to set another AS version
      *
      * @access public
      * @return string       AS version constant
      */
     public function GetSupportedASVersion() {
-        return ZPush::ASV_14;
+        return ZPush::ASV_25;
     }
 
     /*********************************************************************
@@ -188,42 +188,6 @@ abstract class Backend implements IBackend {
         return $settings;
     }
 
-    /**
-     * Resolves recipients
-     *
-     * @param SyncObject        $resolveRecipients
-     *
-     * @access public
-     * @return SyncObject       $resolveRecipients
-     */
-    public function ResolveRecipients($resolveRecipients) {
-        $r = new SyncResolveRecipients();
-        $r->status = SYNC_RESOLVERECIPSSTATUS_PROTOCOLERROR;
-        $r->recipient = array();
-        return $r;
-    }
-
-    /**
-     * Returns the email address and the display name of the user. Used by autodiscover.
-     *
-     * @param string        $username           The username
-     *
-     * @access public
-     * @return Array
-     */
-    public function GetUserDetails($username) {
-        return array('emailaddress' => $username, 'fullname' => $username);
-    }
-
-    /**
-     * Returns the username and store of the currently active user
-     *
-     * @access public
-     * @return Array
-     */
-    public function GetCurrentUsername() {
-        return $this->GetUserDetails(Request::GetAuthUser());
-    }
 
     /**----------------------------------------------------------------------------------------------------------
      * Protected methods for BackendStorage
@@ -304,7 +268,7 @@ abstract class Backend implements IBackend {
         }
         if (isset($this->stateStorage)) {
             try {
-                ZPush::GetDeviceManager()->GetStateManager()->SetBackendStorage($this->stateStorage, StateManager::BACKENDSTORAGE_STATE);
+                $this->storage_state = ZPush::GetDeviceManager()->GetStateManager()->SetBackendStorage($this->stateStorage, StateManager::BACKENDSTORAGE_STATE);
             }
             catch (StateNotYetAvailableException $snyae) { }
             catch(StateNotFoundException $snfe) { }

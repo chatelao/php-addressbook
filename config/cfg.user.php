@@ -14,11 +14,11 @@
   $userlist['simpletest']['domain'] = 9999;
   //*/
 
-  /*  
+   
   // Setup a "readonly" user
   $userlist['view']['pass']  = "apassword";
   $userlist['view']['role']  = "readonly";  
-
+  /* 
   // Setup a user accessing only one group
   $userlist['mygroup']['pass']  = "apassword";
   $userlist['mygroup']['group'] = "My group";
@@ -47,7 +47,7 @@
   $skin_color = "red"; // global skin color, e.g. on login
 
   // blue, brown, green, grey, pink, purple, red, turquoise, yellow
-  $domain[0]['skin'] = "red";
+  $domain[0]['skin'] = "blue";
   $domain[1]['skin'] = "pink";
   $domain[2]['skin'] = "yellow";
 

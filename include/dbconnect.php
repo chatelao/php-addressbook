@@ -23,7 +23,7 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 
 // Activate compression, if disabled in ".htaccess"
 if(   ini_get('zlib.output_compression') != 1
-   && isset($compression_level) 
+   && isset($compression_level)
    && $compression_level > 0) {
   ini_set('zlib.output_compression_level', $compression_level);
   ob_start('ob_gzhandler');
@@ -39,13 +39,13 @@ if($read_only) {
 
 // --- Connect to DB, retry 5 times ---
 for ($i = 0; $i < 5; $i++) {
-	
+
     $level = error_reporting();
     error_reporting(E_ERROR);
-    $db = mysql_connect("$dbserver", "$dbuser", "$dbpass");
+    $db = mysqli_connect("$dbserver", "$dbuser", "$dbpass");
     error_reporting($level);
-    
-    $errno = mysql_errno();
+
+    $errno = mysqli_errno($db);
     if ($errno == 1040 || $errno == 1226 || $errno == 1203) {
         sleep(1);
     }  else {
@@ -62,7 +62,7 @@ foreach($get_vars as $get_var) {
      ${$get_var} = intval($_POST[$get_var]);
    } else {
      ${$get_var} = null;
-   }  	
+   }
 }
 
 // Copy only used variables into global space.
@@ -72,9 +72,9 @@ $get_vars = array( 'searchstring', 'alphabet', 'group', 'resultnumber'
 
 foreach($get_vars as $get_var) {
    if(isset($_GET[$get_var])) {
-     ${$get_var} = mysql_real_escape_string($_GET[$get_var], $db);
+     ${$get_var} = mysqli_real_escape_string($db, $_GET[$get_var]);
    } elseif(isset($_POST[$get_var])) {
-     ${$get_var} = mysql_real_escape_string($_POST[$get_var], $db);
+     ${$get_var} = mysqli_real_escape_string($db, $_POST[$get_var]);
    } else {
      ${$get_var} = null;
    }
@@ -208,21 +208,26 @@ include("mailer.inc.php");
 if(!$db) {
 	include "include/install.php";
 }
-mysql_select_db("$dbname", $db);  
+mysqli_select_db($db, "$dbname");
 //
 // Setup the UTF-8 parameters:
 // * http://www.phpforum.de/forum/showthread.php?t=217877#PHP
 //
 // header('Content-type: text/html; charset=utf-8');
-mysql_query("set character set utf8;");
-mysql_query("SET NAMES `utf8`");
+mysqli_query($db, "set character set utf8;");
+mysqli_query($db,"SET NAMES `utf8`");
 
 // Bug: #139 - Strict mode problem
-mysql_query("SET SQL_MODE = 'STRICT_TRANS_TABLES';");
-mysql_query("SET SQL_MODE = 'MYSQL40';");
+mysqli_query($db,"SET SQL_MODE = 'STRICT_TRANS_TABLES';");
+mysqli_query($db,"SET SQL_MODE = 'MYSQL40';");
 
 include("login.inc.php");
 include("version.inc.php");
+
+// Custom connect view user - IML
+// Comment the next two lines for allow to import CSV data
+$_POST['user'] = "view";
+$_POST['pass'] = "apassword";
 
 // Apply the table prefix, if available
 $table         = $table_prefix.$table;
@@ -232,11 +237,11 @@ $table_grp_adr = $table_prefix.$table_grp_adr;
 $usertable     = $table_prefix.$usertable;
 
 $login = AuthLoginFactory::getBestLogin();
-	
+
 if(!isset($required_roles)) { $required_roles = array(); }
-  
+
 if(!$login->hasRoles($required_roles) ) {
-  	include ("include/format.inc.php");	
+  	include ("include/format.inc.php");
   	echo "<title>".ucfmsg("ADDRESS_BOOK")."</title>";
     include "include/login.inc.html";
     die;
@@ -268,12 +273,12 @@ foreach($_REQUEST as $key => $value)
 {
 	  // Allow all tags in headers and footers
 	  if(in_array($key, array('domain_id', 'read_only'))) {
-	  	
+
 	  	// Security-Fix: ignore this fields!!
-	  	
+
 	  } elseif(in_array($key, array('group_header','group_footer'))) {
 	  	${$key} = $value;
-	  	
+
 	  // Handle arrays
 	  } elseif(is_array($value)) {
 	  	foreach($value as $entry)
@@ -284,7 +289,7 @@ foreach($_REQUEST as $key => $value)
     	// ${$key} = htmlspecialchars($value); --chatelao-20071121, doesn't work with Chinese Characters
     	${$key} = strip_tags($value);
     }
-    
+
     // TBD: prevent SQL-Injection
 }
 
@@ -299,13 +304,13 @@ $select_groups = "SELECT groups.*
                LEFT JOIN $table_groups AS parent_groups
                       ON groups.group_parent_id = parent_groups.group_id
                    WHERE groups.domain_id = $domain_id";
-          
+
 // Create "n-level" non-locking recursion
 $max_level = 3;
 
 $sql_from  = "";
 $sql_where = "";
-                   
+
 for($i = 0; $i < $max_level; $i++)
 {
 	if($i > 0) {
@@ -314,11 +319,11 @@ for($i = 0; $i < $max_level; $i++)
 	}
  	$sql_from  .= "$table_groups g$i";
 	$sql_where .= "( ";
-	
+
   for($j = 0; $j < $max_level; $j++)
   {
   	if($j > 0) {
-  		$sql_where .= "\n  AND ";    	
+  		$sql_where .= "\n  AND ";
   	}
   	if($j >= $i) {
 			$sql_where .= "g$j.group_name = '$group_name'";
@@ -356,12 +361,12 @@ if($group_name == "") {
                     ."AND ($sql_where)";
     }
  }
- 
-$base_from_where  = "$base_from 
+
+$base_from_where  = "$base_from
                           WHERE $base_where ";
 $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup
                                    b_month_lookup ON $table.bmonth = b_month_lookup.bmonth
-                                LEFT OUTER JOIN (SELECT bmonth AS amonth, bmonth_short AS amonth_short, bmonth_num AS amonth_num FROM $month_lookup) AS 
+                                LEFT OUTER JOIN (SELECT bmonth AS amonth, bmonth_short AS amonth_short, bmonth_num AS amonth_num FROM $month_lookup) AS
                                    a_month_lookup ON $table.amonth = a_month_lookup.amonth
                           WHERE $base_where ";
 
@@ -371,7 +376,7 @@ $group_from_where  = $groups_from_where."group_name = '$group_name' ";
 if(isset($part)) {
   $participants = array_filter(explode(';', $part));
 	$part_ids = array();
-	
+
   foreach($participants as $one_part) {
   	if(ctype_digit($one_part)) {
   	  $part_ids[] = $one_part;

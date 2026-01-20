@@ -43,7 +43,7 @@ switch($skin_color) {
     break;
 }
 ?>		
-    body {background-image:url('./skins/header-<?php echo $skin_color; ?>.jpg');background-repeat:repeat-x;background-position:top left;}
+    body {background-image:url('./skins/header-<?php echo $skin_color; ?>1.jpg');background-repeat:repeat-x;background-position:top left;}
     table#maintable th {text-align:center;border:1px solid #ccc;font-size:12px;background:<?php echo $skin_mt_color; ?>;color:#fff;}
     table#birthdays th {color:#fff;background:<?php echo $skin_mt_color; ?>;margin:25px;border:1px solid #ccc;}
 		<?php include "style.css"; ?>
@@ -51,7 +51,7 @@ switch($skin_color) {
 	<!--[if !IE]>-->
 	<link media="only screen and (max-device-width: 480px)" rel="stylesheet" type="text/css" href="iphone.css"/>
 	<!--<![endif]-->
-	<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+	<meta name="viewport" content="width=320, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 
 
 	<link rel="icon" type="image/png" href="<?php echo $url_images; ?>icons/font.png" />

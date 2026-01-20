@@ -19,6 +19,7 @@
 			<div id="header">
 				<h1><a href=".">Address Book</a></h1>
 				<a href="."><img src="<?php echo $url_images; ?>title_x2.png" width=340 height=75 title="Addressbook" alt="Addressbook" id="logo" /></a>
+				
 			</div>
 			<div id="nav">
       			<?php include("include/nav.inc.php"); ?>
@@ -28,8 +29,8 @@
 <?php 
 	if($group_name != "") {  
 		$sql="SELECT * FROM $table_groups WHERE group_name = '$group_name'";
-		$result = mysql_query($sql);
-		$group_myrow = mysql_fetch_array($result);
+		$result = mysqli_query($db,$sql);
+		$group_myrow = mysqli_fetch_array($result);
 		echo $group_myrow['group_header'];
 	}
 ?>
