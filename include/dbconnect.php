@@ -220,7 +220,7 @@ mysql_query("SET NAMES `utf8`");
 
 // Bug: #139 - Strict mode problem
 mysql_query("SET SQL_MODE = 'STRICT_TRANS_TABLES';");
-mysql_query("SET SQL_MODE = 'MYSQL40';");
+// mysql_query("SET SQL_MODE = 'MYSQL40';");
 
 include("login.inc.php");
 include("version.inc.php");

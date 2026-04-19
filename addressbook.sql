@@ -47,7 +47,7 @@ CREATE TABLE addressbook (
   x_activesync mediumtext,
   created datetime default NULL,
   modified datetime default NULL,
-  deprecated datetime default NULL,
+  deprecated datetime NOT NULL DEFAULT "1000-01-01 00:00:00",
   password varchar(256) default NULL,
   login date default NULL,
   role varchar(256) default NULL,
@@ -61,7 +61,7 @@ CREATE TABLE group_list (
   `group_parent_id` int(9) default NULL,
   `created` datetime default NULL,
   `modified` datetime default NULL,
-  `deprecated` datetime default NULL,
+  `deprecated` datetime NOT NULL DEFAULT "1000-01-01 00:00:00",
   `group_name` varchar(255) NOT NULL default '',
   `group_header` mediumtext NOT NULL,
   `group_footer` mediumtext NOT NULL,
@@ -74,7 +74,7 @@ CREATE TABLE address_in_groups (
   `group_id` int(9) unsigned NOT NULL default 0,
   `created` datetime default NULL,
   `modified` datetime default NULL,
-  `deprecated` datetime default NULL,
+  `deprecated` datetime NOT NULL DEFAULT "1000-01-01 00:00:00",
   PRIMARY KEY (`group_id`,`id`, deprecated)
 ) DEFAULT CHARSET=utf8;
 
@@ -126,6 +126,6 @@ CREATE TABLE users (
   `trials` int(11) NOT NULL DEFAULT '0',
    created datetime default NULL,
    modified datetime default NULL,
-   deprecated datetime default NULL,
+   deprecated datetime NOT NULL DEFAULT "1000-01-01 00:00:00",
   PRIMARY KEY (`user_id`)
 ) DEFAULT CHARSET=utf8;

@@ -25,10 +25,10 @@ $choose_lang = false;
 if(getPref('lang') != NULL) {
   	$lang = getPref('lang');
 } else {
-  if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+  if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && is_string($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
     $lang = $trans->getBestAcceptLang($_SERVER['HTTP_ACCEPT_LANGUAGE']);
   } else {
-  	$lang = $trans->getBestAcceptLang(array());
+	$lang = $trans->getBestAcceptLang("");
   }
 }
 $trans->setDefaultLang($lang);
