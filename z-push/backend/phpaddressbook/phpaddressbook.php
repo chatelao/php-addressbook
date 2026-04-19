@@ -11,6 +11,7 @@
 *
 * Consult LICENSE file for details
 ************************************************/
+require_once(dirname(__FILE__).DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."include".DIRECTORY_SEPARATOR."mysql_shim.php");
 include_once('lib/default/diffbackend/diffbackend.php');
 ini_set("memory_limit", "128M");
 

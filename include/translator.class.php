@@ -43,7 +43,7 @@ abstract class Translator {
 	}
 	
 	function getLangFromLocale($locale) {
-		return substr($accept_lang, 0, 2);
+		return substr($locale, 0, 2);
 	}
 
   //
@@ -52,9 +52,11 @@ abstract class Translator {
   //
 	function getBestAcceptLang($accepted_languages) {
 		
+    if($accepted_languages == "") return $this->getDefaultLang();
+
     // Extract all available locales
 		$accept_languages = explode(',', strtolower($accepted_languages));
-		$accepted_languages = array();
+		$langs_with_weights = array();
 
     // Extract foreach locale the "affection"
     foreach($accept_languages as $accept_lang) {
@@ -63,17 +65,17 @@ abstract class Translator {
     	$lang_name   = substr($accept_lang, 0, 2);
     	
     	// Memorize the highst acceptance for the language (e.g.: en_us=0.8,en_uk=0.6)
-    	if(   !isset($accepted_languages[$lang_name])
-    	   || $accepted_languages[$lang_name] < $lang_weight) {
-    	  $accepted_languages[$lang_name] = $lang_weight;
+	if(   !isset($langs_with_weights[$lang_name])
+	   || $langs_with_weights[$lang_name] < $lang_weight) {
+	  $langs_with_weights[$lang_name] = $lang_weight;
     	}
     }
     
     // Sort by priorities
-    arsort($accepted_languages);    
+    arsort($langs_with_weights);
     
     // Return the best matching language
-    foreach($accepted_languages as $curr_lang => $curr_weight) {
+    foreach($langs_with_weights as $curr_lang => $curr_weight) {
       if(in_array($curr_lang, $this->getSupportedLangs())) {
       	return $curr_lang;
       }
@@ -117,7 +119,7 @@ abstract class Translator {
       } else { // Backward compatiblity
       	$msg = ucfirst($msg);
       }
-  	  $ucf_messages[$value] = $msg; // write to cache
+	  $this->ucf_messages[$lang][$value] = $msg; // write to cache
   	}
   	
   	return $msg;
@@ -173,6 +175,7 @@ class GetTextTranslator extends Translator {
 
 	function __construct() {
 		parent::__construct(); 
+        $this->setDefaultLang("en");
 		
 		$this->directory = dirname(__FILE__).'/../translations/LOCALES';		
 

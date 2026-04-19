@@ -1,4 +1,5 @@
 <?php
+require_once(dirname(__FILE__).DIRECTORY_SEPARATOR."mysql_shim.php");
 /*
  * Core file for library and parameter handling:
  *
