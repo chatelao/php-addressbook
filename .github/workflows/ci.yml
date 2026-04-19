@@ -11,7 +11,15 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        php: [ '5.4', '5.5', '5.6', '7.0' ]
+        include:
+          - php: '5.4'
+            extensions: 'mysql, mysqli'
+          - php: '5.5'
+            extensions: 'mysql, mysqli'
+          - php: '5.6'
+            extensions: 'mysql, mysqli'
+          - php: '7.0'
+            extensions: 'mysqli'
 
     services:
       mysql:
@@ -29,8 +37,8 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix: php }}
-          extensions: ${{ matrix.php == '7.0' && 'mysqli' || 'mysql, mysqli' }}
+          php-version: ${{ matrix.php }}
+          extensions: ${{ matrix.extensions }}
           ini-values: error_reporting=E_ALL
 
       - name: Install MySQL client

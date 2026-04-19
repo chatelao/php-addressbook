@@ -30,9 +30,12 @@ echo "Running tests..."
 export SERVER_NAME="localhost:8000"
 export REQUEST_URI="/index.php"
 php test/index.php
+TEST_EXIT_CODE=$?
 
 # --- Cleanup ---
 
 # 5. Stop PHP Web Server
 echo "Stopping PHP web server..."
 kill $PHP_SERVER_PID
+
+exit $TEST_EXIT_CODE
