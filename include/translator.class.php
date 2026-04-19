@@ -175,6 +175,7 @@ class GetTextTranslator extends Translator {
 
 	function __construct() {
 		parent::__construct(); 
+        $this->setDefaultLang("en");
 		
 		$this->directory = dirname(__FILE__).'/../translations/LOCALES';		
 
