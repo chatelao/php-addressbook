@@ -52,7 +52,7 @@ abstract class Translator {
   //
 	function getBestAcceptLang($accepted_languages) {
 		
-    if($accepted_languages == "") return $this->getDefaultLang();
+    if(empty($accepted_languages)) return $this->getDefaultLang();
 
     // Extract all available locales
 		$accept_languages = explode(',', strtolower($accepted_languages));

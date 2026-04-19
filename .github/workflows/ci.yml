@@ -10,6 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-22.04
     strategy:
+      fail-fast: false
       matrix:
         include:
           - php: '5.4'
@@ -19,6 +20,8 @@ jobs:
           - php: '5.6'
             extensions: 'mysql, mysqli'
           - php: '7.0'
+            extensions: 'mysqli'
+          - php: '8.3'
             extensions: 'mysqli'
 
     services:
@@ -39,7 +42,9 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: ${{ matrix.extensions }}
-          ini-values: error_reporting=E_ALL
+          ini-values: |
+            error_reporting=E_ALL
+            display_errors=1
 
       - name: Install MySQL client
         run: |
@@ -47,6 +52,8 @@ jobs:
           sudo apt-get install -y mysql-client
 
       - name: Run regression tests
+        id: tests
+        continue-on-error: ${{ matrix.php == '8.3' }}
         run: |
           # Create a wrapper for mysql to use the service container and password
           # Use absolute path to /usr/bin/mysql to avoid infinite recursion
@@ -56,3 +63,29 @@ jobs:
           export PATH=/tmp:$PATH
 
           bash .github-offline/regression-tests.sh
+
+      - name: Frontend Verification
+        if: always()
+        run: |
+          # Install dependencies for Playwright
+          pip install playwright || echo "Playwright install failed"
+          playwright install chromium || echo "Playwright chromium install failed"
+          # Run the web server in background if it's not already running
+          php -S localhost:8000 -t . > server.log 2>&1 &
+          sleep 2
+          python .github/verify_frontend.py || echo "Frontend verification failed"
+          kill $! || true
+
+      - name: Upload Logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs-php-${{ matrix.php }}
+          path: "*.log"
+
+      - name: Upload Screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-php-${{ matrix.php }}
+          path: verification/*.png

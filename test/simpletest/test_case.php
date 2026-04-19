@@ -51,6 +51,7 @@ class SimpleTestCase {
         if ($label) {
             $this->label = $label;
         }
+        $this->observers = array();
     }
 
     /**
@@ -484,9 +485,12 @@ class TestSuite {
      *                            of the test.
      *    @access public
      */
-    function TestSuite($label = false) {
+    function __construct($label = false) {
         $this->label = $label;
         $this->test_cases = array();
+    }
+    function TestSuite($label = false) {
+        $this->__construct($label);
     }
 
     /**
