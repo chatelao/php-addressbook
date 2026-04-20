@@ -37,6 +37,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Setup cache environment
+        id: extcache
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ matrix.extensions }}
+          key: cache-extensions-v1
+
+      - name: Cache extensions
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.extcache.outputs.dir }}
+          key: ${{ steps.extcache.outputs.key }}
+          restore-keys: ${{ steps.extcache.outputs.key }}
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -47,9 +62,24 @@ jobs:
             display_errors=1
 
       - name: Install MySQL client
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y mysql-client
+        uses: awalsh128/cache-apt-pkgs-action@v1.6.0
+        with:
+          packages: mysql-client
+          version: 1.0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+          cache-dependency-path: .github/requirements.txt
+
+      - name: Cache Playwright browsers
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('.github/requirements.txt') }}
 
       - name: Run regression tests
         id: tests
@@ -68,8 +98,13 @@ jobs:
         if: always()
         run: |
           # Install dependencies for Playwright
-          pip install playwright || echo "Playwright install failed"
-          playwright install chromium || echo "Playwright chromium install failed"
+          pip install -r .github/requirements.txt
+          # Install system dependencies for Chromium
+          python -m playwright install-deps chromium
+          # Install Chromium browser only if cache was missed
+          if [ "${{ steps.playwright-cache.outputs.cache-hit }}" != "true" ]; then
+            python -m playwright install chromium
+          fi
           # Run the web server in background if it's not already running
           php -S localhost:8000 -t . > server.log 2>&1 &
           sleep 2
