@@ -14,8 +14,8 @@ require_once(dirname(__FILE__)."/reporter_showing_passes.class.php");
 
 class AllTests extends TestSuite {
 	
-    function AllTests() {
-        $this->TestSuite('All tests');
+    function __construct() {
+        parent::__construct('All tests');
 
         // end-to-end http-/html-tests
         $this->addFile('test_webpage.php');
