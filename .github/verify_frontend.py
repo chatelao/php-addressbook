@@ -54,6 +54,38 @@ def test_views(page: Page):
     capture_view(page, "/view.php", "view_page")
     expect(page.locator('body')).to_contain_text("PRINT_ALL")
 
+    # View specific contact
+    capture_view(page, "/view.php?id=1", "view_contact_1")
+    expect(page.locator('body')).to_contain_text("John")
+
+def verify_screenshots():
+    import hashlib
+    import os
+
+    print("\nVerifying screenshots...")
+    files = sorted([f for f in os.listdir('verification') if f.endswith('.png')])
+    hashes = {}
+    for f in files:
+        with open(os.path.join('verification', f), 'rb') as f_in:
+            h = hashlib.md5(f_in.read()).hexdigest()
+            hashes[f] = h
+            print(f"{f}: {h}")
+
+    seen = {}
+    duplicates = []
+    for f, h in hashes.items():
+        if h in seen:
+            duplicates.append((f, seen[h]))
+        seen[h] = f
+
+    if duplicates:
+        print("\nERROR: Duplicate screenshots found!")
+        for d in duplicates:
+            print(f"  - {d[0]} is a duplicate of {d[1]}")
+        exit(1)
+    else:
+        print("\nSUCCESS: No duplicate screenshots found.")
+
 if __name__ == "__main__":
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
@@ -62,5 +94,6 @@ if __name__ == "__main__":
         page = context.new_page()
         try:
             test_views(page)
+            verify_screenshots()
         finally:
             browser.close()

@@ -12,6 +12,7 @@ echo "Setting up the test database..."
 mysql -u root -proot -e "DROP DATABASE IF EXISTS addressbook;"
 mysql -u root -proot -e "CREATE DATABASE addressbook;"
 mysql -u root -proot addressbook < addressbook.sql
+mysql -u root -proot addressbook < test/sample_data.sql
 
 # 2. Configure Database
 echo "Configuring database..."

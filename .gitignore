@@ -1,1 +1,4 @@
 node_modules/
+verification/
+server.log
+cookies.txt
