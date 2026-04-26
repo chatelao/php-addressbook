@@ -10,7 +10,7 @@ PHP Address Book provides a web-based interface for maintaining an address book,
 - `/test/`: Test suite, including unit tests and regression tests.
 
 # ROADMAP rules
-- The roadmap is located in `CONCEPT.md` and is automatically managed by the `Jules Automation` workflow.
+- The roadmap is located in `ROADMAP.md` and is automatically managed by the `Jules Automation` workflow.
 - Implement only modest, feasible and reasonable steps in one go.
   - If no such steps available, alternatively break down bigger steps to modest ones without implementing anything, just changing the Roadmap itself.
 
