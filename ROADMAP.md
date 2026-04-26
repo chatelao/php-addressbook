@@ -13,7 +13,6 @@ This document outlines the planned improvements and modernization steps for the 
 
 ## Open Tasks
 
-- [ ] **Fix `deprecated` column filtering logic**: The application filters using `WHERE deprecated IS NULL`, but the schema defines it as `NOT NULL DEFAULT '1000-01-01 00:00:00'`.
 - [ ] **Modernize Table Sorting**: Replace the legacy `js/tablesort.min.js` with native DataTables sorting capabilities.
 - [ ] **Modernize Identicon Generation**: Replace the local `lib/identicon.php` with a modern library like `bit-wasp/identicon`.
 - [ ] **Modernize Translation Engine**: Replace legacy **PHP-gettext 1.0** with native PHP gettext or Symfony Translation.
@@ -35,3 +34,9 @@ This document outlines the planned improvements and modernization steps for the 
 - [ ] Replace **PHP Excel Reader 2.21** with **PhpSpreadsheet**.
 - [ ] Upgrade **DataTables** from 1.9.4 to 2.x.
 - [ ] Upgrade **jQuery** from 1.8.2 to 3.7.x.
+
+---
+
+## Completed Tasks
+
+- [x] **Fix `deprecated` column filtering logic**: (Completed: 2025-05-22) The application filters using `WHERE deprecated IS NULL`, but the schema defined it as `NOT NULL DEFAULT '1000-01-01 00:00:00'`. Fixed by adding surrogate PKs and making the column nullable.

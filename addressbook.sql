@@ -6,10 +6,11 @@
 --
 -- $LastChangedDate$
 -- $Rev$
--- 
+--
 --
 
 CREATE TABLE addressbook (
+  pid int(9) unsigned NOT NULL auto_increment,
   domain_id int(9) unsigned NOT NULL default 0,
   id int(9) unsigned NOT NULL,
   firstname varchar(255) NOT NULL,
@@ -47,11 +48,12 @@ CREATE TABLE addressbook (
   x_activesync mediumtext,
   created datetime default NULL,
   modified datetime default NULL,
-  deprecated datetime NOT NULL DEFAULT "1000-01-01 00:00:00",
+  deprecated datetime DEFAULT NULL,
   password varchar(256) default NULL,
   login date default NULL,
   role varchar(256) default NULL,
-  PRIMARY KEY (id,deprecated,domain_id),
+  PRIMARY KEY (pid),
+  KEY id_deprecated_domain_id_idx (id,deprecated,domain_id),
   KEY deprecated_domain_id_idx (deprecated,domain_id)
 ) DEFAULT CHARSET=utf8;
 
@@ -61,21 +63,23 @@ CREATE TABLE group_list (
   `group_parent_id` int(9) default NULL,
   `created` datetime default NULL,
   `modified` datetime default NULL,
-  `deprecated` datetime NOT NULL DEFAULT "1000-01-01 00:00:00",
+  `deprecated` datetime DEFAULT NULL,
   `group_name` varchar(255) NOT NULL default '',
   `group_header` mediumtext NOT NULL,
   `group_footer` mediumtext NOT NULL,
-  PRIMARY KEY (group_id,deprecated,domain_id)
+  PRIMARY KEY (group_id)
 ) DEFAULT CHARSET=utf8;
 
 CREATE TABLE address_in_groups (
+  `ag_id` int(9) unsigned NOT NULL auto_increment,
   `domain_id` int(9) unsigned NOT NULL default 0,
   `id` int(9) unsigned NOT NULL default 0,
   `group_id` int(9) unsigned NOT NULL default 0,
   `created` datetime default NULL,
   `modified` datetime default NULL,
-  `deprecated` datetime NOT NULL DEFAULT "1000-01-01 00:00:00",
-  PRIMARY KEY (`group_id`,`id`, deprecated)
+  `deprecated` datetime DEFAULT NULL,
+  PRIMARY KEY (`ag_id`),
+  KEY group_id_id_deprecated_idx (`group_id`,`id`, deprecated)
 ) DEFAULT CHARSET=utf8;
 
 CREATE TABLE month_lookup (
@@ -126,6 +130,6 @@ CREATE TABLE users (
   `trials` int(11) NOT NULL DEFAULT '0',
    created datetime default NULL,
    modified datetime default NULL,
-   deprecated datetime NOT NULL DEFAULT "1000-01-01 00:00:00",
+   deprecated datetime DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) DEFAULT CHARSET=utf8;

@@ -11,7 +11,7 @@ INSERT INTO `addressbook` (
     'ACME Corp', 'Engineer', '123 Main St\nAnytown, USA', '555-1212', '555-1313', '555-1414', '555-1515',
     'john.doe@example.com', 'jd@example.org', '', '', '', '', 'http://example.com/~jdoe',
     15, 'January', '1980', 1, 'January', '2010',
-    'Secondary Address', '555-2222', 'Notes about John Doe', NOW(), NOW(), '0000-00-00 00:00:00'
+    'Secondary Address', '555-2222', 'Notes about John Doe', NOW(), NOW(), NULL
 );
 
 -- Add another sample contact for birthday variety
@@ -26,19 +26,19 @@ INSERT INTO `addressbook` (
     'Globex', 'Manager', '456 Elm St\nOthertown, USA', '555-3333', '555-4444', '', '',
     'jane.smith@example.com', '', '', '', '', '', '',
     20, 'February', '1985', 0, '', '',
-    '', '', 'Notes about Jane', NOW(), NOW(), '0000-00-00 00:00:00'
+    '', '', 'Notes about Jane', NOW(), NOW(), NULL
 );
 
 -- Add a sample group
 INSERT INTO `group_list` (
     `domain_id`, `group_id`, `group_name`, `group_header`, `group_footer`, `created`, `modified`, `deprecated`
 ) VALUES (
-    0, 1, 'Test Group', 'Header for Test Group', 'Footer for Test Group', NOW(), NOW(), '0000-00-00 00:00:00'
+    0, 1, 'Test Group', 'Header for Test Group', 'Footer for Test Group', NOW(), NOW(), NULL
 );
 
 -- Assign John Doe to Test Group
 INSERT INTO `address_in_groups` (
     `domain_id`, `id`, `group_id`, `created`, `modified`, `deprecated`
 ) VALUES (
-    0, 1, 1, NOW(), NOW(), '0000-00-00 00:00:00'
+    0, 1, 1, NOW(), NOW(), NULL
 );
