@@ -52,21 +52,4 @@ The application follows a classic LAMP stack pattern with integrated specialized
 
 ## Roadmap
 
-The following tasks are prioritized for modernization and technical debt reduction:
-
-### Phase 1: Dependency Modernization
-- [ ] Upgrade **jQuery** from 1.8.2 to 3.7.x.
-- [ ] Upgrade **DataTables** from 1.9.4 to 2.x.
-- [ ] Replace **PHP Excel Reader** with **PhpSpreadsheet**.
-- [ ] Upgrade **HybridAuth** to 3.x.
-- [ ] Upgrade **Z-Push** to 2.7.x.
-
-### Phase 2: Core Improvements
-- [ ] **PHP 8.x Native Support**: Resolve all remaining incompatibilities in the core and testing framework.
-- [ ] **Responsive UI**: Implement a mobile-first responsive design using modern CSS.
-- [ ] **Database Layer Refactor**: Transition from the `mysql_shim.php` to native `mysqli` or a modern ORM/Query Builder.
-
-### Phase 3: Technical Debt Cleanup
-- [ ] Remove **MooTools** and migrate `jscalendar` to a modern date picker like Flatpickr.
-- [ ] Replace custom table actions with modern Vanilla JS or native DataTables features.
-- [ ] Migrate from SimpleTest to PHPUnit for better testing capabilities.
+For the detailed, actionable modernization and maintenance plan, see [ROADMAP.md](ROADMAP.md). The roadmap follows a bottom-to-top execution strategy and is the definitive source for current project priorities.
