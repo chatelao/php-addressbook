@@ -3,11 +3,11 @@
 This document outlines the planned improvements and modernization steps for the PHP Address Book project.
 
 ## Roadmap Rules
-- **Management**: This roadmap is managed by the `Jules Automation` workflow.
+- **Management**: This roadmap is managed by the AI Automation.
 - **Execution Order**: Tasks are executed from **bottom to top**.
 - **New Tasks**: New tasks are added to the **top** of the list.
 - **Task Granularity**: Focus on modest, feasible, and reasonable steps. Larger goals should be broken down into smaller tasks.
-- **Completion**: Tasks are marked as completed with a timestamp when finished.
+- **Completion**: Tasks are marked as completed with a timestamp when finished and the related issue id.
 
 ---
 
