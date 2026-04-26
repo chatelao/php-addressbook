@@ -26,14 +26,13 @@ This document outlines the planned improvements and modernization steps for the 
 ### Phase 2: Core Improvements
 - [ ] **Database Layer Refactor**: Transition from the `mysql_shim.php` compatibility layer to native `mysqli` or a modern ORM/Query Builder.
 - [ ] **Responsive UI**: Implement a mobile-first responsive design using modern CSS (Flexbox/Grid).
-- [ ] **PHP 8.x Native Support**: Resolve all remaining incompatibilities in the core logic and testing framework to ensure full PHP 8.x stability.
+- [ ] **PHP 8.x Native Support**: (Partially Completed: 2025-05-22) Hardened `mysql_shim.php` against `TypeError`. Resolve all remaining incompatibilities in the core logic and testing framework to ensure full PHP 8.x stability.
 
 ### Phase 1: Dependency Modernization
 - [ ] Upgrade **Z-Push** from 2.2.12 to 2.7.x.
 - [ ] Upgrade **HybridAuth** from 2.1.0 to 3.x.
 - [ ] Replace **PHP Excel Reader 2.21** with **PhpSpreadsheet**.
-- [ ] Upgrade **DataTables** from 1.9.4 to 2.x.
-- [ ] Upgrade **jQuery** from 1.8.2 to 3.7.x.
+- [ ] **Remove unused jQuery and DataTables assets**: (Confirmed unused: 2025-05-22) Both `js/jquery-1.8.2.min.js` and `js/jquery.dataTables.min.js` are present but not referenced in any `.php` files.
 
 ---
 
