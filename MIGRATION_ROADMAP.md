@@ -12,21 +12,22 @@ This document outlines the detailed, granular steps for modernizing and migratin
 ## Open Tasks
 
 ### Phase 1: Dependency Modernization
-- [ ] **Upgrade jQuery**
-    - [ ] Audit all jQuery usage in the codebase.
-    - [ ] Integrate jQuery Migrate plugin to identify deprecated features.
-    - [ ] Incremental version hops: Upgrade to 1.12.x, then 3.7.x.
-- [ ] **Upgrade DataTables**
-    - [ ] Audit DataTables API usage (legacy vs. modern).
-    - [ ] Upgrade to DataTables 1.10 in compatibility mode.
-    - [ ] Refactor legacy API calls to modern ones.
-    - [ ] Upgrade to DataTables 2.x.
+- [ ] **Validate jQuery Usage**
+    - [ ] Perform a full UI audit using browser developer tools to check if `js/jquery-1.8.2.min.js` is actually loaded and used.
+    - [ ] Deep grep for `jQuery(` and `$( ` in all `.php`, `.js`, and `.html` files.
+    - [ ] If confirmed unused, replace modernization task with "Remove unused jQuery assets".
+- [ ] **Validate DataTables Usage**
+    - [ ] Perform a full UI audit to check if `js/jquery.dataTables.min.js` is initialized on any table (check for `.dataTable()` or `.DataTable()` calls).
+    - [ ] If confirmed unused, replace modernization task with "Remove unused DataTables assets".
 - [ ] Replace **PHP Excel Reader 2.21** with **PhpSpreadsheet**.
 - [ ] Upgrade **HybridAuth** from 2.1.0 to 3.x.
 - [ ] Upgrade **Z-Push** from 2.2.12 to 2.7.x.
 
 ### Phase 2: Core Improvements
-- [ ] **PHP 8.x Native Support**: Resolve all remaining incompatibilities in the core logic and testing framework to ensure full PHP 8.x stability.
+- [ ] **PHP 8.x Native Support**
+    - [ ] **Harden `mysql_shim.php`**: Add explicit `is_object` or `mysqli_result` checks for all parameters passed to `mysqli_*` functions to prevent `TypeError` when a query fails and returns `false`.
+    - [ ] **Patch SimpleTest**: Identify and fix all occurrences in `test/simpletest/` where `count()` is called on null or non-countable types, ensuring the test suite can run on PHP 8.x.
+    - [ ] **Resolve session warnings**: Address `session_start()` and other session-related warnings that became more strict in PHP 8.x.
 - [ ] **Responsive UI**: Implement a mobile-first responsive design using modern CSS (Flexbox/Grid).
 - [ ] **Database Layer Refactor**
     - [ ] Identify and document all `mysql_*` function calls.
