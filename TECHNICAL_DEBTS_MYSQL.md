@@ -28,10 +28,10 @@ This document identifies all legacy `mysql_*` function calls that currently rely
 | `./z-push/backend/phpaddressbook/address.class.php` | 18 | mysql_query (11),mysql_real_escape_string (3) mysql_numrows (2),mysql_fetch_array (2) |
 | `./register/user_add_save.php` | 17 | mysql_real_escape_string (7),mysql_query (5) mysql_num_rows (3),mysql_error (2) |
 | `./z-push/backend/phpaddressbook/phpaddressbook.php` | 14 | mysql_query (5),mysql_fetch_array (3) mysql_shim (1),mysql_select_db (1) mysql_ping (1),mysql_errno (1) mysql_connect (1),mysql_close (1) |
-| `./include/login.inc.php` | 12 | mysql_real_escape_string (3),mysql_query (3) mysql_numrows (3),mysql_fetch_array (3) |
 | `./edit.php` | 11 | mysql_query (4),mysql_fetch_array (4) mysql_numrows (3) |
 | `./include/dbconnect.php` | 10 | mysql_query (4),mysql_real_escape_string (2) mysql_shim (1),mysql_select_db (1) mysql_errno (1),mysql_connect (1) |
-| `./z-push/backend/phpaddressbook/login.inc.php` | 9 | mysql_real_escape_string (3),mysql_query (2) mysql_numrows (2),mysql_fetch_array (2) |
+| `./include/login.inc.php` | 0 | Migrated to DBAL (2026-04-27) |
+| `./z-push/backend/phpaddressbook/login.inc.php` | 0 | Migrated to DBAL (2026-04-27) |
 | `./register/login_config.php` | 9 | mysql_query (2),mysql_error (2) mysql_select_db (1),mysql_real_escape_string (1) mysql_num_rows (1),mysql_fetch_array (1) mysql_connect (1) |
 | `./register/reset_password.php` | 8 | mysql_query (4),mysql_num_rows (2) mysql_fetch_array (1),mysql_error (1) |
 | `./index.php` | 7 | mysql_numrows (3),mysql_query (2) mysql_fetch_array (2) |
