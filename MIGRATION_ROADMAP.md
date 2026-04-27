@@ -12,7 +12,7 @@ This document outlines the detailed, granular steps for modernizing and migratin
 ## Open Tasks
 
 ### Phase 1: Dependency Modernization
-- [ ] **Remove unused jQuery and DataTables assets**: (Confirmed unused: 2025-05-22) Both `js/jquery-1.8.2.min.js` and `js/jquery.dataTables.min.js` are present but not referenced in any `.php` files.
+- [x] **Remove unused jQuery, DataTables, and tableActions assets**: (Completed: 2026-04-27) Removed `js/jquery-1.8.2.min.js`, `js/jquery.dataTables.min.js`, and `js/tableActions.min.js` as they were confirmed to be unreferenced in the PHP codebase.
 - [ ] Replace **PHP Excel Reader 2.21** with **PhpSpreadsheet**.
 - [ ] Upgrade **HybridAuth** from 2.1.0 to 3.x.
 - [ ] Upgrade **Z-Push** from 2.2.12 to 2.7.x.
@@ -30,7 +30,7 @@ This document outlines the detailed, granular steps for modernizing and migratin
 
 ### Phase 3: Technical Debt Cleanup
 - [ ] **Remove MooTools**: Completely remove MooTools 1.11 and migrate `jscalendar` to a modern, lightweight date picker like **Flatpickr**.
-- [ ] **Modernize Table Actions**: Replace custom `js/tableActions.min.js` with modern Vanilla JS or DataTables features.
+- [x] **Modernize Table Actions**: (Completed: 2026-04-27) Removed the unreferenced `js/tableActions.min.js`. Further modernization can focus on native JS or future DataTables integration if needed.
 - [ ] **Migrate Testing Framework**: Transition from SimpleTest to **PHPUnit** for more robust testing and PHP 8.x compatibility.
 
 ### Ongoing Modernization

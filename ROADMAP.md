@@ -13,14 +13,14 @@ This document outlines the planned improvements and modernization steps for the 
 
 ## Open Tasks
 
-- [ ] **Modernize Table Sorting**: Replace the legacy `js/tablesort.min.js` with native DataTables sorting capabilities.
+- [ ] **Modernize Table Sorting**: Replace the legacy `js/tablesort.min.js` with native Vanilla JS sorting capabilities.
 - [ ] **Modernize Identicon Generation**: Replace the local `lib/identicon.php` with a modern library like `bit-wasp/identicon`.
 - [ ] **Modernize Translation Engine**: Replace legacy **PHP-gettext 1.0** with native PHP gettext or Symfony Translation.
 - [ ] **Upgrade parseCSV**: Update `lib/parsecsv.lib.php` from 0.4.3 beta to the active fork version 1.3.x.
 
 ### Phase 3: Technical Debt Cleanup
 - [ ] **Migrate Testing Framework**: Transition from SimpleTest to **PHPUnit** for more robust testing and PHP 8.x compatibility.
-- [ ] **Modernize Table Actions**: Replace custom `js/tableActions.min.js` with modern Vanilla JS or DataTables features.
+- [x] **Modernize Table Actions**: (Completed: 2026-04-27) Removed the unreferenced `js/tableActions.min.js`.
 - [ ] **Remove MooTools**: Completely remove MooTools 1.11 and migrate `jscalendar` to a modern, lightweight date picker like **Flatpickr**.
 
 ### Phase 2: Core Improvements
@@ -32,7 +32,7 @@ This document outlines the planned improvements and modernization steps for the 
 - [ ] Upgrade **Z-Push** from 2.2.12 to 2.7.x.
 - [ ] Upgrade **HybridAuth** from 2.1.0 to 3.x.
 - [ ] Replace **PHP Excel Reader 2.21** with **PhpSpreadsheet**.
-- [ ] **Remove unused jQuery and DataTables assets**: (Confirmed unused: 2025-05-22) Both `js/jquery-1.8.2.min.js` and `js/jquery.dataTables.min.js` are present but not referenced in any `.php` files.
+- [x] **Remove unused jQuery and DataTables assets**: (Completed: 2026-04-27) Both `js/jquery-1.8.2.min.js` and `js/jquery.dataTables.min.js` were removed as they were not referenced in any `.php` files.
 
 ---
 

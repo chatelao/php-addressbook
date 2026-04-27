@@ -42,7 +42,7 @@
 
 The application follows a classic LAMP stack pattern with integrated specialized libraries:
 
-- **Frontend**: Server-side PHP generating HTML/CSS, enhanced with jQuery 1.8.2 and DataTables 1.9.4 for interactivity.
+- **Frontend**: Server-side PHP generating HTML/CSS, enhanced with MooTools 1.11 for interactivity.
 - **Backend**: Core PHP logic (compatible with PHP 5.4+).
 - **Database**: MySQL schema for persistent storage.
 - **Integrations**:
