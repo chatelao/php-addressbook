@@ -1,5 +1,9 @@
 <?php
 require_once(dirname(__FILE__).DIRECTORY_SEPARATOR."mysql_shim.php");
+require_once(dirname(__FILE__).DIRECTORY_SEPARATOR."mysqli.database.php");
+
+$db_access = new MysqliDatabase();
+
 /*
  * Core file for library and parameter handling:
  *
@@ -40,13 +44,10 @@ if($read_only) {
 
 // --- Connect to DB, retry 5 times ---
 for ($i = 0; $i < 5; $i++) {
-	
-    $level = error_reporting();
-    error_reporting(E_ERROR);
-    $db = mysql_connect("$dbserver", "$dbuser", "$dbpass");
-    error_reporting($level);
-    
-    $errno = mysql_errno();
+    $db = $db_access->connect($dbserver, $dbuser, $dbpass);
+    $GLOBALS["mysql_mysqli_link"] = $db;
+
+    $errno = $db_access->errno();
     if ($errno == 1040 || $errno == 1226 || $errno == 1203) {
         sleep(1);
     }  else {
@@ -208,18 +209,19 @@ include("translations.inc.php");
 include("mailer.inc.php");
 if(!$db) {
 	include "include/install.php";
-}
-mysql_select_db("$dbname", $db);  
-//
-// Setup the UTF-8 parameters:
-// * http://www.phpforum.de/forum/showthread.php?t=217877#PHP
-//
-// header('Content-type: text/html; charset=utf-8');
-mysql_query("set character set utf8;");
-mysql_query("SET NAMES `utf8`");
+} else {
+    $db_access->selectDb($dbname);
+    //
+    // Setup the UTF-8 parameters:
+    // * http://www.phpforum.de/forum/showthread.php?t=217877#PHP
+    //
+    // header('Content-type: text/html; charset=utf-8');
+    $db_access->query("set character set utf8;");
+    $db_access->query("SET NAMES `utf8` ");
 
-// Bug: #139 - Strict mode problem
-mysql_query("SET SQL_MODE = 'STRICT_TRANS_TABLES';");
+    // Bug: #139 - Strict mode problem
+    $db_access->query("SET SQL_MODE = 'STRICT_TRANS_TABLES'");
+}
 // mysql_query("SET SQL_MODE = 'MYSQL40';");
 
 include("login.inc.php");

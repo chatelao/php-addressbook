@@ -34,8 +34,14 @@ This document outlines the detailed, granular steps for modernizing and migratin
         - [x] **Define the DBAL interface**: (Completed: 2026-04-27) Created `include/database.interface.php` defining the core database operations.
         - [x] **Implement the core DBAL class using `mysqli`**: (Completed: 2026-04-27) Created `include/mysqli.database.php` as the primary implementation.
         - [x] **Implement support for prepared statements in the DBAL**: (Completed: 2026-04-27) Added `execute` method to `DatabaseInterface` and implemented it in `MysqliDatabase` using `mysqli_execute_query` with a fallback for PHP < 8.2.
-    - [ ] **Migrate Connection Logic**: Update `include/dbconnect.php` to use the new abstraction.
+    - [x] **Migrate Connection Logic**: (Completed: 2026-04-27) Updated `include/dbconnect.php` to use the `MysqliDatabase` abstraction while maintaining backward compatibility.
     - [ ] **Phased Migration**: Systematically replace `mysql_shim.php` calls with the new abstraction.
+        - [ ] Migrate `include/address.class.php` to DBAL.
+        - [ ] Migrate `include/group.class.php` and `group.php` to DBAL.
+        - [ ] Migrate `include/login.inc.php` and authentication files to DBAL.
+        - [ ] Migrate core pages (`index.php`, `edit.php`, `view.php`, `birthdays.php`) to DBAL.
+        - [ ] Migrate registration module (`register/`) to DBAL.
+        - [ ] Migrate Z-Push backend to DBAL.
 
 ### Phase 3: Technical Debt Cleanup
 - [ ] **Remove MooTools**: Completely remove MooTools 1.11 and migrate `jscalendar` to a modern, lightweight date picker like **Flatpickr**.
