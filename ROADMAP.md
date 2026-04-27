@@ -24,7 +24,7 @@ This document outlines the planned improvements and modernization steps for the 
 - [ ] **Remove MooTools**: Completely remove MooTools 1.11 and migrate `jscalendar` to a modern, lightweight date picker like **Flatpickr**.
 
 ### Phase 2: Core Improvements
-- [ ] **Database Layer Refactor**: Transition from the `mysql_shim.php` compatibility layer to native `mysqli` or a modern ORM/Query Builder.
+- [ ] **Database Layer Refactor**: (Partially Completed: 2026-04-27) Defined DBAL interface, implemented `MysqliDatabase` with prepared statement support, and migrated core connection logic in `include/dbconnect.php`. Transition from the `mysql_shim.php` compatibility layer to native `mysqli` or a modern ORM/Query Builder.
 - [ ] **Responsive UI**: (Partially Completed: 2026-04-27) Modernized viewport meta tag and converted fixed-width layout to fluid. Further work needed for mobile navigation and tables.
 - [ ] **PHP 8.x Native Support**: (Partially Completed: 2026-04-27) Hardened `mysql_shim.php` (2025) and patched SimpleTest core (2026) to handle PHP 8.x `count()` and `fclose()` changes. Further work needed on legacy libraries like PHP-gettext.
 

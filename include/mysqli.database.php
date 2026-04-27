@@ -80,7 +80,8 @@ class MysqliDatabase implements DatabaseInterface {
     public function execute($query, array $params = []) {
         if (!($this->link instanceof mysqli)) return false;
 
-        if (function_exists('mysqli_execute_query')) {
+        // mysqli_execute_query is PHP 8.2+
+        if (version_compare(PHP_VERSION, '8.2.0', '>=') && function_exists('mysqli_execute_query')) {
             return mysqli_execute_query($this->link, $query, $params);
         }
 
@@ -96,7 +97,11 @@ class MysqliDatabase implements DatabaseInterface {
                 elseif (is_string($param)) $types .= "s";
                 else $types .= "b";
             }
-            mysqli_stmt_bind_param($stmt, $types, ...$params);
+            $bind_names = array($stmt, $types);
+            foreach ($params as $key => $value) {
+                $bind_names[] = &$params[$key];
+            }
+            call_user_func_array('mysqli_stmt_bind_param', $bind_names);
         }
 
         if (!mysqli_stmt_execute($stmt)) {
