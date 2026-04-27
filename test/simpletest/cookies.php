@@ -244,7 +244,7 @@ class SimpleCookieJar {
      */
     function restartSession($date = false) {
         $surviving_cookies = array();
-        for ($i = 0; $i < count($this->cookies); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->cookies); $i++) {
             if (! $this->cookies[$i]->getValue()) {
                 continue;
             }
@@ -268,7 +268,7 @@ class SimpleCookieJar {
      *    @access public
      */
     function agePrematurely($interval) {
-        for ($i = 0; $i < count($this->cookies); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->cookies); $i++) {
             $this->cookies[$i]->agePrematurely($interval);
         }
     }
@@ -299,7 +299,7 @@ class SimpleCookieJar {
      *    @access private
      */
     protected function findFirstMatch($cookie) {
-        for ($i = 0; $i < count($this->cookies); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->cookies); $i++) {
             $is_match = $this->isMatch(
                     $cookie,
                     $this->cookies[$i]->getHost(),
@@ -309,7 +309,7 @@ class SimpleCookieJar {
                 return $i;
             }
         }
-        return count($this->cookies);
+        return SimpleTestCompatibility::count($this->cookies);
     }
 
     /**

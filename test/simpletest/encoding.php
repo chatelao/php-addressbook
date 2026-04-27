@@ -285,9 +285,9 @@ class SimpleEncoding {
                 $values[] = $pair->getValue();
             }
         }
-        if (count($values) == 0) {
+        if (SimpleTestCompatibility::count($values) == 0) {
             return false;
-        } elseif (count($values) == 1) {
+        } elseif (SimpleTestCompatibility::count($values) == 1) {
             return $values[0];
         } else {
             return $values;

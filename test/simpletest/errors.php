@@ -168,7 +168,7 @@ class SimpleErrorQueue {
      *    @access public
      */
     function extract() {
-        if (count($this->queue)) {
+        if (SimpleTestCompatibility::count($this->queue)) {
             return array_shift($this->queue);
         }
         return false;
@@ -180,7 +180,7 @@ class SimpleErrorQueue {
      *    @access private
      */
     protected function extractExpectation() {
-        if (count($this->expectation_queue)) {
+        if (SimpleTestCompatibility::count($this->expectation_queue)) {
             return array_shift($this->expectation_queue);
         }
         return false;

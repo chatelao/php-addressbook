@@ -218,7 +218,7 @@ class TestOfForm extends UnitTestCase {
         $form->setField(new SimpleByLabelOrName('elements[]'), '4', 2);
 		$submit = $form->submit();
 		$requests = $submit->getAll();
-        $this->assertEqual(count($requests), 2);
+        $this->assertEqual(SimpleTestCompatibility::count($requests), 2);
         $this->assertIdentical($requests[0], new SimpleEncodedPair('elements[]', '3'));
         $this->assertIdentical($requests[1], new SimpleEncodedPair('elements[]', '4'));
     }

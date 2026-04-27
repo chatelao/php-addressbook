@@ -48,7 +48,7 @@ class SimpleFrameset {
     function addFrame($page, $name = false) {
         $this->frames[] = $page;
         if ($name) {
-            $this->names[$name] = count($this->frames) - 1;
+            $this->names[$name] = SimpleTestCompatibility::count($this->frames) - 1;
         }
     }
 
@@ -67,7 +67,7 @@ class SimpleFrameset {
         } else {
             $index = $name - 1;
         }
-        if (count($path) == 0) {
+        if (SimpleTestCompatibility::count($path) == 0) {
             $this->frames[$index] = &$page;
             return;
         }
@@ -121,7 +121,7 @@ class SimpleFrameset {
                 return $this->frames[$this->focus]->setFrameFocusByIndex($choice);
             }
         }
-        if (($choice < 1) || ($choice > count($this->frames))) {
+        if (($choice < 1) || ($choice > SimpleTestCompatibility::count($this->frames))) {
             return false;
         }
         $this->focus = $choice - 1;
@@ -163,7 +163,7 @@ class SimpleFrameset {
      *    @access private
      */
     protected function clearNestedFramesFocus() {
-        for ($i = 0; $i < count($this->frames); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->frames); $i++) {
             $this->frames[$i]->clearFrameFocus();
         }
     }
@@ -186,7 +186,7 @@ class SimpleFrameset {
      */
     function getFrames() {
         $report = array();
-        for ($i = 0; $i < count($this->frames); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->frames); $i++) {
             $report[$this->getPublicNameFromIndex($i)] =
                     $this->frames[$i]->getFrames();
         }
@@ -204,7 +204,7 @@ class SimpleFrameset {
             return $this->frames[$this->focus]->getRaw();
         }
         $raw = '';
-        for ($i = 0; $i < count($this->frames); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->frames); $i++) {
             $raw .= $this->frames[$i]->getRaw();
         }
         return $raw;
@@ -221,7 +221,7 @@ class SimpleFrameset {
             return $this->frames[$this->focus]->getText();
         }
         $raw = '';
-        for ($i = 0; $i < count($this->frames); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->frames); $i++) {
             $raw .= ' ' . $this->frames[$i]->getText();
         }
         return trim($raw);
@@ -521,7 +521,7 @@ class SimpleFrameset {
                     $method,
                     $attribute);
         }
-        for ($i = 0; $i < count($this->frames); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->frames); $i++) {
             $form = $this->findFormInFrame(
                     $this->frames[$i],
                     $i,
@@ -565,7 +565,7 @@ class SimpleFrameset {
         if (is_integer($this->focus)) {
             $this->frames[$this->focus]->setField($selector, $value);
         } else {
-            for ($i = 0; $i < count($this->frames); $i++) {
+            for ($i = 0; $i < SimpleTestCompatibility::count($this->frames); $i++) {
                 $this->frames[$i]->setField($selector, $value);
             }
         }
@@ -580,7 +580,7 @@ class SimpleFrameset {
      *    @access public
      */
     function getField($selector) {
-        for ($i = 0; $i < count($this->frames); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->frames); $i++) {
             $value = $this->frames[$i]->getField($selector);
             if (isset($value)) {
                 return $value;

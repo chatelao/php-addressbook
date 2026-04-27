@@ -53,7 +53,7 @@ class ParallelRegex {
      *    @access public
      */
     function addPattern($pattern, $label = true) {
-        $count = count($this->patterns);
+        $count = SimpleTestCompatibility::count($this->patterns);
         $this->patterns[$count] = $pattern;
         $this->labels[$count] = $label;
         $this->regex = null;
@@ -69,7 +69,7 @@ class ParallelRegex {
      *    @access public
      */
     function match($subject, &$match) {
-        if (count($this->patterns) == 0) {
+        if (SimpleTestCompatibility::count($this->patterns) == 0) {
             return false;
         }
         if (! preg_match($this->getCompoundedRegex(), $subject, $matches)) {
@@ -77,7 +77,7 @@ class ParallelRegex {
             return false;
         }
         $match = $matches[0];
-        for ($i = 1; $i < count($matches); $i++) {
+        for ($i = 1; $i < SimpleTestCompatibility::count($matches); $i++) {
             if ($matches[$i]) {
                 return $this->labels[$i - 1];
             }
@@ -95,7 +95,7 @@ class ParallelRegex {
      */
     protected function getCompoundedRegex() {
         if ($this->regex == null) {
-            for ($i = 0, $count = count($this->patterns); $i < $count; $i++) {
+            for ($i = 0, $count = SimpleTestCompatibility::count($this->patterns); $i < $count; $i++) {
                 $this->patterns[$i] = '(' . str_replace(
                         array('/', '(', ')'),
                         array('\/', '\(', '\)'),
@@ -139,7 +139,7 @@ class SimpleStateStack {
      *    @access public
      */
     function getCurrent() {
-        return $this->stack[count($this->stack) - 1];
+        return $this->stack[SimpleTestCompatibility::count($this->stack) - 1];
     }
 
     /**
@@ -160,7 +160,7 @@ class SimpleStateStack {
      *    @access public
      */
     function leave() {
-        if (count($this->stack) == 1) {
+        if (SimpleTestCompatibility::count($this->stack) == 1) {
             return false;
         }
         array_pop($this->stack);
@@ -843,7 +843,7 @@ class SimplePhpPageBuilder {
      *    @access private
      */
     protected function hasNamedTagOnOpenTagStack($name) {
-        return isset($this->tags[$name]) && (count($this->tags[$name]) > 0);
+        return isset($this->tags[$name]) && (SimpleTestCompatibility::count($this->tags[$name]) > 0);
     }
 
     /**
@@ -870,7 +870,7 @@ class SimplePhpPageBuilder {
      */
     protected function addContentToAllOpenTags($text) {
         foreach (array_keys($this->tags) as $name) {
-            for ($i = 0, $count = count($this->tags[$name]); $i < $count; $i++) {
+            for ($i = 0, $count = SimpleTestCompatibility::count($this->tags[$name]); $i < $count; $i++) {
                 $this->tags[$name][$i]->addContent($text);
             }
         }
@@ -888,7 +888,7 @@ class SimplePhpPageBuilder {
             return;
         }
         foreach (array_keys($this->tags) as $name) {
-            for ($i = 0, $count = count($this->tags[$name]); $i < $count; $i++) {
+            for ($i = 0, $count = SimpleTestCompatibility::count($this->tags[$name]); $i < $count; $i++) {
                 $this->tags[$name][$i]->addTag($tag);
             }
         }
@@ -921,7 +921,7 @@ class SimplePhpPageBuilder {
         } elseif ($tag->getTagName() == "title") {
             $this->page->setTitle($tag);
         } elseif ($this->isFormElement($tag->getTagName())) {
-            for ($i = 0; $i < count($this->open_forms); $i++) {
+            for ($i = 0; $i < SimpleTestCompatibility::count($this->open_forms); $i++) {
                 $this->open_forms[$i]->addWidget($tag);
             }
             $this->last_widget = $tag;
@@ -979,7 +979,7 @@ class SimplePhpPageBuilder {
      *    @access public
      */
     protected function acceptFormEnd() {
-        if (count($this->open_forms)) {
+        if (SimpleTestCompatibility::count($this->open_forms)) {
             $this->complete_forms[] = array_pop($this->open_forms);
         }
     }
@@ -1037,11 +1037,11 @@ class SimplePhpPageBuilder {
      *    @access public
      */
     protected function acceptPageEnd() {
-        while (count($this->open_forms)) {
+        while (SimpleTestCompatibility::count($this->open_forms)) {
             $this->complete_forms[] = array_pop($this->open_forms);
         }
         foreach ($this->left_over_labels as $label) {
-            for ($i = 0, $count = count($this->complete_forms); $i < $count; $i++) {
+            for ($i = 0, $count = SimpleTestCompatibility::count($this->complete_forms); $i < $count; $i++) {
                 $this->complete_forms[$i]->attachLabelBySelector(
                         new SimpleById($label->getFor()),
                         $label->getText());

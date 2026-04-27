@@ -138,7 +138,10 @@ class SimpleFileSocket extends SimpleStickyError {
     function close() {
         if (!$this->is_open) return false;
         $this->is_open = false;
-        return fclose($this->handle);
+        if (is_resource($this->handle)) {
+            return fclose($this->handle);
+        }
+        return false;
     }
 
     /**
@@ -252,7 +255,10 @@ class SimpleSocket extends SimpleStickyError {
      */
     function close() {
         $this->is_open = false;
-        return fclose($this->handle);
+        if (is_resource($this->handle)) {
+            return fclose($this->handle);
+        }
+        return false;
     }
 
     /**

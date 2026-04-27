@@ -91,7 +91,7 @@ class SimpleTest {
             $classes = array($classes);
         }
         $registry = &SimpleTest::getRegistry();
-        for ($i = count($registry['Preferred']) - 1; $i >= 0; $i--) {
+        for ($i = SimpleTestCompatibility::count($registry['Preferred']) - 1; $i >= 0; $i--) {
             foreach ($classes as $class) {
                 if (SimpleTestCompatibility::isA($registry['Preferred'][$i], $class)) {
                     return $registry['Preferred'][$i];

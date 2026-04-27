@@ -44,7 +44,7 @@ class XmlReporter extends SimpleReporter {
     protected function getIndent($offset = 0) {
         return str_repeat(
                 $this->indent,
-                count($this->getTestList()) + $offset);
+                SimpleTestCompatibility::count($this->getTestList()) + $offset);
     }
 
     /**

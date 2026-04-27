@@ -33,7 +33,7 @@ class SimpleDumper {
             case "Boolean":
                 return "Boolean: " . ($value ? "true" : "false");
             case "Array":
-                return "Array: " . count($value) . " items";
+                return "Array: " . SimpleTestCompatibility::count($value) . " items";
             case "Object":
                 return "Object: of " . get_class($value);
             case "String":

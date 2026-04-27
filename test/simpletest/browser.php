@@ -61,7 +61,7 @@ class SimpleBrowserHistory {
      *    @access private
      */
     protected function atEnd() {
-        return ($this->position + 1 >= count($this->sequence)) && ! $this->isEmpty();
+        return ($this->position + 1 >= SimpleTestCompatibility::count($this->sequence)) && ! $this->isEmpty();
     }
 
     /**
@@ -562,7 +562,7 @@ class SimpleBrowser {
      */
     function retry() {
         $frames = $this->page->getFrameFocus();
-        if (count($frames) > 0) {
+        if (SimpleTestCompatibility::count($frames) > 0) {
             $this->loadFrame(
                     $frames,
                     $this->page->getUrl(),
@@ -1061,10 +1061,10 @@ class SimpleBrowser {
      */
     function getLink($label, $index = 0) {
         $urls = $this->page->getUrlsByLabel($label);
-        if (count($urls) == 0) {
+        if (SimpleTestCompatibility::count($urls) == 0) {
             return false;
         }
-        if (count($urls) < $index + 1) {
+        if (SimpleTestCompatibility::count($urls) < $index + 1) {
             return false;
         }
         return $urls[$index];

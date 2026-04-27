@@ -122,7 +122,7 @@ class SimpleForm {
     protected function encode() {
         $class = $this->encoding;
         $encoding = new $class();
-        for ($i = 0, $count = count($this->widgets); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($this->widgets); $i < $count; $i++) {
             $this->widgets[$i]->write($encoding);
         }
         return $encoding;
@@ -175,7 +175,7 @@ class SimpleForm {
     protected function addRadioButton($tag) {
         if (! isset($this->radios[$tag->getName()])) {
             $this->widgets[] = new SimpleRadioGroup();
-            $this->radios[$tag->getName()] = count($this->widgets) - 1;
+            $this->radios[$tag->getName()] = SimpleTestCompatibility::count($this->widgets) - 1;
         }
         $this->widgets[$this->radios[$tag->getName()]]->addWidget($tag);
     }
@@ -188,7 +188,7 @@ class SimpleForm {
     protected function addCheckbox($tag) {
         if (! isset($this->checkboxes[$tag->getName()])) {
             $this->widgets[] = $tag;
-            $this->checkboxes[$tag->getName()] = count($this->widgets) - 1;
+            $this->checkboxes[$tag->getName()] = SimpleTestCompatibility::count($this->widgets) - 1;
         } else {
             $index = $this->checkboxes[$tag->getName()];
             if (! SimpleTestCompatibility::isA($this->widgets[$index], 'SimpleCheckboxGroup')) {
@@ -208,7 +208,7 @@ class SimpleForm {
      *    @access public
      */
     function getValue($selector) {
-        for ($i = 0, $count = count($this->widgets); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($this->widgets); $i < $count; $i++) {
             if ($selector->isMatch($this->widgets[$i])) {
                 return $this->widgets[$i]->getValue();
             }
@@ -233,7 +233,7 @@ class SimpleForm {
     function setField($selector, $value, $position=false) {
         $success = false;
         $_position = 0;
-        for ($i = 0, $count = count($this->widgets); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($this->widgets); $i < $count; $i++) {
             if ($selector->isMatch($this->widgets[$i])) {
                 $_position++;
                 if ($position === false or $_position === (int)$position) {
@@ -253,7 +253,7 @@ class SimpleForm {
      *    @access public
      */
     function attachLabelBySelector($selector, $label) {
-        for ($i = 0, $count = count($this->widgets); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($this->widgets); $i < $count; $i++) {
             if ($selector->isMatch($this->widgets[$i])) {
                 if (method_exists($this->widgets[$i], 'setLabel')) {
                     $this->widgets[$i]->setLabel($label);

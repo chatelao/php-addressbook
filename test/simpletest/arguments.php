@@ -27,7 +27,7 @@ class SimpleArguments {
      */
     function __construct($arguments) {
         array_shift($arguments);
-        while (count($arguments) > 0) {
+        while (SimpleTestCompatibility::count($arguments) > 0) {
             list($key, $value) = $this->parseArgument($arguments);
             $this->assign($key, $value);
         }
@@ -169,7 +169,7 @@ class SimpleHelp {
     function render() {
         $tab_stop = $this->longestFlag($this->flag_sets) + 4;
         $text = $this->overview . "\n";
-        for ($i = 0; $i < count($this->flag_sets); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->flag_sets); $i++) {
             $text .= $this->renderFlagSet($this->flag_sets[$i], $this->explanations[$i], $tab_stop);
         }
         return $this->noDuplicateNewLines($text);

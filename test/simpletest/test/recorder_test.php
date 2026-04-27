@@ -10,7 +10,7 @@ class TestOfRecorder extends UnitTestCase {
         $test->addFile(dirname(__FILE__) . '/support/recorder_sample.php');
         $recorder = new Recorder(new SimpleReporter());
         $test->run($recorder);
-        $this->assertEqual(count($recorder->results), 2);
+        $this->assertEqual(SimpleTestCompatibility::count($recorder->results), 2);
         $this->assertIsA($recorder->results[0], 'SimpleResultOfPass');
         $this->assertEqual('testTrueIsTrue', array_pop($recorder->results[0]->breadcrumb));
         $this->assertPattern('/ at \[.*\Wrecorder_sample\.php line 7\]/', $recorder->results[0]->message);
