@@ -22,11 +22,14 @@ This document outlines the detailed, granular steps for modernizing and migratin
     - [x] **Harden `mysql_shim.php`**: (Completed: 2025-05-22) Added explicit `instanceof` checks for all parameters passed to `mysqli_*` functions to prevent `TypeError`.
     - [x] **Patch SimpleTest core for PHP 8.x**: (Completed: 2026-04-27) Added `SimpleTestCompatibility::count()` and updated all call sites in `test/simpletest/` to handle non-countable types. Also hardened `socket.php` against `fclose()` TypeErrors.
     - [x] **Fix PHP-gettext fatal error on PHP 8.x**: (Completed: 2026-04-27) Updated legacy constructors to `__construct()` in `lib/gettext/` to support PHP 8.0+.
-    - [ ] **Resolve session warnings**: Address `session_start()` and other session-related warnings that became more strict in PHP 8.x.
+    - [x] **Resolve session warnings**: (Completed: 2026-04-27) Added `session_status()` checks before `session_start()` in `signin/` and `hybridauth/` to prevent PHP 8.x warnings when a session is already active.
 - [ ] **Responsive UI**: Implement a mobile-first responsive design using modern CSS (Flexbox/Grid).
 - [ ] **Database Layer Refactor**
     - [x] **Audit legacy usage**: (Completed: 2026-04-27) Identified and documented all `mysql_*` function calls in `TECHNICAL_DEBTS_MYSQL.md`.
-    - [ ] **Design Abstraction Layer**: Create a `mysqli`-based database wrapper or select a lightweight Query Builder.
+    - [ ] **Design Abstraction Layer**
+        - [ ] Define the DBAL interface (Connection, Query, Fetch, Escape).
+        - [ ] Implement the core DBAL class using `mysqli`.
+        - [ ] Implement support for prepared statements in the DBAL.
     - [ ] **Migrate Connection Logic**: Update `include/dbconnect.php` to use the new abstraction.
     - [ ] **Phased Migration**: Systematically replace `mysql_shim.php` calls with the new abstraction.
 
