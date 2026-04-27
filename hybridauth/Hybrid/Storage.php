@@ -12,7 +12,7 @@ class Hybrid_Storage
 {
 	function __construct()
 	{ 
-		if ( ! session_id() ){
+		if ( session_status() === PHP_SESSION_NONE ){
 			if( ! session_start() ){
 				throw new Exception( "Hybridauth requires the use of 'session_start()' at the start of your script, which appears to be disabled.", 1 );
 			}

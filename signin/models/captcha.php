@@ -3,7 +3,9 @@
 UserCake Version: 2.0.1
 http://usercake.com
 */
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $md5_hash = md5(rand(0,99999)); 
 $security_code = substr($md5_hash, 25, 5); 
 $enc = md5($security_code);

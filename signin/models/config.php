@@ -46,7 +46,9 @@ require_once("class.user.php");
 require_once("class.newuser.php");
 require_once("funcs.php");
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 //Global User Object Var
 //loggedInUser can be used globally if constructed
