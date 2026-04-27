@@ -21,12 +21,14 @@ This document outlines the detailed, granular steps for modernizing and migratin
 - [ ] **PHP 8.x Native Support**
     - [x] **Harden `mysql_shim.php`**: (Completed: 2025-05-22) Added explicit `instanceof` checks for all parameters passed to `mysqli_*` functions to prevent `TypeError`.
     - [x] **Patch SimpleTest core for PHP 8.x**: (Completed: 2026-04-27) Added `SimpleTestCompatibility::count()` and updated all call sites in `test/simpletest/` to handle non-countable types. Also hardened `socket.php` against `fclose()` TypeErrors.
+    - [x] **Fix PHP-gettext fatal error on PHP 8.x**: (Completed: 2026-04-27) Updated legacy constructors to `__construct()` in `lib/gettext/` to support PHP 8.0+.
     - [ ] **Resolve session warnings**: Address `session_start()` and other session-related warnings that became more strict in PHP 8.x.
 - [ ] **Responsive UI**: Implement a mobile-first responsive design using modern CSS (Flexbox/Grid).
 - [ ] **Database Layer Refactor**
-    - [ ] Identify and document all `mysql_*` function calls.
-    - [ ] Create a `mysqli`-based database wrapper/abstraction layer.
-    - [ ] Phased replacement of `mysql_shim.php` calls with the new abstraction.
+    - [x] **Audit legacy usage**: (Completed: 2026-04-27) Identified and documented all `mysql_*` function calls in `TECHNICAL_DEBTS_MYSQL.md`.
+    - [ ] **Design Abstraction Layer**: Create a `mysqli`-based database wrapper or select a lightweight Query Builder.
+    - [ ] **Migrate Connection Logic**: Update `include/dbconnect.php` to use the new abstraction.
+    - [ ] **Phased Migration**: Systematically replace `mysql_shim.php` calls with the new abstraction.
 
 ### Phase 3: Technical Debt Cleanup
 - [ ] **Remove MooTools**: Completely remove MooTools 1.11 and migrate `jscalendar` to a modern, lightweight date picker like **Flatpickr**.
