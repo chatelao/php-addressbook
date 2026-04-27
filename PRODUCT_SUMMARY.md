@@ -17,7 +17,7 @@ PHP Address Book is a web-based application for managing contacts. It provides a
 ## Technical Stack
 - **Language:** PHP (compatible with PHP 5.4 up to 7.0 via mysqli shim).
 - **Database:** MySQL.
-- **Frontend:** HTML, CSS, JavaScript (jQuery 1.8.2, DataTables 1.9.4).
+- **Frontend:** HTML, CSS, JavaScript (MooTools 1.11).
 - **Libraries:**
   - Z-Push (ActiveSync synchronization)
   - HybridAuth (Social authentication)
