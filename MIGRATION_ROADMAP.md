@@ -23,12 +23,16 @@ This document outlines the detailed, granular steps for modernizing and migratin
     - [x] **Patch SimpleTest core for PHP 8.x**: (Completed: 2026-04-27) Added `SimpleTestCompatibility::count()` and updated all call sites in `test/simpletest/` to handle non-countable types. Also hardened `socket.php` against `fclose()` TypeErrors.
     - [x] **Fix PHP-gettext fatal error on PHP 8.x**: (Completed: 2026-04-27) Updated legacy constructors to `__construct()` in `lib/gettext/` to support PHP 8.0+.
     - [x] **Resolve session warnings**: (Completed: 2026-04-27) Added `session_status()` checks before `session_start()` in `signin/` and `hybridauth/` to prevent PHP 8.x warnings when a session is already active.
-- [ ] **Responsive UI**: Implement a mobile-first responsive design using modern CSS (Flexbox/Grid).
+- [ ] **Responsive UI**
+    - [ ] Add viewport meta tag to `include/header.inc.php`.
+    - [ ] Convert fixed-width layout (`#container`) to fluid/responsive.
+    - [ ] Implement a mobile-friendly navigation menu.
+    - [ ] Implement responsive table patterns for the main contact list.
 - [ ] **Database Layer Refactor**
     - [x] **Audit legacy usage**: (Completed: 2026-04-27) Identified and documented all `mysql_*` function calls in `TECHNICAL_DEBTS_MYSQL.md`.
     - [ ] **Design Abstraction Layer**
-        - [ ] Define the DBAL interface (Connection, Query, Fetch, Escape).
-        - [ ] Implement the core DBAL class using `mysqli`.
+        - [x] **Define the DBAL interface**: (Completed: 2026-04-27) Created `include/database.interface.php` defining the core database operations.
+        - [x] **Implement the core DBAL class using `mysqli`**: (Completed: 2026-04-27) Created `include/mysqli.database.php` as the primary implementation.
         - [ ] Implement support for prepared statements in the DBAL.
     - [ ] **Migrate Connection Logic**: Update `include/dbconnect.php` to use the new abstraction.
     - [ ] **Phased Migration**: Systematically replace `mysql_shim.php` calls with the new abstraction.
@@ -36,13 +40,17 @@ This document outlines the detailed, granular steps for modernizing and migratin
 ### Phase 3: Technical Debt Cleanup
 - [ ] **Remove MooTools**: Completely remove MooTools 1.11 and migrate `jscalendar` to a modern, lightweight date picker like **Flatpickr**.
 - [x] **Modernize Table Actions**: (Completed: 2026-04-27) Removed the unreferenced `js/tableActions.min.js`. Further modernization can focus on native JS or future DataTables integration if needed.
-- [ ] **Migrate Testing Framework**: Transition from SimpleTest to **PHPUnit** for more robust testing and PHP 8.x compatibility.
+- [ ] **Migrate Testing Framework**
+    - [ ] Setup PHPUnit (Configuration and initial test suite).
+    - [ ] Migrate core library tests to PHPUnit.
+    - [ ] Migrate web/integration tests to PHPUnit.
+    - [ ] Remove SimpleTest once migration is complete.
 
 ### Ongoing Modernization
 - [ ] **Upgrade parseCSV**: Update `lib/parsecsv.lib.php` from 0.4.3 beta to the active fork version 1.3.x.
 - [ ] **Modernize Translation Engine**: Replace legacy **PHP-gettext 1.0** with native PHP gettext or Symfony Translation.
 - [ ] **Modernize Identicon Generation**: Replace the local `lib/identicon.php` with a modern library like `bit-wasp/identicon`.
-- [ ] **Modernize Table Sorting**: Replace the legacy `js/tablesort.min.js` with native DataTables sorting capabilities.
+- [ ] **Modernize Table Sorting**: Replace the legacy `js/tablesort.min.js` with native Vanilla JS sorting capabilities.
 
 ---
 
