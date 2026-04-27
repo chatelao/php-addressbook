@@ -42,7 +42,23 @@ This document outlines the detailed, granular steps for modernizing and migratin
         - [ ] Migrate `view.php` to DBAL.
         - [ ] Migrate `birthdays.php` to DBAL.
         - [ ] Migrate `delete.php` and `photo.php` to DBAL.
-        - [ ] Migrate registration module (`register/`) to DBAL.
+        - [ ] Migrate registration module (`register/`) to DBAL:
+            - [ ] Migrate `register/user_add_save.php` to DBAL.
+            - [ ] Migrate `register/login_config.php` to DBAL.
+            - [ ] Migrate `register/reset_password.php` to DBAL.
+            - [ ] Migrate `register/auth_check_header.php` to DBAL.
+            - [ ] Migrate `register/traffic.php` to DBAL.
+            - [ ] Migrate `register/router.php` to DBAL.
+            - [ ] Migrate `register/edit_user.php` to DBAL.
+            - [ ] Migrate `register/admin_index.php` to DBAL.
+            - [ ] Migrate `register/email_password_sender.php` to DBAL.
+            - [ ] Migrate `register/reset_password_save.php` to DBAL.
+            - [ ] Migrate `register/email_sent.php` to DBAL.
+            - [ ] Migrate `register/edit_user_save.php` to DBAL.
+            - [ ] Migrate `register/delete_user.php` to DBAL.
+            - [ ] Migrate `register/linktick.php` to DBAL.
+            - [x] **Migrate `register/checklogin.php` to DBAL**: (Completed: 2026-04-27) Updated to use the DBAL with prepared statements for the login query.
+            - [x] **Migrate `register/master_inc.php` to DBAL**: (Completed: 2026-04-27) Updated to use the DBAL for server connection and database selection.
         - [x] **Migrate `include/address.class.php` to DBAL**: (Completed: 2026-04-27) Updated the file to use the DBAL abstraction with prepared statements for CRUD operations and refactored the `Addresses` class to use DBAL query methods.
         - [x] **Migrate `include/group.class.php` and `group.php` to DBAL**: (Completed: 2026-04-27) Updated both files to use the DBAL abstraction with prepared statements for all database operations.
 
