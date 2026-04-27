@@ -25,7 +25,7 @@ This document outlines the planned improvements and modernization steps for the 
 
 ### Phase 2: Core Improvements
 - [ ] **Database Layer Refactor**: Transition from the `mysql_shim.php` compatibility layer to native `mysqli` or a modern ORM/Query Builder.
-- [ ] **Responsive UI**: Implement a mobile-first responsive design using modern CSS (Flexbox/Grid).
+- [ ] **Responsive UI**: (Partially Completed: 2026-04-27) Modernized viewport meta tag and converted fixed-width layout to fluid. Further work needed for mobile navigation and tables.
 - [ ] **PHP 8.x Native Support**: (Partially Completed: 2026-04-27) Hardened `mysql_shim.php` (2025) and patched SimpleTest core (2026) to handle PHP 8.x `count()` and `fclose()` changes. Further work needed on legacy libraries like PHP-gettext.
 
 ### Phase 1: Dependency Modernization
