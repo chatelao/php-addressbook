@@ -24,8 +24,8 @@ This document outlines the detailed, granular steps for modernizing and migratin
     - [x] **Fix PHP-gettext fatal error on PHP 8.x**: (Completed: 2026-04-27) Updated legacy constructors to `__construct()` in `lib/gettext/` to support PHP 8.0+.
     - [x] **Resolve session warnings**: (Completed: 2026-04-27) Added `session_status()` checks before `session_start()` in `signin/` and `hybridauth/` to prevent PHP 8.x warnings when a session is already active.
 - [ ] **Responsive UI**
-    - [ ] Add viewport meta tag to `include/header.inc.php`.
-    - [ ] Convert fixed-width layout (`#container`) to fluid/responsive.
+    - [x] **Add viewport meta tag**: (Completed: 2026-04-27) Updated `include/format.inc.php` with a modern viewport meta tag.
+    - [x] **Convert fixed-width layout (#container) to fluid/responsive**: (Completed: 2026-04-27) Updated `style.css` to use percentages and `max-width` for core layout elements.
     - [ ] Implement a mobile-friendly navigation menu.
     - [ ] Implement responsive table patterns for the main contact list.
 - [ ] **Database Layer Refactor**

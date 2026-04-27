@@ -51,7 +51,7 @@ switch($skin_color) {
 	<!--[if !IE]>-->
 	<link media="only screen and (max-device-width: 480px)" rel="stylesheet" type="text/css" href="iphone.css"/>
 	<!--<![endif]-->
-	<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 
 	<link rel="icon" type="image/png" href="<?php echo $url_images; ?>icons/font.png" />
