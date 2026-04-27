@@ -68,4 +68,13 @@ interface DatabaseInterface {
      * Get the ID generated in the last query
      */
     public function insertId();
+
+    /**
+     * Execute a query with parameters using prepared statements
+     *
+     * @param string $query The SQL query with placeholders (?)
+     * @param array $params The parameters to bind to the placeholders
+     * @return mixed The result of the query (mysqli_result for SELECT, bool for others)
+     */
+    public function execute($query, array $params = []);
 }
