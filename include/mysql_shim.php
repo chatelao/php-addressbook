@@ -10,10 +10,12 @@ if (!function_exists('mysql_connect')) {
     }
     function mysql_select_db($database_name, $link_identifier = null) {
         if ($link_identifier === null) $link_identifier = (isset($GLOBALS['mysql_mysqli_link']) ? $GLOBALS['mysql_mysqli_link'] : null);
+        if (!($link_identifier instanceof mysqli)) return false;
         return mysqli_select_db($link_identifier, $database_name);
     }
     function mysql_query($query, $link_identifier = null) {
         if ($link_identifier === null) $link_identifier = (isset($GLOBALS['mysql_mysqli_link']) ? $GLOBALS['mysql_mysqli_link'] : null);
+        if (!($link_identifier instanceof mysqli)) return false;
         return mysqli_query($link_identifier, $query);
     }
     function mysql_fetch_array($result, $result_type = MYSQLI_BOTH) {
@@ -54,10 +56,12 @@ if (!function_exists('mysql_connect')) {
     }
     function mysql_close($link_identifier = null) {
         if ($link_identifier === null) $link_identifier = (isset($GLOBALS['mysql_mysqli_link']) ? $GLOBALS['mysql_mysqli_link'] : null);
+        if (!($link_identifier instanceof mysqli)) return true;
         return mysqli_close($link_identifier);
     }
     function mysql_ping($link_identifier = null) {
         if ($link_identifier === null) $link_identifier = (isset($GLOBALS['mysql_mysqli_link']) ? $GLOBALS['mysql_mysqli_link'] : null);
+        if (!($link_identifier instanceof mysqli)) return false;
         return mysqli_ping($link_identifier);
     }
     function mysql_data_seek($result, $row_number) {
