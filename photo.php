@@ -1,17 +1,17 @@
 <?php
 	include ("include/dbconnect.php");
 	include ("include/photo.class.php");
-	
+
 if ($id) {
 
-   $sql = "SELECT photo FROM $base_from_where AND $table.id='$id'";
-   $result = mysql_query($sql, $db);
-   $r = mysql_fetch_array($result);
+   $sql = "SELECT photo FROM $base_from_where AND $table.id=?";
+   $result = $db_access->execute($sql, [$id]);
+   $r = $db_access->fetchArray($result);
 
-   $resultsnumber = mysql_numrows($result);
+   $resultsnumber = $db_access->numRows($result);
 }
 
-$encoded = $r['photo'];
+$encoded = isset($r['photo']) ? $r['photo'] : '';
 
 header('Content-Type: image/jpeg');
 echo binaryImg($encoded);
