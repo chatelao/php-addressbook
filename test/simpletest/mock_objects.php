@@ -52,10 +52,10 @@ class ParametersExpectation extends SimpleExpectation {
         if (! is_array($this->expected)) {
             return true;
         }
-        if (count($this->expected) != count($parameters)) {
+        if (SimpleTestCompatibility::count($this->expected) != SimpleTestCompatibility::count($parameters)) {
             return false;
         }
-        for ($i = 0; $i < count($this->expected); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->expected); $i++) {
             if (! $this->testParameter($parameters[$i], $this->expected[$i])) {
                 return false;
             }
@@ -83,7 +83,7 @@ class ParametersExpectation extends SimpleExpectation {
      */
     function testMessage($parameters) {
         if ($this->test($parameters)) {
-            return "Expectation of " . count($this->expected) .
+            return "Expectation of " . SimpleTestCompatibility::count($this->expected) .
                     " arguments of [" . $this->renderArguments($this->expected) .
                     "] is correct";
         } else {
@@ -99,14 +99,14 @@ class ParametersExpectation extends SimpleExpectation {
      *    @return string              Description of difference.
      */
     protected function describeDifference($expected, $parameters) {
-        if (count($expected) != count($parameters)) {
-            return "Expected " . count($expected) .
+        if (SimpleTestCompatibility::count($expected) != SimpleTestCompatibility::count($parameters)) {
+            return "Expected " . SimpleTestCompatibility::count($expected) .
                     " arguments of [" . $this->renderArguments($expected) .
-                    "] but got " . count($parameters) .
+                    "] but got " . SimpleTestCompatibility::count($parameters) .
                     " arguments of [" . $this->renderArguments($parameters) . "]";
         }
         $messages = array();
-        for ($i = 0; $i < count($expected); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($expected); $i++) {
             $comparison = $this->coerceToExpectation($expected[$i]);
             if (! $comparison->test($parameters[$i])) {
                 $messages[] = "parameter " . ($i + 1) . " with [" .
@@ -299,7 +299,7 @@ class SimpleSignatureMap {
      *    @param mixed $action        Reference placed in the map.
      */
     function add($parameters, $action) {
-        $place = count($this->map);
+        $place = SimpleTestCompatibility::count($this->map);
         $this->map[$place] = array();
         $this->map[$place]['params'] = new ParametersExpectation($parameters);
         $this->map[$place]['content'] = $action;
@@ -351,7 +351,7 @@ class SimpleSignatureMap {
      *    @return array               Reference to slot or null.
      */
     function &findFirstSlot($parameters) {
-        $count = count($this->map);
+        $count = SimpleTestCompatibility::count($this->map);
         for ($i = 0; $i < $count; $i++) {
             if ($this->map[$i]["params"]->test($parameters)) {
                 return $this->map[$i];
@@ -477,7 +477,7 @@ class SimpleCallSchedule {
         if ($args === false) {
             return false;
         }
-        for ($i = 0; $i < count($args); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($args); $i++) {
             if ($args[$i] === $this->wildcard) {
                 $args[$i] = new AnythingExpectation();
             }
@@ -717,7 +717,7 @@ class SimpleMock {
         if ($args === false) {
             return false;
         }
-        for ($i = 0; $i < count($args); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($args); $i++) {
             if ($args[$i] === $this->wildcard) {
                 $args[$i] = new AnythingExpectation();
             }
@@ -1347,7 +1347,7 @@ class MockGenerator {
         if (function_exists('spl_classes')) {
             $interfaces = array_diff($interfaces, array('Traversable'));
         }
-        if (count($interfaces) > 0) {
+        if (SimpleTestCompatibility::count($interfaces) > 0) {
             $implements = 'implements ' . implode(', ', $interfaces);
         }
         $code = "class " . $this->mock_class . " extends " . $this->mock_base . " $implements {\n";

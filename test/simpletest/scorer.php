@@ -276,7 +276,7 @@ class SimpleReporter extends SimpleScorer {
         if (! isset($this->size)) {
             $this->size = $size;
         }
-        if (count($this->test_stack) == 0) {
+        if (SimpleTestCompatibility::count($this->test_stack) == 0) {
             $this->paintHeader($test_name);
         }
         $this->test_stack[] = $test_name;
@@ -291,7 +291,7 @@ class SimpleReporter extends SimpleScorer {
      */
     function paintGroupEnd($test_name) {
         array_pop($this->test_stack);
-        if (count($this->test_stack) == 0) {
+        if (SimpleTestCompatibility::count($this->test_stack) == 0) {
             $this->paintFooter($test_name);
         }
     }
@@ -308,7 +308,7 @@ class SimpleReporter extends SimpleScorer {
         if (! isset($this->size)) {
             $this->size = 1;
         }
-        if (count($this->test_stack) == 0) {
+        if (SimpleTestCompatibility::count($this->test_stack) == 0) {
             $this->paintHeader($test_name);
         }
         $this->test_stack[] = $test_name;
@@ -323,7 +323,7 @@ class SimpleReporter extends SimpleScorer {
     function paintCaseEnd($test_name) {
         $this->progress++;
         array_pop($this->test_stack);
-        if (count($this->test_stack) == 0) {
+        if (SimpleTestCompatibility::count($this->test_stack) == 0) {
             $this->paintFooter($test_name);
         }
     }
@@ -651,7 +651,7 @@ class MultipleReporter {
      *    @access public
      */
     function makeDry($is_dry = true) {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             $this->reporters[$i]->makeDry($is_dry);
         }
     }
@@ -665,7 +665,7 @@ class MultipleReporter {
      *    @access public
      */
     function getStatus() {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             if (! $this->reporters[$i]->getStatus()) {
                 return false;
             }
@@ -681,7 +681,7 @@ class MultipleReporter {
      *    @access public
      */
     function shouldInvoke($test_case_name, $method) {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             if (! $this->reporters[$i]->shouldInvoke($test_case_name, $method)) {
                 return false;
             }
@@ -696,7 +696,7 @@ class MultipleReporter {
      *    @access public
      */
     function createInvoker($invoker) {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             $invoker = $this->reporters[$i]->createInvoker($invoker);
         }
         return $invoker;
@@ -719,7 +719,7 @@ class MultipleReporter {
      *    @access public
      */
     function paintGroupStart($test_name, $size) {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             $this->reporters[$i]->paintGroupStart($test_name, $size);
         }
     }
@@ -730,7 +730,7 @@ class MultipleReporter {
      *    @access public
      */
     function paintGroupEnd($test_name) {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             $this->reporters[$i]->paintGroupEnd($test_name);
         }
     }
@@ -741,7 +741,7 @@ class MultipleReporter {
      *    @access public
      */
     function paintCaseStart($test_name) {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             $this->reporters[$i]->paintCaseStart($test_name);
         }
     }
@@ -752,7 +752,7 @@ class MultipleReporter {
      *    @access public
      */
     function paintCaseEnd($test_name) {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             $this->reporters[$i]->paintCaseEnd($test_name);
         }
     }
@@ -763,7 +763,7 @@ class MultipleReporter {
      *    @access public
      */
     function paintMethodStart($test_name) {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             $this->reporters[$i]->paintMethodStart($test_name);
         }
     }
@@ -774,7 +774,7 @@ class MultipleReporter {
      *    @access public
      */
     function paintMethodEnd($test_name) {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             $this->reporters[$i]->paintMethodEnd($test_name);
         }
     }
@@ -785,7 +785,7 @@ class MultipleReporter {
      *    @access public
      */
     function paintPass($message) {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             $this->reporters[$i]->paintPass($message);
         }
     }
@@ -796,7 +796,7 @@ class MultipleReporter {
      *    @access public
      */
     function paintFail($message) {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             $this->reporters[$i]->paintFail($message);
         }
     }
@@ -808,7 +808,7 @@ class MultipleReporter {
      *    @access public
      */
     function paintError($message) {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             $this->reporters[$i]->paintError($message);
         }
     }
@@ -819,7 +819,7 @@ class MultipleReporter {
      *    @access public
      */
     function paintException($exception) {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             $this->reporters[$i]->paintException($exception);
         }
     }
@@ -830,7 +830,7 @@ class MultipleReporter {
      *    @access public
      */
     function paintSkip($message) {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             $this->reporters[$i]->paintSkip($message);
         }
     }
@@ -841,7 +841,7 @@ class MultipleReporter {
      *    @access public
      */
     function paintMessage($message) {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             $this->reporters[$i]->paintMessage($message);
         }
     }
@@ -852,7 +852,7 @@ class MultipleReporter {
      *    @access public
      */
     function paintFormattedMessage($message) {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             $this->reporters[$i]->paintFormattedMessage($message);
         }
     }
@@ -867,7 +867,7 @@ class MultipleReporter {
      *    @access public
      */
     function paintSignal($type, $payload) {
-        for ($i = 0; $i < count($this->reporters); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->reporters); $i++) {
             $this->reporters[$i]->paintSignal($type, $payload);
         }
     }

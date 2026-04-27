@@ -220,7 +220,7 @@ class SimpleTestCase {
      *    @access public
      */
     function after($method) {
-        for ($i = 0; $i < count($this->observers); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->observers); $i++) {
             $this->observers[$i]->atTestEnd($method, $this);
         }
         $this->reporter->paintMethodEnd($method);
@@ -453,7 +453,7 @@ class SimpleFileLoader {
      *    @access public
      */
     function createSuiteFromClasses($title, $classes) {
-        if (count($classes) == 0) {
+        if (SimpleTestCompatibility::count($classes) == 0) {
             $suite = new BadTestSuite($title, "No runnable test cases in [$title]");
             return $suite;
         }
@@ -557,7 +557,7 @@ class TestSuite {
      */
     function run($reporter) {
         $reporter->paintGroupStart($this->getLabel(), $this->getSize());
-        for ($i = 0, $count = count($this->test_cases); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($this->test_cases); $i < $count; $i++) {
             if (is_string($this->test_cases[$i])) {
                 $class = $this->test_cases[$i];
                 $test = new $class();

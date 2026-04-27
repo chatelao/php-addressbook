@@ -205,7 +205,7 @@ class TestOfReflection extends UnitTestCase {
 	function testProperlyReflectsTheFinalInterfaceWhenObjectImplementsAnExtendedInterface() {
 		$reflection = new SimpleReflection('AnyDescendentImplementation');
 		$interfaces = $reflection->getInterfaces();
-		$this->assertEqual(1, count($interfaces));
+		$this->assertEqual(1, SimpleTestCompatibility::count($interfaces));
 		$this->assertEqual('AnyDescendentInterface', array_shift($interfaces));
 	}
 	

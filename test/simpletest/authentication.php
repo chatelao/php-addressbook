@@ -55,7 +55,7 @@ class SimpleRealm {
     protected function getCommonPath($first, $second) {
         $first = explode('/', $first);
         $second = explode('/', $second);
-        for ($i = 0; $i < min(count($first), count($second)); $i++) {
+        for ($i = 0; $i < min(SimpleTestCompatibility::count($first), SimpleTestCompatibility::count($second)); $i++) {
             if ($first[$i] != $second[$i]) {
                 return implode('/', array_slice($first, 0, $i)) . '/';
             }

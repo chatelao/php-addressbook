@@ -20,7 +20,7 @@ This document outlines the detailed, granular steps for modernizing and migratin
 ### Phase 2: Core Improvements
 - [ ] **PHP 8.x Native Support**
     - [x] **Harden `mysql_shim.php`**: (Completed: 2025-05-22) Added explicit `instanceof` checks for all parameters passed to `mysqli_*` functions to prevent `TypeError`.
-    - [ ] **Patch SimpleTest**: Identify and fix all occurrences in `test/simpletest/` where `count()` is called on null or non-countable types, ensuring the test suite can run on PHP 8.x.
+    - [x] **Patch SimpleTest core for PHP 8.x**: (Completed: 2026-04-27) Added `SimpleTestCompatibility::count()` and updated all call sites in `test/simpletest/` to handle non-countable types. Also hardened `socket.php` against `fclose()` TypeErrors.
     - [ ] **Resolve session warnings**: Address `session_start()` and other session-related warnings that became more strict in PHP 8.x.
 - [ ] **Responsive UI**: Implement a mobile-first responsive design using modern CSS (Flexbox/Grid).
 - [ ] **Database Layer Refactor**

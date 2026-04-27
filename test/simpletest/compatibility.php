@@ -162,5 +162,18 @@ class SimpleTestCompatibility {
             set_socket_timeout($handle, $timeout, 0);
         }
     }
+
+    /**
+     *    Count elements of an object or array.
+     *    @param mixed $value    Array or countable object.
+     *    @return integer        Number of elements.
+     *    @access public
+     */
+    static function count($value) {
+        if (is_array($value) || $value instanceof Countable) {
+            return count($value);
+        }
+        return 0;
+    }
 }
 ?>

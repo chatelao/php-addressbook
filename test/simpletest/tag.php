@@ -845,7 +845,7 @@ class SimpleSelectionTag extends SimpleWidget {
      *    @access public
      */
     function getDefault() {
-        for ($i = 0, $count = count($this->options); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($this->options); $i < $count; $i++) {
             if ($this->options[$i]->getAttribute('selected') !== false) {
                 return $this->options[$i]->getDefault();
             }
@@ -863,7 +863,7 @@ class SimpleSelectionTag extends SimpleWidget {
      *    @access public
      */
     function setValue($value) {
-        for ($i = 0, $count = count($this->options); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($this->options); $i < $count; $i++) {
             if ($this->options[$i]->isValue($value)) {
                 $this->choice = $i;
                 return true;
@@ -934,7 +934,7 @@ class MultipleSelectionTag extends SimpleWidget {
      */
     function getDefault() {
         $default = array();
-        for ($i = 0, $count = count($this->options); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($this->options); $i < $count; $i++) {
             if ($this->options[$i]->getAttribute('selected') !== false) {
                 $default[] = $this->options[$i]->getDefault();
             }
@@ -954,7 +954,7 @@ class MultipleSelectionTag extends SimpleWidget {
         $achieved = array();
         foreach ($desired as $value) {
             $success = false;
-            for ($i = 0, $count = count($this->options); $i < $count; $i++) {
+            for ($i = 0, $count = SimpleTestCompatibility::count($this->options); $i < $count; $i++) {
                 if ($this->options[$i]->isValue($value)) {
                     $achieved[] = $this->options[$i]->getValue();
                     $success = true;
@@ -1207,7 +1207,7 @@ class SimpleTagGroup {
      *    @access public
      */
     function getName() {
-        if (count($this->widgets) > 0) {
+        if (SimpleTestCompatibility::count($this->widgets) > 0) {
             return $this->widgets[0]->getName();
         }
     }
@@ -1220,7 +1220,7 @@ class SimpleTagGroup {
      *    @access public
      */
     function isId($id) {
-        for ($i = 0, $count = count($this->widgets); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($this->widgets); $i < $count; $i++) {
             if ($this->widgets[$i]->isId($id)) {
                 return true;
             }
@@ -1236,7 +1236,7 @@ class SimpleTagGroup {
      *    @access public
      */
     function isLabel($label) {
-        for ($i = 0, $count = count($this->widgets); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($this->widgets); $i < $count; $i++) {
             if ($this->widgets[$i]->isLabel($label)) {
                 return true;
             }
@@ -1270,7 +1270,7 @@ class SimpleCheckboxGroup extends SimpleTagGroup {
     function getValue() {
         $values = array();
         $widgets = $this->getWidgets();
-        for ($i = 0, $count = count($widgets); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($widgets); $i < $count; $i++) {
             if ($widgets[$i]->getValue() !== false) {
                 $values[] = $widgets[$i]->getValue();
             }
@@ -1286,7 +1286,7 @@ class SimpleCheckboxGroup extends SimpleTagGroup {
     function getDefault() {
         $values = array();
         $widgets = $this->getWidgets();
-        for ($i = 0, $count = count($widgets); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($widgets); $i < $count; $i++) {
             if ($widgets[$i]->getDefault() !== false) {
                 $values[] = $widgets[$i]->getDefault();
             }
@@ -1307,7 +1307,7 @@ class SimpleCheckboxGroup extends SimpleTagGroup {
             return false;
         }
         $widgets = $this->getWidgets();
-        for ($i = 0, $count = count($widgets); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($widgets); $i < $count; $i++) {
             $possible = $widgets[$i]->getAttribute('value');
             if (in_array($widgets[$i]->getAttribute('value'), $values)) {
                 $widgets[$i]->setValue($possible);
@@ -1329,7 +1329,7 @@ class SimpleCheckboxGroup extends SimpleTagGroup {
     protected function valuesArePossible($values) {
         $matches = array();
         $widgets = &$this->getWidgets();
-        for ($i = 0, $count = count($widgets); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($widgets); $i < $count; $i++) {
             $possible = $widgets[$i]->getAttribute('value');
             if (in_array($possible, $values)) {
                 $matches[] = $possible;
@@ -1347,9 +1347,9 @@ class SimpleCheckboxGroup extends SimpleTagGroup {
      *    @access private
      */
     protected function coerceValues($values) {
-        if (count($values) == 0) {
+        if (SimpleTestCompatibility::count($values) == 0) {
             return false;
-        } elseif (count($values) == 1) {
+        } elseif (SimpleTestCompatibility::count($values) == 1) {
             return $values[0];
         } else {
             return $values;
@@ -1398,7 +1398,7 @@ class SimpleRadioGroup extends SimpleTagGroup {
         }
         $index = false;
         $widgets = $this->getWidgets();
-        for ($i = 0, $count = count($widgets); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($widgets); $i < $count; $i++) {
             if (! $widgets[$i]->setValue($value)) {
                 $widgets[$i]->setValue(false);
             }
@@ -1414,7 +1414,7 @@ class SimpleRadioGroup extends SimpleTagGroup {
      */
     protected function valueIsPossible($value) {
         $widgets = $this->getWidgets();
-        for ($i = 0, $count = count($widgets); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($widgets); $i < $count; $i++) {
             if ($widgets[$i]->getAttribute('value') == $value) {
                 return true;
             }
@@ -1431,7 +1431,7 @@ class SimpleRadioGroup extends SimpleTagGroup {
      */
     function getValue() {
         $widgets = $this->getWidgets();
-        for ($i = 0, $count = count($widgets); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($widgets); $i < $count; $i++) {
             if ($widgets[$i]->getValue() !== false) {
                 return $widgets[$i]->getValue();
             }
@@ -1447,7 +1447,7 @@ class SimpleRadioGroup extends SimpleTagGroup {
      */
     function getDefault() {
         $widgets = $this->getWidgets();
-        for ($i = 0, $count = count($widgets); $i < $count; $i++) {
+        for ($i = 0, $count = SimpleTestCompatibility::count($widgets); $i < $count; $i++) {
             if ($widgets[$i]->getDefault() !== false) {
                 return $widgets[$i]->getDefault();
             }

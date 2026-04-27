@@ -295,7 +295,7 @@ class SimplePage {
      *    @access public
      */
     function hasFrames() {
-        return count($this->frames) > 0;
+        return SimpleTestCompatibility::count($this->frames) > 0;
     }
 
     /**
@@ -312,7 +312,7 @@ class SimplePage {
             return false;
         }
         $urls = array();
-        for ($i = 0; $i < count($this->frames); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->frames); $i++) {
             $name = $this->frames[$i]->getAttribute('name');
             $url = new SimpleUrl($this->frames[$i]->getAttribute('src'));
             $urls[$name ? $name : $i + 1] = $this->expandUrl($url);
@@ -443,7 +443,7 @@ class SimplePage {
      *    @access public
      */
     function getFormBySubmit($selector) {
-        for ($i = 0; $i < count($this->forms); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->forms); $i++) {
             if ($this->forms[$i]->hasSubmit($selector)) {
                 return $this->forms[$i];
             }
@@ -460,7 +460,7 @@ class SimplePage {
      *    @access public
      */
     function getFormByImage($selector) {
-        for ($i = 0; $i < count($this->forms); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->forms); $i++) {
             if ($this->forms[$i]->hasImage($selector)) {
                 return $this->forms[$i];
             }
@@ -477,7 +477,7 @@ class SimplePage {
      *    @access public
      */
     function getFormById($id) {
-        for ($i = 0; $i < count($this->forms); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->forms); $i++) {
             if ($this->forms[$i]->getId() == $id) {
                 return $this->forms[$i];
             }
@@ -495,7 +495,7 @@ class SimplePage {
      */
     function setField($selector, $value, $position=false) {
         $is_set = false;
-        for ($i = 0; $i < count($this->forms); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->forms); $i++) {
             if ($this->forms[$i]->setField($selector, $value, $position)) {
                 $is_set = true;
             }
@@ -512,7 +512,7 @@ class SimplePage {
      *    @access public
      */
     function getField($selector) {
-        for ($i = 0; $i < count($this->forms); $i++) {
+        for ($i = 0; $i < SimpleTestCompatibility::count($this->forms); $i++) {
             $value = $this->forms[$i]->getValue($selector);
             if (isset($value)) {
                 return $value;

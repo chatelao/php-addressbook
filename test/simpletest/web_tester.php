@@ -77,7 +77,7 @@ class FieldExpectation extends SimpleExpectation {
      *    @access private
      */
     protected function testSingle($compare) {
-        if (is_array($compare) && count($compare) == 1) {
+        if (is_array($compare) && SimpleTestCompatibility::count($compare) == 1) {
             $compare = $compare[0];
         }
         if (! $this->isSingle($compare)) {
@@ -206,7 +206,7 @@ class HttpHeaderExpectation extends SimpleExpectation {
      *    @access private
      */
     protected function testHeaderLine($line) {
-        if (count($parsed = explode(':', $line, 2)) < 2) {
+        if (SimpleTestCompatibility::count($parsed = explode(':', $line, 2)) < 2) {
             return false;
         }
         list($header, $value) = $parsed;

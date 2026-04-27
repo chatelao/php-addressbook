@@ -244,7 +244,7 @@ class SimpleHttpRequest {
         foreach ($this->headers as $header_line) {
             $socket->write($header_line . "\r\n");
         }
-        if (count($this->cookies) > 0) {
+        if (SimpleTestCompatibility::count($this->cookies) > 0) {
             $socket->write("Cookie: " . implode(";", $this->cookies) . "\r\n");
         }
         $encoding->writeHeadersTo($socket);
