@@ -1,14 +1,14 @@
 <?php
 
 interface AuthUser {
-	
+
 	function getDomain();
 	function getName();
-	
+
 }
 
 interface AuthLogin {
-	
+
   public function hasLogout();
   public function hasValidUserPass();
   public function getUser();
@@ -92,7 +92,7 @@ class AuthLoginFactory {
        && !(isset($_POST['logout']) && $_POST['logout'] == "yes")) {
       $login = new AuthHybrid($db, $usertable);
     }
-		if(  (!isset($login) || !$login->hasRoles()) 
+		if(  (!isset($login) || !$login->hasRoles())
 		   && isset($iplist) && !(isset($_POST['logout']) && $_POST['logout'] == "yes")) {
 		  if(isset($blacklist)) {
         $login = new AuthLoginIP($iplist, $blacklist);
@@ -109,15 +109,15 @@ class AuthLoginFactory {
 }
 
 abstract class AuthLoginImpl implements AuthLogin {
-	
+
 	protected $user_id;
-	
+
 	function __construct() {
 	  $this->user_id = -1;
-	}	
+	}
 
   public function hasValidUserPass() {
-  	return $this->user_id != -1;
+	return $this->user_id != -1;
   }
 }
 
@@ -126,21 +126,21 @@ class AuthLoginAlways extends AuthLoginImpl {
 	function __construct() {
 		parent::__construct();
 	}
-	
+
   function hasValidUserPass() {
-  	return true;
+	return true;
   }
 
   public function hasRoles($roles = array()) {
-  	return (count($roles) == 0);
+	return (count($roles) == 0);
   }
 
   public function getUser() {
-  	return new AuthUserConfig("", array());
+	return new AuthUserConfig("", array());
   }
 
   public function hasLogout() {
-  	return false;
+	return false;
   }
 }
 
@@ -188,8 +188,8 @@ class AuthLoginIP extends AuthLoginImpl {
     $result = 0;
     $sub_ranges = explode(".", $this->ip);
     foreach($sub_ranges as $sub_range) {
-    	 $result *= 256;
-    	 $result += $sub_range;
+	 $result *= 256;
+	 $result += $sub_range;
     }
     return $result;
   }
@@ -229,22 +229,22 @@ class AuthLoginIP extends AuthLoginImpl {
 	}
 
   function hasValidUserPass() {
-  	return $this->isInIpRanges($this->whitelist)
+	return $this->isInIpRanges($this->whitelist)
        && !$this->isInIpRanges($this->blacklist);
   }
 
   function hasRoles($roles = array()) {
 	  if(count($roles) == 0) {
-	  	return $this->hasValidUserPass();
-	  }  	
+		return $this->hasValidUserPass();
+	  }
 	}
 
   public function getUser() {
-  	return new AuthUserConfig($this->ip, $this->getConfigFromIpRange($this->whitelist));
+	return new AuthUserConfig($this->ip, $this->getConfigFromIpRange($this->whitelist));
   }
 
   public function hasLogout() {
-  	return false;
+	return false;
   }
 }
 
@@ -256,7 +256,7 @@ abstract class AuthLoginUserPass extends AuthLoginImpl {
   protected $username;
   protected $md5_pass;
   protected $user_cfg;
-  
+
 	function __construct() {
 
 		parent::__construct();
@@ -264,7 +264,7 @@ abstract class AuthLoginUserPass extends AuthLoginImpl {
     if(isset($_SERVER['HTTP_USER_AGENT'])) {
       $this->ip_date  = $_SERVER['HTTP_USER_AGENT'].date('Y-m');
     } else {
-    	// SimpleText does not send any default user agent
+	// SimpleText does not send any default user agent
       $this->ip_date  = $_SERVER['REMOTE_ADDR'].date('Y-m');
     }
     $this->uin      = (isset($_COOKIE['uin']) ? $_COOKIE['uin'] : "");
@@ -276,9 +276,9 @@ abstract class AuthLoginUserPass extends AuthLoginImpl {
       setcookie("uin", "logged-out", 0);
       setcookie("PHPSESSID", "", 0);
       $this->uin = "logged-out";
-    }    
+    }
 	}
-	
+
   function finishConstruct() {
     $this->uin = $this->genUIN($this->username, $this->md5_pass);
     setcookie("uin", $this->getUIN(), 0);
@@ -289,15 +289,15 @@ abstract class AuthLoginUserPass extends AuthLoginImpl {
     return md5($username.$md5_pass.$this->ip_date);
   }
   function getUIN() {
-  	return $this->uin;
+	return $this->uin;
   }
 
   function getM5P() {
-  	return $this->md5_pass;
+	return $this->md5_pass;
   }
 
   function getIpDate() {
-  	return $this->ip_date;
+	return $this->ip_date;
   }
 
 	public function getUserName() {
@@ -320,34 +320,34 @@ abstract class AuthLoginUserPass extends AuthLoginImpl {
   }
 
   public function hasLogout() {
-  	return true;
+	return true;
   }
 
   public function hasRoles($roles = array()) {
-  	
-  	if($this->hasValidUserPass()) {
-  		if(count($roles) == 0) {
-    		return true;
-    	} elseif(isset($this->user_cfg['role'])) {
-    		return in_array($this->user_cfg['role'], $roles);
-    	} elseif(isset($this->user_cfg['roles'])) {
-    		return in_array($this->user_cfg['roles'], $roles);
-    	} else {
-    	  return false;
-    	}
+
+	if($this->hasValidUserPass()) {
+		if(count($roles) == 0) {
+		return true;
+	} elseif(isset($this->user_cfg['role'])) {
+		return in_array($this->user_cfg['role'], $roles);
+	} elseif(isset($this->user_cfg['roles'])) {
+		return in_array($this->user_cfg['roles'], $roles);
+	} else {
+	  return false;
+	}
     } else {
-    	return false;
+	return false;
     }
   }
-  
+
   function getUser() {
 
-  	if(isset($this->user_cfg)) {
+	if(isset($this->user_cfg)) {
       return new AuthUserConfig($this->username, $this->user_cfg);
     } else {
-  	  return "";
-  	}
-  }  
+	  return "";
+	}
+  }
 }
 
 class AuthLoginUserList extends AuthLoginUserPass {
@@ -363,31 +363,31 @@ class AuthLoginUserList extends AuthLoginUserPass {
 	  // Search with UIN
 	  //
 		if($this->getUIN() != "") {
-  	  foreach($this->userlist as $username => $config) {
-  	  	if(   array_key_exists('pass', $config)
-  	  	  &&  $this->genUIN($username, md5($config['pass'])) == $this->getUIN()) {
-  		    $this->user_id  = $username;
-  	  	}
-  	  }
+	  foreach($this->userlist as $username => $config) {
+		if(   array_key_exists('pass', $config)
+		  &&  $this->genUIN($username, md5($config['pass'])) == $this->getUIN()) {
+		    $this->user_id  = $username;
+		}
+	  }
     }
-    
+
 		//
 		// Check the new user/pass
 		//
- 	  $username = $this->getUserName();
-  	if(!$this->hasValidUserPass() && $username != "") {
+	  $username = $this->getUserName();
+	if(!$this->hasValidUserPass() && $username != "") {
       if(array_key_exists($username, $this->userlist)
          && $this->userlist[$username]['pass'] == $this->getPassWord()) {
- 		    $this->user_id  = $username;
+		    $this->user_id  = $username;
       }
     }
-    
+
     if($this->user_id != -1) {
-  	  $this->user_cfg = $this->userlist[$this->user_id];
-  	  $this->username = $this->user_id;
-  	  $this->md5_pass = md5($this->user_cfg['pass']);
-  	}
-  	
+	  $this->user_cfg = $this->userlist[$this->user_id];
+	  $this->username = $this->user_id;
+	  $this->md5_pass = md5($this->user_cfg['pass']);
+	}
+
     $this->finishConstruct();
 	}
 }
@@ -397,24 +397,25 @@ class AuthLoginDb extends AuthLoginUserPass {
   // return md5($username.$md5_pass.$this->ip_date);
 
 	function __construct($db_conn, $table) {
-		
+
 		parent::__construct();
+
+    global $db_access;
 
 		//
 		// Check if UIN is valid in DB.
 		//
 		$cnt = 0;
 	  if($this->getUIN() != "") {
-	  	$uin = $this->getUIN();
-			$sql = "select * from ".$table
-			      ." where md5(concat(username,md5_pass,'".$this->getIpDate()."'))"
-			          ." = '".mysql_real_escape_string($uin)."'";
+		$uin = $this->getUIN();
+			$sql = "SELECT * FROM ".$table
+			      ." WHERE md5(concat(username,md5_pass,?)) = ?";
 
-      $result = mysql_query($sql);
-      $rec = mysql_fetch_array($result);
-      $cnt = mysql_numrows($result);
+      $result = $db_access->execute($sql, array($this->getIpDate(), $uin));
+      $rec = $db_access->fetchArray($result);
+      $cnt = $db_access->numRows($result);
 	  }
-	  	 
+
 	  //
 		// Check if user is valid in DB.
 		//
@@ -424,23 +425,21 @@ class AuthLoginDb extends AuthLoginUserPass {
 			$md5_pass       = md5($this->getPassWord());
 			$md5_pass_lower = md5(strtolower($this->getPassWord()));
 
-			$sql = "select user_id, domain_id, username, md5_pass from ".$table
-			      ." where username in ('".mysql_real_escape_string($username)."','"
-			                              .mysql_real_escape_string($username_lower)."')"
-			        ." and md5_pass in ('".$md5_pass."','".$md5_pass_lower."');";
+			$sql = "SELECT user_id, domain_id, username, md5_pass FROM ".$table
+			      ." WHERE username IN (?, ?) AND md5_pass IN (?, ?)";
 
-      $result = mysql_query($sql);
-      $rec = mysql_fetch_array($result);
-      $cnt = mysql_numrows($result);      
+      $result = $db_access->execute($sql, array($username, $username_lower, $md5_pass, $md5_pass_lower));
+      $rec = $db_access->fetchArray($result);
+      $cnt = $db_access->numRows($result);
     }
-	  
+
     if($cnt == 1) {
 		  $this->user_id  = $rec['user_id'];
 		  $this->username = $rec['username'];
 		  $this->md5_pass = $rec['md5_pass'];
 		  $this->user_cfg = array('domain' => $rec['domain_id']);
     }
-    
+
     $this->finishConstruct();
 	}
 }
@@ -450,82 +449,84 @@ class AuthHybrid extends AuthLoginDb {
   // return md5($username.$md5_pass.$this->ip_date);
 
 	function __construct($db_conn, $table) {
-		
+
 		parent::__construct($db_conn, $table);
+
+    global $db_access;
 
 	  //
 		// Check if user is valid in DB.
 		//
 		$hybrid_types = array("facebook", "google", "yahoo", "live");
 		$provider = $this->getUserName();
-    
-    // create an instance for Hybridauth with the configuration file path as parameter
- 	  $hybridauth_config = "hybridauth".DIRECTORY_SEPARATOR."config.php";
- 	  require_once( "hybridauth".DIRECTORY_SEPARATOR."Hybrid".DIRECTORY_SEPARATOR."Auth.php" );
 
-		$hybridauth = new Hybrid_Auth( $hybridauth_config ); 	  
+    // create an instance for Hybridauth with the configuration file path as parameter
+	  $hybridauth_config = "hybridauth".DIRECTORY_SEPARATOR."config.php";
+	  require_once( "hybridauth".DIRECTORY_SEPARATOR."Hybrid".DIRECTORY_SEPARATOR."Auth.php" );
+
+		$hybridauth = new Hybrid_Auth( $hybridauth_config );
 		$loaded_providers = Hybrid_Auth::getConnectedProviders();
-		
+
 		if($provider == "" && count($loaded_providers) > 0) {
       $provider = strtolower($loaded_providers[0]);
-    } 	    
-			
+    }
+
 		if($provider != "" && in_array($provider, $hybrid_types)) {
-      
+
 		  try{
-		  	
+
 		  // try to authenticate the selected $provider
-		  	$adapter = $hybridauth->authenticate( $provider );
-      
+			$adapter = $hybridauth->authenticate( $provider );
+
 		  // grab the user profile
-		  	$user_profile = $adapter->getUserProfile();
-		  	
-		  	// a) Does user with "xxx" = identifier exist?
-		  	//   -> Yes, then login as user			   
-      
-		  	// b) Does email of user exist?
-		  	//   -> No, then create new user
-      
-		  	// c) Does email of user exist?
-		  	//   -> Yes, ask for regular login. Preset email = login
-		  	
-		  	$provider_uid  = $user_profile->identifier;
-		  	$email         = $user_profile->email;
+			$user_profile = $adapter->getUserProfile();
+
+			// a) Does user with "xxx" = identifier exist?
+			//   -> Yes, then login as user
+
+			// b) Does email of user exist?
+			//   -> No, then create new user
+
+			// c) Does email of user exist?
+			//   -> Yes, ask for regular login. Preset email = login
+
+			$provider_uid  = $user_profile->identifier;
+			$email         = $user_profile->email;
 
         //
         // Check if user is valid in DB.
         //
-           $sql = "select user_id, domain_id, username, md5_pass from ".$table
-                ." where sso_".strtolower($provider)."_uid = '".$provider_uid."';";
-           
-           $result = mysql_query($sql);
-           $rec = mysql_fetch_array($result);
-           $cnt = mysql_numrows($result);      
+           $sql = "SELECT user_id, domain_id, username, md5_pass FROM ".$table
+                ." WHERE sso_".strtolower($provider)."_uid = ?";
+
+           $result = $db_access->execute($sql, array($provider_uid));
+           $rec = $db_access->fetchArray($result);
+           $cnt = $db_access->numRows($result);
 
         if($cnt == 1) {
-    		  $this->user_id  = $rec['user_id'];
-    		  $this->username = $rec['username'];
-    		  $this->md5_pass = $rec['md5_pass'];
-    		  $this->user_cfg = array('domain' => $rec['domain_id']);
-        }    
+		  $this->user_id  = $rec['user_id'];
+		  $this->username = $rec['username'];
+		  $this->md5_pass = $rec['md5_pass'];
+		  $this->user_cfg = array('domain' => $rec['domain_id']);
+        }
 
 		} catch( Exception $e ){
-		  	// Display the recived error
-		  	switch( $e->getCode() ){ 
-		  		case 0 : $error = "Unspecified error."; break;
-		  		case 1 : $error = "Hybriauth configuration error."; break;
-		  		case 2 : $error = "Provider not properly configured."; break;
-		  		case 3 : $error = "Unknown or disabled provider."; break;
-		  		case 4 : $error = "Missing provider application credentials."; break;
-		  		case 5 : $error = "Authentification failed. The user has canceled the authentication or the provider refused the connection."; break;
-		  		case 6 : $error = "User profile request failed. Most likely the user is not connected to the provider and he should to authenticate again."; 
-		  			     $adapter->logout(); 
-		  			     break;
-		  		case 7 : $error = "User not connected to the provider."; 
-		  			     $adapter->logout(); 
-		  			     break;
-		  	}
-		  	echo $error; 
+			// Display the recived error
+			switch( $e->getCode() ){
+				case 0 : $error = "Unspecified error."; break;
+				case 1 : $error = "Hybriauth configuration error."; break;
+				case 2 : $error = "Provider not properly configured."; break;
+				case 3 : $error = "Unknown or disabled provider."; break;
+				case 4 : $error = "Missing provider application credentials."; break;
+				case 5 : $error = "Authentification failed. The user has canceled the authentication or the provider refused the connection."; break;
+				case 6 : $error = "User profile request failed. Most likely the user is not connected to the provider and he should to authenticate again.";
+					     $adapter->logout();
+					     break;
+				case 7 : $error = "User not connected to the provider.";
+					     $adapter->logout();
+					     break;
+			}
+			echo $error;
 		}
     }
 
