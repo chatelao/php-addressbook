@@ -37,11 +37,16 @@ This document outlines the detailed, granular steps for modernizing and migratin
     - [x] **Migrate Connection Logic**: (Completed: 2026-04-27) Updated `include/dbconnect.php` to use the `MysqliDatabase` abstraction while maintaining backward compatibility.
     - [ ] **Phased Migration**: Systematically replace `mysql_shim.php` calls with the new abstraction.
         - [ ] Migrate `include/login.inc.php` and `z-push/backend/phpaddressbook/login.inc.php` to DBAL.
-        - [ ] Migrate `index.php` to DBAL.
-        - [ ] Migrate `edit.php` to DBAL.
+        - [ ] **Migrate `index.php` to DBAL**:
+            - [ ] Migrate contact list count and results processing to DBAL.
+            - [ ] Migrate group filter dropdown to DBAL.
+            - [ ] Migrate "Add to group" dropdown to DBAL.
+        - [ ] **Migrate `edit.php` to DBAL**:
+            - [ ] Migrate address loading logic to use DBAL with prepared statements.
+            - [ ] Migrate group selection dropdown to DBAL.
         - [ ] Migrate `view.php` to DBAL.
         - [ ] Migrate `birthdays.php` to DBAL.
-        - [ ] Migrate `delete.php` and `photo.php` to DBAL.
+        - [x] **Migrate `delete.php` and `photo.php` to DBAL**: (Completed: 2026-04-28) Both files were updated to use the DBAL abstraction. `photo.php` was hardened with prepared statements for ID-based lookups.
         - [ ] Migrate registration module (`register/`) to DBAL:
             - [ ] Migrate `register/user_add_save.php` to DBAL.
             - [ ] Migrate `register/login_config.php` to DBAL.
