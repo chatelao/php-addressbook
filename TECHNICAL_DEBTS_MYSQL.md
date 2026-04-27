@@ -6,9 +6,9 @@ This document identifies all legacy `mysql_*` function calls that currently rely
 
 | Function | Count |
 | :--- | :--- |
-| `mysql_query` | 105 |
-| `mysql_fetch_array` | 45 |
-| `mysql_numrows` | 26 |
+| `mysql_query` | 94 |
+| `mysql_fetch_array` | 43 |
+| `mysql_numrows` | 24 |
 | `mysql_real_escape_string` | 23 |
 | `mysql_num_rows` | 18 |
 | `mysql_error` | 13 |
@@ -25,7 +25,6 @@ This document identifies all legacy `mysql_*` function calls that currently rely
 | File | Legacy Calls | Details |
 | :--- | :--- | :--- |
 | `./group.php` | 24 | mysql_query (13),mysql_fetch_array (6) mysql_numrows (5) |
-| `./include/address.class.php` | 20 | mysql_query (11),mysql_real_escape_string (3) mysql_numrows (2),mysql_fetch_array (2) mysql_errno (2),mysql_error (1) |
 | `./z-push/backend/phpaddressbook/address.class.php` | 18 | mysql_query (11),mysql_real_escape_string (3) mysql_numrows (2),mysql_fetch_array (2) |
 | `./register/user_add_save.php` | 17 | mysql_real_escape_string (7),mysql_query (5) mysql_num_rows (3),mysql_error (2) |
 | `./z-push/backend/phpaddressbook/phpaddressbook.php` | 14 | mysql_query (5),mysql_fetch_array (3) mysql_shim (1),mysql_select_db (1) mysql_ping (1),mysql_errno (1) mysql_connect (1),mysql_close (1) |
@@ -64,4 +63,5 @@ This document identifies all legacy `mysql_*` function calls that currently rely
 | `./delete.php` | 2 | mysql_query (1),mysql_numrows (1) |
 | `./register/linktick.php` | 1 | mysql_query (1) |
 | `./include/guess.inc.php` | 1 | mysql_real_escape (1) |
-| `./include/group.class.php` | 1 | mysql_query (1) |
+| `./include/group.class.php` | 0 | Migrated to DBAL (2026-04-27) |
+| `./include/address.class.php` | 0 | Migrated to DBAL (2026-04-27) |

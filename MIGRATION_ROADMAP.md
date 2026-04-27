@@ -36,7 +36,7 @@ This document outlines the detailed, granular steps for modernizing and migratin
         - [x] **Implement support for prepared statements in the DBAL**: (Completed: 2026-04-27) Added `execute` method to `DatabaseInterface` and implemented it in `MysqliDatabase` using `mysqli_execute_query` with a fallback for PHP < 8.2.
     - [x] **Migrate Connection Logic**: (Completed: 2026-04-27) Updated `include/dbconnect.php` to use the `MysqliDatabase` abstraction while maintaining backward compatibility.
     - [ ] **Phased Migration**: Systematically replace `mysql_shim.php` calls with the new abstraction.
-        - [ ] Migrate `include/address.class.php` to DBAL.
+        - [x] **Migrate `include/address.class.php` to DBAL**: (Completed: 2026-04-27) Updated the file to use the DBAL abstraction with prepared statements for CRUD operations and refactored the `Addresses` class to use DBAL query methods.
         - [x] **Migrate `include/group.class.php` and `group.php` to DBAL**: (Completed: 2026-04-27) Updated both files to use the DBAL abstraction with prepared statements for all database operations.
         - [ ] Migrate `include/login.inc.php` and authentication files to DBAL.
         - [ ] Migrate core pages (`index.php`, `edit.php`, `view.php`, `birthdays.php`) to DBAL.

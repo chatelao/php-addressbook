@@ -30,11 +30,11 @@ function echoIfSet($addr_array, $key) {
 
 function deleteAddresses($part_sql) {
 
-  global $keep_history, $domain_id, $base_from_where, $table, $table_grp_adr, $table_groups;
+  global $keep_history, $domain_id, $base_from_where, $table, $table_grp_adr, $table_groups, $db_access;
 
   $sql = "SELECT * FROM $base_from_where AND ".$part_sql;
-  $result = mysql_query($sql);
-  $resultsnumber = mysql_numrows($result);
+  $result = $db_access->query($sql);
+  $resultsnumber = $db_access->numRows($result);
 
   $is_valid = $resultsnumber > 0; 
 
@@ -42,17 +42,17 @@ function deleteAddresses($part_sql) {
   	if($keep_history) {
   	  $sql = "UPDATE $table
   	          SET deprecated = now()
-  	          WHERE deprecated is null AND ".$part_sql." AND domain_id = ".$domain_id;
-  	  mysql_query($sql);
+	          WHERE deprecated is null AND ".$part_sql." AND domain_id = ?";
+	  $db_access->execute($sql, [$domain_id]);
   	  $sql = "UPDATE $table_grp_adr
   	          SET deprecated = now()
-  	          WHERE deprecated is null AND ".$part_sql." AND domain_id = ".$domain_id;
-  	  mysql_query($sql);
+	          WHERE deprecated is null AND ".$part_sql." AND domain_id = ?";
+	  $db_access->execute($sql, [$domain_id]);
   	} else {
-  	  $sql = "DELETE FROM $table_grp_adr WHERE ".$part_sql." AND domain_id = ".$domain_id;
-  	  mysql_query($sql);
-  	  $sql = "DELETE FROM $table         WHERE ".$part_sql." AND domain_id = ".$domain_id;
-  	  mysql_query($sql);
+	  $sql = "DELETE FROM $table_grp_adr WHERE ".$part_sql." AND domain_id = ?";
+	  $db_access->execute($sql, [$domain_id]);
+	  $sql = "DELETE FROM $table         WHERE ".$part_sql." AND domain_id = ?";
+	  $db_access->execute($sql, [$domain_id]);
     }
   }
 
@@ -61,60 +61,67 @@ function deleteAddresses($part_sql) {
 
 function saveAddress($addr_array, $group_name = "") {
 
-	  global $domain_id, $table, $table_grp_adr, $table_groups, $month_lookup, $base_from_where;
+	  global $domain_id, $table, $table_grp_adr, $table_groups, $month_lookup, $base_from_where, $db_access;
 
+    $params = [$domain_id];
     if(isset($addr_array['id'])) {
-    	$set_id  = "'".$addr_array['id']."'";
+	$set_id  = "?";
+      $params[] = $addr_array['id'];
     	$src_tbl = $month_lookup." WHERE bmonth_num = 1";
     } else {
     	$set_id  = "ifnull(max(id),0)+1"; // '0' is a bad ID
     	$src_tbl = $table;
     }
 
+    $fields = ['firstname', 'middlename', 'lastname', 'nickname', 'company', 'title', 'address', 'home', 'mobile', 'work', 'fax', 'email', 'email2', 'email3', 'homepage', 'aday', 'amonth', 'ayear', 'bday', 'bmonth', 'byear', 'address2', 'phone2', 'photo', 'notes'];
+    foreach($fields as $field) {
+      $params[] = getIfSetFromAddr($addr_array, $field);
+    }
+
     $sql = "INSERT INTO $table ( domain_id, id, firstname, middlename, lastname, nickname, company, title, address, home, mobile, work, fax, email, email2, email3, homepage, aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, created, modified)
-                        SELECT   $domain_id                                        domain_id
+                        SELECT   ?                                         domain_id
                                , ".$set_id."                                       id
-                               , '".getIfSetFromAddr($addr_array, 'firstname')."'  firstname
-                               , '".getIfSetFromAddr($addr_array, 'middlename')."' lastname
-                               , '".getIfSetFromAddr($addr_array, 'lastname')."'   lastname
-                               , '".getIfSetFromAddr($addr_array, 'nickname')."'   nickname
-                               , '".getIfSetFromAddr($addr_array, 'company')."'    company
-                               , '".getIfSetFromAddr($addr_array, 'title')."'      title
-                               , '".getIfSetFromAddr($addr_array, 'address')."'    address
-                               , '".getIfSetFromAddr($addr_array, 'home')."'       home
-                               , '".getIfSetFromAddr($addr_array, 'mobile')."'     mobile
-                               , '".getIfSetFromAddr($addr_array, 'work')."'       work
-                               , '".getIfSetFromAddr($addr_array, 'fax')."'        fax
-                               , '".getIfSetFromAddr($addr_array, 'email')."'      email
-                               , '".getIfSetFromAddr($addr_array, 'email2')."'     email2
-                               , '".getIfSetFromAddr($addr_array, 'email3')."'     email3
-                               , '".getIfSetFromAddr($addr_array, 'homepage')."'   homepage
-                               , '".getIfSetFromAddr($addr_array, 'aday')."'       aday
-                               , '".getIfSetFromAddr($addr_array, 'amonth')."'     amonth
-                               , '".getIfSetFromAddr($addr_array, 'ayear')."'      ayear
-                               , '".getIfSetFromAddr($addr_array, 'bday')."'       bday
-                               , '".getIfSetFromAddr($addr_array, 'bmonth')."'     bmonth
-                               , '".getIfSetFromAddr($addr_array, 'byear')."'      byear
-                               , '".getIfSetFromAddr($addr_array, 'address2')."'   address2
-                               , '".getIfSetFromAddr($addr_array, 'phone2')."'     phone2
-                               , '".getIfSetFromAddr($addr_array, 'photo')."'      photo
-                               , '".getIfSetFromAddr($addr_array, 'notes')."'      notes
+                               , ?  firstname
+                               , ?  middlename
+                               , ?  lastname
+                               , ?  nickname
+                               , ?  company
+                               , ?  title
+                               , ?  address
+                               , ?  home
+                               , ?  mobile
+                               , ?  work
+                               , ?  fax
+                               , ?  email
+                               , ?  email2
+                               , ?  email3
+                               , ?  homepage
+                               , ?  aday
+                               , ?  amonth
+                               , ?  ayear
+                               , ?  bday
+                               , ?  bmonth
+                               , ?  byear
+                               , ?  address2
+                               , ?  phone2
+                               , ?  photo
+                               , ?  notes
                                , now(), now()
                             FROM ".$src_tbl;
-    $result = mysql_query($sql);
+    $result = $db_access->execute($sql, $params);
     
-    if(mysql_errno() > 0) {
-      echo "MySQL: ".mysql_errno().": ".mysql_error();
+    if($db_access->errno() > 0) {
+      echo "MySQL: ".$db_access->errno().": ".$db_access->error();
     }
 
     $sql = "SELECT max(id) max_id from $table";
-    $result = mysql_query($sql);
-    $rec = mysql_fetch_array($result);
+    $result = $db_access->query($sql);
+    $rec = $db_access->fetchArray($result);
     $id = $rec['max_id'];
 
     if(!isset($addr_array['id']) && $group_name) {
-    	$sql = "INSERT INTO $table_grp_adr SELECT $domain_id domain_id, $id id, group_id, now(), now(), NULL FROM $table_groups WHERE group_name = '$group_name'";
-    	$result = mysql_query($sql);
+	$sql = "INSERT INTO $table_grp_adr SELECT ? domain_id, ? id, group_id, now(), now(), NULL FROM $table_groups WHERE group_name = ?";
+	$result = $db_access->execute($sql, [$domain_id, $id, $group_name]);
     }
     
     return $id;
@@ -122,7 +129,7 @@ function saveAddress($addr_array, $group_name = "") {
 
 function updateAddress($addr, $keep_photo = true) {
 
-  global $keep_history, $domain_id, $base_from_where, $table, $table_grp_adr, $table_groups, $only_phone;
+  global $keep_history, $domain_id, $base_from_where, $table, $table_grp_adr, $table_groups, $only_phone, $db_access;
 
 	$addresses = Addresses::withID($addr['id']);
 	$resultsnumber = $addresses->count();
@@ -144,41 +151,56 @@ function updateAddress($addr, $keep_photo = true) {
 	    $sql = "UPDATE $table
 	               SET deprecated = now()
 		           WHERE deprecated is null
-		             AND id	       = '".$addr['id']."'
-		             AND domain_id = '".$domain_id."';";
-    	$result = mysql_query($sql);
+		             AND id	       = ?
+		             AND domain_id = ?;";
+	$result = $db_access->execute($sql, [$addr['id'], $domain_id]);
     	
 		  saveAddress($addr);
 		} else {
-	    $sql = "UPDATE $table SET firstname = '".$addr['firstname']."'
-	                            , lastname  = '".$addr['lastname']."'
-	                            , middlename  = '".$addr['middlename']."'
-	                            , nickname  = '".$addr['nickname']."'
-	                            , company   = '".$addr['company']."'
-	                            , title     = '".$addr['title']."'
-	                            , address   = '".$addr['address']."'
-	                            , home      = '".$addr['home']."'
-	                            , mobile    = '".$addr['mobile']."'
-	                            , work      = '".$addr['work']."'
-	                            , fax       = '".$addr['fax']."'
-	                            , email     = '".$addr['email']."'
-	                            , email2    = '".$addr['email2']."'
-	                            , email3    = '".$addr['email3']."'
-	                            , homepage  = '".$addr['homepage']."'
-	                            , aday      = '".$addr['aday']."'
-	                            , amonth    = '".$addr['amonth']."'
-	                            , ayear     = '".$addr['ayear']."'
-	                            , bday      = '".$addr['bday']."'
-	                            , bmonth    = '".$addr['bmonth']."'
-	                            , byear     = '".$addr['byear']."'
-	                            , address2  = '".$addr['address2']."'
-	                            , phone2    = '".$addr['phone2']."'
-	                            , notes     = '".$addr['notes']."'
-	    ".($keep_photo ? "" : ", photo     = '".$addr['photo']."'")."
+	    $sql = "UPDATE $table SET firstname = ?
+	                            , lastname  = ?
+	                            , middlename  = ?
+	                            , nickname  = ?
+	                            , company   = ?
+	                            , title     = ?
+	                            , address   = ?
+	                            , home      = ?
+	                            , mobile    = ?
+	                            , work      = ?
+	                            , fax       = ?
+	                            , email     = ?
+	                            , email2    = ?
+	                            , email3    = ?
+	                            , homepage  = ?
+	                            , aday      = ?
+	                            , amonth    = ?
+	                            , ayear     = ?
+	                            , bday      = ?
+	                            , bmonth    = ?
+	                            , byear     = ?
+	                            , address2  = ?
+	                            , phone2    = ?
+	                            , notes     = ?
+	    ".($keep_photo ? "" : ", photo     = ?")."
 	                            , modified  = now()
-		                        WHERE id        = '".$addr['id']."'
-		                          AND domain_id = '$domain_id';";
-		  $result = mysql_query($sql);
+		                        WHERE id        = ?
+		                          AND domain_id = ?;";
+
+      $params = [
+        $addr['firstname'], $addr['lastname'], $addr['middlename'], $addr['nickname'],
+        $addr['company'], $addr['title'], $addr['address'], $addr['home'],
+        $addr['mobile'], $addr['work'], $addr['fax'], $addr['email'],
+        $addr['email2'], $addr['email3'], $addr['homepage'], $addr['aday'],
+        $addr['amonth'], $addr['ayear'], $addr['bday'], $addr['bmonth'],
+        $addr['byear'], $addr['address2'], $addr['phone2'], $addr['notes']
+      ];
+      if(!$keep_photo) {
+        $params[] = $addr['photo'];
+      }
+      $params[] = $addr['id'];
+      $params[] = $domain_id;
+
+		  $result = $db_access->execute($sql, $params);
     }
 		// header("Location: view?id=$id");
     }
@@ -329,72 +351,75 @@ class Addresses {
 
     function likePhone($row, $searchword) {
     	
-    	global $phone_delims;
+	global $phone_delims, $db_access;
     	
     	$replace = $row;
-    	$like    = "'$searchword'";
+	$like    = "'".$db_access->realEscapeString($searchword)."'";
      	foreach($phone_delims as $phone_delim) {
-    	  $replace = "replace(".$replace.", '".mysql_real_escape_string($phone_delim)."','')"; 
-    	  $like    = "replace(".$like.   ", '".mysql_real_escape_string($phone_delim)."','')"; 
+        $escaped_delim = $db_access->realEscapeString($phone_delim);
+	  $replace = "replace(".$replace.", '".$escaped_delim."','')";
+	  $like    = "replace(".$like.   ", '".$escaped_delim."','')";
      	}     	
      	return $replace." LIKE CONCAT('%',".$like.",'%')";    	
     }
 
     protected function loadBy($load_type, $searchstring, $alphabet = "") {
 
-	    global $base_from_where, $table;
+	    global $base_from_where, $table, $db_access;
 
      	$sql = "SELECT DISTINCT $table.* FROM $base_from_where";
 
       if($load_type == 'id') {
 
-	 	    $sql .= " AND $table.id='$searchstring'";
+		    $sql .= " AND $table.id='".$db_access->realEscapeString($searchstring)."'";
 
       } elseif ($searchstring) {
 
           $searchwords = explode(" ", $searchstring);
 
           foreach($searchwords as $searchword) {
-          	$sql .= "AND (   lastname   LIKE '%$searchword%'
-                          OR middlename LIKE '%$searchword%'
-                          OR firstname  LIKE '%$searchword%'
-                          OR nickname   LIKE '%$searchword%'
-                          OR company    LIKE '%$searchword%'
-                          OR address    LIKE '%$searchword%'
+            $escaped_word = $db_access->realEscapeString($searchword);
+		$sql .= " AND (   lastname   LIKE '%$escaped_word%'
+                          OR middlename LIKE '%$escaped_word%'
+                          OR firstname  LIKE '%$escaped_word%'
+                          OR nickname   LIKE '%$escaped_word%'
+                          OR company    LIKE '%$escaped_word%'
+                          OR address    LIKE '%$escaped_word%'
                           OR ".$this->likePhone('home',   $searchword)."
                           OR ".$this->likePhone('work',   $searchword)."
                           OR ".$this->likePhone('mobile', $searchword)."
                           OR ".$this->likePhone('fax',    $searchword)."
-                          OR email      LIKE '%$searchword%'
-                          OR email2     LIKE '%$searchword%'
-                          OR email3     LIKE '%$searchword%'
-                          OR address2   LIKE '%$searchword%'
-                          OR notes      LIKE '%$searchword%'
+                          OR email      LIKE '%$escaped_word%'
+                          OR email2     LIKE '%$escaped_word%'
+                          OR email3     LIKE '%$escaped_word%'
+                          OR address2   LIKE '%$escaped_word%'
+                          OR notes      LIKE '%$escaped_word%'
                           )";
           }
       }
       if($alphabet) {
-      	$sql .= "AND (   lastname  LIKE  '$alphabet%'
-                      OR middlename LIKE '$alphabet%'
-                      OR nickname  LIKE  '$alphabet%'
-                      OR firstname LIKE  '$alphabet%'
+        $escaped_alphabet = $db_access->realEscapeString($alphabet);
+	$sql .= " AND (   lastname  LIKE  '$escaped_alphabet%'
+                      OR middlename LIKE '$escaped_alphabet%'
+                      OR nickname  LIKE  '$escaped_alphabet%'
+                      OR firstname LIKE  '$escaped_alphabet%'
                       )";
       }
 
       if(true) {
-          $sql .= "ORDER BY lastname, firstname ASC";
+          $sql .= " ORDER BY lastname, firstname ASC";
       } else {
-        	$sql .= "ORDER BY firstname, lastname ASC";
+		$sql .= " ORDER BY firstname, lastname ASC";
       }
 
       //* Paging
       $page = 1;
       $pagesize = 2200;
       if($pagesize > 0) {
-          $sql .= " LIMIT ".($page-1)*$pagesize.",".$pagesize;
+          $sql .= " LIMIT ".(($page-1)*$pagesize).",".$pagesize;
       }
       //*/
-      $this->result = mysql_query($sql);
+      $this->result = $db_access->query($sql);
     }
 
     public static function withSearchString($searchstring, $alphabet = "") {
@@ -411,7 +436,8 @@ class Addresses {
 
     public function nextAddress() {
 
-    	$myrow = mysql_fetch_array($this->result);
+      global $db_access;
+	$myrow = $db_access->fetchArray($this->result);
     	if($myrow) {
 		      return new Address(trimAll($myrow));
 		  } else {
@@ -424,7 +450,8 @@ class Addresses {
     }
     
     public function count() {
-    	return mysql_numrows($this->getResults());
+      global $db_access;
+	return $db_access->numRows($this->getResults());
     }
 }
 ?>
