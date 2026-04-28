@@ -14,8 +14,16 @@ This document outlines the detailed, granular steps for modernizing and migratin
 ### Phase 1: Dependency Modernization
 - [x] **Remove unused jQuery, DataTables, and tableActions assets**: (Completed: 2026-04-27) Removed `js/jquery-1.8.2.min.js`, `js/jquery.dataTables.min.js`, and `js/tableActions.min.js` as they were confirmed to be unreferenced in the PHP codebase.
 - [ ] Replace **PHP Excel Reader 2.21** with **PhpSpreadsheet**.
-- [ ] Upgrade **HybridAuth** from 2.1.0 to 3.x.
-- [ ] Upgrade **Z-Push** from 2.2.12 to 2.7.x.
+- [ ] Upgrade **HybridAuth** from 2.1.0 to 3.x:
+    - [ ] Audit current provider configurations.
+    - [ ] Stage HybridAuth 3.x core.
+    - [ ] Refactor authentication flow to PSR-compliant API.
+    - [ ] Verify SSO functionality for all configured providers.
+- [ ] Upgrade **Z-Push** from 2.2.12 to 2.7.x:
+    - [ ] Audit custom backend logic in `z-push/backend/phpaddressbook/`.
+    - [ ] Stage Z-Push 2.7.x core.
+    - [ ] Port PHP Address Book backend to the new Z-Push version.
+    - [ ] Verify ActiveSync functionality with PHP 8.x.
 
 ### Phase 2: Core Improvements
 - [ ] **PHP 8.x Native Support**
@@ -26,8 +34,12 @@ This document outlines the detailed, granular steps for modernizing and migratin
 - [ ] **Responsive UI**
     - [x] **Add viewport meta tag**: (Completed: 2026-04-27) Updated `include/format.inc.php` with a modern viewport meta tag.
     - [x] **Convert fixed-width layout (#container) to fluid/responsive**: (Completed: 2026-04-27) Updated `style.css` to use percentages and `max-width` for core layout elements.
-    - [ ] Implement a mobile-friendly navigation menu.
-    - [ ] Implement responsive table patterns for the main contact list.
+    - [ ] **Implement a mobile-friendly navigation menu**:
+        - [ ] Add hamburger menu toggle to `include/format.inc.php`.
+        - [ ] Implement responsive CSS for the navigation menu in `style.css`.
+    - [ ] **Implement responsive table patterns for the main contact list**:
+        - [ ] Add mobile-friendly CSS table patterns (e.g., stacked layout) to `style.css`.
+        - [ ] Update `index.php` with necessary responsive table classes.
 - [ ] **Database Layer Refactor**
     - [x] **Audit legacy usage**: (Completed: 2026-04-27) Identified and documented all `mysql_*` function calls in `TECHNICAL_DEBTS_MYSQL.md`.
     - [ ] **Design Abstraction Layer**
@@ -48,7 +60,7 @@ This document outlines the detailed, granular steps for modernizing and migratin
         - [x] **Migrate `birthdays.php` to DBAL**: (Completed: 2026-04-28) Updated the file to use the DBAL abstraction for database queries and results processing.
         - [x] **Migrate `delete.php` and `photo.php` to DBAL**: (Completed: 2026-04-28) Both files were updated to use the DBAL abstraction. `photo.php` was hardened with prepared statements for ID-based lookups.
         - [ ] Migrate registration module (`register/`) to DBAL:
-            - [ ] Migrate `register/user_add_save.php` to DBAL.
+            - [x] **Migrate `register/user_add_save.php` to DBAL**: (Completed: 2026-04-28) Refactored to use DBAL with prepared statements and improved first-user logic.
             - [ ] Migrate `register/login_config.php` to DBAL.
             - [ ] Migrate `register/reset_password.php` to DBAL.
             - [x] **Migrate `register/auth_check_header.php` to DBAL**: (Completed: 2026-04-28) Refactored to use DBAL with prepared statements and consolidated redundant user queries.
@@ -78,9 +90,16 @@ This document outlines the detailed, granular steps for modernizing and migratin
 
 ### Ongoing Modernization
 - [ ] **Upgrade parseCSV**: Update `lib/parsecsv.lib.php` from 0.4.3 beta to the active fork version 1.3.x.
-- [ ] **Modernize Translation Engine**: Replace legacy **PHP-gettext 1.0** with native PHP gettext or Symfony Translation.
-- [ ] **Modernize Identicon Generation**: Replace the local `lib/identicon.php` with a modern library like `bit-wasp/identicon`.
-- [ ] **Modernize Table Sorting**: Replace the legacy `js/tablesort.min.js` with native Vanilla JS sorting capabilities.
+- [ ] **Modernize Translation Engine**: Replace legacy **PHP-gettext 1.0** with native PHP gettext or Symfony Translation:
+    - [ ] Audit all `_()` and `gettext()` calls in the codebase.
+    - [ ] Research and select between native PHP gettext and Symfony Translation.
+    - [ ] Implement the new translation engine and migrate PO/MO files.
+- [ ] **Modernize Identicon Generation**: Replace the local `lib/identicon.php` with a modern library like `bit-wasp/identicon`:
+    - [ ] Research `bit-wasp/identicon` library compatibility.
+    - [ ] Implement modern identicon generation in `photo.php` or equivalent.
+- [ ] **Modernize Table Sorting**: Replace the legacy `js/tablesort.min.js` with native Vanilla JS sorting capabilities:
+    - [ ] Implement a lightweight, Vanilla JS table sorting logic.
+    - [ ] Replace `js/tablesort.min.js` reference in `index.php`.
 
 ---
 
