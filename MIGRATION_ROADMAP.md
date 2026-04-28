@@ -58,10 +58,10 @@ This document outlines the detailed, granular steps for modernizing and migratin
             - [ ] Migrate `register/admin_index.php` to DBAL.
             - [ ] Migrate `register/email_password_sender.php` to DBAL.
             - [ ] Migrate `register/reset_password_save.php` to DBAL.
-            - [ ] Migrate `register/email_sent.php` to DBAL.
-            - [ ] Migrate `register/edit_user_save.php` to DBAL.
-            - [ ] Migrate `register/delete_user.php` to DBAL.
-            - [ ] Migrate `register/linktick.php` to DBAL.
+            - [x] **Migrate `register/email_sent.php` to DBAL**: (Completed: 2026-04-28) Refactored to use DBAL and fixed syntax errors.
+            - [x] **Migrate `register/edit_user_save.php` to DBAL**: (Completed: 2026-04-28) Refactored to use DBAL with prepared statements.
+            - [x] **Migrate `register/delete_user.php` to DBAL**: (Completed: 2026-04-28) Refactored to use DBAL with prepared statements.
+            - [x] **Migrate `register/linktick.php` to DBAL**: (Completed: 2026-04-28) Refactored to use DBAL with prepared statements and added input validation.
             - [x] **Migrate `register/checklogin.php` to DBAL**: (Completed: 2026-04-27) Updated to use the DBAL with prepared statements for the login query.
             - [x] **Migrate `register/master_inc.php` to DBAL**: (Completed: 2026-04-27) Updated to use the DBAL for server connection and database selection.
         - [x] **Migrate `include/address.class.php` to DBAL**: (Completed: 2026-04-27) Updated the file to use the DBAL abstraction with prepared statements for CRUD operations and refactored the `Addresses` class to use DBAL query methods.
