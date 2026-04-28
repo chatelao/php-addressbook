@@ -86,10 +86,10 @@ FROM $month_lookup,
 $base_from_where AND $table.bmonth = $month_lookup.bmonth AND $table.bday > 0
 ORDER BY prio ASC;";
 
-	$result = mysql_query($sql);
-	$resultsnumber = mysql_num_rows($result);
+	$result = $db_access->query($sql);
+	$resultsnumber = $db_access->numRows($result);
 
-	while ($myrow = mysql_fetch_array($result))
+	while ($myrow = $db_access->fetchArray($result))
 	{
 		$firstname  = $myrow["firstname"];
 		$id         = $myrow["id"];
