@@ -45,7 +45,7 @@ This document outlines the detailed, granular steps for modernizing and migratin
             - [ ] Migrate address loading logic to use DBAL with prepared statements.
             - [ ] Migrate group selection dropdown to DBAL.
         - [ ] Migrate `view.php` to DBAL.
-        - [ ] Migrate `birthdays.php` to DBAL.
+        - [x] **Migrate `birthdays.php` to DBAL**: (Completed: 2026-04-28) Updated the file to use the DBAL abstraction for database queries and results processing.
         - [x] **Migrate `delete.php` and `photo.php` to DBAL**: (Completed: 2026-04-28) Both files were updated to use the DBAL abstraction. `photo.php` was hardened with prepared statements for ID-based lookups.
         - [ ] Migrate registration module (`register/`) to DBAL:
             - [ ] Migrate `register/user_add_save.php` to DBAL.
