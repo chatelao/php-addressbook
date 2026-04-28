@@ -51,7 +51,7 @@ This document outlines the detailed, granular steps for modernizing and migratin
             - [ ] Migrate `register/user_add_save.php` to DBAL.
             - [ ] Migrate `register/login_config.php` to DBAL.
             - [ ] Migrate `register/reset_password.php` to DBAL.
-            - [ ] Migrate `register/auth_check_header.php` to DBAL.
+            - [x] **Migrate `register/auth_check_header.php` to DBAL**: (Completed: 2026-04-28) Refactored to use DBAL with prepared statements and consolidated redundant user queries.
             - [ ] Migrate `register/traffic.php` to DBAL.
             - [ ] Migrate `register/router.php` to DBAL.
             - [ ] Migrate `register/edit_user.php` to DBAL.

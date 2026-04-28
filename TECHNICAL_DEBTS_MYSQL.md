@@ -36,7 +36,7 @@ This document identifies all legacy `mysql_*` function calls that currently rely
 | `./register/reset_password.php` | 8 | mysql_query (4),mysql_num_rows (2) mysql_fetch_array (1),mysql_error (1) |
 | `./index.php` | 7 | mysql_numrows (3),mysql_query (2) mysql_fetch_array (2) |
 | `./register/checklogin.php` | 6 | mysql_error (2),mysql_select_db (1) mysql_query (1),mysql_num_rows (1) mysql_connect (1) |
-| `./register/auth_check_header.php` | 6 | mysql_query (3),mysql_num_rows (2) mysql_fetch_array (1) |
+| `./register/auth_check_header.php` | 0 | Migrated to DBAL (2026-04-28) |
 | `./diag.php` | 6 | mysql_query (3),mysql_num_rows (2) mysql_fetch_array (1) |
 | `./view.php` | 5 | mysql_query (2),mysql_fetch_array (2) mysql_numrows (1) |
 | `./register/traffic.php` | 5 | mysql_query (3),mysql_num_rows (1) mysql_fetch_array (1) |
