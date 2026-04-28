@@ -53,9 +53,9 @@ This document outlines the detailed, granular steps for modernizing and migratin
             - [ ] Migrate `register/reset_password.php` to DBAL.
             - [x] **Migrate `register/auth_check_header.php` to DBAL**: (Completed: 2026-04-28) Refactored to use DBAL with prepared statements and consolidated redundant user queries.
             - [ ] Migrate `register/traffic.php` to DBAL.
-            - [ ] Migrate `register/router.php` to DBAL.
-            - [ ] Migrate `register/edit_user.php` to DBAL.
-            - [ ] Migrate `register/admin_index.php` to DBAL.
+            - [x] **Migrate `register/router.php` to DBAL**: (Completed: 2026-04-28) Refactored to use DBAL with prepared statements and added security exits after redirects.
+            - [x] **Migrate `register/edit_user.php` to DBAL**: (Completed: 2026-04-28) Refactored to use DBAL with prepared statements and corrected column names.
+            - [x] **Migrate `register/admin_index.php` to DBAL**: (Completed: 2026-04-28) Refactored to use DBAL with prepared statements and corrected column names.
             - [ ] Migrate `register/email_password_sender.php` to DBAL.
             - [ ] Migrate `register/reset_password_save.php` to DBAL.
             - [x] **Migrate `register/email_sent.php` to DBAL**: (Completed: 2026-04-28) Refactored to use DBAL and fixed syntax errors.
