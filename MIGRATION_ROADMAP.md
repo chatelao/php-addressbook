@@ -36,15 +36,15 @@ This document outlines the detailed, granular steps for modernizing and migratin
         - [x] **Implement support for prepared statements in the DBAL**: (Completed: 2026-04-27) Added `execute` method to `DatabaseInterface` and implemented it in `MysqliDatabase` using `mysqli_execute_query` with a fallback for PHP < 8.2.
     - [x] **Migrate Connection Logic**: (Completed: 2026-04-27) Updated `include/dbconnect.php` to use the `MysqliDatabase` abstraction while maintaining backward compatibility.
     - [ ] **Phased Migration**: Systematically replace `mysql_shim.php` calls with the new abstraction.
-        - [ ] Migrate `include/login.inc.php` and `z-push/backend/phpaddressbook/login.inc.php` to DBAL.
-        - [ ] **Migrate `index.php` to DBAL**:
-            - [ ] Migrate contact list count and results processing to DBAL.
-            - [ ] Migrate group filter dropdown to DBAL.
-            - [ ] Migrate "Add to group" dropdown to DBAL.
-        - [ ] **Migrate `edit.php` to DBAL**:
-            - [ ] Migrate address loading logic to use DBAL with prepared statements.
-            - [ ] Migrate group selection dropdown to DBAL.
-        - [ ] Migrate `view.php` to DBAL.
+        - [x] **Migrate `include/login.inc.php` and `z-push/backend/phpaddressbook/login.inc.php` to DBAL**: (Completed: 2026-04-28) Both files were updated to use the DBAL `execute` method for prepared statements in authentication logic.
+        - [x] **Migrate `index.php` to DBAL**: (Completed: 2026-04-28)
+            - [x] Migrate contact list count and results processing to DBAL.
+            - [x] Migrate group filter dropdown to DBAL.
+            - [x] Migrate "Add to group" dropdown to DBAL.
+        - [x] **Migrate `edit.php` to DBAL**: (Completed: 2026-04-28)
+            - [x] Migrate address loading logic to use DBAL via Addresses class.
+            - [x] Migrate group selection dropdown to DBAL.
+        - [x] **Migrate `view.php` to DBAL**: (Completed: 2026-04-28) Both single entry and 'all' views migrated.
         - [x] **Migrate `birthdays.php` to DBAL**: (Completed: 2026-04-28) Updated the file to use the DBAL abstraction for database queries and results processing.
         - [x] **Migrate `delete.php` and `photo.php` to DBAL**: (Completed: 2026-04-28) Both files were updated to use the DBAL abstraction. `photo.php` was hardened with prepared statements for ID-based lookups.
         - [ ] Migrate registration module (`register/`) to DBAL:

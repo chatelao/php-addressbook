@@ -11,11 +11,12 @@ if($submit || $update) { ?>
 $resultsnumber = 0;
 if ($id) {
 
-   $sql = "SELECT * FROM $base_from_where AND $table.id='$id'";
-   $result = mysql_query($sql, $db);
-   $r = mysql_fetch_array($result);
-
-   $resultsnumber = mysql_numrows($result);
+   $addresses = Addresses::withID($id);
+   $resultsnumber = $addresses->count();
+   if($resultsnumber > 0) {
+     $addr_obj = $addresses->nextAddress();
+     $r = $addr_obj->getData();
+   }
 }
 
 if( ($resultsnumber == 0 && !isset($all)) || (!$id && !isset($all))) {
@@ -178,8 +179,9 @@ else if($id)
 {
   if(! $read_only)
   {
-$result = mysql_query("SELECT * FROM $base_from_where AND $table.id=$id",$db);
-$myrow = mysql_fetch_array($result);
+$addresses = Addresses::withID($id);
+$addr_obj = $addresses->nextAddress();
+$myrow = $addr_obj->getData();
 ?>
 
   <form enctype="multipart/form-data" 
@@ -365,10 +367,9 @@ $myrow = mysql_fetch_array($result);
             echo "<option>$group_name</option>\n";
           }
           $sql = "SELECT group_name FROM $table_groups ORDER BY lower(group_name) ASC";
-          $result_groups = mysql_query($sql);
-          $result_gropup_snumber = mysql_numrows($result_groups);
+          $result_groups = $db_access->query($sql);
           
-          while ($myrow_group = mysql_fetch_array($result_groups))
+          while ($myrow_group = $db_access->fetchArray($result_groups))
           {
             echo "<option>".$myrow_group["group_name"]."</option>\n";
           }
@@ -693,10 +694,9 @@ function proposeNames() {
           <option value="[none]">[<?php echo msg("NONE"); ?>]</option>
           <?php
           $sql="SELECT group_name FROM $groups_from_where ORDER BY lower(group_name) ASC";
-          $result_groups = mysql_query($sql);
-          $result_gropup_snumber = mysql_numrows($result_groups);
+          $result_groups = $db_access->query($sql);
           
-          while ($myrow_group = mysql_fetch_array($result_groups))
+          while ($myrow_group = $db_access->fetchArray($result_groups))
           {
             echo "<option>".$myrow_group["group_name"]."</option>\n";
           }

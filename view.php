@@ -5,11 +5,12 @@
 $resultsnumber = 0;
 if ($id) {
 
-   $sql = "SELECT * FROM $base_from_where AND $table.id='$id'";
-   $result = mysql_query($sql, $db);
-   $r = mysql_fetch_array($result);
-
-   $resultsnumber = mysql_numrows($result);
+   $addresses = Addresses::withID($id);
+   $resultsnumber = $addresses->count();
+   if($resultsnumber > 0) {
+     $addr = $addresses->nextAddress();
+     $r = $addr->getData();
+   }
 }
 
 if( ($resultsnumber == 0 && !isset($all)) || (!$id && !isset($all))) {
@@ -41,10 +42,10 @@ if($resultsnumber == 0) {
 include "include/view.w.php";
 showOneEntry($r);
 
-?>	
+?>
 <br />
 <br />
-<?php if( !isset($_GET["print"])) 
+<?php if( !isset($_GET["print"]))
 { ?>
 <form method="get" action="edit<?php echo $page_ext; ?>">
     <input type="hidden" name="id" value="<?php echo $id; ?>" />
@@ -66,7 +67,7 @@ showOneEntry($r);
    include "include/view.w.php";
 
    $sql = "SELECT * FROM $base_from_where order by lastname, firstname";
-   $result = mysql_query($sql, $db);
+   $result = $db_access->query($sql);
 
 	 $cnt = 0;
 	 echo "<h1>".ucfmsg('ADDRESS_BOOK').($group ? " ".msg('FOR')." <i>$group</i></h1>" : "</h1>");
@@ -74,32 +75,32 @@ showOneEntry($r);
    <table id="view">
 
    <?php
-   
+
    $only_phones = isset($_REQUEST['phones']);
 
    $addr_per_line  = ($only_phones ? 4 : 3);
-   
-   while($r = mysql_fetch_array($result)) {
-   	 $r = trimAll($r);   	
-   	 $address = new Address($r);
-   	 if($address->hasPhone() || !$only_phones) {
+
+   while($r = $db_access->fetchArray($result)) {
+	 $r = trimAll($r);
+	 $address = new Address($r);
+	 if($address->hasPhone() || !$only_phones) {
        if( ($cnt % (2*$addr_per_line)) == 0)
-       		echo "<tr class='odd'>";
+		echo "<tr class='odd'>";
        if( ($cnt % (2*$addr_per_line)) == $addr_per_line)
-       		echo "<tr class='even'>";
-       		
+		echo "<tr class='even'>";
+
        echo "<td valign='top'>";
-   	   showOneEntry($r, $only_phones);
+	   showOneEntry($r, $only_phones);
        echo "</td>";
 
        $cnt++;
        if( ($cnt % $addr_per_line) == 0)
-       		echo "</tr>";       	
-     }	
+		echo "</tr>";
+     }
    }
    while(($cnt % $addr_per_line) != 0)
    {
-      echo "<td>.</td>";   	
+      echo "<td>.</td>";
       $cnt++;
    }
    ?>
