@@ -1,0 +1,19 @@
+
+
+An error occurred inside PHPUnit.
+
+Message:  Call to a member function ucfmsg() on null
+Location: /app/include/translations.inc.php:53
+
+#0 /app/include/birthday.class.php(10): ucfmsg()
+#1 /app/include/address.class.php(5): include('...')
+#2 /app/tests/Unit/PhoneTest.php(8): require_once('...')
+#3 /app/vendor/phpunit/phpunit/src/Runner/TestSuiteLoader.php(115): require_once('...')
+#4 /app/vendor/phpunit/phpunit/src/Runner/TestSuiteLoader.php(48): PHPUnit\Runner\TestSuiteLoader->loadSuiteClassFile()
+#5 /app/vendor/phpunit/phpunit/src/TextUI/Configuration/TestSuiteBuilder.php(114): PHPUnit\Runner\TestSuiteLoader->load()
+#6 /app/vendor/phpunit/phpunit/src/TextUI/Configuration/TestSuiteBuilder.php(58): PHPUnit\TextUI\Configuration\TestSuiteBuilder->testSuiteFromPath()
+#7 /app/vendor/phpunit/phpunit/src/TextUI/Application.php(394): PHPUnit\TextUI\Configuration\TestSuiteBuilder->build()
+#8 /app/vendor/phpunit/phpunit/src/TextUI/Application.php(114): PHPUnit\TextUI\Application->buildTestSuite()
+#9 /app/vendor/phpunit/phpunit/phpunit(104): PHPUnit\TextUI\Application->run()
+#10 /app/vendor/bin/phpunit(122): include('...')
+#11 {main}
